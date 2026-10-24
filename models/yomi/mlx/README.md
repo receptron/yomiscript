@@ -73,17 +73,9 @@ JSUT 4,520文だけでは漢字の読みが足りないため、オープンな�
 | ルールセット | 2,122 × 5回 | 数字・日付・時刻・助数詞・略語 (`src: "rule"`) |
 | 合計 `distill.jsonl` | 306,635行 | + JSUT train 4,520 / dev 200 |
 
-### 方法A: 作成済みデータをダウンロード (かんたん, 約22MB)
+### 方法A: 作成済みデータの tarball (約22MB) — 未公開
 
-```bash
-cd mulmovoice && git pull && cd models/yomi/mlx
-source .venv/bin/activate
-mkdir -p data && curl -L -o /tmp/yomi_aug.tgz https://github.com/receptron/mulmovoice/releases/download/yomi-aug-v1/yomi_aug_data_v1.tar.gz
-tar xzf /tmp/yomi_aug.tgz -C data
-python train.py --config configs/tiny_aug.json --out ckpt/tiny_aug --distill
-python evaluate.py --ckpt ckpt/tiny_aug --out ckpt/tiny_aug/eval.json
-python bench.py --ckpt ckpt/tiny_aug
-```
+GitHub リリースでの配布は承認待ちのため、まだありません。いまは方法Bで作ってください。
 
 ### 方法B: Mac 上で一から作る (pyopenjtalk が必要, 数GBのダウンロードは無し・約1GB)
 
@@ -106,6 +98,8 @@ python train.py --config configs/tiny_aug.json --out ckpt/tiny_aug --distill
 増量データの読みは pyopenjtalk の出力なので、モデルは **pyopenjtalk の誤りもそのまま学びます**。期待できるのは「JSUT だけの時より pyopenjtalk に近づく」ところまでで、
 pyopenjtalk を超える根拠にはなりません (特に同形異音語: pyopenjtalk はハードセットで 51.4%)。超えるには、ルビのような人手の読み・文脈付き辞書 (KOE-IR) ・人手ラベルが必要です。
 青空文庫のルビでは pyopenjtalk の読みが一致したのは 43,273個中 32,167個 (74.3%, 長音の違いを吸収したゆるい比較)。ルビには固有名詞や作家独自の読み (義訓) も含むので、一般文での誤読率そのものではありません。
+
+- 検証 (Linux CPU): `prepare_data.py --aug` は8コアで約45秒、smoke config + `--distill` で200 step 学習 (train loss 3.31→2.66, dev loss 2.95→2.83, 約2.4秒/step)。Mac では未確認。
 
 ## 所要時間の目安 (**推定・未計測**)
 
