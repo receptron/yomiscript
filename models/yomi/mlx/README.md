@@ -73,9 +73,19 @@ JSUT 4,520文だけでは漢字の読みが足りないため、オープンな�
 | ルールセット | 2,122 × 5回 | 数字・日付・時刻・助数詞・略語 (`src: "rule"`) |
 | 合計 `distill.jsonl` | 306,635行 | + JSUT train 4,520 / dev 200 |
 
-### 方法A: 作成済みデータの tarball (約22MB) — 未公開
+### 方法A: 作成済みデータの tarball (約22MB)
 
-GitHub リリースでの配布は承認待ちのため、まだありません。いまは方法Bで作ってください。
+[リリース yomi-aug-v1](https://github.com/receptron/mulmovoice/releases/tag/yomi-aug-v1) から取得して `data/` に展開します(リポジトリが非公開なので `gh` でダウンロード)。
+
+```bash
+cd mulmovoice && git pull && cd models/yomi/mlx
+source .venv/bin/activate
+mkdir -p data && gh release download yomi-aug-v1 -R receptron/mulmovoice -p yomi_aug_data_v1.tar.gz -D /tmp --clobber
+tar xzf /tmp/yomi_aug_data_v1.tar.gz -C data
+python train.py --config configs/tiny_aug.json --out ckpt/tiny_aug --distill
+```
+
+ライセンスは `aug/LICENSE_DATA.md` を参照(Wikipedia 由来部分は CC BY-SA)。
 
 ### 方法B: Mac 上で一から作る (pyopenjtalk が必要, 数GBのダウンロードは無し・約1GB)
 
