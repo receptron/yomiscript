@@ -1,0 +1,2 @@
+{"model": {"d_model": 384, "n_heads": 6, "d_ff": 1536, "enc_layers": 6, "dec_layers": 4, "max_len": 320},
+ "train": {"batch_size": 64, "lr": 7e-4, "warmup": 1000, "steps": 40000, "weight_decay": 0.01, "label_smoothing": 0.05, "eval_every": 2000, "save_every": 2000}}

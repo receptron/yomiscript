@@ -1,0 +1,4 @@
+mlx>=0.25
+pyyaml
+# 蒸留 (--distill-text) を使う場合のみ
+# pyopenjtalk
