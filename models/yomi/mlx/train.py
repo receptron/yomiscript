@@ -31,7 +31,9 @@ def batches(rows, sv, tv, bs, max_len, rng):
 def collate(rs, sv, tv):
     s = [sv.encode(r["text"]) for r in rs]
     t = [[BOS] + tv.encode(r["target"]) + [EOS] for r in rs]
-    Ls, Lt = max(map(len, s)), max(map(len, t))
+    # 長さを16の倍数に丸めて形状の種類を減らす(MLXのカーネル/バッファキャッシュ肥大による減速対策)
+    r16 = lambda n: -(-n // 16) * 16
+    Ls, Lt = r16(max(map(len, s))), r16(max(map(len, t)) - 1) + 1
     S = mx.array([x + [PAD] * (Ls - len(x)) for x in s], dtype=mx.int32)
     T = mx.array([x + [PAD] * (Lt - len(x)) for x in t], dtype=mx.int32)
     return S, T[:, :-1], T[:, 1:]
@@ -89,6 +91,7 @@ def main():
     lg = nn.value_and_grad(model, loss_fn)
     it = batches(train, sv, tv, tc["batch_size"], cfg["model"]["max_len"], rng)
     t0, run, log = time.time(), [], []
+    tw = time.time()
     for step in range(start + 1, total + 1):
         S, Ti, To = next(it)
         loss, g = lg(model, S, Ti, To, tc["label_smoothing"])
@@ -97,9 +100,10 @@ def main():
         mx.eval(model.parameters(), opt.state, loss)
         run.append(loss.item())
         if step % 50 == 0:
-            el = time.time() - t0
-            print(f"step {step}/{total} loss {sum(run)/len(run):.4f} lr {opt.learning_rate.item():.2e} {el/(step-start):.3f}s/step", flush=True)
-            run = []
+            now = time.time()
+            print(f"step {step}/{total} loss {sum(run)/len(run):.4f} lr {opt.learning_rate.item():.2e} {(now-tw)/50:.3f}s/step  mem {mx.get_active_memory()/2**30:.2f}GB cache {mx.get_cache_memory()/2**30:.2f}GB", flush=True)
+            run = []; tw = now
+            mx.clear_cache()
         if step % tc["eval_every"] == 0 or step == total:
             model.eval(); dl = dev_loss(model, dev, sv, tv, 0.0); model.train()
             print(f"  dev loss {dl:.4f}", flush=True); log.append({"step": step, "dev_loss": dl, "elapsed_s": time.time() - t0})
