@@ -1,0 +1,6 @@
+# demo_extra.koedict — MoLD デモ用: 学習なしで辞書メモリに名前を足す例
+# license: CC BY 4.0
+# scope: name
+@lexicon {
+  梨奈 = リナ [default];
+}

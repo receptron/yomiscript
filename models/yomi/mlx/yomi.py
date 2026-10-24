@@ -60,14 +60,20 @@ class FF(nn.Module):
 
 
 class EncLayer(nn.Module):
-    def __init__(self, d, h, f):
+    def __init__(self, d, h, f, memory=None):
         super().__init__()
         self.n1, self.n2, self.att, self.ff = nn.LayerNorm(d), nn.LayerNorm(d), MHA(d, h), FF(d, f)
+        if memory:  # MoLD: 学習型 product-key メモリ (値テーブルは差し替え可能)
+            from mold import ProductKeyMemory
+            self.mem = ProductKeyMemory(d, **{k: v for k, v in memory.items() if k != "layers"})
 
     def __call__(self, x, mask):
         h = self.n1(x)
         x = x + self.att(h, h, mask)
-        return x + self.ff(self.n2(x))
+        x = x + self.ff(self.n2(x))
+        if "mem" in self:
+            x = x + self.mem(x)
+        return x
 
 
 class DecLayer(nn.Module):
@@ -84,11 +90,12 @@ class DecLayer(nn.Module):
 
 
 class Yomi(nn.Module):
-    def __init__(self, n_src, n_tgt, d_model=256, n_heads=4, d_ff=1024, enc_layers=4, dec_layers=4, max_len=256, **_):
+    def __init__(self, n_src, n_tgt, d_model=256, n_heads=4, d_ff=1024, enc_layers=4, dec_layers=4, max_len=256, memory=None, **_):
         super().__init__()
         self.src_emb, self.tgt_emb = nn.Embedding(n_src, d_model), nn.Embedding(n_tgt, d_model)
         self.pos = nn.Embedding(max_len, d_model)
-        self.enc = [EncLayer(d_model, n_heads, d_ff) for _ in range(enc_layers)]
+        ml = set((memory or {}).get("layers", []))
+        self.enc = [EncLayer(d_model, n_heads, d_ff, memory if i in ml else None) for i in range(enc_layers)]
         self.dec = [DecLayer(d_model, n_heads, d_ff) for _ in range(dec_layers)]
         self.enc_norm, self.dec_norm = nn.LayerNorm(d_model), nn.LayerNorm(d_model)
         self.out = nn.Linear(d_model, n_tgt, bias=False)
@@ -232,20 +239,30 @@ def save(path, model, cfg, vocab, step, opt=None):
         mx.save_safetensors(str(path / "optimizer.safetensors"), {k: v for k, v in st.items() if isinstance(v, mx.array)})
 
 
-def load(path, dtype=None):
+def load(path, dtype=None, memory=None):
+    """memory: 差し替える *.mem.safetensors (任意)。既存の tiny_aug などメモリ無しのチェックポイントもそのまま読める。"""
     path = Path(path)
     meta = json.load(open(path / "meta.json", encoding="utf-8"))
     src, tgt = Vocab(meta["vocab"]["src"]), Vocab(meta["vocab"]["tgt"])
     model = Yomi(len(src), len(tgt), **meta["config"]["model"])
     model.load_weights(str(path / "model.safetensors"))
+    if memory:
+        import mold
+        mold.load_memory(model, memory)
     if dtype is not None:
         model.set_dtype(dtype)
     model.eval()
     return model, src, tgt, meta
 
 
-def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=True):
-    """mode: fast (既定) | legacy (旧デコード) | nocache (参照)。"""
+def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=True, router=None, context=None, logs=None):
+    """mode: fast (既定) | legacy (旧デコード) | nocache (参照)。
+    router: mold.MemoryRouter (辞書メモリ。学習なしで差し替え可能)。context: {'sex': 'female'} など。"""
+    if router is not None:
+        res = [router.resolve(t, context) for t in texts]
+        texts = [r[0] for r in res]
+        if logs is not None:
+            logs += [r[1] for r in res]
     out = []
     for i in range(0, len(texts), batch):
         chunk = texts[i:i + batch]

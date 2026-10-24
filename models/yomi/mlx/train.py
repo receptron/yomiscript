@@ -64,6 +64,9 @@ def main():
     ap.add_argument("--distill", action="store_true", help="data/distill.jsonl も混ぜる (蒸留: 品質は pyopenjtalk が上限)")
     ap.add_argument("--steps", type=int)
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--init", type=Path, help="MoLD: 既存チェックポイント (例 ckpt/tiny_aug) の共有重みから始める。メモリ層は0初期化")
+    ap.add_argument("--memory-only", action="store_true", help="MoLD: 共有重みを凍結し、メモリ層だけ学習 (ドメイン/方言メモリ作り)")
+    ap.add_argument("--save-memory", type=Path, help="終了時にメモリ層だけを *.mem.safetensors に保存")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)")
     a = ap.parse_args()
@@ -80,6 +83,18 @@ def main():
     start = 0
     if a.resume and (a.out / "meta.json").exists():
         model.load_weights(str(a.out / "model.safetensors")); start = json.load(open(a.out / "meta.json"))["step"]
+    if a.init:
+        w = mx.load(str(a.init / "model.safetensors"))
+        own = dict(__import__("mlx.utils", fromlist=["x"]).tree_flatten(model.parameters()))
+        miss = [k for k in own if k not in w]
+        model.load_weights([(k, v) for k, v in w.items() if k in own], strict=False)
+        print(f"init from {a.init}: {len(w)} tensors, 新規 (メモリ層) {len(miss)}")
+    if a.memory_only:
+        model.freeze()
+        for l in model.enc:
+            if "mem" in l:
+                l.mem.unfreeze()
+        print(f"memory-only: 学習対象 {sum(v.size for _, v in __import__('mlx.utils', fromlist=['x']).tree_flatten(model.trainable_parameters()))/1e6:.2f}M")
     model.set_dtype(DT[a.dtype])
     print(f"params: {yomi.n_params(model)/1e6:.2f}M  train {len(train)} dev {len(dev)}  dtype {a.dtype}")
     total, wu = tc["steps"], tc["warmup"]
@@ -123,6 +138,9 @@ def main():
         if step % tc["save_every"] == 0 or step == total:
             yomi.save(a.out, model, cfg, voc, step, opt)
     json.dump(log, open(a.out / "train_log.json", "w"), indent=1)
+    if a.save_memory:
+        import mold
+        mold.save_memory(model, a.save_memory, {"from": str(a.out), "step": total}); print(f"memory -> {a.save_memory}")
     print(f"done {total} steps in {time.time()-t0:.1f}s -> {a.out}")
 
 
