@@ -52,7 +52,7 @@ def test_layer_override(tmp_path):
         mold.LexMemory.from_file(tmp_path / "x.csv")
 
 def test_pron_normalization():
-    assert mold.to_pron("サトウ") == "サトー" and mold.to_pron("ケイ") == "ケー" and mold.to_pron("ユウ") == "ユウ"
+    assert mold.to_pron("サトウ") == "サトー" and mold.to_pron("ケイ") == "ケー" and mold.to_pron("ユウコ") == "ユーコ" and mold.to_pron("ユイ") == "ユイ"
     s = mold.LexMemory.from_file(ROOT / "dict/names/surnames.koedict")
     g = mold.LexMemory.from_file(ROOT / "dict/names/given_names.koedict")
     assert mold.MemoryRouter([s, g], tokenizer=None).resolve("佐藤光が来た", ["female"])[0].startswith("サトーヒカリ")

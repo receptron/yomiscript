@@ -26,16 +26,20 @@ for pat in a.text:
                 continue
             for m in pyopenjtalk.run_frontend(line):
                 if KANJI.search(m["string"]) and m["pron"] and m["pron"] != "*":
-                    cnt[m["string"]][m["pron"].replace("’", "")] += 1
+                    cnt[m["string"]][(m["pron"].replace("’", ""), m["acc"])] += 1
             n += 1
             if a.limit and n >= a.limit:
                 break
 with open(a.out, "w", encoding="utf-8") as w:
     w.write("# base_pyopenjtalk.koedict — pyopenjtalk(NAIST-jdic 由来, BSD系)から自動変換。ローカル専用・コミットしない\n")
+    w.write(f"# pyopenjtalk {pyopenjtalk.__version__ if hasattr(pyopenjtalk, '__version__') else ''} / 入力 {n} 行 / min-count {a.min_count}\n")
     w.write("# layer: base\n# scope: always\n\n@lexicon {\n")
     k = 0
     for s, c in sorted(cnt.items()):
         if sum(c.values()) >= a.min_count:
-            w.write(f"  {s} = {c.most_common(1)[0][0]};\n"); k += 1
+            (pron, acc), top = c.most_common(1)[0]
+            alts = sorted({p for (p, _), _n in c.items() if p != pron})
+            note = f"  # 他の読み: {'/'.join(alts)}" if alts else ""
+            w.write(f"  {s} = {pron} [accent: {acc}];{note}\n"); k += 1
     w.write("}\n")
 print(f"{n} 行を解析, {k} 項目 -> {a.out}")

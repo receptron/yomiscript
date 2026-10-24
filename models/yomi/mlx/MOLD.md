@@ -106,3 +106,33 @@ python infer.py --ckpt ckpt/tiny_aug --show --sex female --dict ../../../dict/sa
   --dict ../../../dict/names/surnames.koedict --dict ../../../dict/names/given_names.koedict \
   "佐藤光さんが来た。" "朝市の市で魚を買う。" "市役所に行く。"
 ```
+
+## 名前学習データ（aug/names.py）
+
+佐藤光が `^サ[トー#ヒ]カリ` になる問題（正解は pyopenjtalk の `サ]トー#ヒ[カリ`）は、モデルが名前を含む文を学習していないことが原因。そこで、名前を含む文を合成して学習データに足す。
+
+- 元データ: `dict/names/surnames_top200.csv` と `given_names_by_generation.csv`。名は（表記, 読み, 性別）を1件として扱う。
+- `is_estimated` が付いた行の扱いは `--estimated` で選ぶ。`skip` は使わない、`down`（既定）は重み0.3で使う、`keep` はそのまま使う。
+- テンプレート: フルネーム、名だけ、姓だけ。敬称は さん/様/くん/ちゃん/氏 などから性別に合わせて選ぶ。名前は主語の位置と目的語の位置の両方に置き、彼/彼女 のような手がかり語も入れる。
+- ラベル: アクセントと句境界は pyopenjtalk で付ける。名前の読みは辞書の読みに強制し、生成後に読みが一致するか検証する。名前が形態素境界に合わない文は捨てる。
+- 名前の約10%は学習に使わない（unseen）。評価セットは `names_eval_seen` と `names_eval_unseen` の2つ。
+- 評価（eval_names.py）は各セットについてメモリなしとメモリあり（姓と名の辞書を使い、性別を context として渡す）の両方で行う。指標は name_reading_acc、name_prosody_exact（名前部分の読みとアクセントが完全一致した割合）、sent_kana_acc、boundary_f1、accent_f1。
+- `data/` は git に入れない。データは各自で生成する。
+
+## base 層の変換器（tools/pyopenjtalk_to_koedict.py）
+
+コーパスを pyopenjtalk で解析し、漢字を含む形態素ごとに最も多く出た読みとアクセントを `表記 = 読み [accent: N];` の形で出力する。ほかの読みはコメントとして残す。ヘッダは `# layer: base` と `# scope: always`。出力先は `mem/`（gitignore 済み）で、NAIST-jdic 由来のためコミットしない。
+
+## Mac での実行手順（名前）
+
+```bash
+python aug/names.py --out data/names --n-train 30000 --n-eval 1000
+python eval_names.py --ckpt ckpt/tiny_aug                       # 学習前（メモリなし/あり）
+python train.py --config configs/tiny_aug_names.json --init ckpt/tiny_aug --out ckpt/tiny_aug_names \
+  --distill --extra data/names/names_train.jsonl --extra-repeat 2
+python eval_names.py --ckpt ckpt/tiny_aug_names                 # 学習後（メモリなし/あり）
+python evaluate.py --ckpt ckpt/tiny_aug_names                   # 一般文で劣化していないか確認
+python tools/pyopenjtalk_to_koedict.py --text data/train.jsonl data/distill.jsonl --out mem/base_pyopenjtalk.koedict --min-count 2
+```
+
+`--init` を使うときは初期化元の語彙を引き継ぐ。重みの形が合わない場合は学習を始めずにエラーで止まる。

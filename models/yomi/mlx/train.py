@@ -64,6 +64,8 @@ def main():
     ap.add_argument("--distill", action="store_true", help="data/distill.jsonl も混ぜる (蒸留: 品質は pyopenjtalk が上限)")
     ap.add_argument("--steps", type=int)
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--extra", type=Path, nargs="*", default=[], help="追加の学習 jsonl (例 data/names/names_train.jsonl)")
+    ap.add_argument("--extra-repeat", type=int, default=1, help="--extra を何回繰り返して混ぜるか")
     ap.add_argument("--init", type=Path, help="MoLD: 既存チェックポイント (例 ckpt/tiny_aug) の共有重みから始める。メモリ層は0初期化")
     ap.add_argument("--memory-only", action="store_true", help="MoLD: 共有重みを凍結し、メモリ層だけ学習 (ドメイン/方言メモリ作り)")
     ap.add_argument("--save-memory", type=Path, help="終了時にメモリ層だけを *.mem.safetensors に保存")
@@ -75,10 +77,14 @@ def main():
         tc["steps"] = a.steps
     mx.random.seed(a.seed); rng = random.Random(a.seed)
     voc = json.load(open(a.data / "vocab.json", encoding="utf-8"))
+    if a.init:  # 埋め込みの行番号を合わせるため、初期化元の語彙を使う
+        voc = json.load(open(a.init / "meta.json", encoding="utf-8"))["vocab"]
     sv, tv = Vocab(voc["src"]), Vocab(voc["tgt"])
     train, dev = read(a.data / "train.jsonl"), read(a.data / "dev.jsonl")
     if a.distill:
         d = read(a.data / "distill.jsonl"); print(f"蒸留データ {len(d)} 文を追加"); train += d
+    for p in a.extra:
+        d = read(p); print(f"追加データ {p}: {len(d)} 文 x{a.extra_repeat}"); train += d * a.extra_repeat
     model = Yomi(len(sv), len(tv), **cfg["model"])
     start = 0
     if a.resume and (a.out / "meta.json").exists():
@@ -87,6 +93,9 @@ def main():
         w = mx.load(str(a.init / "model.safetensors"))
         own = dict(__import__("mlx.utils", fromlist=["x"]).tree_flatten(model.parameters()))
         miss = [k for k in own if k not in w]
+        bad = [k for k in own if k in w and w[k].shape != own[k].shape]
+        if bad:
+            raise SystemExit(f"--init {a.init}: 形が合わない重み {bad[:3]} (config の model 設定を初期化元と揃えてください)")
         model.load_weights([(k, v) for k, v in w.items() if k in own], strict=False)
         print(f"init from {a.init}: {len(w)} tensors, 新規 (メモリ層) {len(miss)}")
     if a.memory_only:

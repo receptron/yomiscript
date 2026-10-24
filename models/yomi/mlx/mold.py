@@ -63,15 +63,16 @@ def parse_koedict(text):
 # ---- 長音の正規化: 学習ラベル (pyopenjtalk の pron 形, g2p(kana=True)) に合わせる
 _O = set("オコソトノホモヨロヲゴゾドボポョォ")
 _E = set("エケセテネヘメレゲゼデベペェ")
+_U = set("ウクスツヌフムユルグズヅブプュゥ")
 
 
 def to_pron(kana):
-    """辞書の読み (表記形: サトウ, ケイ) を発音形 (サトー, ケー) にする。o段+ウ→ー, e段+イ→ー。
+    """辞書の読み (表記形: サトウ, ケイ) を発音形 (サトー, ケー) にする。o段/u段+ウ→ー, e段+イ→ー (pyopenjtalk: 優→ユー, 裕子→ユーコ)。
     pyopenjtalk は語中のこれらを長音にするため、名前・名詞の辞書読みではこれで学習ラベルと揃う。
     動詞の語尾 (オモウ等) は辞書側で ' や [pron] を付けず、そのまま書いた場合でも人名用途では問題になりにくい。"""
     out = []
     for c in kana:
-        if out and ((c == "ウ" and out[-1] in _O) or (c == "イ" and out[-1] in _E)):
+        if out and ((c == "ウ" and (out[-1] in _O or out[-1] in _U)) or (c == "イ" and out[-1] in _E)):
             out.append("ー")
         else:
             out.append(c)
