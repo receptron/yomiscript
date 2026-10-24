@@ -116,8 +116,8 @@ class Yomi(nn.Module):
         mem, m = self.encode(src)
         return self.decode(tgt_in, mem, m)
 
-    def generate(self, src, max_new=None):
-        """貪欲デコード (バッチ対応, KVキャッシュ)。戻り値: list[list[int]]"""
+    def generate_legacy(self, src, max_new=None):
+        """旧デコード (比較用): 自己注意KVを毎ステップ連結、交差注意K/Vも毎ステップ再計算。戻り値: list[list[int]]"""
         B = src.shape[0]
         max_new = max_new or min(self.max_len - 1, int(src.shape[1] * 3) + 8)
         mem, m = self.encode(src)
@@ -130,6 +130,90 @@ class Yomi(nn.Module):
             outs.append(tok)
             done = done | (tok == EOS)
             tok = tok[:, None]
+            if t % 8 == 7 and done.all().item():
+                break
+        return mx.stack(outs, axis=1).tolist()
+
+
+    def generate_nocache(self, src, max_new=None):
+        """参照実装: 毎ステップ接頭辞全体を再計算する貪欲デコード (等価性テスト用, 遅い)。"""
+        B = src.shape[0]
+        max_new = max_new or min(self.max_len - 1, int(src.shape[1] * 3) + 8)
+        mem, m = self.encode(src)
+        seq = mx.full((B, 1), BOS, dtype=mx.int32)
+        outs = []
+        for t in range(max_new):
+            tok = mx.argmax(self.decode(seq, mem, m)[:, -1, :], axis=-1).astype(mx.int32)
+            outs.append(tok); seq = mx.concatenate([seq, tok[:, None]], axis=1)
+            if t % 8 == 7 and (mx.stack(outs, 1) == EOS).any(axis=1).all().item():
+                break
+        return mx.stack(outs, axis=1).tolist()
+
+    # ---- 高速デコード: 固定長KVキャッシュ + 交差注意K/Vの事前計算 + mx.compile ----
+    def _cross_kv(self, mem):
+        B, S, _ = mem.shape
+        ks, vs = [], []
+        for l in self.dec:
+            h = l.ca.h
+            ks.append(l.ca.k(mem).reshape(B, S, h, -1).transpose(0, 2, 1, 3))
+            vs.append(l.ca.v(mem).reshape(B, S, h, -1).transpose(0, 2, 1, 3))
+        return ks, vs
+
+    def _step(self, tok, t, ks, vs, cks, cvs, mmask):
+        """1トークン分のデコード。tok:(B,1) t:()int32配列。ks/vs: 層ごとの (B,h,T,dh) 固定長キャッシュ。"""
+        B = tok.shape[0]
+        T = ks[0].shape[2]
+        x = self.tgt_emb(tok) + self.pos.weight[t][None, None, :]
+        pos = mx.arange(T)
+        write = (pos == t)[None, None, :, None]
+        smask = mx.where(pos <= t, 0.0, -1e9).astype(x.dtype)[None, None, None, :]
+        nks, nvs = [], []
+        for i, l in enumerate(self.dec):
+            a = l.sa
+            hdn = l.n1(x)
+            q = a.q(hdn).reshape(B, 1, a.h, -1).transpose(0, 2, 1, 3)
+            k = a.k(hdn).reshape(B, 1, a.h, -1).transpose(0, 2, 1, 3)
+            v = a.v(hdn).reshape(B, 1, a.h, -1).transpose(0, 2, 1, 3)
+            kc, vc = mx.where(write, k, ks[i]), mx.where(write, v, vs[i])
+            nks.append(kc); nvs.append(vc)
+            sc = q.shape[-1] ** -0.5
+            y = mx.fast.scaled_dot_product_attention(q, kc, vc, scale=sc, mask=smask)
+            x = x + a.o(y.transpose(0, 2, 1, 3).reshape(B, 1, -1))
+            c = l.ca
+            q = c.q(l.n2(x)).reshape(B, 1, c.h, -1).transpose(0, 2, 1, 3)
+            y = mx.fast.scaled_dot_product_attention(q, cks[i], cvs[i], scale=sc, mask=mmask)
+            x = x + c.o(y.transpose(0, 2, 1, 3).reshape(B, 1, -1))
+            x = x + l.ff(l.n3(x))
+        logits = self.out(self.dec_norm(x))
+        return mx.argmax(logits[:, -1, :], axis=-1).astype(mx.int32), nks, nvs
+
+    def _step_fn(self, compiled):
+        if not compiled:
+            return self._step
+        if getattr(self, "_compiled_step", None) is None:
+            from functools import partial
+            self._compiled_step = partial(mx.compile, inputs=self.state)(self._step)
+        return self._compiled_step
+
+    def generate(self, src, max_new=None, compile=True):
+        """貪欲デコード (バッチ対応, 高速版)。generate_nocache と同じトークン列を返す。戻り値: list[list[int]]"""
+        B = src.shape[0]
+        max_new = max_new or min(self.max_len - 1, int(src.shape[1] * 3) + 8)
+        mem, m = self.encode(src)
+        cks, cvs = self._cross_kv(mem)
+        T = min(-(-max_new // 32) * 32, self.max_len)  # キャッシュ長を32刻みに丸めて再コンパイルを減らす
+        h = self.dec[0].sa.h
+        ks = [mx.zeros((B, h, T, mem.shape[-1] // h), dtype=mem.dtype) for _ in self.dec]
+        vs = [mx.zeros((B, h, T, mem.shape[-1] // h), dtype=mem.dtype) for _ in self.dec]
+        step = self._step_fn(compile)
+        tok = mx.full((B, 1), BOS, dtype=mx.int32)
+        outs, done = [], mx.zeros((B,), dtype=mx.bool_)
+        for t in range(max_new):
+            nt, ks, vs = step(tok, mx.array(t, dtype=mx.int32), ks, vs, cks, cvs, m)
+            outs.append(nt)
+            done = done | (nt == EOS)
+            tok = nt[:, None]
+            mx.async_eval(tok, done, ks, vs)
             if t % 8 == 7 and done.all().item():
                 break
         return mx.stack(outs, axis=1).tolist()
@@ -160,12 +244,17 @@ def load(path, dtype=None):
     return model, src, tgt, meta
 
 
-def predict(model, src_vocab, tgt_vocab, texts, batch=32):
+def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=True):
+    """mode: fast (既定) | legacy (旧デコード) | nocache (参照)。"""
     out = []
     for i in range(0, len(texts), batch):
         chunk = texts[i:i + batch]
         ids = [src_vocab.encode(t)[: model.max_len] for t in chunk]
         L = max(len(x) for x in ids)
         arr = mx.array([x + [PAD] * (L - len(x)) for x in ids], dtype=mx.int32)
-        out += [tgt_vocab.decode(g) for g in model.generate(arr)]
+        if mode == "fast":
+            gen = model.generate(arr, compile=compile)
+        else:
+            gen = model.generate_legacy(arr) if mode == "legacy" else model.generate_nocache(arr)
+        out += [tgt_vocab.decode(g) for g in gen]
     return out

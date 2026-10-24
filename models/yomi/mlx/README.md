@@ -53,10 +53,51 @@ python infer.py --ckpt ckpt/tiny --plain < sentences.txt
 # 4. 評価 (eval/ の JSUT 280文 + ハードセット70文)
 python evaluate.py --ckpt ckpt/tiny --out ckpt/tiny/eval.json
 
-# 5. レイテンシ (1文ずつ, バッチ1)
-python bench.py --ckpt ckpt/tiny
-python bench.py --ckpt ckpt/tiny --dtype bfloat16
+# 5. レイテンシ (旧デコード vs 新デコードを並べて表示, バッチ1 とバッチ推論)
+python bench.py --ckpt ckpt/tiny_aug
 ```
+
+## 推論の高速化 (#11)
+
+`yomi.generate` は次の3つで高速化しています。出力トークン列は旧デコード・接頭辞全体を毎回計算する参照実装と同一です。
+
+- 自己注意の KV キャッシュを固定長で確保し、毎ステップ新しい1トークン分だけ計算 (旧版は毎ステップ配列を連結)
+- 交差注意のエンコーダ側 K/V を最初に1回だけ計算 (旧版は毎ステップ再計算)
+- 1ステップ分のデコーダ関数を `mx.compile` (キャッシュ長は32刻みに丸めて再コンパイルを抑制)
+
+旧デコードは `yomi.generate_legacy`、参照実装は `yomi.generate_nocache` として残しています。
+チェックポイントの形式は変わっていないので、学習中・学習済みの `ckpt/tiny_aug` をそのまま使えます。
+
+### Mac での計測コマンド
+
+学習が終わってから (GPU を占有しない状態で) 実行してください。
+
+```bash
+cd mulmovoice && git pull && cd models/yomi/mlx
+source .venv/bin/activate
+python bench.py --ckpt ckpt/tiny_aug --device gpu
+python bench.py --ckpt ckpt/tiny_aug --device cpu
+python bench.py --ckpt ckpt/tiny_aug --device gpu --dtype bfloat16
+python evaluate.py --ckpt ckpt/tiny_aug --out ckpt/tiny_aug/eval.json   # 精度が前回と同じことの確認
+```
+
+出力の `results` に `legacy` (旧) / `fast` (新, compileあり) / `fast_nocompile` (新, compileなし) が並びます。
+`batch1` は1文ずつのレイテンシ、`batch32_ms_per_sent` は32文まとめた場合の1文あたり時間、
+`identical_outputs_vs_first_mode` は旧デコードと同じ出力になった文の数です。
+
+学習ステップの `mx.compile` は `python train.py ... --compile` で有効になります (loss は同一)。
+Linux CPU では約5%遅かったため既定はオフです。Mac GPU での効果は未計測です。
+
+### Linux CPU での実測 (x86_64, 8コア, mlx 0.32.4, float32)
+
+学習済みでない重みでの計測で、出力は文末記号が出ずに最大長まで生成するため、実際より長い出力での数字です。
+
+| モデル | 旧 中央値 | 新 中央値 (compileあり) | 新 (compileなし) | 高速化 |
+|---|---|---|---|---|
+| smoke (1.33M, n=50) | 73.2ms | 48.5ms | 52.3ms | 1.51倍 |
+| tiny_aug と同じ形・乱数初期化 (7.11M, n=30) | 563.5ms | 213.1ms | 253.5ms | 2.64倍 |
+
+Mac GPU での数字はまだ計測していません。
 
 チェックポイントは `save_every` ごとに `ckpt/<名前>/` (model.safetensors, optimizer.safetensors, meta.json) に上書き保存します。
 

@@ -65,6 +65,7 @@ def main():
     ap.add_argument("--steps", type=int)
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)")
     a = ap.parse_args()
     cfg = json.load(open(a.config)); tc = cfg["train"]
     if a.steps:
@@ -89,14 +90,26 @@ def main():
         opt.init(model.trainable_parameters())
         opt.state = tree_unflatten(list(mx.load(str(a.out / "optimizer.safetensors")).items()))
     lg = nn.value_and_grad(model, loss_fn)
+    ls = tc["label_smoothing"]
+
+    def train_step(S, Ti, To):
+        loss, g = lg(model, S, Ti, To, ls)
+        g, _ = optim.clip_grad_norm(g, 1.0)
+        opt.update(model, g)
+        return loss
+
+    if a.compile:
+        from functools import partial
+        if not opt.state:  # 状態を先に作っておく (コンパイル関数の入出力として追跡するため)
+            opt.init(model.trainable_parameters())
+        st = [model.state, opt.state, mx.random.state]
+        train_step = partial(mx.compile, inputs=st, outputs=st)(train_step)
     it = batches(train, sv, tv, tc["batch_size"], cfg["model"]["max_len"], rng)
     t0, run, log = time.time(), [], []
     tw = time.time()
     for step in range(start + 1, total + 1):
         S, Ti, To = next(it)
-        loss, g = lg(model, S, Ti, To, tc["label_smoothing"])
-        g, _ = optim.clip_grad_norm(g, 1.0)
-        opt.update(model, g)
+        loss = train_step(S, Ti, To)
         mx.eval(model.parameters(), opt.state, loss)
         run.append(loss.item())
         if step % 50 == 0:
