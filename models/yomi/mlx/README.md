@@ -60,6 +60,53 @@ python bench.py --ckpt ckpt/tiny --dtype bfloat16
 
 チェックポイントは `save_every` ごとに `ckpt/<名前>/` (model.safetensors, optimizer.safetensors, meta.json) に上書き保存します。
 
+## 増量データ (aug v1) で学習する
+
+JSUT 4,520文だけでは漢字の読みが足りないため、オープンなテキスト約30万文を pyopenjtalk でラベル付けした増量データを使います。
+ソースとライセンスは [`aug/LICENSE_DATA.md`](aug/LICENSE_DATA.md)。
+
+| ソース | 採用文数 | 備考 |
+|---|---|---|
+| Tatoeba | 99,985 | 蒸留 |
+| Wikipedia (1シャード) | 98,481 | 蒸留 |
+| 青空文庫 (新字新仮名 400作品) | 97,559 | うち 8,099文はルビで読みを修正 (`src: "ruby"`) |
+| ルールセット | 2,122 × 5回 | 数字・日付・時刻・助数詞・略語 (`src: "rule"`) |
+| 合計 `distill.jsonl` | 306,635行 | + JSUT train 4,520 / dev 200 |
+
+### 方法A: 作成済みデータをダウンロード (かんたん, 約22MB)
+
+```bash
+cd mulmovoice && git pull && cd models/yomi/mlx
+source .venv/bin/activate
+mkdir -p data && curl -L -o /tmp/yomi_aug.tgz https://github.com/receptron/mulmovoice/releases/download/yomi-aug-v1/yomi_aug_data_v1.tar.gz
+tar xzf /tmp/yomi_aug.tgz -C data
+python train.py --config configs/tiny_aug.json --out ckpt/tiny_aug --distill
+python evaluate.py --ckpt ckpt/tiny_aug --out ckpt/tiny_aug/eval.json
+python bench.py --ckpt ckpt/tiny_aug
+```
+
+### 方法B: Mac 上で一から作る (pyopenjtalk が必要, 数GBのダウンロードは無し・約1GB)
+
+```bash
+cd mulmovoice && git pull && cd models/yomi/mlx
+source .venv/bin/activate
+uv pip install -r aug/requirements.txt     # pyopenjtalk, pyarrow
+python aug/build_text.py                   # Tatoeba + Wikipedia 1シャード(約170MB) -> data/aug_text/*.txt
+python aug/aozora.py --works 400           # 青空文庫 400作品 (0.3秒間隔で取得, 5〜6分)
+python prepare_data.py --aug               # pyopenjtalk でラベル付け -> data/distill.jsonl, data/aug_stats.json
+python train.py --config configs/tiny_aug.json --out ckpt/tiny_aug --distill
+```
+
+- 語彙が変わるので、前の `ckpt/tiny` から `--resume` はできません。新しい出力先で最初から学習します。
+- `tiny_aug` は 60,000 step。Mac の前回実測 (約0.06秒/step) からの**推定**で1〜2時間 (文が長めなのでもっとかかる可能性あり)。
+- オプション: `--aug-max N` (ソースごとの上限, 既定10万), `--rule-repeat N` (ルールセットの繰り返し, 既定5), `--workers N`。
+
+### 正直な注意: 蒸留の天井
+
+増量データの読みは pyopenjtalk の出力なので、モデルは **pyopenjtalk の誤りもそのまま学びます**。期待できるのは「JSUT だけの時より pyopenjtalk に近づく」ところまでで、
+pyopenjtalk を超える根拠にはなりません (特に同形異音語: pyopenjtalk はハードセットで 51.4%)。超えるには、ルビのような人手の読み・文脈付き辞書 (KOE-IR) ・人手ラベルが必要です。
+青空文庫のルビでは pyopenjtalk の読みが一致したのは 43,273個中 32,167個 (74.3%, 長音の違いを吸収したゆるい比較)。ルビには固有名詞や作家独自の読み (義訓) も含むので、一般文での誤読率そのものではありません。
+
 ## 所要時間の目安 (**推定・未計測**)
 
 M1〜M3 クラスの Mac (GPU) を想定した大まかな見積もりです。実測ではありません。
