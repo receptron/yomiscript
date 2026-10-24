@@ -258,6 +258,7 @@ def load(path, dtype=None, memory=None):
 def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=True, router=None, context=None, logs=None):
     """mode: fast (既定) | legacy (旧デコード) | nocache (参照)。
     router: mold.MemoryRouter (辞書メモリ。学習なしで差し替え可能)。context: {'sex': 'female'} など。"""
+    res = None
     if router is not None:
         res = [router.resolve(t, context) for t in texts]
         texts = [r[0] for r in res]
@@ -274,4 +275,6 @@ def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=T
         else:
             gen = model.generate_legacy(arr) if mode == "legacy" else model.generate_nocache(arr)
         out += [tgt_vocab.decode(g) for g in gen]
+    if res is not None:  # 苗字+名前の句境界を補う
+        out = [router.postprocess(o, r[1]) for o, r in zip(out, res)]
     return out

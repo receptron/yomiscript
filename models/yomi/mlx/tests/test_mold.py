@@ -18,13 +18,13 @@ def test_priority_and_sex():
     assert r.resolve("智さんが来た", {"sex": "male"})[0] == "サトシさんが来た"
     assert r.resolve("{智|ちえ}さんが来た", {"sex": "male"})[0] == "チエさんが来た"   # 注記が最優先
     assert r.resolve("正しい", None)[0] == "正しい"                                  # 人名でない位置には出ない
-    assert r.resolve("佐藤光が来た", {"sex": "female"})[0].startswith("サトウヒカリ")   # 苗字の隣は人名
+    assert r.resolve("佐藤光が来た", {"sex": "female"})[0].startswith("サトーヒカリ")   # 苗字の隣は人名
 
 def test_context_and_default():
     m = mold.LexMemory.from_file(ROOT / "dict/sample.koedict")
     r = mold.MemoryRouter([m])
     assert "イチ" in r.resolve("朝市の市で買う")[0]
-    assert r.resolve("市役所")[0].startswith("シ")
+    assert r.resolve("市へ行く")[0].startswith("シへ") and r.resolve("市役所")[0] == "市役所"
 
 def test_swap_and_backcompat(tmp_path):
     cfg = dict(d_model=32, n_heads=2, d_ff=64, enc_layers=2, dec_layers=1, max_len=64)
@@ -50,3 +50,34 @@ def test_layer_override(tmp_path):
     import pytest
     with pytest.raises(ValueError):
         mold.LexMemory.from_file(tmp_path / "x.csv")
+
+def test_pron_normalization():
+    assert mold.to_pron("サトウ") == "サトー" and mold.to_pron("ケイ") == "ケー" and mold.to_pron("ユウ") == "ユウ"
+    s = mold.LexMemory.from_file(ROOT / "dict/names/surnames.koedict")
+    g = mold.LexMemory.from_file(ROOT / "dict/names/given_names.koedict")
+    assert mold.MemoryRouter([s, g], tokenizer=None).resolve("佐藤光が来た", ["female"])[0].startswith("サトーヒカリ")
+
+def test_split_name_phrases():
+    assert mold.split_name_phrases("^サ[トーヒ]カリガ$", [("サトー", "ヒカリ")]) == "^サ[トー#ヒ]カリガ$"
+    assert mold.split_name_phrases("^サ[トーヒカリガ$", [("サトー", "ヒカリ")]) == "^サ[トー#ヒ[カリガ$"
+    assert mold.split_name_phrases("^サ]トー#ヒ[カリ]ガ$", [("サトー", "ヒカリ")]) == "^サ]トー#ヒ[カリ]ガ$"
+    s = mold.LexMemory.from_file(ROOT / "dict/names/surnames.koedict")
+    g = mold.LexMemory.from_file(ROOT / "dict/names/given_names.koedict")
+    r = mold.MemoryRouter([s, g], tokenizer=None)
+    _, log = r.resolve("佐藤光が来た", ["female"])
+    assert r.postprocess("^サ[トーヒ]カリガ#キ]タ$", log) == "^サ[トー#ヒ]カリガ#キ]タ$"
+
+def test_no_replace_inside_word():
+    m = mold.LexMemory.from_file(ROOT / "dict/sample.koedict")
+    for tok in (None, "auto"):
+        r = mold.MemoryRouter([m], tokenizer=tok)
+        out = r.resolve("朝市の市で魚を買う。")[0]
+        assert out.startswith("朝市の"), out          # 朝市 の中は置換しない
+        assert "のイチで" in out, out                    # 独立した 市 は文脈 (朝市) で イチ
+    b = Path(__file__).parent / "_tmp_base.koedict"
+    b.write_text("# layer: base\n@lexicon { 朝市 = アサイチ; }\n")
+    try:
+        r = mold.MemoryRouter([mold.LexMemory.from_file(b), m], tokenizer=None)
+        assert r.resolve("朝市の市で")[0] == "アサイチのイチで"   # 長い一致 (base) が勝つ
+    finally:
+        b.unlink()

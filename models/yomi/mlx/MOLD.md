@@ -92,3 +92,17 @@ python infer.py --ckpt ckpt/mold_tiny --memory mem/x.mem.safetensors "今日は�
 - `mold_smoke`（1.76M パラメータ、メモリ層1つ）を CPU で 300 ステップ学習（1151 秒、dev loss 2.79）。この箱では学習1ステップが約2.2秒と遅く、モデル自体はまだ意味のある読みを出せません。辞書による読みの改善は Mac の tiny_aug で確認してください。
 - 辞書メモリの解決は狙いどおりに動きました。梨奈→リナ（default）、智→トモ（女性）/サトシ（男性）、佐藤光→サトウ＋ヒカリ（女性）/ヒカル（男性）、朝市の市→イチ（context）、`{梨奈|りいな}`→リイナ（注記）。
 - 遅延: `router.resolve` は 1 文あたり 0.028 ms。学習型メモリ層の学習コストは、同じ形の比較で +1% 程度でした（CPU）。
+
+## 修正 (Mac での tiny_aug 確認を受けて)
+1. **長音の正規化**: 辞書の読みを差し込む時に、学習ラベル（pyopenjtalk の pron 形）に合わせて o段+ウ→ー、e段+イ→ー に変えます（サトウ→サトー、ケイ→ケー）。`mold.to_pron`。`MemoryRouter(normalize=False)` で無効にできます。その場の注記も同じ規則で変換します。
+2. **苗字と名前の句境界**: 苗字と名前が並んで置換されたとき、出力の中で 2 つの読みの継ぎ目に `#` を入れ、名前を別のアクセント句にします（`split_name_phrases`）。名前の 1 モーラ目の後に `]` も `[` もなければ `[` を足します。pyopenjtalk の 佐藤光 は `サ]トー#ヒ[カリ]ガ` です。`split_names=False` で無効にできます。
+3. **語の途中は置換しない**: always 辞書の候補は、全レイヤーを通して「長い一致 > 上位レイヤー」の順に選びます。さらにスパンが形態素の境界に揃っているときだけ使います。境界は pyopenjtalk が入っていればそれで判定し、無ければ「前後が漢字でない」という簡易規則を使います。これで 朝市 の中の 市 は置換せず、独立した 市 だけを文脈で イチ にします（市役所 も置換しません）。base レイヤー（pyopenjtalk 変換）に 朝市 があれば、その長い一致が勝ちます。
+
+確認コマンド (Mac):
+```bash
+git pull && cd models/yomi/mlx && python -m pytest -q tests
+python mold_demo.py --ckpt ckpt/tiny_aug
+python infer.py --ckpt ckpt/tiny_aug --show --sex female --dict ../../../dict/sample.koedict \
+  --dict ../../../dict/names/surnames.koedict --dict ../../../dict/names/given_names.koedict \
+  "佐藤光さんが来た。" "朝市の市で魚を買う。" "市役所に行く。"
+```

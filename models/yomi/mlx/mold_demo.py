@@ -24,7 +24,7 @@ for t, sex in cases:
     base = yomi.predict(model, sv, tv, [mold.ANNOT.sub(r"\1", t)])[0]
     logs = []
     withm = yomi.predict(model, sv, tv, [t], router=router, context=[sex] if sex else None, logs=logs)[0]
-    print(f"{t} [{sex or '-'}]\n  model only : {base}\n  +memory    : {withm}\n  memory log : {[(l['surface'], l['reading'], l['by']) for l in logs[0]]}")
+    print(f"{t} [{sex or '-'}]\n  model only : {base}\n  +memory    : {withm}\n  memory log : {[(l['surface'], l.get('reading_pron', l['reading']), l['by']) for l in logs[0]]}")
 
 sent = ["佐藤梨奈さんは朝市の市で魚を買った。"] * 1
 def bench(r):

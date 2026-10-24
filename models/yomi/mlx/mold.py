@@ -60,6 +60,61 @@ def parse_koedict(text):
     return out
 
 
+# ---- 長音の正規化: 学習ラベル (pyopenjtalk の pron 形, g2p(kana=True)) に合わせる
+_O = set("オコソトノホモヨロヲゴゾドボポョォ")
+_E = set("エケセテネヘメレゲゼデベペェ")
+
+
+def to_pron(kana):
+    """辞書の読み (表記形: サトウ, ケイ) を発音形 (サトー, ケー) にする。o段+ウ→ー, e段+イ→ー。
+    pyopenjtalk は語中のこれらを長音にするため、名前・名詞の辞書読みではこれで学習ラベルと揃う。
+    動詞の語尾 (オモウ等) は辞書側で ' や [pron] を付けず、そのまま書いた場合でも人名用途では問題になりにくい。"""
+    out = []
+    for c in kana:
+        if out and ((c == "ウ" and out[-1] in _O) or (c == "イ" and out[-1] in _E)):
+            out.append("ー")
+        else:
+            out.append(c)
+    return "".join(out)
+
+
+SMALL = set("ャュョァィゥェォヮ")
+
+
+def morae(k):
+    m = []
+    for c in k:
+        if c in SMALL and m:
+            m[-1] += c
+        else:
+            m.append(c)
+    return m
+
+
+def split_name_phrases(output, pairs):
+    """苗字+名前が1つのアクセント句に融合した出力に '#' を差し込み、名前側を新しい句にする。
+    pairs: [(苗字の読み, 名前の読み)] (発音形)。名前側の先頭が頭高 ']' でなければ1モーラ目の後に '[' を入れる。"""
+    for sur, giv in pairs:
+        kana_pos = [i for i, c in enumerate(output) if c not in "^$?#_[]"]
+        stream = "".join(output[i] for i in kana_pos)
+        j = stream.find(sur + giv)
+        if j < 0:
+            continue
+        b = kana_pos[j + len(sur)]          # 名前の先頭文字の出力位置
+        pre = output[:b]
+        if pre.endswith("#"):
+            continue
+        post = output[b:]
+        # 名前側の最初のモーラの後ろを調べる
+        m1 = morae(giv)[0]
+        after = post[len(m1):]
+        if not after.startswith(("]", "[")):
+            post = m1 + "[" + after
+        out = pre.rstrip("[]") + ("]" if pre.endswith("]") else "") + "#" + post
+        output = out
+    return output
+
+
 # 性別などの文脈キーの同義語 (KOE-IR に [sex:] が入るまでの橋渡し)
 CTX_ALIASES = {"male": "男性", "m": "男性", "男": "男性", "female": "女性", "f": "女性", "女": "女性"}
 HONORIFICS = ("さん", "くん", "君", "ちゃん", "様", "さま", "氏", "先生", "選手", "殿")
@@ -121,6 +176,15 @@ class LexMemory:
                 i += 1
         return out
 
+    def all_matches(self, text):
+        """重なりを許して全一致を列挙 (ルーターで最長一致をレイヤー横断で選ぶため)。"""
+        out = []
+        for i in range(len(text)):
+            for L in range(1, min(self.maxlen, len(text) - i) + 1):
+                if text[i:i + L] in self.table:
+                    out.append((i, i + L, text[i:i + L]))
+        return out
+
     def to_arrays(self, tgt_vocab=None):
         """メモリをテンソル形式 (keys=表層のハッシュ, values=読みのトークン列) にする。保存/検査用。"""
         surfs = sorted(self.table)
@@ -146,17 +210,61 @@ def _is_namey(text, s, e, name_spans):
     return any(ns_e == s or ns_s == e for ns_s, ns_e in name_spans)  # 苗字+名前のように隣接
 
 
-class MemoryRouter:
-    """複数の LexMemory を束ね、優先順位どおりに入力を書き換える。"""
+def _default_tokenizer():
+    """形態素境界の判定に pyopenjtalk (あれば) を使う。無ければ None (簡易規則にフォールバック)。"""
+    try:
+        import pyopenjtalk
+    except Exception:
+        return None
 
-    def __init__(self, memories=()):
+    def tok(text):
+        b, pos = {0}, 0
+        for f in pyopenjtalk.run_frontend(text):
+            k = text.find(f["string"], pos)
+            if k < 0:
+                return None
+            pos = k + len(f["string"]); b |= {k, pos}
+        return b
+    return tok
+
+
+KANJI = re.compile(r"[\u4e00-\u9fff々〆ヶ]")
+
+
+class MemoryRouter:
+    """複数の LexMemory を束ね、優先順位どおりに入力を書き換える。
+    tokenizer: text -> 形態素境界の位置集合。'always' 辞書の項目はスパンが形態素境界に揃うときだけ使う
+    (朝市 の中の 市 は置換しない)。'auto' なら pyopenjtalk があれば使い、無ければ「前後が漢字でない」簡易規則。"""
+
+    def __init__(self, memories=(), tokenizer="auto", normalize=True, split_names=True):
         self.memories = list(memories)
+        self.tokenizer = _default_tokenizer() if tokenizer == "auto" else tokenizer
+        self.normalize, self.split_names = normalize, split_names
+        self.last_pairs = []
+
+    def _standalone(self, text, s, e, bounds):
+        if bounds is not None:
+            return s in bounds and e in bounds
+        prev_k = s > 0 and KANJI.match(text[s - 1])
+        next_k = e < len(text) and KANJI.match(text[e])
+        return not (prev_k or next_k)
+
+    def postprocess(self, output, log):
+        if not self.split_names:
+            return output
+        pairs = [(a["reading_pron"], b["reading_pron"]) for a, b in zip(log, log[1:])
+                 if a.get("name_end") is not None and a.get("name_end") == b.get("name_start")]
+        return split_name_phrases(output, pairs)
 
     def add(self, mem):
         self.memories = [m for m in self.memories if m.name != mem.name] + [mem]; return self
 
     def remove(self, name):
         self.memories = [m for m in self.memories if m.name != name]; return self
+
+    def _pron(self, r):
+        r = r.replace("'", "")
+        return to_pron(r) if self.normalize else r
 
     def resolve(self, text, context=None):
         """戻り値: (書き換え後テキスト, 適用ログ list[dict])。context: {'sex':'female'} や ['朝市'] など。"""
@@ -191,16 +299,24 @@ class MemoryRouter:
                 pair = any(m2 is not m and (s2 == e or e2 == s) for s2, e2, _, m2 in cand)  # 苗字+名前の並び
                 if pair or _is_namey(text, s, e, name_spans):
                     ent, by = m.choose(sf, text, ctx)
-                    spans.append((s, e, ent.reading.replace("'", ""))); name_spans.append((s, e)); changed = True
-                    log.append({"surface": sf, "reading": ent.reading, "by": by, "memory": m.name})
-        for m in sorted(self.memories, key=lambda m: -m.priority):  # 上位レイヤーが先に取る = 上書き
-            if m.scope != "always":
+                    rp = self._pron(ent.reading)
+                    spans.append((s, e, rp)); name_spans.append((s, e)); changed = True
+                    log.append({"surface": sf, "reading": ent.reading, "reading_pron": rp, "by": by, "memory": m.name,
+                                "name_start": s, "name_end": e})
+        # always 辞書: 全レイヤーの候補を「長い一致 > 高いレイヤー」の順に取る。形態素の途中は使わない。
+        bounds = self.tokenizer(text) if self.tokenizer else None
+        cands = []
+        for m in self.memories:
+            if m.scope == "always":
+                cands += [(s, e, sf, m) for s, e, sf in m.all_matches(text)]
+        cands.sort(key=lambda x: (-(x[1] - x[0]), -x[3].priority, x[0]))
+        for s, e, sf, m in cands:
+            if taken(s, e) or not self._standalone(text, s, e, bounds):
                 continue
-            for s, e, sf in m.matches(text):
-                if not taken(s, e):
-                    ent, by = m.choose(sf, text, ctx)
-                    spans.append((s, e, ent.reading.replace("'", "")))
-                    log.append({"surface": sf, "reading": ent.reading, "by": by, "memory": m.name})
+            ent, by = m.choose(sf, text, ctx)
+            spans.append((s, e, self._pron(ent.reading)))
+            log.append({"surface": sf, "reading": ent.reading, "reading_pron": self._pron(ent.reading), "by": by, "memory": m.name})
+        log.sort(key=lambda l: l.get("name_start", 1 << 30))
         out, pos = [], 0
         for s, e, r in sorted(spans):
             out += [text[pos:s], r]; pos = e
