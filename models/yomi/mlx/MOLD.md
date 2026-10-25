@@ -171,3 +171,27 @@ python tools/pyopenjtalk_to_koedict.py --text data/train.jsonl data/distill.json
 - **loose と strict の差:** イー/イイ、ヨー/ヨウ などの差は、正解ラベル（JSUT）側の長音表記の揺れ。モデルの読み誤りではない。strict の数値はこの揺れの分だけ低く出る。
 - **学習型メモリ（PKM）:** `configs/mold_tiny.json` の設定は 128² = 16,384 スロット、topk 8、エンコーダ第2層、3000 ステップ。メモリ層は学習率を `mem_lr_mult`（10倍）にし、重み減衰をかけない（MultiOptimizer。この場合 `--resume` は未対応）。
 - **差し替え:** `--memory-only --only-extra` で共有重みを凍結し、メモリ層だけを特定のデータで学習する。`eval_names.py` / `evaluate.py` の `--pkm X.mem.safetensors` で差し替えて評価する。
+
+## PKM が学習しなかった原因と修正（2026-10-24）
+
+Mac で mold_tiny を学習しても、loss はほぼ一定（0.436）だった。memory-only でも 0.426 のまま変わらなかった。`tools/pkm_diag.py` で調べると、原因は次の3つだった。
+- **出力が小さすぎる:** 残差のノルムが約156あるのに対し、メモリ出力は約0.02（比 1.6e-4）。後段の LayerNorm で残差の大きさで割られるため、値テーブルへの勾配も 4e-4 程度しかなかった。
+- **値テーブルが0初期化:** 開始時は値がすべて0なので、query と keys には勾配がほぼ流れなかった。
+- **softmax が平らすぎる:** 検索スコアの標準偏差が0.4しかなく、top-8 の重みがほぼ均等（最大の重みの平均 0.16）だった。
+
+修正:
+- 値テーブルを N(0,1) の乱数で初期化し、スカラーのゲート（0初期化）を掛ける。開始時の出力は0のままなので後方互換。
+- 出力に残差の RMS（勾配を止める）を掛け、残差と同じ大きさで効くようにする。
+- 検索スコアに √k_dim を掛けて softmax を鋭くする。
+- `--init` で旧版（値 ≈ 0）のメモリを読み込んだ場合は、それを捨てて新しく初期化する。
+- memory-only の lr を 3e-3 にした。
+
+box で確認（tiny_box 起点、memory-only を人名データで150ステップ）:
+- 学習 loss: 0.5703 → 0.5666
+- 人名 unseen の loss: 0.2338 → 0.2304
+- メモリ出力 / 残差の比: 2.5e-5 → 0.14
+- ゲート: 0 → 0.138
+
+memory-only で使われるスロット数が 1402 → 262 に減った（ルーティングの偏り）。今後の課題。
+
+診断: `python tools/pkm_diag.py --ckpt CKPT [--pkm X.mem.safetensors] --data data/names/names_eval_unseen.jsonl`

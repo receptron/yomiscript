@@ -344,7 +344,13 @@ class ProductKeyMemory(nn.Module):
         self.norm = nn.LayerNorm(d)
         self.query = nn.Linear(d, 2 * k_dim, bias=False)
         self.subkeys = mx.random.normal((2, n_keys, k_dim)) * (k_dim ** -0.5)
-        self.slots = mx.zeros((n_keys * n_keys, d))
+        # 値テーブルは小さな乱数で初期化し、出力に掛けるスカラーのゲートを 0 で初期化する
+        # (開始時の出力は 0 で後方互換。値もゲートも 0 だと勾配が出ないため)
+        self.slots = mx.random.normal((n_keys * n_keys, d))
+        self.gate = mx.zeros((1,))
+        self.score_scale = k_dim ** 0.5  # 検索スコアの温度 (softmax が平らになりすぎないように)
+
+    probe = None  # 診断用: list を入れると (重み, スロット番号, 出力, 入力) を貯める
 
     def __call__(self, x):
         B, L, D = x.shape
@@ -354,13 +360,19 @@ class ProductKeyMemory(nn.Module):
         k = self.topk
         i1 = mx.stop_gradient(mx.argpartition(-s1, k - 1, axis=-1)[..., :k]); v1 = mx.take_along_axis(s1, i1, -1)
         i2 = mx.stop_gradient(mx.argpartition(-s2, k - 1, axis=-1)[..., :k]); v2 = mx.take_along_axis(s2, i2, -1)
-        sc = (v1[..., :, None] + v2[..., None, :]).reshape(B, L, k * k)
+        sc = (v1[..., :, None] + v2[..., None, :]).reshape(B, L, k * k) * self.score_scale
         idx = (i1[..., :, None] * self.n_keys + i2[..., None, :]).reshape(B, L, k * k)
         j = mx.stop_gradient(mx.argpartition(-sc, k - 1, axis=-1)[..., :k])
         sc, idx = mx.take_along_axis(sc, j, -1), mx.stop_gradient(mx.take_along_axis(idx, j, -1))
         w = mx.softmax(sc.astype(mx.float32), axis=-1).astype(x.dtype)
         vals = self.slots[idx]  # (B,L,k,D)
-        return (w[..., None] * vals).sum(axis=2)
+        out = (w[..., None] * vals).sum(axis=2)
+        # 残差の大きさ (RMS) に合わせて出力を拡大する。残差のノルムが ~150 あるため、生の値では効かない
+        rms = mx.stop_gradient(mx.sqrt(mx.mean(x.astype(mx.float32) ** 2, axis=-1, keepdims=True))).astype(x.dtype)
+        out = self.gate * rms * out
+        if ProductKeyMemory.probe is not None:
+            ProductKeyMemory.probe.append((w, idx, out, x, sc))
+        return out
 
 
 def memory_params(model):

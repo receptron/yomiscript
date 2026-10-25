@@ -129,6 +129,10 @@ def main():
         bad = [k for k in own if k in w and w[k].shape != own[k].shape]
         if bad:
             raise SystemExit(f"--init {a.init}: 形が合わない重み {bad[:3]} (config の model 設定を初期化元と揃えてください)")
+        dead = [k for k in w if k.endswith(".mem.slots") and float(mx.abs(w[k]).max()) < 1e-2]
+        if dead:  # 旧版 (値 0 初期化・ゲートなし) のメモリは学習できないので、新しい初期化を使う
+            print(f"旧メモリ層 {dead} は値がほぼ0のため読み込まず、乱数+ゲート0で初期化")
+            w = {k: v for k, v in w.items() if ".mem." not in f".{k}."}
         model.load_weights([(k, v) for k, v in w.items() if k in own], strict=False)
         print(f"init from {a.init}: {len(w)} tensors, 新規 (メモリ層) {len(miss)}")
     if a.memory_only:
