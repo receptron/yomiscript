@@ -338,33 +338,47 @@ class ProductKeyMemory(nn.Module):
     """Lample+ 2019 の product-key memory。n_keys^2 個のスロット、トークンごとに top-k を読む。
     values は初期値 0 なので、既存チェックポイントに足しても出力は変わらない (後方互換)。"""
 
-    def __init__(self, d, n_keys=64, k_dim=64, topk=8, d_value=None):
+    def __init__(self, d, n_keys=64, k_dim=64, topk=8, d_value=None, temp=15.0, gate_init=1.0, balance=0.01):
         super().__init__()
         self.n_keys, self.topk, self.k_dim = n_keys, topk, k_dim
         self.norm = nn.LayerNorm(d)
         self.query = nn.Linear(d, 2 * k_dim, bias=False)
         self.subkeys = mx.random.normal((2, n_keys, k_dim)) * (k_dim ** -0.5)
-        # 値テーブルは小さな乱数で初期化し、出力に掛けるスカラーのゲートを 0 で初期化する
-        # (開始時の出力は 0 で後方互換。値もゲートも 0 だと勾配が出ないため)
-        self.slots = mx.random.normal((n_keys * n_keys, d))
-        self.gate = mx.zeros((1,))
-        self.score_scale = k_dim ** 0.5  # 検索スコアの温度 (softmax が平らになりすぎないように)
+        # 値テーブルは 0、ゲートは 0 でない値 (既定 1) から始める。開始時の出力は 0 (後方互換・雑音を足さない) で、
+        # 値には gate*rms 倍の勾配がすぐ流れる。旧版 (乱数値+ゲート0) は ゲートが ~0 のまま動かず、乱数値は雑音になった
+        self.slots = mx.zeros((n_keys * n_keys, d))
+        self.gate = mx.full((1,), gate_init)
+        # v2: query 半分と subkey を L2 正規化したコサイン類似度 x 温度。生の内積はスコアが ~300 に
+        # 膨らみ softmax が one-hot になってスロットが偏る (routing collapse) ため
+        self.temp = temp
+        self.balance = balance  # 負荷分散の補助 loss の係数 (train.train_loss_fn が aux を足す)
+        # aux は配列なのでモジュール属性にするとパラメータ扱いになる。ただの入れ物に入れる
+        self._st = __import__('types').SimpleNamespace(aux=None)
 
-    probe = None  # 診断用: list を入れると (重み, スロット番号, 出力, 入力) を貯める
+    probe = None  # 診断用: list を入れると (重み, スロット番号, 出力, 入力, スコア) を貯める
+
+    @staticmethod
+    def _l2(v):
+        return v * mx.rsqrt((v * v).sum(-1, keepdims=True) + 1e-6)
 
     def __call__(self, x):
         B, L, D = x.shape
-        q = self.query(self.norm(x)).reshape(B, L, 2, self.k_dim)
-        s1 = q[..., 0, :] @ self.subkeys[0].T  # (B,L,n)
-        s2 = q[..., 1, :] @ self.subkeys[1].T
+        q = self.query(self.norm(x)).reshape(B, L, 2, self.k_dim).astype(mx.float32)
+        q = self._l2(q); sk = self._l2(self.subkeys.astype(mx.float32))
+        s1 = (q[..., 0, :] @ sk[0].T) * self.temp  # (B,L,n) 値域 [-temp, temp]
+        s2 = (q[..., 1, :] @ sk[1].T) * self.temp
+        # 負荷分散: 各半分のキー分布 (全トークン平均) が一様から外れるほど大きい。一様なら 0
+        p1 = mx.softmax(s1, axis=-1).reshape(-1, self.n_keys).mean(0)
+        p2 = mx.softmax(s2, axis=-1).reshape(-1, self.n_keys).mean(0)
+        self._st.aux = self.n_keys * ((p1 * p1).sum() + (p2 * p2).sum()) - 2.0
         k = self.topk
         i1 = mx.stop_gradient(mx.argpartition(-s1, k - 1, axis=-1)[..., :k]); v1 = mx.take_along_axis(s1, i1, -1)
         i2 = mx.stop_gradient(mx.argpartition(-s2, k - 1, axis=-1)[..., :k]); v2 = mx.take_along_axis(s2, i2, -1)
-        sc = (v1[..., :, None] + v2[..., None, :]).reshape(B, L, k * k) * self.score_scale
+        sc = (v1[..., :, None] + v2[..., None, :]).reshape(B, L, k * k)
         idx = (i1[..., :, None] * self.n_keys + i2[..., None, :]).reshape(B, L, k * k)
         j = mx.stop_gradient(mx.argpartition(-sc, k - 1, axis=-1)[..., :k])
         sc, idx = mx.take_along_axis(sc, j, -1), mx.stop_gradient(mx.take_along_axis(idx, j, -1))
-        w = mx.softmax(sc.astype(mx.float32), axis=-1).astype(x.dtype)
+        w = mx.softmax(sc, axis=-1).astype(x.dtype)
         vals = self.slots[idx]  # (B,L,k,D)
         out = (w[..., None] * vals).sum(axis=2)
         # 残差の大きさ (RMS) に合わせて出力を拡大する。残差のノルムが ~150 あるため、生の値では効かない
@@ -373,6 +387,15 @@ class ProductKeyMemory(nn.Module):
         if ProductKeyMemory.probe is not None:
             ProductKeyMemory.probe.append((w, idx, out, x, sc))
         return out
+
+
+def memory_aux_loss(model):
+    """メモリ層の負荷分散 loss (係数込み) の合計。メモリ層がなければ 0。"""
+    tot = 0.0
+    for l in getattr(model, "enc", []):
+        if "mem" in l and l.mem._st.aux is not None and l.mem.balance:
+            tot = tot + l.mem.balance * l.mem._st.aux
+    return tot
 
 
 def memory_params(model):

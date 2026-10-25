@@ -1,0 +1,29 @@
+{
+ "model": {
+  "d_model": 128,
+  "n_heads": 4,
+  "d_ff": 512,
+  "enc_layers": 2,
+  "dec_layers": 2,
+  "max_len": 320,
+  "memory": {
+   "layers": [
+    1
+   ],
+   "n_keys": 32,
+   "k_dim": 32,
+   "topk": 8
+  }
+ },
+ "train": {
+  "batch_size": 32,
+  "lr": 0.003,
+  "warmup": 20,
+  "steps": 300,
+  "weight_decay": 0.01,
+  "label_smoothing": 0.0,
+  "eval_every": 100,
+  "save_every": 300,
+  "mem_lr_mult": 1.0
+ }
+}

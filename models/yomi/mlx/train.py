@@ -65,6 +65,12 @@ def loss_fn(model, S, Ti, To, ls):
     return ce.sum() / mask.sum()
 
 
+def train_loss_fn(model, S, Ti, To, ls):
+    """学習用: CE + メモリ層の負荷分散 aux loss。"""
+    import mold
+    return loss_fn(model, S, Ti, To, ls) + mold.memory_aux_loss(model)
+
+
 def dev_loss(model, rows, sv, tv, ls, bs=64):
     tot = n = 0.0
     for i in range(0, len(rows), bs):
@@ -129,9 +135,10 @@ def main():
         bad = [k for k in own if k in w and w[k].shape != own[k].shape]
         if bad:
             raise SystemExit(f"--init {a.init}: 形が合わない重み {bad[:3]} (config の model 設定を初期化元と揃えてください)")
-        dead = [k for k in w if k.endswith(".mem.slots") and float(mx.abs(w[k]).max()) < 1e-2]
+        dead = [k for k in w if k.endswith(".mem.slots") and float(mx.abs(w[k]).max()) < 1e-2
+                and k[:-len("slots")] + "gate" not in w]
         if dead:  # 旧版 (値 0 初期化・ゲートなし) のメモリは学習できないので、新しい初期化を使う
-            print(f"旧メモリ層 {dead} は値がほぼ0のため読み込まず、乱数+ゲート0で初期化")
+            print(f"旧メモリ層 {dead} は値0・ゲートなし (旧形式) のため読み込まず、新しい初期化を使う")
             w = {k: v for k, v in w.items() if ".mem." not in f".{k}."}
         model.load_weights([(k, v) for k, v in w.items() if k in own], strict=False)
         print(f"init from {a.init}: {len(w)} tensors, 新規 (メモリ層) {len(miss)}")
@@ -157,7 +164,7 @@ def main():
         from mlx.utils import tree_unflatten
         opt.init(model.trainable_parameters())
         opt.state = tree_unflatten(list(mx.load(str(a.out / "optimizer.safetensors")).items()))
-    lg = nn.value_and_grad(model, loss_fn)
+    lg = nn.value_and_grad(model, train_loss_fn)
     ls = tc["label_smoothing"]
 
     def train_step(S, Ti, To):

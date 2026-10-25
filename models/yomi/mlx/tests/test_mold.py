@@ -33,7 +33,9 @@ def test_swap_and_backcompat(tmp_path):
     from mlx.utils import tree_flatten
     mm.load_weights(list(tree_flatten(base.parameters())), strict=False)
     src = mx.array([[5, 6, 7, 0]]); tin = mx.array([[1, 4, 5]])
-    assert mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()   # 値0初期化 → 出力同一
+    assert not mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()  # v2: ゲート初期値 0.1 → メモリが効く
+    mm.enc[1].mem.gate = mx.zeros_like(mm.enc[1].mem.gate)
+    assert mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()   # ゲート0 → 出力同一 (gate_init=0 で旧挙動)
     p = tmp_path / "a.mem.safetensors"
     mm.enc[1].mem.slots = mx.ones_like(mm.enc[1].mem.slots)
     mold.save_memory(mm, p)
@@ -81,3 +83,27 @@ def test_no_replace_inside_word():
         assert r.resolve("朝市の市で")[0] == "アサイチのイチで"   # 長い一致 (base) が勝つ
     finally:
         b.unlink()
+
+
+def test_pkm_cosine_routing_not_collapsed():
+    """v2: コサイン類似度 x 温度なのでスコアが有界、softmax が one-hot にならず、ゲートも 0 でない。"""
+    import mlx.nn as nn
+    mx.random.seed(0)
+    m = mold.ProductKeyMemory(64, n_keys=16, k_dim=16, topk=4, temp=15.0)
+    x = mx.random.normal((4, 32, 64)) * 20.0  # 残差ノルムが大きくてもスコアは膨らまない
+    mold.ProductKeyMemory.probe = []
+    out = m(x)
+    w, idx, _, _, sc = mold.ProductKeyMemory.probe[0]; mold.ProductKeyMemory.probe = None
+    assert float(mx.abs(sc).max()) <= 2 * 15.0 + 1e-3
+    assert float(w.max(-1).mean()) < 0.9
+    assert len(set(idx.flatten().tolist())) > 64
+    ratio = float(mx.linalg.norm(out, axis=-1).mean() / mx.linalg.norm(x, axis=-1).mean())
+    assert 0.01 < ratio < 0.5
+    aux = m._st.aux
+    assert float(aux) >= -1e-4
+    # 負荷分散 loss の勾配は query / subkeys に流れる
+    def f(mod, x):
+        mod(x); return mod._st.aux
+    _, g = nn.value_and_grad(m, f)(m, x)
+    assert float(mx.abs(g["subkeys"]).sum()) > 0 and float(mx.abs(g["query"]["weight"]).sum()) > 0
+    assert "_st" not in dict(__import__("mlx.utils", fromlist=["x"]).tree_flatten(m.parameters()))

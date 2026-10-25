@@ -35,7 +35,9 @@ for m, (w, idx, out, x, sc) in zip(mems, mold.ProductKeyMemory.probe):
                           "softmax_wmax_mean": float(w.max(-1).mean()), "score_std": float(sc.std()),
                           "mem_out_norm": on, "resid_norm": rn, "ratio": on / max(rn, 1e-9),
                           "gate": float(m.gate.item()) if "gate" in m else None,
-                          "slots_absmean": float(mx.abs(m.slots).mean())})
+                          "slots_absmean": float(mx.abs(m.slots).mean()),
+                          "temp": getattr(m, "temp", None),
+                          "balance_aux": float(m._st.aux) if getattr(m, "_st", None) is not None and m._st.aux is not None else None})
 mold.ProductKeyMemory.probe = None
 res["grad_norm"] = {k: float(mx.linalg.norm(v.reshape(-1))) for k, v in tree_flatten(g) if ".mem." in f".{k}."}
 res["grad_norm_shared_total"] = float(sum(float(mx.sum(v * v)) for k, v in tree_flatten(g) if ".mem." not in f".{k}.") ** 0.5)

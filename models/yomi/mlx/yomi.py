@@ -245,7 +245,12 @@ def load(path, dtype=None, memory=None):
     meta = json.load(open(path / "meta.json", encoding="utf-8"))
     src, tgt = Vocab(meta["vocab"]["src"]), Vocab(meta["vocab"]["tgt"])
     model = Yomi(len(src), len(tgt), **meta["config"]["model"])
-    model.load_weights(str(path / "model.safetensors"))
+    w = mx.load(str(path / "model.safetensors"))
+    own = dict(tree_flatten(model.parameters()))
+    miss = [k for k in own if k not in w]
+    if any(not k.endswith(".mem.gate") for k in miss) or any(k not in own for k in w):
+        model.load_weights(list(w.items()))  # 通常のエラーを出す
+    model.load_weights(list(w.items()), strict=False)  # 旧形式 (ゲートなし・値0) のメモリ層はゲート初期値のまま
     if memory:
         import mold
         mold.load_memory(model, memory)

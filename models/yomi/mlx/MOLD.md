@@ -195,3 +195,12 @@ box で確認（tiny_box 起点、memory-only を人名データで150ステッ�
 memory-only で使われるスロット数が 1402 → 262 に減った（ルーティングの偏り）。今後の課題。
 
 診断: `python tools/pkm_diag.py --ckpt CKPT [--pkm X.mem.safetensors] --data data/names/names_eval_unseen.jsonl`
+
+## PKM v2 (ルーティング崩壊の修正)
+- Mac の診断 (0e899c1): score_std 276 → softmax が one-hot (wmax 0.999)、使用スロット 231/16384、gate ≈ 0、ratio 0.0024。
+- 修正: query 半分と subkey を L2 正規化したコサイン類似度 × 温度 (`temp`, 既定 15)。値テーブルは 0、
+  gate は 1 から開始 (開始時の出力は 0 のまま、値に勾配が流れる)。負荷分散の補助 loss
+  (`balance`, 既定 0.01; 各半分のキー分布の n·Σp² − 1)。`model.memory` で `temp`/`gate_init`/`balance` を変更可。
+- box (tiny_box 凍結 + 名前 2000 文で memonly 300 step): 旧 wmax 0.9998 / slots 193 / names loss 0.179 → 新 wmax 0.19 / slots 2447 / 0.139。
+- 名前だけで memonly すると一般文 dev が悪化 (0.684→0.723)。一般文と混ぜる (`--only-extra` なし、`--extra-repeat 5`) と
+  dev 0.626 (メモリなしより良い)、名前 0.153、未知名 0.224 (メモリなし 0.239)。
