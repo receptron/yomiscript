@@ -33,9 +33,8 @@ def test_swap_and_backcompat(tmp_path):
     from mlx.utils import tree_flatten
     mm.load_weights(list(tree_flatten(base.parameters())), strict=False)
     src = mx.array([[5, 6, 7, 0]]); tin = mx.array([[1, 4, 5]])
-    assert not mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()  # v2: ゲート初期値 0.1 → メモリが効く
-    mm.enc[1].mem.gate = mx.zeros_like(mm.enc[1].mem.gate)
-    assert mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()   # ゲート0 → 出力同一 (gate_init=0 で旧挙動)
+    assert mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()   # v2: 値0 (ゲート1) → 出力同一
+    assert float(mm.enc[1].mem.gate.item()) == 1.0
     p = tmp_path / "a.mem.safetensors"
     mm.enc[1].mem.slots = mx.ones_like(mm.enc[1].mem.slots)
     mold.save_memory(mm, p)
@@ -91,6 +90,8 @@ def test_pkm_cosine_routing_not_collapsed():
     mx.random.seed(0)
     m = mold.ProductKeyMemory(64, n_keys=16, k_dim=16, topk=4, temp=15.0)
     x = mx.random.normal((4, 32, 64)) * 20.0  # 残差ノルムが大きくてもスコアは膨らまない
+    assert float(mx.abs(m(x)).max()) == 0.0  # 値 0 初期化 → 開始時の出力は 0
+    m.slots = mx.random.normal(m.slots.shape)  # 学習後を模擬
     mold.ProductKeyMemory.probe = []
     out = m(x)
     w, idx, _, _, sc = mold.ProductKeyMemory.probe[0]; mold.ProductKeyMemory.probe = None
@@ -98,12 +99,16 @@ def test_pkm_cosine_routing_not_collapsed():
     assert float(w.max(-1).mean()) < 0.9
     assert len(set(idx.flatten().tolist())) > 64
     ratio = float(mx.linalg.norm(out, axis=-1).mean() / mx.linalg.norm(x, axis=-1).mean())
-    assert 0.01 < ratio < 0.5
+    assert 0.02 < ratio < 2.0
     aux = m._st.aux
     assert float(aux) >= -1e-4
     # 負荷分散 loss の勾配は query / subkeys に流れる
     def f(mod, x):
         mod(x); return mod._st.aux
     _, g = nn.value_and_grad(m, f)(m, x)
+    r = mx.random.normal(x.shape)
+    m.slots = mx.zeros_like(m.slots)
+    _, gs = nn.value_and_grad(m, lambda mod, x: (mod(x) * r).sum())(m, x)
+    assert float(mx.abs(gs["slots"]).sum()) > 0  # 値 0 でもゲート 1 なので値に勾配が流れる
     assert float(mx.abs(g["subkeys"]).sum()) > 0 and float(mx.abs(g["query"]["weight"]).sum()) > 0
     assert "_st" not in dict(__import__("mlx.utils", fromlist=["x"]).tree_flatten(m.parameters()))
