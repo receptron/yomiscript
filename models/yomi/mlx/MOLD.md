@@ -204,3 +204,18 @@ memory-only で使われるスロット数が 1402 → 262 に減った（ルー
 - box (tiny_box 凍結 + 名前 2000 文で memonly 300 step): 旧 wmax 0.9998 / slots 193 / names loss 0.179 → 新 wmax 0.19 / slots 2447 / 0.139。
 - 名前だけで memonly すると一般文 dev が悪化 (0.684→0.723)。一般文と混ぜる (`--only-extra` なし、`--extra-repeat 5`) と
   dev 0.626 (メモリなしより良い)、名前 0.153、未知名 0.224 (メモリなし 0.239)。
+
+## 差し替えの効果を見る実験設計 (本体凍結)
+mold_tiny は names_train 込みで本体を学習したため、メモリを替えても差が出ない (Mac: seen 99%)。
+本体 (人名データを見ていない tiny_aug / box では tiny_box) を凍結し、メモリだけを学習して比べる:
+1. default = `--memory-only --distill` (一般文のみ) 2. names = default から続けて `--extra names_train --extra-repeat 2`。
+box (tiny_box 凍結, 600 step, eval_names --limit 200, %):
+
+| memory | JSUT CER | sent | hard | seen 読み (model) | unseen 読み (model) |
+|---|---|---|---|---|---|
+| なし (値0) | 19.7 | 17.5 | 15.7 | 57.5 | 48.0 |
+| default (一般) | 17.3 | 18.9 | 17.1 | 51.0 | 46.5 |
+| names (新規, enc.2) | 19.5 | 16.8 | 11.4 | 69.5 | 55.5 |
+| names (lr 1e-2) | 19.1 | 14.6 | 14.3 | 69.0 | 57.5 |
+| names (enc.3) | 18.5 | 16.1 | 17.1 | 70.5 | 58.5 |
+| names (default から継続) | 18.7 | 16.4 | 12.9 | **72.0** | 59.5 |
