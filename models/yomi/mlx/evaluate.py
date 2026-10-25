@@ -17,9 +17,10 @@ from metrics import edit_distance, f1, loose_kana, norm_kana, prosody_compare
 ap = argparse.ArgumentParser()
 ap.add_argument("--ckpt", default="ckpt/tiny")
 ap.add_argument("--dtype", default=None, choices=["float32", "bfloat16", "float16"])
+ap.add_argument("--pkm", default=None, help="差し替える学習型メモリ *.mem.safetensors")
 ap.add_argument("--out", type=Path)
 a = ap.parse_args()
-model, sv, tv, meta = yomi.load(a.ckpt, getattr(mx, a.dtype) if a.dtype else None)
+model, sv, tv, meta = yomi.load(a.ckpt, getattr(mx, a.dtype) if a.dtype else None, memory=a.pkm)
 jsut = [json.loads(l) for l in open(REPO / "eval/data/jsut_basic5000_subset.jsonl", encoding="utf-8")]
 t0 = time.time()
 preds = yomi.predict(model, sv, tv, [r["text"] for r in jsut])

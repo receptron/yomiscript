@@ -119,6 +119,11 @@ def split_name_phrases(output, pairs):
 # 性別などの文脈キーの同義語 (KOE-IR に [sex:] が入るまでの橋渡し)
 CTX_ALIASES = {"male": "男性", "m": "男性", "男": "男性", "female": "女性", "f": "女性", "女": "女性"}
 HONORIFICS = ("さん", "くん", "君", "ちゃん", "様", "さま", "氏", "先生", "選手", "殿")
+KANJI = re.compile(r"[\u4e00-\u9fff々〆ヶ]")
+# 名前の前に来やすい語 (父の匠 / 名前は璃子 / 彼女八重子)。敬称が無くても人名辞書を使う手がかり。
+NAME_CUES = ("父の", "母の", "兄の", "姉の", "弟の", "妹の", "息子の", "娘の", "夫の", "妻の", "祖父の", "祖母の",
+             "孫の", "友人の", "名前は", "名は", "彼女", "彼", "私は", "僕は")
+NAME_TAILS = ("が生まれ", "と申します", "といいます", "と言います", "です。")
 ANNOT = re.compile(r"\{([^{}|]+)\|([^{}|]+)\}")
 
 
@@ -208,6 +213,10 @@ def _is_namey(text, s, e, name_spans):
     after, before = text[e:], text[:s]
     if after.startswith(HONORIFICS):
         return True
+    if before.endswith(NAME_CUES) and (e == len(text) or not KANJI.match(text[e])):
+        return True
+    if after.startswith(NAME_TAILS) and (s == 0 or not KANJI.match(text[s - 1])) and before.endswith(("の", "は", "が", "、")):
+        return True
     return any(ns_e == s or ns_s == e for ns_s, ns_e in name_spans)  # 苗字+名前のように隣接
 
 
@@ -229,7 +238,6 @@ def _default_tokenizer():
     return tok
 
 
-KANJI = re.compile(r"[\u4e00-\u9fff々〆ヶ]")
 
 
 class MemoryRouter:
@@ -305,11 +313,11 @@ class MemoryRouter:
                     log.append({"surface": sf, "reading": ent.reading, "reading_pron": rp, "by": by, "memory": m.name,
                                 "name_start": s, "name_end": e})
         # always 辞書: 全レイヤーの候補を「長い一致 > 高いレイヤー」の順に取る。形態素の途中は使わない。
-        bounds = self.tokenizer(text) if self.tokenizer else None
         cands = []
         for m in self.memories:
             if m.scope == "always":
                 cands += [(s, e, sf, m) for s, e, sf in m.all_matches(text)]
+        bounds = self.tokenizer(text) if (self.tokenizer and cands) else None
         cands.sort(key=lambda x: (-(x[1] - x[0]), -x[3].priority, x[0]))
         for s, e, sf, m in cands:
             if taken(s, e) or not self._standalone(text, s, e, bounds):

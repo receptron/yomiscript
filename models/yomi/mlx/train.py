@@ -17,6 +17,25 @@ def read(p):
     return [json.loads(l) for l in open(p, encoding="utf-8")] if Path(p).exists() else []
 
 
+def mem_augment(rows, dicts, p_names, p_general, rng):
+    """メモリを意識した学習: 推論時の MemoryRouter と同じ経路 (to_pron・人名判定・形態素境界) で
+    辞書が当たる部分の入力をカナに置き換えた版を作る。正解 (target) はそのまま。
+    人名文は p_names、その他で辞書が当たる文は p_general の割合で置き換え版を使う (各文1回だけ決める)。"""
+    import mold
+    router = mold.MemoryRouter([mold.LexMemory.from_file(d) for d in dicts])
+    n_n = n_g = 0
+    out = []
+    for r in rows:
+        is_name = r.get("src") == "names"
+        if rng.random() < (p_names if is_name else p_general):
+            t, log = router.resolve(r["text"], [r["sex"]] if r.get("sex") else None)
+            if log and t != r["text"]:
+                r = dict(r, text=t, mem_aug=True); n_n += is_name; n_g += not is_name
+        out.append(r)
+    print(f"mem-aug: 人名文 {n_n} / その他 {n_g} 文の入力を辞書のカナに置換 (辞書 {len(dicts)} 個)", flush=True)
+    return out
+
+
 def batches(rows, sv, tv, bs, max_len, rng):
     """長さの近い文をまとめたバッチを無限に出す。"""
     rows = [r for r in rows if len(r["text"]) < max_len and len(r["target"]) + 1 < max_len]
@@ -65,10 +84,15 @@ def main():
     ap.add_argument("--steps", type=int)
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--extra", type=Path, nargs="*", default=[], help="追加の学習 jsonl (例 data/names/names_train.jsonl)")
+    ap.add_argument("--only-extra", action="store_true", help="data/train.jsonl を使わず --extra だけで学習 (例: 人名メモリだけ作る)")
     ap.add_argument("--extra-repeat", type=int, default=1, help="--extra を何回繰り返して混ぜるか")
     ap.add_argument("--init", type=Path, help="MoLD: 既存チェックポイント (例 ckpt/tiny_aug) の共有重みから始める。メモリ層は0初期化")
     ap.add_argument("--memory-only", action="store_true", help="MoLD: 共有重みを凍結し、メモリ層だけ学習 (ドメイン/方言メモリ作り)")
     ap.add_argument("--save-memory", type=Path, help="終了時にメモリ層だけを *.mem.safetensors に保存")
+    ap.add_argument("--mem-aug", type=Path, nargs="*", default=None,
+                    help="メモリを意識した学習に使う .koedict (省略時 dict/names の姓・名)。config の train.mem_aug でも指定可")
+    ap.add_argument("--mem-aug-names", type=float, help="人名文で入力をカナ置換する割合 (既定 0.4)")
+    ap.add_argument("--mem-aug-general", type=float, help="その他の文で辞書が当たるとき置換する割合 (既定 0.1)")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)")
     a = ap.parse_args()
@@ -83,8 +107,17 @@ def main():
     train, dev = read(a.data / "train.jsonl"), read(a.data / "dev.jsonl")
     if a.distill:
         d = read(a.data / "distill.jsonl"); print(f"蒸留データ {len(d)} 文を追加"); train += d
+    if a.only_extra:
+        train = []
     for p in a.extra:
         d = read(p); print(f"追加データ {p}: {len(d)} 文 x{a.extra_repeat}"); train += d * a.extra_repeat
+    ma = tc.get("mem_aug", {})
+    if a.mem_aug is not None or ma:
+        nd = HERE.parents[2] / "dict/names"
+        dicts = a.mem_aug or [Path(p) if Path(p).is_absolute() else HERE / p for p in ma.get("dicts", [])] \
+            or [nd / "surnames.koedict", nd / "given_names.koedict"]
+        train = mem_augment(train, dicts, a.mem_aug_names if a.mem_aug_names is not None else ma.get("p_names", 0.4),
+                            a.mem_aug_general if a.mem_aug_general is not None else ma.get("p_general", 0.1), rng)
     model = Yomi(len(sv), len(tv), **cfg["model"])
     start = 0
     if a.resume and (a.out / "meta.json").exists():
@@ -109,6 +142,13 @@ def main():
     total, wu = tc["steps"], tc["warmup"]
     sched = lambda s: tc["lr"] * mx.minimum((s + 1) / wu, 0.5 * (1 + mx.cos(math.pi * mx.minimum(s / total, 1.0))))
     opt = optim.AdamW(learning_rate=sched, weight_decay=tc["weight_decay"])
+    mm = tc.get("mem_lr_mult", 10.0)
+    if cfg["model"].get("memory") and mm != 1.0:
+        # メモリ層は1ステップで触られるスロットが一部だけ (疎) なので学習率を上げ、値テーブルには重み減衰をかけない
+        msched = lambda s: mm * sched(s)
+        opt = optim.MultiOptimizer([optim.AdamW(learning_rate=msched, weight_decay=0.0), opt],
+                                   [lambda path, w: ".mem." in f".{path}."])
+        print(f"メモリ層の学習率 x{mm}")
     if a.resume and (a.out / "optimizer.safetensors").exists():
         from mlx.utils import tree_unflatten
         opt.init(model.trainable_parameters())

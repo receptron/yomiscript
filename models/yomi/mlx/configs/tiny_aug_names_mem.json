@@ -1,0 +1,24 @@
+{
+ "model": {
+  "d_model": 256,
+  "n_heads": 4,
+  "d_ff": 1024,
+  "enc_layers": 4,
+  "dec_layers": 3,
+  "max_len": 320
+ },
+ "train": {
+  "batch_size": 64,
+  "lr": 0.0003,
+  "warmup": 200,
+  "steps": 4000,
+  "weight_decay": 0.01,
+  "label_smoothing": 0.05,
+  "eval_every": 1000,
+  "save_every": 1000,
+  "mem_aug": {
+   "p_names": 0.4,
+   "p_general": 0.1
+  }
+ }
+}
