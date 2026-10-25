@@ -136,3 +136,18 @@ python tools/pyopenjtalk_to_koedict.py --text data/train.jsonl data/distill.json
 ```
 
 `--init` を使うときは初期化元の語彙を引き継ぐ。重みの形が合わない場合は学習を始めずにエラーで止まる。
+
+## box (Linux CPU) での学習（2026-10-24）
+
+- **CPU 高速化:** pip の mlx-cpu wheel は参照実装の netlib BLAS を同梱しているため遅い（1024² 行列積で 5.9 GFLOPS）。`sudo apt-get install libopenblas0-pthread` を入れて `source tools/cpu_env.sh` で LD_PRELOAD すると 738 GFLOPS になった（約125倍）。tiny（7.7M, batch 64）の学習は 38 s/step から 2.1–2.3 s/step に短縮。行列積以外の演算がまだ律速。
+- **configs/tiny_box.json:** tiny_aug と同じ形で 5000 ステップ。蒸留データ 306,635 文と names_train 30,000 文で学習（`--distill --extra data/names/names_train.jsonl`）。
+- **途中評価（1000 ステップ, dev loss 未記録, 各 200 文）:**
+
+| セット | メモリ | 名前読み正解 | 名前の韻律が完全一致 | 文全体のカナ正解 | 境界F1 | アクセントF1 |
+|---|---|---|---|---|---|---|
+| seen | なし | 0.230 | 0.085 | 0.195 | 0.923 | 0.686 |
+| seen | あり | 0.775 | 0.235 | 0.715 | 0.937 | 0.669 |
+| unseen | なし | 0.225 | 0.140 | 0.190 | 0.907 | 0.651 |
+| unseen | あり | 0.780 | 0.265 | 0.705 | 0.956 | 0.677 |
+
+- 1000 ステップ時点の 佐藤光さんが来た。 は、メモリなしで `^サ[トー#コ[ーサンガ#キ]タ$`、メモリありで `^サ[トー#ヒ[カルサンガ#キ]タ$` だった（pyopenjtalk は `サ]トー#ヒ[カリ`）。姓と名の間の境界 `#` は付いたが、姓のアクセント核はまだ学習できていない。メモリありで ヒカル になるのは、性別を渡さないと辞書の最初の読みが選ばれるため（`--sex` で切り替わる）。
