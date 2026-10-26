@@ -29,7 +29,7 @@ def parse_names(text):
     """eval_names.py の 'split mode {json}' 行を {split/mode: dict} にする。"""
     res = {}
     for line in text.splitlines():
-        m = re.match(r"^(names_eval_\w+)\s+(model|memory)\s+(\{.*\})\s*$", line)
+        m = re.match(r"^((?:names|places)_eval_\w+)\s+(model|memory)\s+(\{.*\})\s*$", line)
         if m:
             try:
                 res[f"{m.group(1)}/{m.group(2)}"] = json.loads(m.group(3))
@@ -70,6 +70,7 @@ def main():
     ap.add_argument("--out-dir", default="eval_out")
     ap.add_argument("--limit", type=int, default=0, help="eval_names.py の --limit (動作確認用)")
     ap.add_argument("--general-eval", type=int, default=0, metavar="N", help="一般文 held-out の N 文も評価 (表に gen/gCER 列)")
+    ap.add_argument("--places", default="data/places", help="地名評価 (places_eval_seen/unseen) の場所。無ければ省略")
     ap.add_argument("--skip-jsut", action="store_true"); ap.add_argument("--skip-names", action="store_true")
     a = ap.parse_args()
     mems = dict(DEFAULTS)
@@ -86,7 +87,7 @@ def main():
         spec, *opts = spec.split("#")  # 末尾 #cg0.5 = 推論時ゲート閾値 (MOLD_CG_THRESH)
         ENV.clear()
         for o in opts:
-            ENV.update({"MOLD_CG_THRESH": o[2:]} if o.startswith("cg") else {})
+            ENV.update({"MOLD_CG_THRESH": o[2:]} if o.startswith("cg") else {"MOLD_MEM_OFF": o[4:]} if o.startswith("off=") else {})
         path, _, ck = spec.partition("@"); ck = ck or a.ckpt
         miss = [p for p in path.split(",") if p and not (HERE / p).exists() and not Path(p).exists()]
         if miss:
@@ -96,6 +97,9 @@ def main():
         if not a.skip_names:
             cmd = [sys.executable, "eval_names.py", "--ckpt", ck] + (["--pkm", path] if path else []) + (["--limit", str(a.limit)] if a.limit else [])
             r["names"] = parse_names(run(cmd, out / f"{tag}.{name}.eval_names.log"))
+            if (HERE / a.places).exists():  # 地名 (mem3) の読み正解率
+                r["names"].update(parse_names(run(cmd + ["--data", a.places, "--model-only", "--splits", "places_eval_seen", "places_eval_unseen"],
+                                                  out / f"{tag}.{name}.eval_places.log")))
         if not a.skip_jsut:
             r["jsut"] = last_json_object(run([sys.executable, "evaluate.py", "--ckpt", ck] + (["--pkm", path] if path else [])
                                              + (["--general-eval", str(a.general_eval)] if a.general_eval else []),
@@ -106,14 +110,15 @@ def main():
         print("比較できるメモリがありません"); return 1
     # 最後の数行だけ貼れば足りるよう、1 メモリ 1 行の表で終える (この後は何も出さない)
     print(f"出力: {out}/  ckpt {a.ckpt}  [%]  人名=辞書なし(model) の read/pros", flush=True)
-    print(f"{'memory':10} {'CER':>5} {'sent':>5} {'loose':>5} {'hard':>5} {'bndF1':>5} {'accF1':>5} {'gen':>5} {'gCER':>5} | {'seenR':>5} {'seenP':>5} {'unsR':>5} {'unsP':>5}")
+    print(f"{'memory':10} {'CER':>5} {'sent':>5} {'loose':>5} {'hard':>5} {'bndF1':>5} {'accF1':>5} {'gen':>5} {'gCER':>5} | {'seenR':>5} {'seenP':>5} {'unsR':>5} {'unsP':>5} | {'plcS':>5} {'plcU':>5}")
     for r in rows:
         j, n = r.get("jsut", {}), r.get("names", {})
         sm, um = n.get("names_eval_seen/model", {}), n.get("names_eval_unseen/model", {})
+        ps, pu = n.get("places_eval_seen/model", {}), n.get("places_eval_unseen/model", {})
         f = lambda x: f"{fmt(x):>5}"
         print(f"{r['memory'][:10]:10} {f(pick(j,'jsut','kana_cer'))} {f(pick(j,'jsut','sent_acc'))} {f(pick(j,'jsut','sent_acc_loose'))} "
               f"{f(pick(j,'hard','sent_acc'))} {f(pick(j,'jsut','phrase_boundary_p_r_f1'))} {f(pick(j,'jsut','accent_nucleus_p_r_f1'))} {f(pick(j,'general','sent_acc'))} {f(pick(j,'general','kana_cer'))} | "
-              f"{f(sm.get('name_reading_acc'))} {f(sm.get('name_prosody_exact'))} {f(um.get('name_reading_acc'))} {f(um.get('name_prosody_exact'))}")
+              f"{f(sm.get('name_reading_acc'))} {f(sm.get('name_prosody_exact'))} {f(um.get('name_reading_acc'))} {f(um.get('name_prosody_exact'))} | {f(ps.get('name_reading_acc'))} {f(pu.get('name_reading_acc'))}")
     return 0
 
 

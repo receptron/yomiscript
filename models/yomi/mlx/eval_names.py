@@ -15,16 +15,18 @@ ap.add_argument("--data", type=Path, default=Path(__file__).resolve().parent / "
 ap.add_argument("--limit", type=int, default=0)
 ap.add_argument("--pkm", action="append", default=None, help="差し替える学習型メモリ *.mem.safetensors (複数可/カンマ区切り, 積み重ね)")
 ap.add_argument("--out", type=Path)
+ap.add_argument("--splits", nargs="*", default=["names_eval_seen", "names_eval_unseen"])
+ap.add_argument("--model-only", action="store_true", help="辞書メモリ (router) ありの評価を省く (地名など)")
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt, memory=a.pkm)
 D = REPO / "dict/names"
 router = mold.MemoryRouter([mold.LexMemory.from_file(D / "surnames.koedict"), mold.LexMemory.from_file(D / "given_names.koedict")])
 strip = lambda s: "".join(c for c in s if c not in "^$?#_[]")
 res = {"ckpt": a.ckpt}
-for split in ["names_eval_seen", "names_eval_unseen"]:
+for split in a.splits:
     rows = [json.loads(l) for l in open(a.data / f"{split}.jsonl", encoding="utf-8")]
     rows = rows[:a.limit] if a.limit else rows
-    for mode in ["model", "memory"]:
+    for mode in ["model"] + ([] if a.model_only else ["memory"]):
         preds = []
         for sex in ["男性", "女性"]:  # 性別ごとにまとめて文脈を渡す
             idx = [i for i, r in enumerate(rows) if r["sex"] == sex]

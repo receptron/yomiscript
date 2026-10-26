@@ -63,11 +63,13 @@ def collate(rs, sv, tv):
 def span_labels(rs, Ls, Lt=None):
     """G: 一般文なら 1 (人名データ以外) (B,)、N: 入力文字が人名スパン内なら 1 (B,Ls)。
     Lt を渡すと NT: 出力 (To) の位置が人名の読み (name_target) の範囲なら 1 (B,Lt) も返す。"""
-    G = mx.array([0.0 if r.get("source") == "names" or r.get("names") else 1.0 for r in rs])
+    ps = LEAK.get("pos_src")  # 指定時はその src の行だけを正例 (それ以外の人名文などは一般文 = ゲート0・KL 対象)
+    pos = lambda r: (r.get("src") in ps) if ps else (r.get("source") == "names" or bool(r.get("names")))
+    G = mx.array([0.0 if pos(r) else 1.0 for r in rs])
     N = []
     for r in rs:
         lab = [0.0] * Ls
-        for nm in r.get("names") or []:
+        for nm in (r.get("names") or []) if pos(r) else []:
             st = 0
             while nm and (i := r["text"].find(nm, st)) >= 0:
                 for j in range(i, min(i + len(nm), Ls)):
@@ -78,11 +80,11 @@ def span_labels(rs, Ls, Lt=None):
         return G, mx.array(N)
     NT = []
     for r in rs:
-        lab = [0.0] * Lt; nt = r.get("name_target")
+        lab = [0.0] * Lt; nt = r.get("name_target") if pos(r) else None
         if nt and (i := r["target"].find(nt)) >= 0:
             for j in range(max(0, i - 1), min(i + len(nt) + 1, Lt)):  # 前後 1 文字 (境界記号) も人名側
                 lab[j] = 1.0
-        elif r.get("names"):
+        elif pos(r) and r.get("names"):
             lab = [1.0] * Lt  # 読みの位置が分からない人名文は KL をかけない
         NT.append(lab)
     return G, mx.array(N), mx.array(NT)
@@ -165,7 +167,7 @@ def main():
     ap.add_argument("--memory-only", action="store_true", help="MoLD: 共有重みを凍結し、メモリ層だけ学習 (ドメイン/方言メモリ作り)")
     ap.add_argument("--save-memory", type=Path, help="終了時にメモリ層だけを *.mem.safetensors に保存")
     ap.add_argument("--pkm", action="append", default=[], help="--init の後に読み込むメモリ (複数可/カンマ区切り, 積み重ね)")
-    ap.add_argument("--train-mem", choices=["all", "mem", "mem2"], default="all",
+    ap.add_argument("--train-mem", choices=["all", "mem", "mem2", "mem3"], default="all",
                     help="--memory-only で学習するメモリ群。mem2 なら mem (一般) は凍結。--save-memory もこの群だけ保存")
     ap.add_argument("--mem-aug", type=Path, nargs="*", default=None,
                     help="メモリを意識した学習に使う .koedict (省略時 dict/names の姓・名)。config の train.mem_aug でも指定可")
@@ -176,6 +178,7 @@ def main():
     ap.add_argument("--leak-kl-all", action="store_true", help="KL を人名文の人名以外の出力位置にもかける")
     ap.add_argument("--gate-l1", type=float, default=0.0, help="人名以外のトークンで条件付きゲートにかける L1 係数")
     ap.add_argument("--gate-sup-neg", type=float, default=1.0, help="gate-sup で一般文 (人名なし) のトークンにかける重み (>1 で一般文のゲートを強く 0 へ)")
+    ap.add_argument("--pos-src", nargs="*", help="漏れ対策で正例とする src (例 places)。他の src の固有名詞文は一般文扱い")
     ap.add_argument("--gate-sup", type=float, default=0.0, help="条件付きゲートを人名スパン (names 欄) で教師あり BCE する係数")
     ap.add_argument("--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)")
     a = ap.parse_args()
@@ -232,7 +235,7 @@ def main():
     sched = lambda s: tc["lr"] * mx.minimum((s + 1) / wu, 0.5 * (1 + mx.cos(math.pi * mx.minimum(s / total, 1.0))))
     opt = optim.AdamW(learning_rate=sched, weight_decay=tc["weight_decay"])
     mm = tc.get("mem_lr_mult", 10.0)
-    if (cfg["model"].get("memory") or cfg["model"].get("memory2")) and mm != 1.0:
+    if any(cfg["model"].get(k) for k in ("memory", "memory2", "memory3")) and mm != 1.0:
         # メモリ層は1ステップで触られるスロットが一部だけ (疎) なので学習率を上げ、値テーブルには重み減衰をかけない
         msched = lambda s: mm * sched(s)
         opt = optim.MultiOptimizer([optim.AdamW(learning_rate=msched, weight_decay=0.0), opt],
@@ -242,7 +245,7 @@ def main():
         from mlx.utils import tree_unflatten
         opt.init(model.trainable_parameters())
         opt.state = tree_unflatten(list(mx.load(str(a.out / "optimizer.safetensors")).items()))
-    LEAK.update(kl_all=a.leak_kl_all, kl=a.leak_kl, gate_l1=a.gate_l1, gate_sup=a.gate_sup, gate_sup_neg=a.gate_sup_neg,
+    LEAK.update(kl_all=a.leak_kl_all, kl=a.leak_kl, gate_l1=a.gate_l1, gate_sup=a.gate_sup, gate_sup_neg=a.gate_sup_neg, pos_src=a.pos_src,
                 group=a.train_mem if a.train_mem != "all" else "mem2")
     use_leak = bool(a.leak_kl or a.gate_l1 or a.gate_sup)
     if use_leak:

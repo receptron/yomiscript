@@ -60,7 +60,7 @@ class FF(nn.Module):
 
 
 class EncLayer(nn.Module):
-    def __init__(self, d, h, f, memory=None, memory2=None):
+    def __init__(self, d, h, f, memory=None, memory2=None, memory3=None):
         super().__init__()
         self.n1, self.n2, self.att, self.ff = nn.LayerNorm(d), nn.LayerNorm(d), MHA(d, h), FF(d, f)
         from mold import ProductKeyMemory
@@ -68,6 +68,8 @@ class EncLayer(nn.Module):
             self.mem = ProductKeyMemory(d, **{k: v for k, v in memory.items() if k != "layers"})
         if memory2:  # 積み重ね用の 2 つ目のメモリ (例: 人名)。mem の後に足す。独自のキー・値・ゲート
             self.mem2 = ProductKeyMemory(d, **{k: v for k, v in memory2.items() if k != "layers"})
+        if memory3:  # 3 つ目 (例: 地名)。mem2 の後に足す
+            self.mem3 = ProductKeyMemory(d, **{k: v for k, v in memory3.items() if k != "layers"})
 
     def __call__(self, x, mask):
         h = self.n1(x)
@@ -77,6 +79,8 @@ class EncLayer(nn.Module):
             x = x + self.mem(x)
         if "mem2" in self:
             x = x + self.mem2(x)
+        if "mem3" in self:
+            x = x + self.mem3(x)
         return x
 
 
@@ -94,13 +98,15 @@ class DecLayer(nn.Module):
 
 
 class Yomi(nn.Module):
-    def __init__(self, n_src, n_tgt, d_model=256, n_heads=4, d_ff=1024, enc_layers=4, dec_layers=4, max_len=256, memory=None, memory2=None, **_):
+    def __init__(self, n_src, n_tgt, d_model=256, n_heads=4, d_ff=1024, enc_layers=4, dec_layers=4, max_len=256, memory=None, memory2=None, memory3=None, **_):
         super().__init__()
         self.src_emb, self.tgt_emb = nn.Embedding(n_src, d_model), nn.Embedding(n_tgt, d_model)
         self.pos = nn.Embedding(max_len, d_model)
         ml = set((memory or {}).get("layers", []))
         ml2 = set((memory2 or {}).get("layers", []))
-        self.enc = [EncLayer(d_model, n_heads, d_ff, memory if i in ml else None, memory2 if i in ml2 else None)
+        ml3 = set((memory3 or {}).get("layers", []))
+        self.enc = [EncLayer(d_model, n_heads, d_ff, memory if i in ml else None, memory2 if i in ml2 else None,
+                             memory3 if i in ml3 else None)
                     for i in range(enc_layers)]
         self.dec = [DecLayer(d_model, n_heads, d_ff) for _ in range(dec_layers)]
         self.enc_norm, self.dec_norm = nn.LayerNorm(d_model), nn.LayerNorm(d_model)
@@ -267,6 +273,11 @@ def load(path, dtype=None, memory=None):
         for m in mold.memories(model):
             if "cgate" in m:
                 m.cg_thresh = float(os.environ["MOLD_CG_THRESH"])
+    if os.environ.get("MOLD_MEM_OFF"):  # 評価用: 指定グループ (例 mem2) を止める (単体比較)
+        import mold
+        for g in os.environ["MOLD_MEM_OFF"].split(","):
+            for m in mold.memories(model, g):
+                m._st.off = True
     if dtype is not None:
         model.set_dtype(dtype)
     model.eval()

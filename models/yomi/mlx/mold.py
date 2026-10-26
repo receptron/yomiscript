@@ -418,8 +418,8 @@ def memory_aux_loss(model):
     return tot
 
 
-MEM_GROUPS = ("mem", "mem2")
-_MEM_RE = re.compile(r"(^|\.)(mem|mem2)\.")
+MEM_GROUPS = ("mem", "mem2", "mem3")
+_MEM_RE = re.compile(r"(^|\.)(mem|mem2|mem3)\.")
 
 
 def is_mem_key(k, group=None):
