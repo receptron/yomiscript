@@ -91,10 +91,10 @@ def main():
         print(f"== {name}: {path} (ckpt {ck})", file=sys.stderr, flush=True)
         r = {"memory": name}
         if not a.skip_names:
-            cmd = [sys.executable, "eval_names.py", "--ckpt", ck, "--pkm", path] + (["--limit", str(a.limit)] if a.limit else [])
+            cmd = [sys.executable, "eval_names.py", "--ckpt", ck] + (["--pkm", path] if path else []) + (["--limit", str(a.limit)] if a.limit else [])
             r["names"] = parse_names(run(cmd, out / f"{tag}.{name}.eval_names.log"))
         if not a.skip_jsut:
-            r["jsut"] = last_json_object(run([sys.executable, "evaluate.py", "--ckpt", ck, "--pkm", path],
+            r["jsut"] = last_json_object(run([sys.executable, "evaluate.py", "--ckpt", ck] + (["--pkm", path] if path else []),
                                              out / f"{tag}.{name}.evaluate.log")) or {}
         rows.append(r)
     (out / f"{tag}.compare.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")

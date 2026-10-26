@@ -19,6 +19,7 @@ ap.add_argument("--ckpt", default="ckpt/tiny")
 ap.add_argument("--dtype", default=None, choices=["float32", "bfloat16", "float16"])
 ap.add_argument("--pkm", action="append", default=None, help="差し替える学習型メモリ *.mem.safetensors (複数可/カンマ区切り, 積み重ね)")
 ap.add_argument("--out", type=Path)
+ap.add_argument("--preds", type=Path, help="JSUT の全予測を jsonl で保存 (誤り分析用)")
 a = ap.parse_args()
 model, sv, tv, meta = yomi.load(a.ckpt, getattr(mx, a.dtype) if a.dtype else None, memory=a.pkm)
 jsut = [json.loads(l) for l in open(REPO / "eval/data/jsut_basic5000_subset.jsonl", encoding="utf-8")]
@@ -36,6 +37,11 @@ for r, p in zip(jsut, preds):
     if e:
         errs.append({"id": r["id"], "text": r["text"], "gold": g, "pred": q})
 rows = [l.rstrip("\n").split("\t") for l in open(REPO / "eval/data/hard_set.tsv", encoding="utf-8") if l.strip() and not l.startswith("#")]
+if a.preds:
+    a.preds.parent.mkdir(parents=True, exist_ok=True)
+    with open(a.preds, "w", encoding="utf-8") as f:
+        for r, p in zip(jsut, preds):
+            f.write(json.dumps({"id": r["id"], "text": r["text"], "gold": norm_kana(r["kana_prosody"]), "pred": norm_kana(p)}, ensure_ascii=False) + "\n")
 hp = yomi.predict(model, sv, tv, [x[2] for x in rows])
 cats = {}
 for (hid, cat, text, gold, *_), p in zip(rows, hp):
