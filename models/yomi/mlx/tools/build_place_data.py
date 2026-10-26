@@ -12,6 +12,9 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE)); sys.path.insert(0, str(HERE / "aug"))
 from mold import to_pron  # noqa: E402
 from names import label, name_region  # noqa: E402
+sys.path.insert(0, str(HERE / "tools"))
+from place_label_audit import audit_row, norm_kana  # noqa: E402
+SAFE = {"一致", "一致(分割のみ)", "表記 (ヅ/オオ等)", "長音", "町 チョウ/マチ", "村 ソン/ムラ", "ケ/ガ"}  # --confident で残すずれ
 
 GEO_URL = "https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip"
 T_ONE = ["{P}に行きました。", "{P}駅で降りる。", "{P}に住んでいます。", "{P}から来ました。", "{P}の天気は晴れです。",
@@ -46,6 +49,9 @@ def main():
     ap.add_argument("--n-train", type=int, default=30000); ap.add_argument("--n-eval", type=int, default=500)
     ap.add_argument("--n-neg", type=int, default=6000); ap.add_argument("--unseen-frac", type=float, default=0.1)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--no-kana-norm", action="store_true", help="郵便番号の読みを発音形 (ヅ→ズ, オオ→オー, イイ→イー) に直さない (v12/v13 の挙動)")
+    ap.add_argument("--confident", action="store_true",
+                    help="学習データは pyopenjtalk との差が表記・長音・町村 (チョウ/マチ, ソン/ムラ)・ケ/ガ だけの文に限る (評価は全部残す)")
     a = ap.parse_args(); rng = random.Random(a.seed)
     pref, city, town = read_ken(a.geo)
     units = sorted({cs for _, cs in city} | {ts for _, _, ts in town}); rng.shuffle(units)
@@ -74,7 +80,7 @@ def main():
         text = rng.choice(T_ADDR if kind == "addr" else [t for t in T_ONE if kind != "pref" or "駅" not in t]).format(P=P); st = text.index(P)
         forced, i = [], st
         for s, k in parts:
-            forced.append((i, i + len(s), to_pron(k))); i += len(s)
+            forced.append((i, i + len(s), to_pron(k) if a.no_kana_norm else norm_kana(k))); i += len(s)
         return text, forced, "".join(p for *_, p in forced), [s for s, _ in parts], kind
 
     def gen(split, n, fn):
@@ -89,7 +95,12 @@ def main():
                 c[info] += 1; continue
             c.update(info)
             rows.append({"id": f"{fn}:{len(rows)}", "text": text, "target": tg, "source": "places", "src": "places",
-                         "name_pron": pron, "name_target": name_region(tg, pron), "sex": "男性", "kind": kind, "names": nm})
+                         "name_pron": pron, "name_target": name_region(tg, pron), "sex": "男性", "kind": kind, "names": nm,
+                         "parts_pron": [p for *_, p in forced]})
+        if a.confident and fn == "places_train":  # 生成後に絞る (乱数列を変えないので評価セットは --confident なしと同じ)
+            cats = [{x[3] for x in audit_row(r)} for r in rows]
+            c["confident_drop"] = sum(not (x <= SAFE) for x in cats)
+            rows = [r for r, x in zip(rows, cats) if x <= SAFE]
         with open(a.out / f"{fn}.jsonl", "w", encoding="utf-8") as f:
             f.writelines(json.dumps(r, ensure_ascii=False) + "\n" for r in rows)
         stats[fn] = {"n": len(rows), **dict(c)}; print(fn, stats[fn], flush=True)
