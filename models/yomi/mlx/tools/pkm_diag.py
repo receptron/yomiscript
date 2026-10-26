@@ -10,6 +10,7 @@ import yomi, mold, train
 ap = argparse.ArgumentParser()
 ap.add_argument("--ckpt", required=True); ap.add_argument("--pkm", action="append")
 ap.add_argument("--data", default="data/names/names_train.jsonl"); ap.add_argument("--n", type=int, default=256)
+ap.add_argument("--gen-data", default="data/dev.jsonl", help="条件付きゲートの比較用の一般文 (人名なし)")
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt, memory=a.pkm); model.train()
 rows = [json.loads(l) for l in open(a.data, encoding="utf-8")]; random.Random(0).shuffle(rows); rows = rows[:a.n]
@@ -40,6 +41,27 @@ for m, (w, idx, out, x, sc) in zip(mems, mold.ProductKeyMemory.probe):
                           "temp": getattr(m, "temp", None),
                           "balance_aux": float(m._st.aux) if getattr(m, "_st", None) is not None and m._st.aux is not None else None})
 mold.ProductKeyMemory.probe = None
+
+
+def gate_stats(rs):
+    """条件付きゲートのトークン別統計: 人名トークン / それ以外。メモリごと。"""
+    S, Ti, To = train.collate(rs, sv, tv); _, N = train.span_labels(rs, S.shape[1])
+    model.eval(); model(S, Ti); model.train()
+    sm = (S != train.PAD).astype(mx.float32); out = []
+    for m in mems:
+        cg = m._st.cg if "cgate" in m else None
+        if cg is None:
+            out.append(None); continue
+        st = lambda w: {"mean": float((cg * w).sum() / mx.maximum(1, w.sum())), "n": int(w.sum()),
+                        "frac_gt_0.5": float(((cg > 0.5) * w).sum() / mx.maximum(1, w.sum()))}
+        out.append({"all": st(sm), "name_tok": st(sm * N), "non_name_tok": st(sm * (1 - N))})
+    return out
+
+
+gn = gate_stats(rows)
+gg = gate_stats([json.loads(l) for l in open(a.gen_data, encoding="utf-8")][:a.n]) if Path(a.gen_data).exists() else [None] * len(mems)
+for L, x, y in zip(res["layers"], gn, gg):
+    L["cond_gate_mean"] = None if x is None else {"names_data": x, "general_data": y and y["all"]}
 res["grad_norm"] = {k: float(mx.linalg.norm(v.reshape(-1))) for k, v in tree_flatten(g) if mold.is_mem_key(k)}
 res["grad_norm_shared_total"] = float(sum(float(mx.sum(v * v)) for k, v in tree_flatten(g) if not mold.is_mem_key(k)) ** 0.5)
 print(json.dumps(res, ensure_ascii=False, indent=1))

@@ -130,3 +130,19 @@ def test_stacked_memories(tmp_path):
     assert mm.enc[1].mem.slots.max().item() == 1.0 and mm.enc[1].mem2.slots.max().item() == 2.0
     assert len(mold.memories(mm)) == 2 and mold.is_mem_key("enc.1.mem2.slots", "mem2")
     assert not mold.is_mem_key("enc.1.mem2.slots", "mem")
+
+
+def test_leak_losses():
+    import train
+    cfg = dict(d_model=32, n_heads=2, d_ff=64, enc_layers=2, dec_layers=1, max_len=64)
+    m = {"layers": [1], "n_keys": 8, "k_dim": 8, "topk": 4}
+    mm = yomi.Yomi(20, 10, **cfg, memory=m, memory2=dict(m, cond_gate=True))
+    G, N = train.span_labels([{"text": "abcab", "names": ["ab"]}, {"text": "xyz"}], 6)
+    assert G.tolist() == [0.0, 1.0] and N.tolist()[0] == [1, 1, 0, 1, 1, 0]
+    S = mx.array([[5, 6, 7, 5, 6, 0], [5, 6, 7, 0, 0, 0]]); Ti = mx.array([[1, 4, 5]] * 2); To = mx.array([[4, 5, 2]] * 2)
+    train.LEAK.update(kl=1.0, gate_l1=0.1, gate_sup=1.0, group="mem2")
+    base = float(train.train_loss_fn(mm, S, Ti, To, 0.0))
+    tot = float(train.leak_loss_fn(mm, S, Ti, To, 0.0, G, N))
+    assert tot > base  # KL は 0 (mem2 値 0)、ゲート項 (0.5) が乗る
+    assert not mm.enc[1].mem2._st.off
+    train.LEAK.update(kl=0.0, gate_l1=0.0, gate_sup=0.0)

@@ -354,7 +354,7 @@ class ProductKeyMemory(nn.Module):
         self.temp = temp
         self.balance = balance  # 負荷分散の補助 loss の係数 (train.train_loss_fn が aux を足す)
         # aux は配列なのでモジュール属性にするとパラメータ扱いになる。ただの入れ物に入れる
-        self._st = __import__('types').SimpleNamespace(aux=None)
+        self._st = __import__('types').SimpleNamespace(aux=None, off=False, cg=None)
         if cond_gate:  # 入力に応じたゲート sigmoid(w·LN(x)+b): 一般文では黙る (積み重ねた人名メモリ用)
             self.cgate = nn.Linear(d, 1)
             self.cgate.weight = mx.zeros_like(self.cgate.weight); self.cgate.bias = mx.full((1,), cond_bias)
@@ -366,6 +366,8 @@ class ProductKeyMemory(nn.Module):
         return v * mx.rsqrt((v * v).sum(-1, keepdims=True) + 1e-6)
 
     def __call__(self, x):
+        if self._st.off:  # 教師 (このメモリ無し) の出力を作るときに一時的に止める
+            return mx.zeros_like(x)
         B, L, D = x.shape
         q = self.query(self.norm(x)).reshape(B, L, 2, self.k_dim).astype(mx.float32)
         q = self._l2(q); sk = self._l2(self.subkeys.astype(mx.float32))
@@ -389,7 +391,9 @@ class ProductKeyMemory(nn.Module):
         rms = mx.stop_gradient(mx.sqrt(mx.mean(x.astype(mx.float32) ** 2, axis=-1, keepdims=True))).astype(x.dtype)
         out = self.gate * rms * out
         if "cgate" in self:
-            out = mx.sigmoid(self.cgate(self.norm(x))) * out
+            g = mx.sigmoid(self.cgate(self.norm(x)).astype(mx.float32))
+            self._st.cg = g[..., 0]  # (B,L) 条件付きゲート値 (漏れ対策の loss と診断用)
+            out = g.astype(out.dtype) * out
         if ProductKeyMemory.probe is not None:
             ProductKeyMemory.probe.append((w, idx, out, x, sc))
         return out

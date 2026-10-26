@@ -44,7 +44,9 @@ def batches(rows, sv, tv, bs, max_len, rng):
         bl = [idx[i:i + bs] for i in range(0, len(idx), bs)]
         rng.shuffle(bl)
         for b in bl:
-            yield collate([rows[i] for i in b], sv, tv)
+            rs = [rows[i] for i in b]
+            S, Ti, To = collate(rs, sv, tv)
+            yield S, Ti, To, *span_labels(rs, S.shape[1])
 
 
 def collate(rs, sv, tv):
@@ -56,6 +58,60 @@ def collate(rs, sv, tv):
     S = mx.array([x + [PAD] * (Ls - len(x)) for x in s], dtype=mx.int32)
     T = mx.array([x + [PAD] * (Lt - len(x)) for x in t], dtype=mx.int32)
     return S, T[:, :-1], T[:, 1:]
+
+
+def span_labels(rs, Ls):
+    """G: 一般文なら 1 (人名データ以外) (B,)、N: 入力文字が人名スパン内なら 1 (B,Ls)。"""
+    G = mx.array([0.0 if r.get("source") == "names" or r.get("names") else 1.0 for r in rs])
+    N = []
+    for r in rs:
+        lab = [0.0] * Ls
+        for nm in r.get("names") or []:
+            st = 0
+            while nm and (i := r["text"].find(nm, st)) >= 0:
+                for j in range(i, min(i + len(nm), Ls)):
+                    lab[j] = 1.0
+                st = i + len(nm)
+        N.append(lab)
+    return G, mx.array(N)
+
+
+LEAK = {"kl": 0.0, "gate_l1": 0.0, "gate_sup": 0.0, "group": "mem2"}  # 積み重ねメモリの漏れ対策 (main で設定)
+
+
+def leak_loss_fn(model, S, Ti, To, ls, G, N):
+    """CE + aux + 漏れ対策:
+    kl: 一般文で「積み重ね出力」を「対象メモリ無しの出力 (凍結した教師)」に KL で合わせる
+    gate_l1: 人名以外の入力トークンで条件付きゲートを 0 へ / gate_sup: ゲートを人名スパンの 0/1 で教師あり BCE"""
+    mask = (To != PAD).astype(mx.float32)
+    tgt = mold.memories(model, LEAK["group"])
+    tot = 0.0
+    if LEAK["kl"]:
+        for m in tgt:
+            m._st.off = True
+        tl = mx.stop_gradient(model(S, Ti).astype(mx.float32))
+        for m in tgt:
+            m._st.off = False
+    logits = model(S, Ti).astype(mx.float32)
+    ce = nn.losses.cross_entropy(logits, To, label_smoothing=ls) * mask
+    tot = ce.sum() / mask.sum() + mold.memory_aux_loss(model)
+    if LEAK["kl"]:
+        lp, lq = nn.log_softmax(tl, -1), nn.log_softmax(logits, -1)
+        kl = (mx.exp(lp) * (lp - lq)).sum(-1) * mask * G[:, None]
+        tot = tot + LEAK["kl"] * kl.sum() / mx.maximum(1.0, (mask * G[:, None]).sum())
+    sm = (S != PAD).astype(mx.float32)
+    for m in tgt:
+        if m._st.cg is None:
+            continue
+        cg = m._st.cg
+        if LEAK["gate_l1"]:
+            w = sm * (1 - N)
+            tot = tot + LEAK["gate_l1"] * (cg * w).sum() / mx.maximum(1.0, w.sum())
+        if LEAK["gate_sup"]:
+            c = mx.clip(cg, 1e-5, 1 - 1e-5)
+            bce = -(N * mx.log(c) + (1 - N) * mx.log(1 - c)) * sm
+            tot = tot + LEAK["gate_sup"] * bce.sum() / sm.sum()
+    return tot
 
 
 def loss_fn(model, S, Ti, To, ls):
@@ -102,6 +158,9 @@ def main():
     ap.add_argument("--mem-aug-names", type=float, help="人名文で入力をカナ置換する割合 (既定 0.4)")
     ap.add_argument("--mem-aug-general", type=float, help="その他の文で辞書が当たるとき置換する割合 (既定 0.1)")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--leak-kl", type=float, default=0.0, help="一般文で --train-mem のメモリ無しの出力へ KL で合わせる係数")
+    ap.add_argument("--gate-l1", type=float, default=0.0, help="人名以外のトークンで条件付きゲートにかける L1 係数")
+    ap.add_argument("--gate-sup", type=float, default=0.0, help="条件付きゲートを人名スパン (names 欄) で教師あり BCE する係数")
     ap.add_argument("--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)")
     a = ap.parse_args()
     cfg = json.load(open(a.config)); tc = cfg["train"]
@@ -167,11 +226,16 @@ def main():
         from mlx.utils import tree_unflatten
         opt.init(model.trainable_parameters())
         opt.state = tree_unflatten(list(mx.load(str(a.out / "optimizer.safetensors")).items()))
-    lg = nn.value_and_grad(model, train_loss_fn)
+    LEAK.update(kl=a.leak_kl, gate_l1=a.gate_l1, gate_sup=a.gate_sup,
+                group=a.train_mem if a.train_mem != "all" else "mem2")
+    use_leak = bool(a.leak_kl or a.gate_l1 or a.gate_sup)
+    if use_leak:
+        print(f"漏れ対策 {LEAK}")
+    lg = nn.value_and_grad(model, leak_loss_fn if use_leak else train_loss_fn)
     ls = tc["label_smoothing"]
 
-    def train_step(S, Ti, To):
-        loss, g = lg(model, S, Ti, To, ls)
+    def train_step(S, Ti, To, G, N):
+        loss, g = lg(model, S, Ti, To, ls, G, N) if use_leak else lg(model, S, Ti, To, ls)
         g, _ = optim.clip_grad_norm(g, 1.0)
         opt.update(model, g)
         return loss
@@ -186,8 +250,7 @@ def main():
     t0, run, log = time.time(), [], []
     tw = time.time()
     for step in range(start + 1, total + 1):
-        S, Ti, To = next(it)
-        loss = train_step(S, Ti, To)
+        loss = train_step(*next(it))
         mx.eval(model.parameters(), opt.state, loss)
         run.append(loss.item())
         if step % 50 == 0:
