@@ -17,6 +17,8 @@ ap.add_argument("--compounds", type=int, default=0, help="(3) 人名に偏る漢
 ap.add_argument("--compound-pool", type=int, default=150000, help="(3) で熟語を探す一般文の数")
 ap.add_argument("--per-compound", type=int, default=2, help="(3) 熟語 1 つあたりの文数 (多様性のため)")
 ap.add_argument("--geo", default="data/geo/utf_ken_all.csv", help="(3) 地名除外用 日本郵便 郵便番号データ (無ければ取得。著作権主張なし・再配布自由)")
+ap.add_argument("--mine-mem", default="mem2", help="(1) ゲートを見るメモリ群 (地名なら mem3)")
+ap.add_argument("--bias-data", default="data/names/names_train.jsonl", help="(2)(3) 偏り漢字を数える正例 (地名なら data/places/places_train.jsonl)")
 ap.add_argument("--no-ojt-filter", action="store_true", help="(3) pyopenjtalk 辞書の固有名詞判定で除外しない")
 ap.add_argument("--out", default="data/names/hardneg.jsonl")
 a = ap.parse_args()
@@ -25,14 +27,14 @@ random.Random(1).shuffle(rows); rows = [r for r in rows if not r.get("names")][:
 gate_hits = []
 if a.pkm:
     model, sv, tv, _ = yomi.load(a.ckpt, memory=a.pkm); model.eval()
-    ms = [m for m in mold.memories(model, "mem2") if "cgate" in m]
+    ms = [m for m in mold.memories(model, a.mine_mem) if "cgate" in m]
     for i in range(0, len(rows), 64):
         ch = rows[i:i + 64]; ids = [sv.encode(r["text"])[: model.max_len] for r in ch]; L = max(map(len, ids))
         S = mx.array([x + [train.PAD] * (L - len(x)) for x in ids], dtype=mx.int32)
         model.encode(S); cg = (ms[0]._st.cg * (S != train.PAD)).max(axis=1).tolist()
         gate_hits += [(g, r) for g, r in zip(cg, ch) if g > a.thr]
     gate_hits = [r for _, r in sorted(gate_hits, key=lambda x: -x[0])[: a.max_gate]]
-nc = Counter(c for l in open("data/names/names_train.jsonl", encoding="utf-8") for n in json.loads(l).get("names", []) for c in n)
+nc = Counter(c for l in open(a.bias_data, encoding="utf-8") for n in json.loads(l).get("names", []) for c in n)
 gc = Counter(c for r in rows for c in r["text"])  # 一般文での頻度で割って「人名に偏る漢字」を選ぶ
 top = set(sorted((c for c in nc if "一" <= c <= "鿿" and gc[c] >= 3), key=lambda c: -nc[c] / (gc[c] + 20))[: a.top_chars])
 seen = {r["text"] for r in gate_hits}; char_hits = []
