@@ -10,6 +10,7 @@ import yomi, mold, train
 ap = argparse.ArgumentParser()
 ap.add_argument("--ckpt", required=True); ap.add_argument("--pkm", action="append")
 ap.add_argument("--data", default="data/names/names_train.jsonl"); ap.add_argument("--n", type=int, default=256)
+ap.add_argument("--json", action="store_true", help="全 JSON を標準出力にも出す (既定は eval_out/ に保存して要約だけ表示)")
 ap.add_argument("--gen-data", default="data/dev.jsonl", help="条件付きゲートの比較用の一般文 (人名なし)")
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt, memory=a.pkm); model.train()
@@ -64,4 +65,16 @@ for L, x, y in zip(res["layers"], gn, gg):
     L["cond_gate_mean"] = None if x is None else {"names_data": x, "general_data": y and y["all"]}
 res["grad_norm"] = {k: float(mx.linalg.norm(v.reshape(-1))) for k, v in tree_flatten(g) if mold.is_mem_key(k)}
 res["grad_norm_shared_total"] = float(sum(float(mx.sum(v * v)) for k, v in tree_flatten(g) if not mold.is_mem_key(k)) ** 0.5)
-print(json.dumps(res, ensure_ascii=False, indent=1))
+js = json.dumps(res, ensure_ascii=False, indent=1)
+od = Path(__file__).resolve().parents[1] / "eval_out"; od.mkdir(exist_ok=True)
+fp = od / f"{Path(a.ckpt).name}.pkm_diag.json"; fp.write_text(js, encoding="utf-8")
+if a.json:
+    print(js)
+# 最後の数行 = 要約 (貼り付け用)
+print(f"pkm_diag {a.ckpt}  loss {res['loss']:.4f}  full: {fp}")
+for k, (m, L) in enumerate(zip(mems, res["layers"])):
+    c = L["cond_gate_mean"]
+    cs = "" if not c else (f"  cg name {c['names_data']['name_tok']['mean']:.3f} non {c['names_data']['non_name_tok']['mean']:.3f}"
+                           f" gen {c['general_data']['mean'] if c['general_data'] else float('nan'):.3f}")
+    print(f"mem{k}: slots {L['slots_used']}/{L['slots_total']} top10 {L['usage_top10_share']:.2f} wmax {L['softmax_wmax_mean']:.2f}"
+          f" ratio {L['ratio']:.3f} gate {L['gate'] if L['gate'] is None else round(L['gate'], 3)}{cs}")

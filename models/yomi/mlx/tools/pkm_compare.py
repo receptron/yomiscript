@@ -94,25 +94,16 @@ def main():
     (out / f"{tag}.compare.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
     if not rows:
         print("比較できるメモリがありません"); return 1
-    if not a.skip_jsut:
-        print(f"\nJSUT / hard ({a.ckpt})  [%]")
-        print(f"{'memory':10} {'CER':>6} {'sent':>6} {'loose':>6} {'bndF1':>6} {'accF1':>6} {'hard':>6}")
-        for r in rows:
-            j = r.get("jsut", {})
-            print(f"{r['memory']:10} {fmt(pick(j,'jsut','kana_cer')):>6} {fmt(pick(j,'jsut','sent_acc')):>6} "
-                  f"{fmt(pick(j,'jsut','sent_acc_loose')):>6} {fmt(pick(j,'jsut','phrase_boundary_p_r_f1')):>6} "
-                  f"{fmt(pick(j,'jsut','accent_nucleus_p_r_f1')):>6} {fmt(pick(j,'hard','sent_acc')):>6}")
-    if not a.skip_names:
-        print(f"\n人名 (reading / prosody exact / accent F1) [%]  model=辞書なし, memory=辞書メモリあり")
-        print(f"{'memory':10} {'split':7} {'mode':7} {'read':>6} {'pros':>6} {'accF1':>6}")
-        for r in rows:
-            for key, v in sorted(r.get("names", {}).items()):
-                split, mode = key.split("/"); split = split.replace("names_eval_", "")
-                print(f"{r['memory']:10} {split:7} {mode:7} {fmt(v.get('name_reading_acc')):>6} "
-                      f"{fmt(v.get('name_prosody_exact')):>6} {fmt(v.get('accent_f1')):>6}")
-            if not r.get("names"):
-                print(f"{r['memory']:10} (結果なし: ログを確認)")
-    print(f"\n出力: {out}/")
+    # 最後の数行だけ貼れば足りるよう、1 メモリ 1 行の表で終える (この後は何も出さない)
+    print(f"出力: {out}/  ckpt {a.ckpt}  [%]  人名=辞書なし(model) の read/pros", flush=True)
+    print(f"{'memory':10} {'CER':>5} {'sent':>5} {'loose':>5} {'hard':>5} {'bndF1':>5} {'accF1':>5} | {'seenR':>5} {'seenP':>5} {'unsR':>5} {'unsP':>5}")
+    for r in rows:
+        j, n = r.get("jsut", {}), r.get("names", {})
+        sm, um = n.get("names_eval_seen/model", {}), n.get("names_eval_unseen/model", {})
+        f = lambda x: f"{fmt(x):>5}"
+        print(f"{r['memory'][:10]:10} {f(pick(j,'jsut','kana_cer'))} {f(pick(j,'jsut','sent_acc'))} {f(pick(j,'jsut','sent_acc_loose'))} "
+              f"{f(pick(j,'hard','sent_acc'))} {f(pick(j,'jsut','phrase_boundary_p_r_f1'))} {f(pick(j,'jsut','accent_nucleus_p_r_f1'))} | "
+              f"{f(sm.get('name_reading_acc'))} {f(sm.get('name_prosody_exact'))} {f(um.get('name_reading_acc'))} {f(um.get('name_prosody_exact'))}")
     return 0
 
 
