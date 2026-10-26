@@ -88,7 +88,7 @@ def span_labels(rs, Ls, Lt=None):
     return G, mx.array(N), mx.array(NT)
 
 
-LEAK = {"kl_all": False, "kl": 0.0, "gate_l1": 0.0, "gate_sup": 0.0, "group": "mem2"}  # 積み重ねメモリの漏れ対策 (main で設定)
+LEAK = {"kl_all": False, "kl": 0.0, "gate_l1": 0.0, "gate_sup": 0.0, "gate_sup_neg": 1.0, "group": "mem2"}  # 積み重ねメモリの漏れ対策 (main で設定)
 
 
 def leak_loss_fn(model, S, Ti, To, ls, G, N, NT=None):
@@ -122,8 +122,9 @@ def leak_loss_fn(model, S, Ti, To, ls, G, N, NT=None):
             tot = tot + LEAK["gate_l1"] * (cg * w).sum() / mx.maximum(1.0, w.sum())
         if LEAK["gate_sup"]:
             c = mx.clip(cg, 1e-5, 1 - 1e-5)
-            bce = -(N * mx.log(c) + (1 - N) * mx.log(1 - c)) * sm
-            tot = tot + LEAK["gate_sup"] * bce.sum() / sm.sum()
+            w = sm * (1 + (LEAK["gate_sup_neg"] - 1) * G[:, None])  # 一般文の全トークンを 0 目標として重み付け
+            bce = -(N * mx.log(c) + (1 - N) * mx.log(1 - c)) * w
+            tot = tot + LEAK["gate_sup"] * bce.sum() / w.sum()
     return tot
 
 
@@ -174,6 +175,7 @@ def main():
     ap.add_argument("--leak-kl", type=float, default=0.0, help="一般文で --train-mem のメモリ無しの出力へ KL で合わせる係数")
     ap.add_argument("--leak-kl-all", action="store_true", help="KL を人名文の人名以外の出力位置にもかける")
     ap.add_argument("--gate-l1", type=float, default=0.0, help="人名以外のトークンで条件付きゲートにかける L1 係数")
+    ap.add_argument("--gate-sup-neg", type=float, default=1.0, help="gate-sup で一般文 (人名なし) のトークンにかける重み (>1 で一般文のゲートを強く 0 へ)")
     ap.add_argument("--gate-sup", type=float, default=0.0, help="条件付きゲートを人名スパン (names 欄) で教師あり BCE する係数")
     ap.add_argument("--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)")
     a = ap.parse_args()
@@ -240,7 +242,7 @@ def main():
         from mlx.utils import tree_unflatten
         opt.init(model.trainable_parameters())
         opt.state = tree_unflatten(list(mx.load(str(a.out / "optimizer.safetensors")).items()))
-    LEAK.update(kl_all=a.leak_kl_all, kl=a.leak_kl, gate_l1=a.gate_l1, gate_sup=a.gate_sup,
+    LEAK.update(kl_all=a.leak_kl_all, kl=a.leak_kl, gate_l1=a.gate_l1, gate_sup=a.gate_sup, gate_sup_neg=a.gate_sup_neg,
                 group=a.train_mem if a.train_mem != "all" else "mem2")
     use_leak = bool(a.leak_kl or a.gate_l1 or a.gate_sup)
     if use_leak:
