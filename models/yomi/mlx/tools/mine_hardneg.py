@@ -5,7 +5,7 @@
 import argparse, json, random, sys
 from collections import Counter
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+HERE = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(HERE))
 import mlx.core as mx
 import yomi, mold, train
 ap = argparse.ArgumentParser()
@@ -16,6 +16,8 @@ ap.add_argument("--max-chars", type=int, default=2000); ap.add_argument("--top-c
 ap.add_argument("--compounds", type=int, default=0, help="(3) 人名に偏る漢字を含む普通の熟語 (直刀・蛍火 型) の文をこの数まで追加")
 ap.add_argument("--compound-pool", type=int, default=150000, help="(3) で熟語を探す一般文の数")
 ap.add_argument("--per-compound", type=int, default=2, help="(3) 熟語 1 つあたりの文数 (多様性のため)")
+ap.add_argument("--geo", default="data/geo/utf_ken_all.csv", help="(3) 地名除外用 日本郵便 郵便番号データ (無ければ取得。著作権主張なし・再配布自由)")
+ap.add_argument("--no-ojt-filter", action="store_true", help="(3) pyopenjtalk 辞書の固有名詞判定で除外しない")
 ap.add_argument("--out", default="data/names/hardneg.jsonl")
 a = ap.parse_args()
 rows = [json.loads(l) for l in open(a.data, encoding="utf-8")]
@@ -41,28 +43,90 @@ for r in rows:
     if t in seen or not any(c in top for c in t):
         continue
     char_hits.append(r); seen.add(t)
+GEO_URL = "https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip"
+GIVEN_SUF = set("也蔵郎吉衛門助介太夫兵輔丸彦雄男夫子美江代枝乃奈菜香恵")  # 下の名前に多い末尾
+GEO_SUF = set("都道府県市町村区郡")
+
+
+def geo_words(path):
+    """郵便番号データから都道府県・市区町村・町域名 (と接尾辞を外した語幹) を集める (学習データの除外用)。"""
+    import csv, io, re, urllib.request, zipfile
+    p = Path(path)
+    if not p.exists():
+        p.parent.mkdir(parents=True, exist_ok=True)
+        zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(GEO_URL, timeout=60).read())).extractall(p.parent)
+    out = set()
+    for row in csv.reader(open(p, encoding="utf-8")):
+        for name in row[6:9]:
+            name = re.sub(r"[（(].*", "", name)
+            for w in re.findall(r"[一-鿿々ケヶ]+", name):
+                out.add(w)
+                for part in re.findall(r"[^都道府県市町村区郡]+[都道府県市町村区郡]", w):
+                    out.add(part); out.add(part[:-1])
+    return {w for w in out if len(w) >= 2}
+
+
+def person_words():
+    import csv
+    R = HERE.parents[2] / "dict/names"; out = set()
+    for f, col in (("surnames_top200.csv", "surname"), ("given_names_by_generation.csv", "name")):
+        out |= {r[col] for r in csv.DictReader(open(R / f, encoding="utf-8"))}
+    for f in ("surnames.koedict", "given_names.koedict"):
+        out |= {l.split()[0] for l in open(R / f, encoding="utf-8") if l.strip() and not l.startswith("#")}
+    return out
+
+
+def ojt_proper(text):
+    """pyopenjtalk 辞書で固有名詞 (人名・地域・組織) と判定された語の文字範囲 (学習データの除外用。推論では使わない)。"""
+    import pyopenjtalk
+    spans, i = [], 0
+    for f in pyopenjtalk.run_frontend(text):
+        n = len(f["string"])
+        if f["pos_group1"] == "固有名詞" or (f["pos_group1"] == "接尾" and f["pos_group2"] in ("人名", "地域")):
+            spans.append((i, i + n))
+        i += n
+    return spans
+
+
 comp_hits = []
 if a.compounds:
     import re
     allrows = [json.loads(l) for l in open(a.data, encoding="utf-8")]; random.Random(2).shuffle(allrows)
-    names = {n for l in open("data/names/names_train.jsonl", encoding="utf-8") for n in json.loads(l).get("names", [])}
+    names = {n for l in open("data/names/names_train.jsonl", encoding="utf-8") for n in json.loads(l).get("names", [])} | person_words()
+    geo = geo_words(a.geo); rej = Counter()
     bias = {c: nc[c] / (gc[c] + 20) for c in top}
     nsub = {n[i:j] for n in names for i in range(len(n)) for j in range(i + 2, len(n) + 1)}  # 人名の 2 文字以上の部分列
     hon = {m.group(1) for r in allrows[: a.compound_pool] for m in re.finditer(r"([一-鿿々]{2,4})(?:さん|君|くん|ちゃん|氏|様|殿|先生)", r["text"])}
     cnt = Counter(w for r in allrows[: a.compound_pool] for w in re.findall(r"[一-鿿々]{2,4}", r["text"]))
-    cands = {}  # 熟語 -> 文
+    cands, bad = {}, set()  # 熟語 -> 文 / 一度でも固有名詞と判定された語
     for r in allrows[: a.compound_pool]:
         if r.get("names") or r["text"] in seen:
             continue
         for w in re.findall(r"[一-鿿々]{2,4}", r["text"]):
             # 普通の語だけ: 人名 (の部分) を含まない・人名に含まれない・2 回以上出る
             if cnt[w] < 2 or w in nsub or any(x in w for x in nsub if len(x) <= len(w)) or not any(c in bias for c in w) \
-                    or all(c in bias for c in w) or w in hon or len(w) > 3 or w[-1] in "君氏様殿郎":
+                    or all(c in bias for c in w) or w in hon or len(w) > 3 or w[-1] in "君氏様殿":
+                continue
+            why = "geo" if w in geo or any(x in geo for x in (w[:-1], w[1:]) if len(x) >= 2) else \
+                "suffix" if w[-1] in GIVEN_SUF or w[-1] in GEO_SUF else None
+            if not why and not a.no_ojt_filter:
+                st, sp = r["text"].find(w), ojt_proper(r["text"])
+                if any(b0 < st + len(w) and st < b1 for b0, b1 in sp):
+                    why = "ojt_proper"
+                elif sp:  # 文中に別の固有名詞があれば、その文は負例に使わない (語は除外しない)
+                    rej["sent_proper"] += 1
+                    continue
+            if why:
+                rej[why] += 1; bad.add(w)
+                continue
+            if w in bad:
                 continue
             l = cands.setdefault(w, [])
             if len(l) < a.per_compound:
                 l.append(r)
     by = {}  # 漢字ごとに熟語を並べ、人名に偏る漢字から順に 1 語ずつ取る (多様性)
+    cands = {w: v for w, v in cands.items() if w not in bad}
+    print(f"  除外 {dict(rej)}")
     for w in sorted(cands, key=lambda w: -cnt[w]):
         by.setdefault(max((c for c in w if c in bias), key=bias.get), []).append(w)
     order, k = sorted(by, key=lambda c: -bias[c]), 0
