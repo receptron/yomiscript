@@ -19,6 +19,9 @@ ap.add_argument("--ckpt", default="ckpt/tiny")
 ap.add_argument("--dtype", default=None, choices=["float32", "bfloat16", "float16"])
 ap.add_argument("--pkm", action="append", default=None, help="差し替える学習型メモリ *.mem.safetensors (複数可/カンマ区切り, 積み重ね)")
 ap.add_argument("--out", type=Path)
+ap.add_argument("--general-eval", type=int, default=0, metavar="N",
+                help="学習に使っていない一般文 (eval/data/general_heldout.jsonl, pyopenjtalk 蒸留の正解) の先頭 N 文も評価 (0=しない)")
+ap.add_argument("--general-preds", type=Path, help="一般文の全予測を jsonl で保存")
 ap.add_argument("--preds", type=Path, help="JSUT の全予測を jsonl で保存 (誤り分析用)")
 a = ap.parse_args()
 model, sv, tv, meta = yomi.load(a.ckpt, getattr(mx, a.dtype) if a.dtype else None, memory=a.pkm)
@@ -48,6 +51,17 @@ for (hid, cat, text, gold, *_), p in zip(rows, hp):
     gs = [norm_kana(x) for x in gold.split("|")]
     e = min(edit_distance(x, norm_kana(p)) for x in gs)
     c = cats.setdefault(cat, {"n": 0, "ok": 0}); c["n"] += 1; c["ok"] += e == 0
+gen = None
+if a.general_eval:
+    gr = [json.loads(l) for l in open(REPO / "eval/data/general_heldout.jsonl", encoding="utf-8")][: a.general_eval]
+    gp = yomi.predict(model, sv, tv, [r["text"] for r in gr]); ce = cl = ok = okl = 0
+    gf = open(a.general_preds, "w", encoding="utf-8") if a.general_preds else None
+    for r, p in zip(gr, gp):
+        g, q = norm_kana(r["kana_prosody"]), norm_kana(p)
+        e = edit_distance(g, q); ce += e; cl += len(g); ok += e == 0; okl += loose_kana(g) == loose_kana(q)
+        if gf:
+            gf.write(json.dumps({"id": r["id"], "text": r["text"], "gold": g, "pred": q}, ensure_ascii=False) + "\n")
+    gen = {"n_sent": len(gr), "kana_cer": ce / max(cl, 1), "sent_acc": ok / len(gr), "sent_acc_loose": okl / len(gr)}
 n = len(jsut)
 out = {"ckpt": str(a.ckpt), "step": meta["step"], "params_M": yomi.n_params(model) / 1e6,
        "jsut": {"n_sent": n, "kana_cer": agg["ce"] / agg["cl"], "sent_acc": agg["ok"] / n,
@@ -57,6 +71,7 @@ out = {"ckpt": str(a.ckpt), "step": meta["step"], "params_M": yomi.n_params(mode
                 "accent_phrase_acc": agg["ap_ok"] / max(agg["ap_tot"], 1)},
        "hard": {"n_sent": len(rows), "sent_acc": sum(c["ok"] for c in cats.values()) / len(rows),
                 "by_category": {k: v["ok"] / v["n"] for k, v in cats.items()}},
+       **({"general": gen} if gen else {}),
        "eval_seconds": time.time() - t0, "errors_sample": errs[:10]}
 print(json.dumps(out, ensure_ascii=False, indent=1))
 if a.out:
