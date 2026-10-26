@@ -219,3 +219,14 @@ box (tiny_box 凍結, 600 step, eval_names --limit 200, %):
 | names (lr 1e-2) | 19.1 | 14.6 | 14.3 | 69.0 | 57.5 |
 | names (enc.3) | 18.5 | 16.1 | 17.1 | 70.5 | 58.5 |
 | names (default から継続) | 18.7 | 16.4 | 12.9 | **72.0** | 59.5 |
+
+### 積み重ねメモリ (memory2, box 凍結 tiny_box, names --limit 200)
+default (enc.2) を凍結し、names 用 memory2 (enc.3) だけを学習 (`--train-mem mem2`, names×2+一般, 600 step)。
+`--pkm a.mem.safetensors,b.mem.safetensors` で重ねて読み込む。
+
+| メモリ | JSUT sent | JSUT CER | hard sent | names seen | names unseen |
+|---|---|---|---|---|---|
+| default のみ | 18.9 | 17.3 | 17.1 | 51.0 | 46.5 |
+| names 単体 (default から継続) | 16.4 | 18.7 | 12.9 | 72.0 | 59.5 |
+| default + names (ゲートなし) | 15.4 | 17.7 | 11.4 | 67.5 | 54.5 |
+| default + names (cond_gate) | 18.2 | 17.7 | 15.7 | 65.0 | 56.5 |

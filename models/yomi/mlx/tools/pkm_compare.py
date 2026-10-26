@@ -1,7 +1,9 @@
 """学習型メモリ (PKM) の差し替え比較。models/yomi/mlx から実行:
   python tools/pkm_compare.py [--ckpt ckpt/mold_tiny] [--mem name=path ...] [--limit N] [--skip-jsut] [--skip-names]
 各メモリについて eval_names.py と evaluate.py を --pkm 付きで実行し、出力全体を eval_out/ に保存して表にまとめる。
-存在しないメモリは飛ばす。--mem を指定すると既定 (default/names/general) を同名で上書き・追加する。"""
+存在しないメモリは飛ばす。--mem を指定すると既定 (default/names/general) を同名で上書き・追加する。
+--mem name=a.mem.safetensors,b.mem.safetensors で積み重ね、末尾に @ckpt/X を付けるとその項目だけ別の ckpt を使う
+(例: --mem default=ckpt/mfz_default.mem.safetensors@ckpt/mfz_general --mem stacked=ckpt/mfz_default.mem.safetensors,ckpt/names2.mem.safetensors@ckpt/mfz_stack)"""
 import argparse, json, re, subprocess, sys
 from pathlib import Path
 
@@ -75,16 +77,18 @@ def main():
     out = HERE / a.out_dir; out.mkdir(exist_ok=True)
     tag = Path(a.ckpt).name
     rows = []
-    for name, path in mems.items():
-        if not (HERE / path).exists() and not Path(path).exists():
-            print(f"skip {name}: {path} がありません", file=sys.stderr); continue
-        print(f"== {name}: {path}", file=sys.stderr, flush=True)
+    for name, spec in mems.items():
+        path, _, ck = spec.partition("@"); ck = ck or a.ckpt
+        miss = [p for p in path.split(",") if p and not (HERE / p).exists() and not Path(p).exists()]
+        if miss:
+            print(f"skip {name}: {', '.join(miss)} がありません", file=sys.stderr); continue
+        print(f"== {name}: {path} (ckpt {ck})", file=sys.stderr, flush=True)
         r = {"memory": name}
         if not a.skip_names:
-            cmd = [sys.executable, "eval_names.py", "--ckpt", a.ckpt, "--pkm", path] + (["--limit", str(a.limit)] if a.limit else [])
+            cmd = [sys.executable, "eval_names.py", "--ckpt", ck, "--pkm", path] + (["--limit", str(a.limit)] if a.limit else [])
             r["names"] = parse_names(run(cmd, out / f"{tag}.{name}.eval_names.log"))
         if not a.skip_jsut:
-            r["jsut"] = last_json_object(run([sys.executable, "evaluate.py", "--ckpt", a.ckpt, "--pkm", path],
+            r["jsut"] = last_json_object(run([sys.executable, "evaluate.py", "--ckpt", ck, "--pkm", path],
                                              out / f"{tag}.{name}.evaluate.log")) or {}
         rows.append(r)
     (out / f"{tag}.compare.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")

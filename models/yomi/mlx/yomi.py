@@ -60,12 +60,14 @@ class FF(nn.Module):
 
 
 class EncLayer(nn.Module):
-    def __init__(self, d, h, f, memory=None):
+    def __init__(self, d, h, f, memory=None, memory2=None):
         super().__init__()
         self.n1, self.n2, self.att, self.ff = nn.LayerNorm(d), nn.LayerNorm(d), MHA(d, h), FF(d, f)
+        from mold import ProductKeyMemory
         if memory:  # MoLD: 学習型 product-key メモリ (値テーブルは差し替え可能)
-            from mold import ProductKeyMemory
             self.mem = ProductKeyMemory(d, **{k: v for k, v in memory.items() if k != "layers"})
+        if memory2:  # 積み重ね用の 2 つ目のメモリ (例: 人名)。mem の後に足す。独自のキー・値・ゲート
+            self.mem2 = ProductKeyMemory(d, **{k: v for k, v in memory2.items() if k != "layers"})
 
     def __call__(self, x, mask):
         h = self.n1(x)
@@ -73,6 +75,8 @@ class EncLayer(nn.Module):
         x = x + self.ff(self.n2(x))
         if "mem" in self:
             x = x + self.mem(x)
+        if "mem2" in self:
+            x = x + self.mem2(x)
         return x
 
 
@@ -90,12 +94,14 @@ class DecLayer(nn.Module):
 
 
 class Yomi(nn.Module):
-    def __init__(self, n_src, n_tgt, d_model=256, n_heads=4, d_ff=1024, enc_layers=4, dec_layers=4, max_len=256, memory=None, **_):
+    def __init__(self, n_src, n_tgt, d_model=256, n_heads=4, d_ff=1024, enc_layers=4, dec_layers=4, max_len=256, memory=None, memory2=None, **_):
         super().__init__()
         self.src_emb, self.tgt_emb = nn.Embedding(n_src, d_model), nn.Embedding(n_tgt, d_model)
         self.pos = nn.Embedding(max_len, d_model)
         ml = set((memory or {}).get("layers", []))
-        self.enc = [EncLayer(d_model, n_heads, d_ff, memory if i in ml else None) for i in range(enc_layers)]
+        ml2 = set((memory2 or {}).get("layers", []))
+        self.enc = [EncLayer(d_model, n_heads, d_ff, memory if i in ml else None, memory2 if i in ml2 else None)
+                    for i in range(enc_layers)]
         self.dec = [DecLayer(d_model, n_heads, d_ff) for _ in range(dec_layers)]
         self.enc_norm, self.dec_norm = nn.LayerNorm(d_model), nn.LayerNorm(d_model)
         self.out = nn.Linear(d_model, n_tgt, bias=False)
@@ -251,9 +257,10 @@ def load(path, dtype=None, memory=None):
     if any(not k.endswith(".mem.gate") for k in miss) or any(k not in own for k in w):
         model.load_weights(list(w.items()))  # 通常のエラーを出す
     model.load_weights(list(w.items()), strict=False)  # 旧形式 (ゲートなし・値0) のメモリ層はゲート初期値のまま
-    if memory:
+    if memory:  # 1 つのパス、カンマ区切り、またはリスト (積み重ね: 各ファイルは自分のグループのキーだけを持つ)
         import mold
-        mold.load_memory(model, memory)
+        for p in mold.split_pkm(memory):
+            mold.load_memory(model, p)
     if dtype is not None:
         model.set_dtype(dtype)
     model.eval()

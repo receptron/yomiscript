@@ -112,3 +112,21 @@ def test_pkm_cosine_routing_not_collapsed():
     assert float(mx.abs(gs["slots"]).sum()) > 0  # 値 0 でもゲート 1 なので値に勾配が流れる
     assert float(mx.abs(g["subkeys"]).sum()) > 0 and float(mx.abs(g["query"]["weight"]).sum()) > 0
     assert "_st" not in dict(__import__("mlx.utils", fromlist=["x"]).tree_flatten(m.parameters()))
+
+
+def test_stacked_memories(tmp_path):
+    cfg = dict(d_model=32, n_heads=2, d_ff=64, enc_layers=2, dec_layers=1, max_len=64)
+    m = {"layers": [1], "n_keys": 8, "k_dim": 8, "topk": 4}
+    mm = yomi.Yomi(20, 10, **cfg, memory=m, memory2=dict(m, cond_gate=True))
+    assert mm.enc[1].mem2.cgate is not None
+    mm.enc[1].mem.slots = mx.ones_like(mm.enc[1].mem.slots)
+    mm.enc[1].mem2.slots = 2 * mx.ones_like(mm.enc[1].mem2.slots)
+    a, b = tmp_path / "a.mem.safetensors", tmp_path / "b.mem.safetensors"
+    mold.save_memory(mm, a, group="mem"); mold.save_memory(mm, b, group="mem2")
+    for x in ("mem", "mem2"):
+        setattr(getattr(mm.enc[1], x), "slots", mx.zeros_like(mm.enc[1].mem.slots))
+    for p in mold.split_pkm([f"{a},{b}"]):
+        mold.load_memory(mm, p)
+    assert mm.enc[1].mem.slots.max().item() == 1.0 and mm.enc[1].mem2.slots.max().item() == 2.0
+    assert len(mold.memories(mm)) == 2 and mold.is_mem_key("enc.1.mem2.slots", "mem2")
+    assert not mold.is_mem_key("enc.1.mem2.slots", "mem")

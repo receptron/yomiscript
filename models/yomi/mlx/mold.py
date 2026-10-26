@@ -338,7 +338,8 @@ class ProductKeyMemory(nn.Module):
     """Lample+ 2019 の product-key memory。n_keys^2 個のスロット、トークンごとに top-k を読む。
     values は初期値 0 なので、既存チェックポイントに足しても出力は変わらない (後方互換)。"""
 
-    def __init__(self, d, n_keys=64, k_dim=64, topk=8, d_value=None, temp=15.0, gate_init=1.0, balance=0.01):
+    def __init__(self, d, n_keys=64, k_dim=64, topk=8, d_value=None, temp=15.0, gate_init=1.0, balance=0.01,
+                 cond_gate=False, cond_bias=0.0):
         super().__init__()
         self.n_keys, self.topk, self.k_dim = n_keys, topk, k_dim
         self.norm = nn.LayerNorm(d)
@@ -354,6 +355,9 @@ class ProductKeyMemory(nn.Module):
         self.balance = balance  # 負荷分散の補助 loss の係数 (train.train_loss_fn が aux を足す)
         # aux は配列なのでモジュール属性にするとパラメータ扱いになる。ただの入れ物に入れる
         self._st = __import__('types').SimpleNamespace(aux=None)
+        if cond_gate:  # 入力に応じたゲート sigmoid(w·LN(x)+b): 一般文では黙る (積み重ねた人名メモリ用)
+            self.cgate = nn.Linear(d, 1)
+            self.cgate.weight = mx.zeros_like(self.cgate.weight); self.cgate.bias = mx.full((1,), cond_bias)
 
     probe = None  # 診断用: list を入れると (重み, スロット番号, 出力, 入力, スコア) を貯める
 
@@ -384,6 +388,8 @@ class ProductKeyMemory(nn.Module):
         # 残差の大きさ (RMS) に合わせて出力を拡大する。残差のノルムが ~150 あるため、生の値では効かない
         rms = mx.stop_gradient(mx.sqrt(mx.mean(x.astype(mx.float32) ** 2, axis=-1, keepdims=True))).astype(x.dtype)
         out = self.gate * rms * out
+        if "cgate" in self:
+            out = mx.sigmoid(self.cgate(self.norm(x))) * out
         if ProductKeyMemory.probe is not None:
             ProductKeyMemory.probe.append((w, idx, out, x, sc))
         return out
@@ -392,20 +398,48 @@ class ProductKeyMemory(nn.Module):
 def memory_aux_loss(model):
     """メモリ層の負荷分散 loss (係数込み) の合計。メモリ層がなければ 0。"""
     tot = 0.0
-    for l in getattr(model, "enc", []):
-        if "mem" in l and l.mem._st.aux is not None and l.mem.balance:
-            tot = tot + l.mem.balance * l.mem._st.aux
+    for m in memories(model):
+        if m._st.aux is not None and m.balance:
+            tot = tot + m.balance * m._st.aux
     return tot
 
 
-def memory_params(model):
-    """差し替え対象 (メモリ層) のパラメータだけを平坦な dict で返す。"""
+MEM_GROUPS = ("mem", "mem2")
+_MEM_RE = re.compile(r"(^|\.)(mem|mem2)\.")
+
+
+def is_mem_key(k, group=None):
+    m = _MEM_RE.search(k)
+    return bool(m) and (group is None or m.group(2) == group)
+
+
+def memories(model, group=None):
+    """エンコーダ内のメモリ層を順番 (層順, 各層で mem→mem2) に返す。"""
+    out = []
+    for l in getattr(model, "enc", []):
+        for g in MEM_GROUPS:
+            if g in l and (group is None or g == group):
+                out.append(l[g])
+    return out
+
+
+def split_pkm(spec):
+    """--pkm の指定 (str / カンマ区切り / list, 入れ子可) を平坦なパスのリストにする。"""
+    if not spec:
+        return []
+    if isinstance(spec, (list, tuple)):
+        return [p for s in spec for p in split_pkm(s)]
+    return [p for p in str(spec).split(",") if p]
+
+
+def memory_params(model, group=None):
+    """差し替え対象 (メモリ層) のパラメータだけを平坦な dict で返す。group: "mem" / "mem2" / None (全部)。"""
     from mlx.utils import tree_flatten
-    return {k: v for k, v in tree_flatten(model.parameters()) if ".mem." in f".{k}." or k.startswith("mem")}
+    return {k: v for k, v in tree_flatten(model.parameters()) if is_mem_key(k, group)}
 
 
-def save_memory(model, path, meta=None):
-    p = memory_params(model)
+def save_memory(model, path, meta=None, group=None):
+    p = memory_params(model, group)
     if not p:
         raise ValueError("このモデルにはメモリ層がありません (config.model.memory を設定)")
     mx.save_safetensors(str(path), p, metadata={"mold": json.dumps(meta or {}, ensure_ascii=False)})

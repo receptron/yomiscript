@@ -6,7 +6,7 @@ import mlx.core as mx
 import mlx.nn as nn
 import mlx.optimizers as optim
 
-import yomi
+import yomi, mold
 from yomi import BOS, EOS, PAD, Vocab, Yomi
 
 HERE = Path(__file__).resolve().parent
@@ -67,7 +67,6 @@ def loss_fn(model, S, Ti, To, ls):
 
 def train_loss_fn(model, S, Ti, To, ls):
     """学習用: CE + メモリ層の負荷分散 aux loss。"""
-    import mold
     return loss_fn(model, S, Ti, To, ls) + mold.memory_aux_loss(model)
 
 
@@ -95,6 +94,9 @@ def main():
     ap.add_argument("--init", type=Path, help="MoLD: 既存チェックポイント (例 ckpt/tiny_aug) の共有重みから始める。メモリ層は0初期化")
     ap.add_argument("--memory-only", action="store_true", help="MoLD: 共有重みを凍結し、メモリ層だけ学習 (ドメイン/方言メモリ作り)")
     ap.add_argument("--save-memory", type=Path, help="終了時にメモリ層だけを *.mem.safetensors に保存")
+    ap.add_argument("--pkm", action="append", default=[], help="--init の後に読み込むメモリ (複数可/カンマ区切り, 積み重ね)")
+    ap.add_argument("--train-mem", choices=["all", "mem", "mem2"], default="all",
+                    help="--memory-only で学習するメモリ群。mem2 なら mem (一般) は凍結。--save-memory もこの群だけ保存")
     ap.add_argument("--mem-aug", type=Path, nargs="*", default=None,
                     help="メモリを意識した学習に使う .koedict (省略時 dict/names の姓・名)。config の train.mem_aug でも指定可")
     ap.add_argument("--mem-aug-names", type=float, help="人名文で入力をカナ置換する割合 (既定 0.4)")
@@ -139,14 +141,15 @@ def main():
                 and k[:-len("slots")] + "gate" not in w]
         if dead:  # 旧版 (値 0 初期化・ゲートなし) のメモリは学習できないので、新しい初期化を使う
             print(f"旧メモリ層 {dead} は値0・ゲートなし (旧形式) のため読み込まず、新しい初期化を使う")
-            w = {k: v for k, v in w.items() if ".mem." not in f".{k}."}
+            w = {k: v for k, v in w.items() if not mold.is_mem_key(k)}
         model.load_weights([(k, v) for k, v in w.items() if k in own], strict=False)
         print(f"init from {a.init}: {len(w)} tensors, 新規 (メモリ層) {len(miss)}")
+    for p in mold.split_pkm(a.pkm):
+        mold.load_memory(model, p); print(f"memory <- {p}")
     if a.memory_only:
         model.freeze()
-        for l in model.enc:
-            if "mem" in l:
-                l.mem.unfreeze()
+        for m in mold.memories(model, None if a.train_mem == "all" else a.train_mem):
+            m.unfreeze()
         print(f"memory-only: 学習対象 {sum(v.size for _, v in __import__('mlx.utils', fromlist=['x']).tree_flatten(model.trainable_parameters()))/1e6:.2f}M")
     model.set_dtype(DT[a.dtype])
     print(f"params: {yomi.n_params(model)/1e6:.2f}M  train {len(train)} dev {len(dev)}  dtype {a.dtype}")
@@ -154,11 +157,11 @@ def main():
     sched = lambda s: tc["lr"] * mx.minimum((s + 1) / wu, 0.5 * (1 + mx.cos(math.pi * mx.minimum(s / total, 1.0))))
     opt = optim.AdamW(learning_rate=sched, weight_decay=tc["weight_decay"])
     mm = tc.get("mem_lr_mult", 10.0)
-    if cfg["model"].get("memory") and mm != 1.0:
+    if (cfg["model"].get("memory") or cfg["model"].get("memory2")) and mm != 1.0:
         # メモリ層は1ステップで触られるスロットが一部だけ (疎) なので学習率を上げ、値テーブルには重み減衰をかけない
         msched = lambda s: mm * sched(s)
         opt = optim.MultiOptimizer([optim.AdamW(learning_rate=msched, weight_decay=0.0), opt],
-                                   [lambda path, w: ".mem." in f".{path}."])
+                                   [lambda path, w: mold.is_mem_key(path)])
         print(f"メモリ層の学習率 x{mm}")
     if a.resume and (a.out / "optimizer.safetensors").exists():
         from mlx.utils import tree_unflatten
@@ -199,8 +202,8 @@ def main():
             yomi.save(a.out, model, cfg, voc, step, opt)
     json.dump(log, open(a.out / "train_log.json", "w"), indent=1)
     if a.save_memory:
-        import mold
-        mold.save_memory(model, a.save_memory, {"from": str(a.out), "step": total}); print(f"memory -> {a.save_memory}")
+        mold.save_memory(model, a.save_memory, {"from": str(a.out), "step": total},
+                         None if a.train_mem == "all" else a.train_mem); print(f"memory -> {a.save_memory}")
     print(f"done {total} steps in {time.time()-t0:.1f}s -> {a.out}")
 
 

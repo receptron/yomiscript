@@ -8,7 +8,7 @@ from mlx.utils import tree_flatten
 import yomi, mold, train
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--ckpt", required=True); ap.add_argument("--pkm")
+ap.add_argument("--ckpt", required=True); ap.add_argument("--pkm", action="append")
 ap.add_argument("--data", default="data/names/names_train.jsonl"); ap.add_argument("--n", type=int, default=256)
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt, memory=a.pkm); model.train()
@@ -19,7 +19,7 @@ mold.ProductKeyMemory.probe = []
 loss, g = nn.value_and_grad(model, train.loss_fn)(model, S, Ti, To, 0.0)
 mx.eval(loss, g)
 res = {"loss": float(loss), "layers": []}
-mems = [l.mem for l in model.enc if "mem" in l]
+mems = mold.memories(model)
 for m, (w, idx, out, x, sc) in zip(mems, mold.ProductKeyMemory.probe):
     v = valid[..., None]
     ids = [i for i, ok in zip(idx.flatten().tolist(), mx.broadcast_to(v, idx.shape).flatten().tolist()) if ok]
@@ -36,9 +36,10 @@ for m, (w, idx, out, x, sc) in zip(mems, mold.ProductKeyMemory.probe):
                           "mem_out_norm": on, "resid_norm": rn, "ratio": on / max(rn, 1e-9),
                           "gate": float(m.gate.item()) if "gate" in m else None,
                           "slots_absmean": float(mx.abs(m.slots).mean()),
+                          "cond_gate_mean": None,
                           "temp": getattr(m, "temp", None),
                           "balance_aux": float(m._st.aux) if getattr(m, "_st", None) is not None and m._st.aux is not None else None})
 mold.ProductKeyMemory.probe = None
-res["grad_norm"] = {k: float(mx.linalg.norm(v.reshape(-1))) for k, v in tree_flatten(g) if ".mem." in f".{k}."}
-res["grad_norm_shared_total"] = float(sum(float(mx.sum(v * v)) for k, v in tree_flatten(g) if ".mem." not in f".{k}.") ** 0.5)
+res["grad_norm"] = {k: float(mx.linalg.norm(v.reshape(-1))) for k, v in tree_flatten(g) if mold.is_mem_key(k)}
+res["grad_norm_shared_total"] = float(sum(float(mx.sum(v * v)) for k, v in tree_flatten(g) if not mold.is_mem_key(k)) ** 0.5)
 print(json.dumps(res, ensure_ascii=False, indent=1))
