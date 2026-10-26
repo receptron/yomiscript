@@ -12,7 +12,8 @@
    ],
    "n_keys": 128,
    "k_dim": 64,
-   "topk": 8
+   "topk": 8,
+   "gate_floor": 0.3
   },
   "memory2": {
    "layers": [
@@ -20,7 +21,8 @@
    ],
    "n_keys": 128,
    "k_dim": 64,
-   "topk": 8
+   "topk": 8,
+   "gate_floor": 0.3
   }
  },
  "train": {

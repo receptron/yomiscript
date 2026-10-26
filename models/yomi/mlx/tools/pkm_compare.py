@@ -3,7 +3,7 @@
 各メモリについて eval_names.py と evaluate.py を --pkm 付きで実行し、出力全体を eval_out/ に保存して表にまとめる。
 存在しないメモリは飛ばす。--mem を指定すると既定 (default/names/general) を同名で上書き・追加する。
 --mem name=a.mem.safetensors,b.mem.safetensors で積み重ね、末尾に @ckpt/X を付けるとその項目だけ別の ckpt を使う
-(例: --mem default=ckpt/mfz_default.mem.safetensors@ckpt/mfz_general --mem stacked=ckpt/mfz_default.mem.safetensors,ckpt/names2.mem.safetensors@ckpt/mfz_stack)"""
+(末尾に #cg0.5 で推論時ゲート閾値。例: --mem default=ckpt/mfz_default.mem.safetensors@ckpt/mfz_general --mem stacked=ckpt/mfz_default.mem.safetensors,ckpt/names2.mem.safetensors@ckpt/mfz_stack)"""
 import argparse, json, re, subprocess, sys
 from pathlib import Path
 
@@ -46,8 +46,12 @@ def pick(d, *path):
     return d[2] if isinstance(d, list) and len(d) == 3 else d  # p_r_f1 → f1
 
 
+ENV = {}
+
+
 def run(cmd, log):
-    p = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True)
+    import os
+    p = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True, env={**os.environ, **ENV})
     log.write_text(f"$ {' '.join(cmd)}\n# exit {p.returncode}\n{p.stdout}\n--- stderr ---\n{p.stderr}", encoding="utf-8")
     if p.returncode:
         print(f"  失敗 (exit {p.returncode}): {log}", file=sys.stderr)
@@ -78,6 +82,8 @@ def main():
     tag = Path(a.ckpt).name
     rows = []
     for name, spec in mems.items():
+        spec, _, cg = spec.partition("#cg")  # 末尾 #cg0.5 = 推論時に条件付きゲートを 0.5 で切る (MOLD_CG_THRESH)
+        ENV.clear(); ENV.update({"MOLD_CG_THRESH": cg} if cg else {})
         path, _, ck = spec.partition("@"); ck = ck or a.ckpt
         miss = [p for p in path.split(",") if p and not (HERE / p).exists() and not Path(p).exists()]
         if miss:

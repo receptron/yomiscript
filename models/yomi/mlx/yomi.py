@@ -261,6 +261,12 @@ def load(path, dtype=None, memory=None):
         import mold
         for p in mold.split_pkm(memory):
             mold.load_memory(model, p)
+    import os
+    if os.environ.get("MOLD_CG_THRESH"):  # 推論時だけ条件付きゲートを閾値で切る (例 0.5)。config の cg_thresh を上書き
+        import mold
+        for m in mold.memories(model):
+            if "cgate" in m:
+                m.cg_thresh = float(os.environ["MOLD_CG_THRESH"])
     if dtype is not None:
         model.set_dtype(dtype)
     model.eval()

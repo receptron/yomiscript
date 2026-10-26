@@ -171,3 +171,14 @@ def test_stacked_load_keeps_default_memory(tmp_path):
         assert abs(float(mo.enc[1].mem.gate.item()) - 1.7) < 1e-6
         assert mx.allclose(mo.enc[1].mem.slots, mx.full(mo.enc[1].mem.slots.shape, 0.3)).item()
         assert mx.allclose(mo.enc[1].mem2.slots, mx.full(mo.enc[1].mem2.slots.shape, 0.5)).item()
+
+
+def test_gate_floor_and_cg_thresh():
+    m = mold.ProductKeyMemory(16, n_keys=4, k_dim=8, topk=2, gate_floor=0.3, cond_gate=True, cg_thresh=0.6)
+    m.slots = mx.ones_like(m.slots); m.gate = mx.array([0.0])
+    x = mx.random.normal((1, 3, 16)); m.eval()
+    assert float(mx.abs(m(x)).sum()) == 0.0          # eval: cg=0.5 < 0.6 → 0
+    m.train(); assert float(mx.abs(m(x)).sum()) > 0   # 学習中: ゲート下限 0.3 で出力あり
+    def f(gt):
+        m.gate = gt; return m(x).sum()
+    assert float(mx.abs(mx.grad(f)(mx.array([0.0]))).sum()) > 0  # straight-through: ゲートへ勾配が流れる

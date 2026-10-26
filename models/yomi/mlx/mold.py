@@ -339,8 +339,13 @@ class ProductKeyMemory(nn.Module):
     values は初期値 0 なので、既存チェックポイントに足しても出力は変わらない (後方互換)。"""
 
     def __init__(self, d, n_keys=64, k_dim=64, topk=8, d_value=None, temp=15.0, gate_init=1.0, balance=0.01,
-                 cond_gate=False, cond_bias=0.0):
+                 cond_gate=False, cond_bias=0.0, gate_floor=0.0, cg_thresh=0.0):
         super().__init__()
+        # gate_floor: 出力に使うゲートの下限 (straight-through: 勾配はそのままゲートへ流れるので回復できる)。
+        #   強い本体 (tiny_aug) を凍結してメモリだけ学習すると、初期の値の雑音でゲートが 0 へ落ち、値の勾配も gate 倍で消えて
+        #   二度と戻らない (Mac の mfz_default: gate 0.0003)。下限があれば値は学習を続ける
+        # cg_thresh: 推論時 (eval) に条件付きゲートが閾値未満のトークンでは出力を 0 にする (一般文への漏れを切る)
+        self.gate_floor, self.cg_thresh = gate_floor, cg_thresh
         self.n_keys, self.topk, self.k_dim = n_keys, topk, k_dim
         self.norm = nn.LayerNorm(d)
         self.query = nn.Linear(d, 2 * k_dim, bias=False)
@@ -389,10 +394,15 @@ class ProductKeyMemory(nn.Module):
         out = (w[..., None] * vals).sum(axis=2)
         # 残差の大きさ (RMS) に合わせて出力を拡大する。残差のノルムが ~150 あるため、生の値では効かない
         rms = mx.stop_gradient(mx.sqrt(mx.mean(x.astype(mx.float32) ** 2, axis=-1, keepdims=True))).astype(x.dtype)
-        out = self.gate * rms * out
+        g0 = self.gate
+        if self.gate_floor:
+            g0 = g0 + mx.stop_gradient(mx.maximum(g0, self.gate_floor) - g0)
+        out = g0 * rms * out
         if "cgate" in self:
             g = mx.sigmoid(self.cgate(self.norm(x)).astype(mx.float32))
             self._st.cg = g[..., 0]  # (B,L) 条件付きゲート値 (漏れ対策の loss と診断用)
+            if self.cg_thresh and not self.training:
+                g = g * (g >= self.cg_thresh)
             out = g.astype(out.dtype) * out
         if ProductKeyMemory.probe is not None:
             ProductKeyMemory.probe.append((w, idx, out, x, sc))

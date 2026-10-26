@@ -260,7 +260,9 @@ def main():
             mx.clear_cache()
         if step % tc["eval_every"] == 0 or step == total:
             model.eval(); dl = dev_loss(model, dev, sv, tv, 0.0); model.train()
-            print(f"  dev loss {dl:.4f}", flush=True); log.append({"step": step, "dev_loss": dl, "elapsed_s": time.time() - t0})
+            gs = " ".join(f"{k.split('.')[-2]}@{k.split('.')[1]} {float(v.reshape(-1)[0]):.3f}" for k, v in
+                          __import__("mlx.utils", fromlist=["x"]).tree_flatten(model.parameters()) if k.endswith(".gate") and mold.is_mem_key(k))
+            print(f"  dev loss {dl:.4f}" + (f"  gate {gs}" if gs else ""), flush=True); log.append({"step": step, "dev_loss": dl, "elapsed_s": time.time() - t0})
         if step % tc["save_every"] == 0 or step == total:
             yomi.save(a.out, model, cfg, voc, step, opt)
     json.dump(log, open(a.out / "train_log.json", "w"), indent=1)
