@@ -146,3 +146,28 @@ def test_leak_losses():
     assert tot > base  # KL は 0 (mem2 値 0)、ゲート項 (0.5) が乗る
     assert not mm.enc[1].mem2._st.off
     train.LEAK.update(kl=0.0, gate_l1=0.0, gate_sup=0.0)
+
+
+def test_stacked_load_keeps_default_memory(tmp_path):
+    """回帰: 積み重ね読み込み (ckpt の値とは別の既定メモリ + mem2) で mem0 のゲート・値がファイルと一致する。"""
+    import json as _j
+    from mlx.utils import tree_flatten
+    m = {"layers": [1], "n_keys": 8, "k_dim": 8, "topk": 4}
+    cfg = dict(d_model=32, n_heads=2, d_ff=64, enc_layers=2, dec_layers=1, max_len=64, memory=m, memory2=dict(m, layers=[1], cond_gate=True))
+    mm = yomi.Yomi(20, 10, **cfg)
+    mm.enc[1].mem.slots = mx.full(mm.enc[1].mem.slots.shape, 0.3); mm.enc[1].mem.gate = mx.array([1.7])
+    a = tmp_path / "def.mem.safetensors"; mold.save_memory(mm, a, group="mem")
+    mm.enc[1].mem2.slots = mx.full(mm.enc[1].mem2.slots.shape, 0.5)
+    b = tmp_path / "n.mem2.safetensors"; mold.save_memory(mm, b, group="mem2")
+    assert all(".mem2." in k for k in mx.load(str(b)))      # mem2 ファイルに mem0 は入らない
+    # ckpt 側は mem0 がオフ (ゲート0・値0)
+    mm.enc[1].mem.slots = mx.zeros_like(mm.enc[1].mem.slots); mm.enc[1].mem.gate = mx.array([0.0])
+    ck = tmp_path / "ck"; ck.mkdir()
+    mx.save_safetensors(str(ck / "model.safetensors"), dict(tree_flatten(mm.parameters())))
+    voc = {"src": [chr(65 + i) for i in range(16)], "tgt": [chr(97 + i) for i in range(6)]}
+    (ck / "meta.json").write_text(_j.dumps({"vocab": voc, "config": {"model": cfg}}))
+    for spec in (f"{a},{b}", [str(a), str(b)], f"{b},{a}"):
+        mo, *_ = yomi.load(ck, memory=spec)
+        assert abs(float(mo.enc[1].mem.gate.item()) - 1.7) < 1e-6
+        assert mx.allclose(mo.enc[1].mem.slots, mx.full(mo.enc[1].mem.slots.shape, 0.3)).item()
+        assert mx.allclose(mo.enc[1].mem2.slots, mx.full(mo.enc[1].mem2.slots.shape, 0.5)).item()

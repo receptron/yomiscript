@@ -71,6 +71,8 @@ fp = od / f"{Path(a.ckpt).name}.pkm_diag.json"; fp.write_text(js, encoding="utf-
 if a.json:
     print(js)
 # 最後の数行 = 要約 (貼り付け用)
+for p in mold.split_pkm(a.pkm):
+    print(f"file {Path(p).name}: {mold.memory_file_summary(p)}")
 print(f"pkm_diag {a.ckpt}  loss {res['loss']:.4f}  full: {fp}")
 for k, (m, L) in enumerate(zip(mems, res["layers"])):
     c = L["cond_gate_mean"]

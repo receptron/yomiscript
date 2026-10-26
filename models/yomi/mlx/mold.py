@@ -457,7 +457,21 @@ def load_memory(model, path):
     if bad:
         raise ValueError(f"メモリの形が合いません: {bad[:3]}")
     model.load_weights(list(w.items()), strict=False)
+    groups = sorted({_MEM_RE.search(k).group(2) for k in w if _MEM_RE.search(k)})
+    for k, v in w.items():  # 読み込んだメモリが実質オフ (ゲート≈0 / 値≈0) なら警告: 積み重ね時に既定メモリが効いていない原因になる
+        if k.endswith(".gate") and is_mem_key(k) and float(mx.abs(v).max()) < 1e-3:
+            print(f"警告: {path}: {k} = {float(v.reshape(-1)[0]):.4f} (ゲート≈0 → このメモリは出力に効かない)", file=__import__("sys").stderr)
+    if not any(k.endswith(".gate") for k in w):
+        print(f"警告: {path}: ゲートを含まない (チェックポイント側のゲートのまま)", file=__import__("sys").stderr)
+    model._mem_sources = getattr(model, "_mem_sources", []) + [(str(path), groups)]
     return model
+
+
+def memory_file_summary(path):
+    """メモリファイルの中身の要約 (グループ・ゲート値・値の絶対値平均)。"""
+    w = mx.load(str(path))
+    return {k: (round(float(v.reshape(-1)[0]), 4) if k.endswith(".gate") else round(float(mx.abs(v).mean()), 5))
+            for k, v in w.items() if k.endswith((".gate", ".slots"))}
 
 
 def detect_mode(text, explicit=None):
