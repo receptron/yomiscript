@@ -82,8 +82,10 @@ def main():
     tag = Path(a.ckpt).name
     rows = []
     for name, spec in mems.items():
-        spec, _, cg = spec.partition("#cg")  # 末尾 #cg0.5 = 推論時に条件付きゲートを 0.5 で切る (MOLD_CG_THRESH)
-        ENV.clear(); ENV.update({"MOLD_CG_THRESH": cg} if cg else {})
+        spec, *opts = spec.split("#")  # 末尾 #cg0.5 = 推論時ゲート閾値 (MOLD_CG_THRESH)
+        ENV.clear()
+        for o in opts:
+            ENV.update({"MOLD_CG_THRESH": o[2:]} if o.startswith("cg") else {})
         path, _, ck = spec.partition("@"); ck = ck or a.ckpt
         miss = [p for p in path.split(",") if p and not (HERE / p).exists() and not Path(p).exists()]
         if miss:
