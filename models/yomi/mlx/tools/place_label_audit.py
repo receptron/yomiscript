@@ -96,6 +96,11 @@ def audit_preds(fn, n_ex=3):
             c[k] += 1; ex.setdefault(k, []).append(f"{surf} 正{gold} ojt{o}")
     n = sum(c.values())
     print(f"{fn} 失敗文のスパン {n}: " + "  ".join(f"{k} {v/n*100:.0f}%" for k, v in c.most_common(10)))
+    g = Counter()
+    for k, v in c.items():
+        g["正解" if k == "正解" else "ラベル側(ojt通り)" if k.startswith("ojt") else
+          "モデル誤り(正=ojt)" if k.split(":")[1] in ("一致", "一致(分割のみ)") else "モデル誤り(正≠ojt)"] += v
+    print("  件数: " + "  ".join(f"{k} {v}" for k, v in g.most_common()))
     for k, _ in c.most_common(4):
         print(f"  {k}: " + " / ".join(ex[k][:n_ex]))
 
