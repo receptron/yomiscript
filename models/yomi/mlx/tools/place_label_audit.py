@@ -82,6 +82,24 @@ def split_gold(r):
     return [None] * len(r["names"])
 
 
+def audit_preds(fn, n_ex=3):
+    """eval_names.py --preds の失敗行をスパン単位で分類: 正解 / pyopenjtalk 通り (=ラベル側の差, 監査分類つき) / どちらでもない (モデル誤り)。"""
+    strip = lambda s: "".join(c for c in s if c not in "^$?#_[]")
+    c, ex = Counter(), {}
+    for l in open(fn, encoding="utf-8"):
+        r = json.loads(l); p = strip(r["pred"])
+        for surf, gold, o, cat in audit_row(r):
+            if gold is None:
+                continue
+            k = ("正解" if gold in p else f"ojt通り:{cat}" if o and norm_kana(o) in p
+                 else f"モデル誤り:{cat}")
+            c[k] += 1; ex.setdefault(k, []).append(f"{surf} 正{gold} ojt{o}")
+    n = sum(c.values())
+    print(f"{fn} 失敗文のスパン {n}: " + "  ".join(f"{k} {v/n*100:.0f}%" for k, v in c.most_common(10)))
+    for k, _ in c.most_common(4):
+        print(f"  {k}: " + " / ".join(ex[k][:n_ex]))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", type=Path, default=HERE / "data/places")
@@ -89,6 +107,8 @@ def main():
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--preds", type=Path)
     ap.add_argument("--examples", type=int, default=3)
     a = ap.parse_args()
+    if a.preds:
+        return audit_preds(a.preds, a.examples)
     OK = {"一致", "一致(分割のみ)"}
     for fn in a.files:
         rows = [json.loads(l) for l in open(a.data / f"{fn}.jsonl", encoding="utf-8")]

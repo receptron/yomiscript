@@ -16,6 +16,7 @@ ap.add_argument("--limit", type=int, default=0)
 ap.add_argument("--pkm", action="append", default=None, help="差し替える学習型メモリ *.mem.safetensors (複数可/カンマ区切り, 積み重ね)")
 ap.add_argument("--out", type=Path)
 ap.add_argument("--splits", nargs="*", default=["names_eval_seen", "names_eval_unseen"])
+ap.add_argument("--preds", type=Path, help="model モードで人名(地名)の読みを外した行を jsonl で書き出す (place_label_audit.py --preds で分類)")
 ap.add_argument("--model-only", action="store_true", help="辞書メモリ (router) ありの評価を省く (地名など)")
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt, memory=a.pkm)
@@ -23,6 +24,7 @@ D = REPO / "dict/names"
 router = mold.MemoryRouter([mold.LexMemory.from_file(D / "surnames.koedict"), mold.LexMemory.from_file(D / "given_names.koedict")])
 strip = lambda s: "".join(c for c in s if c not in "^$?#_[]")
 res = {"ckpt": a.ckpt}
+fails = []
 for split in a.splits:
     rows = [json.loads(l) for l in open(a.data / f"{split}.jsonl", encoding="utf-8")]
     rows = rows[:a.limit] if a.limit else rows
@@ -36,7 +38,9 @@ for split in a.splits:
         preds = [p for _, p in sorted(preds)]
         rd = acc = sent = 0; agg = dict.fromkeys(["bnd_tp", "bnd_fp", "bnd_fn", "nuc_tp", "nuc_fp", "nuc_fn"], 0)
         for r, p in zip(rows, preds):
-            rd += r["name_pron"] in strip(p)
+            rd += (ok := r["name_pron"] in strip(p))
+            if not ok and mode == "model":
+                fails.append({**r, "split": split, "pred": p})
             acc += bool(r["name_target"]) and r["name_target"] in p
             sent += strip(p) == strip(r["target"])
             c = prosody_compare(list(r["target"]), list(p))
@@ -46,5 +50,8 @@ for split in a.splits:
                                   "boundary_f1": f1(agg["bnd_tp"], agg["bnd_fp"], agg["bnd_fn"])[2],
                                   "accent_f1": f1(agg["nuc_tp"], agg["nuc_fp"], agg["nuc_fn"])[2]}
         print(split, mode, json.dumps(res[f"{split}/{mode}"], ensure_ascii=False), flush=True)
+if a.preds:
+    with open(a.preds, "w", encoding="utf-8") as f:
+        f.writelines(json.dumps(r, ensure_ascii=False) + "\n" for r in fails)
 if a.out:
     json.dump(res, open(a.out, "w"), ensure_ascii=False, indent=1)

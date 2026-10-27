@@ -108,6 +108,8 @@ def leak_loss_fn(model, S, Ti, To, ls, G, N, NT=None):
             m._st.off = False
     logits = model(S, Ti).astype(mx.float32)
     ce = nn.losses.cross_entropy(logits, To, label_smoothing=ls) * mask
+    if LEAK.get("span_w", 1.0) != 1.0 and NT is not None:  # 正例文の固有名詞の読み位置の CE を span_w 倍 (正規化は元の mask のまま)
+        ce = ce * (1 + (LEAK["span_w"] - 1) * (1 - G[:, None]) * NT)
     tot = ce.sum() / mask.sum() + mold.memory_aux_loss(model)
     if LEAK["kl"]:
         lp, lq = nn.log_softmax(tl, -1), nn.log_softmax(logits, -1)
@@ -178,6 +180,7 @@ def main():
     ap.add_argument("--leak-kl-all", action="store_true", help="KL を人名文の人名以外の出力位置にもかける")
     ap.add_argument("--gate-l1", type=float, default=0.0, help="人名以外のトークンで条件付きゲートにかける L1 係数")
     ap.add_argument("--gate-sup-neg", type=float, default=1.0, help="gate-sup で一般文 (人名なし) のトークンにかける重み (>1 で一般文のゲートを強く 0 へ)")
+    ap.add_argument("--span-w", type=float, default=1.0, help="正例文の固有名詞 (name_target) の読み位置の CE 重み")
     ap.add_argument("--pos-src", nargs="*", help="漏れ対策で正例とする src (例 places)。他の src の固有名詞文は一般文扱い")
     ap.add_argument("--gate-sup", type=float, default=0.0, help="条件付きゲートを人名スパン (names 欄) で教師あり BCE する係数")
     ap.add_argument("--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)")
@@ -245,7 +248,7 @@ def main():
         from mlx.utils import tree_unflatten
         opt.init(model.trainable_parameters())
         opt.state = tree_unflatten(list(mx.load(str(a.out / "optimizer.safetensors")).items()))
-    LEAK.update(kl_all=a.leak_kl_all, kl=a.leak_kl, gate_l1=a.gate_l1, gate_sup=a.gate_sup, gate_sup_neg=a.gate_sup_neg, pos_src=a.pos_src,
+    LEAK.update(kl_all=a.leak_kl_all, kl=a.leak_kl, gate_l1=a.gate_l1, gate_sup=a.gate_sup, gate_sup_neg=a.gate_sup_neg, pos_src=a.pos_src, span_w=a.span_w,
                 group=a.train_mem if a.train_mem != "all" else "mem2")
     use_leak = bool(a.leak_kl or a.gate_l1 or a.gate_sup)
     if use_leak:
