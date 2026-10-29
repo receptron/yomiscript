@@ -1,0 +1,9 @@
+node_modules/
+models/
+models_q/
+voices/
+out/
+web/models
+web/voices
+web/ort
+*.wav
