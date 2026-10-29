@@ -1,0 +1,63 @@
+{
+ "examples": [
+  {
+   "name": "mix_5",
+   "text": "新しいスマートフォンを買いました。",
+   "lang": "ja",
+   "marked": "ja /aꜛtaɾaɕiꜜi | {en-US ˈsmɑɹt.foʊn}o | kaꜛimaꜜɕita ↘/"
+  },
+  {
+   "name": "mix_6_pause",
+   "text": "We had ramen for lunch, in Osaka.",
+   "lang": "en-US",
+   "marked": "en-US /wi ˈhæd ˈɹɑ.mən fəɹ ˈlʌnʧ ‖ ɪn {ja oꜛːsaka} ↘/"
+  }
+ ],
+ "items": [
+  {
+   "name": "tokyo_n1",
+   "text": "今日は雨が降りそうなので、傘を持って出かけます。",
+   "lang": "ja",
+   "marked": "ja /kʲoꜜːwa | aꜜmeɡa | ɸɯꜛɾisoꜜːnanode ‖ kaꜜsao | moꜜtte | deꜛkakemaꜜsɯ ↘/"
+  },
+  {
+   "name": "osaka_n1",
+   "text": "今日は雨が降りそうなので、傘を持って出かけます。",
+   "lang": "ja",
+   "marked": "ja /kʲoꜜːwa | aꜛmeꜜɡa | ɸɯɾiꜛsoꜜːnanode ‖ kaꜛsaꜜo | motꜛte | dekakeꜛmaꜜsɯ ↘/",
+   "dialect": {
+    "ja": "osaka"
+   }
+  },
+  {
+   "name": "ja_1",
+   "text": "愛情のために、彼女の欠点が見えなかった。",
+   "lang": "ja",
+   "marked": "ja /aꜛidʑoːnotameꜜɲi ‖ kaꜜnodʑono | keꜛtteꜜŋɡa | miꜛeꜜnakatta ↘/"
+  },
+  {
+   "name": "mix_12",
+   "text": "今朝はクロワッサンを食べました。",
+   "lang": "ja",
+   "marked": "ja /keꜛsawa | kɯꜛɾowaꜜssaɴo | taꜛbemaꜜɕita ↘/"
+  },
+  {
+   "name": "mix_1",
+   "text": "今日は machine learning の勉強をします。",
+   "lang": "ja",
+   "marked": "ja /kʲoꜜːwa | {en-US mə.ˈʃiːn ˈlɝːn.ɪŋ}no | beꜛŋkʲoːo | ɕiꜛmaꜜsɯ ↘/"
+  },
+  {
+   "name": "en-US_1",
+   "text": "We need to buy milk, eggs, and bread.",
+   "lang": "en-US",
+   "marked": "en-US /wi ˈnid tə ˈbaɪ ˈmɪlk ‖ ˈɛɡz ‖ ənd ˈbɹɛd ↘/"
+  },
+  {
+   "name": "mix_4",
+   "text": "I recently visited Kyoto and ate sushi there.",
+   "lang": "en-US",
+   "marked": "en-US /ˈaɪ ˈɹi.sənt.li ˈvɪz.ɪ.tɪd {ja kʲoꜜːto} ənd ˈeɪt {ja sɯꜜɕi} ˈðɛɹ ↘/"
+  }
+ ]
+}

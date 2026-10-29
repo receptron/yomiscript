@@ -1,74 +1,77 @@
 [
  {
   "name": "tokyo_n1",
-  "ys": "^kʲoꜜːwa#aꜜmeɡa#ɸɯꜛɾisoꜜːnanode_kaꜜsao#moꜜtte#deꜛkakemaꜜsɯ$"
+  "ys": "ja /kʲoꜜːwa | aꜜmeɡa | ɸɯꜛɾisoꜜːnanode ‖ kaꜜsao | moꜜtte | deꜛkakemaꜜsɯ ↘/"
  },
  {
   "name": "osaka_n1",
-  "ys": "^ja-x-osaka|=kʲoꜜːwa#aꜛmeꜜɡa#ɸɯɾiꜛsoꜜːnanode_kaꜛsaꜜo#motꜛte#dekakeꜛmaꜜsɯ$"
+  "ys": "ja /kʲoꜜːwa | aꜛmeꜜɡa | ɸɯɾiꜛsoꜜːnanode ‖ kaꜛsaꜜo | motꜛte | dekakeꜛmaꜜsɯ ↘/",
+  "dialect": {
+   "ja": "osaka"
+  }
  },
  {
   "name": "ja_1",
-  "ys": "^aꜛidʑoːnotameꜜɲi_kaꜜnodʑono#keꜛtteꜜŋɡa#miꜛeꜜnakatta$"
+  "ys": "ja /aꜛidʑoːnotameꜜɲi ‖ kaꜜnodʑono | keꜛtteꜜŋɡa | miꜛeꜜnakatta ↘/"
  },
  {
   "name": "zh_1",
-  "ys": "^zh|ni3>2 hao3 _ wo3 shi4 xue2.sheng1$"
+  "ys": "zh /ni3>2 hao3 ‖ wo3 shi4 xue2.sheng1 ↘/"
  },
  {
   "name": "en-US_1",
-  "ys": "^en-US|wi ˈnid tə ˈbaɪ ˈmɪlk _ ˈɛɡz _ ənd ˈbɹɛd$"
+  "ys": "en-US /wi ˈnid tə ˈbaɪ ˈmɪlk ‖ ˈɛɡz ‖ ənd ˈbɹɛd ↘/"
  },
  {
   "name": "fr_1",
-  "ys": "^fr|sɛ.t‿œ̃ pə.ti.t‿o.tɛl # o bɔʁ də la mɛʁ$"
+  "ys": "fr /sɛ.t‿œ̃ pə.ti.t‿o.tɛl | o bɔʁ də la mɛʁ ↘/"
  },
  {
   "name": "mix_1",
-  "ys": "^kʲoꜜːwa#{en-US|mə.ˈʃiːn ˈlɝːn.ɪŋ}no#beꜛŋkʲoːo#ɕiꜛmaꜜsɯ$"
+  "ys": "ja /kʲoꜜːwa | {en-US mə.ˈʃiːn ˈlɝːn.ɪŋ}no | beꜛŋkʲoːo | ɕiꜛmaꜜsɯ ↘/"
  },
  {
   "name": "mix_2",
-  "ys": "^en-US|maɪ ˈfɹɛnd {ja|taꜛnaka} ˈlɪvz ɪn {ja|toꜛːkʲoː} _ ˈnɪɹ {ja|ɕiꜛbɯja}$"
+  "ys": "en-US /maɪ ˈfɹɛnd {ja taꜛnaka} ˈlɪvz ɪn {ja toꜛːkʲoː} ‖ ˈnɪɹ {ja ɕiꜛbɯja} ↘/"
  },
  {
   "name": "mix_3",
-  "ys": "^aꜛɕitano#{en-US|ˈmi.tɪŋ}de#{en-US|ˈdeɪ.tɑː ˈsaɪ.əns}no#haꜛnaɕio#ɕiꜛmaꜜsɯ$"
+  "ys": "ja /aꜛɕitano | {en-US ˈmi.tɪŋ}de | {en-US ˈdeɪ.tɑː ˈsaɪ.əns}no | haꜛnaɕio | ɕiꜛmaꜜsɯ ↘/"
  },
  {
   "name": "mix_4",
-  "ys": "^en-US|ˈaɪ ˈɹi.sənt.li ˈvɪz.ɪ.tɪd {ja|kʲoꜜːto} ənd ˈeɪt {ja|sɯꜜɕi} ˈðɛɹ$"
+  "ys": "en-US /ˈaɪ ˈɹi.sənt.li ˈvɪz.ɪ.tɪd {ja kʲoꜜːto} ənd ˈeɪt {ja sɯꜜɕi} ˈðɛɹ ↘/"
  },
  {
   "name": "mix_5",
-  "ys": "^aꜛtaɾaɕiꜜi#{en-US|ˈsmɑɹt.foʊn}o#kaꜛimaꜜɕita$"
+  "ys": "ja /aꜛtaɾaɕiꜜi | {en-US ˈsmɑɹt.foʊn}o | kaꜛimaꜜɕita ↘/"
  },
  {
   "name": "mix_6_pause",
-  "ys": "^en-US|wi ˈhæd ˈɹɑ.mən fəɹ ˈlʌnʧ _ ɪn {ja|oꜛːsaka}$"
+  "ys": "en-US /wi ˈhæd ˈɹɑ.mən fəɹ ˈlʌnʧ ‖ ɪn {ja oꜛːsaka} ↘/"
  },
  {
   "name": "mix_9",
-  "ys": "^en-US|aɪ ˈmɛt {zh|wang2 fang1} ɪn {zh|bei3.jing1} ˈlæst ˈjɪɹ$"
+  "ys": "en-US /aɪ ˈmɛt {zh wang2 fang1} ɪn {zh bei3.jing1} ˈlæst ˈjɪɹ ↘/"
  },
  {
   "name": "mix_10",
-  "ys": "^fr|ʒɛm bjɛ̃ lə {ja|kaꜛɾaoke} _ avɛk mez‿a.mi$"
+  "ys": "fr /ʒɛm bjɛ̃ lə {ja kaꜛɾaoke} ‖ avɛk mez‿a.mi ↘/"
  },
  {
   "name": "mix_11",
-  "ys": "^zh|wo3 zui4 xi3.huan1 {en-US|ˈpaɪ.θɑn}$"
+  "ys": "zh /wo3 zui4 xi3.huan1 {en-US ˈpaɪ.θɑn} ↘/"
  },
  {
   "name": "mix_12",
-  "ys": "^keꜛsawa#kɯꜛɾowaꜜssaɴo#taꜛbemaꜜɕita$"
+  "ys": "ja /keꜛsawa | kɯꜛɾowaꜜssaɴo | taꜛbemaꜜɕita ↘/"
  },
  {
   "name": "mix_7",
-  "ys": "^tɕɯꜛːɡokɯɡodewa#{zh|ni3>2 hao3}to#iꜛimaꜜsɯ$"
+  "ys": "ja /tɕɯꜛːɡokɯɡodewa | {zh ni3>2 hao3}to | iꜛimaꜜsɯ ↘/"
  },
  {
   "name": "mix_8",
-  "ys": "^ɸɯꜛɾaɴsɯɡodewa#{fr|bɔ̃.ʒuʁ}to#iꜛimaꜜsɯ$"
+  "ys": "ja /ɸɯꜛɾaɴsɯɡodewa | {fr bɔ̃.ʒuʁ}to | iꜛimaꜜsɯ ↘/"
  }
 ]

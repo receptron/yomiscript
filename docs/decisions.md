@@ -1,4 +1,4 @@
-# Decisions (D1–D18)
+# Decisions (D1–D20)
 
 D1–D13 decided on 2026-10-24. Those concerning syntax are drafts.
 
@@ -22,3 +22,5 @@ D1–D13 decided on 2026-10-24. Those concerning syntax are drafts.
 | D16 | 2026-10-28 | We do not plan to build our own Katarite (acoustic) model. Koe-S (D6) is dropped from the plan. Katarite is provided by existing TTS engines through Katarite plugins, with Kokoro-82M as the reference |
 | D17 | 2026-10-28 | YomiScript contains no language-specific scripts. Every language, Japanese included, is written in IPA with IPA-based prosody marks (Japanese accent: ꜛ ꜜ); the kana "display form" is removed. Kana labels (e.g. Yomi-0's JSUT-style output) are Yomite-internal and are converted with tools/yomiscript/kana2ipa.py. The web Katarite (demo/ys_web) accepts only IPA for Japanese. Chinese pinyin + tone digits is the same kind of exception and is to be replaced with IPA + tone letters |
 | D18 | 2026-10-28 | YomiScript can carry both phonological prosody marks (ꜛ ꜜ, ˈ ˌ, tones) and phonetic pitch values `<f0:…>` (semitones relative to the speaker's register, per mora or syllable). Katarite uses only the values; turning marks into values is the Yomite's job (rules, a prosody predictor, or by hand). Kokoro's duration/F0 predictor is used as a separate component on the Yomite side. Pronunciation choices such as vowel devoicing and the t/d flap are written by the Yomite, not applied by the Katarite |
+| D19 | 2026-10-28 | YomiScript uses IPA framing: an utterance is `<lang> /… ↘/` (or ↗), with ` \| ` for accent phrase and ` ‖ ` for breath group / pause; `^ $ ? # _` (JSUT style) are no longer YomiScript. The language tag is required (no implicit Japanese) and is BCP 47 language (+ region) only; sections are `{<lang> …}`. Dialect tags (`ja-x-osaka`) and the high-onset mark `=` are removed: a dialect is a Yomite setting, and its effect is already in the IPA and the pitch values |
+| D20 | 2026-10-29 | The Yomite is not split into named stages (reading/accent vs. pitch values). An LLM can write complete YomiScript with pitch values directly (eval/llm_yomite: Claude Code and Codex, all outputs valid and usable). Rule-based prosody (demo/ys_web/web/yomite.js) and Kokoro's predictor (kokoro_prosody.js) are optional tools a Yomite may use to fill in values it did not write |

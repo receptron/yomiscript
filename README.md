@@ -25,15 +25,15 @@ Adding a language means adding a Yomite (or pointing an LLM at it). Adding a TTS
 ## YomiScript
 
 - **Phonemes** are plain IPA.
-- **Prosody** uses IPA's own marks wherever they exist: pitch accent (`ꜛ` `ꜜ`), Chao tone letters (`˥˧˩`), stress (`ˈ` `ˌ`), length, boundaries and pauses. Languages differ only in which marks they use.
-- **Language tags** (BCP 47) apply to a whole utterance (`^en-US|…$`) or to a span inside it (`{ja|…}`), so code-switching is native. Dialects use the same mechanism (e.g. `ja-x-osaka`).
+- **Prosody** uses IPA's own marks wherever they exist: pitch accent (`ꜛ` `ꜜ`), Chao tone letters (`˥˧˩`), stress (`ˈ` `ˌ`), length, boundaries (` | ` ` ‖ `) and sentence-final `↘` `↗`. Languages differ only in which marks they use.
+- **Language tags** (BCP 47) apply to a whole utterance (`en-US /… ↘/`) or to a span inside it (`{ja …}`), so code-switching is native. Dialects are not tagged: a dialect is a Yomite setting, and its effect is already in the IPA and the pitch values (D19).
 - **Pitch values** `<f0:…>` (semitones, per mora or syllable) can be written next to the marks. A Yomite fills them in; the Katarite renders only the values (D18).
 - **No native scripts.** Kana, pinyin and other writing systems are not YomiScript; every language, Japanese included, is written in IPA (D17).
 
 Example — an English sentence with Japanese names:
 
 ```
-^en-US|maɪ ˈfɹɛnd {ja|taꜛnaka} ˈlɪvz ɪn {ja|toꜛːkʲoː}$
+en-US /maɪ ˈfɹɛnd {ja taꜛnaka} ˈlɪvz ɪn {ja toꜛːkʲoː} ↘/
 ```
 
 YomiScript carries only resolved pronunciations; it has no lexicons or reading hints (D14).
@@ -57,6 +57,7 @@ Spec: [`spec/lexicon/`](spec/lexicon/).
 | **YomiScript** | The language-neutral pronunciation and prosody DSL at the center of the architecture | [`spec/yomiscript/`](spec/yomiscript/) |
 | **Lexicons (.koedict)** | Yomite input: human-readable lexicons of readings, accents, dialects and context conditions | [`spec/lexicon/`](spec/lexicon/), [`dict/`](dict/) |
 | **Yomi-0** | Japanese Yomite: a small dense model (MLX) that produces readings, pitch accent and phrase boundaries | [`models/yomi/`](models/yomi/) |
+| **English Yomite (Kokoro)** | misaki (Kokoro's G2P) + Kokoro's prosody predictor: English text → YomiScript with pitch values | [`yomite/en_kokoro/`](yomite/en_kokoro/) |
 | **MoLD** | Mixture of Language-specific Dictionaries: shared weights plus a swappable memory per language or dialect; dictionaries compile into memory without training | [`mold/`](mold/) |
 | **Kokoro reference Katarite** | Synthesizes speech from YomiScript with Kokoro-82M, bypassing its own text analysis; builds F0 from accent/tone marks where appropriate; handles mixed-language utterances | [`tts/kokoro_ys/`](tts/kokoro_ys/) |
 | **Browser demo** | YomiScript → speech entirely in the browser (onnxruntime-web) | [`demo/ys_web/`](demo/ys_web/) |
@@ -76,7 +77,7 @@ Japanese is the hardest case for the Yomite side, not the focus of the project. 
 
 ## Documents
 
-- [Decisions D1–D18](docs/decisions.md)
+- [Decisions D1–D20](docs/decisions.md)
 - [Hypotheses H0–H12](docs/hypotheses.md)
 - [Contributing](CONTRIBUTING.md)
 

@@ -63,7 +63,7 @@ Source text with inline hints, given to Yomite:
 
 ## 5. Dialects (D8)
 
-`@lexicon(dialect: …)` entries apply when that dialect is selected. If there is no entry for the dialect, the standard-language entry is used. How a dialect is selected is a Yomite setting; in YomiScript the result is expressed with language tags such as `ja-x-osaka` ([`../yomiscript/langtags.md`](../yomiscript/langtags.md)).
+`@lexicon(dialect: …)` entries apply when that dialect is selected. If there is no entry for the dialect, the standard-language entry is used. How a dialect is selected is a Yomite setting; the resulting YomiScript carries no dialect tag; the dialect's effect is in the IPA and the pitch values ([`../yomiscript/langtags.md`](../yomiscript/langtags.md), D19).
 
 ## 6. Relation to MoLD
 

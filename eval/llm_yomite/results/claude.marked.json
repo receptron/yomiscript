@@ -1,0 +1,101 @@
+{
+ "llm": "claude",
+ "task": "marked",
+ "model": "claude-opus-5-5",
+ "seconds": 39.502,
+ "date": "2026-10-29T12:40:51.378Z",
+ "output": {
+  "tokyo_n1": "ja /kʲo<f0:2.5>ꜜː<f0:-0.5>wa<f0:-1.5> | a<f0:2>ꜜme<f0:-1>ɡa<f0:-2> | ɸɯ<f0:-2>ꜛɾi<f0:1.5>so<f0:1.2>ꜜː<f0:-1>na<f0:-1.8>no<f0:-2.3>de<f0:-1.5> ‖ ka<f0:2>ꜜsa<f0:-1>o<f0:-2> | mo<f0:1.5>ꜜtte<f0:-1.5> | de<f0:-2.5>ꜛka<f0:1>ke<f0:0.8>ma<f0:0.5>ꜜsɯ̥ ↘/",
+  "osaka_n1": "ja /kʲo<f0:2.5>ꜜː<f0:-0.5>wa<f0:-1.5> | a<f0:-1.5>ꜛme<f0:2>ꜜɡa<f0:-1.5> | ɸɯ<f0:-2.2>ɾi<f0:-2>ꜛso<f0:1.5>ꜜː<f0:-0.5>na<f0:-1.5>no<f0:-2>de<f0:-1.5> ‖ ka<f0:-1.5>ꜛsa<f0:2>ꜜo<f0:-1.5> | mo<f0:-2>tꜛte<f0:1> | de<f0:-3>ka<f0:-2.8>ke<f0:-2.6>ꜛma<f0:1>ꜜsɯ<f0:-3.5> ↘/",
+  "ja_1": "ja /a<f0:-2>ꜛi<f0:2.5>dʑo<f0:2.3>ː<f0:2.1>no<f0:1.9>ta<f0:1.7>me<f0:1.5>ꜜɲi<f0:-2> ‖ ka<f0:2.5>ꜜno<f0:-0.5>dʑo<f0:-1.2>no<f0:-1.8> | ke<f0:-1.5>ꜛtte<f0:1.5>ꜜŋ<f0:-0.5>ɡa<f0:-1.5> | mi<f0:-2>ꜛe<f0:1>ꜜna<f0:-2>ka<f0:-2.6>tta<f0:-4> ↘/",
+  "mix_12": "ja /ke<f0:-1.5>ꜛsa<f0:2>wa<f0:2> | kɯ<f0:-1>ꜛɾo<f0:1.8>wa<f0:1.5>ꜜssa<f0:-1>ɴ<f0:-1.8>o<f0:-2.3> | ta<f0:-2>ꜛbe<f0:0.8>ma<f0:0.5>ꜜɕi̥ta<f0:-3.5> ↘/",
+  "mix_1": "ja /kʲo<f0:2.5>ꜜː<f0:-0.5>wa<f0:-1.5> | {en-US mə<f0:-1>.ˈʃiːn<f0:2,1> ˈlɝːn<f0:1.5,0>.ɪŋ<f0:-1.5>}no<f0:-2> | be<f0:-2>ꜛŋ<f0:1.5>kʲo<f0:1.3>ː<f0:1.1>o<f0:0.9> | ɕi<f0:-2.5>ꜛma<f0:0.5>ꜜsɯ̥ ↘/",
+  "en-US_1": "en-US /wi<f0:-1.5> ˈnid<f0:2.5,1> tə<f0:-1> ˈbaɪ<f0:2,0.5> ˈmɪlk<f0:2,0,1.5> ‖ ˈɛɡz<f0:2,0,1.5> ‖ ənd<f0:-1> ˈbɹɛd<f0:1.5,-2,-5> ↘/",
+  "mix_4": "en-US /ˈaɪ<f0:2.5,1> ˈɹi<f0:3,1>.sənt<f0:-0.5>.li<f0:-1> ˈvɪz<f0:2,0.5>.ɪ<f0:-0.5>.tɪd<f0:-1> {ja kʲo<f0:2>ꜜː<f0:-0.5>to<f0:-1.5>} ənd<f0:-2> ˈeɪt<f0:1.5,0> {ja sɯ<f0:1.5>ꜜɕi<f0:-2>} ˈðɛɹ<f0:0.5,-2,-5> ↘/"
+ },
+ "scores": [
+  {
+   "name": "tokyo_n1",
+   "valid": true,
+   "per": 0,
+   "coverage": 0.9166666666666666,
+   "aligned": true,
+   "nucleusF1": 1,
+   "pitchR": 0.9261457810775985,
+   "direction": 1,
+   "kept": true,
+   "ys": "ja /kʲo<f0:2.5>ꜜː<f0:-0.5>wa<f0:-1.5> | a<f0:2>ꜜme<f0:-1>ɡa<f0:-2> | ɸɯ<f0:-2>ꜛɾi<f0:1.5>so<f0:1.2>ꜜː<f0:-1>na<f0:-1.8>no<f0:-2.3>de<f0:-1.5> ‖ ka<f0:2>ꜜsa<f0:-1>o<f0:-2> | mo<f0:1.5>ꜜtte<f0:-1.5> | de<f0:-2.5>ꜛka<f0:1>ke<f0:0.8>ma<f0:0.5>ꜜsɯ̥ ↘/"
+  },
+  {
+   "name": "osaka_n1",
+   "valid": true,
+   "per": 0,
+   "coverage": 0.9583333333333334,
+   "aligned": true,
+   "nucleusF1": 1,
+   "pitchR": 0.8831533260585277,
+   "direction": 0.8181818181818182,
+   "kept": true,
+   "ys": "ja /kʲo<f0:2.5>ꜜː<f0:-0.5>wa<f0:-1.5> | a<f0:-1.5>ꜛme<f0:2>ꜜɡa<f0:-1.5> | ɸɯ<f0:-2.2>ɾi<f0:-2>ꜛso<f0:1.5>ꜜː<f0:-0.5>na<f0:-1.5>no<f0:-2>de<f0:-1.5> ‖ ka<f0:-1.5>ꜛsa<f0:2>ꜜo<f0:-1.5> | mo<f0:-2>tꜛte<f0:1> | de<f0:-3>ka<f0:-2.8>ke<f0:-2.6>ꜛma<f0:1>ꜜsɯ<f0:-3.5> ↘/"
+  },
+  {
+   "name": "ja_1",
+   "valid": true,
+   "per": 0,
+   "coverage": 0.9130434782608695,
+   "aligned": true,
+   "nucleusF1": 1,
+   "pitchR": 0.8919941095068309,
+   "direction": 1,
+   "kept": true,
+   "ys": "ja /a<f0:-2>ꜛi<f0:2.5>dʑo<f0:2.3>ː<f0:2.1>no<f0:1.9>ta<f0:1.7>me<f0:1.5>ꜜɲi<f0:-2> ‖ ka<f0:2.5>ꜜno<f0:-0.5>dʑo<f0:-1.2>no<f0:-1.8> | ke<f0:-1.5>ꜛtte<f0:1.5>ꜜŋ<f0:-0.5>ɡa<f0:-1.5> | mi<f0:-2>ꜛe<f0:1>ꜜna<f0:-2>ka<f0:-2.6>tta<f0:-4> ↘/"
+  },
+  {
+   "name": "mix_12",
+   "valid": true,
+   "per": 0,
+   "coverage": 0.8666666666666667,
+   "aligned": true,
+   "nucleusF1": 1,
+   "pitchR": 0.9279596358874308,
+   "direction": 0.8333333333333334,
+   "kept": true,
+   "ys": "ja /ke<f0:-1.5>ꜛsa<f0:2>wa<f0:2> | kɯ<f0:-1>ꜛɾo<f0:1.8>wa<f0:1.5>ꜜssa<f0:-1>ɴ<f0:-1.8>o<f0:-2.3> | ta<f0:-2>ꜛbe<f0:0.8>ma<f0:0.5>ꜜɕi̥ta<f0:-3.5> ↘/"
+  },
+  {
+   "name": "mix_1",
+   "valid": true,
+   "per": 0,
+   "coverage": 0.9375,
+   "aligned": true,
+   "nucleusF1": 1,
+   "pitchR": 0.7230340982999747,
+   "direction": 1,
+   "kept": true,
+   "ys": "ja /kʲo<f0:2.5>ꜜː<f0:-0.5>wa<f0:-1.5> | {en-US mə<f0:-1>.ˈʃiːn<f0:2,1> ˈlɝːn<f0:1.5,0>.ɪŋ<f0:-1.5>}no<f0:-2> | be<f0:-2>ꜛŋ<f0:1.5>kʲo<f0:1.3>ː<f0:1.1>o<f0:0.9> | ɕi<f0:-2.5>ꜛma<f0:0.5>ꜜsɯ̥ ↘/"
+  },
+  {
+   "name": "en-US_1",
+   "valid": true,
+   "per": 0,
+   "coverage": 1,
+   "aligned": true,
+   "pitchR": 0.9546445041822113,
+   "direction": 0.75,
+   "kept": true,
+   "ys": "en-US /wi<f0:-1.5> ˈnid<f0:2.5,1> tə<f0:-1> ˈbaɪ<f0:2,0.5> ˈmɪlk<f0:2,0,1.5> ‖ ˈɛɡz<f0:2,0,1.5> ‖ ənd<f0:-1> ˈbɹɛd<f0:1.5,-2,-5> ↘/"
+  },
+  {
+   "name": "mix_4",
+   "valid": true,
+   "per": 0,
+   "coverage": 1,
+   "aligned": true,
+   "nucleusF1": 1,
+   "pitchR": 0.8441451199864513,
+   "direction": 1,
+   "kept": true,
+   "ys": "en-US /ˈaɪ<f0:2.5,1> ˈɹi<f0:3,1>.sənt<f0:-0.5>.li<f0:-1> ˈvɪz<f0:2,0.5>.ɪ<f0:-0.5>.tɪd<f0:-1> {ja kʲo<f0:2>ꜜː<f0:-0.5>to<f0:-1.5>} ənd<f0:-2> ˈeɪt<f0:1.5,0> {ja sɯ<f0:1.5>ꜜɕi<f0:-2>} ˈðɛɹ<f0:0.5,-2,-5> ↘/"
+  }
+ ]
+}

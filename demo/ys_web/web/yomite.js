@@ -2,6 +2,7 @@
 // pitch values <f0:…> (semitones relative to the speaker's register) after each unit. Also writes allophones that are
 // a pronunciation choice: Japanese vowel devoicing (◌̥) and the American English t/d flap (ɾ).
 // Units that already carry <f0:…> are left as written. The Katarite renders only the values.
+// Dialect is a Yomite setting, not part of YomiScript: realize(ys, {dialect:{ja:'osaka'}}).
 import {parse,isJa} from './yomiscript.js';
 const inStr=(ch,s)=>s.includes(ch);
 const fmt=v=>String(Math.round(v*100)/100);
@@ -10,10 +11,11 @@ export function applyEdits(s,E){
   for(const e of [...E].sort((a,b)=>b.at-a.at))s=s.slice(0,e.at)+e.ins+s.slice(e.at+(e.del||0));
   return s;
 }
-// Japanese: Tokyo-type pitch from ꜛ / ꜜ per accent phrase; Osaka (ja-x-osaka) flattens the high stretch
+// Japanese: Tokyo-type pitch from ꜛ / ꜜ per accent phrase. Osaka (Keihan-type): a phrase without ꜛ is high-onset,
+// ꜛ marks where a low-onset phrase rises; the high stretch is flatter and vowels are not devoiced
 const VLJ=['k','s','ɕ','t','ʨ','ʦ','h','ç','ɸ','p'];
-function jaRules(sec,E){
-  const osaka=sec.lang==='ja-x-osaka',C=[];
+function jaRules(sec,E,dialect){
+  const osaka=dialect==='osaka',C=[];
   for(const t of sec.toks)if(t.kind==='unit')(C[t.chunk]??=[]).push(t);
   const sw=m=>!!m&&m.mk==='mora'&&VLJ.some(x=>m.ipa.startsWith(x));
   for(const M of C){
@@ -55,8 +57,8 @@ function euRules(sec,E,top){
 // Chinese: tone contours (tone 5 = neutral, no value)
 const TC={'1':[3,3],'2':[-1,3.5],'3':[-3,-4.5,-3],'4':[4,-3],'5':null};
 function zhRules(sec,E){for(const t of sec.toks)if(t.kind==='unit'&&!t.f0&&TC[t.tone])E.push({at:t.end,ins:f0Mark(TC[t.tone])});}
-export function realize(ys){
-  const Y=parse(ys),E=[];
-  for(const sec of Y.sections){if(isJa(sec.lang))jaRules(sec,E);else if(sec.lang==='zh')zhRules(sec,E);else euRules(sec,E,Y.top);}
+export function realize(ys,opt={}){
+  const Y=parse(ys),E=[],D=opt.dialect??{};
+  for(const sec of Y.sections){if(isJa(sec.lang))jaRules(sec,E,D.ja);else if(sec.lang==='zh')zhRules(sec,E);else euRules(sec,E,Y.top);}
   return applyEdits(Y.ys,E);
 }

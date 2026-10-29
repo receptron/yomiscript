@@ -3,7 +3,8 @@
 // What stays here is engine-specific: YomiScript IPA -> Kokoro's phoneme symbols, voices, F0 rendering, audio.
 import {parse,isJa} from './yomiscript.js';
 export const SR=24000, BLEND=0.2;
-export const VOICE={'ja':'jf_alpha','ja-x-osaka':'jf_alpha','en-US':'af_heart','en-GB':'bf_emma','en':'af_heart','fr':'ff_siwis','zh':'zf_xiaoxiao'};
+export const VOICE={'ja':'jf_alpha','en-US':'af_heart','en-GB':'bf_emma','en':'af_heart','fr':'ff_siwis','zh':'zf_xiaoxiao'};
+const voiceOf=l=>{const v=VOICE[l]??VOICE[l.split('-')[0]];if(!v)throw new Error(`this Katarite does not support language ${l}`);return v;};
 let VOCAB=null;
 export function setData(d){VOCAB=d.vocab;}
 const VOW='AIOQWYaeiouæɑɒɔəɚɛɜɪʊʌᵊɐøœɔ̃';
@@ -31,7 +32,7 @@ function zsyl(syl){
 }
 const VOWRE=new RegExp('['+VOW+']');
 function enSyl(x,gb){
-  for(const [a,b] of [['tʃ','ʧ'],['dʒ','ʤ'],['eɪ','A'],['aɪ','I'],['aʊ','W'],['ɔɪ','Y'],['oʊ','O'],['əʊ','Q'],['r','ɹ'],['l̩','ᵊl'],['x','k']])x=x.split(a).join(b);
+  for(const [a,b] of [['g','ɡ'],['tʃ','ʧ'],['dʒ','ʤ'],['eɪ','A'],['aɪ','I'],['aʊ','W'],['ɔɪ','Y'],['oʊ','O'],['əʊ','Q'],['r','ɹ'],['l̩','ᵊl'],['x','k'],['ɾ','T']])x=x.split(a).join(b); // ɾ: Kokoro's English flap token is T
   x=x.split('ɝ').join(gb?'ɜː':'ɜɹ').split('ɚ').join(gb?'ə':'əɹ');
   let st='';
   if(x[0]==='ˈ'||x[0]==='ˌ'){st=x[0];x=x.slice(1);}
@@ -41,14 +42,14 @@ function enSyl(x,gb){
 function kokoroPhonemes(lang,t,foreign){
   if(t.kind==='space')return ' ';if(t.kind==='pause')return ', ';if(t.kind==='end')return t.sym;
   if(isJa(lang)){const p=t.mk==='mora'?jaKokoro(t.on,t.v):t.mk==='Q'?'ʔ':t.ipa;return foreign?[...p].map(c=>FOREIGN_JA[c]??c).join(''):p;}
-  if(lang==='zh')return zsyl(t.raw);
-  if(lang==='fr')return t.raw;
+  if(lang==='zh'||lang.startsWith('zh-'))return zsyl(t.raw);
+  if(lang==='fr'||lang.startsWith('fr-'))return t.raw.replace(/g/g,'ɡ'); // IPA: g = ɡ
   return enSyl(t.raw,lang==='en-GB');
 }
 export function voiceFor(top,l,x){
-  if(l===top)return VOICE[top];
-  if(x.split(/\s+/).filter(Boolean).length===1&&(isJa(top)||!isJa(l)))return VOICE[l];
-  return `${VOICE[top]}+${VOICE[l]}@${BLEND}`;
+  if(l===top)return voiceOf(top);
+  if(x.split(/\s+/).filter(Boolean).length===1&&(isJa(top)||!isJa(l)))return voiceOf(l);
+  return `${voiceOf(top)}+${voiceOf(l)}@${BLEND}`;
 }
 // plan: sections with Kokoro ids + units [phonemes, f0 values|null, phrase] (no ONNX); used for parity tests and synthesis
 export function plan(ys){

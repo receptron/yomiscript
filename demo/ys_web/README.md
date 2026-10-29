@@ -1,6 +1,6 @@
 # demo/ys_web — Browser-only YomiScript speech synthesis demo
 
-Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, WASM) to turn it into speech. A reference Yomite first turns the accent / stress / tone marks into pitch values (`<f0:…>`), and the Katarite renders only those values (D18); the page shows the YomiScript with values it renders. In YomiScript you write how you want each word to be pronounced. Japanese is written in IPA with `ꜛ` (rise) and `ꜜ` (accent nucleus), e.g. `^kʲoꜜːwa#aꜜmeɡa$`; kana is rejected (D17). Kana labels can be converted with `tools/yomiscript/kana2ipa.py`.
+Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, WASM) to turn it into speech. A reference Yomite first turns the accent / stress / tone marks into pitch values (`<f0:…>`), and the Katarite renders only those values (D18); the page shows the YomiScript with values it renders. In YomiScript you write how you want each word to be pronounced. Japanese is written in IPA with `ꜛ` (rise) and `ꜜ` (accent nucleus), e.g. `ja /kʲoꜜːwa | aꜜmeɡa ↘/`; kana is rejected (D17). Dialect is a Yomite setting (Japanese accent: Tokyo / Osaka on the page), not part of YomiScript (D19). Kana labels can be converted with `tools/yomiscript/kana2ipa.py`.
 
 ## Layout
 - `web/index.html`: the demo page. `web/presets.json` holds Tokyo/Osaka and mixed-language examples

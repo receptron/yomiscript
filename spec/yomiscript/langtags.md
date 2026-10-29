@@ -1,18 +1,18 @@
 # YomiScript Language Tags Addendum (draft)
 
-## 1. Global tag (per utterance)
-- Put `^<lang>|` at the start of a line (one utterance). Example: `^en-US|ðə ˈkæt ˈsæt$`
-- An untagged `^…$` is `ja` (backward compatibility).
-- `<lang>` uses BCP 47 format: `ja` `en-US` `en-GB` `fr` `zh` (in the future, dialects such as `ja-x-osaka` `ja-x-tsugaru` will use the same slot).
-- For the file-level default, use the existing header `#yomiscript 0.2 lang=ja-JP`. Precedence is section > line start > header.
+## 1. Utterance tag
+- One utterance is `<lang> /… ↘/` (statement) or `<lang> /… ↗/` (question). Example: `en-US /ðə ˈkæt ˈsæt ↘/`
+- The tag is required; there is no implicit default language (D19).
+- `<lang>` is a BCP 47 language, optionally with a region: `ja` `en-US` `en-GB` `fr` `zh`. It tells the Katarite which language's speaker pronounces the IPA (voice choice and engine-specific phoneme conventions).
+- **No dialect tags.** A dialect (e.g. Osaka) changes how a Yomite assigns pitch; the result is already in the IPA and the pitch values, so it is a Yomite setting, not part of YomiScript (D19, §5).
 
 ## 2. Section tags (code-switching)
-- Writing `{<lang>|<text>}` inside an utterance makes only that span be read as YomiScript in another language.
+- Writing `{<lang> <text>}` (language code, a space, then the text) inside an utterance makes only that span be read as YomiScript in another language.
 - The text is IPA in every language; only the prosody marks differ (ja: `ꜛ` `ꜜ`; en/fr: `ˈ ˌ .`). zh is still written in pinyin + tone digits in the reference implementation (to be replaced with IPA + tone letters, D17).
 - Examples:
-  - `^kʲoꜜːwa#{en-US|mə.ˈʃin ˈlɝ.nɪŋ}no#beꜛŋkʲoːo#ɕiꜛmaꜜsɯ$` (今日は machine learning の勉強をします, "Today I will study machine learning")
-  - `^en-US|maɪ ˈfɹɛnd {ja|taꜛnaka} ˈlɪvz ɪn {ja|toꜛːkʲoː}$`
-- Nesting is not allowed. A section boundary also serves as a phrase boundary (`#`). There is only one sentence-final symbol `$` `?` for the whole utterance.
+  - `ja /kʲoꜜːwa | {en-US mə.ˈʃin ˈlɝ.nɪŋ}no | beꜛŋkʲoːo | ɕiꜛmaꜜsɯ ↘/` (今日は machine learning の勉強をします, "Today I will study machine learning")
+  - `en-US /maɪ ˈfɹɛnd {ja taꜛnaka} ˈlɪvz ɪn {ja toꜛːkʲoː} ↘/`
+- Nesting is not allowed. A section boundary also serves as an accent phrase boundary (` | `). There is only one sentence-final symbol `↘` `↗` for the whole utterance.
 - In YomiScript, braces are used only for language sections. The ruby-style reading hint `{表記|読み}` is a Yomite input and does not appear in YomiScript ([`../lexicon/`](../lexicon/README.md)).
 
 ## 3. Handling on the synthesis side (reference implementation mix.py)
@@ -32,20 +32,19 @@ In the web reference (`demo/ys_web`) the pitch rules below live in the Yomite (`
 ## 3a. Writing principle (prescriptive notation)
 - YomiScript is a prescriptive notation. Each word is written according to "how you want it pronounced". It is not a record of actual speech or transcription results.
 - Loanwords and borrowed words (ramen, sushi, etc.) are written differently depending on which language's pronunciation you want:
-  - To have it read with English pronunciation, write it as English. Example: `^en-US|wi ˈhæd ˈɹɑ.mən fəɹ ˈlʌnʧ$`
-  - To have it read with Japanese pronunciation, write it in a `{ja|…}` section. Example: `^en-US|aɪ ˈeɪt {ja|sɯꜜɕi}$`
+  - To have it read with English pronunciation, write it as English. Example: `en-US /wi ˈhæd ˈɹɑ.mən fəɹ ˈlʌnʧ ↘/`
+  - To have it read with Japanese pronunciation, write it in a `{ja …}` section. Example: `en-US /aɪ ˈeɪt {ja sɯꜜɕi} ↘/`
 - Even for the same word, the pronunciation specified by the writer takes precedence. The synthesis engine pronounces it exactly as specified.
 
 ## 4. Undecided
-- How to count phrase boundaries and pauses (`#` `_`) inside a section.
+- How to count phrase boundaries and pauses (` | ` ` ‖ `) inside a section.
 - How to handle the accent of a particle right after a foreign-language section (e.g. 「ノ」).
-- Naming of dialect tags (the `ja-x-osaka` proposal).
 
-## 5. Notation for the dialect tag ja-x-osaka (Keihan-type accent) (proposal)
-- Line-start tag `^ja-x-osaka|`. IPA and `#` `_` `ꜜ` are the same as for Tokyo-type accent.
-- Keihan-type accent is determined by two things, "whether the word starts high or low (high-onset / low-onset)" and "the drop (nucleus)", so it is written as follows:
-  - High-onset: put `=` at the start of the phrase (if omitted, it is still treated as high-onset when there is no `ꜛ`). Pitch stays flat and high up to the nucleus `ꜜ` (level). Examples: 橋が `=haꜜɕiɡa` (high-low-low), 端が `=haɕiɡa` (high-high-high)
+## 5. Osaka (Keihan-type accent) as a Yomite setting (proposal)
+- Osaka is not tagged in YomiScript (D19). The utterance stays `ja /…/`; the Yomite is told the dialect (in the demo: "Japanese accent: Osaka", `realize(ys, {dialect: {ja: 'osaka'}})`) and writes the pitch values accordingly.
+- The marks are the same IPA marks as for Tokyo-type accent. Keihan-type accent is determined by two things, "whether the word starts high or low (high-onset / low-onset)" and "the drop (nucleus)":
+  - High-onset: a phrase with no `ꜛ`. Pitch stays flat and high up to the nucleus `ꜜ` (level). Examples: 橋が `haꜜɕiɡa` (high-low-low), 端が `haɕiɡa` (high-high-high)
   - Low-onset: `ꜛ` marks where the pitch rises. Unlike Tokyo-type accent, `ꜛ` can be placed anywhere from the 2nd mora on. Examples: 箸が `haꜛɕiꜜɡa` (low-high-low), 雨が `aꜛmeꜜɡa`, うさぎ `ɯsaꜛɡi`
   - Falls within a mora (e.g. an isolated 「あめぇ」) are not written in v0 (undecided).
-- Synthesis side (osaka.py): in the high stretches of high-onset words, the declination is made smaller and flatter than for Tokyo-type accent.
+- Yomite side (`demo/ys_web/web/yomite.js`; Python reference: osaka.py): in the high stretches of high-onset words, the declination is made smaller and flatter than for Tokyo-type accent.
 - Sources: 郡史郎『大阪のアクセント（実用的な解説）』大阪大学 2025; Wikipedia 「京阪式アクセント」「日本語の方言のアクセント」 (classification of 2-mora nouns).
