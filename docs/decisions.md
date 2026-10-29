@@ -1,4 +1,4 @@
-# Decisions (D1–D14)
+# Decisions (D1–D16)
 
 D1–D13 decided on 2026-10-24. Those concerning syntax are drafts.
 
@@ -18,3 +18,5 @@ D1–D13 decided on 2026-10-24. Those concerning syntax are drafts.
 | D12 | 2026-10-24 | MoLD inference has 2 modes: (1) fixed mode = explicitly select exactly one Memory via @dialect / language specification. Minimal RAM and predictable behavior. (2) auto mode = a lightweight classifier selects and switches Memory per sentence or span. For sentences mixing multiple languages, or texts where characters speak different dialects. Priority is explicit specification > automatic classification (same idea as D1). Caveats: a misclassification breaks reading and accent together. Switching incurs Memory loading latency, so frequently used Memories are kept resident in RAM, and classification is per sentence by default. Auto mode is evaluated in H11 |
 | D13 | 2026-10-24 | Lexicon entries can have context conditions: register multiple readings for the same orthography with [context: …] (a domain name or nearby words), and specify the default reading with [default]. Selection order is entry matching the context > [default]. Incorporated into D1 as the ordering within the lexicon tier. Syntax is a draft. Reflected in Section 1b; compile-time handling and evaluation are in H12 |
 | D14 | 2026-10-28 | Lexicons and inline reading hints are not part of YomiScript. YomiScript holds only resolved pronunciations (phonemes, prosody, language tags). `{表記\|読み}`, `@lexicon`, `@import`, `.koedict` and their conditions are inputs to the language-specific analysis step, specified in spec/lexicon/. The reading priority of D1 and D13 applies inside the analyzer. In YomiScript, braces mean only a language section |
+| D15 | 2026-10-28 | Official names for the two modules around YomiScript: **Yomite** (読み手, "the reader") turns text into YomiScript; **Katarite** (語り手, "the narrator") turns YomiScript into sound. A Yomite can be a dedicated model (Yomi-0), a smart LLM, a rule-based analyzer or a person. Katarite plugins replace the provisional "backend plugins" name of D6. Lexicons (D14) are Yomite inputs |
+| D16 | 2026-10-28 | We do not plan to build our own Katarite (acoustic) model. Koe-S (D6) is dropped from the plan. Katarite is provided by existing TTS engines through Katarite plugins, with Kokoro-82M as the reference |

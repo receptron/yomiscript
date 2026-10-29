@@ -1,26 +1,26 @@
 # mulmovoice
 
-mulmovoice is an open speech front-end built around **YomiScript**, a language-neutral DSL for pronunciation and prosody. YomiScript sits between language-specific text analysis and voice generation, so the two can be developed, swapped and improved independently.
+mulmovoice is an open speech front-end built around **YomiScript**, a language-neutral DSL for pronunciation and prosody. YomiScript sits between two modules — **Yomite** (読み手, "the reader": text → YomiScript) and **Katarite** (語り手, "the narrator": YomiScript → sound) — so the two can be developed, swapped and improved independently.
 
 Status: early design. The YomiScript spec is a v0.2 draft and all syntax may change.
 
 ## Architecture
 
 ```
- inputs                    language-specific analysis       language-neutral hub        voice generation
- ──────                    ──────────────────────────       ────────────────────        ────────────────
+ inputs                    Yomite (text → YomiScript)       language-neutral hub        Katarite (YomiScript → sound)
+ ──────                    ──────────────────────────       ────────────────────        ─────────────────────────────
  text                  ─┐  ja: Yomi-0 + MoLD memories ─┐                              ┌── Kokoro-82M (reference)
- lexicons (.koedict)   ─┼► en, zh, fr, … analyzers    ─┼──►     YomiScript       ─────┼── backend plugins
+ lexicons (.koedict)   ─┼► LLMs, other analyzers      ─┼──►     YomiScript       ─────┼── Katarite plugins
  inline reading hints  ─┘                              │   phonemes, accent, tone,    └── …
                            hand-written by people     ─┘   stress, boundaries,
                                                            language tags
 ```
 
-- **Analysis** (text → YomiScript) is the only language-specific part: resolving readings, homographs, names, numbers and prosody for one language. Lexicons (`.koedict`) and inline reading hints are inputs to this step.
-- **YomiScript** describes *how the text should be pronounced*, independent of any voice or engine. It is prescriptive: whoever writes it — an analyzer or a person — decides the pronunciation, and the engine follows it.
-- **Voice generation** (YomiScript → audio) needs no language-specific text analysis. A backend only has to render phonemes and prosody.
+- **Yomite** (text → YomiScript) is the only language-specific part: resolving readings, homographs, names, numbers and prosody. A Yomite can be a small dedicated model (Yomi-0 for Japanese), a smart LLM, a rule-based analyzer, or a person writing YomiScript by hand. Lexicons (`.koedict`) and inline reading hints are its inputs.
+- **YomiScript** describes *how the text should be pronounced*, independent of any voice or engine. It is prescriptive: whoever writes it — a Yomite or a person — decides the pronunciation, and the engine follows it.
+- **Katarite** (YomiScript → sound) needs no language-specific text analysis. It only has to render phonemes and prosody.
 
-Adding a language means adding an analyzer (or writing YomiScript by hand). Adding a TTS engine means adding a backend. Neither changes the other.
+Adding a language means adding a Yomite (or pointing an LLM at it). Adding a TTS engine means adding a Katarite. Neither changes the other.
 
 ## YomiScript
 
@@ -39,9 +39,9 @@ YomiScript carries only resolved pronunciations; it has no lexicons or reading h
 
 Spec: [`spec/yomiscript/`](spec/yomiscript/) (language tags: [`langtags.md`](spec/yomiscript/langtags.md)). The earlier KOE-IR v0.1 draft is kept in [`spec/koe-ir/`](spec/koe-ir/).
 
-## Lexicons (analysis input)
+## Lexicons (Yomite input)
 
-Lexicons tell an analyzer how to read specific words. They are not part of YomiScript.
+Lexicons tell a Yomite how to read specific words. They are not part of YomiScript.
 
 - **`.koedict` files** and in-document `@lexicon` / `@import`, with `[context: …]`, `[default]`, `[sex: …]` and `[accent: N]` conditions and dialect sections.
 - **Inline reading hints** `{text|reading}` in the source text.
@@ -54,28 +54,28 @@ Spec: [`spec/lexicon/`](spec/lexicon/).
 | Component | Role | Location |
 |---|---|---|
 | **YomiScript** | The language-neutral pronunciation and prosody DSL at the center of the architecture | [`spec/yomiscript/`](spec/yomiscript/) |
-| **Lexicons (.koedict)** | Analysis input: human-readable lexicons of readings, accents, dialects and context conditions | [`spec/lexicon/`](spec/lexicon/), [`dict/`](dict/) |
-| **Yomi-0** | Japanese analyzer: a small dense model (MLX) that produces readings, pitch accent and phrase boundaries | [`models/yomi/`](models/yomi/) |
+| **Lexicons (.koedict)** | Yomite input: human-readable lexicons of readings, accents, dialects and context conditions | [`spec/lexicon/`](spec/lexicon/), [`dict/`](dict/) |
+| **Yomi-0** | Japanese Yomite: a small dense model (MLX) that produces readings, pitch accent and phrase boundaries | [`models/yomi/`](models/yomi/) |
 | **MoLD** | Mixture of Language-specific Dictionaries: shared weights plus a swappable memory per language or dialect; dictionaries compile into memory without training | [`mold/`](mold/) |
-| **Kokoro reference backend** | Synthesizes speech from YomiScript with Kokoro-82M, bypassing its own text analysis; builds F0 from accent/tone marks where appropriate; handles mixed-language utterances | [`tts/kokoro_ys/`](tts/kokoro_ys/) |
+| **Kokoro reference Katarite** | Synthesizes speech from YomiScript with Kokoro-82M, bypassing its own text analysis; builds F0 from accent/tone marks where appropriate; handles mixed-language utterances | [`tts/kokoro_ys/`](tts/kokoro_ys/) |
 | **Browser demo** | YomiScript → speech entirely in the browser (onnxruntime-web) | [`demo/ys_web/`](demo/ys_web/) |
-| **Backend plugins** | Adapters from YomiScript to other TTS engines and vendor formats (name TBD) | [`plugins/`](plugins/) |
+| **Katarite plugins** | Adapters from YomiScript to other TTS engines and vendor formats | [`plugins/`](plugins/) |
 | **Evaluation** | Benchmarks against baselines (e.g. pyopenjtalk on JSUT) | [`eval/`](eval/) |
 
 ### Why so much Japanese?
 
-Japanese is the hardest case for the analysis side, not the focus of the project. Kanji readings are highly ambiguous (homographs, personal and place names), and pitch accent is not written in the text at all. Most of the modeling work so far (Yomi-0, the name and place-name memories, MoLD) is therefore the Japanese analyzer. The YomiScript layer and the backends are designed for every language from the start; the reference backend already handles English, French and Chinese.
+Japanese is the hardest case for the Yomite side, not the focus of the project. Kanji readings are highly ambiguous (homographs, personal and place names), and pitch accent is not written in the text at all. Most of the modeling work so far (Yomi-0, the name and place-name memories, MoLD) is therefore the Japanese Yomite. YomiScript and Katarite are designed for every language from the start; the reference Katarite already handles English, French and Chinese.
 
 ## Terminology (D9)
 
-- **Lexicon**: the human-readable `.koedict` / `@lexicon` dictionaries given to the analysis step.
+- **Lexicon**: the human-readable `.koedict` / `@lexicon` dictionaries given to a Yomite.
 - **Memory**: a key–value memory inside a neural network, used in training and inference.
 - **Memory write**: loading a lexicon's contents into a memory.
 - Device RAM is always qualified ("unified memory", "RAM usage") to keep it distinct from Memory.
 
 ## Documents
 
-- [Decisions D1–D14](docs/decisions.md)
+- [Decisions D1–D16](docs/decisions.md)
 - [Hypotheses H0–H12](docs/hypotheses.md)
 - [Contributing](CONTRIBUTING.md)
 

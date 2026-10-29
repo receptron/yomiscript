@@ -15,7 +15,7 @@
 - **Symbols that already exist in IPA keep their IPA meaning** (ˈ ˌ ː ‖ | ꜜ ꜛ ˥˧˩, etc.). We add only TTS-oriented conventions that IPA lacks.
 - Pronunciations are enclosed in `/…/` (phonemic transcription, not narrow transcription). Narrow transcription in `[…]` is also allowed when needed.
 - Kana is the "display form" for Japanese; it is converted to IPA form during normalization (conversion rules in §4).
-- YomiScript holds **resolved** pronunciations only. Readings, lexicons and inline reading hints belong to the analysis step before YomiScript and are specified separately (§3).
+- YomiScript holds **resolved** pronunciations only. Readings, lexicons and inline reading hints belong to Yomite, the step before YomiScript and are specified separately (§3).
 
 ## 2. Symbol list
 
@@ -51,7 +51,7 @@ As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syl
 
 ## 3. Readings and lexicons (not part of YomiScript)
 
-Choosing a reading is text analysis, so it happens before YomiScript (D14). Inline reading hints `{表記|読み}`, `@lexicon` / `@import`, `.koedict` files, the conditions `[context: …]`, `[default]`, `[sex: …]`, `[accent: N]`, and the reading priority are all inputs to the analyzer. They are specified in [`../lexicon/`](../lexicon/README.md).
+Choosing a reading is text analysis, so it happens before YomiScript (D14). Inline reading hints `{表記|読み}`, `@lexicon` / `@import`, `.koedict` files, the conditions `[context: …]`, `[default]`, `[sex: …]`, `[accent: N]`, and the reading priority are all inputs to Yomite. They are specified in [`../lexicon/`](../lexicon/README.md).
 
 The braces `{…|…}` in YomiScript mean only a language section ([`langtags.md`](langtags.md)).
 
@@ -115,6 +115,6 @@ I read the book yesterday.
 ## 6. Open questions (to confirm with the user)
 1. Canonical form for tones: IPA tone letters (˥˩) or digits (ma3)? Proposal: "canonical form = tone letters; digits also accepted as input".
 2. Whether to make the mora separator `.` mandatory in the Japanese canonical form (advantageous for model training and for counting accent positions).
-3. **How much allophony to write in YomiScript**, such as devoicing and fricativization of the ザ row (proposal: the phonemic form is canonical, allophones are left to the backend, with an optional flag to output them).
+3. **How much allophony to write in YomiScript**, such as devoicing and fricativization of the ザ row (proposal: the phonemic form is canonical, allophones are left to Katarite, with an optional flag to output them).
 4. Whether to change the header to `#yomiscript`, or also accept `#koe-ir` for compatibility.
 5. Whether to move the other parts of the old `spec/koe-ir/` (style tags, etc.) to `spec/yomiscript/` as well.

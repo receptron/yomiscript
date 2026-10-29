@@ -1,10 +1,10 @@
-# Backend plugins
+# Katarite plugins
 
-Plugins that convert YomiScript into TTS engines or each vendor's input format. The name is undecided; for now they are called "YomiScript backend plugins" (D6).
+**Katarite** (語り手, "the narrator") is the module that turns YomiScript into sound (D15). Katarite plugins adapt YomiScript to TTS engines or to each vendor's input format.
 
 ## Reference implementation
 
-The Kokoro-82M backend in [`tts/kokoro_ys/`](../tts/kokoro_ys/) (and the browser demo in [`demo/ys_web/`](../demo/ys_web/)) is the reference implementation of a backend. New backends should follow its behavior.
+The Kokoro-82M Katarite in [`tts/kokoro_ys/`](../tts/kokoro_ys/) (and the browser demo in [`demo/ys_web/`](../demo/ys_web/)) is the reference Katarite. New Katarite plugins should follow its behavior.
 
 - Unsupported styles fall back to the fallback behavior defined in the spec (ignore, or a close tag), with a warning.
 
@@ -18,5 +18,4 @@ The Kokoro-82M backend in [`tts/kokoro_ys/`](../tts/kokoro_ys/) (and the browser
 ## Planned implementations
 
 - Plugins for local OSS TTS (Kokoro family, VITS family)
-- Our own acoustic model Koe-S (one plugin implementation)
-- Export to SSML; export of lexicons (`.koedict`) to PLS is an analysis-side tool ([`spec/lexicon/`](../spec/lexicon/README.md))
+- Export to SSML; export of lexicons (`.koedict`) to PLS is a Yomite-side tool ([`spec/lexicon/`](../spec/lexicon/README.md))

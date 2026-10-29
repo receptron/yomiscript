@@ -5,7 +5,7 @@ The numbers in the success criteria are targets.
 ## H0
 
 - **Hypothesis**: An intermediate language (KOE-IR) that carries reading, accent, phrase boundaries, pauses and style tags but no timbre lets the front end and the acoustic back end be developed and swapped independently
-- **Method**: Feed the same KOE-IR to 2-3 back ends (Kokoro family, VITS family, our own Koe-S) and compare misreading rates and subjective evaluation
+- **Method**: Feed the same KOE-IR to 2-3 back ends (Kokoro family, VITS family, and others; our own Koe-S was dropped, D16) and compare misreading rates and subjective evaluation
 - **Success criteria**: Misreading rate goes down on every back end, and the spec conformance tests pass. At least one external implementation appears
 
 ## H1
