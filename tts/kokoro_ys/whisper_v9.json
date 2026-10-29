@@ -1,0 +1,52 @@
+{
+ "mix_1v9.wav": {
+  "lang": "ja",
+  "p": 0.974,
+  "text": "今日は、マシン・ラーニングの勉強をします。"
+ },
+ "mix_2v9.wav": {
+  "lang": "en",
+  "p": 0.976,
+  "text": "My friend Tanaka lives in Tokyo near Shibuya"
+ },
+ "mix_3v9.wav": {
+  "lang": "ja",
+  "p": 0.982,
+  "text": "明日の メーティングで デイトサイエンスの話をします"
+ },
+ "mix_3v9_dae.wav": {
+  "lang": "ja",
+  "p": 0.979,
+  "text": "明日の メーティングで、デアとサイエンスのお話をします"
+ },
+ "mix_3v9_long.wav": {
+  "lang": "ja",
+  "p": 0.978,
+  "text": "明日の メーティングで データサイエンスの話をします"
+ },
+ "mix_4v9.wav": {
+  "lang": "en",
+  "p": 0.992,
+  "text": "I recently visited Kyoto and ate sushi there."
+ },
+ "mix_5v9.wav": {
+  "lang": "ja",
+  "p": 0.917,
+  "text": "新しいスマートフォンを買いました"
+ },
+ "mix_6v9.wav": {
+  "lang": "en",
+  "p": 0.984,
+  "text": "We had drumming for luncheon Osaka"
+ },
+ "mix_7v9.wav": {
+  "lang": "ja",
+  "p": 0.923,
+  "text": "中国語ではニハオウと言います。"
+ },
+ "mix_8v9.wav": {
+  "lang": "ja",
+  "p": 0.772,
+  "text": "フランス語ではこんにちはと言います"
+ }
+}

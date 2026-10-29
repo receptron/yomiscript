@@ -1,0 +1,297 @@
+{
+ "en-GB_1.wav": {
+  "lang": "en",
+  "p": 0.987,
+  "text": "The museum opens at 9 o'clock."
+ },
+ "en-GB_1v2.wav": {
+  "lang": "en",
+  "p": 0.99,
+  "text": "The museum opens at 9 o'clock."
+ },
+ "en-GB_1v2_alt.wav": {
+  "lang": "en",
+  "p": 0.989,
+  "text": "The museum opens at 9 o'clock."
+ },
+ "en-US_1.wav": {
+  "lang": "en",
+  "p": 0.998,
+  "text": "We need to abide by a milk, eggs, and a bread."
+ },
+ "en-US_1v2.wav": {
+  "lang": "en",
+  "p": 0.998,
+  "text": "We need to buy milk, eggs, and bread."
+ },
+ "en-US_1v2_alt.wav": {
+  "lang": "en",
+  "p": 0.999,
+  "text": "We need to buy milk, eggs, and bread."
+ },
+ "en-US_1v4.wav": {
+  "lang": "en",
+  "p": 0.998,
+  "text": "We need to buy milk, eggs, and bread."
+ },
+ "en-US_1v4_orig.wav": {
+  "lang": "en",
+  "p": 0.998,
+  "text": "We need to buy milk, eggs and bread."
+ },
+ "en-US_2v2.wav": {
+  "lang": "en",
+  "p": 0.989,
+  "text": "Hawaii is beautiful in the winter."
+ },
+ "fr_1.wav": {
+  "lang": "fr",
+  "p": 0.994,
+  "text": "C'est un petit hôtel au bord de la mer."
+ },
+ "fr_1v4.wav": {
+  "lang": "fr",
+  "p": 0.983,
+  "text": "C'est un petit hôtel au bord de la mer."
+ },
+ "fr_1v4_orig.wav": {
+  "lang": "fr",
+  "p": 0.989,
+  "text": "C'est un petit hôtel au bord de la mer."
+ },
+ "fr_2.wav": {
+  "lang": "fr",
+  "p": 0.995,
+  "text": "Les oiseaux chantent le matin."
+ },
+ "ja_1.wav": {
+  "lang": "ja",
+  "p": 0.994,
+  "text": "愛情のために彼女の欠点が見え なかった"
+ },
+ "ja_1v2.wav": {
+  "lang": "ja",
+  "p": 0.992,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_1v2_alt.wav": {
+  "lang": "ja",
+  "p": 0.985,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_1v2_alt2.wav": {
+  "lang": "ja",
+  "p": 0.997,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_1v3.wav": {
+  "lang": "ja",
+  "p": 0.992,
+  "text": "愛情のために彼女の決点が見えなかった"
+ },
+ "ja_1v3_inverted.wav": {
+  "lang": "ja",
+  "p": 0.992,
+  "text": "愛情のために彼女の決定が見えなかった"
+ },
+ "ja_1v3_inverted_kumo.wav": {
+  "lang": "ja",
+  "p": 0.996,
+  "text": "愛情のために彼女の決点が見えなかった"
+ },
+ "ja_1v3_kumo.wav": {
+  "lang": "ja",
+  "p": 0.994,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_1v3_orig.wav": {
+  "lang": "ja",
+  "p": 0.988,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_1v3_orig_kumo.wav": {
+  "lang": "ja",
+  "p": 0.995,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_1v4.wav": {
+  "lang": "ja",
+  "p": 0.989,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_1v4_orig.wav": {
+  "lang": "ja",
+  "p": 0.989,
+  "text": "愛情のために彼女の欠点が見えなかった"
+ },
+ "ja_2.wav": {
+  "lang": "ja",
+  "p": 0.987,
+  "text": "マネージャーは私が彼と一緒 に空港に行ってはどうかと言い出した"
+ },
+ "ja_2v2.wav": {
+  "lang": "ja",
+  "p": 0.994,
+  "text": "マネージャーは私が彼と一緒に空港 に行ってはどうかと言い出した"
+ },
+ "ja_2v3.wav": {
+  "lang": "ja",
+  "p": 0.994,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうかと言いだした。"
+ },
+ "ja_2v3_inverted.wav": {
+  "lang": "ja",
+  "p": 0.991,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうかと言いだした。"
+ },
+ "ja_2v3_inverted_kumo.wav": {
+  "lang": "ja",
+  "p": 0.986,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうか問い出した"
+ },
+ "ja_2v3_kumo.wav": {
+  "lang": "ja",
+  "p": 0.984,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうか問い出した。"
+ },
+ "ja_2v3_orig.wav": {
+  "lang": "ja",
+  "p": 0.992,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうかと言いだした。"
+ },
+ "ja_2v3_orig_kumo.wav": {
+  "lang": "ja",
+  "p": 0.992,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうか問い出した。"
+ },
+ "ja_2v4.wav": {
+  "lang": "ja",
+  "p": 0.993,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうかと言い出した。"
+ },
+ "ja_2v4_orig.wav": {
+  "lang": "ja",
+  "p": 0.991,
+  "text": "マネージャーは、私が彼と一緒に空港に行ってはどうかと言いだした。"
+ },
+ "mix_1.wav": {
+  "lang": "ja",
+  "p": 0.995,
+  "text": "今日は無心ラーニングの勉強をします"
+ },
+ "mix_1_alt.wav": {
+  "lang": "ja",
+  "p": 0.957,
+  "text": "今日は マシン・ラーメンの勉強をします"
+ },
+ "mix_2.wav": {
+  "lang": "en",
+  "p": 0.959,
+  "text": "My friend Tanaka lives in Tokyo, near Shibuya."
+ },
+ "mix_2_alt.wav": {
+  "lang": "ja",
+  "p": 0.685,
+  "text": "My friend Tanaka lives in Tokyo New Shibuya."
+ },
+ "osaka_1.wav": {
+  "lang": "ja",
+  "p": 0.981,
+  "text": "はじとはじとはじです"
+ },
+ "osaka_1_kumo.wav": {
+  "lang": "ja",
+  "p": 0.982,
+  "text": "端と端と端です"
+ },
+ "osaka_2.wav": {
+  "lang": "ja",
+  "p": 0.98,
+  "text": "雨と雨犬と風です"
+ },
+ "osaka_2_kumo.wav": {
+  "lang": "ja",
+  "p": 0.992,
+  "text": "雨と雨、犬と風です"
+ },
+ "osaka_n1.wav": {
+  "lang": "ja",
+  "p": 0.996,
+  "text": "今日は雨が降りそうなので傘を持って出かけます。"
+ },
+ "osaka_n2.wav": {
+  "lang": "ja",
+  "p": 0.99,
+  "text": "駅前の新しいお店で、晩ご飯を食べませんか。"
+ },
+ "osaka_n3.wav": {
+  "lang": "ja",
+  "p": 0.975,
+  "text": "ありがとうございますまた明日よろしくお願いします"
+ },
+ "tokyo_1.wav": {
+  "lang": "ja",
+  "p": 0.99,
+  "text": "端と足と足です"
+ },
+ "tokyo_1_kumo.wav": {
+  "lang": "ja",
+  "p": 0.98,
+  "text": "端と端と端です"
+ },
+ "tokyo_2.wav": {
+  "lang": "ja",
+  "p": 0.982,
+  "text": "雨と雨犬と風です"
+ },
+ "tokyo_2_kumo.wav": {
+  "lang": "ja",
+  "p": 0.991,
+  "text": "雨と雨、犬と風です"
+ },
+ "tokyo_n1.wav": {
+  "lang": "ja",
+  "p": 0.995,
+  "text": "今日は雨が降りそうなので傘を持って出かけます。"
+ },
+ "tokyo_n2.wav": {
+  "lang": "ja",
+  "p": 0.991,
+  "text": "駅前の新しいお店で、番ご飯を食べませんか。"
+ },
+ "tokyo_n3.wav": {
+  "lang": "ja",
+  "p": 0.972,
+  "text": "ありがとうございますまた明日よろしくお願いします"
+ },
+ "tokyo_n3b.wav": {
+  "lang": "ja",
+  "p": 0.966,
+  "text": "ありがとうございますまた明日よろしくお願いします"
+ },
+ "tokyo_n3c.wav": {
+  "lang": "ja",
+  "p": 0.975,
+  "text": "ありがとうございますまた明日よろしくお願いします"
+ },
+ "zh_1.wav": {
+  "lang": "zh",
+  "p": 0.996,
+  "text": "你好 我是學生"
+ },
+ "zh_1v4.wav": {
+  "lang": "zh",
+  "p": 0.998,
+  "text": "你好 我是學生。"
+ },
+ "zh_1v4_orig.wav": {
+  "lang": "zh",
+  "p": 0.999,
+  "text": "你好,我是學生。"
+ },
+ "zh_2.wav": {
+  "lang": "zh",
+  "p": 1.0,
+  "text": "老師給了我一本書。"
+ }
+}

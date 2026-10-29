@@ -1,0 +1,32 @@
+{
+ "mix_1v7.wav": {
+  "lang": "ja",
+  "p": 0.988,
+  "text": "今日は、マシン・ラーネングの勉強をします。"
+ },
+ "mix_1v7_l2.wav": {
+  "lang": "ja",
+  "p": 0.989,
+  "text": "今日は、マシン・ラーネングの勉強をします。"
+ },
+ "mix_1v7_l3.wav": {
+  "lang": "ja",
+  "p": 0.974,
+  "text": "今日は、マシン・ラーニングの勉強をします。"
+ },
+ "mix_2v7.wav": {
+  "lang": "en",
+  "p": 0.976,
+  "text": "My friend Tanaka lives in Tokyo near Shibuya"
+ },
+ "mix_3v7.wav": {
+  "lang": "ja",
+  "p": 0.986,
+  "text": "明日のみちがでデイトサイエンスの話をします"
+ },
+ "mix_4v7.wav": {
+  "lang": "en",
+  "p": 0.989,
+  "text": "I recently visited Kyoto and ate sushi there."
+ }
+}

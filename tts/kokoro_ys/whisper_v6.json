@@ -1,0 +1,82 @@
+{
+ "mix_1v6b.wav": {
+  "lang": "ja",
+  "p": 0.978,
+  "text": "今日は、ムシン・ラーネーが、の勉強をします。"
+ },
+ "mix_1v6c20.wav": {
+  "lang": "ja",
+  "p": 0.981,
+  "text": "今日は、マシン・ラーネングの勉強をします。"
+ },
+ "mix_1v6c35.wav": {
+  "lang": "ja",
+  "p": 0.958,
+  "text": "今日は、マシン・ラーネングの勉強をします。"
+ },
+ "mix_1v6c50.wav": {
+  "lang": "ja",
+  "p": 0.943,
+  "text": "今日は、マシン・ラーネングの勉強をします。"
+ },
+ "mix_2v6b.wav": {
+  "lang": "en",
+  "p": 0.976,
+  "text": "My friend Tanaka lives in Tokyo near Shibuya."
+ },
+ "mix_2v6c20.wav": {
+  "lang": "en",
+  "p": 0.976,
+  "text": "My friend Taneka lives in Tokyo near Shibuya."
+ },
+ "mix_2v6c35.wav": {
+  "lang": "en",
+  "p": 0.955,
+  "text": "My friend Taneka lives in Tokyo near Shibuya."
+ },
+ "mix_2v6c50.wav": {
+  "lang": "en",
+  "p": 0.793,
+  "text": "My friend Tanaka lives in Tokyo near Shibuya."
+ },
+ "mix_3v6b.wav": {
+  "lang": "ja",
+  "p": 0.979,
+  "text": "明日のみれがででるサイエンスの話をします"
+ },
+ "mix_3v6c20.wav": {
+  "lang": "ja",
+  "p": 0.971,
+  "text": "明日のみれがでデーラサイエンスの話をします"
+ },
+ "mix_3v6c35.wav": {
+  "lang": "ja",
+  "p": 0.982,
+  "text": "明日のみれがでデーラサイエンスの話をします"
+ },
+ "mix_3v6c50.wav": {
+  "lang": "ja",
+  "p": 0.979,
+  "text": "明日のミレンでデーラサイエンスの話をします"
+ },
+ "mix_4v6b.wav": {
+  "lang": "en",
+  "p": 0.993,
+  "text": "recently visited Kyoto and ate sushi there."
+ },
+ "mix_4v6c20.wav": {
+  "lang": "en",
+  "p": 0.994,
+  "text": "recently visited Kyoto and ate sushi there."
+ },
+ "mix_4v6c35.wav": {
+  "lang": "en",
+  "p": 0.987,
+  "text": "recently visited Kyoto and Ait Sushi there"
+ },
+ "mix_4v6c50.wav": {
+  "lang": "en",
+  "p": 0.976,
+  "text": "recently visited Kyoto and Aitsochi there."
+ }
+}

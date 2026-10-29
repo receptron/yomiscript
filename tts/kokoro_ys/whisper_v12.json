@@ -1,0 +1,77 @@
+{
+ "mix_10v12.wav": {
+  "lang": "fr",
+  "p": 0.961,
+  "text": "J'aime bien le karaoke avec mes amis."
+ },
+ "mix_11v12.wav": {
+  "lang": "zh",
+  "p": 0.99,
+  "text": "我最喜欢Python"
+ },
+ "mix_12v12.wav": {
+  "lang": "ja",
+  "p": 0.983,
+  "text": "ケサはクロワッサンを食べました。"
+ },
+ "mix_12v12_fr.wav": {
+  "lang": "ja",
+  "p": 0.981,
+  "text": "消さは怖さにお食べました。"
+ },
+ "mix_1v12.wav": {
+  "lang": "ja",
+  "p": 0.975,
+  "text": "今日は、マシン・ラーニングの勉強をします。"
+ },
+ "mix_2v12.wav": {
+  "lang": "en",
+  "p": 0.981,
+  "text": "My friend Tanaka lives in Tokyo near Shibuya"
+ },
+ "mix_3v12.wav": {
+  "lang": "ja",
+  "p": 0.98,
+  "text": "明日の メーティングで データサイエンスの話をします"
+ },
+ "mix_4v12.wav": {
+  "lang": "en",
+  "p": 0.991,
+  "text": "I recently visited Kyoto and ate sushi there."
+ },
+ "mix_5v12.wav": {
+  "lang": "ja",
+  "p": 0.895,
+  "text": "新しいスマートフォンを買いました"
+ },
+ "mix_6v12.wav": {
+  "lang": "en",
+  "p": 0.973,
+  "text": "We had ramen for luncheon. Osaka."
+ },
+ "mix_6v12_pause.wav": {
+  "lang": "en",
+  "p": 0.976,
+  "text": "We had ramen for lunch in Osaka."
+ },
+ "mix_6v12_q.wav": {
+  "lang": "en",
+  "p": 0.978,
+  "text": "We had ramen for luncheon. Osaka."
+ },
+ "mix_7v12.wav": {
+  "lang": "ja",
+  "p": 0.946,
+  "text": "中国語ではニハオウと言います。"
+ },
+ "mix_8v12.wav": {
+  "lang": "ja",
+  "p": 0.743,
+  "text": "フランス語では、こんにちは。と言います。"
+ },
+ "mix_9v12.wav": {
+  "lang": "en",
+  "p": 0.956,
+  "text": "I met Wang Fang in Beijing last year."
+ }
+}

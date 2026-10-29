@@ -1,0 +1,7 @@
+*.onnx
+*.bin
+*.pt
+*.wav
+*.flac
+__pycache__/
+*.bak

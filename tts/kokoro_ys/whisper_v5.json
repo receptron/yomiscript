@@ -1,0 +1,62 @@
+{
+ "mix_1v5a.wav": {
+  "lang": "ja",
+  "p": 0.783,
+  "text": "今日は、のべんきょうをします。"
+ },
+ "mix_1v5b.wav": {
+  "lang": "ja",
+  "p": 0.975,
+  "text": "今日は、ムシン・ラーネンの勉強をします。"
+ },
+ "mix_1v5c.wav": {
+  "lang": "ja",
+  "p": 0.959,
+  "text": "今日は、マシン・ラーネングの勉強をします。"
+ },
+ "mix_2v5a.wav": {
+  "lang": "en",
+  "p": 0.674,
+  "text": "My friend, Tanaka, lives in Tokyo near Shibuya."
+ },
+ "mix_2v5b.wav": {
+  "lang": "en",
+  "p": 0.979,
+  "text": "My friend Tanaka lives in Tokyo near Sibuya."
+ },
+ "mix_2v5c.wav": {
+  "lang": "en",
+  "p": 0.946,
+  "text": "My friend Taneka lives in Tokyo near Tsubuya."
+ },
+ "mix_3v5a.wav": {
+  "lang": "ja",
+  "p": 0.975,
+  "text": "明日の メーティングで データサイエンスの話をします"
+ },
+ "mix_3v5b.wav": {
+  "lang": "ja",
+  "p": 0.983,
+  "text": "明日のみぜがでデイトサイエンスの話をします"
+ },
+ "mix_3v5c.wav": {
+  "lang": "ja",
+  "p": 0.981,
+  "text": "明日のみちがデー・デイトサイエンスの話をします"
+ },
+ "mix_4v5a.wav": {
+  "lang": "en",
+  "p": 0.995,
+  "text": "re-assently visited, and ate. There."
+ },
+ "mix_4v5b.wav": {
+  "lang": "en",
+  "p": 0.996,
+  "text": "Ariascently visited Kyoto and ate the sea there."
+ },
+ "mix_4v5c.wav": {
+  "lang": "en",
+  "p": 0.994,
+  "text": "re-assently visited Kyoto and Ait Sasei there."
+ }
+}
