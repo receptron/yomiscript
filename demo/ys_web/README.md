@@ -11,8 +11,9 @@ YomiScript を入力すると、ブラウザ内（onnxruntime-web, WASM）で Ko
 ## 分割 ONNX の書き出し（Python 3.11）
 ```
 pip install kokoro torch onnx
-python export_split.py     # models/enc.onnx, f0n.onnx, dec.onnx（計 約 311 MB）と voices/*.bin を作成
+python export_split.py     # models/enc.onnx, f0n.onnx, dec.onnx（計 約 311 MB）を作成
 ```
+声は Kokoro-82M の `voices/<名前>.pt` から style ベクトル（float32, 510×256）を取り出し、生の float32 として `voices/<名前>.bin`（例 `af_heart.bin`, `jf_alpha.bin`）に保存します。
 重みと声は `hexgrad/Kokoro-82M`（Apache-2.0）から自動取得されます。生成物はリポジトリに含めません。
 
 ## 実行
