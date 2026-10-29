@@ -47,6 +47,8 @@ As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syl
 | `<pause:S/M/L>` `<pause:300ms>` | Explicit pause (inherited from the old spec) | — |
 | `↘` / `↗` | Sentence-final fall (declarative) / rise (question) | `$` / `?` |
 | `<lang> /…/` | One utterance: BCP 47 language tag, then the pronunciation between slashes (D19) | `^…$` |
+| ` ↘ ` / ` ↗ ` inside an utterance | A sentence end within the utterance (e.g. two sentences on one line) (D21) | — |
+| `<p:…>` | Punctuation the engine uses as a prosodic cue, passed through where it stands: `<p:!>` `<p:;>` `<p::>` `<p:—>` `<p:...>` `<p:“>` `<p:(>` … If the utterance ends with one, the final `↘` / `↗` adds nothing (D21) | — |
 
 ### 2.6 Pitch values (phonetic layer)
 | Notation | Meaning |

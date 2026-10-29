@@ -1,0 +1,90 @@
+[
+ {
+  "name": "plain",
+  "text": "The quick brown fox jumps over the lazy dog."
+ },
+ {
+  "name": "comma_list",
+  "text": "We need to buy milk, eggs, and bread."
+ },
+ {
+  "name": "yn_question",
+  "text": "Did you remember to lock the front door?"
+ },
+ {
+  "name": "wh_question",
+  "text": "Where are you going tonight?"
+ },
+ {
+  "name": "decl_question",
+  "text": "You're moving to Tokyo next month?"
+ },
+ {
+  "name": "tag_question",
+  "text": "It's a beautiful day, isn't it?"
+ },
+ {
+  "name": "exclaim",
+  "text": "What a wonderful surprise!"
+ },
+ {
+  "name": "semicolon",
+  "text": "I wanted to go; however, it was raining."
+ },
+ {
+  "name": "colon",
+  "text": "There is one rule: never give up."
+ },
+ {
+  "name": "dash",
+  "text": "She was late — again."
+ },
+ {
+  "name": "quotes",
+  "text": "He said, \"I will be there soon.\""
+ },
+ {
+  "name": "parens",
+  "text": "The museum (which opened in 1990) is free on Sundays."
+ },
+ {
+  "name": "numbers",
+  "text": "The meeting starts at 9:30 on March 3rd, 2026."
+ },
+ {
+  "name": "money",
+  "text": "It costs $4.99, or about 15% less than last year."
+ },
+ {
+  "name": "abbrev",
+  "text": "Dr. Smith lives on Baker St. near the U.S. embassy."
+ },
+ {
+  "name": "contractions",
+  "text": "I'd've thought they'd know what's going on."
+ },
+ {
+  "name": "two_sentences",
+  "text": "It was late. Everyone had already gone home."
+ },
+ {
+  "name": "q_then_s",
+  "text": "Are you sure? I thought it was tomorrow."
+ },
+ {
+  "name": "ellipsis",
+  "text": "Well... I'm not sure about that."
+ },
+ {
+  "name": "unknown_word",
+  "text": "The zxqvbe flew over the glorptastic mountains."
+ },
+ {
+  "name": "newline",
+  "text": "First line of the poem.\nSecond line of the poem."
+ },
+ {
+  "name": "long",
+  "text": "Once upon a time, in a small village by the sea, there lived an old fisherman who went out every morning before sunrise, no matter the weather, and returned every evening with a basket full of fish, which he shared with his neighbors, his friends, and anyone else who happened to be hungry that day; and although he was poor, he was the happiest man in the whole village, because he believed that kindness was the only treasure worth keeping, and that a life spent helping others was a life well lived."
+ }
+]

@@ -36,7 +36,8 @@ export function parse(ys){
     if(a<z)S.push({lang:l,text:x.slice(a,z),base:b0+s+a});
   }
   S.forEach((sec,i)=>{sec.end=i===S.length-1?end:'$';sec.toks=segment(sec.lang,sec.text,sec.base);
-    const last=[...sec.toks].reverse().find(t=>t.kind!=='bound');sec.toks.push({kind:'end',sym:sec.end==='?'?'?':'.',ph:last?last.ph:0});});
+    // the final ↘ / ↗ is the engine's '.' / '?', unless the utterance already ends with explicit punctuation (<p:!> …)
+    const last=[...sec.toks].reverse().find(t=>t.kind!=='bound');sec.toks.push({kind:'end',sym:last?.kind==='punct'?'':sec.end==='?'?'?':'.',ph:last?last.ph:0});});
   return {ys,top,end,sections:S};
 }
 function segment(lang,t,base){return isJa(lang)?jaSeg(t,base):lang==='zh'?zhSeg(t,base):euSeg(t,base);}
@@ -93,12 +94,16 @@ function jaSeg(t,base){
   return out;
 }
 
-// ---- English / French: IPA syllables ('.'), words (' '), stress ˈ ˌ, liaison ‿ ; boundaries '#' '_' as words
-function sylls(w,base){ // split at '.' outside <…>, drop '‿' and <f0:…> from the raw text
+// ---- English / French: IPA syllables ('.'), words (' '), stress ˈ ˌ, liaison ‿ ; boundaries ' | ' ' ‖ ' as words;
+// a sentence end inside the utterance ' ↘ ' / ' ↗ '; punctuation the engine uses as a prosodic cue: <p:…>
+function pAt(s,i){if(!s.startsWith('<p:',i))return null;const j=s.indexOf('>',i+3);if(j<0)throw new Error(`unclosed <p: in ${JSON.stringify(s)}`);return [s.slice(i+3,j),j+1];}
+function sylls(w,base){ // -> syllables {raw,start,end,f0} and punctuation {punct:sym} in order; '.' splits syllables outside <…>
   const R=[];let raw='',start=base,f0=null,end=base;
+  const flush=()=>{if(raw||f0)R.push({raw,start,end,f0});raw='';f0=null;};
   for(let i=0;i<=w.length;){
-    if(i===w.length||w[i]==='.'){R.push({raw,start,end,f0});raw='';f0=null;start=base+i+1;end=start;i++;continue;}
+    if(i===w.length||w[i]==='.'){flush();start=base+i+1;end=start;i++;continue;}
     const f=f0At(w,i);if(f){f0=f[0];i=f[1];continue;}
+    const p=pAt(w,i);if(p){flush();R.push({punct:p[0]});i=p[1];start=end=base+i;continue;}
     if(w[i]!=='‿')raw+=w[i];i++;end=base+i;
   }
   return R;
@@ -109,8 +114,11 @@ function euSeg(t,base){
   for(const w of t.split(' ')){
     const o=base+pos;pos+=w.length+1;if(!w)continue;
     const sep=SEP(w);if(sep){out.push({kind:'bound',sym:sep,ph});if(sep==='_')out.push({kind:'pause',ph});ph++;continue;}
+    if(w==='↘'||w==='↗'){out.push({kind:'punct',sym:w==='↗'?'?':'.',ph});ph++;continue;} // sentence end inside the utterance
     const L=lastU();if(L&&L.kind!=='pause')out.push({kind:'space',ph});
-    const S=sylls(w,o);S.forEach((s,j)=>out.push({kind:'unit',ph,j,nsyl:S.length,st:inStr(s.raw[0]??'','ˈˌ')?s.raw[0]:'',...s}));
+    const S=sylls(w,o),N=S.filter(s=>!('punct' in s)).length;let j=0;
+    for(const s of S)if('punct' in s)out.push({kind:'punct',sym:s.punct,ph});
+      else out.push({kind:'unit',ph,j:j++,nsyl:N,st:inStr(s.raw[0]??'','ˈˌ')?s.raw[0]:'',...s});
   }
   return out;
 }
@@ -122,7 +130,7 @@ function zhSeg(t,base){
     const o=base+pos;pos+=w.length+1;if(!w)continue;
     const sep=SEP(w);if(sep){out.push({kind:'bound',sym:sep,ph});if(sep==='_')out.push({kind:'pause',ph});ph++;continue;}
     const L=[...out].reverse().find(x=>x.kind!=='bound');if(L&&L.kind!=='pause')out.push({kind:'space',ph});
-    for(const s of sylls(w,o)){const m=s.raw.match(/^[a-zü]+(\d)(?:>(\d))?/);if(!m)throw new Error(`bad pinyin syllable ${JSON.stringify(s.raw)}`);
+    for(const s of sylls(w,o)){if('punct' in s){out.push({kind:'punct',sym:s.punct,ph});continue;}const m=s.raw.match(/^[a-zü]+(\d)(?:>(\d))?/);if(!m)throw new Error(`bad pinyin syllable ${JSON.stringify(s.raw)}`);
       out.push({kind:'unit',ph,tone:m[2]||m[1],...s});}
   }
   return out;

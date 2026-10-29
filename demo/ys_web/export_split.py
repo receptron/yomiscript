@@ -1,6 +1,7 @@
 import torch,numpy as np
 from kokoro import KModel
-m=KModel(repo_id='hexgrad/Kokoro-82M',disable_complex=True).eval();m.requires_grad_(False)
+from exact_stft import use_exact_stft  # STFT identical to torch.stft/istft (kokoro's CustomSTFT is approximate)
+m=use_exact_stft(KModel(repo_id='hexgrad/Kokoro-82M',disable_complex=True).eval());m.requires_grad_(False)
 class B(torch.nn.Module):
     def __init__(s):super().__init__();s.m=m
 class Enc(B):

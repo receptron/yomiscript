@@ -77,7 +77,7 @@ Japanese is the hardest case for the Yomite side, not the focus of the project. 
 
 ## Documents
 
-- [Decisions D1–D20](docs/decisions.md)
+- [Decisions D1–D21](docs/decisions.md)
 - [Hypotheses H0–H12](docs/hypotheses.md)
 - [Contributing](CONTRIBUTING.md)
 

@@ -1,0 +1,28 @@
+vs original (af_heart)         n    corr mean / min  SNR dB mean   mel L1 dB mean / max
+original 2nd run              23   0.9943 / 0.9924         19.5         0.30 / 0.37
+fp32                          23   0.9944 / 0.9888         19.7         0.31 / 0.39
+w16                           23   0.9854 / 0.8545         18.3         0.32 / 0.61
+plain         af_heart ps= ids= ref= dur 100% F0 0.000st SNR 18.0dB corr 0.9921 len 78000/78000
+comma_list    af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.6dB corr 0.9946 len 65400/65400
+yn_question   af_heart ps= ids= ref= dur 100% F0 0.000st SNR 20.5dB corr 0.9955 len 63000/63000
+wh_question   af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.8dB corr 0.9948 len 44400/44400
+decl_question af_heart ps= ids= ref= dur 100% F0 0.000st SNR 20.9dB corr 0.9959 len 58800/58800
+tag_question  af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.4dB corr 0.9943 len 52800/52800
+exclaim       af_heart ps= ids= ref= dur 100% F0 0.000st SNR 17.9dB corr 0.9919 len 47400/47400
+semicolon     af_heart ps= ids= ref= dur 100% F0 0.000st SNR 20.1dB corr 0.9951 len 72000/72000
+colon         af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.4dB corr 0.9943 len 61800/61800
+dash          af_heart ps= ids= ref= dur 100% F0 0.000st SNR 18.7dB corr 0.9933 len 43800/43800
+quotes        af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.3dB corr 0.9941 len 56400/56400
+parens        af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.7dB corr 0.9946 len 107400/107400
+numbers       af_heart ps= ids= ref= dur 100% F0 0.000st SNR 18.6dB corr 0.9932 len 106800/106800
+money         af_heart ps= ids= ref= dur 100% F0 0.000st SNR 20.2dB corr 0.9952 len 137400/137400
+abbrev        af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.1dB corr 0.9938 len 103200/103200
+contractions  af_heart ps= ids= ref= dur 100% F0 0.000st SNR 21.1dB corr 0.9961 len 60600/60600
+two_sentences af_heart ps= ids= ref= dur 100% F0 0.000st SNR 18.3dB corr 0.9926 len 76200/76200
+q_then_s      af_heart ps= ids= ref= dur 100% F0 0.000st SNR 20.2dB corr 0.9952 len 62400/62400
+ellipsis      af_heart ps= ids= ref= dur 100% F0 0.000st SNR 21.6dB corr 0.9966 len 51600/51600
+unknown_word  af_heart ps= ids= ref= dur 100% F0 0.000st SNR 18.6dB corr 0.9932 len 96000/96000
+newline       af_heart ps= ids= ref= dur 100% F0 0.000st SNR 19.4dB corr 0.9943 len 47400/47400
+newline       af_heart ps= ids= ref= dur 100% F0 0.000st SNR 20.8dB corr 0.9959 len 47400/47400
+long          af_heart ps= ids= ref= dur 100% F0 0.000st SNR 17.0dB corr 0.9900 len 661200/661200
+23 chunks: ps identical 23, ids identical 23, voice index identical 23, durations identical 23

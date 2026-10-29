@@ -40,7 +40,7 @@ function enSyl(x,gb){
   return x;
 }
 function kokoroPhonemes(lang,t,foreign){
-  if(t.kind==='space')return ' ';if(t.kind==='pause')return ', ';if(t.kind==='end')return t.sym;
+  if(t.kind==='space')return ' ';if(t.kind==='pause')return ', ';if(t.kind==='end'||t.kind==='punct')return t.sym;
   if(isJa(lang)){const p=t.mk==='mora'?jaKokoro(t.on,t.v):t.mk==='Q'?'ʔ':t.ipa;return foreign?[...p].map(c=>FOREIGN_JA[c]??c).join(''):p;}
   if(lang==='zh'||lang.startsWith('zh-'))return zsyl(t.raw);
   if(lang==='fr'||lang.startsWith('fr-'))return t.raw.replace(/g/g,'ɡ'); // IPA: g = ɡ
@@ -60,7 +60,8 @@ export function plan(ys){
     const ids=[0],uid=[-1];
     U.forEach(([p],k)=>{for(const ch of p)if(ch in VOCAB){ids.push(VOCAB[ch]);uid.push(k);}});
     ids.push(0);uid.push(-1);
-    return {lang:sec.lang,text:sec.text,voice:voiceFor(Y.top,sec.lang,sec.text),ids,uid,U,toks};
+    const ps=U.map(u=>u[0]).join('');                          // the phoneme string the original Kokoro would get
+    return {lang:sec.lang,text:sec.text,voice:voiceFor(Y.top,sec.lang,sec.text),ps,ids,uid,U,toks};
   });
   P.src=Y.ys;return P;
 }
@@ -129,7 +130,8 @@ export class Engine{
   // Kokoro's own prosody prediction (durations, F0, energy) for one planned section; also used by the Yomite (kokoro_prosody.js)
   async predict(sec){
     const o=this.ort,T=o.Tensor;const L=sec.ids.length;const V=await this.voice(sec.voice);
-    const ref=new T('float32',V.slice((L-2)*256,(L-1)*256),[1,256]);
+    const k=(sec.ps??'x'.repeat(L-1)).length-1;               // voice-pack entry as in KPipeline: pack[len(ps)-1]
+    const ref=new T('float32',V.slice(k*256,(k+1)*256),[1,256]);
     const r1=await this.enc.run({ids:new T('int64',BigInt64Array.from(sec.ids.map(BigInt)),[1,L]),ref});
     const dur=Array.from(r1.dur.data,Number);const Tn=dur.reduce((a,b)=>a+b,0);
     const expand=t=>{const C=t.dims[1],src=t.data,out=new Float32Array(C*Tn);
@@ -145,7 +147,8 @@ export class Engine{
   }
   async synth(ys,mode='acc'){
     const P=plan(ys);const outs=[];for(const s of P)outs.push(await this.synthSection(s,mode));
-    return {audio:join(outs.map(o=>o.audio)),plan:P,sections:outs};
+    // one section: the model's audio as is (like the original); several language sections: joined
+    return {audio:outs.length===1?outs[0].audio:join(outs.map(o=>o.audio)),plan:P,sections:outs};
   }
 }
 export function wav(a){

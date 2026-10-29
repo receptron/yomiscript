@@ -1,0 +1,53 @@
+Model F0 prediction, 28 voices
+
+same words, ending .     n= 312  rising   2.6%   rise +1.91   end -4.71   paper-style rising (slope>0)  11.5%
+same words, ending ?     n= 313  rising   1.6%   rise +1.86   end -4.72   paper-style rising (slope>0)  11.2%
+yn_question              n= 295  rising   3.7%   rise +2.26   end -5.61   paper-style rising (slope>0)   6.1%
+yn_statement             n= 297  rising   2.7%   rise +2.51   end -5.47   paper-style rising (slope>0)   6.1%
+wh_question              n= 207  rising   3.4%   rise +1.73   end -4.81   paper-style rising (slope>0)   8.7%
+tag_question             n=  91  rising   1.1%   rise +2.41   end -5.09   paper-style rising (slope>0)   8.8%
+alt_question             n=  78  rising   0.0%   rise +2.38   end -4.99   paper-style rising (slope>0)  12.8%
+
+Paired differences, same voice ('?' version minus '.' version), semitones
+  same words  ? vs .       n= 310  Δend +0.01 (± 0.98)   Δrise -0.03   '?' higher at the end in 9% of pairs (by > 1 st)
+  yes/no q vs statement    n= 293  Δend -0.16 (± 2.14)   Δrise -0.21   '?' higher at the end in 22% of pairs (by > 1 st)
+
+Per voice: yes/no questions rising vs statements rising (model prediction)
+  af_alloy     questions   0.0%   statements   0.0%
+  af_aoede     questions   0.0%   statements   0.0%
+  af_bella     questions  33.3%   statements  41.7%
+  af_heart     questions   0.0%   statements   0.0%
+  af_jessica   questions   0.0%   statements   0.0%
+  af_kore      questions   0.0%   statements   0.0%
+  af_nicole    questions   0.0%   statements   0.0%
+  af_nova      questions   0.0%   statements   0.0%
+  af_river     questions   0.0%   statements   0.0%
+  af_sarah     questions   0.0%   statements   0.0%
+  af_sky       questions   4.2%   statements   4.2%
+  am_adam      questions  12.5%   statements  12.5%
+  am_echo      questions   0.0%   statements   8.3%
+  am_eric      questions   4.2%   statements   0.0%
+  am_fenrir    questions   0.0%   statements   0.0%
+  am_liam      questions   0.0%   statements   0.0%
+  am_michael   questions   0.0%   statements   0.0%
+  am_onyx      questions   0.0%   statements   0.0%
+  am_puck      questions   0.0%   statements   0.0%
+  am_santa     questions   0.0%   statements   0.0%
+  bf_alice     questions   0.0%   statements   0.0%
+  bf_emma      questions   4.2%   statements   0.0%
+  bf_isabella  questions   0.0%   statements   0.0%
+  bf_lily      questions   0.0%   statements   0.0%
+  bm_daniel    questions   0.0%   statements   0.0%
+  bm_fable     questions   0.0%   statements   0.0%
+  bm_george    questions   0.0%   statements   0.0%
+  bm_lewis     questions   9.5%   statements   4.5%
+
+Audio check (af_heart, am_michael, bf_emma; librosa.pyin on the synthesized sound)
+  end vs median: prediction vs audio  correlation -0.25, mean -4.19 vs -3.44
+  same words, ending .     audio: n=  35  rising   8.6%   rise +1.32   end -3.28   paper-style rising (slope>0)  32.4%
+  same words, ending ?     audio: n=  36  rising  11.1%   rise +1.24   end -3.38   paper-style rising (slope>0)  27.8%
+  yn_question              audio: n=  34  rising   2.9%   rise +1.08   end -3.43   paper-style rising (slope>0)  21.2%
+  yn_statement             audio: n=  32  rising   9.4%   rise +1.07   end -3.61   paper-style rising (slope>0)  12.5%
+  wh_question              audio: n=  23  rising  13.0%   rise +1.29   end -2.95   paper-style rising (slope>0)  26.1%
+  tag_question             audio: n=  10  rising  10.0%   rise +1.24   end -5.59   paper-style rising (slope>0)  20.0%
+  alt_question             audio: n=   9  rising  11.1%   rise +2.51   end -2.69   paper-style rising (slope>0)  44.4%

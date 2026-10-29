@@ -1,0 +1,365 @@
+[
+ {
+  "kind": "punct_pair",
+  "name": "pp00.",
+  "text": "You're moving to Tokyo next month.",
+  "pair": "pp00"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp00?",
+  "text": "You're moving to Tokyo next month?",
+  "pair": "pp00"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp01.",
+  "text": "She already finished the report.",
+  "pair": "pp01"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp01?",
+  "text": "She already finished the report?",
+  "pair": "pp01"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp02.",
+  "text": "They left the keys in the car.",
+  "pair": "pp02"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp02?",
+  "text": "They left the keys in the car?",
+  "pair": "pp02"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp03.",
+  "text": "You want the window open.",
+  "pair": "pp03"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp03?",
+  "text": "You want the window open?",
+  "pair": "pp03"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp04.",
+  "text": "He called you last night.",
+  "pair": "pp04"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp04?",
+  "text": "He called you last night?",
+  "pair": "pp04"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp05.",
+  "text": "We're meeting at the station.",
+  "pair": "pp05"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp05?",
+  "text": "We're meeting at the station?",
+  "pair": "pp05"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp06.",
+  "text": "The store is closed on Sundays.",
+  "pair": "pp06"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp06?",
+  "text": "The store is closed on Sundays?",
+  "pair": "pp06"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp07.",
+  "text": "You've read this book before.",
+  "pair": "pp07"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp07?",
+  "text": "You've read this book before?",
+  "pair": "pp07"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp08.",
+  "text": "It's going to rain today.",
+  "pair": "pp08"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp08?",
+  "text": "It's going to rain today?",
+  "pair": "pp08"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp09.",
+  "text": "Your sister lives in Boston.",
+  "pair": "pp09"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp09?",
+  "text": "Your sister lives in Boston?",
+  "pair": "pp09"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp10.",
+  "text": "The train was late again.",
+  "pair": "pp10"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp10?",
+  "text": "The train was late again?",
+  "pair": "pp10"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp11.",
+  "text": "You saw the email I sent.",
+  "pair": "pp11"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp11?",
+  "text": "You saw the email I sent?",
+  "pair": "pp11"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn00?",
+  "text": "Did you remember to lock the front door?",
+  "pair": "yn00"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn00.",
+  "text": "You remembered to lock the front door.",
+  "pair": "yn00"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn01?",
+  "text": "Are you coming to the party tonight?",
+  "pair": "yn01"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn01.",
+  "text": "You are coming to the party tonight.",
+  "pair": "yn01"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn02?",
+  "text": "Is this the right train to Boston?",
+  "pair": "yn02"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn02.",
+  "text": "This is the right train to Boston.",
+  "pair": "yn02"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn03?",
+  "text": "Can you hear me now?",
+  "pair": "yn03"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn03.",
+  "text": "You can hear me now.",
+  "pair": "yn03"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn04?",
+  "text": "Have you ever been to Japan?",
+  "pair": "yn04"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn04.",
+  "text": "You have been to Japan.",
+  "pair": "yn04"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn05?",
+  "text": "Does she like chocolate cake?",
+  "pair": "yn05"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn05.",
+  "text": "She likes chocolate cake.",
+  "pair": "yn05"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn06?",
+  "text": "Will they arrive before noon?",
+  "pair": "yn06"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn06.",
+  "text": "They will arrive before noon.",
+  "pair": "yn06"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn07?",
+  "text": "Is it cold outside?",
+  "pair": "yn07"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn07.",
+  "text": "It is cold outside.",
+  "pair": "yn07"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn08?",
+  "text": "Do you know where the station is?",
+  "pair": "yn08"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn08.",
+  "text": "You know where the station is.",
+  "pair": "yn08"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn09?",
+  "text": "Could you open the window?",
+  "pair": "yn09"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn09.",
+  "text": "You could open the window.",
+  "pair": "yn09"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn10?",
+  "text": "Was the movie any good?",
+  "pair": "yn10"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn10.",
+  "text": "The movie was good.",
+  "pair": "yn10"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn11?",
+  "text": "Should we leave now?",
+  "pair": "yn11"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn11.",
+  "text": "We should leave now.",
+  "pair": "yn11"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh00",
+  "text": "Where are you going tonight?"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh01",
+  "text": "What time does the meeting start?"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh02",
+  "text": "Who left the door open?"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh03",
+  "text": "Why is the sky blue?"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh04",
+  "text": "How did you get here?"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh05",
+  "text": "When does the store open?"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh06",
+  "text": "Which one do you want?"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh07",
+  "text": "What are you doing this weekend?"
+ },
+ {
+  "kind": "tag_question",
+  "name": "tag00",
+  "text": "It's a beautiful day, isn't it?"
+ },
+ {
+  "kind": "tag_question",
+  "name": "tag01",
+  "text": "You're coming with us, aren't you?"
+ },
+ {
+  "kind": "tag_question",
+  "name": "tag02",
+  "text": "She doesn't eat meat, does she?"
+ },
+ {
+  "kind": "tag_question",
+  "name": "tag03",
+  "text": "They finished the project, didn't they?"
+ },
+ {
+  "kind": "alt_question",
+  "name": "alt00",
+  "text": "Do you want tea or coffee?"
+ },
+ {
+  "kind": "alt_question",
+  "name": "alt01",
+  "text": "Is it Monday or Tuesday?"
+ },
+ {
+  "kind": "alt_question",
+  "name": "alt02",
+  "text": "Should we walk or take the bus?"
+ }
+]
