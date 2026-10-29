@@ -72,11 +72,13 @@ entries). Write new comments and docstrings in English too. Older Japanese comme
 predate this rule.
 
 ## Layout
-- `spec/`: YomiScript and lexicon specifications. `docs/`: decisions (D…) and hypotheses (H…).
+- `spec/`: YomiScript and lexicon specifications. `docs/`: decisions (D…), hypotheses (H…) and the distribution plan
+  (`plan.md`: TypeScript on npm, no Python in what ships, D24).
 - `demo/ys_web/`: the browser demo and the reference Katarite (`web/`). It also has the ONNX export
   (`export_split.py`, `exact_stft.py`).
-- `yomite/`: the Kokoro-based Yomites (`en_kokoro`, `ja_kokoro`).
+- `yomite/`: the Kokoro-based Yomites (`en_kokoro`, `ja_kokoro`). `katarite/`: Katarites other than Kokoro
+  (`supertonic`: YomiScript -> text with kana hints, D23).
 - `models/yomi/mlx/`: Yomi-0 and MoLD (training, tools, tests). `mold/`, `dict/`: lexicons and memories.
-- `eval/`: benchmarks and investigations (`kokoro_parity`, `kokoro_questions`, `llm_yomite`, JSUT baselines).
+- `eval/`: benchmarks and investigations (`kokoro_parity`, `kokoro_questions`, `llm_yomite`, `browser_tts`, JSUT baselines).
 - `tts/`: earlier Python Kokoro experiments (old notation). `tools/`: converters (kana labels → YomiScript).
 - `test/`: Vitest specs and fixtures.

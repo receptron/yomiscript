@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Browser TTS Listening</title>
+    <style>
+      :root {
+        --bg: #fbfbfa;
+        --fg: #1d1d1b;
+        --muted: #6b6b66;
+        --line: #e3e3de;
+        --ok: #2f7d4f;
+        --bad: #b3412e;
+        --chip: #efefea;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #171716;
+          --fg: #ececea;
+          --muted: #9a9a94;
+          --line: #2e2e2b;
+          --ok: #6cc28f;
+          --bad: #ef8a76;
+          --chip: #252523;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          15px/1.5 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 8px 0 4px;
+      }
+      p.note {
+        color: var(--muted);
+        margin: 0 0 12px;
+      }
+      nav button {
+        font: inherit;
+        border: 1px solid var(--line);
+        background: var(--chip);
+        color: var(--fg);
+        border-radius: 6px;
+        padding: 4px 10px;
+        margin: 0 6px 6px 0;
+        cursor: pointer;
+      }
+      nav button[aria-pressed="true"] {
+        border-color: var(--fg);
+      }
+      .item {
+        border-top: 1px solid var(--line);
+        padding: 12px 0;
+      }
+      .text {
+        font-size: 17px;
+        margin-bottom: 4px;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 260px auto 1fr;
+        gap: 8px;
+        align-items: center;
+        padding: 2px 0;
+      }
+      .row .ps {
+        font-family: ui-monospace, monospace;
+        font-size: 12px;
+        color: var(--muted);
+        overflow-wrap: anywhere;
+      }
+      .ok {
+        color: var(--ok);
+      }
+      .bad {
+        color: var(--bad);
+      }
+      audio {
+        height: 32px;
+        width: 240px;
+      }
+      @media (max-width: 720px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+        audio {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Browser TTS: listening comparison</h1>
+      <p class="note">
+        Same text, five systems. The LLM rows are the LLM writing YomiScript for Kokoro (no pitch values; Kokoro makes the prosody). Under each row: the phoneme
+        string Kokoro was given, and whether the reading matches the gold (hard set) or the original front end (parity sets).
+      </p>
+      <nav id="sets"></nav>
+      <div id="list"></div>
+    </main>
+    <script type="module">
+      const data = await (await fetch("audio/listen.json")).json();
+      const label = Object.fromEntries(data.systems.map((s) => [s.key, s.label]));
+      const NAMES = { hard: "Japanese hard set (70)", ja: "Japanese parity texts (24)", en: "English parity texts (22)" };
+      const nav = document.getElementById("sets"),
+        list = document.getElementById("list");
+      const el = (tag, cls, text) => {
+        const e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text !== undefined) e.textContent = text;
+        return e;
+      };
+      function mark(s, set) {
+        if (s.ok === undefined) return el("span", "", s.key === "kokoro" && set !== "hard" ? "reference" : "");
+        return el("span", s.ok ? "ok" : "bad", s.ok ? "same reading" : "different reading");
+      }
+      function show(set) {
+        for (const b of nav.children) b.setAttribute("aria-pressed", b.dataset.set === set);
+        list.replaceChildren();
+        for (const it of data.sets[set]) {
+          const d = el("div", "item");
+          d.append(el("div", "text", it.text));
+          const meta = [it.name, it.category, it.gold && "gold: " + it.gold.join(" / ")].filter(Boolean).join(" · ");
+          d.append(el("div", "meta", meta));
+          for (const s of it.systems) {
+            const r = el("div", "row");
+            r.append(el("div", "", label[s.key]));
+            const a = el("audio");
+            a.controls = true;
+            a.preload = "none";
+            if (s.file) a.src = s.file;
+            r.append(s.file ? a : el("span", "bad", "no audio"));
+            const info = el("div", "ps");
+            info.append(mark(s, set), document.createTextNode(s.ps ? "  " + s.ps : ""));
+            r.append(info);
+            d.append(r);
+          }
+          list.append(d);
+        }
+      }
+      for (const set of ["hard", "ja", "en"]) {
+        const b = el("button", "", NAMES[set]);
+        b.dataset.set = set;
+        b.onclick = () => show(set);
+        nav.append(b);
+      }
+      show("hard");
+    </script>
+  </body>
+</html>

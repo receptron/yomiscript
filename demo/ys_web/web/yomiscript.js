@@ -32,8 +32,50 @@ function whyNot(s) {
   if (!/[↘↗]\s*\/\s*$/.test(s)) return 'missing sentence-final ↘ or ↗ before the closing "/"';
   return "not YomiScript";
 }
-export function parse(ys) {
-  ys = ys.trim();
+// <t:…> the original text (D23). Each one closes a span: the units since the previous <t:…> are the reading of that
+// text; a <t:…> with no units before it is text that is not spoken (punctuation, brackets). The annotations are taken
+// out before parsing, so they never change the pronunciation; offsets are mapped back to the string as written.
+function takeTexts(ys) {
+  let out = "";
+  const map = [],
+    texts = [];
+  for (let i = 0; i < ys.length;) {
+    if (ys.startsWith("<t:", i)) {
+      const j = ys.indexOf(">", i);
+      if (j < 0) throw new Error(`unclosed <t: in ${JSON.stringify(ys)}`);
+      texts.push({ text: ys.slice(i + 3, j), at: out.length });
+      i = j + 1;
+    } else {
+      map.push(i);
+      out += ys[i++];
+    }
+  }
+  map.push(ys.length);
+  return { out, map, texts };
+}
+function spanOf(texts, t) {
+  if (t.kind !== "unit" || !texts.length) return;
+  const k = texts.findIndex((x) => x.at >= t.end);
+  if (k >= 0) t.span = k;
+}
+function mapOffsets(map, t) {
+  if (typeof t.start === "number") t.start = map[t.start];
+  for (const f of ["end", "vend"]) if (t[f] > 0) t[f] = map[t[f] - 1] + 1; // exclusive ends: one past the last character
+}
+function placeTexts(S, T) {
+  // each unit gets the span it reads (index into texts), then offsets go back to the annotated string
+  for (const sec of S) {
+    sec.base = T.map[sec.base];
+    for (const t of sec.toks) {
+      spanOf(T.texts, t);
+      mapOffsets(T.map, t);
+    }
+  }
+}
+export function parse(written) {
+  written = written.trim();
+  const T = takeTexts(written),
+    ys = T.out;
   const m = ys.match(UTT);
   if (!m) throw new Error(`${whyNot(ys)} — got ${JSON.stringify(ys.length > 60 ? ys.slice(0, 60) + "…" : ys)}. YomiScript looks like  ja /kʲoꜜːwa | aꜜmeɡa ↘/`);
   const top = m[1],
@@ -61,7 +103,8 @@ export function parse(ys) {
     const last = [...sec.toks].reverse().find((t) => t.kind !== "bound");
     sec.toks.push({ kind: "end", sym: endSym(sec.end, last), ph: last ? last.ph : 0 });
   });
-  return { ys, top, end, sections: S };
+  placeTexts(S, T);
+  return { ys: written, top, end, sections: S, texts: T.texts.map((x) => x.text) };
 }
 // the final ↘ / ↗ is the engine's '.' / '?'; ↘ adds nothing if the utterance already ends with punctuation (<p:!> …)
 function endSym(end, last) {

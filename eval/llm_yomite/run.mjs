@@ -5,10 +5,9 @@
 //   task "marked": marked YomiScript -> the same with <f0:…> values (the LLM is only the prosody stage)
 import fs from "fs";
 import path from "path";
-import os from "os";
-import { spawnSync } from "child_process";
 import { fileURLToPath } from "url";
 import { realize } from "../../demo/ys_web/web/yomite.js";
+import { call, json } from "./llm.mjs";
 const HERE = path.dirname(fileURLToPath(import.meta.url)),
   OUT = path.join(HERE, "results");
 let args = process.argv.slice(2);
@@ -38,47 +37,6 @@ function prompt(task) {
     .map((x) => (task === "text" ? `- ${x.name} (${x.lang}${dialectNote(x)}): ${x.text}` : `- ${x.name}${dialectNote(x)}: ${x.marked}`))
     .join("\n");
   return TEMPLATE.replace("{{EXAMPLES}}", ex).replace("{{TASK}}", TASK_TEXT[task]).replace("{{ITEMS}}", it);
-}
-function callClaude(p, cwd) {
-  const r = spawnSync(
-    "claude",
-    ["-p", "--output-format", "json", "--disallowedTools", "Bash", "Edit", "Write", "Read", "Glob", "Grep", "WebFetch", "WebSearch"],
-    { input: p, cwd, encoding: "utf8", maxBuffer: 1 << 26 },
-  );
-  try {
-    const j = JSON.parse(r.stdout);
-    return { text: j.result, model: Object.keys(j.modelUsage ?? {}).join(","), err: r.stderr };
-  } catch {
-    return { text: r.stdout, err: r.stderr };
-  }
-}
-function callCodex(p, cwd) {
-  const o = path.join(cwd, "out.txt");
-  const r = spawnSync("codex", ["exec", "--skip-git-repo-check", "--ephemeral", "-s", "read-only", "-C", cwd, "-o", o], {
-    input: p,
-    cwd,
-    encoding: "utf8",
-    maxBuffer: 1 << 26,
-  });
-  const text = fs.existsSync(o) ? fs.readFileSync(o, "utf8") : r.stdout;
-  return { text, model: (r.stderr.match(/model:\S*\s+(\S+)/) || [])[1], err: r.stderr };
-}
-function call(llm, p) {
-  const cwd = fs.mkdtempSync(path.join(os.tmpdir(), "llm_yomite_"));
-  const t0 = Date.now();
-  const { text, model, err } = llm === "claude" ? callClaude(p, cwd) : callCodex(p, cwd);
-  fs.rmSync(cwd, { recursive: true, force: true });
-  return { text, model, seconds: (Date.now() - t0) / 1000, stderr: text ? "" : err };
-}
-function json(text) {
-  const a = text?.indexOf("{"),
-    b = text?.lastIndexOf("}");
-  if (a < 0 || b < a) return null;
-  try {
-    return JSON.parse(text.slice(a, b + 1));
-  } catch {
-    return null;
-  }
 }
 fs.mkdirSync(OUT, { recursive: true });
 for (const llm of LLMS.length ? LLMS : ["claude", "codex"])

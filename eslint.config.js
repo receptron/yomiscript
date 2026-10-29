@@ -43,7 +43,7 @@ export default [
   },
   {
     // the LLM experiment runs the user's own claude / codex CLIs, found on PATH like any shell would
-    files: ["eval/llm_yomite/run.mjs"],
+    files: ["eval/llm_yomite/llm.mjs"],
     rules: { "sonarjs/no-os-command-from-path": "off" },
   },
   {

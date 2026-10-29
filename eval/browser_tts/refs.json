@@ -1,0 +1,1368 @@
+{
+ "ja": [
+  {
+   "ys": [
+    "ja /kʲoː wa iː teŋki desɯ ne ↘/"
+   ],
+   "ps": [
+    "kʲoː βa iː teŋkʲi desɨ ne"
+   ],
+   "name": "plain",
+   "openjtalk": "ja /kʲoːwaiiteŋkidesɯne ↘/"
+  },
+  {
+   "ys": [
+    "ja /ame ɡa ɸɯɾi soː na no de ‖ kasa o motte dekake masɯ ↘/"
+   ],
+   "ps": [
+    "ame ɡa ɸɯɾʲi soː na no de kasa o moʔte dekake masɨ"
+   ],
+   "name": "comma",
+   "openjtalk": "ja /ameɡaoɾisoːnanodekasaomottedekakemasɯ ↘/"
+  },
+  {
+   "ys": [
+    "ja /asɯ wa ɡakkoː ɲi ikimasɯ ka ↗/"
+   ],
+   "ps": [
+    "asɨ βa ɡaʔkoː ɲi ikʲimasɨ ka?"
+   ],
+   "name": "ka_question",
+   "openjtalk": "ja /aɕitawaɡakkoːɲiikimasɯka ↘/"
+  },
+  {
+   "ys": [
+    "ja /moː kaeɾɯ no ↗/"
+   ],
+   "ps": [
+    "moː kaeɾɯ no?"
+   ],
+   "name": "q_no_ka",
+   "openjtalk": "ja /moːkaeɾɯno ↘/"
+  },
+  {
+   "ys": [
+    "ja /honto ɲi soɾe de iː no ↗/"
+   ],
+   "ps": [
+    "honto ɲi soɾe de iː no?"
+   ],
+   "name": "q_ascii",
+   "openjtalk": "ja /hontoːɲisoɾedeiino ↘/"
+  },
+  {
+   "ys": [
+    "ja /sɯɡoi<p:!> jatta ne<p:!> ↘/"
+   ],
+   "ps": [
+    "sɨɡoi! jaʔta ne!"
+   ],
+   "name": "exclaim",
+   "openjtalk": "ja /sɯɡoijattane ↘/"
+  },
+  {
+   "ys": [
+    "ja /koɲɲitɕiwa to kaɾe wa itta ↘/"
+   ],
+   "ps": [
+    "koɲɲiʨiβa to kaɾe βa iʔta"
+   ],
+   "name": "quotes",
+   "openjtalk": "ja /koɲɲitɕiwatokaɾewaitta ↘/"
+  },
+  {
+   "ys": [
+    "ja /waɡahai wa neko de aɾɯ wa natsɯme soːseki <p:«>natsɯme soː seki<p:»> no ɕoːsetsɯ desɯ ↘/"
+   ],
+   "ps": [
+    "βaɡahai βa neko de aɾɯ βa naʦɨme soːsekʲi «naʦɨme soː sekʲi» no ɕoːseʦɨ desɨ"
+   ],
+   "name": "brackets",
+   "openjtalk": "ja /waɡahaiwanekodeaɾɯwanatsɯmesoːsekinatsɯmesoːsekinoɕoːsetsɯdesɯ ↘/"
+  },
+  {
+   "ys": [
+    "ja /ɲi seɴ ɲidʑɯːɾokɯ neɴ dʑɯː ɡatsɯ ɲidʑɯːkʲɯː ɲitɕi no ɡoɡo saɴ dʑi dʑɯː ɡo bɯɴ ɲi ‖ happʲakɯ ɡodʑɯː eɴ o haɾai maɕita ↘/"
+   ],
+   "ps": [
+    "ɲi seɴ ɲiʥɨːɾokɯ neɴ ʥɨː ɡaʦɨ ɲiʥɨːkʲɨː ɲiʨi no ɡoɡo saɴ ʥi ʥɨː ɡo bɯɴ ɲi haʔpʲakɯ ɡoʥɨː eɴ o haɾai maɕita"
+   ],
+   "name": "numbers",
+   "openjtalk": "ja /ɲiseɲɲidʑɯːɾokɯneɲdʑɯːɡatsɯɲidʑɯːkɯɲitɕinoɡoɡosaɲdʑidʑɯːɡoɸɯɲɲihappʲakɯɡodʑɯːeɴohaɾaimaɕita ↘/"
+  },
+  {
+   "ys": [
+    "ja /toːkʲoː no oːdoːɾi de koːçiː o nomi maɕita ↘/"
+   ],
+   "ps": [
+    "toːkʲoː no oːdoːɾʲi de koːçiː o nomʲi maɕita"
+   ],
+   "name": "long_vowels",
+   "openjtalk": "ja /toːkʲoːnooːdoːɾidekoːçiːonomimaɕita ↘/"
+  },
+  {
+   "ys": [
+    "ja /tɕotto matte ‖ kitte o katte kimasɯ ↘/"
+   ],
+   "ps": [
+    "ʨoʔto maʔte kʲiʔte o kaʔte kʲimasɨ"
+   ],
+   "name": "geminate",
+   "openjtalk": "ja /tɕottomattekitteokattekimasɯ ↘/"
+  },
+  {
+   "ys": [
+    "ja /sampo no totɕɯː de ‖ hoɴja saɴ to ɡiŋkoː to ɕiŋkaɴseɴ no eki ɲi jotta ↘/"
+   ],
+   "ps": [
+    "sampo no toʨɨː de hoɴja saɴ to ɡʲiŋkoː to ɕiŋkaɴseɴ no ekʲi ɲi joʔta"
+   ],
+   "name": "moraic_n",
+   "openjtalk": "ja /samponototɕɯːdehoɴjasantoɡiŋkoːtoɕiŋkaɴsennoekiɲijotta ↘/"
+  },
+  {
+   "ys": [
+    "ja /paːtiː de ɸaɴ ɡa baioɾiɴ o çiki ‖ wiːɴ no ɸoːkɯ daɴsɯ to kɯaɾɯtetto o tanoɕinda ↘/"
+   ],
+   "ps": [
+    "paːtʲiː de ɸaɴ ɡa baioɾʲiɴ o çikʲi βiːɴ no ɸoːkɯ daɴsɨ to kɯaɾɯteʔto o tanoɕinda"
+   ],
+   "name": "loanwords",
+   "openjtalk": "ja /paːtiːdeɸaŋɡabaioɾiɴoçikiwiːnnoɸoːkɯdaɴsɯtokɯaɾɯtettootanoɕinda ↘/"
+  },
+  {
+   "ys": [
+    "ja /ame ɡa jami maɕita ↘ sampo ɲi iki maɕoː ↘/"
+   ],
+   "ps": [
+    "ame ɡa jamʲi maɕita sampo ɲi ikʲi maɕoː"
+   ],
+   "name": "two_sentences",
+   "openjtalk": "ja /ameɡajamimaɕitasampoɲiikimaɕoː ↘/"
+  },
+  {
+   "ys": [
+    "ja /doko ɲi ikɯ no ↗ eki made okɯɾɯ jo ↘/"
+   ],
+   "ps": [
+    "doko ɲi ikɯ no? ekʲi made okɯɾɯ jo"
+   ],
+   "name": "q_then_s",
+   "openjtalk": "ja /dokoɲiikɯnoekimadeokɯɾɯjo ↘/"
+  },
+  {
+   "ys": [
+    "ja /eːto<p:...> soɾe wa ‖ tɕotto<p:...> ↘/"
+   ],
+   "ps": [
+    "eːto... soɾe βa ʨoʔto..."
+   ],
+   "name": "ellipsis",
+   "openjtalk": "ja /eetosoɾewatɕotto ↘/"
+  },
+  {
+   "ys": [
+    "ja /ɕiŋkaɴseɴ wa hajai ↘/"
+   ],
+   "ps": [
+    "ɕiŋkaɴseɴ βa hajai"
+   ],
+   "name": "no_final",
+   "openjtalk": "ja /ɕiŋkaɴseɴwahajai ↘/"
+  },
+  {
+   "ys": [
+    "ja /motɕimono<p::> o bentoː <p:;> sɯitoː <p:;> taoɾɯ ↘/"
+   ],
+   "ps": [
+    "moʨimono: o bentoː ; sɨitoː ; taoɾɯ"
+   ],
+   "name": "colon_semicolon",
+   "openjtalk": "ja /motɕimonoobentoːsɯitoːtaoɾɯ ↘/"
+  },
+  {
+   "ys": [
+    "ja /eːɡʲoː dʑikaɴ wakʲɯː dʑi kaɾa dʑɯːnana dʑi desɯ ↘/"
+   ],
+   "ps": [
+    "eːɡʲoː ʥikaɴ βakʲɨː ʥi kaɾa ʥɨːnana ʥi desɨ"
+   ],
+   "name": "wave_dash",
+   "openjtalk": "ja /eːɡʲoːdʑikaɴwakɯdʑidʑɯːɕitɕidʑidesɯ ↘/"
+  },
+  {
+   "ys": [
+    "ja /dʑoɴ sɯmisɯ saŋɡa ki maɕita ↘/"
+   ],
+   "ps": [
+    "ʥoɴ sɨmʲisɨ saŋɡa kʲi maɕita"
+   ],
+   "name": "nakaguro",
+   "openjtalk": "ja /dʑoɴsɯmisɯsaŋɡakimaɕita ↘/"
+  },
+  {
+   "ys": [
+    "ja /ataɾaɕiː <p:iPhone> to <p:Mac> <p:Book> o <p:OK> ɕi maɕita ↘/"
+   ],
+   "ps": [
+    "ataɾaɕiː iPhone to Mac Book o OK ɕi maɕita"
+   ],
+   "name": "latin",
+   "openjtalk": "ja /ataɾaɕiiaiɸoːntoemɯeːɕiːbiːoːoːkeːooːkeiɕimaɕita ↘/"
+  },
+  {
+   "ys": [
+    "ja /sɯdzɯki saɴ to takahaɕi saɴ wa ‖ kʲoːto no ɕimidzɯteɾa o otodzɯɾeta ↘/"
+   ],
+   "ps": [
+    "sɨzɨkʲi saɴ to takahaɕi saɴ βa kʲoːto no ɕimʲizɨteɾa o otozɨɾeta"
+   ],
+   "name": "kanji_names",
+   "openjtalk": "ja /sɯdzɯkisantotakahaɕisaɴwakʲoːtonokijomidzɯdeɾaootodzɯɾeta ↘/"
+  },
+  {
+   "ys": [
+    "ja /ohajoː ɡodzaimasɯ ↘/",
+    "ja /kʲoː mo joɾoɕikɯ oneɡai ɕi masɯ ↘/"
+   ],
+   "ps": [
+    "ohajoː ɡoʣaimasɨ",
+    "kʲoː mo joɾoɕikɯ oneɡai ɕi masɨ"
+   ],
+   "name": "newline",
+   "openjtalk": "ja /ohajoːɡodzaimasɯkʲoːmojoɾoɕikɯoneɡaiɕimasɯ ↘/"
+  },
+  {
+   "ys": [
+    "ja /waɡahai wa neko de aɾɯ ↘ namae wa mada nai ↘ doko de ɯmaɾe taka to nto kentoː ɡa tsɯka nɯ ↘ nande mo ɯsɯɡɯɾai dʑimedʑime ɕita tokoɾode ɲaːɲaː naite ita koto dake wa kiokɯ ɕite iɾɯ ↘ waɡahai wa koko de hadʑimete ɲiŋɡeɴ to jɯː mono o mita ↘ ɕikamo ato de kikɯ to soɾe wa ɕoseː to jɯː ɲiŋɡeɴ dʑɯː de itɕibaɴ doːakɯ na ɕɯdzokɯ deatta soː da ↘ kono ɕoseː to jɯː no wa tokidoki waɾewaɾe o toɾae te ɲite kɯɯ to jɯː hanaɕi de aɾɯ ↘ ɕikaɕi sono toːdʑi wa nanto jɯː kaŋɡae mo nakatta kaɾa betsɯdaɴ osoɾoɕiː tomo omowa nakatta ↘ tada kaɾe no ↘/"
+   ],
+   "ps": [
+    "βaɡahai βa neko de aɾɯ namae βa mada nai doko de ɯmaɾe taka to nto kentoː ɡa ʦɨka nɯ nande mo ɯsɨɡɯɾai ʥimeʥime ɕita tokoɾode ɲaːɲaː naite ita koto dake βa kʲiokɯ ɕite iɾɯ βaɡahai βa koko de haʥimete ɲiŋɡeɴ to jɯː mono o mʲita ɕikamo ato de kʲikɯ to soɾe βa ɕoseː to jɯː ɲiŋɡeɴ ʥɨː de iʨibaɴ doːakɯ na ɕɨʣokɯ deaʔta soː da kono ɕoseː to jɯː no βa tokʲidokʲi βaɾeβaɾe o toɾae te ɲite kɯɯ to jɯː hanaɕi de aɾɯ ɕikaɕi sono toːʥi βa nanto jɯː kaŋɡae mo nakaʔta kaɾa beʦɨdaɴ osoɾoɕiː tomo omoβa nakaʔta tada kaɾe no"
+   ],
+   "name": "long",
+   "openjtalk": "ja /waɡahaiwanekodeaɾɯnamaewamadanaidokodeɯmaɾetakatontokentoːɡatsɯkanɯnaɲidemoɯsɯɡɯɾaidʑimedʑimeɕitatokoɾodeɲaːɲaːnaiteitakotodakewakiokɯɕiteiɾɯwaɡahaiwakokodehadʑimeteɲiŋɡentoiɯmonoomitaɕikamoatodekikɯtosoɾewaɕoseːtoiɯɲiŋɡeɲtɕɯːdeitɕibandoːakɯnaɕɯdzokɯdeattasoːdakonoɕoseːtoiɯnowatokidokiwaɾewaɾeotoɾaeteɲitekɯɯtoiɯhanaɕideaɾɯɕikaɕisonotoːdʑiwanantoiɯkoːmonakattakaɾabetsɯdaŋkowaɕiitomoomowanakattatadakaɾenotenoçiɾaɲinoseɾaɾetesɯːtomotɕiaɡeɾaɾetatokinandakaɸɯwaɸɯwaɕitakaɲdʑiɡaattabakaɾideaɾɯtenoçiɾanoɯedesɯkoɕiotɕitsɯiteɕoseːnokaoomitanoɡaiwajɯɾɯɲiŋɡentoiɯmononomihadʑimedeaɾoːkonotokimʲoːnamonodatoomottakaɲdʑiɡaimademonokotteiɾɯdaiitɕimoːomottesoːɕokɯsaɾebekihadzɯnokaoɡatsɯɾɯtsɯɾɯɕitemaɾɯdejakanda ↘/"
+  }
+ ],
+ "en": [
+  {
+   "ys": [
+    "en-US /ðə ˈkwɪk ˈbɹaʊn ˈfɑks ˈdʒʌmps ˈoʊ.vəɹ ðə ˈleɪ.zi ˈdɔɡ ↘/"
+   ],
+   "ps": [
+    "ðə kwˈɪk bɹˈWn fˈɑks ʤˈʌmps ˈOvəɹ ðə lˈAzi dˈɔɡ."
+   ],
+   "name": "plain"
+  },
+  {
+   "ys": [
+    "en-US /ˌwi ˈnid tə ˈbaɪ ˈmɪlk ‖ ˈɛɡz ‖ ænd ˈbɹɛd ↘/"
+   ],
+   "ps": [
+    "wˌi nˈid tə bˈI mˈɪlk, ˈɛɡz, ænd bɹˈɛd."
+   ],
+   "name": "comma_list"
+  },
+  {
+   "ys": [
+    "en-US /ˈdɪd ju ɹə.ˈmɛm.bəɹ tə ˈlɑk ðə ˈfɹʌnt ˈdɔɹ ↗/"
+   ],
+   "ps": [
+    "dˈɪd ju ɹəmˈɛmbəɹ tə lˈɑk ðə fɹˈʌnt dˈɔɹ?"
+   ],
+   "name": "yn_question"
+  },
+  {
+   "ys": [
+    "en-US /ˌwɛɹ ɑɹ ju ˈɡoʊ.ɪŋ tə.ˈnaɪt ↗/"
+   ],
+   "ps": [
+    "wˌɛɹ ɑɹ ju ɡˈOɪŋ tənˈIt?"
+   ],
+   "name": "wh_question"
+  },
+  {
+   "ys": [
+    "en-US /ˌjʊɹ ˈmu.vɪŋ tə ˈtoʊ.ki.ˌoʊ ˈnɛkst ˈmʌnθ ↗/"
+   ],
+   "ps": [
+    "jˌʊɹ mˈuvɪŋ tə tˈOkiˌO nˈɛkst mˈʌnθ?"
+   ],
+   "name": "decl_question"
+  },
+  {
+   "ys": [
+    "en-US /ˌɪts ɐ ˈbju.ɾə.fəl ˈdeɪ ‖ ˈɪ.zᵊnt ɪt ↗/"
+   ],
+   "ps": [
+    "ˌɪts ɐ bjˈuTəfəl dˈA, ˈɪzᵊnt ɪt?"
+   ],
+   "name": "tag_question"
+  },
+  {
+   "ys": [
+    "en-US /ˌwʌt ɐ ˈwʌn.dəɹ.fᵊl səɹ.ˈpɹaɪz<p:!> ↘/"
+   ],
+   "ps": [
+    "wˌʌt ɐ wˈʌndəɹfᵊl səɹpɹˈIz!"
+   ],
+   "name": "exclaim"
+  },
+  {
+   "ys": [
+    "en-US /ˌaɪ ˈwɑn.tᵻd tə ˌɡoʊ<p:;> haʊ.ˈɛ.vəɹ ‖ ɪt wʌz ˈɹeɪ.nɪŋ ↘/"
+   ],
+   "ps": [
+    "ˌI wˈɑntᵻd tə ɡˌO; hWˈɛvəɹ, ɪt wʌz ɹˈAnɪŋ."
+   ],
+   "name": "semicolon"
+  },
+  {
+   "ys": [
+    "en-US /ˌðɛɹ ɪz ˈwʌn ˈɹul<p::> ˈnɛ.vəɹ ˈɡɪv ˌʌp ↘/"
+   ],
+   "ps": [
+    "ðˌɛɹ ɪz wˈʌn ɹˈul: nˈɛvəɹ ɡˈɪv ˌʌp."
+   ],
+   "name": "colon"
+  },
+  {
+   "ys": [
+    "en-US /ˌʃi wʌz ˈleɪt <p:—> ə.ˈɡɛn ↘/"
+   ],
+   "ps": [
+    "ʃˌi wʌz lˈAt — əɡˈɛn."
+   ],
+   "name": "dash"
+  },
+  {
+   "ys": [
+    "en-US /ˌhi ˈsɛd ‖ <p:“>ˌaɪ wɪl bi ðɛɹ ˈsun<p:.”> ↘/"
+   ],
+   "ps": [
+    "hˌi sˈɛd, “ˌI wɪl bi ðɛɹ sˈun.”"
+   ],
+   "name": "quotes"
+  },
+  {
+   "ys": [
+    "en-US /ðə mju.ˈzi.əm <p:(>ˌwɪtʃ ˈoʊ.pᵊnd ɪn ˌnaɪn.ˈtin ˈnaɪn.di<p:)> ɪz ˈfɹi ˌɔn ˈsʌn.ˌdeɪz ↘/"
+   ],
+   "ps": [
+    "ðə mjuzˈiəm (wˌɪʧ ˈOpᵊnd ɪn nˌIntˈin nˈIndi) ɪz fɹˈi ˌɔn sˈʌndˌAz."
+   ],
+   "name": "parens"
+  },
+  {
+   "ys": [
+    "en-US /ðə ˈmi.ɾɪŋ ˈstɑɹts æt ˈnaɪn<p::>ˈθɜɹ.ɾi ˌɔn ˈmɑɹtʃ ˈθɜɹd ‖ ˈtwɛn.ti ˈtwɛn.ti ˈsɪks ↘/"
+   ],
+   "ps": [
+    "ðə mˈiTɪŋ stˈɑɹts æt nˈIn:θˈɜɹTi ˌɔn mˈɑɹʧ θˈɜɹd, twˈɛnti twˈɛnti sˈɪks."
+   ],
+   "name": "numbers"
+  },
+  {
+   "ys": [
+    "en-US /ˌɪt ˈkɔsts ˈfɔɹ ˈdɑ.ləɹz ænd ˈnaɪn.di ˈnaɪn ˈsɛnts ‖ ɔɹ ə.ˈbaʊt ˌfɪf.ˈtin pəɹ.ˈsɛnt ˈlɛs ðən ˈlæst ˈjɪɹ ↘/"
+   ],
+   "ps": [
+    "ˌɪt kˈɔsts fˈɔɹ dˈɑləɹz ænd nˈIndi nˈIn sˈɛnts, ɔɹ əbˈWt fˌɪftˈin pəɹsˈɛnt lˈɛs ðən lˈæst jˈɪɹ."
+   ],
+   "name": "money"
+  },
+  {
+   "ys": [
+    "en-US /ˈdɑk.təɹ ˈsmɪθ ˈlɪvz ˌɔn ˈbeɪ.kəɹ sənt ↘ ˌnɪɹ ðə ˌju.ˈɛs ˈɛm.bə.si ↘/"
+   ],
+   "ps": [
+    "dˈɑktəɹ smˈɪθ lˈɪvz ˌɔn bˈAkəɹ sənt. nˌɪɹ ðə jˌuˈɛs ˈɛmbəsi."
+   ],
+   "name": "abbrev"
+  },
+  {
+   "ys": [
+    "en-US /aɪ.dəv ˈθɔt ðeɪd ˈnoʊ ˌwʌts ˈɡoʊ.ɪŋ ˌɔn ↘/"
+   ],
+   "ps": [
+    "Idəv θˈɔt ðAd nˈO wˌʌts ɡˈOɪŋ ˌɔn."
+   ],
+   "name": "contractions"
+  },
+  {
+   "ys": [
+    "en-US /ˌɪt wʌz ˈleɪt ↘ ˈɛv.ɹi.wən hæd ˌɔl.ˈɹɛ.di ɡɔn ˈhoʊm ↘/"
+   ],
+   "ps": [
+    "ˌɪt wʌz lˈAt. ˈɛvɹiwən hæd ˌɔlɹˈɛdi ɡɔn hˈOm."
+   ],
+   "name": "two_sentences"
+  },
+  {
+   "ys": [
+    "en-US /ˌɑɹ ju ˈʃʊɹ ↗ ˌaɪ ˈθɔt ɪt wʌz tə.ˈmɑ.ɹoʊ ↘/"
+   ],
+   "ps": [
+    "ˌɑɹ ju ʃˈʊɹ? ˌI θˈɔt ɪt wʌz təmˈɑɹO."
+   ],
+   "name": "q_then_s"
+  },
+  {
+   "ys": [
+    "en-US /ˈwɛl<p:...> ˌaɪm ˌnɑt ˈʃʊɹ ə.ˈbaʊt ˈðæt ↘/"
+   ],
+   "ps": [
+    "wˈɛl... ˌIm nˌɑt ʃˈʊɹ əbˈWt ðˈæt."
+   ],
+   "name": "ellipsis"
+  },
+  {
+   "ys": [
+    "en-US /ðə ˌzi.ˌɛks.ˈkju.ˌvi.ˌbi.ˈi ˈflu ˈoʊ.vəɹ ðə ɡlɔɹp.ˈteɪ.stɪk ˈmaʊn.tᵊnz ↘/"
+   ],
+   "ps": [
+    "ðə zˌiˌɛkskjˈuvˌibˌiˈi flˈu ˈOvəɹ ðə ɡlɔɹptˈAstɪk mˈWntᵊnz."
+   ],
+   "name": "unknown_word"
+  },
+  {
+   "ys": [
+    "en-US /ˈfɜɹst ˈlaɪn ʌv ðə ˈpoʊ.əm ↘/",
+    "en-US /ˈsɛ.kənd ˈlaɪn ʌv ðə ˈpoʊ.əm ↘/"
+   ],
+   "ps": [
+    "fˈɜɹst lˈIn ʌv ðə pˈOəm.",
+    "sˈɛkənd lˈIn ʌv ðə pˈOəm."
+   ],
+   "name": "newline"
+  },
+  {
+   "ys": [
+    "en-US /ˈwʌns ə.ˈpɑn ɐ ˈtaɪm ‖ ɪn ɐ ˈsmɔl ˈvɪ.lɪdʒ baɪ ðə ˈsi ‖ ðɛɹ ˈlɪvd ɐn ˈoʊld ˈfɪ.ʃəɹ.mən ˌhu ˈwɛnt ˈaʊt ˈɛ.və.ɹi ˈmɔɹ.nɪŋ bə.ˈfɔɹ ˈsʌn.ˌɹaɪz ‖ ˈnoʊ ˈmæ.ɾəɹ ðə ˈwɛ.ðəɹ ‖ ænd ɹə.ˈtɜɹnd ˈɛ.və.ɹi ˈiv.nɪŋ wɪð ɐ ˈbæ.skət ˈfʊl ʌv ˈfɪʃ ‖ ˌwɪtʃ hi ˈʃɛɹd wɪð hɪz ˈneɪ.bəɹz ‖ hɪz ˈfɹɛndz ‖ ænd ˈɛ.ni.ˌwʌn ˈɛls ˌhu ˈhæ.pənd tə bi ˈhʌŋ.ɡɹi ˈðæt ˈdeɪ<p:;> ænd ɔl.ˈðoʊ hi wʌz ˈpʊɹ ‖ hi wʌz ðə ˈhæ.pi.ᵻst ˈmæn ɪn ðə ˈhoʊl ˈvɪ.lɪdʒ ‖ bə.ˈkʌz hi bə.ˈlivd ðæt ˈkaɪnd.nəs wʌz ði ˈoʊn.li ˈtɹɛ.ʒəɹ ˈwɜɹθ ˈki.pɪŋ ‖ ænd ðæt ɐ ˈlaɪf ˈspɛnt ˈhɛl.pɪŋ ˈʌ.ðəɹz wʌz ɐ ˈlaɪf ˈwɛl ˈlɪvd ↘/"
+   ],
+   "ps": [
+    "wˈʌns əpˈɑn ɐ tˈIm, ɪn ɐ smˈɔl vˈɪlɪʤ bI ðə sˈi, ðɛɹ lˈɪvd ɐn ˈOld fˈɪʃəɹmən hˌu wˈɛnt ˈWt ˈɛvəɹi mˈɔɹnɪŋ bəfˈɔɹ sˈʌnɹˌIz, nˈO mˈæTəɹ ðə wˈɛðəɹ, ænd ɹətˈɜɹnd ˈɛvəɹi ˈivnɪŋ wɪð ɐ bˈæskət fˈʊl ʌv fˈɪʃ, wˌɪʧ hi ʃˈɛɹd wɪð hɪz nˈAbəɹz, hɪz fɹˈɛndz, ænd ˈɛniwˌʌn ˈɛls hˌu hˈæpənd tə bi hˈʌŋɡɹi ðˈæt dˈA; ænd ɔlðˈO hi wʌz pˈʊɹ, hi wʌz ðə hˈæpiᵻst mˈæn ɪn ðə hˈOl vˈɪlɪʤ, bəkˈʌz hi bəlˈivd ðæt kˈIndnəs wʌz ði ˈOnli tɹˈɛʒəɹ wˈɜɹθ kˈipɪŋ, ænd ðæt ɐ lˈIf spˈɛnt hˈɛlpɪŋ ˈʌðəɹz wʌz ɐ lˈIf wˈɛl lˈɪvd."
+   ],
+   "name": "long"
+  }
+ ],
+ "hard": [
+  {
+   "ys": [
+    "ja /ɕiatoɾɯ no ɕi de wa ‖ sakana ɡa ɯɾa ɾe te iɾɯ ↘/"
+   ],
+   "ps": [
+    "ɕiatoɾɯ no ɕi de βa sakana ɡa ɯɾa ɾe te iɾɯ"
+   ],
+   "name": "h001",
+   "openjtalk": "ja /ɕiatoɾɯnoɕidewasakanaɡaɯɾaɾeteiɾɯ ↘/",
+   "gold": [
+    "ja /ɕiatoɾɯnoitɕidewasakanaɡaɯɾaɾeteiɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɕijakɯɕo wa eki no tɕikakɯ ɲi aɾɯ ↘/"
+   ],
+   "ps": [
+    "ɕijakɯɕo βa ekʲi no ʨikakɯ ɲi aɾɯ"
+   ],
+   "name": "h002",
+   "openjtalk": "ja /ɕijakɯɕowaekinotɕikakɯɲiaɾɯ ↘/",
+   "gold": [
+    "ja /ɕijakɯɕowaekinotɕikakɯɲiaɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /maitsɯki joːka ɲi asaitɕi ɡa çiɾakaɾeɾɯ ↘/"
+   ],
+   "ps": [
+    "maiʦɨkʲi joːka ɲi asaiʨi ɡa çiɾakaɾeɾɯ"
+   ],
+   "name": "h003",
+   "openjtalk": "ja /maitsɯkijoːkaɲiasaitɕiɡaçiɾakaɾeɾɯ ↘/",
+   "gold": [
+    "ja /maitsɯkijoːkaɲiasaitɕiɡaçiɾakaɾeɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kʲoː wa haɾete imasɯ ↘/"
+   ],
+   "ps": [
+    "kʲoː βa haɾete imasɨ"
+   ],
+   "name": "h004",
+   "openjtalk": "ja /kʲoːwahaɾeteimasɯ ↘/",
+   "gold": [
+    "ja /kʲoːwahaɾeteimasɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kʲoː no ɲippoɴ keːdzai o ɾoɲdʑiɾɯ ↘/"
+   ],
+   "ps": [
+    "kʲoː no ɲiʔpoɴ keːʣai o ɾoɲʥiɾɯ"
+   ],
+   "name": "h005",
+   "openjtalk": "ja /kʲoːnoɲippoŋkeːdzaioɾoɲdʑiɾɯ ↘/",
+   "gold": [
+    "ja /koɲɲitɕinoɲihoŋkeːdzaioɾoɲdʑiɾɯ ↘/",
+    "ja /kʲoːnoɲihoŋkeːdzaioɾoɲdʑiɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /tsɯitatɕi kaɾa mikka made jasɯmi desɯ ↘/"
+   ],
+   "ps": [
+    "ʦɨitaʨi kaɾa mʲiʔka made jasɨmʲi desɨ"
+   ],
+   "name": "h006",
+   "openjtalk": "ja /itɕiɲitɕikaɾamikkamadejasɯmidesɯ ↘/",
+   "gold": [
+    "ja /tsɯitatɕikaɾamikkamadejasɯmidesɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /itɕiɲitɕi tɕɯː dzɯtto ame datta ↘/"
+   ],
+   "ps": [
+    "iʨiɲiʨi ʨɨː zɨʔto ame daʔta"
+   ],
+   "name": "h007",
+   "openjtalk": "ja /itɕiɲitɕidʑɯːdzɯttoamedatta ↘/",
+   "gold": [
+    "ja /itɕiɲitɕidʑɯːdzɯttoamedatta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kaɾe wa ɾʲoːɾi ɡa dʑoːdzɯ da ↘/"
+   ],
+   "ps": [
+    "kaɾe βa ɾʲoːɾʲi ɡa ʥoːzɨ da"
+   ],
+   "name": "h008",
+   "openjtalk": "ja /kaɾewaɾʲoːɾiɡadʑoːdzɯda ↘/",
+   "gold": [
+    "ja /kaɾewaɾʲoːɾiɡadʑoːdzɯda ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /bɯtai no kamite kaɾa jakɯɕa ɡa toːdʑoː ɕita ↘/"
+   ],
+   "ps": [
+    "bɯtai no kamʲite kaɾa jakɯɕa ɡa toːʥoː ɕita"
+   ],
+   "name": "h009",
+   "openjtalk": "ja /bɯtainodʑoːdzɯkaɾajakɯɕaɡatoːdʑoːɕita ↘/",
+   "gold": [
+    "ja /bɯtainokamitekaɾajakɯɕaɡatoːdʑoːɕita ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /iɡo de wa kaɾe no hoː ɡa iʔmai dʑoːdzɯ da ↘/"
+   ],
+   "ps": [
+    "iɡo de βa kaɾe no hoː ɡa iʔmai ʥoːzɨ da"
+   ],
+   "name": "h010",
+   "openjtalk": "ja /iɡodewakaɾenohoːɡaitɕimaiɯwateda ↘/",
+   "gold": [
+    "ja /iɡodewakaɾenohoːɡaitɕimaiɯwateda ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kono ataɾi wa joɾɯ ɲi naɾɯto ɲiŋki ɡa nai ↘/"
+   ],
+   "ps": [
+    "kono ataɾʲi βa joɾɯ ɲi naɾɯto ɲiŋkʲi ɡa nai"
+   ],
+   "name": "h011",
+   "openjtalk": "ja /konoataɾiwajoɾɯɲinaɾɯtoɲiŋkiɡanai ↘/",
+   "gold": [
+    "ja /konoataɾiwajoɾɯɲinaɾɯtoçitokeɡanai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kanodʑo wa ɲiŋki ɡa aɾɯ kaɕɯ da ↘/"
+   ],
+   "ps": [
+    "kanoʥo βa ɲiŋkʲi ɡa aɾɯ kaɕɨ da"
+   ],
+   "name": "h012",
+   "openjtalk": "ja /kanodʑowaɲiŋkiɡaaɾɯkaɕɯda ↘/",
+   "gold": [
+    "ja /kanodʑowaɲiŋkiɡaaɾɯkaɕɯda ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /oːja saɴ ɲi jatɕiɴ o haɾaɯ ↘/"
+   ],
+   "ps": [
+    "oːja saɴ ɲi jaʨiɴ o haɾaɯ"
+   ],
+   "name": "h013",
+   "openjtalk": "ja /oːjasaɲɲijatɕiɴohaɾaɯ ↘/",
+   "gold": [
+    "ja /oːjasaɲɲijatɕiɴohaɾaɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kaɾe wa ɕodoː no oːja toɕi te ɕiɾaɾeɾɯ ↘/"
+   ],
+   "ps": [
+    "kaɾe βa ɕodoː no oːja toɕi te ɕiɾaɾeɾɯ"
+   ],
+   "name": "h014",
+   "openjtalk": "ja /kaɾewaɕodoːnooːjatoɕiteɕiɾaɾeɾɯ ↘/",
+   "gold": [
+    "ja /kaɾewaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /seːbɯtsɯ no dʑɯɡʲoː de saiboː o manabɯ ↘/"
+   ],
+   "ps": [
+    "seːbɯʦɨ no ʥɨɡʲoː de saiboː o manabɯ"
+   ],
+   "name": "h015",
+   "openjtalk": "ja /seːbɯtsɯnodʑɯɡʲoːdesaiboːomanabɯ ↘/",
+   "gold": [
+    "ja /seːbɯtsɯnodʑɯɡʲoːdesaiboːomanabɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /seːbɯtsɯ wa o hajame ɲi o meɕiaɡaɾi kɯdasai ↘/"
+   ],
+   "ps": [
+    "seːbɯʦɨ βa o hajame ɲi o meɕiaɡaɾʲi kɯdasai"
+   ],
+   "name": "h016",
+   "openjtalk": "ja /seːbɯtsɯwaohajameɲiomeɕiaɡaɾikɯdasai ↘/",
+   "gold": [
+    "ja /namamonowaohajameɲiomeɕiaɡaɾikɯdasai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /asɯ wa ame ɡa ɸɯɾɯ deɕoː ↘/"
+   ],
+   "ps": [
+    "asɨ βa ame ɡa ɸɯɾɯ deɕoː"
+   ],
+   "name": "h017",
+   "openjtalk": "ja /aɕitawaameɡaɸɯɾɯdeɕoː ↘/",
+   "gold": [
+    "ja /aɕitawaameɡaɸɯɾɯdeɕoː ↘/",
+    "ja /asɯwaameɡaɸɯɾɯdeɕoː ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /itɕi ɡʲoː wa bɯdʑi ɲi saɲtɕoː ɲi tsɯita ↘/"
+   ],
+   "ps": [
+    "iʨi ɡʲoː βa bɯʥi ɲi saɲʨoː ɲi ʦɨita"
+   ],
+   "name": "h018",
+   "openjtalk": "ja /ikkoːwabɯdʑiɲisaɲtɕoːɲitsɯita ↘/",
+   "gold": [
+    "ja /ikkoːwabɯdʑiɲisaɲtɕoːɲitsɯita ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /saiɕo no ikkoː o jonde kɯdasai ↘/"
+   ],
+   "ps": [
+    "saiɕo no iʔkoː o jonde kɯdasai"
+   ],
+   "name": "h019",
+   "openjtalk": "ja /saiɕonoikkoːojondekɯdasai ↘/",
+   "gold": [
+    "ja /saiɕonoitɕiɡʲoːojondekɯdasai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kaɾe wa tsɯɾai kaɾeː ɡa sɯki da ↘/"
+   ],
+   "ps": [
+    "kaɾe βa ʦɨɾai kaɾeː ɡa sɨkʲi da"
+   ],
+   "name": "h020",
+   "openjtalk": "ja /kaɾewatsɯɾaikaɾeːɡasɯkida ↘/",
+   "gold": [
+    "ja /kaɾewakaɾaikaɾeːɡasɯkida ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /wakaɾe wa itsɯmo tsɯɾai mono da ↘/"
+   ],
+   "ps": [
+    "βakaɾe βa iʦɨmo ʦɨɾai mono da"
+   ],
+   "name": "h021",
+   "openjtalk": "ja /wakaɾewaitsɯmotsɯɾaimonoda ↘/",
+   "gold": [
+    "ja /wakaɾewaitsɯmotsɯɾaimonoda ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /mokka no kadai wa ɕikiɴ no kakɯho da ↘/"
+   ],
+   "ps": [
+    "moʔka no kadai βa ɕikʲiɴ no kakɯho da"
+   ],
+   "name": "h022",
+   "openjtalk": "ja /mokkanokadaiwaɕikinnokakɯhoda ↘/",
+   "gold": [
+    "ja /mokkanokadaiwaɕikinnokakɯhoda ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /mokka no mono ɲi mo teːneː ɲi sessɯɾɯ ↘/"
+   ],
+   "ps": [
+    "moʔka no mono ɲi mo teːneː ɲi seʔsɨɾɯ"
+   ],
+   "name": "h023",
+   "openjtalk": "ja /mokkanomonoɲimoteːneːɲisessɯɾɯ ↘/",
+   "gold": [
+    "ja /meɕitanomonoɲimoteːneːɲisessɯɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kado o maɡaɾɯ to paɴja ɡa aɾɯ ↘/"
+   ],
+   "ps": [
+    "kado o maɡaɾɯ to paɴja ɡa aɾɯ"
+   ],
+   "name": "h024",
+   "openjtalk": "ja /kakɯomaɡaɾɯtopaɴjaɡaaɾɯ ↘/",
+   "gold": [
+    "ja /kadoomaɡaɾɯtopaɴjaɡaaɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɯɕi no kado wa iɡai to katai ↘/"
+   ],
+   "ps": [
+    "ɯɕi no kado βa iɡai to katai"
+   ],
+   "name": "h025",
+   "openjtalk": "ja /ɯɕinokakɯwaiɡaitokatai ↘/",
+   "gold": [
+    "ja /ɯɕinotsɯnowaiɡaitokatai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kaŋki ɡa sɯɾɯ no de hajakɯ neɾɯ ↘/"
+   ],
+   "ps": [
+    "kaŋkʲi ɡa sɨɾɯ no de hajakɯ neɾɯ"
+   ],
+   "name": "h026",
+   "openjtalk": "ja /samɯkeɡasɯɾɯnodehajakɯneɾɯ ↘/",
+   "gold": [
+    "ja /samɯkeɡasɯɾɯnodehajakɯneɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /tsɯjoi samɯke ɡa naŋka ɕite iɾɯ ↘/"
+   ],
+   "ps": [
+    "ʦɨjoi samɯke ɡa naŋka ɕite iɾɯ"
+   ],
+   "name": "h027",
+   "openjtalk": "ja /tsɯjoisamɯkeɡanaŋkaɕiteiɾɯ ↘/",
+   "gold": [
+    "ja /tsɯjoikaŋkiɡanaŋkaɕiteiɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /naɴ ɡa hoɕiː no ↗/"
+   ],
+   "ps": [
+    "naɴ ɡa hoɕiː no?"
+   ],
+   "name": "h028",
+   "openjtalk": "ja /naɲiɡahoɕiino ↘/",
+   "gold": [
+    "ja /naɲiɡahoɕiːno ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /naɴ poɴ aɾimasɯ ka ↘/"
+   ],
+   "ps": [
+    "naɴ poɴ aɾʲimasɨ ka"
+   ],
+   "name": "h029",
+   "openjtalk": "ja /namboɴaɾimasɯka ↘/",
+   "gold": [
+    "ja /namboɴaɾimasɯka ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /iɾoɡami ɲi saiɴ o moɾatta ↘/"
+   ],
+   "ps": [
+    "iɾoɡamʲi ɲi saiɴ o moɾaʔta"
+   ],
+   "name": "h030",
+   "openjtalk": "ja /iɾoɡamiɲisaiɴomoɾatta ↘/",
+   "gold": [
+    "ja /ɕikiɕiɲisaiɴomoɾatta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /iɾoɡami de tsɯɾɯ o oɾɯ ↘/"
+   ],
+   "ps": [
+    "iɾoɡamʲi de ʦɨɾɯ o oɾɯ"
+   ],
+   "name": "h031",
+   "openjtalk": "ja /iɾoɡamidetsɯɾɯooɾɯ ↘/",
+   "gold": [
+    "ja /iɾoɡamidetsɯɾɯooɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɯmakɯ setsɯmeː dekinai ↘/"
+   ],
+   "ps": [
+    "ɯmakɯ seʦɨmeː dekʲinai"
+   ],
+   "name": "h032",
+   "openjtalk": "ja /ɯmakɯsetsɯmeːdekinai ↘/",
+   "gold": [
+    "ja /ɯmakɯsetsɯmeːdekinai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kebʲoː o tsɯkatte jasɯɴ da ↘/"
+   ],
+   "ps": [
+    "kebʲoː o ʦɨkaʔte jasɨɴ da"
+   ],
+   "name": "h033",
+   "openjtalk": "ja /kebʲoːotsɯkattejasɯnda ↘/",
+   "gold": [
+    "ja /kebʲoːotsɯkattejasɯnda ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kotoɕi no koːjoː wa kiɾeː da ↘/"
+   ],
+   "ps": [
+    "kotoɕi no koːjoː βa kʲiɾeː da"
+   ],
+   "name": "h034",
+   "openjtalk": "ja /kotoɕinokoːjoːwakiɾeida ↘/",
+   "gold": [
+    "ja /kotoɕinokoːjoːwakiɾeːda ↘/",
+    "ja /kotoɕinomomidʑiwakiɾeːda ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /heta na iːwake wajame nasai ↘/"
+   ],
+   "ps": [
+    "heta na iːβake βajame nasai"
+   ],
+   "name": "h035",
+   "openjtalk": "ja /hetanaiːwakewajamenasai ↘/",
+   "gold": [
+    "ja /hetanaiiwakewajamenasai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:SAP> no doːɲɯː o kentoː ɕite iɾɯ ↘/"
+   ],
+   "ps": [
+    "SAP no doːɲɨː o kentoː ɕite iɾɯ"
+   ],
+   "name": "h036",
+   "openjtalk": "ja /esɯeːpiːnodoːɲɯːokentoːɕiteiɾɯ ↘/",
+   "gold": [
+    "ja /esɯeːpiːnodoːɲɯːokentoːɕiteiɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:SIP> de deɴwa o tsɯnaɡɯ ↘/"
+   ],
+   "ps": [
+    "SIP de deɴβa o ʦɨnaɡɯ"
+   ],
+   "name": "h037",
+   "openjtalk": "ja /esɯaipiːdedeɴwaotsɯnaɡɯ ↘/",
+   "gold": [
+    "ja /ɕippɯdedeɴwaotsɯnaɡɯ ↘/",
+    "ja /esɯaipiːdedeɴwaotsɯnaɡɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:NHK> no ɲɯːsɯ o mita ↘/"
+   ],
+   "ps": [
+    "NHK no ɲɨːsɨ o mʲita"
+   ],
+   "name": "h038",
+   "openjtalk": "ja /enɯeitɕikeinoɲɯːsɯomita ↘/",
+   "gold": [
+    "ja /enɯeitɕikeːnoɲɯːsɯomita ↘/",
+    "ja /enɯettɕikeːnoɲɯːsɯomita ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:AI> no keŋkʲɯː ɡa sɯsɯnde iɾɯ ↘/"
+   ],
+   "ps": [
+    "AI no keŋkʲɨː ɡa sɨsɨnde iɾɯ"
+   ],
+   "name": "h039",
+   "openjtalk": "ja /eːainokeŋkʲɯːɡasɯsɯndeiɾɯ ↘/",
+   "gold": [
+    "ja /eːainokeŋkʲɯːɡasɯsɯndeiɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:USB> memoɾi o saɕikomɯ ↘/"
+   ],
+   "ps": [
+    "USB memoɾʲi o saɕikomɯ"
+   ],
+   "name": "h040",
+   "openjtalk": "ja /jɯːesɯbiːmemoɾiosaɕikomɯ ↘/",
+   "gold": [
+    "ja /jɯːesɯbiːmemoɾiosaɕikomɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:NASA> ɡa ataɾaɕiː taɴsa ki o ɯtɕiaɡeta ↘/"
+   ],
+   "ps": [
+    "NASA ɡa ataɾaɕiː taɴsa kʲi o ɯʨiaɡeta"
+   ],
+   "name": "h041",
+   "openjtalk": "ja /nasaɡaataɾaɕiitaɴsakioɯtɕiaɡeta ↘/",
+   "gold": [
+    "ja /nasaɡaataɾaɕiitaɴsakioɯtɕiaɡeta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:JR> no eki de matɕiawaseɾɯ ↘/"
+   ],
+   "ps": [
+    "JR no ekʲi de maʨiaβaseɾɯ"
+   ],
+   "name": "h042",
+   "openjtalk": "ja /dʑeiaːɾɯnoekidematɕiawaseɾɯ ↘/",
+   "gold": [
+    "ja /dʑeːaːɾɯnoekidematɕiawaseɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:GPU> o tsɯkatte modeɾɯ o ɡakɯɕɯː sɯɾɯ ↘/"
+   ],
+   "ps": [
+    "GPU o ʦɨkaʔte modeɾɯ o ɡakɯɕɨː sɨɾɯ"
+   ],
+   "name": "h043",
+   "openjtalk": "ja /dʑiːpiːjɯːotsɯkattemodeɾɯoɡakɯɕɯːsɯɾɯ ↘/",
+   "gold": [
+    "ja /dʑiːpiːjɯːotsɯkattemodeɾɯoɡakɯɕɯːsɯɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:API> no ɕijoː o kakɯɲiɴ sɯɾɯ ↘/"
+   ],
+   "ps": [
+    "API no ɕijoː o kakɯɲiɴ sɨɾɯ"
+   ],
+   "name": "h044",
+   "openjtalk": "ja /eːpiːainoɕijoːokakɯɲiɴsɯɾɯ ↘/",
+   "gold": [
+    "ja /eːpiːainoɕijoːokakɯɲiɴsɯɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:IoT> kiki ɡa ɸɯete iɾɯ ↘/"
+   ],
+   "ps": [
+    "IoT kʲikʲi ɡa ɸɯete iɾɯ"
+   ],
+   "name": "h045",
+   "openjtalk": "ja /aioːtiːkikiɡaɸɯeteiɾɯ ↘/",
+   "gold": [
+    "ja /aioːtiːkikiɡaɸɯeteiɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:SNS> de wadai ɲinatta ↘/"
+   ],
+   "ps": [
+    "SNS de βadai ɲinaʔta"
+   ],
+   "name": "h046",
+   "openjtalk": "ja /esɯenɯesɯdewadaiɲinatta ↘/",
+   "gold": [
+    "ja /esɯenɯesɯdewadaiɲinatta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /<p:UNESCO> no sekai isaɴ ɲi toːɾokɯ saɾeta ↘/"
+   ],
+   "ps": [
+    "UNESCO no sekai isaɴ ɲi toːɾokɯ saɾeta"
+   ],
+   "name": "h047",
+   "openjtalk": "ja /jɯnesɯkonosekaiisaɲɲitoːɾokɯsaɾeta ↘/",
+   "gold": [
+    "ja /jɯnesɯkonosekaiisaɲɲitoːɾokɯsaɾeta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɾiŋɡo o saɴ ko katta ↘/"
+   ],
+   "ps": [
+    "ɾʲiŋɡo o saɴ ko kaʔta"
+   ],
+   "name": "h048",
+   "openjtalk": "ja /ɾiŋɡoosaŋkokatta ↘/",
+   "gold": [
+    "ja /ɾiŋɡoosaŋkokatta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /saŋka ɕa wa seŋɡo çakɯ ɲiɴ datta ↘/"
+   ],
+   "ps": [
+    "saŋka ɕa βa seŋɡo çakɯ ɲiɴ daʔta"
+   ],
+   "name": "h049",
+   "openjtalk": "ja /saŋkaɕawaseŋɡoçakɯɲindatta ↘/",
+   "gold": [
+    "ja /saŋkaɕawaseŋɡoçakɯɲindatta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kakakɯ wa itɕi maɴ ɲi seɴ eɴ desɯ ↘/"
+   ],
+   "ps": [
+    "kakakɯ βa iʨi maɴ ɲi seɴ eɴ desɨ"
+   ],
+   "name": "h050",
+   "openjtalk": "ja /kakakɯwaitɕimaɲɲiseɴendesɯ ↘/",
+   "gold": [
+    "ja /kakakɯwaitɕimaɲɲiseɴendesɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɾokɯ poɴ no empitsɯ ɡa aɾɯ ↘/"
+   ],
+   "ps": [
+    "ɾokɯ poɴ no empʲiʦɨ ɡa aɾɯ"
+   ],
+   "name": "h051",
+   "openjtalk": "ja /ɾopponnoempitsɯɡaaɾɯ ↘/",
+   "gold": [
+    "ja /ɾopponnoempitsɯɡaaɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /saɴ piki no neko o katte iɾɯ ↘/"
+   ],
+   "ps": [
+    "saɴ pʲikʲi no neko o kaʔte iɾɯ"
+   ],
+   "name": "h052",
+   "openjtalk": "ja /sambikinonekookatteiɾɯ ↘/",
+   "gold": [
+    "ja /sambikinonekookatteiɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kioɴ wa ɲidʑɯːɡo<p:.> ɡo do made aɡatta ↘/"
+   ],
+   "ps": [
+    "kʲioɴ βa ɲiʥɨːɡo. ɡo do made aɡaʔta"
+   ],
+   "name": "h053",
+   "openjtalk": "ja /kioɴwaɲidʑɯːɡoːteŋɡodomadeaɡatta ↘/",
+   "gold": [
+    "ja /kioɴwaɲidʑɯːɡoteŋɡodomadeaɡatta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /hatɕi pɯɴ ɡo ɲi ɕɯppatsɯ sɯɾɯ ↘/"
+   ],
+   "ps": [
+    "haʨi pɯɴ ɡo ɲi ɕɨʔpaʦɨ sɨɾɯ"
+   ],
+   "name": "h054",
+   "openjtalk": "ja /happɯŋɡoɲiɕɯppatsɯsɯɾɯ ↘/",
+   "gold": [
+    "ja /happɯŋɡoɲiɕɯppatsɯsɯɾɯ ↘/",
+    "ja /hatɕiɸɯŋɡoɲiɕɯppatsɯsɯɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /dʑɯː poɴ no baɾa o okɯɾɯ ↘/"
+   ],
+   "ps": [
+    "ʥɨː poɴ no baɾa o okɯɾɯ"
+   ],
+   "name": "h055",
+   "openjtalk": "ja /dʑɯpponnobaɾaookɯɾɯ ↘/",
+   "gold": [
+    "ja /dʑɯpponnobaɾaookɯɾɯ ↘/",
+    "ja /dʑipponnobaɾaookɯɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɲi çito de ɾʲokoː ɲi ikɯ ↘/"
+   ],
+   "ps": [
+    "ɲi çito de ɾʲokoː ɲi ikɯ"
+   ],
+   "name": "h056",
+   "openjtalk": "ja /ɸɯtaɾideɾʲokoːɲiikɯ ↘/",
+   "gold": [
+    "ja /ɸɯtaɾideɾʲokoːɲiikɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /itɕi ɲiɴ de kite kɯdasai ↘/"
+   ],
+   "ps": [
+    "iʨi ɲiɴ de kʲite kɯdasai"
+   ],
+   "name": "h057",
+   "openjtalk": "ja /çitoɾidekitekɯdasai ↘/",
+   "gold": [
+    "ja /çitoɾidekitekɯdasai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /dai saɴ ɕoː o jonde oite kɯdasai ↘/"
+   ],
+   "ps": [
+    "dai saɴ ɕoː o jonde oite kɯdasai"
+   ],
+   "name": "h058",
+   "openjtalk": "ja /daisaɴɕoːojondeoitekɯdasai ↘/",
+   "gold": [
+    "ja /daisaɴɕoːojondeoitekɯdasai ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /taidʑɯː ɡa sambʲakɯ ɡɯɾamɯ ɸɯeta ↘/"
+   ],
+   "ps": [
+    "taiʥɨː ɡa sambʲakɯ ɡɯɾamɯ ɸɯeta"
+   ],
+   "name": "h059",
+   "openjtalk": "ja /taidʑɯːɡasambʲakɯɡɯɾamɯɸɯeta ↘/",
+   "gold": [
+    "ja /taidʑɯːɡasambʲakɯɡɯɾamɯɸɯeta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /joɴ ɡatsɯ itɕi ɲitɕi wa ɲɯːɡakɯ ɕiki da ↘/"
+   ],
+   "ps": [
+    "joɴ ɡaʦɨ iʨi ɲiʨi βa ɲɨːɡakɯ ɕikʲi da"
+   ],
+   "name": "h060",
+   "openjtalk": "ja /ɕiɡatsɯtsɯitatɕiwaɲɯːɡakɯɕikida ↘/",
+   "gold": [
+    "ja /ɕiɡatsɯtsɯitatɕiwaɲɯːɡakɯɕikida ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /dʑɯː ɡatsɯ ɲidʑɯːjoɴ ka ɲi kaiɡi ɡa aɾɯ ↘/"
+   ],
+   "ps": [
+    "ʥɨː ɡaʦɨ ɲiʥɨːjoɴ ka ɲi kaiɡʲi ɡa aɾɯ"
+   ],
+   "name": "h061",
+   "openjtalk": "ja /dʑɯːɡatsɯɲidʑɯːjokkaɲikaiɡiɡaaɾɯ ↘/",
+   "gold": [
+    "ja /dʑɯːɡatsɯɲidʑɯːjokkaɲikaiɡiɡaaɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɲi seɴ ɲidʑɯːɾokɯ neɴ dʑɯː ɡatsɯ ɲidʑɯː ɲitɕi ɲi hatsɯbai saɾeta ↘/"
+   ],
+   "ps": [
+    "ɲi seɴ ɲiʥɨːɾokɯ neɴ ʥɨː ɡaʦɨ ɲiʥɨː ɲiʨi ɲi haʦɨbai saɾeta"
+   ],
+   "name": "h062",
+   "openjtalk": "ja /ɲiseɲɲidʑɯːɾokɯneɲdʑɯːɡatsɯhatsɯkaɲihatsɯbaisaɾeta ↘/",
+   "gold": [
+    "ja /ɲiseɲɲidʑɯːɾokɯneɲdʑɯːɡatsɯhatsɯkaɲihatsɯbaisaɾeta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɡo ɡatsɯ ɡo ɲitɕi wa kodomo no çi desɯ ↘/"
+   ],
+   "ps": [
+    "ɡo ɡaʦɨ ɡo ɲiʨi βa kodomo no çi desɨ"
+   ],
+   "name": "h063",
+   "openjtalk": "ja /ɡoɡatsɯitsɯkawakodomonoçidesɯ ↘/",
+   "gold": [
+    "ja /ɡoɡatsɯitsɯkawakodomonoçidesɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /nana ɡatsɯ nana ka wa tanabata da ↘/"
+   ],
+   "ps": [
+    "nana ɡaʦɨ nana ka βa tanabata da"
+   ],
+   "name": "h064",
+   "openjtalk": "ja /ɕitɕiɡatsɯnanokawatanabatada ↘/",
+   "gold": [
+    "ja /ɕitɕiɡatsɯnanokawatanabatada ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /kʲɯː dʑi saɴ dʑɯː bɯɴ ɲi ɕɯːɡoː desɯ ↘/"
+   ],
+   "ps": [
+    "kʲɨː ʥi saɴ ʥɨː bɯɴ ɲi ɕɨːɡoː desɨ"
+   ],
+   "name": "h065",
+   "openjtalk": "ja /kɯdʑisaɲdʑɯppɯɲɲiɕɯːɡoːdesɯ ↘/",
+   "gold": [
+    "ja /kɯdʑisaɲdʑɯppɯɲɲiɕɯːɡoːdesɯ ↘/",
+    "ja /kɯdʑisaɲdʑippɯɲɲiɕɯːɡoːdesɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /saɴ tsɯki saɴ çi wa çinamatsɯɾi da ↘/"
+   ],
+   "ps": [
+    "saɴ ʦɨkʲi saɴ çi βa çinamaʦɨɾʲi da"
+   ],
+   "name": "h066",
+   "openjtalk": "ja /saŋɡatsɯmikkawaçinamatsɯɾida ↘/",
+   "gold": [
+    "ja /saŋɡatsɯmikkawaçinamatsɯɾida ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /itɕi ɡatsɯ dʑɯːjoɴ ka ɲi ɕɯppatsɯ ɕita ↘/"
+   ],
+   "ps": [
+    "iʨi ɡaʦɨ ʥɨːjoɴ ka ɲi ɕɨʔpaʦɨ ɕita"
+   ],
+   "name": "h067",
+   "openjtalk": "ja /itɕiɡatsɯdʑɯːjokkaɲiɕɯppatsɯɕita ↘/",
+   "gold": [
+    "ja /itɕiɡatsɯdʑɯːjokkaɲiɕɯppatsɯɕita ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /ɾokɯ ɡatsɯ ɲidʑɯː ɲitɕi ɲi taɲdʑoːçi o mɯkaeɾɯ ↘/"
+   ],
+   "ps": [
+    "ɾokɯ ɡaʦɨ ɲiʥɨː ɲiʨi ɲi taɲʥoːçi o mɯkaeɾɯ"
+   ],
+   "name": "h068",
+   "openjtalk": "ja /ɾokɯɡatsɯhatsɯkaɲitaɲdʑoːbiomɯkaeɾɯ ↘/",
+   "gold": [
+    "ja /ɾokɯɡatsɯhatsɯkaɲitaɲdʑoːbiomɯkaeɾɯ ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /heːseː saɲdʑɯːitɕi neɴ joɴ tsɯki saɴ dʑɯː ɲitɕi ɲi taii saɾeta ↘/"
+   ],
+   "ps": [
+    "heːseː saɲʥɨːiʨi neɴ joɴ ʦɨkʲi saɴ ʥɨː ɲiʨi ɲi taii saɾeta"
+   ],
+   "name": "h069",
+   "openjtalk": "ja /heːseːsaɲdʑɯːitɕineɴɕiɡatsɯsaɲdʑɯːɲitɕiɲitaiisaɾeta ↘/",
+   "gold": [
+    "ja /heːseːsaɲdʑɯːitɕineɴɕiɡatsɯsaɲdʑɯːɲitɕiɲitaiisaɾeta ↘/"
+   ]
+  },
+  {
+   "ys": [
+    "ja /maitsɯki hatɕi ɲitɕi ɲi teŋkeɴ o okonaɯ ↘/"
+   ],
+   "ps": [
+    "maiʦɨkʲi haʨi ɲiʨi ɲi teŋkeɴ o okonaɯ"
+   ],
+   "name": "h070",
+   "openjtalk": "ja /maitsɯkijoːkaɲiteŋkeɴookonaɯ ↘/",
+   "gold": [
+    "ja /maitsɯkijoːkaɲiteŋkeɴookonaɯ ↘/"
+   ]
+  }
+ ]
+}

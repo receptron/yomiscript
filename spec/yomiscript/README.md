@@ -61,6 +61,18 @@ As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syl
 - A unit without a value has no pitch target; the Katarite fills it from its engine's own F0 (interpolated between targets). Devoiced units (`◌̥`) normally have no value.
 - Values are relative: the Katarite anchors each phrase (` | `, ` ‖ `) to the voice's natural level, so the same YomiScript works with any voice.
 
+### 2.7 Original text (display layer, D23)
+| Notation | Meaning |
+|---|---|
+| `<t:…>` | The original text of the span it closes: the units since the previous `<t:…>` (or the start of the utterance) are the reading of that text. Optional, and it never changes the pronunciation |
+
+- A `<t:…>` with no units before it is text that is not spoken: punctuation, brackets (`‖<t:、>`, `<t:「>`).
+- The text of the utterance is the concatenation of its `<t:…>` values, so write the original's spaces and punctuation into them: `en-US /ˈhɛ.loʊ<t:Hello,> ‖ ˈwɝld<t: world.> ↘/`.
+- Where it goes: right after the last unit of the span (after its `<f0:…>`, if any). It cannot contain `>`.
+- What it is for: showing the text being spoken (subtitles, highlighting the current word in a chat), and Katarites whose engine reads text rather than IPA (Supertonic, the Web Speech API): they get the text and the resolved reading of each span. It is not a reading hint: the pronunciation is still only the IPA (D14).
+
+Example: `ja /tsɯitatɕi<t:一日> kaɾa<t:から> mikka<t:三日> made<t:まで> jasɯmi<t:休み> desɯ<t:です。> ↘/`
+
 ## 3. Readings and lexicons (not part of YomiScript)
 
 Choosing a reading is text analysis, so it happens before YomiScript (D14). Inline reading hints `{表記|読み}`, `@lexicon` / `@import`, `.koedict` files, the conditions `[context: …]`, `[default]`, `[sex: …]`, `[accent: N]`, and the reading priority are all inputs to Yomite. They are specified in [`../lexicon/`](../lexicon/README.md).

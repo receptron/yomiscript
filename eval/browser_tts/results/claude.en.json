@@ -1,0 +1,32 @@
+{
+ "llm": "claude",
+ "set": "en",
+ "model": "claude-opus-5-5",
+ "seconds": 61.586,
+ "outputTokens": 8424,
+ "date": "2026-10-29T20:55:47.486Z",
+ "output": {
+  "plain": "en-US /ðə<t:The> ˈkwɪk<t: quick> ˈbɹaʊn<t: brown> ˈfɑks<t: fox> ˈdʒʌmps<t: jumps> ˌoʊ.vəɹ<t: over> ðə<t: the> ˈleɪ.zi<t: lazy> ˈdɑɡ<t: dog.> ↘/",
+  "comma_list": "en-US /ˌwi<t:We> ˈnid<t: need> tə<t: to> ˈbaɪ<t: buy> ˈmɪlk<t: milk,> ‖ ˈɛɡz<t: eggs,> ‖ ənd<t: and> ˈbɹɛd<t: bread.> ↘/",
+  "yn_question": "en-US /ˌdɪd<t:Did> ju<t: you> ɹɪ.ˈmɛm.bəɹ<t: remember> tə<t: to> ˈlɑk<t: lock> ðə<t: the> ˈfɹʌnt<t: front> ˈdɔɹ<t: door?> ↗/",
+  "wh_question": "en-US /ˈwɛɹ<t:Where> ɑɹ<t: are> ju<t: you> ˈɡoʊ.ɪŋ<t: going> tə.ˈnaɪt<t: tonight?> ↗/",
+  "decl_question": "en-US /jʊɹ<t:You're> ˈmu.vɪŋ<t: moving> tə<t: to> ˈtoʊ.ki.oʊ<t: Tokyo> ˈnɛkst<t: next> ˈmʌnθ<t: month?> ↗/",
+  "tag_question": "en-US /ɪts<t:It's> ə<t: a> ˈbju.ɾə.fəl<t: beautiful> ˈdeɪ<t: day,> ‖ ˈɪ.zənt<t: isn't> ɪt<t: it?> ↗/",
+  "exclaim": "en-US /ˈwʌt<t:What> ə<t: a> ˈwʌn.dəɹ.fəl<t: wonderful> səɹ.ˈpɹaɪz<t: surprise!> ↘/",
+  "semicolon": "en-US /ˌaɪ<t:I> ˈwɑn.ɪd<t: wanted> tə<t: to> ˈɡoʊ<t: go;> ‖ ˌhaʊ.ˈɛ.vəɹ<t: however,> ‖ ɪt<t: it> wəz<t: was> ˈɹeɪ.nɪŋ<t: raining.> ↘/",
+  "colon": "en-US /ˈðɛɹ<t:There> ɪz<t: is> ˈwʌn<t: one> ˈɹul<t: rule:> ‖ ˈnɛ.vəɹ<t: never> ˌɡɪv<t: give> ˈʌp<t: up.> ↘/",
+  "dash": "en-US /ˌʃi<t:She> wəz<t: was> ˈleɪt<t: late> ‖<t: —> ə.ˈɡɛn<t: again.> ↘/",
+  "quotes": "en-US /ˌhi<t:He> ˈsɛd<t: said,> ‖ ˌaɪ<t: \"I> wɪl<t: will> bi<t: be> ˈðɛɹ<t: there> ˈsun<t: soon.\"> ↘/",
+  "parens": "en-US /ðə<t:The> mju.ˈzi.əm<t: museum> ‖ ˌwɪtʃ<t: (which> ˈoʊ.pənd<t: opened> ɪn<t: in> ˌnaɪn.tin ˈnaɪn.ti<t: 1990)> ‖ ɪz<t: is> ˈfɹi<t: free> ɑn<t: on> ˈsʌn.deɪz<t: Sundays.> ↘/",
+  "numbers": "en-US /ðə<t:The> ˈmi.ɾɪŋ<t: meeting> ˈstɑɹts<t: starts> æt<t: at> ˈnaɪn ˈθɝ.ɾi<t: 9:30> ɑn<t: on> ˈmɑɹtʃ<t: March> ˈθɝd<t: 3rd,> ‖ ˈtwɛn.ti ˌtwɛn.ti ˈsɪks<t: 2026.> ↘/",
+  "money": "en-US /ɪt<t:It> ˈkɔsts<t: costs> ˈfɔɹ ˈdɑ.ləɹz ˈnaɪn.ti ˈnaɪn<t: $4.99,> ‖ ɔɹ<t: or> ə.ˈbaʊt<t: about> ˌfɪf.ˈtin pəɹ.ˈsɛnt<t: 15%> ˈlɛs<t: less> ðən<t: than> ˈlæst<t: last> ˈjɪɹ<t: year.> ↘/",
+  "abbrev": "en-US /ˈdɑk.təɹ<t:Dr.> ˈsmɪθ<t: Smith> ˈlɪvz<t: lives> ɑn<t: on> ˈbeɪ.kəɹ<t: Baker> ˈstɹit<t: St.> ˈnɪɹ<t: near> ðə<t: the> ˌju ˈɛs<t: U.S.> ˈɛm.bə.si<t: embassy.> ↘/",
+  "contractions": "en-US /ˈaɪ.dəv<t:I'd've> ˈθɔt<t: thought> ðeɪd<t: they'd> ˈnoʊ<t: know> ˈwʌts<t: what's> ˈɡoʊ.ɪŋ<t: going> ˈɑn<t: on.> ↘/",
+  "two_sentences": "en-US /ɪt<t:It> wəz<t: was> ˈleɪt<t: late.> ↘ ˈɛv.ɹi.ˌwʌn<t: Everyone> həd<t: had> ɔl.ˈɹɛ.di<t: already> ˈɡɔn<t: gone> ˈhoʊm<t: home.> ↘/",
+  "q_then_s": "en-US /ˈɑɹ<t:Are> ju<t: you> ˈʃʊɹ<t: sure?> ↗ ˌaɪ<t: I> ˈθɔt<t: thought> ɪt<t: it> wəz<t: was> tə.ˈmɑ.ɹoʊ<t: tomorrow.> ↘/",
+  "ellipsis": "en-US /ˈwɛl<t:Well...> ‖ aɪm<t: I'm> ˈnɑt<t: not> ˈʃʊɹ<t: sure> ə.ˈbaʊt<t: about> ˈðæt<t: that.> ↘/",
+  "unknown_word": "en-US /ðə<t:The> ˈzɪks.kwə.bi<t: zxqvbe> ˈflu<t: flew> ˌoʊ.vəɹ<t: over> ðə<t: the> ɡlɔɹp.ˈtæs.tɪk<t: glorptastic> ˈmaʊn.tənz<t: mountains.> ↘/",
+  "newline": "en-US /ˈfɝst<t:First> ˈlaɪn<t: line> əv<t: of> ðə<t: the> ˈpoʊ.əm<t: poem.\n> ↘ ˈsɛ.kənd<t:Second> ˈlaɪn<t: line> əv<t: of> ðə<t: the> ˈpoʊ.əm<t: poem.> ↘/",
+  "long": "en-US /ˈwʌns<t:Once> ə.ˈpɑn<t: upon> ə<t: a> ˈtaɪm<t: time,> ‖ ɪn<t: in> ə<t: a> ˈsmɔl<t: small> ˈvɪ.lɪdʒ<t: village> ˌbaɪ<t: by> ðə<t: the> ˈsi<t: sea,> ‖ ðɛɹ<t: there> ˈlɪvd<t: lived> ən<t: an> ˈoʊld<t: old> ˈfɪ.ʃəɹ.mən<t: fisherman> hu<t: who> ˈwɛnt<t: went> ˈaʊt<t: out> ˈɛv.ɹi<t: every> ˈmɔɹ.nɪŋ<t: morning> bɪ.ˈfɔɹ<t: before> ˈsʌn.ɹaɪz<t: sunrise,> ‖ ˈnoʊ<t: no> ˈmæ.ɾəɹ<t: matter> ðə<t: the> ˈwɛ.ðəɹ<t: weather,> ‖ ənd<t: and> ɹɪ.ˈtɝnd<t: returned> ˈɛv.ɹi<t: every> ˈiv.nɪŋ<t: evening> wɪð<t: with> ə<t: a> ˈbæs.kɪt<t: basket> ˈfʊl<t: full> əv<t: of> ˈfɪʃ<t: fish,> ‖ ˌwɪtʃ<t: which> hi<t: he> ˈʃɛɹd<t: shared> wɪð<t: with> hɪz<t: his> ˈneɪ.bəɹz<t: neighbors,> ‖ hɪz<t: his> ˈfɹɛndz<t: friends,> ‖ ənd<t: and> ˈɛ.ni.ˌwʌn<t: anyone> ˈɛls<t: else> hu<t: who> ˈhæ.pənd<t: happened> tə<t: to> bi<t: be> ˈhʌŋ.ɡɹi<t: hungry> ˈðæt<t: that> ˈdeɪ<t: day;> ‖ ənd<t: and> ɔl.ˈðoʊ<t: although> hi<t: he> wəz<t: was> ˈpʊɹ<t: poor,> ‖ hi<t: he> wəz<t: was> ðə<t: the> ˈhæ.pi.əst<t: happiest> ˈmæn<t: man> ɪn<t: in> ðə<t: the> ˈhoʊl<t: whole> ˈvɪ.lɪdʒ<t: village,> ‖ bɪ.ˈkʌz<t: because> hi<t: he> bɪ.ˈlivd<t: believed> ðət<t: that> ˈkaɪnd.nəs<t: kindness> wəz<t: was> ði<t: the> ˈoʊn.li<t: only> ˈtɹɛ.ʒəɹ<t: treasure> ˈwɝθ<t: worth> ˈki.pɪŋ<t: keeping,> ‖ ənd<t: and> ðət<t: that> ə<t: a> ˈlaɪf<t: life> ˈspɛnt<t: spent> ˈhɛl.pɪŋ<t: helping> ˈʌ.ðəɹz<t: others> wəz<t: was> ə<t: a> ˈlaɪf<t: life> ˈwɛl<t: well> ˈlɪvd<t: lived.> ↘/"
+ }
+}
