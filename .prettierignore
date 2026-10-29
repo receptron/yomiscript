@@ -1,0 +1,24 @@
+node_modules
+yarn.lock
+*.md
+
+# Data, not code: corpora, test sets, model configs, recorded results and the demo's generated vocab. Formatting
+# them would turn every regeneration into a diff.
+*.json
+*.jsonl
+!package.json
+!.prettierrc
+
+# onnxruntime-web's own files, symlinked into the demo
+demo/ys_web/web/ort
+
+# Ignored by git (models, checkpoints, data, virtualenvs); prettier does not read the nested .gitignore files
+demo/ys_web/models
+demo/ys_web/models_q
+demo/ys_web/voices
+demo/ys_web/web/models
+demo/ys_web/web/voices
+models/yomi/mlx/.venv
+models/yomi/mlx/ckpt
+models/yomi/mlx/data
+models/yomi/mlx/eval_out

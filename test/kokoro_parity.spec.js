@@ -1,0 +1,37 @@
+// The Katarite must hand Kokoro exactly what the original pipeline hands it (D21, D22). The fixtures were recorded
+// from the original (kokoro 0.9.4 KPipeline: phoneme string and input ids per chunk) next to what the Yomites
+// (yomite/en_kokoro, yomite/ja_kokoro) wrote for the same text; eval/kokoro_parity has the full comparison with audio.
+import fs from "fs";
+import { describe, expect, it } from "vitest";
+import { plan, setData } from "../demo/ys_web/web/ys.js";
+import { realize } from "../demo/ys_web/web/yomite.js";
+
+const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url)));
+setData(read("../demo/ys_web/web/data.json"));
+const ORIGINAL = read("./fixtures/kokoro_original.json");
+const PRESETS = read("../demo/ys_web/web/presets.json");
+const REALIZED = read("./fixtures/presets_realized.json"); // the rule Yomite's output, recorded before the 2026-10-29 refactor
+
+describe("YomiScript -> Kokoro input, as the original Kokoro gets it", () => {
+  it.each(ORIGINAL.map((c) => [c.name, c]))("%s", (_, c) => {
+    const P = plan(c.ys);
+    expect(P).toHaveLength(1);
+    expect(P[0].ps).toBe(c.ps);
+    expect(P[0].ids).toEqual(c.ids);
+  });
+});
+
+describe("demo presets", () => {
+  it.each(PRESETS.map((p) => [p.name, p.ys]))("%s plans after the rule Yomite", (_, ys) => {
+    const P = plan(realize(ys));
+    expect(P.length).toBeGreaterThan(0);
+    for (const s of P) expect(s.ids.length).toBeGreaterThan(2);
+  });
+});
+
+describe("rule Yomite (marks -> pitch values)", () => {
+  it.each(REALIZED.map((r) => [r.name, r]))("%s", (_, r) => {
+    expect(realize(r.ys)).toBe(r.tokyo);
+    expect(realize(r.ys, { dialect: { ja: "osaka" } })).toBe(r.osaka);
+  });
+});

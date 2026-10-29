@@ -6,6 +6,7 @@
 表記の約束は eval/data/hard_set.tsv と同じ (発音カナ、長音は「ー」、は→ワ)。
 ハードセットの文はコピーしない。ハードセットに出てくる略語は評価の汚染を避けるため使わない。
 """
+
 import random
 
 ONES = ["", "イチ", "ニ", "サン", "ヨン", "ゴ", "ロク", "ナナ", "ハチ", "キュー"]
@@ -17,10 +18,18 @@ def under10k(n):
     """0<n<10000 の読み。戻り値 (読み, 末尾の種類)。末尾: 1..9 の数字 / 'J'十 / 'H'百 / 'S'千"""
     s, last = "", None
     th, h, t, o = n // 1000, n // 100 % 10, n // 10 % 10, n % 10
-    if th: s += THOU.get(th, ONES[th] + "セン"); last = "S"
-    if h: s += HUND.get(h, ONES[h] + "ヒャク"); last = "H"
-    if t: s += ("" if t == 1 else ONES[t]) + "ジュー"; last = "J"
-    if o: s += ONES[o]; last = o
+    if th:
+        s += THOU.get(th, ONES[th] + "セン")
+        last = "S"
+    if h:
+        s += HUND.get(h, ONES[h] + "ヒャク")
+        last = "H"
+    if t:
+        s += ("" if t == 1 else ONES[t]) + "ジュー"
+        last = "J"
+    if o:
+        s += ONES[o]
+        last = o
     return s, last
 
 
@@ -29,20 +38,43 @@ def num(n):
     man, rest = divmod(n, 10000)
     s, last = "", None
     if man:
-        s, _ = under10k(man); s += "マン"; last = "M"
+        s, _ = under10k(man)
+        s += "マン"
+        last = "M"
     if rest:
-        r, last = under10k(rest); s += r
+        r, last = under10k(rest)
+        s += r
     return s, last
 
 
 def _sokuon(base, last):
     """1・6・8・10・100 で促音化する読みのため、末尾を差し替える"""
-    if last == 1: return base[:-2] + "イッ"
-    if last == 6: return base[:-2] + "ロッ"
-    if last == 8: return base[:-2] + "ハッ"
-    if last == "J": return base[:-3] + "ジュッ"
-    if last == "H" and base.endswith("ヒャク"): return base[:-1] + "ッ"
+    if last == 1:
+        return base[:-2] + "イッ"
+    if last == 6:
+        return base[:-2] + "ロッ"
+    if last == 8:
+        return base[:-2] + "ハッ"
+    if last == "J":
+        return base[:-3] + "ジュッ"
+    if last == "H" and base.endswith("ヒャク"):
+        return base[:-1] + "ッ"
     return None
+
+
+def _k_counter(b, last, c):
+    """個 回 冊 件 階 歳: カ行・サ行の助数詞"""
+    k = {"個": "コ", "回": "カイ", "冊": "サツ", "件": "ケン", "階": "カイ", "歳": "サイ"}[c]
+    so = _sokuon(b, last)
+    if c == "冊" or c == "歳":  # サ行は 1・8・10 のみ促音
+        if so and last in (1, 8, "J"):
+            return so + k
+        return b + k
+    if c == "階" and last == 3:
+        return b + "ガイ"
+    if so and last in (1, 6, 8, "J", "H"):
+        return so + k
+    return b + k
 
 
 def counter(n, c):
@@ -50,46 +82,65 @@ def counter(n, c):
     if c in ("本", "匹", "杯"):
         h, p, bb = {"本": ("ホン", "ポン", "ボン"), "匹": ("ヒキ", "ピキ", "ビキ"), "杯": ("ハイ", "パイ", "バイ")}[c]
         so = _sokuon(b, last)
-        if so and last in (1, 6, 8, "J", "H"): return so + p
-        if last == 3 or (last == "S" and b.endswith("ゼン")) or last == "M": return b + bb
+        if so and last in (1, 6, 8, "J", "H"):
+            return so + p
+        if last == 3 or (last == "S" and b.endswith("ゼン")) or last == "M":
+            return b + bb
         return b + h
     if c == "分":
         so = _sokuon(b, last)
-        if so and last in (1, 6, 8, "J", "H"): return so + "プン"
-        if last in (3, 4): return b + "プン"
+        if so and last in (1, 6, 8, "J", "H"):
+            return so + "プン"
+        if last in (3, 4):
+            return b + "プン"
         return b + "フン"
     if c in ("個", "回", "冊", "件", "階", "歳"):
-        k = {"個": "コ", "回": "カイ", "冊": "サツ", "件": "ケン", "階": "カイ", "歳": "サイ"}[c]
-        so = _sokuon(b, last)
-        if c == "冊" or c == "歳":  # サ行は 1・8・10 のみ促音
-            if so and last in (1, 8, "J"): return so + k
-            return b + k
-        if c == "階" and last == 3: return b + "ガイ"
-        if so and last in (1, 6, 8, "J", "H"): return so + k
-        return b + k
+        return _k_counter(b, last, c)
     if c == "人":
-        if n == 1: return "ヒトリ"
-        if n == 2: return "フタリ"
-        if last == 4: return b[:-2] + "ヨニン"
-        if last == 7: return b + "ニン"
+        if n == 1:
+            return "ヒトリ"
+        if n == 2:
+            return "フタリ"
+        if last == 4:
+            return b[:-2] + "ヨニン"
+        if last == 7:
+            return b + "ニン"
         return b + "ニン"
     if c == "円":
-        if last == 4: return b[:-2] + "ヨエン"
+        if last == 4:
+            return b[:-2] + "ヨエン"
         return b + "エン"
     if c == "年":
-        if last == 4: return b[:-2] + "ヨネン"
+        if last == 4:
+            return b[:-2] + "ヨネン"
         return b + "ネン"
     simple = {"枚": "マイ", "台": "ダイ", "度": "ド", "キロ": "キロ", "メートル": "メートル", "ページ": "ページ"}
     return b + simple[c]
 
 
 def day(d):
-    sp = {1: "ツイタチ", 2: "フツカ", 3: "ミッカ", 4: "ヨッカ", 5: "イツカ", 6: "ムイカ", 7: "ナノカ", 8: "ヨーカ",
-          9: "ココノカ", 10: "トーカ", 14: "ジューヨッカ", 20: "ハツカ", 24: "ニジューヨッカ"}
-    if d in sp: return sp[d]
+    sp = {
+        1: "ツイタチ",
+        2: "フツカ",
+        3: "ミッカ",
+        4: "ヨッカ",
+        5: "イツカ",
+        6: "ムイカ",
+        7: "ナノカ",
+        8: "ヨーカ",
+        9: "ココノカ",
+        10: "トーカ",
+        14: "ジューヨッカ",
+        20: "ハツカ",
+        24: "ニジューヨッカ",
+    }
+    if d in sp:
+        return sp[d]
     b, last = num(d)
-    if last == 7: return b[:-2] + "シチニチ"
-    if last == 9: return b[:-3] + "クニチ"
+    if last == 7:
+        return b[:-2] + "シチニチ"
+    if last == 9:
+        return b[:-3] + "クニチ"
     return b + "ニチ"
 
 
@@ -103,28 +154,74 @@ def hour(h):
 
 # 略語 (ハードセットに出るものは除外: SAP SIP NHK AI USB NASA JR GPU API IoT SNS UNESCO)
 ACRONYMS = {
-    "PC": "ピーシー", "CPU": "シーピーユー", "DVD": "ディーブイディー", "CD": "シーディー", "OS": "オーエス",
-    "IT": "アイティー", "ATM": "エーティーエム", "PDF": "ピーディーエフ", "URL": "ユーアールエル", "SF": "エスエフ",
-    "TV": "ティーブイ", "BGM": "ビージーエム", "LED": "エルイーディー", "GPS": "ジーピーエス", "EU": "イーユー",
-    "WHO": "ダブリューエイチオー", "FAX": "ファックス", "SSD": "エスエスディー", "HTML": "エイチティーエムエル",
-    "VR": "ブイアール", "DNA": "ディーエヌエー", "CM": "シーエム", "OB": "オービー", "PR": "ピーアール",
-    "LAN": "ラン", "RAM": "ラム", "JAXA": "ジャクサ", "NATO": "ナトー", "ASEAN": "アセアン", "FIFA": "フィファ",
-    "IC": "アイシー", "SE": "エスイー", "QR": "キューアール", "ID": "アイディー", "OK": "オーケー", "NG": "エヌジー",
+    "PC": "ピーシー",
+    "CPU": "シーピーユー",
+    "DVD": "ディーブイディー",
+    "CD": "シーディー",
+    "OS": "オーエス",
+    "IT": "アイティー",
+    "ATM": "エーティーエム",
+    "PDF": "ピーディーエフ",
+    "URL": "ユーアールエル",
+    "SF": "エスエフ",
+    "TV": "ティーブイ",
+    "BGM": "ビージーエム",
+    "LED": "エルイーディー",
+    "GPS": "ジーピーエス",
+    "EU": "イーユー",
+    "WHO": "ダブリューエイチオー",
+    "FAX": "ファックス",
+    "SSD": "エスエスディー",
+    "HTML": "エイチティーエムエル",
+    "VR": "ブイアール",
+    "DNA": "ディーエヌエー",
+    "CM": "シーエム",
+    "OB": "オービー",
+    "PR": "ピーアール",
+    "LAN": "ラン",
+    "RAM": "ラム",
+    "JAXA": "ジャクサ",
+    "NATO": "ナトー",
+    "ASEAN": "アセアン",
+    "FIFA": "フィファ",
+    "IC": "アイシー",
+    "SE": "エスイー",
+    "QR": "キューアール",
+    "ID": "アイディー",
+    "OK": "オーケー",
+    "NG": "エヌジー",
 }
-ACR_T = [("{A}について調べている。", ""), ("昨日、{A}の話をした。", ""), ("資料に{A}と書いてある。", ""),
-         ("ここで{A}の説明をする。", ""), ("{A}という言葉をよく聞く。", ""), ("先生が{A}について話した。", "")]
+ACR_T = [
+    ("{A}について調べている。", ""),
+    ("昨日、{A}の話をした。", ""),
+    ("資料に{A}と書いてある。", ""),
+    ("ここで{A}の説明をする。", ""),
+    ("{A}という言葉をよく聞く。", ""),
+    ("先生が{A}について話した。", ""),
+]
 
-NOUN = {"本": ["鉛筆", "傘", "ペン", "木"], "匹": ["魚", "犬", "金魚"], "杯": ["コーヒー", "ご飯", "水"],
-        "個": ["卵", "箱", "石"], "回": ["練習", "会議"], "冊": ["本", "ノート"], "件": ["メール", "相談"],
-        "枚": ["紙", "切手", "写真"], "台": ["車", "パソコン"], "人": ["学生", "客"]}
+NOUN = {
+    "本": ["鉛筆", "傘", "ペン", "木"],
+    "匹": ["魚", "犬", "金魚"],
+    "杯": ["コーヒー", "ご飯", "水"],
+    "個": ["卵", "箱", "石"],
+    "回": ["練習", "会議"],
+    "冊": ["本", "ノート"],
+    "件": ["メール", "相談"],
+    "枚": ["紙", "切手", "写真"],
+    "台": ["車", "パソコン"],
+    "人": ["学生", "客"],
+}
 T_COUNT = ["{N}の{X}がある。", "{X}を{N}用意した。", "全部で{N}の{X}を数えた。", "{X}が{N}ほど残っている。"]
 
 
 def gen(seed=0, n_per=1):
     R = random.Random(seed)
     out = []
+
     def add(text, pron):
         out.append((text, pron))
+
     nums = list(range(1, 21)) + [30, 40, 50, 60, 70, 80, 90, 100, 300, 600, 800, 1000, 3000, 8000]
     for c, xs in NOUN.items():
         for n in nums:
@@ -143,7 +240,8 @@ def gen(seed=0, n_per=1):
         add(t.format(N=d + "円"), t.format(N=counter(n, "円")))
     for m in range(1, 13):  # 日付
         for d in range(1, 32):
-            if d > [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]: continue
+            if d > [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]:
+                continue
             t = R.choice(["{D}に引っ越しをする。", "{D}は雨だった。", "締め切りは{D}です。", "{D}から休みに入る。"])
             add(t.format(D=f"{m}月{d}日"), t.format(D=month(m) + day(d)))
     for _ in range(300):

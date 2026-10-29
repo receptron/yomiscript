@@ -1,11 +1,14 @@
 """推論 CLI。 python infer.py --ckpt ckpt/tiny "今日は良い天気です。"  (引数なしなら標準入力から1行1文)
 MoLD: --dict ../../../dict/names/given_names.koedict --sex female  (辞書メモリを学習なしで差し込む)
       --memory mem/xxx.mem.safetensors (学習型メモリ層の差し替え)"""
-import argparse, sys
+
+import argparse
+import sys
 
 import mlx.core as mx
+import yomi
 
-import mold, yomi
+import mold
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--ckpt", default="ckpt/tiny")
@@ -24,7 +27,7 @@ texts = a.text or [l.strip() for l in sys.stdin if l.strip()]
 router = mold.MemoryRouter([mold.LexMemory.from_file(p, dialect=a.dialect) for p in a.dict]) if a.dict else mold.MemoryRouter()
 ctx = a.context + ([a.sex] if a.sex else [])
 logs = []
-for t, p, lg in zip(texts, yomi.predict(model, sv, tv, texts, router=router, context=ctx, logs=logs), logs or [[]] * len(texts)):
+for t, p, lg in zip(texts, yomi.predict(model, sv, tv, texts, router=router, context=ctx, logs=logs), logs or [[]] * len(texts), strict=False):
     if a.plain:
         p = "".join(c for c in p if c not in "^$?#_[]")
     print(f"{t}\t{p}")

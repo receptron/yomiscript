@@ -12,7 +12,9 @@ Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, W
 - `quant.py`: size reduction. `python quant.py w16` creates a version with only the weights stored in fp16 (compute stays fp32) at `models_q/*_w16.onnx` (used by default, about 163 MB total). `i8` is an int8 trial for the decoder
 - `serve.py`: local server with COOP/COEP headers (required for WASM multithreading)
 - `qeval.py`: quality comparison against fp32 (pyin F0 correlation, mel difference). `drift.py`: per-segment comparison of torch, Python ONNX and JS
-- `parity.mjs` / `node_test.mjs` / `pw_test.mjs` / `pw_bench.mjs` / `ort_check.py`: parity checks against the Python version, tests and speed measurement in Node and Playwright
+- `node.mjs`: the Katarite in Node (vocab loaded, ONNX engine reading `web/models` and `web/voices`); used by the Yomites and `eval/`
+- `f0_override.py`: Python copy of `f0Override` for the ONNX check scripts below
+- `parity.mjs` / `node_test.mjs` / `pw_test.mjs` / `pw_bench.mjs` / `ort_check.py`: parity checks against the Python version, tests and speed measurement in Node and Playwright (from an earlier stage; `parity.mjs`, `node_test.mjs`, `drift.py` and `ort_check.py` need reference files that are not in the repository)
 
 ## Exporting the split ONNX (Python 3.11)
 ```
@@ -27,9 +29,9 @@ Weights and voices are fetched automatically from `hexgrad/Kokoro-82M` (Apache-2
 
 ## Running
 ```
-npm install
+yarn install               # at the repository root: onnxruntime-web 1.22.0 and the dev tools (package.json)
 python quant.py w16
-cd web && ln -s ../models models && ln -s ../voices voices && ln -s ../node_modules/onnxruntime-web/dist ort && cd ..
+cd web && ln -s ../models models && ln -s ../voices voices && ln -s ../../../node_modules/onnxruntime-web/dist ort && cd ..
 for f in enc_w16 f0n_w16 dec_w16; do ln -s ../models_q/$f.onnx models/$f.onnx; done
 python serve.py 8000 web   # open http://localhost:8000/
 ```

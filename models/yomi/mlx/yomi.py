@@ -1,10 +1,11 @@
 """Yomi-0 MLX 試作: 文字入力 -> カナ+韻律記号を出す小型 Transformer エンコーダ・デコーダ (密, MoEなし)。"""
+
 import json
 from pathlib import Path
 
 import mlx.core as mx
 import mlx.nn as nn
-from mlx.utils import tree_flatten, tree_unflatten
+from mlx.utils import tree_flatten
 
 PAD, BOS, EOS, UNK = 0, 1, 2, 3
 SPECIALS = ["<pad>", "<s>", "</s>", "<unk>"]
@@ -44,7 +45,8 @@ class MHA(nn.Module):
         v = self.v(mem).reshape(B, mem.shape[1], self.h, -1).transpose(0, 2, 1, 3)
         if cache is not None:  # 自己注意の KV キャッシュ
             if cache[0] is not None:
-                k = mx.concatenate([cache[0], k], axis=2); v = mx.concatenate([cache[1], v], axis=2)
+                k = mx.concatenate([cache[0], k], axis=2)
+                v = mx.concatenate([cache[1], v], axis=2)
             cache[0], cache[1] = k, v
         y = mx.fast.scaled_dot_product_attention(q, k, v, scale=q.shape[-1] ** -0.5, mask=mask)
         return self.o(y.transpose(0, 2, 1, 3).reshape(B, L, D))
@@ -64,6 +66,7 @@ class EncLayer(nn.Module):
         super().__init__()
         self.n1, self.n2, self.att, self.ff = nn.LayerNorm(d), nn.LayerNorm(d), MHA(d, h), FF(d, f)
         from mold import ProductKeyMemory
+
         if memory:  # MoLD: 学習型 product-key メモリ (値テーブルは差し替え可能)
             self.mem = ProductKeyMemory(d, **{k: v for k, v in memory.items() if k != "layers"})
         if memory2:  # 積み重ね用の 2 つ目のメモリ (例: 人名)。mem の後に足す。独自のキー・値・ゲート
@@ -105,9 +108,10 @@ class Yomi(nn.Module):
         ml = set((memory or {}).get("layers", []))
         ml2 = set((memory2 or {}).get("layers", []))
         ml3 = set((memory3 or {}).get("layers", []))
-        self.enc = [EncLayer(d_model, n_heads, d_ff, memory if i in ml else None, memory2 if i in ml2 else None,
-                             memory3 if i in ml3 else None)
-                    for i in range(enc_layers)]
+        self.enc = [
+            EncLayer(d_model, n_heads, d_ff, memory if i in ml else None, memory2 if i in ml2 else None, memory3 if i in ml3 else None)
+            for i in range(enc_layers)
+        ]
         self.dec = [DecLayer(d_model, n_heads, d_ff) for _ in range(dec_layers)]
         self.enc_norm, self.dec_norm = nn.LayerNorm(d_model), nn.LayerNorm(d_model)
         self.out = nn.Linear(d_model, n_tgt, bias=False)
@@ -153,7 +157,6 @@ class Yomi(nn.Module):
                 break
         return mx.stack(outs, axis=1).tolist()
 
-
     def generate_nocache(self, src, max_new=None):
         """参照実装: 毎ステップ接頭辞全体を再計算する貪欲デコード (等価性テスト用, 遅い)。"""
         B = src.shape[0]
@@ -163,7 +166,8 @@ class Yomi(nn.Module):
         outs = []
         for t in range(max_new):
             tok = mx.argmax(self.decode(seq, mem, m)[:, -1, :], axis=-1).astype(mx.int32)
-            outs.append(tok); seq = mx.concatenate([seq, tok[:, None]], axis=1)
+            outs.append(tok)
+            seq = mx.concatenate([seq, tok[:, None]], axis=1)
             if t % 8 == 7 and (mx.stack(outs, 1) == EOS).any(axis=1).all().item():
                 break
         return mx.stack(outs, axis=1).tolist()
@@ -194,7 +198,8 @@ class Yomi(nn.Module):
             k = a.k(hdn).reshape(B, 1, a.h, -1).transpose(0, 2, 1, 3)
             v = a.v(hdn).reshape(B, 1, a.h, -1).transpose(0, 2, 1, 3)
             kc, vc = mx.where(write, k, ks[i]), mx.where(write, v, vs[i])
-            nks.append(kc); nvs.append(vc)
+            nks.append(kc)
+            nvs.append(vc)
             sc = q.shape[-1] ** -0.5
             y = mx.fast.scaled_dot_product_attention(q, kc, vc, scale=sc, mask=smask)
             x = x + a.o(y.transpose(0, 2, 1, 3).reshape(B, 1, -1))
@@ -211,6 +216,7 @@ class Yomi(nn.Module):
             return self._step
         if getattr(self, "_compiled_step", None) is None:
             from functools import partial
+
             self._compiled_step = partial(mx.compile, inputs=self.state)(self._step)
         return self._compiled_step
 
@@ -243,7 +249,8 @@ def n_params(model):
 
 
 def save(path, model, cfg, vocab, step, opt=None):
-    path = Path(path); path.mkdir(parents=True, exist_ok=True)
+    path = Path(path)
+    path.mkdir(parents=True, exist_ok=True)
     model.save_weights(str(path / "model.safetensors"))
     json.dump({"config": cfg, "vocab": vocab, "step": step}, open(path / "meta.json", "w", encoding="utf-8"), ensure_ascii=False)
     if opt is not None:
@@ -265,16 +272,20 @@ def load(path, dtype=None, memory=None):
     model.load_weights(list(w.items()), strict=False)  # 旧形式 (ゲートなし・値0) のメモリ層はゲート初期値のまま
     if memory:  # 1 つのパス、カンマ区切り、またはリスト (積み重ね: 各ファイルは自分のグループのキーだけを持つ)
         import mold
+
         for p in mold.split_pkm(memory):
             mold.load_memory(model, p)
     import os
+
     if os.environ.get("MOLD_CG_THRESH"):  # 推論時だけ条件付きゲートを閾値で切る (例 0.5)。config の cg_thresh を上書き
         import mold
+
         for m in mold.memories(model):
             if "cgate" in m:
                 m.cg_thresh = float(os.environ["MOLD_CG_THRESH"])
     if os.environ.get("MOLD_MEM_OFF"):  # 評価用: 指定グループ (例 mem2) を止める (単体比較)
         import mold
+
         for g in os.environ["MOLD_MEM_OFF"].split(","):
             for m in mold.memories(model, g):
                 m._st.off = True
@@ -295,7 +306,7 @@ def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=T
             logs += [r[1] for r in res]
     out = []
     for i in range(0, len(texts), batch):
-        chunk = texts[i:i + batch]
+        chunk = texts[i : i + batch]
         ids = [src_vocab.encode(t)[: model.max_len] for t in chunk]
         L = max(len(x) for x in ids)
         arr = mx.array([x + [PAD] * (L - len(x)) for x in ids], dtype=mx.int32)
@@ -305,5 +316,5 @@ def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=T
             gen = model.generate_legacy(arr) if mode == "legacy" else model.generate_nocache(arr)
         out += [tgt_vocab.decode(g) for g in gen]
     if res is not None:  # 苗字+名前の句境界を補う
-        out = [router.postprocess(o, r[1]) for o, r in zip(out, res)]
+        out = [router.postprocess(o, r[1]) for o, r in zip(out, res, strict=False)]
     return out

@@ -1,0 +1,26 @@
+# Python tooling only (ruff). Each Python part keeps its own requirements.txt.
+[tool.ruff]
+line-length = 160
+target-version = "py311"
+extend-exclude = ["demo/ys_web/web/ort", "node_modules"]
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, import order, bugbear, complexity and size limits (the same limits as eslint.config.js)
+select = ["E", "W", "F", "I", "B", "C90", "PLR0913", "PLR0915"]
+ignore = [
+  "E402",  # scripts set sys.path or patch a library (espeakng_loader) before importing on purpose
+  "E741",  # l / I / O are the usual names in the signal and alignment code (length, index); renaming them is churn
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Model constructors and loss functions take their hyperparameters from saved checkpoint configs (Yomi(**cfg), PKM
+# settings) or as the positional tensors nn.value_and_grad passes; changing those signatures breaks existing checkpoints.
+"models/yomi/mlx/{yomi,mold,train}.py" = ["PLR0913"]
+"tts/kokoro_ft/train.py" = ["PLR0913"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 20
+
+[tool.ruff.lint.pylint]
+max-args = 6
+max-statements = 60

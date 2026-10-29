@@ -2,6 +2,7 @@
 
 韻律記号は jsut-label e2e_symbol 形式 (^ $ ? _ # [ ])。
 """
+
 import re
 from difflib import SequenceMatcher
 
@@ -13,9 +14,13 @@ def norm_kana(s):
     return KATA.sub("", s)
 
 
-_ROWS = {"ア": "アカガサザタダナハバパマヤャラワァ", "イ": "イキギシジチヂニヒビピミリィ",
-         "ウ": "ウクグスズツヅヌフブプムユュルゥヴ", "エ": "エケゲセゼテデネヘベペメレェ",
-         "オ": "オコゴソゾトドノホボポモヨョロヲォ"}
+_ROWS = {
+    "ア": "アカガサザタダナハバパマヤャラワァ",
+    "イ": "イキギシジチヂニヒビピミリィ",
+    "ウ": "ウクグスズツヅヌフブプムユュルゥヴ",
+    "エ": "エケゲセゼテデネヘベペメレェ",
+    "オ": "オコゴソゾトドノホボポモヨョロヲォ",
+}
 _VOW = {c: v for v, cs in _ROWS.items() for c in cs}
 
 
@@ -74,20 +79,25 @@ def prosody_compare(gold_tokens, pred_tokens):
         for k in range(n + 1):
             m.setdefault(j + k, i + k)
     pe_g = {(m[p], s) for p, s in pe if p in m}
-    unmapped = sum(1 for p, s in pe if p not in m)
+    sum(1 for p, s in pe if p not in m)
     gb, pb = _boundaries(ge), _boundaries(pe_g)
     gn, pn = _nuclei(ge), _nuclei(pe_g)
     unm_b = sum(1 for p, s in pe if p not in m and s in "#_")
     unm_n = sum(1 for p, s in pe if p not in m and s == "]")
     res = {
-        "bnd_tp": len(gb & pb), "bnd_fp": len(pb - gb) + unm_b, "bnd_fn": len(gb - pb),
-        "nuc_tp": len(gn & pn), "nuc_fp": len(pn - gn) + unm_n, "nuc_fn": len(gn - pn),
-        "ph_err": edit_distance(gp, pp), "ph_len": len(gp),
+        "bnd_tp": len(gb & pb),
+        "bnd_fp": len(pb - gb) + unm_b,
+        "bnd_fn": len(gb - pb),
+        "nuc_tp": len(gn & pn),
+        "nuc_fp": len(pn - gn) + unm_n,
+        "nuc_fn": len(gn - pn),
+        "ph_err": edit_distance(gp, pp),
+        "ph_len": len(gp),
     }
     # アクセント句単位: 両端の境界と核位置(有無含む)が一致した句の割合
     cuts = [0] + sorted(gb) + [len(gp)]
     ok = tot = 0
-    for a, b in zip(cuts, cuts[1:]):
+    for a, b in zip(cuts, cuts[1:], strict=False):
         if a == b:
             continue
         tot += 1

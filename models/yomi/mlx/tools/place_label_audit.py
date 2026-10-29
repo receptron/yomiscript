@@ -1,10 +1,16 @@
 """地名データの「KEN_ALL の読み」と「pyopenjtalk の文中の読み」のずれを分類する (学習データ作成・分析用)。
   python tools/place_label_audit.py [--data data/places] [--files places_train places_eval_seen] [--preds p.jsonl]
 --preds (eval_names の予測 {"id","pred"}) を渡すと、評価の誤りをずれの種類別に数える。"""
-import argparse, json, re, sys
+
+import argparse
+import json
+import re
+import sys
 from collections import Counter
 from pathlib import Path
-HERE = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(HERE))
+
+HERE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(HERE))
 from mold import to_pron  # noqa: E402
 
 DAK = str.maketrans("ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ", "カキクケコサシスセソタチツテトハヒフヘホハヒフヘホ")
@@ -25,9 +31,11 @@ def norm_kana(k):
 
 def ojt_spans(text):
     import pyopenjtalk
+
     out, i = [], 0
     for f in pyopenjtalk.run_frontend(text):
-        out.append((i, i + len(f["string"]), f["pron"].replace("’", ""))); i += len(f["string"])
+        out.append((i, i + len(f["string"]), f["pron"].replace("’", "")))
+        i += len(f["string"])
     return out
 
 
@@ -57,7 +65,7 @@ def category(surf, gold, ojt, nm):
         return "村 ソン/ムラ"
     if g.translate(DAK) == o.translate(DAK):
         return "濁り(連濁)"
-    if len(g) == len(o) and sum(a != b for a, b in zip(g, o)) == 1:
+    if len(g) == len(o) and sum(a != b for a, b in zip(g, o, strict=False)) == 1:
         return "1字違い"
     return "別の読み"
 
@@ -66,8 +74,10 @@ def audit_row(r):
     """各地名スパンの分類。戻り値 [(surface, gold, ojt, cat)]。"""
     out, pos = [], 0
     golds = split_gold(r)
-    for surf, gold in zip(r["names"], golds):
-        s = r["text"].find(surf, pos); e = s + len(surf); pos = e
+    for surf, gold in zip(r["names"], golds, strict=False):
+        s = r["text"].find(surf, pos)
+        e = s + len(surf)
+        pos = e
         o, nm = ojt_read(r["text"], s, e)
         out.append((surf, gold, o, category(surf, gold, o, nm) if gold else None))
     return out
@@ -84,22 +94,33 @@ def split_gold(r):
 
 def audit_preds(fn, n_ex=3):
     """eval_names.py --preds の失敗行をスパン単位で分類: 正解 / pyopenjtalk 通り (=ラベル側の差, 監査分類つき) / どちらでもない (モデル誤り)。"""
-    strip = lambda s: "".join(c for c in s if c not in "^$?#_[]")
+
+    def strip(s):
+        return "".join(c for c in s if c not in "^$?#_[]")
+
     c, ex = Counter(), {}
     for l in open(fn, encoding="utf-8"):
-        r = json.loads(l); p = strip(r["pred"])
+        r = json.loads(l)
+        p = strip(r["pred"])
         for surf, gold, o, cat in audit_row(r):
             if gold is None:
                 continue
-            k = ("正解" if gold in p else f"ojt通り:{cat}" if o and norm_kana(o) in p
-                 else f"モデル誤り:{cat}")
-            c[k] += 1; ex.setdefault(k, []).append(f"{surf} 正{gold} ojt{o}")
+            k = "正解" if gold in p else f"ojt通り:{cat}" if o and norm_kana(o) in p else f"モデル誤り:{cat}"
+            c[k] += 1
+            ex.setdefault(k, []).append(f"{surf} 正{gold} ojt{o}")
     n = sum(c.values())
     print(f"{fn} 失敗文のスパン {n}: " + "  ".join(f"{k} {v/n*100:.0f}%" for k, v in c.most_common(10)))
     g = Counter()
     for k, v in c.items():
-        g["正解" if k == "正解" else "ラベル側(ojt通り)" if k.startswith("ojt") else
-          "モデル誤り(正=ojt)" if k.split(":")[1] in ("一致", "一致(分割のみ)") else "モデル誤り(正≠ojt)"] += v
+        g[
+            "正解"
+            if k == "正解"
+            else "ラベル側(ojt通り)"
+            if k.startswith("ojt")
+            else "モデル誤り(正=ojt)"
+            if k.split(":")[1] in ("一致", "一致(分割のみ)")
+            else "モデル誤り(正≠ojt)"
+        ] += v
     print("  件数: " + "  ".join(f"{k} {v}" for k, v in g.most_common()))
     for k, _ in c.most_common(4):
         print(f"  {k}: " + " / ".join(ex[k][:n_ex]))
@@ -109,7 +130,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", type=Path, default=HERE / "data/places")
     ap.add_argument("--files", nargs="*", default=["places_train", "places_eval_seen", "places_eval_unseen"])
-    ap.add_argument("--limit", type=int, default=0); ap.add_argument("--preds", type=Path)
+    ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--preds", type=Path)
     ap.add_argument("--examples", type=int, default=3)
     a = ap.parse_args()
     if a.preds:
@@ -117,21 +139,25 @@ def main():
     OK = {"一致", "一致(分割のみ)"}
     for fn in a.files:
         rows = [json.loads(l) for l in open(a.data / f"{fn}.jsonl", encoding="utf-8")]
-        rows = rows[:a.limit] if a.limit else rows
+        rows = rows[: a.limit] if a.limit else rows
         c, ex = Counter(), {}
         for r in rows:
             for surf, g, o, cat in audit_row(r):
                 if g is None:
                     continue
-                c[cat] += 1; ex.setdefault(cat, []).append(f"{surf}:{g}/{o}")
+                c[cat] += 1
+                ex.setdefault(cat, []).append(f"{surf}:{g}/{o}")
         n = sum(c.values())
         rc = [{x[3] for x in audit_row(r)} for r in rows]
-        print(f"{fn}: 文単位 pyopenjtalk 一致 {sum(x <= OK for x in rc)/len(rc)*100:.1f}%  表記差のみ {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音'} for x in rc)/len(rc)*100:.1f}%  "
-              f"町村差まで {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音', '町 チョウ/マチ', '村 ソン/ムラ', 'ケ/ガ'} for x in rc)/len(rc)*100:.1f}%")
+        print(
+            f"{fn}: 文単位 pyopenjtalk 一致 {sum(x <= OK for x in rc)/len(rc)*100:.1f}%  "
+            f"表記差のみ {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音'} for x in rc)/len(rc)*100:.1f}%  "
+            f"町村差まで {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音', '町 チョウ/マチ', '村 ソン/ムラ', 'ケ/ガ'} for x in rc)/len(rc)*100:.1f}%"
+        )
         print(f"{fn} ({n} スパン): " + "  ".join(f"{k} {v/n*100:.1f}%" for k, v in c.most_common()))
         for k, _ in c.most_common():
             if k not in ("一致", "一致(分割のみ)"):
-                print(f"   {k}: " + " ".join(ex[k][:a.examples]))
+                print(f"   {k}: " + " ".join(ex[k][: a.examples]))
 
 
 if __name__ == "__main__":

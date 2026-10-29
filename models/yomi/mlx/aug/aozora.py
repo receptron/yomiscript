@@ -6,7 +6,15 @@
 
 python aug/aozora.py --works 400      # data/aug_text/aozora.jsonl を作る
 """
-import argparse, csv, io, json, re, sys, time, urllib.request, zipfile
+
+import argparse
+import csv
+import io
+import json
+import re
+import sys
+import time
+import zipfile
 from collections import Counter
 from pathlib import Path
 
@@ -25,9 +33,9 @@ def works(cache, n):
     seen, out = set(), []
     for r in sorted(rows, key=lambda r: int(r[0])):
         url = r[45]
-        if r[9] == "新字新仮名" and r[10] == "なし" and r[23] == "著者" and url.endswith(".zip") \
-                and "aozora.gr.jp" in url and r[0] not in seen:
-            seen.add(r[0]); out.append((r[0], url))
+        if r[9] == "新字新仮名" and r[10] == "なし" and r[23] == "著者" and url.endswith(".zip") and "aozora.gr.jp" in url and r[0] not in seen:
+            seen.add(r[0])
+            out.append((r[0], url))
     step = max(1, len(out) // n)  # 作家・時代が偏らないよう全体から等間隔に選ぶ
     return out[::step][:n]
 
@@ -50,9 +58,12 @@ def sentences(text):
 
 def strip_ruby(s):
     ruby = []
+
     def rep(m):
         base, yomi = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
-        ruby.append([base, yomi]); return base
+        ruby.append([base, yomi])
+        return base
+
     return RUBY.sub(rep, s), ruby
 
 
@@ -70,31 +81,48 @@ def main():
             p = a.cache / f"{wid}.zip"
             if not p.exists():
                 try:
-                    fetch(url, p); time.sleep(0.3)
-                except Exception as e:
-                    st["DL失敗"] += 1; continue
+                    fetch(url, p)
+                    time.sleep(0.3)
+                except Exception:
+                    st["DL失敗"] += 1
+                    continue
             try:
-                z = zipfile.ZipFile(p); txt = [x for x in z.namelist() if x.endswith(".txt")][0]
+                z = zipfile.ZipFile(p)
+                txt = [x for x in z.namelist() if x.endswith(".txt")][0]
                 text = body(z.read(txt))
             except Exception:
-                st["読込失敗"] += 1; continue
+                st["読込失敗"] += 1
+                continue
             st["作品"] += 1
             for s in sentences(text):
                 st["候補"] += 1
-                if OLD.search(s): st["旧仮名文字"] += 1; continue
+                if OLD.search(s):
+                    st["旧仮名文字"] += 1
+                    continue
                 plain, ruby = strip_ruby(s)
-                if "《" in plain or "｜" in plain: st["ルビ解析不能"] += 1; continue
+                if "《" in plain or "｜" in plain:
+                    st["ルビ解析不能"] += 1
+                    continue
                 plain = check(plain, st, evk)
-                if plain is None: continue
+                if plain is None:
+                    continue
                 k = norm(plain)
-                if k in seen: st["重複"] += 1; continue
-                seen.add(k); n += 1; st["採用"] += 1; st["ルビ数"] += len(ruby); st["ルビ付き文"] += bool(ruby)
+                if k in seen:
+                    st["重複"] += 1
+                    continue
+                seen.add(k)
+                n += 1
+                st["採用"] += 1
+                st["ルビ数"] += len(ruby)
+                st["ルビ付き文"] += bool(ruby)
                 f.write(json.dumps({"id": f"aozora:{wid}:{n}", "text": plain, "ruby": ruby}, ensure_ascii=False) + "\n")
-            if n >= a.max: break
+            if n >= a.max:
+                break
     print("aozora", dict(st))
     sp = a.out.parent / "stats.json"
     d = json.load(open(sp, encoding="utf-8")) if sp.exists() else {}
-    d["aozora"] = dict(st); json.dump(d, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    d["aozora"] = dict(st)
+    json.dump(d, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
 if __name__ == "__main__":

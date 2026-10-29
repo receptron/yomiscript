@@ -14,7 +14,14 @@ python prepare_data.py --aug        # data/aug_text/*.txt (aug/build_text.py で
   各行に "src": "distill" (pyopenjtalk 蒸留) / "rule" (ルールで読みを決め pyopenjtalk で韻律付与) を付ける。
   フィルタ統計は data/aug_stats.json に出力。
 """
-import argparse, json, os, random, re, subprocess, sys
+
+import argparse
+import json
+import os
+import random
+import re
+import subprocess
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -25,6 +32,7 @@ SMALL = set("ャュョァィゥェォヮ")
 
 def load_jsut(root):
     import yaml
+
     tk = yaml.safe_load(open(root / "text_kana/basic5000.yaml", encoding="utf-8"))
     kata = yaml.safe_load(open(root / "e2e_symbol/katakana.yaml", encoding="utf-8"))
     excl = {json.loads(l)["id"] for l in open(EVAL_JSUT, encoding="utf-8")}
@@ -49,8 +57,10 @@ def morae(kana):
 def distill_one(text):
     """pyopenjtalk: カナ + 韻律記号を作る。韻律はモーラ位置に差し込む。失敗時 None。"""
     import pyopenjtalk
+
     sys.path.insert(0, str(REPO / "eval/scripts"))
     from run_pyopenjtalk_baseline import pp_symbols
+
     kana = re.sub(r"[^\u30A1-\u30FAー]", "", pyopenjtalk.g2p(text, kana=True))
     pp = pp_symbols(pyopenjtalk.extract_fullcontext(text))
     mo, out, i = morae(kana), [], 0
@@ -60,11 +70,13 @@ def distill_one(text):
         elif t in ("a", "i", "u", "e", "o", "A", "I", "U", "E", "O", "N", "cl"):
             if i >= len(mo):
                 return None
-            out.append(mo[i]); i += 1
+            out.append(mo[i])
+            i += 1
     return "".join(out) if i == len(mo) and mo else None
 
 
 import unicodedata
+
 UNK_OK = re.compile(r"^[、。，．！？「」『』・ー〜\s]*$")
 
 
@@ -101,7 +113,8 @@ def label_ruby(item):
     if row2:
         kana = _loose(re.sub(r"[^\u30A1-\u30FAー]", "", row2["target"]))
         if all(_loose(y) in kana for _, y in ruby):
-            row2["src"] = "ruby"; return row2, "ok(ルビで読みを修正)", len(ruby), agree
+            row2["src"] = "ruby"
+            return row2, "ok(ルビで読みを修正)", len(ruby), agree
     return None, "ルビで修正できず除外", len(ruby), agree
 
 
@@ -112,9 +125,12 @@ def label(item):
     if expect:
         row, why = _label((kind, rid, text, text, expect))
         if row:
-            row["src"] = "rule"; row["prosody"] = "text"; return row, "ok(元の文で一致)"
+            row["src"] = "rule"
+            row["prosody"] = "text"
+            return row, "ok(元の文で一致)"
         row, why = _label(item)
-        if row: row["prosody"] = "kana"
+        if row:
+            row["prosody"] = "kana"
         return row, ("ok(カナ置換)" if row else why)
     return _label(item)
 
@@ -122,6 +138,7 @@ def label(item):
 def _label(item):
     """(kind, id, text, pron_text, expect) -> (row, reason)。expect があればカナにその読みが含まれることを要求。"""
     import pyopenjtalk
+
     kind, rid, text, pron, expect = item
     try:
         for nd in pyopenjtalk.run_frontend(pron):
@@ -145,44 +162,59 @@ def _label(item):
 def run_aug(a, eval_norm):
     from collections import Counter
     from multiprocessing import Pool
+
     sys.path.insert(0, str(HERE))
     from aug.rules import gen
+
     items = []
     for p in sorted(a.aug_text.glob("*.txt")):
         for n, line in enumerate(open(p, encoding="utf-8")):
-            if n >= a.aug_max: break
+            if n >= a.aug_max:
+                break
             t = line.strip()
-            if t: items.append((f"distill_{p.stem}", f"{p.stem}:{n}", t, t, None))
+            if t:
+                items.append((f"distill_{p.stem}", f"{p.stem}:{n}", t, t, None))
     rules = gen()
     for n, (t, pr) in enumerate(rules):
-        if re.sub(r"[、。]", "", unicodedata.normalize("NFKC", t)) in eval_norm: continue
+        if re.sub(r"[、。]", "", unicodedata.normalize("NFKC", t)) in eval_norm:
+            continue
         seg = None
         # pron と text の差分 = ルールで決めた読み
         i = 0
-        while i < min(len(t), len(pr)) and t[i] == pr[i]: i += 1
+        while i < min(len(t), len(pr)) and t[i] == pr[i]:
+            i += 1
         j = 0
-        while j < min(len(t), len(pr)) - i and t[-1 - j] == pr[-1 - j]: j += 1
-        seg = pr[i:len(pr) - j]
+        while j < min(len(t), len(pr)) - i and t[-1 - j] == pr[-1 - j]:
+            j += 1
+        seg = pr[i : len(pr) - j]
         items.append(("rule", f"rule:{n}", t, pr, seg))
     rows, stats = [], {}
     az = a.aug_text / "aozora.jsonl"
     if az.exists():
         aitems = []
         for n, l in enumerate(open(az, encoding="utf-8")):
-            if n >= a.aug_max: break
-            d = json.loads(l); aitems.append((d["id"], d["text"], d["ruby"]))
+            if n >= a.aug_max:
+                break
+            d = json.loads(l)
+            aitems.append((d["id"], d["text"], d["ruby"]))
         c, nr, na = Counter(), 0, 0
         with Pool(a.workers) as pool:
             for row, why, r_, ag in pool.imap(label_ruby, aitems, chunksize=256):
-                c[why] += 1; nr += r_; na += ag
-                if row: rows.append(row)
-        c = dict(c); c["ルビ総数"] = nr; c["pyopenjtalkがルビと一致"] = na
+                c[why] += 1
+                nr += r_
+                na += ag
+                if row:
+                    rows.append(row)
+        c = dict(c)
+        c["ルビ総数"] = nr
+        c["pyopenjtalkがルビと一致"] = na
         c["ルビ一致率"] = round(na / max(nr, 1), 4)
         stats["distill_aozora"] = c
     with Pool(a.workers) as pool:
-        for (kind, *_), (row, why) in zip(items, pool.imap(label, items, chunksize=256)):
+        for (kind, *_), (row, why) in zip(items, pool.imap(label, items, chunksize=256), strict=False):
             stats.setdefault(kind, Counter())[why] += 1
-            if row: rows.append(row)
+            if row:
+                rows.append(row)
     stats = {k: dict(v) for k, v in stats.items()}
 
     for k, v in stats.items():
@@ -209,7 +241,7 @@ def main():
         subprocess.run(["git", "clone", "--depth", "1", "https://github.com/sarulab-speech/jsut-label", str(a.jsut_label)], check=True)
     rows, nex = load_jsut(a.jsut_label)
     random.Random(0).shuffle(rows)
-    dev, train = rows[:a.dev_size], rows[a.dev_size:]
+    dev, train = rows[: a.dev_size], rows[a.dev_size :]
     print(f"jsut: {len(rows)} 文 (評価用 {nex} 文を除外) -> train {len(train)} / dev {len(dev)}")
     distill = []
     eval_texts = {json.loads(l)["text"] for l in open(EVAL_JSUT, encoding="utf-8")}

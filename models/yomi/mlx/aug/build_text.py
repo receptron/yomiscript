@@ -7,7 +7,13 @@
 
 python aug/build_text.py --wiki-max 150000
 """
-import argparse, bz2, json, re, unicodedata, urllib.request
+
+import argparse
+import bz2
+import json
+import re
+import unicodedata
+import urllib.request
 from collections import Counter
 from pathlib import Path
 
@@ -35,25 +41,39 @@ def eval_keys():
 
 def fetch(url, dst):
     if not dst.exists():
-        print("download", url); dst.parent.mkdir(parents=True, exist_ok=True)
+        print("download", url)
+        dst.parent.mkdir(parents=True, exist_ok=True)
         urllib.request.urlretrieve(url, dst)
     return dst
 
 
 def check(s, stats, evk):
     s = s.strip()
-    if not (5 <= len(s) <= 80): stats["len"] += 1; return None
-    if not OK.match(s): stats["chars(英字・記号など)"] += 1; return None
-    if not KANA.search(s): stats["ひらがな無し"] += 1; return None
-    if DIGIT.search(s): stats["数字入り(ルールセットで扱う)"] += 1; return None
-    if s.count("「") != s.count("」"): stats["括弧不整合"] += 1; return None
+    if not (5 <= len(s) <= 80):
+        stats["len"] += 1
+        return None
+    if not OK.match(s):
+        stats["chars(英字・記号など)"] += 1
+        return None
+    if not KANA.search(s):
+        stats["ひらがな無し"] += 1
+        return None
+    if DIGIT.search(s):
+        stats["数字入り(ルールセットで扱う)"] += 1
+        return None
+    if s.count("「") != s.count("」"):
+        stats["括弧不整合"] += 1
+        return None
     n = norm(s)
-    if n in evk or any(k in n for k in evk if len(k) >= 8): stats["評価セットと重複"] += 1; return None
+    if n in evk or any(k in n for k in evk if len(k) >= 8):
+        stats["評価セットと重複"] += 1
+        return None
     return s
 
 
 def wiki_sents(paths):
     import pyarrow.parquet as pq
+
     for p in paths:
         f = pq.ParquetFile(p)
         for i in range(f.num_row_groups):
@@ -70,11 +90,17 @@ def collect(name, it, mx, evk, seen, out):
         for s in it:
             stats["候補"] += 1
             s = check(s, stats, evk)
-            if s is None: continue
+            if s is None:
+                continue
             k = norm(s)
-            if k in seen: stats["重複"] += 1; continue
-            seen.add(k); f.write(s + "\n"); n += 1
-            if n >= mx: break
+            if k in seen:
+                stats["重複"] += 1
+                continue
+            seen.add(k)
+            f.write(s + "\n")
+            n += 1
+            if n >= mx:
+                break
     stats["採用"] = n
     print(name, dict(stats))
     return dict(stats)

@@ -10,12 +10,15 @@
                   別ファイル (*.mem.safetensors) に保存・差し替えできる (言語/方言/ドメインごと)。
 モード: fixed (@dialect や設定で指定) / auto (入力から推定)。明示指定が常に勝つ。
 """
-import json, re
+
+import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import mlx.core as mx
 import mlx.nn as nn
+
 
 # ---------------------------------------------------------------- .koedict パーサ
 @dataclass
@@ -101,14 +104,14 @@ def split_name_phrases(output, pairs):
         j = stream.find(sur + giv)
         if j < 0:
             continue
-        b = kana_pos[j + len(sur)]          # 名前の先頭文字の出力位置
+        b = kana_pos[j + len(sur)]  # 名前の先頭文字の出力位置
         pre = output[:b]
         if pre.endswith("#"):
             continue
         post = output[b:]
         # 名前側の最初のモーラの後ろを調べる
         m1 = morae(giv)[0]
-        after = post[len(m1):]
+        after = post[len(m1) :]
         if not after.startswith(("]", "[")):
             post = m1 + "[" + after
         out = pre.rstrip("[]") + ("]" if pre.endswith("]") else "") + "#" + post
@@ -121,8 +124,28 @@ CTX_ALIASES = {"male": "男性", "m": "男性", "男": "男性", "female": "女�
 HONORIFICS = ("さん", "くん", "君", "ちゃん", "様", "さま", "氏", "先生", "選手", "殿")
 KANJI = re.compile(r"[\u4e00-\u9fff々〆ヶ]")
 # 名前の前に来やすい語 (父の匠 / 名前は璃子 / 彼女八重子)。敬称が無くても人名辞書を使う手がかり。
-NAME_CUES = ("父の", "母の", "兄の", "姉の", "弟の", "妹の", "息子の", "娘の", "夫の", "妻の", "祖父の", "祖母の",
-             "孫の", "友人の", "名前は", "名は", "彼女", "彼", "私は", "僕は")
+NAME_CUES = (
+    "父の",
+    "母の",
+    "兄の",
+    "姉の",
+    "弟の",
+    "妹の",
+    "息子の",
+    "娘の",
+    "夫の",
+    "妻の",
+    "祖父の",
+    "祖母の",
+    "孫の",
+    "友人の",
+    "名前は",
+    "名は",
+    "彼女",
+    "彼",
+    "私は",
+    "僕は",
+)
 NAME_TAILS = ("が生まれ", "と申します", "といいます", "と言います", "です。")
 ANNOT = re.compile(r"\{([^{}|]+)\|([^{}|]+)\}")
 
@@ -176,8 +199,10 @@ class LexMemory:
         i, out = 0, []
         while i < len(text):
             for L in range(min(self.maxlen, len(text) - i), 0, -1):
-                if text[i:i + L] in self.table:
-                    out.append((i, i + L, text[i:i + L])); i += L; break
+                if text[i : i + L] in self.table:
+                    out.append((i, i + L, text[i : i + L]))
+                    i += L
+                    break
             else:
                 i += 1
         return out
@@ -187,8 +212,8 @@ class LexMemory:
         out = []
         for i in range(len(text)):
             for L in range(1, min(self.maxlen, len(text) - i) + 1):
-                if text[i:i + L] in self.table:
-                    out.append((i, i + L, text[i:i + L]))
+                if text[i : i + L] in self.table:
+                    out.append((i, i + L, text[i : i + L]))
         return out
 
     def to_arrays(self, tgt_vocab=None):
@@ -233,11 +258,11 @@ def _default_tokenizer():
             k = text.find(f["string"], pos)
             if k < 0:
                 return None
-            pos = k + len(f["string"]); b |= {k, pos}
+            pos = k + len(f["string"])
+            b |= {k, pos}
         return b
+
     return tok
-
-
 
 
 class MemoryRouter:
@@ -261,15 +286,20 @@ class MemoryRouter:
     def postprocess(self, output, log):
         if not self.split_names:
             return output
-        pairs = [(a["reading_pron"], b["reading_pron"]) for a, b in zip(log, log[1:])
-                 if a.get("name_end") is not None and a.get("name_end") == b.get("name_start")]
+        pairs = [
+            (a["reading_pron"], b["reading_pron"])
+            for a, b in zip(log, log[1:], strict=False)
+            if a.get("name_end") is not None and a.get("name_end") == b.get("name_start")
+        ]
         return split_name_phrases(output, pairs)
 
     def add(self, mem):
-        self.memories = [m for m in self.memories if m.name != mem.name] + [mem]; return self
+        self.memories = [m for m in self.memories if m.name != mem.name] + [mem]
+        return self
 
     def remove(self, name):
-        self.memories = [m for m in self.memories if m.name != name]; return self
+        self.memories = [m for m in self.memories if m.name != name]
+        return self
 
     def _pron(self, r):
         r = r.replace("'", "")
@@ -285,14 +315,20 @@ class MemoryRouter:
             ctx |= {CTX_ALIASES.get(str(c).lower(), str(c)) for c in context}
         log, spans = [], []  # spans: (s, e, reading)
         # 1) その場の注記が最優先
-        plain, pos, mapping = [], 0, []
+        plain, pos, _mapping = [], 0, []
         for m in ANNOT.finditer(text):
-            plain.append(text[pos:m.start()]); start = sum(map(len, plain))
-            plain.append(m.group(1)); spans.append((start, start + len(m.group(1)), hira2kata(m.group(2))))
+            plain.append(text[pos : m.start()])
+            start = sum(map(len, plain))
+            plain.append(m.group(1))
+            spans.append((start, start + len(m.group(1)), hira2kata(m.group(2))))
             log.append({"surface": m.group(1), "reading": hira2kata(m.group(2)), "by": "annotation", "memory": "-"})
             pos = m.end()
-        plain.append(text[pos:]); text = "".join(plain)
-        taken = lambda s, e: any(not (e <= a or s >= b) for a, b, _ in spans)
+        plain.append(text[pos:])
+        text = "".join(plain)
+
+        def taken(s, e):
+            return any(not (e <= a or s >= b) for a, b, _ in spans)
+
         # 2) 常時適用の辞書 → 3) 人名辞書 (人名らしい位置だけ)。苗字が見つかると隣の名前も人名扱い。
         name_mems = [m for m in self.memories if m.scope == "name"]
         cand = []
@@ -309,9 +345,10 @@ class MemoryRouter:
                 if pair or _is_namey(text, s, e, name_spans):
                     ent, by = m.choose(sf, text, ctx)
                     rp = self._pron(ent.reading)
-                    spans.append((s, e, rp)); name_spans.append((s, e)); changed = True
-                    log.append({"surface": sf, "reading": ent.reading, "reading_pron": rp, "by": by, "memory": m.name,
-                                "name_start": s, "name_end": e})
+                    spans.append((s, e, rp))
+                    name_spans.append((s, e))
+                    changed = True
+                    log.append({"surface": sf, "reading": ent.reading, "reading_pron": rp, "by": by, "memory": m.name, "name_start": s, "name_end": e})
         # always 辞書: 全レイヤーの候補を「長い一致 > 高いレイヤー」の順に取る。形態素の途中は使わない。
         cands = []
         for m in self.memories:
@@ -328,7 +365,8 @@ class MemoryRouter:
         log.sort(key=lambda l: l.get("name_start", 1 << 30))
         out, pos = [], 0
         for s, e, r in sorted(spans):
-            out += [text[pos:s], r]; pos = e
+            out += [text[pos:s], r]
+            pos = e
         out.append(text[pos:])
         return "".join(out), log
 
@@ -338,8 +376,21 @@ class ProductKeyMemory(nn.Module):
     """Lample+ 2019 の product-key memory。n_keys^2 個のスロット、トークンごとに top-k を読む。
     values は初期値 0 なので、既存チェックポイントに足しても出力は変わらない (後方互換)。"""
 
-    def __init__(self, d, n_keys=64, k_dim=64, topk=8, d_value=None, temp=15.0, gate_init=1.0, balance=0.01,
-                 cond_gate=False, cond_bias=0.0, gate_floor=0.0, cg_thresh=0.0):
+    def __init__(
+        self,
+        d,
+        n_keys=64,
+        k_dim=64,
+        topk=8,
+        d_value=None,
+        temp=15.0,
+        gate_init=1.0,
+        balance=0.01,
+        cond_gate=False,
+        cond_bias=0.0,
+        gate_floor=0.0,
+        cg_thresh=0.0,
+    ):
         super().__init__()
         # gate_floor: 出力に使うゲートの下限 (straight-through: 勾配はそのままゲートへ流れるので回復できる)。
         #   強い本体 (tiny_aug) を凍結してメモリだけ学習すると、初期の値の雑音でゲートが 0 へ落ち、値の勾配も gate 倍で消えて
@@ -349,7 +400,7 @@ class ProductKeyMemory(nn.Module):
         self.n_keys, self.topk, self.k_dim = n_keys, topk, k_dim
         self.norm = nn.LayerNorm(d)
         self.query = nn.Linear(d, 2 * k_dim, bias=False)
-        self.subkeys = mx.random.normal((2, n_keys, k_dim)) * (k_dim ** -0.5)
+        self.subkeys = mx.random.normal((2, n_keys, k_dim)) * (k_dim**-0.5)
         # 値テーブルは 0、ゲートは 0 でない値 (既定 1) から始める。開始時の出力は 0 (後方互換・雑音を足さない) で、
         # 値には gate*rms 倍の勾配がすぐ流れる。旧版 (乱数値+ゲート0) は ゲートが ~0 のまま動かず、乱数値は雑音になった
         self.slots = mx.zeros((n_keys * n_keys, d))
@@ -359,10 +410,11 @@ class ProductKeyMemory(nn.Module):
         self.temp = temp
         self.balance = balance  # 負荷分散の補助 loss の係数 (train.train_loss_fn が aux を足す)
         # aux は配列なのでモジュール属性にするとパラメータ扱いになる。ただの入れ物に入れる
-        self._st = __import__('types').SimpleNamespace(aux=None, off=False, cg=None)
+        self._st = __import__("types").SimpleNamespace(aux=None, off=False, cg=None)
         if cond_gate:  # 入力に応じたゲート sigmoid(w·LN(x)+b): 一般文では黙る (積み重ねた人名メモリ用)
             self.cgate = nn.Linear(d, 1)
-            self.cgate.weight = mx.zeros_like(self.cgate.weight); self.cgate.bias = mx.full((1,), cond_bias)
+            self.cgate.weight = mx.zeros_like(self.cgate.weight)
+            self.cgate.bias = mx.full((1,), cond_bias)
 
     probe = None  # 診断用: list を入れると (重み, スロット番号, 出力, 入力, スコア) を貯める
 
@@ -375,7 +427,8 @@ class ProductKeyMemory(nn.Module):
             return mx.zeros_like(x)
         B, L, D = x.shape
         q = self.query(self.norm(x)).reshape(B, L, 2, self.k_dim).astype(mx.float32)
-        q = self._l2(q); sk = self._l2(self.subkeys.astype(mx.float32))
+        q = self._l2(q)
+        sk = self._l2(self.subkeys.astype(mx.float32))
         s1 = (q[..., 0, :] @ sk[0].T) * self.temp  # (B,L,n) 値域 [-temp, temp]
         s2 = (q[..., 1, :] @ sk[1].T) * self.temp
         # 負荷分散: 各半分のキー分布 (全トークン平均) が一様から外れるほど大きい。一様なら 0
@@ -383,8 +436,10 @@ class ProductKeyMemory(nn.Module):
         p2 = mx.softmax(s2, axis=-1).reshape(-1, self.n_keys).mean(0)
         self._st.aux = self.n_keys * ((p1 * p1).sum() + (p2 * p2).sum()) - 2.0
         k = self.topk
-        i1 = mx.stop_gradient(mx.argpartition(-s1, k - 1, axis=-1)[..., :k]); v1 = mx.take_along_axis(s1, i1, -1)
-        i2 = mx.stop_gradient(mx.argpartition(-s2, k - 1, axis=-1)[..., :k]); v2 = mx.take_along_axis(s2, i2, -1)
+        i1 = mx.stop_gradient(mx.argpartition(-s1, k - 1, axis=-1)[..., :k])
+        v1 = mx.take_along_axis(s1, i1, -1)
+        i2 = mx.stop_gradient(mx.argpartition(-s2, k - 1, axis=-1)[..., :k])
+        v2 = mx.take_along_axis(s2, i2, -1)
         sc = (v1[..., :, None] + v2[..., None, :]).reshape(B, L, k * k)
         idx = (i1[..., :, None] * self.n_keys + i2[..., None, :]).reshape(B, L, k * k)
         j = mx.stop_gradient(mx.argpartition(-sc, k - 1, axis=-1)[..., :k])
@@ -449,6 +504,7 @@ def split_pkm(spec):
 def memory_params(model, group=None):
     """差し替え対象 (メモリ層) のパラメータだけを平坦な dict で返す。group: "mem" / "mem2" / None (全部)。"""
     from mlx.utils import tree_flatten
+
     return {k: v for k, v in tree_flatten(model.parameters()) if is_mem_key(k, group)}
 
 
@@ -480,8 +536,11 @@ def load_memory(model, path):
 def memory_file_summary(path):
     """メモリファイルの中身の要約 (グループ・ゲート値・値の絶対値平均)。"""
     w = mx.load(str(path))
-    return {k: (round(float(v.reshape(-1)[0]), 4) if k.endswith(".gate") else round(float(mx.abs(v).mean()), 5))
-            for k, v in w.items() if k.endswith((".gate", ".slots"))}
+    return {
+        k: (round(float(v.reshape(-1)[0]), 4) if k.endswith(".gate") else round(float(mx.abs(v).mean()), 5))
+        for k, v in w.items()
+        if k.endswith((".gate", ".slots"))
+    }
 
 
 def detect_mode(text, explicit=None):

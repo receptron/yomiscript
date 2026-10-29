@@ -12,7 +12,12 @@ usage: python g2p.py [--gb] "text" ...   -> one JSON object per chunk: {"index" 
 espeak-ng: loaded from Homebrew if the espeakng-loader wheel cannot find its data (see eval/kokoro_parity/ref_kokoro.py);
 set ESPEAK_LIB / ESPEAK_DATA to override.
 """
-import json, os, sys, warnings
+
+import json
+import os
+import sys
+import warnings
+
 warnings.filterwarnings("ignore")
 
 LIG = {"A": "eɪ", "I": "aɪ", "W": "aʊ", "Y": "ɔɪ", "O": "oʊ", "Q": "əʊ", "ʧ": "tʃ", "ʤ": "dʒ", "T": "ɾ"}
@@ -20,9 +25,47 @@ DIPH = ("eɪ", "aɪ", "aʊ", "ɔɪ", "oʊ", "əʊ")
 VOWELS = set("aeiouæɑɒɔəɛɜɪʊʌᵊɐᵻɚɝ")
 AFFR = ("tʃ", "dʒ")
 ONSETS = {
-    "pl", "pɹ", "bl", "bɹ", "tɹ", "dɹ", "kl", "kɹ", "ɡl", "ɡɹ", "fl", "fɹ", "θɹ", "ʃɹ", "sp", "st", "sk", "sm",
-    "sn", "sl", "sw", "tw", "dw", "kw", "ɡw", "θw", "spl", "spɹ", "stɹ", "skɹ", "skw",
-    "pj", "bj", "kj", "ɡj", "mj", "fj", "vj", "hj", "nj", "lj",
+    "pl",
+    "pɹ",
+    "bl",
+    "bɹ",
+    "tɹ",
+    "dɹ",
+    "kl",
+    "kɹ",
+    "ɡl",
+    "ɡɹ",
+    "fl",
+    "fɹ",
+    "θɹ",
+    "ʃɹ",
+    "sp",
+    "st",
+    "sk",
+    "sm",
+    "sn",
+    "sl",
+    "sw",
+    "tw",
+    "dw",
+    "kw",
+    "ɡw",
+    "θw",
+    "spl",
+    "spɹ",
+    "stɹ",
+    "skɹ",
+    "skw",
+    "pj",
+    "bj",
+    "kj",
+    "ɡj",
+    "mj",
+    "fj",
+    "vj",
+    "hj",
+    "nj",
+    "lj",
 }
 # characters of Kokoro's phoneme strings that are pronunciation (everything else in a ps is punctuation)
 PHON = set("abcdefhijklmnopqrstuvwxyzæçðøŋœɐɑɒɔɕəɚɛɜɟɡɣɤɥɨɪɯɰɲɳɴɸɹɻɽɾʁʂʃʈʊʋʌʎʒʔʝʣʤʥʦʧʨʰʲˈˌːβθχᵊᵝᵻAIOQSTWỸ")
@@ -33,18 +76,24 @@ def segments(p):
     while i < len(p):
         c = p[i]
         if c in "ˈˌ":
-            stress = c; i += 1; continue
-        two = p[i:i + 2]
+            stress = c
+            i += 1
+            continue
+        two = p[i : i + 2]
         if two in DIPH:
             v, i = two, i + 2
         elif c in VOWELS:
             v, i = c, i + 1
         else:
             s = two if two in AFFR else c
-            out.append(("C", s, "")); i += len(s); continue
+            out.append(("C", s, ""))
+            i += len(s)
+            continue
         while i < len(p) and p[i] in "ː̃":
-            v += p[i]; i += 1
-        out.append(("V", v, stress)); stress = ""
+            v += p[i]
+            i += 1
+        out.append(("V", v, stress))
+        stress = ""
     if stress:  # a stress mark with no vowel after it: keep it in place
         out.append(("C", stress, ""))
     return out
@@ -56,19 +105,21 @@ def syllabify(p):
     if not nuc:
         return "".join(s[2] + s[1] for s in seg)
     cuts = []
-    for a, b in zip(nuc, nuc[1:]):
+    for a, b in zip(nuc, nuc[1:], strict=False):
         cl = [seg[k][1] for k in range(a + 1, b)]
         n = 0
         for m in range(len(cl), 0, -1):
-            on = "".join(cl[len(cl) - m:])
+            on = "".join(cl[len(cl) - m :])
             if m == 1 and cl[-1] != "ŋ" or on in ONSETS:
-                n = m; break
+                n = m
+                break
         cuts.append(b - n)
     syl, start = [], 0
     for c in cuts + [len(seg)]:
         part = seg[start:c]
         st = next((s[2] for s in part if s[0] == "V"), "")
-        syl.append(st + "".join(s[1] for s in part)); start = c
+        syl.append(st + "".join(s[1] for s in part))
+        start = c
     return ".".join(syl)
 
 
@@ -81,16 +132,24 @@ def to_ipa(ph):
 def word(w):
     """one space-separated piece of a Kokoro ps -> YomiScript (phoneme runs syllabified, punctuation as <p:…>)"""
     out, run, punct = [], "", ""
+
     def flush():
         nonlocal run, punct
-        if run: out.append(syllabify(to_ipa(run))); run = ""
-        if punct: out.append(f"<p:{punct}>"); punct = ""
+        if run:
+            out.append(syllabify(to_ipa(run)))
+            run = ""
+        if punct:
+            out.append(f"<p:{punct}>")
+            punct = ""
+
     for ch in w:
         if ch in PHON:
-            if punct: flush()
+            if punct:
+                flush()
             run += ch
         else:
-            if run: flush()
+            if run:
+                flush()
             punct += ch
     flush()
     return "".join(out)
@@ -122,11 +181,13 @@ def ps_to_yomiscript(ps, lang):
 
 def pipeline(gb=False):
     import espeakng_loader
+
     lib = os.environ.get("ESPEAK_LIB", "/opt/homebrew/lib/libespeak-ng.dylib")
     if os.path.exists(lib):  # the espeakng-loader wheel ignores its data path on macOS here; same espeak-ng 1.52.0
         espeakng_loader.get_library_path = lambda: lib
         espeakng_loader.get_data_path = lambda: os.environ.get("ESPEAK_DATA", "/opt/homebrew/share/espeak-ng-data")
     from kokoro import KPipeline
+
     return KPipeline(lang_code="b" if gb else "a", repo_id="hexgrad/Kokoro-82M", model=False)
 
 

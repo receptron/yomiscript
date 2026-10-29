@@ -1,14 +1,23 @@
 """学習に使っていない一般文の評価セット (pyopenjtalk 蒸留の正解) を作る。
 wiki shard の未採用文 (aug_text / distill / train に無い) から --n 文。出力は JSUT と同じ形式 (text, kana_prosody)。
 python tools/build_general_eval.py --n 3000  ->  eval/data/general_heldout.jsonl (リポジトリに置く)"""
-import argparse, json, random, sys
+
+import argparse
+import json
+import random
+import sys
 from collections import Counter
 from pathlib import Path
-HERE = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(HERE)); sys.path.insert(0, str(HERE / "aug"))
+
+HERE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE / "aug"))
 import build_text as bt
 from prepare_data import distill_one
+
 ap = argparse.ArgumentParser()
-ap.add_argument("--n", type=int, default=3000); ap.add_argument("--pool", type=int, default=30000)
+ap.add_argument("--n", type=int, default=3000)
+ap.add_argument("--pool", type=int, default=30000)
 ap.add_argument("--out", type=Path, default=HERE.parents[2] / "eval/data/general_heldout.jsonl")
 a = ap.parse_args()
 seen = set()
@@ -20,10 +29,12 @@ evk, st, pool = bt.eval_keys(), Counter(), []
 for s in bt.wiki_sents([HERE / "data/aug_cache/wiki-00014.parquet"]):
     s = bt.check(s, st, evk)
     if s and (k := bt.norm(s)) not in seen:
-        seen.add(k); pool.append(s)
+        seen.add(k)
+        pool.append(s)
         if len(pool) >= a.pool:
             break
-random.Random(0).shuffle(pool); out = []
+random.Random(0).shuffle(pool)
+out = []
 for s in pool:
     tg = distill_one(s)
     if tg:

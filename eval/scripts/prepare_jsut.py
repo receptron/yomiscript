@@ -4,8 +4,12 @@
         python eval/scripts/prepare_jsut.py /tmp/jsut-label
 テキスト・読み・韻律記号は CC-BY-SA 系ライセンス (LICENSE_DATA.md 参照)。
 """
-import json, sys, yaml
+
+import json
+import sys
 from pathlib import Path
+
+import yaml
 
 root = Path(sys.argv[1])
 STEP = 16  # 5000文から等間隔に抽出 (決定的)

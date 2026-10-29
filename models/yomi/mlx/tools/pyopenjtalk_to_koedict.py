@@ -3,7 +3,12 @@
 「表層 → 最頻の読み」を集める (複数読みがあれば2番目以降は記録のみ)。
   python tools/pyopenjtalk_to_koedict.py --text data/aug_text/*.txt --out mem/base_pyopenjtalk.koedict --min-count 2
 """
-import argparse, collections, glob, json, re
+
+import argparse
+import collections
+import glob
+import json
+import re
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--text", nargs="+", required=True, help="テキスト/jsonl ファイル (jsonl なら text 列)")
@@ -40,6 +45,7 @@ with open(a.out, "w", encoding="utf-8") as w:
             (pron, acc), top = c.most_common(1)[0]
             alts = sorted({p for (p, _), _n in c.items() if p != pron})
             note = f"  # 他の読み: {'/'.join(alts)}" if alts else ""
-            w.write(f"  {s} = {pron} [accent: {acc}];{note}\n"); k += 1
+            w.write(f"  {s} = {pron} [accent: {acc}];{note}\n")
+            k += 1
     w.write("}\n")
 print(f"{n} 行を解析, {k} 項目 -> {a.out}")

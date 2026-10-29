@@ -3,13 +3,18 @@
 各メモリについて eval_names.py と evaluate.py を --pkm 付きで実行し、出力全体を eval_out/ に保存して表にまとめる。
 存在しないメモリは飛ばす。--mem を指定すると既定 (default/names/general) を同名で上書き・追加する。
 --mem name=a.mem.safetensors,b.mem.safetensors で積み重ね、末尾に @ckpt/X を付けるとその項目だけ別の ckpt を使う
-(末尾に #cg0.5 で推論時ゲート閾値。例: --mem default=ckpt/mfz_default.mem.safetensors@ckpt/mfz_general --mem stacked=ckpt/mfz_default.mem.safetensors,ckpt/names2.mem.safetensors@ckpt/mfz_stack)"""
-import argparse, json, re, subprocess, sys
+(末尾に #cg0.5 で推論時ゲート閾値。例: --mem default=ckpt/mfz_default.mem.safetensors@ckpt/mfz_general
+ --mem stacked=ckpt/mfz_default.mem.safetensors,ckpt/names2.mem.safetensors@ckpt/mfz_stack)"""
+
+import argparse
+import json
+import re
+import subprocess
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[1]
-DEFAULTS = {"default": "ckpt/mold_tiny/default.mem.safetensors", "names": "ckpt/names.mem.safetensors",
-            "general": "ckpt/general.mem.safetensors"}
+DEFAULTS = {"default": "ckpt/mold_tiny/default.mem.safetensors", "names": "ckpt/names.mem.safetensors", "general": "ckpt/general.mem.safetensors"}
 
 
 def last_json_object(text):
@@ -51,6 +56,7 @@ ENV = {}
 
 def run(cmd, log):
     import os
+
     p = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True, env={**os.environ, **ENV})
     log.write_text(f"$ {' '.join(cmd)}\n# exit {p.returncode}\n{p.stdout}\n--- stderr ---\n{p.stderr}", encoding="utf-8")
     if p.returncode:
@@ -71,16 +77,19 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="eval_names.py の --limit (動作確認用)")
     ap.add_argument("--general-eval", type=int, default=0, metavar="N", help="一般文 held-out の N 文も評価 (表に gen/gCER 列)")
     ap.add_argument("--places", default="data/places", help="地名評価 (places_eval_seen/unseen) の場所。無ければ省略")
-    ap.add_argument("--skip-jsut", action="store_true"); ap.add_argument("--skip-names", action="store_true")
+    ap.add_argument("--skip-jsut", action="store_true")
+    ap.add_argument("--skip-names", action="store_true")
     a = ap.parse_args()
     mems = dict(DEFAULTS)
     for s in a.mem:
         if "=" not in s:
             ap.error(f"--mem は name=path 形式: {s}")
-        k, v = s.split("=", 1); mems[k] = v
+        k, v = s.split("=", 1)
+        mems[k] = v
     if a.only:
         mems = {k: v for k, v in mems.items() if k in a.only}
-    out = HERE / a.out_dir; out.mkdir(exist_ok=True)
+    out = HERE / a.out_dir
+    out.mkdir(exist_ok=True)
     tag = Path(a.ckpt).name
     rows = []
     for name, spec in mems.items():
@@ -88,37 +97,64 @@ def main():
         ENV.clear()
         for o in opts:
             ENV.update({"MOLD_CG_THRESH": o[2:]} if o.startswith("cg") else {"MOLD_MEM_OFF": o[4:]} if o.startswith("off=") else {})
-        path, _, ck = spec.partition("@"); ck = ck or a.ckpt
+        path, _, ck = spec.partition("@")
+        ck = ck or a.ckpt
         miss = [p for p in path.split(",") if p and not (HERE / p).exists() and not Path(p).exists()]
         if miss:
-            print(f"skip {name}: {', '.join(miss)} がありません", file=sys.stderr); continue
+            print(f"skip {name}: {', '.join(miss)} がありません", file=sys.stderr)
+            continue
         print(f"== {name}: {path} (ckpt {ck})", file=sys.stderr, flush=True)
         r = {"memory": name}
         if not a.skip_names:
             cmd = [sys.executable, "eval_names.py", "--ckpt", ck] + (["--pkm", path] if path else []) + (["--limit", str(a.limit)] if a.limit else [])
             r["names"] = parse_names(run(cmd, out / f"{tag}.{name}.eval_names.log"))
             if (HERE / a.places).exists():  # 地名 (mem3) の読み正解率
-                r["names"].update(parse_names(run(cmd + ["--data", a.places, "--model-only", "--splits", "places_eval_seen", "places_eval_unseen"],
-                                                  out / f"{tag}.{name}.eval_places.log")))
+                r["names"].update(
+                    parse_names(
+                        run(
+                            cmd + ["--data", a.places, "--model-only", "--splits", "places_eval_seen", "places_eval_unseen"],
+                            out / f"{tag}.{name}.eval_places.log",
+                        )
+                    )
+                )
         if not a.skip_jsut:
-            r["jsut"] = last_json_object(run([sys.executable, "evaluate.py", "--ckpt", ck] + (["--pkm", path] if path else [])
-                                             + (["--general-eval", str(a.general_eval)] if a.general_eval else []),
-                                             out / f"{tag}.{name}.evaluate.log")) or {}
+            r["jsut"] = (
+                last_json_object(
+                    run(
+                        [sys.executable, "evaluate.py", "--ckpt", ck]
+                        + (["--pkm", path] if path else [])
+                        + (["--general-eval", str(a.general_eval)] if a.general_eval else []),
+                        out / f"{tag}.{name}.evaluate.log",
+                    )
+                )
+                or {}
+            )
         rows.append(r)
     (out / f"{tag}.compare.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
     if not rows:
-        print("比較できるメモリがありません"); return 1
+        print("比較できるメモリがありません")
+        return 1
     # 最後の数行だけ貼れば足りるよう、1 メモリ 1 行の表で終える (この後は何も出さない)
     print(f"出力: {out}/  ckpt {a.ckpt}  [%]  人名=辞書なし(model) の read/pros", flush=True)
-    print(f"{'memory':10} {'CER':>5} {'sent':>5} {'loose':>5} {'hard':>5} {'bndF1':>5} {'accF1':>5} {'gen':>5} {'gCER':>5} | {'seenR':>5} {'seenP':>5} {'unsR':>5} {'unsP':>5} | {'plcS':>5} {'plcU':>5}")
+    print(
+        f"{'memory':10} {'CER':>5} {'sent':>5} {'loose':>5} {'hard':>5} {'bndF1':>5} {'accF1':>5} {'gen':>5} "
+        f"{'gCER':>5} | {'seenR':>5} {'seenP':>5} {'unsR':>5} {'unsP':>5} | {'plcS':>5} {'plcU':>5}"
+    )
     for r in rows:
         j, n = r.get("jsut", {}), r.get("names", {})
         sm, um = n.get("names_eval_seen/model", {}), n.get("names_eval_unseen/model", {})
         ps, pu = n.get("places_eval_seen/model", {}), n.get("places_eval_unseen/model", {})
-        f = lambda x: f"{fmt(x):>5}"
-        print(f"{r['memory'][:10]:10} {f(pick(j,'jsut','kana_cer'))} {f(pick(j,'jsut','sent_acc'))} {f(pick(j,'jsut','sent_acc_loose'))} "
-              f"{f(pick(j,'hard','sent_acc'))} {f(pick(j,'jsut','phrase_boundary_p_r_f1'))} {f(pick(j,'jsut','accent_nucleus_p_r_f1'))} {f(pick(j,'general','sent_acc'))} {f(pick(j,'general','kana_cer'))} | "
-              f"{f(sm.get('name_reading_acc'))} {f(sm.get('name_prosody_exact'))} {f(um.get('name_reading_acc'))} {f(um.get('name_prosody_exact'))} | {f(ps.get('name_reading_acc'))} {f(pu.get('name_reading_acc'))}")
+
+        def f(x):
+            return f"{fmt(x):>5}"
+
+        print(
+            f"{r['memory'][:10]:10} {f(pick(j,'jsut','kana_cer'))} {f(pick(j,'jsut','sent_acc'))} {f(pick(j,'jsut','sent_acc_loose'))} "
+            f"{f(pick(j,'hard','sent_acc'))} {f(pick(j,'jsut','phrase_boundary_p_r_f1'))} "
+            f"{f(pick(j,'jsut','accent_nucleus_p_r_f1'))} {f(pick(j,'general','sent_acc'))} {f(pick(j,'general','kana_cer'))} | "
+            f"{f(sm.get('name_reading_acc'))} {f(sm.get('name_prosody_exact'))} {f(um.get('name_reading_acc'))} "
+            f"{f(um.get('name_prosody_exact'))} | {f(ps.get('name_reading_acc'))} {f(pu.get('name_reading_acc'))}"
+        )
     return 0
 
 

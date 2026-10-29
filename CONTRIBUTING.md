@@ -7,6 +7,7 @@ Contributions to mulmovoice are welcome.
 1. Start with an Issue for proposals and questions. Changes to the spec (YomiScript) are discussed in an Issue before a PR.
 2. Branch off `main` and submit PRs in small units.
 3. Design decisions are appended to [`docs/decisions.md`](docs/decisions.md) (with a D number).
+4. Before a PR: `yarn format`, `yarn lint` and `yarn test` pass (JS: Prettier, ESLint, Vitest; Python: ruff). The coding rules are in [`CLAUDE.md`](CLAUDE.md).
 
 ## Terminology (D9)
 

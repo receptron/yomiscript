@@ -1,2 +1,6 @@
 __pycache__/
 .DS_Store
+
+# JS tooling (root package.json)
+node_modules/
+.eslintcache

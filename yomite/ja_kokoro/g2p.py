@@ -16,14 +16,19 @@ so that the Katarite (demo/ys_web/web/ys.js) rebuilds exactly the same string:
     does: as nothing but the word space. Japanese ↘ at the end is likewise nothing; ↗ is '?'.
 usage: python g2p.py "text" ...   -> one JSON object per chunk: {"index" (of the text), "text", "ys", "kokoro"}
 """
-import json, re, sys, warnings
+
+import json
+import re
+import sys
+import warnings
+
 warnings.filterwarnings("ignore")
 
 VOWELS = "aiɯeoɨ"
 NASALS = "mnɲŋɴ"
 CONS = "kɡsɕzʣʥtdʨʦnɲhçɸbpmjɾβvʔŋɴ"
-PALATAL_I = "kɡbpmɾvɸtdʦ"            # Kokoro writes these with ʲ before i; YomiScript does not (spec §4.1)
-PUNCT = set('!"(),.:;?—“”…«»[]')    # what Cutlet passes through as punctuation
+PALATAL_I = "kɡbpmɾvɸtdʦ"  # Kokoro writes these with ʲ before i; YomiScript does not (spec §4.1)
+PUNCT = set('!"(),.:;?—“”…«»[]')  # what Cutlet passes through as punctuation
 ONSET = CONS.replace("ʔ", "").replace("ɴ", "")
 MORA = re.compile(r"(?:[%s][ʲᵝ]?)?[%s]|ː|ʔ|ɴ|[mnɲŋ](?![%sː])" % (ONSET, VOWELS, VOWELS))
 
@@ -35,7 +40,8 @@ def morae(run):
         m = MORA.match(run, i)
         if not m or m.end() == i:
             return None
-        out.append(m.group()); i = m.end()
+        out.append(m.group())
+        i = m.end()
     return out
 
 
@@ -49,11 +55,14 @@ def to_ipa(run):
         if m == "ʔ":
             n = M[k + 1] if k + 1 < len(M) else ""
             c = n[:1]
-            if c and c not in VOWELS + NASALS + "jβːʔ":       # geminate: double the next consonant
-                out.append({"ʨ": "t", "ʦ": "t", "ʥ": "d", "ʣ": "d"}.get(c, c)); continue
-            out.append("ʔ"); continue
+            if c and c not in VOWELS + NASALS + "jβːʔ":  # geminate: double the next consonant
+                out.append({"ʨ": "t", "ʦ": "t", "ʥ": "d", "ʣ": "d"}.get(c, c))
+                continue
+            out.append("ʔ")
+            continue
         if m == "zɨ":
-            out.append("dzɯ"); continue
+            out.append("dzɯ")
+            continue
         if len(m) >= 3 and m[1] == "ʲ" and m[2] == "i" and m[0] in PALATAL_I:
             m = m[0] + m[2:]
         for a, b in (("ʨ", "tɕ"), ("ʥ", "dʑ"), ("ʦ", "ts"), ("ʣ", "dz"), ("β", "w"), ("ᵝ", "ʷ"), ("ɨ", "ɯ")):
@@ -108,7 +117,7 @@ def find_marks(g2p, text, ps):
     full = " ".join(words)
     if full == ps:
         return marks
-    if len(ps) == 510 and full[:510] == ps:                    # the original cut ps at 510: keep the marks before the cut
+    if len(ps) == 510 and full[:510] == ps:  # the original cut ps at 510: keep the marks before the cut
         n = len(ps.split(" ")) - 1
         return {i: m for i, m in marks.items() if i < n}
     return {}
@@ -116,6 +125,7 @@ def find_marks(g2p, text, ps):
 
 def pipeline():
     from kokoro import KPipeline
+
     return KPipeline(lang_code="j", repo_id="hexgrad/Kokoro-82M", model=False)
 
 
