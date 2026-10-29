@@ -1,29 +1,29 @@
-# KOE-IR 仕様（v0.1 草案）
+# KOE-IR Specification (v0.1 draft)
 
-> **注:** KOE-IR は旧名です。現在の名前は **YomiScript** です。言語非依存（拡張IPA）の発音層の草案は [`../yomiscript/`](../yomiscript/README.md) を見てください。
+> **Note:** KOE-IR is the old name. The current name is **YomiScript**. For the draft of the language-neutral (extended IPA) pronunciation layer, see [`../yomiscript/`](../yomiscript/README.md).
 
-KOE-IRは、**声色を含まない**音声合成用の中間言語です。フロントエンド（読み・アクセントの推定）と音響バックエンド（TTSエンジン）を分け、それぞれを独立に開発・交換できるようにします（仮説H0）。
+KOE-IR is an intermediate language for speech synthesis that **does not include timbre**. It separates the front end (reading and accent prediction) from the acoustic backend (TTS engine) so that each can be developed and swapped independently (hypothesis H0).
 
-この仕様は CC BY 4.0（[`../LICENSE`](../LICENSE)）で公開します。
+This specification is published under CC BY 4.0 ([`../LICENSE`](../LICENSE)).
 
-## 2つの層
+## Two layers
 
-1. **入力（ソース記法）**：人が書くテキスト。スタイルタグ、読みの指定、辞書の宣言を含みます。
-2. **出力（IR）**：読み・アクセント・句境界・ポーズ・スタイルを持つ正規化済みの表現。バックエンドプラグインが受け取ります。
+1. **Input (source notation)**: text written by people. It includes style tags, reading specifications and lexicon declarations.
+2. **Output (IR)**: a normalized representation carrying readings, accents, phrase boundaries, pauses and styles. Backend plugins receive it.
 
-## 主な機能
+## Main features
 
-- スタイルタグ：`[whisper]` `[laughs]` `[pause]`、日本語の注記 `(ひそひそ声で)` `(笑いながら)`。語彙表で正規化します（例：`(ひそひそ声で)` → `whisper`）。
-- 読みの指定：正式形 `{表記|読み}`、簡略形 `市(いち)`。読みはカナ、英語などはIPA（`{SIP|/sɪp/}`）も書けます。
-- 辞書：文書内の `@lexicon { … }` と、外部ファイルを読み込む `@import "x.koedict"`。
-- アクセント：`'`（核の位置）または `[accent: N]`（UniDic aType の数字表記に対応）。
-- 方言：`@dialect`、`@lexicon(dialect: …)`、`[dialect: …]`。項目がなければ標準語にフォールバックします。
-- 文脈条件：`[context: …]` と `[default]`（D13）。
+- Style tags: `[whisper]` `[laughs]` `[pause]`, and Japanese annotations `(ひそひそ声で)` `(笑いながら)`. They are normalized via a vocabulary table (e.g. `(ひそひそ声で)` → `whisper`).
+- Reading specification: full form `{表記|読み}`, short form `市(いち)`. Readings are in kana; for English and others, IPA can also be written (`{SIP|/sɪp/}`).
+- Lexicon: in-document `@lexicon { … }`, and `@import "x.koedict"` to load an external file.
+- Accent: `'` (nucleus position) or `[accent: N]` (corresponds to the numeric notation of UniDic aType).
+- Dialect: `@dialect`, `@lexicon(dialect: …)`, `[dialect: …]`. If there is no entry, it falls back to standard Japanese.
+- Context conditions: `[context: …]` and `[default]` (D13).
 
-## 読みの優先順位（D1・D13）
+## Reading precedence (D1, D13)
 
-1. その場での指定 `{表記|読み}`（簡略形を含む）
-2. 辞書：`@lexicon` と `@import` をまとめて1段。段の中では `@lexicon` > `@import`、`@import` 同士は後勝ち。同じ表記に複数の項目があれば、文脈条件に合う項目 > `[default]`
-3. モデル（Yomi）による文脈からの推定
+1. Inline specification `{表記|読み}` (including the short form)
+2. Lexicon: `@lexicon` and `@import` together form one tier. Within the tier, `@lexicon` > `@import`, and among `@import`s the later one wins. If the same surface form has multiple entries, an entry matching the context condition > `[default]`
+3. Prediction from context by the model (Yomi)
 
-詳しい文法と例は [`grammar.md`](grammar.md) を見てください。
+For the detailed grammar and examples, see [`grammar.md`](grammar.md).

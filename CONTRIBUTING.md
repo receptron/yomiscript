@@ -1,22 +1,22 @@
-# 貢献ガイド
+# Contributing Guide
 
-mulmovoice への貢献を歓迎します。
+Contributions to mulmovoice are welcome.
 
-## 進め方
+## Process
 
-1. まず Issue で提案・質問してください。仕様（KOE-IR）の変更は Issue で議論してから PR にします。
-2. `main` からブランチを切り、小さな単位で PR を出してください。
-3. 設計上の決定は [`docs/decisions.md`](docs/decisions.md) に追記します（D番号を振ります）。
+1. Start with an Issue for proposals and questions. Changes to the spec (YomiScript) are discussed in an Issue before a PR.
+2. Branch off `main` and submit PRs in small units.
+3. Design decisions are appended to [`docs/decisions.md`](docs/decisions.md) (with a D number).
 
-## 用語（D9）
+## Terminology (D9)
 
-文書では「辞書 (Lexicon)」「メモリ (Memory)」「書き込み (Memory write)」を使います。「記憶」は使いません。
+Documents use "lexicon (辞書)", "Memory (メモリ)" and "memory write (書き込み)". The term 「記憶」 is not used.
 
-## ライセンス
+## License
 
-- コードは Apache-2.0、`spec/` 以下は CC BY 4.0 で提供されることに同意したものとみなします。
-- 辞書やデータを追加するときは、出典とライセンスを明記してください。研究目的限定など、ライセンスが不明確なデータは追加しないでください。
+- By contributing, you agree that code is provided under Apache-2.0 and everything under `spec/` under CC BY 4.0.
+- When adding lexicons or data, state the source and license. Do not add data whose license is unclear, such as research-only data.
 
-## 文書の言語
+## Documentation language
 
-ドキュメントは日本語で書きます。英語の併記は歓迎します。
+Documentation is written in English. Japanese appears only in examples and data (readings, example sentences, dictionary entries).

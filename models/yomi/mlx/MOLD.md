@@ -1,104 +1,104 @@
-# MoLD (Memory-of-Language/Domain) 試作 — Yomi-0 (issue #8, H12)
+# MoLD (Memory-of-Language/Domain) prototype — Yomi-0 (issue #8, H12)
 
-「共有の重み」＋「差し替えられる Memory」で、読みの知識を後から足し替えできるようにする試作です。
-辞書の形式は **YomiScript（旧 KOE-IR）の `.koedict`** だけです。他の辞書は必ず先に `.koedict` に変換します。
+A prototype that uses "shared weights" plus "swappable Memory" so that reading knowledge can be added or replaced later.
+The only lexicon format is **YomiScript's (formerly KOE-IR) `.koedict`**. Any other lexicon must first be converted to `.koedict`.
 
-## 2種類の Memory
+## Two kinds of Memory
 
-| | 辞書メモリ (LexMemory) | 学習型メモリ層 (ProductKeyMemory) |
+| | Lexicon memory (LexMemory) | Trained memory layer (ProductKeyMemory) |
 |---|---|---|
-| 作り方 | `.koedict` をコンパイル（**学習なし・決定的**） | 学習（共有重みを凍結してメモリだけ学習も可） |
-| 中身 | key = 表層形（＋文脈条件）, value = 読み | n_keys² 個のスロット（key/value）。トークンごとに top-k を読む |
-| 置き場所 | エンコーダ入力の前（該当スパンを読みカナに置換） | エンコーダ層の残差（`model.memory.layers`） |
-| 差し替え | `MemoryRouter.add()/remove()`、`infer.py --dict` | `*.mem.safetensors` を `--memory` で読み込み |
-| 用途 | 人名・固有名詞・専門用語・方言語彙 | 方言/ドメインの「癖」（アクセント傾向など） |
+| How it is built | Compile a `.koedict` (**no training, deterministic**) | Training (can also freeze the shared weights and train only the memory) |
+| Contents | key = surface form (+ context conditions), value = reading | n_keys² slots (key/value). Reads the top-k per token |
+| Where it sits | Before the encoder input (replaces the matching span with its kana reading) | In the encoder layer's residual (`model.memory.layers`) |
+| Swapping | `MemoryRouter.add()/remove()`, `infer.py --dict` | Load `*.mem.safetensors` with `--memory` |
+| Use | Personal names, proper nouns, technical terms, dialect vocabulary | Dialect/domain "habits" (accent tendencies, etc.) |
 
-辞書メモリは読み（カナ）を確定させ、モデルはそのカナを写してアクセントと境界だけを予測します。
-学習型メモリ層の値は **0 で初期化**するので、tiny_aug のような既存のチェックポイントに足しても最初は出力が変わりません（後方互換）。
+Lexicon memory fixes the reading (kana); the model copies that kana and predicts only accents and boundaries.
+The values of the trained memory layer are **initialized to 0**, so adding it to an existing checkpoint such as tiny_aug does not change the output at first (backward compatible).
 
-## 読みの優先順位
-1. その場の注記 `{梨奈|りいな}`
-2. 文脈が一致する辞書の項目（`[context: 女性]` / `--sex female` / 文中の文脈語）
+## Reading priority
+1. Inline annotation `{梨奈|りいな}`
+2. Lexicon entry whose context matches (`[context: 女性]` / `--sex female` / context words in the sentence)
 3. `[default]`
-4. 条件のない先頭の項目
-5. モデル自身の予測
+4. The first entry with no condition
+5. The model's own prediction
 
-## レイヤー構成（同じ表層形なら上のレイヤーが勝つ）
+## Layer structure (for the same surface form, the higher layer wins)
 ```
-user   (100)  ユーザーの .koedict（dict/names/*.koedict など）
-clean  ( 50)  青空文庫ルビ・人手で確認した読み
-base   (  0)  pyopenjtalk(NAIST-jdic) から変換した .koedict  ※ローカル専用・コミットしない
+user   (100)  User .koedict files (dict/names/*.koedict, etc.)
+clean  ( 50)  Aozora Bunko ruby and human-checked readings
+base   (  0)  .koedict converted from pyopenjtalk (NAIST-jdic)  * local only, do not commit
 ```
-`.koedict` の先頭に `# layer: base|clean|user` と `# scope: always|name` を書いて指定します（既定は user）。
-`scope: name` の辞書（`dict/names/` 以下は自動でこれになる）は、人名らしい位置にしか使いません。人名らしい位置とは、敬称（さん・くん・様…）の直前と、苗字と名前が並んだところです。
-これで「正しい」の「正」が人名読みのタダシになる誤りを防ぎます。
+Specify them with `# layer: base|clean|user` and `# scope: always|name` at the top of the `.koedict` (default is user).
+A lexicon with `scope: name` (everything under `dict/names/` gets this automatically) is used only in positions that look like personal names: right before an honorific (さん, くん, 様, …) and where a surname and given name appear side by side.
+This prevents the error where the 「正」 in 「正しい」 (correct) gets the personal-name reading タダシ.
 
-### pyopenjtalk の辞書を base にする
-pyopenjtalk の辞書は NAIST-jdic 由来（BSD 系。再配布するなら表示義務の確認が必要）なので、リポジトリには入れません。
-`tools/pyopenjtalk_to_koedict.py` は手元のコーパスを pyopenjtalk で解析し、漢字を含む形態素の「表層 → 最も多い読み」を集めて `mem/base_pyopenjtalk.koedict` に書き出します（`mem/` は .gitignore 済み）。
-その上に青空ルビ（clean）とユーザー辞書（user）を重ねて、base の読みを上書き・修正します。
-pyopenjtalk の読みとモデルの出力や他のレイヤーを突き合わせる「不一致チェック」にも使えます（#16 の LLM 照合の前段）。
+### Using pyopenjtalk's dictionary as base
+pyopenjtalk's dictionary derives from NAIST-jdic (BSD-style; redistribution requires checking the attribution requirements), so it is not included in the repository.
+`tools/pyopenjtalk_to_koedict.py` analyzes a local corpus with pyopenjtalk, collects "surface → most frequent reading" for morphemes containing kanji, and writes them to `mem/base_pyopenjtalk.koedict` (`mem/` is already in .gitignore).
+Aozora ruby (clean) and the user lexicon (user) are layered on top to override and correct the base readings.
+It can also be used for a "mismatch check" that compares pyopenjtalk's readings against the model output and the other layers (the step before the LLM cross-check in #16).
 
-## モード
-- fixed: `--dialect kansai` で `@lexicon(dialect: kansai)` を使う。学習型メモリは `--memory` で選ぶ
-- auto: `mold.detect_mode()` で入力から推定（今は簡単な規則だけ）
-- 明示的な指定が常に auto に勝ちます
+## Modes
+- fixed: `--dialect kansai` uses `@lexicon(dialect: kansai)`. The trained memory is selected with `--memory`
+- auto: `mold.detect_mode()` infers it from the input (only simple rules for now)
+- An explicit setting always beats auto
 
-## 実装ファイル
-- `mold.py`: `.koedict` パーサ、`LexMemory`、`MemoryRouter`、`ProductKeyMemory`、`save_memory/load_memory`
-- `yomi.py`: `config.model.memory` があればエンコーダ層にメモリ層を挿す。`load(..., memory=)`、`predict(..., router=, context=)`
-- `train.py`: `--init`（既存の重みから開始）、`--memory-only`（メモリ層だけ学習）、`--save-memory`
-- `infer.py`: `--dict`、`--sex`、`--context`、`--dialect`、`--memory`、`--show`
-- `mold_demo.py`: 辞書メモリのあり/なしでの読み比べと遅延の計測
-- `tools/pyopenjtalk_to_koedict.py`、`tests/test_mold.py`
-- `configs/mold_smoke.json`（動作確認用）、`configs/mold_tiny.json`（tiny_aug と同じ形＋メモリ層）
+## Implementation files
+- `mold.py`: `.koedict` parser, `LexMemory`, `MemoryRouter`, `ProductKeyMemory`, `save_memory/load_memory`
+- `yomi.py`: if `config.model.memory` is present, inserts memory layers into the encoder layers. `load(..., memory=)`, `predict(..., router=, context=)`
+- `train.py`: `--init` (start from existing weights), `--memory-only` (train only the memory layers), `--save-memory`
+- `infer.py`: `--dict`, `--sex`, `--context`, `--dialect`, `--memory`, `--show`
+- `mold_demo.py`: compares readings with/without lexicon memory and measures latency
+- `tools/pyopenjtalk_to_koedict.py`, `tests/test_mold.py`
+- `configs/mold_smoke.json` (smoke test), `configs/mold_tiny.json` (same shape as tiny_aug + memory layer)
 
-## Mac で試すコマンド
+## Commands to try on the Mac
 ```bash
 cd mulmovoice && git pull
 cd models/yomi/mlx
-pip install pytest && python -m pytest -q tests          # 単体テスト
+pip install pytest && python -m pytest -q tests          # unit tests
 
-# 1) 辞書メモリだけ（学習なし。いまの tiny_aug でそのまま使えます）
+# 1) Lexicon memory only (no training; works as is with the current tiny_aug)
 python mold_demo.py --ckpt ckpt/tiny_aug
 python infer.py --ckpt ckpt/tiny_aug --show --sex female \
   --dict ../../../dict/names/surnames.koedict --dict ../../../dict/names/given_names.koedict \
   "佐藤光さんが来た。" "智さんに会った。"
 
-# 2) pyopenjtalk を base レイヤーにする（任意。出力はコミットしない）
+# 2) Use pyopenjtalk as the base layer (optional; do not commit the output)
 mkdir -p mem && python tools/pyopenjtalk_to_koedict.py --text data/train.jsonl --out mem/base_pyopenjtalk.koedict
 python mold_demo.py --ckpt ckpt/tiny_aug --extra mem/base_pyopenjtalk.koedict
 
-# 3) 学習型メモリ層: tiny_aug の重みから始めて追加学習（メモリ層は0初期化）
+# 3) Trained memory layer: continue training from the tiny_aug weights (memory layer initialized to 0)
 python train.py --config configs/mold_tiny.json --init ckpt/tiny_aug --out ckpt/mold_tiny --distill \
   --save-memory ckpt/mold_tiny/default.mem.safetensors
 python evaluate.py --ckpt ckpt/mold_tiny
 python bench.py --ckpt ckpt/mold_tiny
 
-# 3') 共有重みを凍結してメモリ層だけ学習（ドメイン/方言メモリを作る例）
+# 3') Freeze the shared weights and train only the memory layer (example of building a domain/dialect memory)
 python train.py --config configs/mold_tiny.json --init ckpt/mold_tiny --memory-only --steps 3000 \
   --out ckpt/mold_mem_x --save-memory mem/x.mem.safetensors
 python infer.py --ckpt ckpt/mold_tiny --memory mem/x.mem.safetensors "今日は良い天気です。"
 ```
-（`evaluate.py` と `bench.py` の引数は今までと同じです。）
+(The arguments for `evaluate.py` and `bench.py` are the same as before.)
 
-## 今後
-- YomiScript に `[sex: male|female]` を正式に追加（今は `[context: 男性]` で代用）
-- 辞書メモリを、ソース置換ではなく「読み埋め込みへのクロスアテンション」にする（アクセントまで辞書から渡せる）
-- 非自己回帰の 1 パス出力（10 ms/文の目標）と組み合わせる
+## Next steps
+- Formally add `[sex: male|female]` to YomiScript (for now `[context: 男性]` stands in)
+- Make lexicon memory a "cross-attention over reading embeddings" instead of source replacement (so the lexicon can supply accents too)
+- Combine with non-autoregressive single-pass output (target: 10 ms/sentence)
 
-## Linux 箱での動作確認（2026-10-24, MLX 0.32.4 CPU）
-- 単体テスト 5 件はすべて通過。内容は優先順位（注記＞文脈＞default）、性別の文脈、人名スコープ（「正しい」は置換しない）、レイヤーの上書き、`.koedict` 以外を受け付けないこと、メモリ値が0なら出力が同一であること（後方互換）、メモリの保存と差し替え、高速デコードと参照デコードの一致。
-- `mold_smoke`（1.76M パラメータ、メモリ層1つ）を CPU で 300 ステップ学習（1151 秒、dev loss 2.79）。この箱では学習1ステップが約2.2秒と遅く、モデル自体はまだ意味のある読みを出せません。辞書による読みの改善は Mac の tiny_aug で確認してください。
-- 辞書メモリの解決は狙いどおりに動きました。梨奈→リナ（default）、智→トモ（女性）/サトシ（男性）、佐藤光→サトウ＋ヒカリ（女性）/ヒカル（男性）、朝市の市→イチ（context）、`{梨奈|りいな}`→リイナ（注記）。
-- 遅延: `router.resolve` は 1 文あたり 0.028 ms。学習型メモリ層の学習コストは、同じ形の比較で +1% 程度でした（CPU）。
+## Check on the Linux box (2026-10-24, MLX 0.32.4 CPU)
+- All 5 unit tests pass. They cover priority (annotation > context > default), gender context, personal-name scope (「正しい」 is not replaced), layer overriding, rejecting anything other than `.koedict`, identical output when memory values are 0 (backward compatibility), saving and swapping memory, and agreement between fast decoding and reference decoding.
+- Trained `mold_smoke` (1.76M parameters, one memory layer) for 300 steps on CPU (1151 s, dev loss 2.79). On this box one training step takes about 2.2 s, which is slow, and the model itself cannot yet produce meaningful readings. Check the reading improvement from the lexicon with tiny_aug on the Mac.
+- Lexicon memory resolution worked as intended: 梨奈→リナ (default), 智→トモ (female) / サトシ (male), 佐藤光→サトウ + ヒカリ (female) / ヒカル (male), the 市 in 朝市→イチ (context), `{梨奈|りいな}`→リイナ (annotation).
+- Latency: `router.resolve` takes 0.028 ms per sentence. The training cost of the trained memory layer was about +1% in a same-shape comparison (CPU).
 
-## 修正 (Mac での tiny_aug 確認を受けて)
-1. **長音の正規化**: 辞書の読みを差し込む時に、学習ラベル（pyopenjtalk の pron 形）に合わせて o段+ウ→ー、e段+イ→ー に変えます（サトウ→サトー、ケイ→ケー）。`mold.to_pron`。`MemoryRouter(normalize=False)` で無効にできます。その場の注記も同じ規則で変換します。
-2. **苗字と名前の句境界**: 苗字と名前が並んで置換されたとき、出力の中で 2 つの読みの継ぎ目に `#` を入れ、名前を別のアクセント句にします（`split_name_phrases`）。名前の 1 モーラ目の後に `]` も `[` もなければ `[` を足します。pyopenjtalk の 佐藤光 は `サ]トー#ヒ[カリ]ガ` です。`split_names=False` で無効にできます。
-3. **語の途中は置換しない**: always 辞書の候補は、全レイヤーを通して「長い一致 > 上位レイヤー」の順に選びます。さらにスパンが形態素の境界に揃っているときだけ使います。境界は pyopenjtalk が入っていればそれで判定し、無ければ「前後が漢字でない」という簡易規則を使います。これで 朝市 の中の 市 は置換せず、独立した 市 だけを文脈で イチ にします（市役所 も置換しません）。base レイヤー（pyopenjtalk 変換）に 朝市 があれば、その長い一致が勝ちます。
+## Fixes (following the tiny_aug check on the Mac)
+1. **Long-vowel normalization**: when inserting a lexicon reading, convert o-row + ウ → ー and e-row + イ → ー to match the training labels (pyopenjtalk's pron form) (サトウ→サトー, ケイ→ケー). `mold.to_pron`. Can be disabled with `MemoryRouter(normalize=False)`. Inline annotations are converted by the same rule.
+2. **Phrase boundary between surname and given name**: when a surname and given name side by side are both replaced, insert `#` at the seam between the two readings in the output so the given name becomes a separate accent phrase (`split_name_phrases`). If there is neither `]` nor `[` after the first mora of the given name, add `[`. pyopenjtalk gives 佐藤光 as `サ]トー#ヒ[カリ]ガ`. Can be disabled with `split_names=False`.
+3. **No replacement inside a word**: candidates from always lexicons are chosen across all layers in the order "longer match > higher layer". In addition, they are used only when the span is aligned with morpheme boundaries. Boundaries are determined with pyopenjtalk if it is installed; otherwise a simple rule "the neighbors are not kanji" is used. This way the 市 inside 朝市 is not replaced, and only a standalone 市 becomes イチ by context (市役所 is not replaced either). If the base layer (pyopenjtalk conversion) contains 朝市, that longer match wins.
 
-確認コマンド (Mac):
+Check commands (Mac):
 ```bash
 git pull && cd models/yomi/mlx && python -m pytest -q tests
 python mold_demo.py --ckpt ckpt/tiny_aug
@@ -107,140 +107,140 @@ python infer.py --ckpt ckpt/tiny_aug --show --sex female --dict ../../../dict/sa
   "佐藤光さんが来た。" "朝市の市で魚を買う。" "市役所に行く。"
 ```
 
-## 名前学習データ（aug/names.py）
+## Name training data (aug/names.py)
 
-佐藤光が `^サ[トー#ヒ]カリ` になる問題（正解は pyopenjtalk の `サ]トー#ヒ[カリ`）は、モデルが名前を含む文を学習していないことが原因。そこで、名前を含む文を合成して学習データに足す。
+The problem where 佐藤光 becomes `^サ[トー#ヒ]カリ` (the correct one is pyopenjtalk's `サ]トー#ヒ[カリ`) is caused by the model not having been trained on sentences containing names. So we synthesize sentences containing names and add them to the training data.
 
-- 元データ: `dict/names/surnames_top200.csv` と `given_names_by_generation.csv`。名は（表記, 読み, 性別）を1件として扱う。
-- `is_estimated` が付いた行の扱いは `--estimated` で選ぶ。`skip` は使わない、`down`（既定）は重み0.3で使う、`keep` はそのまま使う。
-- テンプレート: フルネーム、名だけ、姓だけ。敬称は さん/様/くん/ちゃん/氏 などから性別に合わせて選ぶ。名前は主語の位置と目的語の位置の両方に置き、彼/彼女 のような手がかり語も入れる。
-- ラベル: アクセントと句境界は pyopenjtalk で付ける。名前の読みは辞書の読みに強制し、生成後に読みが一致するか検証する。名前が形態素境界に合わない文は捨てる。
-- 名前の約10%は学習に使わない（unseen）。評価セットは `names_eval_seen` と `names_eval_unseen` の2つ。
-- 評価（eval_names.py）は各セットについてメモリなしとメモリあり（姓と名の辞書を使い、性別を context として渡す）の両方で行う。指標は name_reading_acc、name_prosody_exact（名前部分の読みとアクセントが完全一致した割合）、sent_kana_acc、boundary_f1、accent_f1。
-- `data/` は git に入れない。データは各自で生成する。
+- Source data: `dict/names/surnames_top200.csv` and `given_names_by_generation.csv`. Each given name is treated as one entry of (spelling, reading, gender).
+- How to handle rows marked `is_estimated` is chosen with `--estimated`: `skip` excludes them, `down` (default) uses them with weight 0.3, `keep` uses them as is.
+- Templates: full name, given name only, surname only. The honorific is chosen to match the gender from さん/様/くん/ちゃん/氏 and so on. Names are placed in both subject and object positions, and cue words such as 彼/彼女 (he/she) are included.
+- Labels: accents and phrase boundaries come from pyopenjtalk. Name readings are forced to the lexicon reading, and after generation the reading is verified to match. Sentences where the name does not align with morpheme boundaries are discarded.
+- About 10% of names are held out of training (unseen). There are two evaluation sets: `names_eval_seen` and `names_eval_unseen`.
+- Evaluation (eval_names.py) runs on each set both without memory and with memory (using the surname and given-name lexicons and passing gender as context). Metrics are name_reading_acc, name_prosody_exact (fraction where the reading and accent of the name part match exactly), sent_kana_acc, boundary_f1 and accent_f1.
+- `data/` is not in git. Everyone generates the data themselves.
 
-## base 層の変換器（tools/pyopenjtalk_to_koedict.py）
+## Base-layer converter (tools/pyopenjtalk_to_koedict.py)
 
-コーパスを pyopenjtalk で解析し、漢字を含む形態素ごとに最も多く出た読みとアクセントを `表記 = 読み [accent: N];` の形で出力する。ほかの読みはコメントとして残す。ヘッダは `# layer: base` と `# scope: always`。出力先は `mem/`（gitignore 済み）で、NAIST-jdic 由来のためコミットしない。
+Analyzes a corpus with pyopenjtalk and, for each morpheme containing kanji, outputs the most frequent reading and accent in the form `表記 = 読み [accent: N];`. Other readings are kept as comments. The header is `# layer: base` and `# scope: always`. Output goes to `mem/` (already in .gitignore) and is not committed because it derives from NAIST-jdic.
 
-## Mac での実行手順（名前）
+## Steps to run on the Mac (names)
 
 ```bash
 python aug/names.py --out data/names --n-train 30000 --n-eval 1000
-python eval_names.py --ckpt ckpt/tiny_aug                       # 学習前（メモリなし/あり）
+python eval_names.py --ckpt ckpt/tiny_aug                       # before training (without/with memory)
 python train.py --config configs/tiny_aug_names.json --init ckpt/tiny_aug --out ckpt/tiny_aug_names \
   --distill --extra data/names/names_train.jsonl --extra-repeat 2
-python eval_names.py --ckpt ckpt/tiny_aug_names                 # 学習後（メモリなし/あり）
-python evaluate.py --ckpt ckpt/tiny_aug_names                   # 一般文で劣化していないか確認
+python eval_names.py --ckpt ckpt/tiny_aug_names                 # after training (without/with memory)
+python evaluate.py --ckpt ckpt/tiny_aug_names                   # check that general sentences have not degraded
 python tools/pyopenjtalk_to_koedict.py --text data/train.jsonl data/distill.jsonl --out mem/base_pyopenjtalk.koedict --min-count 2
 ```
 
-`--init` を使うときは初期化元の語彙を引き継ぐ。重みの形が合わない場合は学習を始めずにエラーで止まる。
+When using `--init`, the vocabulary of the source checkpoint is carried over. If the weight shapes do not match, it stops with an error without starting training.
 
-## box (Linux CPU) での学習（2026-10-24）
+## Training on the box (Linux CPU) (2026-10-24)
 
-- **CPU 高速化:** pip の mlx-cpu wheel は参照実装の netlib BLAS を同梱しているため遅い（1024² 行列積で 5.9 GFLOPS）。`sudo apt-get install libopenblas0-pthread` を入れて `source tools/cpu_env.sh` で LD_PRELOAD すると 738 GFLOPS になった（約125倍）。tiny（7.7M, batch 64）の学習は 38 s/step から 2.1–2.3 s/step に短縮。行列積以外の演算がまだ律速。
-- **configs/tiny_box.json:** tiny_aug と同じ形で 5000 ステップ。蒸留データ 306,635 文と names_train 30,000 文で学習（`--distill --extra data/names/names_train.jsonl`）。
-- **途中評価（1000 ステップ, dev loss 0.9189, 各 200 文）:**
+- **CPU speedup:** the pip mlx-cpu wheel bundles the reference netlib BLAS, so it is slow (5.9 GFLOPS on a 1024² matmul). Installing `sudo apt-get install libopenblas0-pthread` and LD_PRELOADing it via `source tools/cpu_env.sh` gave 738 GFLOPS (about 125x). Training tiny (7.7M, batch 64) went from 38 s/step to 2.1–2.3 s/step. Operations other than matmul are now the bottleneck.
+- **configs/tiny_box.json:** same shape as tiny_aug, 5000 steps. Trained on 306,635 distilled sentences plus 30,000 names_train sentences (`--distill --extra data/names/names_train.jsonl`).
+- **Interim evaluation (1000 steps, dev loss 0.9189, 200 sentences each):**
 
-| セット | メモリ | 名前読み正解 | 名前の韻律が完全一致 | 文全体のカナ正解 | 境界F1 | アクセントF1 |
+| Set | Memory | Name reading correct | Name prosody exact match | Whole-sentence kana correct | Boundary F1 | Accent F1 |
 |---|---|---|---|---|---|---|
-| seen | なし | 0.230 | 0.085 | 0.195 | 0.923 | 0.686 |
-| seen | あり | 0.775 | 0.235 | 0.715 | 0.937 | 0.669 |
-| unseen | なし | 0.225 | 0.140 | 0.190 | 0.907 | 0.651 |
-| unseen | あり | 0.780 | 0.265 | 0.705 | 0.956 | 0.677 |
+| seen | without | 0.230 | 0.085 | 0.195 | 0.923 | 0.686 |
+| seen | with | 0.775 | 0.235 | 0.715 | 0.937 | 0.669 |
+| unseen | without | 0.225 | 0.140 | 0.190 | 0.907 | 0.651 |
+| unseen | with | 0.780 | 0.265 | 0.705 | 0.956 | 0.677 |
 
-- 1000 ステップ時点の 佐藤光さんが来た。 は、メモリなしで `^サ[トー#コ[ーサンガ#キ]タ$`、メモリありで `^サ[トー#ヒ[カルサンガ#キ]タ$` だった（pyopenjtalk は `サ]トー#ヒ[カリ`）。姓と名の間の境界 `#` は付いたが、姓のアクセント核はまだ学習できていない。メモリありで ヒカル になるのは、性別を渡さないと辞書の最初の読みが選ばれるため（`--sex` で切り替わる）。
-- **途中評価（1500 ステップ, dev loss 0.7340, 各 500 文。学習中のチェックポイントをコピーして評価。2000 ステップの dev loss は 0.6836）:**
+- At 1000 steps, 佐藤光さんが来た。 came out as `^サ[トー#コ[ーサンガ#キ]タ$` without memory and `^サ[トー#ヒ[カルサンガ#キ]タ$` with memory (pyopenjtalk gives `サ]トー#ヒ[カリ`). The boundary `#` between surname and given name appears, but the surname's accent nucleus has not been learned yet. With memory it becomes ヒカル because, when no gender is passed, the lexicon's first reading is selected (`--sex` switches it).
+- **Interim evaluation (1500 steps, dev loss 0.7340, 500 sentences each; evaluated on a copy of the in-training checkpoint. dev loss at 2000 steps is 0.6836):**
 
-| セット | メモリ | 名前読み正解 | 名前の韻律が完全一致 | 文全体のカナ正解 | 境界F1 | アクセントF1 |
+| Set | Memory | Name reading correct | Name prosody exact match | Whole-sentence kana correct | Boundary F1 | Accent F1 |
 |---|---|---|---|---|---|---|
-| seen | なし | 0.388 | 0.242 | 0.354 | 0.945 | 0.740 |
-| seen | あり | 0.872 | 0.292 | 0.844 | 0.975 | 0.697 |
-| unseen | なし | 0.354 | 0.240 | 0.342 | 0.949 | 0.735 |
-| unseen | あり | 0.822 | 0.280 | 0.810 | 0.975 | 0.698 |
+| seen | without | 0.388 | 0.242 | 0.354 | 0.945 | 0.740 |
+| seen | with | 0.872 | 0.292 | 0.844 | 0.975 | 0.697 |
+| unseen | without | 0.354 | 0.240 | 0.342 | 0.949 | 0.735 |
+| unseen | with | 0.822 | 0.280 | 0.810 | 0.975 | 0.698 |
 
-- 1500 ステップの一般文（evaluate.py, JSUT 280 文）: カナ CER 21.3%, 文正解 10.0%, 境界F1 0.796, アクセント核F1 0.432, アクセント句正解 0.359。hard セット 70 文の正解は 8.6%。まだ学習途中で、tiny_aug（60k ステップ, CER 2.24%）や pyopenjtalk（CER 1.77%）とは比べられない段階。
-- 1500 ステップの 佐藤光さんが来た。 は、メモリなしで `^サ]ト#ミ]ドトサンガ#キ]タ$`、名前辞書と `--sex female` ありで `^サ[ト]ー#ヒ[#カ[リサンガ#キ]タ$`。性別指定で ヒカリ が選ばれた。姓と名の間の境界は付くが、姓のアクセント（pyopenjtalk は `サ]トー`）はまだ合わず、ヒ と カリ の間に余計な境界が入る。
-- **box での学習が止まって見える件:** ログに 78–179 s/step の区間が出るが、計算が遅いのではない。学習プロセスの経過時間（OS の uptime 基準）は約 73 分だったのに、ログの作成からの壁時計は約 6.5 時間たっていた。box はエージェントが使っていない間は一時停止されるため、その間の壁時計の差が 50 ステップの平均に入る。CPU の cgroup 制限（nr_throttled 0）、メモリ不足、スワップ、ほかの重いプロセスはなかった。動いている間は 2.1–3.7 s/step。box の学習は box が起きている間しか進まないので、本番の比較は Mac で tiny_aug を基準に行う。
+- General sentences at 1500 steps (evaluate.py, JSUT 280 sentences): kana CER 21.3%, sentence accuracy 10.0%, boundary F1 0.796, accent nucleus F1 0.432, accent phrase accuracy 0.359. Accuracy on the 70-sentence hard set is 8.6%. Training is still in progress, so it cannot yet be compared with tiny_aug (60k steps, CER 2.24%) or pyopenjtalk (CER 1.77%).
+- At 1500 steps, 佐藤光さんが来た。 came out as `^サ]ト#ミ]ドトサンガ#キ]タ$` without memory, and `^サ[ト]ー#ヒ[#カ[リサンガ#キ]タ$` with the name lexicons and `--sex female`. The gender setting selected ヒカリ. The boundary between surname and given name appears, but the surname's accent (pyopenjtalk: `サ]トー`) still does not match, and an extra boundary is inserted between ヒ and カリ.
+- **Why training on the box appears stalled:** the log shows stretches of 78–179 s/step, but the computation is not slow. The training process's elapsed time (based on OS uptime) was about 73 minutes, while about 6.5 hours of wall-clock time had passed since the log was created. The box is suspended while no agent is using it, and that wall-clock gap gets folded into the 50-step average. There was no CPU cgroup throttling (nr_throttled 0), no memory shortage, no swapping, and no other heavy process. While running it does 2.1–3.7 s/step. Training on the box only progresses while the box is awake, so the real comparison is done on the Mac with tiny_aug as the baseline.
 
-## メモリを意識した学習と学習型メモリの差し替え（2026-10-24）
+## Memory-aware training and swapping trained memory (2026-10-24)
 
-- **mem-aug:** 学習時に一部の文の入力を辞書のカナに置き換える。推論時の MemoryRouter と同じ経路（to_pron・人名判定・形態素境界）を通し、target は変えない。人名文は `p_names`、その他の文は `p_general` の割合で置き換える。設定は config の `train.mem_aug` か `--mem-aug`（例: `configs/tiny_aug_names_mem.json`）。推論時にカナが注入された入力をモデルが学習で見ていないため、メモリありでアクセントが崩れていた。その対策。
-- **seen でメモリありの読み正解率が 0.939 だった原因:** ラベルの誤りではなかった。敬称なしで名前だけが出る文（父の匠 / 名前は璃子 など、seen 500 文中 50 文）では、人名辞書が使われていなかった。名前の前後の手がかり語（`NAME_CUES` / `NAME_TAILS`）を追加し、seen と unseen の全文で注入される読みがラベルと一致することを確認した。
-- **loose と strict の差:** イー/イイ、ヨー/ヨウ などの差は、正解ラベル（JSUT）側の長音表記の揺れ。モデルの読み誤りではない。strict の数値はこの揺れの分だけ低く出る。
-- **学習型メモリ（PKM）:** `configs/mold_tiny.json` の設定は 128² = 16,384 スロット、topk 8、エンコーダ第2層、3000 ステップ。メモリ層は学習率を `mem_lr_mult`（10倍）にし、重み減衰をかけない（MultiOptimizer。この場合 `--resume` は未対応）。
-- **差し替え:** `--memory-only --only-extra` で共有重みを凍結し、メモリ層だけを特定のデータで学習する。`eval_names.py` / `evaluate.py` の `--pkm X.mem.safetensors` で差し替えて評価する。
+- **mem-aug:** during training, replace the input of some sentences with lexicon kana. It goes through the same path as MemoryRouter at inference (to_pron, personal-name detection, morpheme boundaries), and the target is unchanged. Personal-name sentences are replaced at rate `p_names`, other sentences at rate `p_general`. Configured with `train.mem_aug` in the config or `--mem-aug` (e.g. `configs/tiny_aug_names_mem.json`). This addresses accents breaking with memory, because the model had never seen kana-injected input during training.
+- **Why seen with-memory reading accuracy was 0.939:** it was not a label error. In sentences where only the given name appears without an honorific (父の匠 / 名前は璃子 etc., 50 of the 500 seen sentences), the personal-name lexicon was not being used. Cue words around names (`NAME_CUES` / `NAME_TAILS`) were added, and we confirmed that the injected reading matches the label in every sentence of seen and unseen.
+- **Loose vs. strict difference:** differences such as イー/イイ and ヨー/ヨウ come from inconsistent long-vowel notation in the reference labels (JSUT), not from model misreadings. Strict numbers come out lower by the amount of this inconsistency.
+- **Trained memory (PKM):** the setting in `configs/mold_tiny.json` is 128² = 16,384 slots, topk 8, encoder layer 2, 3000 steps. The memory layer uses a learning rate multiplied by `mem_lr_mult` (10x) and no weight decay (MultiOptimizer; `--resume` is not supported in this case).
+- **Swapping:** `--memory-only --only-extra` freezes the shared weights and trains only the memory layer on specific data. Evaluate by swapping it in with `--pkm X.mem.safetensors` in `eval_names.py` / `evaluate.py`.
 
-## PKM が学習しなかった原因と修正（2026-10-24）
+## Why PKM did not learn, and the fix (2026-10-24)
 
-Mac で mold_tiny を学習しても、loss はほぼ一定（0.436）だった。memory-only でも 0.426 のまま変わらなかった。`tools/pkm_diag.py` で調べると、原因は次の3つだった。
-- **出力が小さすぎる:** 残差のノルムが約156あるのに対し、メモリ出力は約0.02（比 1.6e-4）。後段の LayerNorm で残差の大きさで割られるため、値テーブルへの勾配も 4e-4 程度しかなかった。
-- **値テーブルが0初期化:** 開始時は値がすべて0なので、query と keys には勾配がほぼ流れなかった。
-- **softmax が平らすぎる:** 検索スコアの標準偏差が0.4しかなく、top-8 の重みがほぼ均等（最大の重みの平均 0.16）だった。
+Training mold_tiny on the Mac left the loss almost flat (0.436). With memory-only it also stayed at 0.426. Investigating with `tools/pkm_diag.py` found three causes:
+- **Output too small:** the residual norm was about 156 while the memory output was about 0.02 (ratio 1.6e-4). Because the downstream LayerNorm divides by the residual's magnitude, the gradient to the value table was only about 4e-4.
+- **Value table initialized to 0:** at the start all values were 0, so almost no gradient flowed to query and keys.
+- **Softmax too flat:** the retrieval score standard deviation was only 0.4, so the top-8 weights were nearly uniform (mean max weight 0.16).
 
-修正:
-- 値テーブルを N(0,1) の乱数で初期化し、スカラーのゲート（0初期化）を掛ける。開始時の出力は0のままなので後方互換。
-- 出力に残差の RMS（勾配を止める）を掛け、残差と同じ大きさで効くようにする。
-- 検索スコアに √k_dim を掛けて softmax を鋭くする。
-- `--init` で旧版（値 ≈ 0）のメモリを読み込んだ場合は、それを捨てて新しく初期化する。
-- memory-only の lr を 3e-3 にした。
+Fixes:
+- Initialize the value table with N(0,1) random values and multiply by a scalar gate (initialized to 0). The output at the start is still 0, so it stays backward compatible.
+- Multiply the output by the residual's RMS (with stop-gradient) so it acts at the same scale as the residual.
+- Multiply retrieval scores by √k_dim to sharpen the softmax.
+- When `--init` loads an old-version memory (values ≈ 0), discard it and initialize anew.
+- Set the memory-only lr to 3e-3.
 
-box で確認（tiny_box 起点、memory-only を人名データで150ステップ）:
-- 学習 loss: 0.5703 → 0.5666
-- 人名 unseen の loss: 0.2338 → 0.2304
-- メモリ出力 / 残差の比: 2.5e-5 → 0.14
-- ゲート: 0 → 0.138
+Checked on the box (starting from tiny_box, memory-only on personal-name data for 150 steps):
+- Training loss: 0.5703 → 0.5666
+- Personal-name unseen loss: 0.2338 → 0.2304
+- Memory output / residual ratio: 2.5e-5 → 0.14
+- Gate: 0 → 0.138
 
-memory-only で使われるスロット数が 1402 → 262 に減った（ルーティングの偏り）。今後の課題。
+With memory-only, the number of slots used dropped from 1402 → 262 (routing imbalance). Left for future work.
 
-診断: `python tools/pkm_diag.py --ckpt CKPT [--pkm X.mem.safetensors] --data data/names/names_eval_unseen.jsonl`
+Diagnostics: `python tools/pkm_diag.py --ckpt CKPT [--pkm X.mem.safetensors] --data data/names/names_eval_unseen.jsonl`
 
-## PKM v2 (ルーティング崩壊の修正)
-- Mac の診断 (0e899c1): score_std 276 → softmax が one-hot (wmax 0.999)、使用スロット 231/16384、gate ≈ 0、ratio 0.0024。
-- 修正: query 半分と subkey を L2 正規化したコサイン類似度 × 温度 (`temp`, 既定 15)。値テーブルは 0、
-  gate は 1 から開始 (開始時の出力は 0 のまま、値に勾配が流れる)。負荷分散の補助 loss
-  (`balance`, 既定 0.01; 各半分のキー分布の n·Σp² − 1)。`model.memory` で `temp`/`gate_init`/`balance` を変更可。
-- box (tiny_box 凍結 + 名前 2000 文で memonly 300 step): 旧 wmax 0.9998 / slots 193 / names loss 0.179 → 新 wmax 0.19 / slots 2447 / 0.139。
-- 名前だけで memonly すると一般文 dev が悪化 (0.684→0.723)。一般文と混ぜる (`--only-extra` なし、`--extra-repeat 5`) と
-  dev 0.626 (メモリなしより良い)、名前 0.153、未知名 0.224 (メモリなし 0.239)。
+## PKM v2 (fixing routing collapse)
+- Mac diagnostics (0e899c1): score_std 276 → softmax is one-hot (wmax 0.999), slots used 231/16384, gate ≈ 0, ratio 0.0024.
+- Fix: cosine similarity with L2-normalized query halves and subkeys × temperature (`temp`, default 15). Value table starts at 0,
+  gate starts at 1 (output at the start is still 0, and gradients flow to the values). Auxiliary load-balancing loss
+  (`balance`, default 0.01; n·Σp² − 1 of each half's key distribution). `temp`/`gate_init`/`balance` can be changed in `model.memory`.
+- Box (tiny_box frozen + memonly 300 steps on 2000 name sentences): old wmax 0.9998 / slots 193 / names loss 0.179 → new wmax 0.19 / slots 2447 / 0.139.
+- Running memonly on names alone worsens general-sentence dev (0.684→0.723). Mixing in general sentences (no `--only-extra`, `--extra-repeat 5`) gives
+  dev 0.626 (better than without memory), names 0.153, unknown names 0.224 (without memory 0.239).
 
-## 差し替えの効果を見る実験設計 (本体凍結)
-mold_tiny は names_train 込みで本体を学習したため、メモリを替えても差が出ない (Mac: seen 99%)。
-本体 (人名データを見ていない tiny_aug / box では tiny_box) を凍結し、メモリだけを学習して比べる:
-1. default = `--memory-only --distill` (一般文のみ) 2. names = default から続けて `--extra names_train --extra-repeat 2`。
-box (tiny_box 凍結, 600 step, eval_names --limit 200, %):
+## Experimental design to measure the effect of swapping (base model frozen)
+mold_tiny trained the base model including names_train, so swapping the memory makes no difference (Mac: seen 99%).
+Freeze a base model that has not seen personal-name data (tiny_aug, or tiny_box on the box), train only the memory, and compare:
+1. default = `--memory-only --distill` (general sentences only) 2. names = continue from default with `--extra names_train --extra-repeat 2`.
+Box (tiny_box frozen, 600 steps, eval_names --limit 200, %):
 
-| memory | JSUT CER | sent | hard | seen 読み (model) | unseen 読み (model) |
+| memory | JSUT CER | sent | hard | seen reading (model) | unseen reading (model) |
 |---|---|---|---|---|---|
-| なし (値0) | 19.7 | 17.5 | 15.7 | 57.5 | 48.0 |
-| default (一般) | 17.3 | 18.9 | 17.1 | 51.0 | 46.5 |
-| names (新規, enc.2) | 19.5 | 16.8 | 11.4 | 69.5 | 55.5 |
+| none (values 0) | 19.7 | 17.5 | 15.7 | 57.5 | 48.0 |
+| default (general) | 17.3 | 18.9 | 17.1 | 51.0 | 46.5 |
+| names (fresh, enc.2) | 19.5 | 16.8 | 11.4 | 69.5 | 55.5 |
 | names (lr 1e-2) | 19.1 | 14.6 | 14.3 | 69.0 | 57.5 |
 | names (enc.3) | 18.5 | 16.1 | 17.1 | 70.5 | 58.5 |
-| names (default から継続) | 18.7 | 16.4 | 12.9 | **72.0** | 59.5 |
+| names (continued from default) | 18.7 | 16.4 | 12.9 | **72.0** | 59.5 |
 
-### 積み重ねメモリ (memory2, box 凍結 tiny_box, names --limit 200)
-default (enc.2) を凍結し、names 用 memory2 (enc.3) だけを学習 (`--train-mem mem2`, names×2+一般, 600 step)。
-`--pkm a.mem.safetensors,b.mem.safetensors` で重ねて読み込む。
+### Stacked memory (memory2, box frozen tiny_box, names --limit 200)
+Freeze default (enc.2) and train only a names memory2 (enc.3) (`--train-mem mem2`, names×2 + general, 600 steps).
+Load them stacked with `--pkm a.mem.safetensors,b.mem.safetensors`.
 
-| メモリ | JSUT sent | JSUT CER | hard sent | names seen | names unseen |
+| Memory | JSUT sent | JSUT CER | hard sent | names seen | names unseen |
 |---|---|---|---|---|---|
-| default のみ | 18.9 | 17.3 | 17.1 | 51.0 | 46.5 |
-| names 単体 (default から継続) | 16.4 | 18.7 | 12.9 | 72.0 | 59.5 |
-| default + names (ゲートなし) | 15.4 | 17.7 | 11.4 | 67.5 | 54.5 |
+| default only | 18.9 | 17.3 | 17.1 | 51.0 | 46.5 |
+| names alone (continued from default) | 16.4 | 18.7 | 12.9 | 72.0 | 59.5 |
+| default + names (no gate) | 15.4 | 17.7 | 11.4 | 67.5 | 54.5 |
 | default + names (cond_gate) | 18.2 | 17.7 | 15.7 | 65.0 | 56.5 |
 
-### 積み重ねメモリの漏れ対策 (box, 上と同条件, mem2 = enc.3 cond_gate)
-一般文 (JSUT) で names メモリのゲートが開いたまま (平均 0.43) なのが劣化の原因。`train.py` に 3 つの対策を追加:
-`--leak-kl` (一般文で mem2 なしの出力へ KL)、`--gate-l1` (人名以外のトークンでゲートに L1)、`--gate-sup` (`names` 欄の人名スパンでゲートを BCE 教師あり)。
-ゲート統計は `tools/pkm_diag.py` の `cond_gate_mean` (人名トークン / 人名文の他トークン / 一般文)。
+### Preventing leakage in stacked memory (box, same conditions as above, mem2 = enc.3 cond_gate)
+The degradation is caused by the names memory gate staying open on general sentences (JSUT) (mean 0.43). Three countermeasures were added to `train.py`:
+`--leak-kl` (KL toward the output without mem2 on general sentences), `--gate-l1` (L1 on the gate for non-name tokens), `--gate-sup` (supervised BCE on the gate using the personal-name spans in the `names` field).
+Gate statistics are `cond_gate_mean` in `tools/pkm_diag.py` (name tokens / other tokens in name sentences / general sentences).
 
-| 方式 | JSUT sent | CER | loose | hard | アクセント句 | names seen | unseen | seen 韻律 | ゲート 人名 / 他 / 一般文 |
+| Method | JSUT sent | CER | loose | hard | Accent phrase | names seen | unseen | seen prosody | Gate name / other / general |
 |---|---|---|---|---|---|---|---|---|---|
-| default のみ | 18.9 | 17.3 | 19.6 | 17.1 | 44.5 | 51.0 | 46.5 | 36.0 | – |
+| default only | 18.9 | 17.3 | 19.6 | 17.1 | 44.5 | 51.0 | 46.5 | 36.0 | – |
 | stack_cg | 18.2 | 17.7 | 18.6 | 15.7 | 45.6 | 65.0 | 56.5 | 51.0 | 1.00 / 0.97 / 0.43 |
-| + gate-sup 1 (**推奨**) | 18.6 | 17.7 | 19.3 | 15.7 | 45.1 | 66.0 | 57.5 | 49.5 | 0.79 / 0.07 / 0.08 |
+| + gate-sup 1 (**recommended**) | 18.6 | 17.7 | 19.3 | 15.7 | 45.1 | 66.0 | 57.5 | 49.5 | 0.79 / 0.07 / 0.08 |
 | + leak-kl 1 | 18.6 | 18.0 | 19.3 | 17.1 | 43.6 | 64.5 | 55.5 | 47.0 | 1.00 / 0.95 / 0.40 |
 | + kl 1 + gate-sup 1 | 18.6 | 17.9 | 18.9 | 14.3 | 44.0 | 63.5 | 56.5 | 46.5 | 0.79 / 0.07 / 0.08 |
-| + gate-l1 0.3 | 18.9 | 17.3 | 19.6 | 17.1 | 44.5 | 51.0 | 46.5 | 36.0 | 0 / 0 / 0 (潰れた) |
+| + gate-l1 0.3 | 18.9 | 17.3 | 19.6 | 17.1 | 44.5 | 51.0 | 46.5 | 36.0 | 0 / 0 / 0 (collapsed) |

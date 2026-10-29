@@ -1,49 +1,49 @@
-# YomiScript 言語タグ 追補（ドラフト）
+# YomiScript Language Tags Addendum (draft)
 
-## 1. 全体タグ（発話単位）
-- 1行（1発話）の先頭に `^<lang>|` を置く。例: `^en-US|ðə ˈkæt ˈsæt$`
-- タグなしの `^…$` は `ja`（後方互換）。
-- `<lang>` は BCP 47 形式: `ja` `en-US` `en-GB` `fr` `zh`（将来 `ja-x-osaka` `ja-x-tsugaru` など方言も同じ枠で）。
-- ファイル単位の既定は既存ヘッダ `#yomiscript 0.2 lang=ja-JP` を使う。優先順位は セクション > 行頭 > ヘッダ。
+## 1. Global tag (per utterance)
+- Put `^<lang>|` at the start of a line (one utterance). Example: `^en-US|ðə ˈkæt ˈsæt$`
+- An untagged `^…$` is `ja` (backward compatibility).
+- `<lang>` uses BCP 47 format: `ja` `en-US` `en-GB` `fr` `zh` (in the future, dialects such as `ja-x-osaka` `ja-x-tsugaru` will use the same slot).
+- For the file-level default, use the existing header `#yomiscript 0.2 lang=ja-JP`. Precedence is section > line start > header.
 
-## 2. セクションタグ（コードスイッチ）
-- 発話の中で `{<lang>|<本文>}` と書くと、その区間だけ別言語の YomiScript として読む。
-- 本文の書き方はその言語の規則に従う（ja はカナ＋`[` `]`、en/fr は IPA＋`ˈ ˌ .`、zh はピンイン＋声調数字）。
-- 例:
-  - `^キョ]ーワ#{en-US|mə.ˈʃin ˈlɝ.nɪŋ}ノ#ベ[ンキョーヲ#シ[マ]ス$`（今日は machine learning の勉強をします）
+## 2. Section tags (code-switching)
+- Writing `{<lang>|<text>}` inside an utterance makes only that span be read as YomiScript in another language.
+- The text follows that language's rules (ja: kana + `[` `]`; en/fr: IPA + `ˈ ˌ .`; zh: pinyin + tone digits).
+- Examples:
+  - `^キョ]ーワ#{en-US|mə.ˈʃin ˈlɝ.nɪŋ}ノ#ベ[ンキョーヲ#シ[マ]ス$` (今日は machine learning の勉強をします, "Today I will study machine learning")
   - `^en-US|maɪ ˈfɹɛnd {ja|タ[ナカ} ˈlɪvz ɪn {ja|ト[ーキョー}$`
-- 入れ子は不可。セクションの境界は句境界（`#`）を兼ねる。文末記号 `$` `?` は発話全体に1つだけ。
-- 既存のルビ記法 `{表記|読み}` とは、`|` の前が言語コードかどうかで区別する（言語コードの一覧に一致すればセクションタグ）。
+- Nesting is not allowed. A section boundary also serves as a phrase boundary (`#`). There is only one sentence-final symbol `$` `?` for the whole utterance.
+- These are distinguished from the existing ruby notation `{表記|読み}` by whether the part before `|` is a language code (if it matches the list of language codes, it is a section tag).
 
-## 3. 合成側の扱い（参照実装 mix.py）
-- 言語タグごとに方針を持つ:
-  - `ja`: アクセント記号から F0（声の高さ）を作って上書き
-  - `en-US` / `en-GB`: 強勢記号を渡すだけで F0 は上書きしない（Kokoro の自然な抑揚の方が良い）
-  - `fr`: Kokoro のまま（変更の要望があるまで）
-  - `zh`: 声調から F0 を作る版と Kokoro のままの版を比較中
-- セクションごとに別々に合成してからつなぐ（v9〜）。音量は最初のセクションに合わせ、15ms のクロスフェード＋60ms の間を入れる。発話の頭は削らない（文頭の音を残すため）。
-- 声は文全体の言語（マトリクス言語）の声が基本。1語だけの外国語セクションは、文の言語に関係なくその言語の声をそのまま使う（例: 日本語の文の meeting、中国語の文の Python）。ただし日本語以外の文に入る日本語セクションは除く。それ以外の外国語セクションは、その言語の声へ 20% 寄せた混合声にする。英語の文に入る日本語の名前は混合声のまま。
-- 日本語以外の文に入る英語セクションでは、米語の t のはじき音化（flap）をしない（meeting / data の t を t として発音させるため）。
-- 日本語以外の文に入る日本語セクションでは、ɨ→u、ɕ→ʃ、ʑ→ʒ、ʨ→ʧ、ʥ→ʤ に置き換える（その文の声で日本語の子音・母音を明瞭に発音させるため）。
-- 長母音など語ごとの調整は、変換規則ではなくセクション内の YomiScript の綴りで書く（例: `mə.ˈʃiːn ˈlɝːn.ɪŋ`、`ˈdeɪ.tɑː`）。変換器は一律の長母音規則を持たない。
+## 3. Handling on the synthesis side (reference implementation mix.py)
+- Each language tag has its own policy:
+  - `ja`: build F0 (pitch) from the accent marks and override it
+  - `en-US` / `en-GB`: only pass the stress marks; do not override F0 (Kokoro's natural intonation is better)
+  - `fr`: leave Kokoro as is (until a change is requested)
+  - `zh`: comparing a version that builds F0 from tones with one that leaves Kokoro as is
+- Each section is synthesized separately and then joined (v9 onward). Volume is matched to the first section, with a 15 ms crossfade + 60 ms gap. The start of the utterance is not trimmed (to keep the sentence-initial sound).
+- The voice is by default the voice of the language of the whole sentence (the matrix language). A single-word foreign-language section uses that language's voice as is, regardless of the sentence language (e.g. meeting in a Japanese sentence, Python in a Chinese sentence). Japanese sections in non-Japanese sentences are excluded from this. Other foreign-language sections use a mixed voice shifted 20% toward that language's voice. Japanese names in an English sentence keep the mixed voice.
+- In English sections inside non-Japanese sentences, American t-flapping is not applied (so that the t in meeting / data is pronounced as t).
+- In Japanese sections inside non-Japanese sentences, ɨ→u, ɕ→ʃ, ʑ→ʒ, ʨ→ʧ, ʥ→ʤ are substituted (so that the sentence's voice pronounces the Japanese consonants and vowels clearly).
+- Per-word adjustments such as long vowels are written in the YomiScript spelling inside the section, not in the conversion rules (e.g. `mə.ˈʃiːn ˈlɝːn.ɪŋ`, `ˈdeɪ.tɑː`). The converter has no blanket long-vowel rule.
 
-## 3a. 書き方の原則（規範的記述）
-- YomiScript は規範的な表記である。各語は「どう発音させたいか」で書く。実際の音声や書き起こしの結果を記録するものではない。
-- 外来語・借用語（ramen、sushi など）は、どの言語の発音で読ませたいかで書き分ける:
-  - 英語の発音で読ませたい場合は英語として書く。例: `^en-US|wi ˈhæd ˈɹɑ.mən fəɹ ˈlʌnʧ$`
-  - 日本語の発音で読ませたい場合は `{ja|…}` セクションで書く。例: `^en-US|aɪ ˈeɪt {ja|ス]シ}$`
-- 同じ語でも、書き手が指定した発音が優先される。合成エンジンはその指定どおりに発音する。
+## 3a. Writing principle (prescriptive notation)
+- YomiScript is a prescriptive notation. Each word is written according to "how you want it pronounced". It is not a record of actual speech or transcription results.
+- Loanwords and borrowed words (ramen, sushi, etc.) are written differently depending on which language's pronunciation you want:
+  - To have it read with English pronunciation, write it as English. Example: `^en-US|wi ˈhæd ˈɹɑ.mən fəɹ ˈlʌnʧ$`
+  - To have it read with Japanese pronunciation, write it in a `{ja|…}` section. Example: `^en-US|aɪ ˈeɪt {ja|ス]シ}$`
+- Even for the same word, the pronunciation specified by the writer takes precedence. The synthesis engine pronounces it exactly as specified.
 
-## 4. 未決
-- セクションの中で句境界・ポーズ（`#` `_`）をどう数えるか。
-- 外国語セクションの直後にある助詞（例: 「ノ」）のアクセントの扱い。
-- 方言タグの命名（`ja-x-osaka` 案）。
+## 4. Undecided
+- How to count phrase boundaries and pauses (`#` `_`) inside a section.
+- How to handle the accent of a particle right after a foreign-language section (e.g. 「ノ」).
+- Naming of dialect tags (the `ja-x-osaka` proposal).
 
-## 5. 方言タグ ja-x-osaka（京阪式アクセント）の表記（提案）
-- 行頭タグ `^ja-x-osaka|`。カナ・`#` `_` `]` は東京式と同じ。
-- 京阪式は「語頭が高いか低いか（高起式／低起式）」と「下がり目（核）」の2点で決まるため、次のように書く:
-  - 高起式: 句頭に `=` を置く（省略時も `[` が無ければ高起とみなす）。核 `]` まで平らに高い（平進）。例: 橋が `=ハ]シガ`（高低低）、端が `=ハシガ`（高高高）
-  - 低起式: `[` で上がる位置を示す。東京式と違い `[` は2拍目以降どこにでも置ける。例: 箸が `ハ[シ]ガ`（低高低）、雨が `ア[メ]ガ`、うさぎ `ウサ[ギ`
-  - 拍内下降（単独の「あめぇ」など）は v0 では書かない（未決）。
-- 合成側（osaka.py）: 高起式の高い区間は東京式より下降を小さく平らにする。
-- 出典: 郡史郎『大阪のアクセント（実用的な解説）』大阪大学 2025、Wikipedia「京阪式アクセント」「日本語の方言のアクセント」（2拍名詞の類別）。
+## 5. Notation for the dialect tag ja-x-osaka (Keihan-type accent) (proposal)
+- Line-start tag `^ja-x-osaka|`. Kana and `#` `_` `]` are the same as for Tokyo-type accent.
+- Keihan-type accent is determined by two things, "whether the word starts high or low (high-onset / low-onset)" and "the drop (nucleus)", so it is written as follows:
+  - High-onset: put `=` at the start of the phrase (if omitted, it is still treated as high-onset when there is no `[`). Pitch stays flat and high up to the nucleus `]` (level). Examples: 橋が `=ハ]シガ` (high-low-low), 端が `=ハシガ` (high-high-high)
+  - Low-onset: `[` marks where the pitch rises. Unlike Tokyo-type accent, `[` can be placed anywhere from the 2nd mora on. Examples: 箸が `ハ[シ]ガ` (low-high-low), 雨が `ア[メ]ガ`, うさぎ `ウサ[ギ`
+  - Falls within a mora (e.g. an isolated 「あめぇ」) are not written in v0 (undecided).
+- Synthesis side (osaka.py): in the high stretches of high-onset words, the declination is made smaller and flatter than for Tokyo-type accent.
+- Sources: 郡史郎『大阪のアクセント（実用的な解説）』大阪大学 2025; Wikipedia 「京阪式アクセント」「日本語の方言のアクセント」 (classification of 2-mora nouns).

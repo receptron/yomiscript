@@ -1,73 +1,73 @@
-# 人名データ (dict/names)
+# Personal name data (dict/names)
 
-日本語の人名（名字）の読みデータです。Yomi-0 の人名読みの弱点（例：梨奈）を補うため、KOE-IR 辞書 (`.koedict`) と学習データ生成に使います。
+Reading data for Japanese personal names (surnames). Used for YomiScript dictionaries (`.koedict`) and for generating training data, to cover Yomi-0's weakness in reading personal names (e.g. 梨奈).
 
-## ファイル
+## Files
 
-| ファイル | 内容 |
+| File | Contents |
 |---|---|
-| `surnames_top200.csv` | 名字 上位200（UTF-8, LF, ヘッダ付き） |
-| `surnames.koedict` | 上記CSVから自動生成した KOE-IR 辞書（読みのみ・アクセント未付与） |
+| `surnames_top200.csv` | Top 200 surnames (UTF-8, LF, with header) |
+| `surnames.koedict` | YomiScript dictionary generated automatically from the CSV above (readings only, no accents) |
 
-## 列（surnames_top200.csv）
+## Columns (surnames_top200.csv)
 
-| 列 | 説明 |
+| Column | Description |
 |---|---|
-| `rank` | 順位（1〜200） |
-| `surname` | 名字の表記（NFKC正規化済み） |
-| `reading` | 主たる読み（ひらがな）。`.koedict` では `[default]` になる |
-| `alt_readings` | 別の読み（ひらがな、`|` 区切り、空なら別読みなし） |
-| `population_approx` | おおよその人数（整数。元データ「約200万」→ `2000000`）。上位10件のみ、他は空 |
+| `rank` | Rank (1–200) |
+| `surname` | Surname spelling (NFKC-normalized) |
+| `reading` | Primary reading (hiragana). Becomes `[default]` in `.koedict` |
+| `alt_readings` | Alternative readings (hiragana, `|`-separated; empty means none) |
+| `population_approx` | Approximate number of people (integer; source data 「約200万」 → `2000000`). Top 10 only, empty for the rest |
 
-## 整形内容
+## Cleaning
 
-前後空白の除去、NFKC正規化、読みのひらがな統一、主読みと重複する別読みの除去、表記の重複チェック、順位の連続性チェックを行っています。
+Leading/trailing whitespace removed, NFKC normalization, readings unified to hiragana, alternative readings that duplicate the primary reading removed, duplicate spellings checked, rank continuity checked.
 
-## `.koedict` との対応
+## Mapping to `.koedict`
 
 - `reading` → `名字 = カタカナ読み [default];`
-- `alt_readings` の各要素 → 条件なしの別エントリ
-- アクセントは未付与。今後、文脈条件（例：性別・地域）を付ける予定です。
+- Each element of `alt_readings` → a separate unconditioned entry
+- No accents yet. Context conditions (e.g. sex, region) are planned.
 
-## 出典とライセンス（要確認）
+## Source and license (to be confirmed)
 
-- データはプロジェクトオーナー（S中島）から提供されたものです。
-- 順位・人数は提供データに基づく概数で、正確さは保証しません。
-- 元の統計の **再配布ライセンスは未確認** です。公開リポジトリにする前、または他者へ配布する前に確認してください。確認できるまで本ディレクトリのライセンスは「未確定」とします。
+- The data was provided by the project owner (S. Nakajima).
+- Ranks and counts are approximate figures based on the provided data; accuracy is not guaranteed.
+- The **redistribution license of the original statistics has not been confirmed**. Confirm it before making the repository public or distributing it to others. Until confirmed, the license of this directory is "undetermined".
 
 ---
 
-## 下の名前（given_names_by_generation.csv）
+## Given names (given_names_by_generation.csv)
 
-生まれ年の世代（6区分：1926〜2025年）× 性別 × 上位100 = 1,200行。
+Birth-year generation (6 groups: 1926–2025) × sex × top 100 = 1,200 rows.
 
-| 列 | 説明 |
+| Column | Description |
 |---|---|
-| `generation` | 世代の年範囲（例 `1926-1945`） |
-| `generation_label` | 世代の説明 |
-| `sex` | `男性` / `女性` |
-| `rank` | 世代・性別内の順位（1〜100） |
-| `name` | 名前の表記（NFKC正規化済み） |
-| `reading` | 主たる読み（ひらがな）。`.koedict` の `[default]` 候補 |
-| `alt_readings` | 別の読み（ひらがな、`|` 区切り） |
-| `sex_reading` | 性別による読みの違い：`共通`（男女同じ）/ `異なる` / 空（情報なし） |
-| `sex_reading_note` | 性別ごとの読みのメモ（例 `男性 ひかる/女性 ひかり`） |
-| `source` | `明治安田生命 生まれ年別名前調査` または `補完（推定）` |
-| `is_estimated` | `1` = 補完（推定）行（提供者による推定で、調査データではない）、`0` = 調査データ |
+| `generation` | Year range of the generation (e.g. `1926-1945`) |
+| `generation_label` | Description of the generation |
+| `sex` | `男性` (male) / `女性` (female) |
+| `rank` | Rank within generation and sex (1–100) |
+| `name` | Name spelling (NFKC-normalized) |
+| `reading` | Primary reading (hiragana). Candidate for `[default]` in `.koedict` |
+| `alt_readings` | Alternative readings (hiragana, `|`-separated) |
+| `sex_reading` | Difference in reading by sex: `共通` (same for both) / `異なる` (different) / empty (no information) |
+| `sex_reading_note` | Note on readings by sex (e.g. `男性 ひかる/女性 ひかり`) |
+| `source` | `明治安田生命 生まれ年別名前調査` (Meiji Yasuda Life name survey by birth year) or `補完（推定）` (filled in, estimated) |
+| `is_estimated` | `1` = filled-in (estimated) row (estimated by the provider, not survey data), `0` = survey data |
 
-注意：
-- 568行（約47%）は `補完（推定）` の推定値です。順位や読みの扱いは注意してください。
-- 同じ表記でも世代や性別によって主読みが違う場合があります（例：健 けん/たけし、歩 あゆむ/あゆみ）。
-- `sex_reading` が `異なる` の行は、`.koedict` で性別を文脈条件にする候補です（KOE-IRの文法拡張が必要）。
-- 「明治安田生命 生まれ年別名前調査」に由来する部分の再配布条件は未確認です。公開前に確認してください。
-- 下の名前の辞書は `given_names.koedict` です（下記）。
+Notes:
+- 568 rows (about 47%) are `補完（推定）` estimates. Treat their ranks and readings with care.
+- The same spelling can have a different primary reading depending on generation or sex (e.g. 健 けん/たけし, 歩 あゆむ/あゆみ).
+- Rows where `sex_reading` is `異なる` are candidates for using sex as a context condition in `.koedict` (requires a YomiScript grammar extension).
+- The redistribution terms for the part derived from 「明治安田生命 生まれ年別名前調査」 have not been confirmed. Confirm before publishing.
+- The given-name dictionary is `given_names.koedict` (below).
 
-## given_names.koedict（性別で読みが変わる名前）
+## given_names.koedict (names whose reading depends on sex)
 
-`given_names_by_generation.csv` から自動生成（788表記・945エントリ）。
+Generated automatically from `given_names_by_generation.csv` (788 spellings, 945 entries).
 
-- `[default]` は、全世代・男女を通して主読みとして最も多く出る読みです。
-- `sex_reading = 異なる` の **18表記**（例：光 男性ひかる/女性ひかり、歩 あゆむ/あゆみ、心 しん/こころ、結 ゆう/ゆい、陽葵 はるき/ひまり）は、性別ごとの読みを `[context: 男性]` / `[context: 女性]` のエントリとして書いています。
-- **KOE-IR v0.1 の文法には性別専用の条件がありません**。そのため、いちばん近い `[context: …]` を使い、`男性` / `女性` という語を条件にしています。将来は `[sex: male|female]` のような専用条件をspecに足すことを検討します。
-- 別読み（`alt_readings` や、世代によって違う主読み）は条件なしのエントリにしています。
-- アクセントは未付与です。
+- `[default]` is the reading that appears most often as the primary reading across all generations and both sexes.
+- The **18 spellings** with `sex_reading = 異なる` (e.g. 光 男性ひかる/女性ひかり, 歩 あゆむ/あゆみ, 心 しん/こころ, 結 ゆう/ゆい, 陽葵 はるき/ひまり) have their per-sex readings written as `[context: 男性]` / `[context: 女性]` entries.
+- **The KOE-IR v0.1 grammar (the predecessor of YomiScript) has no condition dedicated to sex.** So the closest one, `[context: …]`, is used, with the words `男性` / `女性` as the condition. A dedicated condition such as `[sex: male|female]` may be added to the spec in the future.
+- Alternative readings (`alt_readings`, and primary readings that differ by generation) are unconditioned entries.
+- No accents yet.

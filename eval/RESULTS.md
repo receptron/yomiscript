@@ -1,60 +1,60 @@
-# pyopenjtalk ベースライン結果 v0（H1、Issue #5・#6）
+# pyopenjtalk baseline results v0 (H1, Issue #5, #6)
 
-測定日: 2026-10-24。数値はすべて `scripts/run_pyopenjtalk_baseline.py` で実際に測ったもの（生データは `results/pyopenjtalk_baseline.json`）。
+Measured: 2026-10-24. All figures were actually measured with `scripts/run_pyopenjtalk_baseline.py` (raw data in `results/pyopenjtalk_baseline.json`).
 
-## 環境
-- pyopenjtalk 0.4.1（OpenJTalk 同梱辞書）、Python 3.11
-- Linux（GPUなし）、Intel Xeon 8コア。1プロセス1スレッドで逐次処理し、ウォームアップ後に測定
-- Macでの測定はまだ（Issue #5 の目標「Macで1文10ms未満」は未検証）
+## Environment
+- pyopenjtalk 0.4.1 (bundled OpenJTalk dictionary), Python 3.11
+- Linux (no GPU), Intel Xeon, 8 cores. Sequential processing in 1 process with 1 thread, measured after warm-up
+- Not yet measured on a Mac (the Issue #5 target "under 10 ms per sentence on a Mac" is unverified)
 
-## 1. JSUT BASIC5000 サブセット（280文、正解は人手アノテーション）
+## 1. JSUT BASIC5000 subset (280 sentences, human-annotated references)
 
-| 指標 | 値 |
+| Metric | Value |
 |---|---|
-| カナCER（厳密） | **1.77%**（177 / 9,994文字） |
-| 文単位の読み正解率（厳密） | **72.5%**（203 / 280） |
-| カナCER（表記ゆれ正規化※） | 1.33% |
-| 文単位の読み正解率（表記ゆれ正規化※） | 81.4% |
-| 音素誤り率 | 1.19% |
-| 句境界（`#` と `_`）P / R / F1 | 0.794 / 0.957 / **0.868** |
-| アクセント核（`]`）P / R / F1 | 0.750 / 0.745 / **0.748** |
-| アクセント句の完全一致率（両端の境界と核の位置が一致した句の割合） | **61.1%**（1,205 / 1,973） |
+| Kana CER (strict) | **1.77%** (177 / 9,994 characters) |
+| Sentence-level reading accuracy (strict) | **72.5%** (203 / 280) |
+| Kana CER (spelling-variant normalized*) | 1.33% |
+| Sentence-level reading accuracy (spelling-variant normalized*) | 81.4% |
+| Phoneme error rate | 1.19% |
+| Phrase boundary (`#` and `_`) P / R / F1 | 0.794 / 0.957 / **0.868** |
+| Accent nucleus (`]`) P / R / F1 | 0.750 / 0.745 / **0.748** |
+| Accent phrase exact-match rate (share of phrases whose boundaries at both ends and nucleus position match) | **61.1%** (1,205 / 1,973) |
 
-※ 表記ゆれ正規化: ー を直前の母音に置き換え、エ段+イ をエ段+エ、オ段+ウ をオ段+オ、ヲ をオとして比べる。イイ/イー のような正解データ側の表記の違いを誤りに数えないための副次指標。
+\* Spelling-variant normalization: ー is replaced with the preceding vowel, and e-row + イ is compared as e-row + エ, o-row + ウ as o-row + オ, and ヲ as オ. A secondary metric so that spelling differences on the reference side, such as イイ/イー, are not counted as errors.
 
-予測側の韻律記号は、フルコンテキストラベルから ESPnet `pyopenjtalk_prosody` と同じ規則で作った。正解と予測の音素列を整列し、一致した区間の位置で記号を比べている。
+The predicted prosody symbols were built from full-context labels using the same rules as ESPnet `pyopenjtalk_prosody`. The reference and predicted phoneme sequences are aligned, and symbols are compared at positions within matched spans.
 
-## 2. 手作りハードセット（70文、正解は暫定で要レビュー）
+## 2. Handcrafted hard set (70 sentences, references provisional and need review)
 
-| カテゴリ | 文数 | 正解率（厳密） | 正解率（正規化） | カナCER |
+| Category | Sentences | Accuracy (strict) | Accuracy (normalized) | Kana CER |
 |---|---|---|---|---|
-| 同形異音語 | 35 | 51.4% | 60.0% | 8.0% |
-| 頭字語 | 12 | 83.3% | 100% | 1.0% |
-| 数詞 | 12 | 91.7% | 91.7% | 0.6% |
-| 日付 | 11 | 100% | 100% | 0.0% |
-| **全体** | 70 | **71.4%** | 78.6% | 4.1% |
+| Homographs | 35 | 51.4% | 60.0% | 8.0% |
+| Acronyms | 12 | 83.3% | 100% | 1.0% |
+| Numerals | 12 | 91.7% | 91.7% | 0.6% |
+| Dates | 11 | 100% | 100% | 0.0% |
+| **Overall** | 70 | **71.4%** | 78.6% | 4.1% |
 
-## 3. CPU速度（JSUT 280文）
+## 3. CPU speed (JSUT, 280 sentences)
 
-| 処理 | 平均 | 中央値 | p95 | 文/秒 |
+| Operation | Mean | Median | p95 | Sentences/s |
 |---|---|---|---|---|
-| `g2p(kana=True)` | 0.16 ms | 0.14 ms | 0.31 ms | 約6,200 |
-| `extract_fullcontext`（アクセント・句境界つき） | 0.27 ms | 0.22 ms | 0.59 ms | 約3,700 |
+| `g2p(kana=True)` | 0.16 ms | 0.14 ms | 0.31 ms | about 6,200 |
+| `extract_fullcontext` (with accents and phrase boundaries) | 0.27 ms | 0.22 ms | 0.59 ms | about 3,700 |
 
-1回だけの測定なので、実行ごとに±10%程度ぶれる。
+Single measurement, so expect about ±10% variation between runs.
 
-## 4. 主な誤りの傾向
-1. **文脈で読みが決まる同形異音語**（ハードセットで17件の誤り）。pyopenjtalk は文脈を見ずに、辞書でいちばん多い読みを選ぶ。
-   - 例: 市→シ（いち）、一日→イチニチ（ついたち）、上手→ジョーズ（かみて）、人気→ニンキ（ひとけ）、大家→オーヤ（たいか）、生物→セーブツ（なまもの）、辛い→ツライ（からい）、角→カク（かど・つの）、寒気→サムケ（かんき）、色紙→イロガミ（しきし）、目下→モッカ（めした）、一行→イッコー（いちぎょう）
-   - JSUTでも同じ種類の誤りが出ている: 種→タネ（しゅ）、解る→ホドケル、通っている→カヨッテ（とおって）、大違い→ダイチガイ、御粗末→ゴソマツ、万人→マンニン、不足→フソク（ぶそく）、何なの→ナニナノ
-   - この種類の誤りは Yomi-0 の文脈判定（D4）と、文脈条件つき辞書（D13）で解きたい問題にあたる。
-2. **長音の表記ゆれ**: pyopenjtalk は「いい→イイ」「ほしい→ホシイ」「ていねい→テイネイ」と書き、正解は「イー」「ホシー」「テーネー」と書く。JSUTで文単位の正解率が72.5%から81.4%に上がる差のほとんどがこれ。音としては同じか、それに近い。
-3. **数詞の音便**: ７０歳→ナナジュッサイ（正解はナナジッサイ）、２０チーム→ニジューチーム（正解はニジュッチーム）。
-4. **頭字語**: SIP→エスアイピー（ユーザーの想定はシップ）、NHK→エヌエイチケイ。辞書で指定できるようにする対象（D1・D13）。
-5. **アクセント句**: pyopenjtalk は正解より細かく句を区切る傾向がある（境界の適合率0.79、再現率0.96）。アクセント核のF1は0.75。
+## 4. Main error patterns
+1. **Homographs whose reading depends on context** (17 errors in the hard set). pyopenjtalk does not look at context and picks the most common reading in its dictionary.
+   - Examples: 市→シ（いち）, 一日→イチニチ（ついたち）, 上手→ジョーズ（かみて）, 人気→ニンキ（ひとけ）, 大家→オーヤ（たいか）, 生物→セーブツ（なまもの）, 辛い→ツライ（からい）, 角→カク（かど・つの）, 寒気→サムケ（かんき）, 色紙→イロガミ（しきし）, 目下→モッカ（めした）, 一行→イッコー（いちぎょう）
+   - The same kind of error appears in JSUT: 種→タネ（しゅ）, 解る→ホドケル, 通っている→カヨッテ（とおって）, 大違い→ダイチガイ, 御粗末→ゴソマツ, 万人→マンニン, 不足→フソク（ぶそく）, 何なの→ナニナノ
+   - This kind of error is the problem that Yomi-0's context judgment (D4) and context-conditioned dictionaries (D13) aim to solve.
+2. **Spelling variants of long vowels**: pyopenjtalk writes 「いい→イイ」「ほしい→ホシイ」「ていねい→テイネイ」, while the references write 「イー」「ホシー」「テーネー」. This accounts for most of the gap that raises sentence-level accuracy on JSUT from 72.5% to 81.4%. Acoustically they are the same or nearly so.
+3. **Sound changes in numerals**: ７０歳→ナナジュッサイ (reference: ナナジッサイ), ２０チーム→ニジューチーム (reference: ニジュッチーム).
+4. **Acronyms**: SIP→エスアイピー (the user intends シップ), NHK→エヌエイチケイ. Targets for specification via the lexicon (D1, D13).
+5. **Accent phrases**: pyopenjtalk tends to split phrases more finely than the references (boundary precision 0.79, recall 0.96). Accent nucleus F1 is 0.75.
 
-## 5. 制約と次の作業
-- ハードセットの正解は作業者が書いた暫定版で、レビューが要る（とくに h001 の市、h005 の今日・日本、h037 の SIP）。
-- Joyo Kanji Yomi Benchmark、pyopenjtalk-plus、zenz、MARINE との比較はまだ。
-- TTS後のASR読み戻しCER（H7）、Macでの遅延とRAM、文脈条件つき項目（D13・H12）の指標はまだ実装していない。
-- 句境界のF1は、韻律記号の `#`（アクセント句境界）と `_`（ポーズ）を区別せずに同じ「境界」として数えている。
+## 5. Limitations and next steps
+- The hard set references are a provisional version written by the author and need review (especially 市 in h001, 今日 and 日本 in h005, and SIP in h037).
+- Comparison with Joyo Kanji Yomi Benchmark, pyopenjtalk-plus, zenz and MARINE has not been done yet.
+- Metrics for ASR read-back CER after TTS (H7), latency and RAM on a Mac, and context-conditioned entries (D13, H12) are not implemented yet.
+- Phrase boundary F1 counts the prosody symbols `#` (accent phrase boundary) and `_` (pause) as the same "boundary" without distinguishing them.

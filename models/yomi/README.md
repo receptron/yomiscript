@@ -1,24 +1,24 @@
 # Yomi-0
 
-日本語のテキストから、読み（音素）・アクセント・句境界を出す小型モデルです。KOE-IRの「文脈からの推定」（優先順位の3段目）を担います。
+A small model that outputs readings (phonemes), accents and phrase boundaries from Japanese text. It handles YomiScript's "inference from context" (the third level of the priority order).
 
-## 設計上の決定
+## Design decisions
 
-| 項目 | 内容 | 決定 |
+| Item | Details | Decision |
 |---|---|---|
-| 構造 | 密なモデル。MoEは使わない（MoEは将来の大きなLLMでのみ検討） | D2 |
-| 精度 | BF16で学習し、8bitで配布。精度が落ちればQAT。ほぼ劣化しなければ4bit版も任意で公開 | D3 |
-| 三値 | 三値の一から学習は比較実験のみ（H9） | D3 |
-| 読み分け | 2段構え：Yomiが大半を処理し、確信度が低い箇所だけ大きなLLMに委ねる | D4 |
-| データ | (1) pyopenjtalk+UniDicで大規模コーパスを自動ラベル付け (2) JSUTなど人手ラベルは評価と仕上げに (3) 難例はLLMが候補を出し人が確認 (4) ルビ付きテキスト・ASR書き起こし（ReazonSpeechなど）を補助に。アクセントのラベルが最も不足 | D5 |
-| メモリ | 疎なキー・バリュー型メモリ層を持ち、辞書を書き込んで適応する（MoLD） | D10–D12、H10・H12 |
+| Architecture | Dense model. No MoE (MoE is considered only for a future large LLM) | D2 |
+| Precision | Train in BF16, distribute in 8-bit. QAT if accuracy drops. Optionally publish a 4-bit version if it shows almost no degradation | D3 |
+| Ternary | Training ternary from scratch only as a comparison experiment (H9) | D3 |
+| Reading disambiguation | Two-tier: Yomi handles most cases, and only low-confidence spots are handed to a large LLM | D4 |
+| Data | (1) Auto-label a large corpus with pyopenjtalk+UniDic (2) Human labels such as JSUT for evaluation and finishing (3) For hard cases, an LLM proposes candidates and a human checks them (4) Ruby-annotated text and ASR transcripts (ReazonSpeech, etc.) as supplements. Accent labels are the scarcest | D5 |
+| Memory | Has a sparse key-value Memory layer and adapts via memory writes of dictionaries (MoLD) | D10–D12, H10, H12 |
 
-## 目標（目標値）
+## Goals (target values)
 
-- 規模：数千万〜1億パラメータ
-- 読みの正解率が pyopenjtalk 以上、Macで1文10ms未満（H1）
-- 推論：MLX と llama.cpp
+- Size: tens of millions to 100 million parameters
+- Reading accuracy at or above pyopenjtalk, under 10 ms per sentence on a Mac (H1)
+- Inference: MLX and llama.cpp
 
-## 関連する仮説
+## Related hypotheses
 
-H1（pyopenjtalkとの比較）、H2（逆方向のIME変換）、H7（TTS前段での誤読削減）、H9（三値との比較）、H10（メモリによる適応）。[`docs/hypotheses.md`](../../docs/hypotheses.md) を見てください。
+H1 (comparison with pyopenjtalk), H2 (reverse IME conversion), H7 (reducing misreadings before TTS), H9 (comparison with ternary), H10 (adaptation via Memory). See [`docs/hypotheses.md`](../../docs/hypotheses.md).

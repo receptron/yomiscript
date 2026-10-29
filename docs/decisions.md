@@ -1,19 +1,19 @@
-# 決定事項（D1–D13）
+# Decisions (D1–D13)
 
-すべて 2026-10-24 に決定。構文に関するものは草案です。
+All decided on 2026-10-24. Those concerning syntax are drafts.
 
-| ID | 日付 | 内容 |
+| ID | Date | Decision |
 |---|---|---|
-| D1 | 2026-10-24 | 読みの優先順位は3段:その場での指定 {表記\|読み} > 辞書(文書内の @lexicon と @import をまとめて1段。段内は @lexicon が優先、@import 同士は後勝ち。同じ表記に複数の項目があれば文脈条件に合う項目 > [default]、D13) > 文脈からの判断(モデル)。セクション1bに反映 |
-| D2 | 2026-10-24 | Yomi-0は密なモデルとし、MoEは使わない。MoEは将来の大きなLLMでのみ検討 |
-| D3 | 2026-10-24 | Yomi-0の精度:BF16で学習し、配布は8bit量子化。精度が落ちる場合はQAT(量子化を意識した学習)を適用。ほぼ劣化しなければ4bit版も任意で公開。三値の一から学習は比較実験としてのみ残す(仮説H9) |
-| D4 | 2026-10-24 | 文脈による読み分けは2段構え:小型エンコーダ(Yomi)が大半を処理し、確信度が低い箇所だけ大きなLLMに委ねる |
-| D5 | 2026-10-24 | Yomi-0の学習データ:(1) pyopenjtalk+UniDicで大規模コーパスを自動ラベル付け、(2) JSUTなど人手ラベルは評価と仕上げの学習に使用、(3) 同形異音語・固有名詞・略語などの難しい例はLLMが候補を出し人が確認、(4) ルビ付きテキストやASRの書き起こしを補助データに。アクセントのラベルが最も不足している |
-| D6 | 2026-10-24 | 音響バックエンドの名前は未定。当面は「KOE-IRバックエンドプラグイン」と呼ぶ(Koe-Sはその実装の一つ) |
-| D7 | 2026-10-24 | 辞書(@lexicon・.koedict)では読みと一緒にアクセントも指定できる。記法は ' による核の位置、または [accent: N](UniDicの数字表記と対応)。構文は草案。セクション1bに反映 |
-| D8 | 2026-10-24 | 方言に対応する:@dialect(文書全体)、@lexicon(dialect: …)、方言辞書の@import、[dialect: …](部分切り替え)、項目がなければ標準語にフォールバック。v0.1は方言タグの枠組みのみで、京阪式の式(高起・低起)を含む詳しい記法は後の版。構文は草案 |
-| D9 | 2026-10-24 | 用語の定義:辞書(Lexicon)=KOE-IRの言語側にある人が読める .koedict / @lexicon(読み・アクセント・方言)。メモリ(Memory)=学習・推論で参照されるニューラルネット内部のキー・バリュー型メモリ。書き込み(Memory write)=辞書の内容をメモリへ読み込むこと。本文は「辞書」「メモリ」と書き、仕様では英語名を併記する。「記憶」は使わない。機器のRAMは「ユニファイドメモリ」「RAM使用量」のように修飾して区別する |
-| D10 | 2026-10-24 | 設計原則:言語に依存しない共有の重み+言語・方言ごとに差し替えられるメモリ(Memory)モジュール。実行時に読み込むのは共有の重みと、いま使う1つのメモリだけなので、対応言語が増えてもRAM使用量はほぼ増えない(推定)。どのメモリを使うかは @dialect や言語指定(lang)で明示的に選び、モデルが自動で振り分けることはしない。MoEとの違いは下の表。仮説H11で検証する |
-| D11 | 2026-10-24 | D10の差し替え型設計を仮にMoLD(Mixture of Language-specific Dictionaries)と呼ぶ。MoLDは辞書(Lexicon)とメモリ(Memory)を書き込み(Memory write)でつなぐ仕組み全体の名前で、内部の部品はD9の名前のまま。名前の重複チェックは下の注記 |
-| D12 | 2026-10-24 | MoLDの推論は2モード:(1) 固定モード=@dialect / 言語指定でメモリを1つだけ明示的に選ぶ。RAMが最小で動作が予測しやすい。(2) 自動モード=軽量な判定器が文または範囲ごとにメモリを選び切り替える。複数言語が混ざる文や、登場人物ごとに方言が違う文章向け。優先順位は明示的な指定 > 自動判定(D1と同じ考え方)。注意点:誤判定すると読み・アクセントがまとめて崩れる。切り替え時にメモリの読み込み遅延が出るため、よく使うメモリはRAMに常駐させ、判定は文単位を基本とする。自動モードの評価はH11 |
-| D13 | 2026-10-24 | 辞書の項目に文脈条件を書ける:同じ表記に複数の読みを [context: …](分野名や近くの語)つきで登録し、[default] で既定の読みを指定する。選択の順は文脈に合う項目 > [default]。辞書の段の中の順位として D1 に組み込む。構文は草案。セクション1bに反映、コンパイル時の扱いと評価はH12 |
+| D1 | 2026-10-24 | Reading priority has 3 tiers: inline specification {表記\|読み} > lexicon (in-document @lexicon and @import combined into one tier; within the tier @lexicon wins, and among @imports the later one wins; if the same orthography has several entries, an entry matching the context condition > [default], D13) > judgment from context (the model). Reflected in Section 1b |
+| D2 | 2026-10-24 | Yomi-0 is a dense model and does not use MoE. MoE is considered only for future large LLMs |
+| D3 | 2026-10-24 | Yomi-0 precision: train in BF16, distribute with 8-bit quantization. If accuracy drops, apply QAT (quantization-aware training). If there is almost no degradation, optionally also release a 4-bit version. Ternary training from scratch is kept only as a comparison experiment (hypothesis H9) |
+| D4 | 2026-10-24 | Context-based disambiguation of readings is two-tiered: a small encoder (Yomi) handles most cases, and only low-confidence spots are delegated to a large LLM |
+| D5 | 2026-10-24 | Yomi-0 training data: (1) auto-label a large corpus with pyopenjtalk + UniDic, (2) use human labels such as JSUT for evaluation and final-stage training, (3) for hard cases such as homographs, proper nouns and abbreviations, an LLM proposes candidates and a human checks them, (4) use ruby-annotated text and ASR transcripts as auxiliary data. Accent labels are the scarcest |
+| D6 | 2026-10-24 | The acoustic back end's name is undecided. For now it is called the "KOE-IR back-end plugin" (Koe-S is one implementation of it) |
+| D7 | 2026-10-24 | The lexicon (@lexicon, .koedict) can specify accent along with the reading. Notation: nucleus position with ', or [accent: N] (corresponding to UniDic's numeric notation). Syntax is a draft. Reflected in Section 1b |
+| D8 | 2026-10-24 | Support dialects: @dialect (whole document), @lexicon(dialect: …), @import of dialect dictionaries, [dialect: …] (partial switch), and fall back to standard Japanese when no entry exists. v0.1 has only the dialect-tag framework; detailed notation, including Keihan-type accent registers (high-onset, low-onset), comes in a later version. Syntax is a draft |
+| D9 | 2026-10-24 | Term definitions: Lexicon = the human-readable .koedict / @lexicon on the language side of KOE-IR (readings, accent, dialect). Memory = the key-value memory inside the neural network that is consulted during training and inference. Memory write = loading the lexicon's contents into Memory. Prose uses 「辞書」 and 「メモリ」, and the spec gives the English names alongside. 「記憶」 is not used. Device RAM is distinguished with qualifiers such as 「ユニファイドメモリ」 (unified memory) and 「RAM使用量」 (RAM usage) |
+| D10 | 2026-10-24 | Design principle: language-independent shared weights + Memory modules swappable per language/dialect. At runtime only the shared weights and the one Memory currently in use are loaded, so RAM usage barely grows as more languages are supported (estimate). Which Memory to use is chosen explicitly via @dialect or a language specification (lang); the model does not route automatically. Differences from MoE are in the table below. To be tested by hypothesis H11 |
+| D11 | 2026-10-24 | The swappable design of D10 is tentatively called MoLD (Mixture of Language-specific Dictionaries). MoLD is the name of the whole mechanism that connects the Lexicon and Memory via Memory write; its internal parts keep the D9 names. Name-collision check is in the note below |
+| D12 | 2026-10-24 | MoLD inference has 2 modes: (1) fixed mode = explicitly select exactly one Memory via @dialect / language specification. Minimal RAM and predictable behavior. (2) auto mode = a lightweight classifier selects and switches Memory per sentence or span. For sentences mixing multiple languages, or texts where characters speak different dialects. Priority is explicit specification > automatic classification (same idea as D1). Caveats: a misclassification breaks reading and accent together. Switching incurs Memory loading latency, so frequently used Memories are kept resident in RAM, and classification is per sentence by default. Auto mode is evaluated in H11 |
+| D13 | 2026-10-24 | Lexicon entries can have context conditions: register multiple readings for the same orthography with [context: …] (a domain name or nearby words), and specify the default reading with [default]. Selection order is entry matching the context > [default]. Incorporated into D1 as the ordering within the lexicon tier. Syntax is a draft. Reflected in Section 1b; compile-time handling and evaluation are in H12 |

@@ -1,39 +1,39 @@
-# demo/ys_web — ブラウザだけで動く YomiScript 音声合成デモ
+# demo/ys_web — Browser-only YomiScript speech synthesis demo
 
-YomiScript を入力すると、ブラウザ内（onnxruntime-web, WASM）で Kokoro-82M を動かして音声にします。日本語のアクセント記号による F0 上書きもブラウザ上で行います。YomiScript には各語を「どう発音させたいか」を書きます。
+Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, WASM) to turn it into speech. F0 override from Japanese accent marks is also done in the browser. In YomiScript you write how you want each word to be pronounced.
 
-## 構成
-- `web/index.html`, `web/ys.js`：デモ本体（YomiScript 変換・F0 上書き・推論）。`web/presets.json` に東京/大阪や言語混在の例
-- `export_split.py`：Kokoro を `enc` / `f0n` / `dec` の 3 つの ONNX に分けて書き出す（F0 を間で差し替えるため）
-- `quant.py`：軽量化。`python quant.py w16` で重みだけ fp16 で保存した版（計算は fp32）を `models_q/*_w16.onnx` に作成（既定で使用、計 約 163 MB）。`i8` は decoder の int8 試験
-- `serve.py`：COOP/COEP ヘッダ付きのローカルサーバ（WASM マルチスレッドに必要）
-- `qeval.py`：fp32 との品質比較（pyin F0 相関・mel 差）。`drift.py`：torch・Python ONNX・JS の区間ごとの比較
-- `parity.mjs` / `node_test.mjs` / `pw_test.mjs` / `pw_bench.mjs` / `ort_check.py`：Python 版との一致確認、Node・Playwright での試験と速度計測
+## Layout
+- `web/index.html`, `web/ys.js`: the demo itself (YomiScript conversion, F0 override, inference). `web/presets.json` holds Tokyo/Osaka and mixed-language examples
+- `export_split.py`: exports Kokoro as three ONNX files, `enc` / `f0n` / `dec` (so that F0 can be swapped in between)
+- `quant.py`: size reduction. `python quant.py w16` creates a version with only the weights stored in fp16 (compute stays fp32) at `models_q/*_w16.onnx` (used by default, about 163 MB total). `i8` is an int8 trial for the decoder
+- `serve.py`: local server with COOP/COEP headers (required for WASM multithreading)
+- `qeval.py`: quality comparison against fp32 (pyin F0 correlation, mel difference). `drift.py`: per-segment comparison of torch, Python ONNX and JS
+- `parity.mjs` / `node_test.mjs` / `pw_test.mjs` / `pw_bench.mjs` / `ort_check.py`: parity checks against the Python version, tests and speed measurement in Node and Playwright
 
-## 分割 ONNX の書き出し（Python 3.11）
+## Exporting the split ONNX (Python 3.11)
 ```
 pip install kokoro torch onnx
-python export_split.py     # models/enc.onnx, f0n.onnx, dec.onnx（計 約 311 MB）を作成
+python export_split.py     # creates models/enc.onnx, f0n.onnx, dec.onnx (about 311 MB total)
 ```
-声ファイルは `export_voices.py` で作ります。`voices-v1.0.bin`（`tts/kokoro_ys/README.md` の手順で取得）から、各声の style ベクトル (510, 1, 256) float32 を生バイト列で `voices/<名前>.bin` に書き出します。
+Voice files are created with `export_voices.py`. From `voices-v1.0.bin` (obtained as described in `tts/kokoro_ys/README.md`), it writes each voice's style vector (510, 1, 256) float32 as raw bytes to `voices/<name>.bin`.
 ```
-python export_voices.py path/to/voices-v1.0.bin   # 既定でデモの 7 声
+python export_voices.py path/to/voices-v1.0.bin   # the demo's 7 voices by default
 ```
-重みと声は `hexgrad/Kokoro-82M`（Apache-2.0）から自動取得されます。生成物はリポジトリに含めません。
+Weights and voices are fetched automatically from `hexgrad/Kokoro-82M` (Apache-2.0). Generated files are not included in the repository.
 
-## 実行
+## Running
 ```
 npm install
 python quant.py w16
 cd web && ln -s ../models models && ln -s ../voices voices && ln -s ../node_modules/onnxruntime-web/dist ort && cd ..
 for f in enc_w16 f0n_w16 dec_w16; do ln -s ../models_q/$f.onnx models/$f.onnx; done
-python serve.py 8000 web   # http://localhost:8000/ を開く
+python serve.py 8000 web   # open http://localhost:8000/
 ```
-URL パラメータ：
-- `?m=` モデル：`w16`（既定。重み fp16、計 約 163 MB）/ `fp32`（約 311 MB）/ `i8`（decoder の MatMul・Gemm を int8）
-- `?t=` WASM スレッド数（既定 4。COOP/COEP ヘッダが必要なので `serve.py` で配信）
-- `?ep=webgpu` WebGPU を試す（使えない環境では WASM に戻る）
+URL parameters:
+- `?m=` model: `w16` (default; fp16 weights, about 163 MB total) / `fp32` (about 311 MB) / `i8` (decoder MatMul and Gemm in int8)
+- `?t=` number of WASM threads (default 4; requires COOP/COEP headers, so serve with `serve.py`)
+- `?ep=webgpu` try WebGPU (falls back to WASM where unavailable)
 
-目安（8 コア CPU、ヘッドレス Chromium、4 スレッド）：3.5 秒の音声を約 2.8 秒で合成（実時間比 約 0.8）。言語混在文は区間ごとに推論するため 約 1.2。
-品質：重み fp16 版は fp32 と F0 相関 0.995 以上、Whisper の書き起こしも同じ。
-速度計測：`node pw_bench.mjs 8000 "m=w16"`
+Rough figures (8-core CPU, headless Chromium, 4 threads): 3.5 s of audio synthesized in about 2.8 s (real-time factor about 0.8). Mixed-language sentences run inference per segment, so about 1.2.
+Quality: the fp16-weight version has an F0 correlation of 0.995 or higher with fp32, and the Whisper transcriptions are identical.
+Speed measurement: `node pw_bench.mjs 8000 "m=w16"`

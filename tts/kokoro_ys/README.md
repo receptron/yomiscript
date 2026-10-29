@@ -1,28 +1,28 @@
-# tts/kokoro_ys — YomiScript → Kokoro-82M 音声合成（参照実装）
+# tts/kokoro_ys — YomiScript → Kokoro-82M speech synthesis (reference implementation)
 
-YomiScript だけを入力にして音声を作る参照実装です。テキスト解析（misaki の前段）は使わず、YomiScript の記号を Kokoro の音素列とピッチの指示に直します。YomiScript には各語を「どう発音させたいか」を書きます。
+A reference implementation that generates speech from YomiScript input alone. It does not use text analysis (misaki's front stage); instead it converts YomiScript's symbols into Kokoro phoneme sequences and pitch instructions. In YomiScript you write how you want each word to be pronounced.
 
-## 主なファイル
-- `ys2kokoro.py` / `ys2kokoro_v2.py` / `misaki_hepburn.py`：YomiScript → Kokoro 音素（misaki 形式 IPA）の変換
-- `pitch_v3.py` / `prosody_v4.py`：アクセント記号から F0 を作り、Kokoro の予測ピッチを置き換える（長さは Kokoro のまま）
-- `mix.py`：言語タグ `{lang|...}` ごとの合成方針（ja は F0 上書き、en/fr は Kokoro 自身のピッチ、区間ごとに合成して連結、1 語だけの外国語区間はその言語の声のみで読ませる）。`mix5〜8.py`, `mix_v4.py` は途中版
-- `osaka.py` / `osaka_n.py`：東京式と大阪式（`^ja-x-osaka|`、`=` 高起式）の読み比べ
-- `run.py` / `run_v2.py`：4 言語のサンプル生成
-- `wh*.py` / `whisper*.json`：Whisper（small）による言語判定・書き起こし評価とその結果
+## Main files
+- `ys2kokoro.py` / `ys2kokoro_v2.py` / `misaki_hepburn.py`: conversion from YomiScript to Kokoro phonemes (misaki-style IPA)
+- `pitch_v3.py` / `prosody_v4.py`: build F0 from accent marks and replace Kokoro's predicted pitch (durations stay as Kokoro predicts)
+- `mix.py`: synthesis policy per language tag `{lang|...}` (ja uses F0 override, en/fr use Kokoro's own pitch; each segment is synthesized and concatenated; a foreign-language segment of a single word is read only with that language's voice). `mix5〜8.py` and `mix_v4.py` are intermediate versions
+- `osaka.py` / `osaka_n.py`: comparing Tokyo-type and Osaka-type accent (`^ja-x-osaka|`, `=` for high-onset)
+- `run.py` / `run_v2.py`: generate 4-language samples
+- `wh*.py` / `whisper*.json`: language identification and transcription evaluation with Whisper (small), and their results
 
-## 準備
-Kokoro-82M（Apache-2.0, hexgrad）の重みと声を、このディレクトリに置きます（リポジトリには含めません）。
+## Setup
+Place the Kokoro-82M (Apache-2.0, hexgrad) weights and voices in this directory (they are not included in the repository).
 ```
 pip install kokoro-onnx soundfile numpy
 curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
 curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
 ```
-`prosody_v4.py` など F0 上書きを使うものは PyTorch 版も必要です（Python 3.11 推奨）：`pip install kokoro torch`（重みは `hexgrad/Kokoro-82M` から自動取得）。
+Scripts that use F0 override, such as `prosody_v4.py`, also need the PyTorch version (Python 3.11 recommended): `pip install kokoro torch` (weights are fetched automatically from `hexgrad/Kokoro-82M`).
 
-## 実行
-このディレクトリで実行します（パスは相対）。
+## Running
+Run in this directory (paths are relative).
 ```
-python run_v2.py      # 4 言語サンプル
-python mix.py         # 言語混在文
-python osaka_n.py     # 東京・大阪の読み比べ
+python run_v2.py      # 4-language samples
+python mix.py         # mixed-language sentences
+python osaka_n.py     # Tokyo vs. Osaka reading comparison
 ```

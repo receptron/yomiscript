@@ -1,9 +1,9 @@
-# 辞書 (.koedict)
+# Dictionaries (.koedict)
 
-KOE-IRの辞書 (Lexicon) ファイルです。書式は [`spec/koe-ir/grammar.md`](../spec/koe-ir/grammar.md) の `@lexicon` と同じです。
+YomiScript lexicon files. The format is the same as `@lexicon` in [`spec/koe-ir/grammar.md`](../spec/koe-ir/grammar.md).
 
-- 分野別の辞書（医療・IT・地名など）をコミュニティで作り、セマンティックバージョニングで管理します（例：`medical@1.2.koedict`）。
-- 各ファイルの先頭にライセンスと作者を書きます。
-- `.koedict` を `@import` すると、MoLD ではその内容がメモリへ書き込まれます（H10・H12）。
+- Domain dictionaries (medical, IT, place names, etc.) are built by the community and managed with semantic versioning (e.g. `medical@1.2.koedict`).
+- Each file starts with its license and author.
+- When a `.koedict` is loaded with `@import`, MoLD performs a memory write of its contents into Memory (H10, H12).
 
-サンプル：[`sample.koedict`](sample.koedict)
+Sample: [`sample.koedict`](sample.koedict)

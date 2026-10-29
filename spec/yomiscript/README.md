@@ -1,64 +1,64 @@
-# YomiScript 発音層 仕様（v0.2 草案）
+# YomiScript Pronunciation Layer Specification (v0.2 draft)
 
-> **YomiScript は KOE-IR の新しい名前です。** 旧仕様は [`../koe-ir/`](../koe-ir/) にそのまま残します（v0.1）。
-> この文書は、YomiScript を **言語に依存しない発音記号（拡張IPA）** として定義し直す草案です。
-> 例のアクセント・声調は説明用で、検証済みの正解ではありません。ライセンス: CC BY 4.0（[`../LICENSE`](../LICENSE)）。
+> **YomiScript is the new name for KOE-IR.** The old specification remains as is in [`../koe-ir/`](../koe-ir/) (v0.1).
+> This document is a draft that redefines YomiScript as a **language-neutral pronunciation notation (extended IPA)**.
+> The accents and tones in the examples are illustrative, not verified ground truth. License: CC BY 4.0 ([`../LICENSE`](../LICENSE)).
 
-## 1. 方針
+## 1. Approach
 
-| 層 | 中身 | 言語依存 |
+| Layer | Contents | Language-dependent |
 |---|---|---|
-| 音素層 | IPA（国際音声記号）そのもの | なし |
-| 韻律層 | IPA拡張: ピッチアクセント・声調・強勢・境界・ポーズ | なし（使う記号の組が言語で変わるだけ） |
-| 読み指定・辞書層 | `{表記|読み}`、`@lexicon`、`[default]`、`[context: …]`、`[sex: …]` | なし（読みはIPAでも、各言語の表示形=カナ等でも書ける） |
-| 表示形（任意） | 日本語ならカナ+JSUT式記号 | あり |
+| Phoneme layer | IPA (International Phonetic Alphabet) itself | No |
+| Prosody layer | IPA extensions: pitch accent, tone, stress, boundaries, pauses | No (only the set of symbols used varies by language) |
+| Reading and lexicon layer | `{表記|読み}`, `@lexicon`, `[default]`, `[context: …]`, `[sex: …]` | No (readings can be written in IPA or in each language's display form, e.g. kana) |
+| Display form (optional) | For Japanese, kana + JSUT-style symbols | Yes |
 
-- **IPAに既にある記号は IPA の意味のまま使う**（ˈ ˌ ː ‖ | ꜜ ꜛ ˥˧˩ など）。足すのは IPA にない TTS 向けの約束だけ。
-- 発音部分は `/…/` で囲む（音素表記、精密表記ではない）。必要なら `[…]` で精密表記も許す。
-- カナは日本語向けの「表示形」。辞書の読みはカナで書いてよく、正規化時に IPA 形へ変換する（変換規則は §4）。
+- **Symbols that already exist in IPA keep their IPA meaning** (ˈ ˌ ː ‖ | ꜜ ꜛ ˥˧˩, etc.). We add only TTS-oriented conventions that IPA lacks.
+- Pronunciations are enclosed in `/…/` (phonemic transcription, not narrow transcription). Narrow transcription in `[…]` is also allowed when needed.
+- Kana is the "display form" for Japanese. Lexicon readings may be written in kana; they are converted to IPA form during normalization (conversion rules in §4).
 
-## 2. 記号一覧
+## 2. Symbol list
 
-### 2.1 音素
-IPA の文字と補助記号をそのまま使う。長音 `ː`、無声化 `◌̥`（例 `ɯ̥`）、口蓋化 `ʲ`、鼻音化 `◌̃`。
-音節区切り `.`（任意。日本語では **拍区切り** として使う）。
+### 2.1 Phonemes
+IPA letters and diacritics are used as is. Length `ː`, devoicing `◌̥` (e.g. `ɯ̥`), palatalization `ʲ`, nasalization `◌̃`.
+Syllable separator `.` (optional; in Japanese it is used as the **mora separator**).
 
-### 2.2 ピッチアクセント（日本語など）
-| 記号 | 意味 | JSUT式 |
+### 2.2 Pitch accent (Japanese, etc.)
+| Symbol | Meaning | JSUT style |
 |---|---|---|
-| `ꜛ` | ピッチ上昇（低→高） | `[` |
-| `ꜜ` | アクセント核（その直前の拍の直後で下がる） | `]` |
-| `[accent: N]` | 核の位置（拍数、0=平板）。辞書項目の条件として | 旧仕様と同じ |
+| `ꜛ` | Pitch rise (low → high) | `[` |
+| `ꜜ` | Accent nucleus (pitch falls right after the preceding mora) | `]` |
+| `[accent: N]` | Nucleus position (in morae, 0 = flat (heiban)). Used as a condition on lexicon entries | Same as the old spec |
 
-`ꜜ` は IPA の downstep 記号で、日本語のアクセント核表記として一般的。
+`ꜜ` is the IPA downstep symbol and is commonly used to mark the Japanese accent nucleus.
 
-### 2.3 声調（中国語など）
-- 正規形は **IPA の声調文字**（Chao 式）を音節末に: `ma˥˥`（1声）`ma˧˥`（2声）`ma˨˩˦`（3声）`ma˥˩`（4声）、軽声は `ma˧` または無印。
-- 入力の簡略形として数字 `ma1…ma5` を許し、`@tones(zh)` 宣言のある文書で正規化する（未決）。
-- 連続変調（3声+3声など）は **基底形を書く** のが原則。実現形を書く場合は `[surface]` 指定（未決）。
+### 2.3 Tone (Chinese, etc.)
+- The canonical form is **IPA tone letters** (Chao style) at the end of the syllable: `ma˥˥` (tone 1) `ma˧˥` (tone 2) `ma˨˩˦` (tone 3) `ma˥˩` (tone 4); the neutral tone is `ma˧` or unmarked.
+- As a shorthand input form, digits `ma1…ma5` are allowed and normalized in documents that declare `@tones(zh)` (undecided).
+- For tone sandhi (tone 3 + tone 3, etc.), the rule is to **write the underlying form**. To write the surface form, specify `[surface]` (undecided).
 
-### 2.4 強勢（英語など）
-IPA どおり `ˈ` 第1強勢、`ˌ` 第2強勢を音節頭に。
+### 2.4 Stress (English, etc.)
+As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syllable.
 
-### 2.5 境界・ポーズ・文末
-| 記号 | 意味 | JSUT式 |
+### 2.5 Boundaries, pauses, sentence end
+| Symbol | Meaning | JSUT style |
 |---|---|---|
-| 空白 | 語境界（任意、読みやすさ用） | — |
-| ` \| ` | アクセント句（韻律語）境界 | `#` |
-| ` ‖ ` | 呼気段落（イントネーション句）境界、ポーズあり | `_` |
-| `<pause:S/M/L>` `<pause:300ms>` | 明示ポーズ（旧仕様を継承） | — |
-| `↘` / `↗` | 文末の下降（平叙）/ 上昇（疑問） | `$` / `?` |
-| 文頭 | 記号なし | `^` |
+| Space | Word boundary (optional, for readability) | — |
+| ` \| ` | Accent phrase (prosodic word) boundary | `#` |
+| ` ‖ ` | Breath group (intonation phrase) boundary, with a pause | `_` |
+| `<pause:S/M/L>` `<pause:300ms>` | Explicit pause (inherited from the old spec) | — |
+| `↘` / `↗` | Sentence-final fall (declarative) / rise (question) | `$` / `?` |
+| Sentence start | No symbol | `^` |
 
-## 3. 読み指定・辞書・文脈条件との関係
+## 3. Relation to readings, lexicon and context conditions
 
-旧 KOE-IR の文法（[`../koe-ir/grammar.md`](../koe-ir/grammar.md)）はそのまま有効。変わるのは `reading` に IPA 形を正式に認めることと、条件 `[sex: …]` の追加。
+The grammar of the old KOE-IR ([`../koe-ir/grammar.md`](../koe-ir/grammar.md)) remains valid as is. What changes is that `reading` officially accepts the IPA form, and the condition `[sex: …]` is added.
 
 ```ebnf
 reading   = kana_with_accent | "/" , ipa_yomiscript , "/" ;
 condition = "[accent:" , int , "]"
           | "[context:" , word , { "," , word } , "]"
-          | "[sex:" , ( "male" | "female" ) , "]"      (* 新規提案 *)
+          | "[sex:" , ( "male" | "female" ) , "]"      (* new proposal *)
           | "[default]" ;
 ```
 
@@ -71,16 +71,16 @@ condition = "[accent:" , int , "]"
 {梨奈|リナ}さん、{read|/ɹɛd/}（過去形）
 ```
 
-- 優先順位は旧仕様どおり：その場の指定 > 辞書（条件一致 > `[default]`）> モデル推定。
-- `[sex: …]` は `[context: …]` より具体的な条件として扱う（両方一致なら `[sex]` を含む項目が勝つ）。現在の `dict/names/given_names.koedict` の `[context: 男性]` `[context: 女性]` は移行期の書き方で、変換時に `[sex: male|female]` へ置き換える。
-- MoLD のメモリに入る辞書も、この形式（`.koedict`）だけ。
+- Precedence is the same as in the old spec: inline specification > lexicon (matching condition > `[default]`) > model prediction.
+- `[sex: …]` is treated as a more specific condition than `[context: …]` (if both match, the entry containing `[sex]` wins). The `[context: 男性]` `[context: 女性]` in the current `dict/names/given_names.koedict` is a transitional notation and will be replaced with `[sex: male|female]` during conversion.
+- The only format for lexicons that go into MoLD's Memory is this one (`.koedict`).
 
-## 4. 日本語: Yomi 出力 → YomiScript 変換
+## 4. Japanese: converting Yomi output → YomiScript
 
-Yomi は現在 JSUT 式（`^ミ[ズヲ#マ[レ]ーシア…$`）を出す。参照実装 [`tools/yomiscript/kana2ipa.py`](../../tools/yomiscript/kana2ipa.py) で変換する。
+Yomi currently outputs JSUT style (`^ミ[ズヲ#マ[レ]ーシア…$`). It is converted with the reference implementation [`tools/yomiscript/kana2ipa.py`](../../tools/yomiscript/kana2ipa.py).
 
-### 4.1 拍 → IPA（主要部）
-| 行 | ア段 | イ段 | ウ段 | エ段 | オ段 | 拗音（ャュョ） |
+### 4.1 Mora → IPA (main part)
+| Row | a-column | i-column | u-column | e-column | o-column | Contracted (ャュョ) |
 |---|---|---|---|---|---|---|
 | ア | a | i | ɯ | e | o | |
 | カ/ガ | ka/ɡa | ki/ɡi | kɯ/ɡɯ | ke/ɡe | ko/ɡo | kʲa kʲɯ kʲo / ɡʲ… |
@@ -92,20 +92,20 @@ Yomi は現在 JSUT 式（`^ミ[ズヲ#マ[レ]ーシア…$`）を出す。参�
 | ヤ・ワ | ja / wa | | jɯ | | jo / ヲ=o | |
 | ラ | ɾa | ɾi | ɾɯ | ɾe | ɾo | ɾʲa… |
 
-外来音: ティ ti、ディ di、トゥ tɯ、ファ ɸa、フィ ɸi、ウィ wi、ウェ we、ウォ wo、ツァ tsa、ヴァ va、テュ tʲɯ など。
-ザ行は語中で摩擦音 [z] になることが多いが、音素表記では `dz` / `dʑ` に統一（未決: 語頭・語中で分けるか）。
+Loanword sounds: ティ ti, ディ di, トゥ tɯ, ファ ɸa, フィ ɸi, ウィ wi, ウェ we, ウォ wo, ツァ tsa, ヴァ va, テュ tʲɯ, etc.
+The ザ row is often realized as the fricative [z] word-medially, but the phonemic transcription uses `dz` / `dʑ` throughout (undecided: whether to distinguish word-initial and word-medial).
 
-### 4.2 特殊拍
-| 拍 | 規則 | 例 |
+### 4.2 Special morae
+| Mora | Rule | Example |
 |---|---|---|
-| ッ（促音） | 次の子音を重ねる。tɕ/ts の前は `t`。母音・文末の前は `ʔ` | キッテ /kitte/、マッチ /mattɕi/、アッ /aʔ/ |
-| ン（撥音） | 両唇音前 `m`、歯茎音（t d n ɾ dz）前 `n`、硬口蓋（tɕ dʑ ɲ）前 `ɲ`、軟口蓋前 `ŋ`、母音・半母音・摩擦音・文末 `ɴ`（実際は鼻母音） | サンポ /sampo/、テンキ /teŋki/、ホンヤ /hoɴja/ |
-| ー（長音） | 直前の母音に `ː` | トーキョー /toːkʲoː/ |
-| 母音の無声化 | **任意**（`--devoice`）。無声子音に挟まれた i・ɯ、文末の「ス」の ɯ に `◌̥` | デス /desɯ̥/、キシャ /ki̥ɕa/ |
+| ッ (geminate) | Double the following consonant. Before tɕ/ts, use `t`. Before a vowel or at sentence end, `ʔ` | キッテ /kitte/, マッチ /mattɕi/, アッ /aʔ/ |
+| ン (moraic nasal) | `m` before bilabials, `n` before alveolars (t d n ɾ dz), `ɲ` before palatals (tɕ dʑ ɲ), `ŋ` before velars, `ɴ` before vowels, semivowels, fricatives and at sentence end (actually a nasal vowel) | サンポ /sampo/, テンキ /teŋki/, ホンヤ /hoɴja/ |
+| ー (long vowel) | `ː` on the preceding vowel | トーキョー /toːkʲoː/ |
+| Vowel devoicing | **Optional** (`--devoice`). `◌̥` on i and ɯ between voiceless consonants, and on the ɯ of sentence-final 「ス」 | デス /desɯ̥/, キシャ /ki̥ɕa/ |
 
-拍区切りを残したいときは `--mora` で `.` を入れる（長音 `ː` は直前の拍にくっつける）: `/toꜜː.kʲoː/`。
+To keep mora separators, use `--mora` to insert `.` (the long-vowel `ː` attaches to the preceding mora): `/toꜜː.kʲoː/`.
 
-### 4.3 変換例（eval/data/jsut_basic5000_subset.jsonl より、`--devoice`）
+### 4.3 Conversion examples (from eval/data/jsut_basic5000_subset.jsonl, `--devoice`)
 ```
 水をマレーシアから買わなくてはならないのです。
 ^ミ[ズヲ#マ[レ]ーシアカラ#カ[ワナ]クテワ#ナ[ラ]ナイノデス$
@@ -115,9 +115,9 @@ Yomi は現在 JSUT 式（`^ミ[ズヲ#マ[レ]ーシア…$`）を出す。参�
 ^キ[マエノヨ]イ#ソ[ノ#シ[カ]イワ_オ[ヨソ#ニ[ジューオ]クエンヲ_ジ[ゼンジ]ギョーニ#キ]フシタ$
 /kiꜛmaenojoꜜi | soꜛno | ɕi̥ꜛkaꜜiwa ‖ oꜛjoso | ɲiꜛdʑɯːoꜜkɯeɴo ‖ dʑiꜛdzeɲdʑiꜜɡʲoːɲi | ki̥ꜜɸɯ̥ɕi̥ta ↘/
 ```
-（既知の限界: 簡易規則なので「歯科」の ɕi̥ꜛ のようにアクセント上の位置と無声化が同時につく。実際の無声化は核の位置とも関係する。）
+(Known limitation: because the rules are simple, an accent mark and devoicing can land on the same position, as in ɕi̥ꜛ of 「歯科」. Actual devoicing also depends on the nucleus position.)
 
-## 5. 他言語の例
+## 5. Examples in other languages
 
 ```text
 #yomiscript 0.2 lang=en-US
@@ -125,17 +125,17 @@ I read the book yesterday.
 /ˈaɪ ˈɹɛd ðə ˈbʊk | ˈjɛstɚˌdeɪ ↘/
 
 #yomiscript 0.2 lang=zh-CN
-你好吗？          /ni˨˩˦ xaʊ˨˩˦ | ma ↗/        （基底形。実現形は ni˧˥ xaʊ˨˩˦）
+你好吗？          /ni˨˩˦ xaʊ˨˩˦ | ma ↗/        (underlying form; surface form is ni˧˥ xaʊ˨˩˦)
 妈妈骂马。        /ma˥˥ ma | ma˥˩ ma˨˩˦ ↘/
 
 #yomiscript 0.2 lang=ja-JP
 今日は良い天気です。 /kʲoꜜːwa | joꜜi | teꜛŋkidesɯ ↘/
 ```
 
-## 6. 未解決の点（ユーザーに確認）
-1. 声調の正規形: IPA声調文字（˥˩）か数字（ma3）か。案は「正規形=声調文字、入力は数字も可」。
-2. 日本語の正規形に拍区切り `.` を必須にするか（モデル学習・アクセント位置の数えやすさでは有利）。
-3. 無声化・ザ行の摩擦音化など **異音をどこまで YomiScript に書くか**（案: 音素形を正、異音はバックエンド任せ、任意フラグで出力可）。
-4. ヘッダを `#yomiscript` に変えるか、`#koe-ir` も互換で受け付けるか。
-5. `[sex: …]` の値に `neutral`/未指定以外を設けるか。
-6. 旧 `spec/koe-ir/` の他の箇所（スタイルタグ等）も `spec/yomiscript/` へ移すか。
+## 6. Open questions (to confirm with the user)
+1. Canonical form for tones: IPA tone letters (˥˩) or digits (ma3)? Proposal: "canonical form = tone letters; digits also accepted as input".
+2. Whether to make the mora separator `.` mandatory in the Japanese canonical form (advantageous for model training and for counting accent positions).
+3. **How much allophony to write in YomiScript**, such as devoicing and fricativization of the ザ row (proposal: the phonemic form is canonical, allophones are left to the backend, with an optional flag to output them).
+4. Whether to change the header to `#yomiscript`, or also accept `#koe-ir` for compatibility.
+5. Whether `[sex: …]` should have values other than `neutral`/unspecified.
+6. Whether to move the other parts of the old `spec/koe-ir/` (style tags, etc.) to `spec/yomiscript/` as well.

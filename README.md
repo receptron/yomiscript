@@ -1,42 +1,77 @@
 # mulmovoice
 
-> **English summary:** mulmovoice is an open, Japanese-first speech front-end project. It defines **KOE-IR**, an open timbre-free intermediate language for TTS (readings, pitch accent, prosody, style tags, dictionaries). It also builds **Yomi-0**, a tiny, fast Japanese text-to-reading/pitch-accent model for Apple Silicon, and **MoLD**, shared weights plus swappable per-language/dialect neural memory. Plugin backends connect KOE-IR to any TTS engine. Status: early design (v0.1 draft).
+mulmovoice is an open speech front-end built around **YomiScript**, a language-neutral DSL for pronunciation and prosody. YomiScript sits between language-specific text analysis and voice generation, so the two can be developed, swapped and improved independently.
 
-## ビジョン
+Status: early design. The YomiScript spec is a v0.2 draft and all syntax may change.
 
-日本語の音声合成で「誤読」と「アクセントの崩れ」をなくし、どのTTSエンジンでも同じ書き方で読み・アクセント・話し方を指定できるようにします。小さな改善でも、多くの人の役に立つことを目指します。まず日本語から始め、その後ほかの言語へ広げます。
+## Architecture
 
-## 構成要素
+```
+ language-specific analysis        language-neutral hub          voice generation
+ ──────────────────────────        ────────────────────          ────────────────
+ ja: Yomi-0 + MoLD memories ──┐                                ┌── Kokoro-82M (reference)
+ en, zh, fr, … analyzers    ──┼──►        YomiScript        ───┼── backend plugins
+ dictionaries (.koedict)    ──┤    phonemes, accent, tone,     └── …
+ hand-written by people     ──┘    stress, boundaries,
+                                   language tags, lexicons
+```
 
-| 名前 | 役割 | 場所 |
+- **Analysis** (text → YomiScript) is the only language-specific part: resolving readings, homographs, names, numbers and prosody for one language.
+- **YomiScript** describes *how the text should be pronounced*, independent of any voice or engine. It is prescriptive: whoever writes it — a model, a dictionary or a person — decides the pronunciation, and the engine follows it.
+- **Voice generation** (YomiScript → audio) needs no language-specific text analysis. A backend only has to render phonemes and prosody.
+
+Adding a language means adding an analyzer (or writing YomiScript by hand). Adding a TTS engine means adding a backend. Neither changes the other.
+
+## YomiScript
+
+- **Phonemes** are plain IPA.
+- **Prosody** uses IPA's own marks wherever they exist: pitch accent (`ꜛ` `ꜜ`), Chao tone letters (`˥˧˩`), stress (`ˈ` `ˌ`), length, boundaries and pauses. Languages differ only in which marks they use.
+- **Language tags** (BCP 47) apply to a whole utterance (`^en-US|…$`) or to a span inside it (`{ja|…}`), so code-switching is native. Dialects use the same mechanism (e.g. `ja-x-osaka`).
+- **Readings and lexicons**: inline readings `{text|reading}`, `@lexicon` / `@import` of `.koedict` dictionaries, with `[context: …]` and `[default]` entries.
+- **Display forms** are optional per-language conveniences (e.g. kana with JSUT-style accent marks for Japanese) that normalize to the IPA form.
+
+Example — an English sentence with Japanese names:
+
+```
+^en-US|maɪ ˈfɹɛnd {ja|タ[ナカ} ˈlɪvz ɪn {ja|ト[ーキョー}$
+```
+
+Reading priority: **inline `{text|reading}` > dictionary entry matching the context > `[default]` entry > model inference** ([D1, D13](docs/decisions.md)).
+
+Spec: [`spec/yomiscript/`](spec/yomiscript/) (language tags: [`langtags.md`](spec/yomiscript/langtags.md)). The earlier KOE-IR v0.1 draft is kept in [`spec/koe-ir/`](spec/koe-ir/).
+
+## Components
+
+| Component | Role | Location |
 |---|---|---|
-| **KOE-IR** | 声色を含まないTTS用のオープン中間言語。読み `{表記\|読み}`、アクセント、韻律、スタイルタグ（`[whisper]`、`(笑いながら)` など）、辞書（`@lexicon` / `@import` する `.koedict`）を扱う | [`spec/koe-ir/`](spec/koe-ir/) |
-| **辞書 (.koedict)** | 人が読み書きできる読み・アクセント・方言・文脈条件の辞書 | [`dict/`](dict/) |
-| **Yomi-0** | 日本語のテキストを読み（音素）とアクセントに変換する、小型で密なモデル。Mac（MLX, llama.cpp）で高速に動く | [`models/yomi/`](models/yomi/) |
-| **MoLD** | Mixture of Language-specific Dictionaries。共有の重みと、言語・方言ごとに差し替えられるメモリ。辞書は学習なしでメモリにコンパイルできる | [`mold/`](mold/) |
-| **バックエンドプラグイン** | KOE-IRを各TTSエンジン・各社の形式へ変換するプラグイン（名前は未定） | [`plugins/`](plugins/) |
+| **YomiScript** | The language-neutral pronunciation and prosody DSL at the center of the architecture | [`spec/yomiscript/`](spec/yomiscript/) |
+| **Dictionaries (.koedict)** | Human-readable lexicons of readings, accents, dialects and context conditions | [`dict/`](dict/) |
+| **Yomi-0** | Japanese analyzer: a small dense model (MLX) that produces readings, pitch accent and phrase boundaries | [`models/yomi/`](models/yomi/) |
+| **MoLD** | Mixture of Language-specific Dictionaries: shared weights plus a swappable memory per language or dialect; dictionaries compile into memory without training | [`mold/`](mold/) |
+| **Kokoro reference backend** | Synthesizes speech from YomiScript with Kokoro-82M, bypassing its own text analysis; builds F0 from accent/tone marks where appropriate; handles mixed-language utterances | [`tts/kokoro_ys/`](tts/kokoro_ys/) |
+| **Browser demo** | YomiScript → speech entirely in the browser (onnxruntime-web) | [`demo/ys_web/`](demo/ys_web/) |
+| **Backend plugins** | Adapters from YomiScript to other TTS engines and vendor formats (name TBD) | [`plugins/`](plugins/) |
+| **Evaluation** | Benchmarks against baselines (e.g. pyopenjtalk on JSUT) | [`eval/`](eval/) |
 
-読みの優先順位：**その場での指定 `{表記|読み}` > 文脈条件に合う辞書項目 > `[default]` 項目 > モデルによる推定**（[D1](docs/decisions.md)・[D13](docs/decisions.md)）。
+### Why so much Japanese?
 
-## 用語（D9）
+Japanese is the hardest case for the analysis side, not the focus of the project. Kanji readings are highly ambiguous (homographs, personal and place names), and pitch accent is not written in the text at all. Most of the modeling work so far (Yomi-0, the name and place-name memories, MoLD) is therefore the Japanese analyzer. The YomiScript layer and the backends are designed for every language from the start; the reference backend already handles English, French and Chinese.
 
-- **辞書 (Lexicon)**：KOE-IRの言語側にある、人が読める `.koedict` / `@lexicon`。
-- **メモリ (Memory)**：学習・推論で参照されるニューラルネット内部のキー・バリュー型メモリ。
-- **書き込み (Memory write)**：辞書の内容をメモリへ読み込むこと。
-- 「記憶」という語は使いません。機器のRAMは「ユニファイドメモリ」「RAM使用量」と書いて区別します。
+## Terminology (D9)
 
-## ドキュメント
+- **Lexicon**: the human-readable `.koedict` / `@lexicon` dictionaries on the language side.
+- **Memory**: a key–value memory inside a neural network, used in training and inference.
+- **Memory write**: loading a lexicon's contents into a memory.
+- Device RAM is always qualified ("unified memory", "RAM usage") to keep it distinct from Memory.
 
-- [決定事項 D1–D13](docs/decisions.md)
-- [仮説 H0–H12](docs/hypotheses.md)
-- [貢献ガイド](CONTRIBUTING.md)
+## Documents
 
-## 状況
+- [Decisions D1–D13](docs/decisions.md)
+- [Hypotheses H0–H12](docs/hypotheses.md)
+- [Contributing](CONTRIBUTING.md)
 
-設計の初期段階です（KOE-IR v0.1 草案）。構文はすべて草案で、変わる可能性があります。ロードマップは Issues を見てください。
+## License
 
-## ライセンス
-
-- コード：Apache License 2.0（[`LICENSE`](LICENSE)）
-- 仕様（`spec/` 以下）：CC BY 4.0（[`spec/LICENSE`](spec/LICENSE)）
-- 辞書や学習データは、それぞれのライセンスに従います（各ファイルに明記します）。
+- Code: Apache License 2.0 ([`LICENSE`](LICENSE))
+- Specifications (under `spec/`): CC BY 4.0 ([`spec/LICENSE`](spec/LICENSE))
+- Dictionaries and training data follow their own licenses, stated in each file.

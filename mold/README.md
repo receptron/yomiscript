@@ -1,24 +1,24 @@
-# MoLD（Mixture of Language-specific Dictionaries、仮称）
+# MoLD (Mixture of Language-specific Dictionaries, working name)
 
-言語に依存しない**共有の重み**と、言語・方言ごとに差し替えられる**メモリ (Memory)** を組み合わせる設計です（D10・D11）。実行時に読み込むのは共有の重みと、いま使う1つのメモリだけです。そのため、対応言語が増えてもRAM使用量はほぼ増えない見込みです（推定、H11で検証）。
+A design that combines language-neutral **shared weights** with a **Memory** that can be swapped per language or dialect (D10, D11). At run time, only the shared weights and the one Memory currently in use are loaded. As a result, RAM usage is expected to barely grow as supported languages are added (estimate, to be tested in H11).
 
-## 辞書のメモリへのコンパイル（H12）
+## Compiling lexicons into Memory (H12)
 
-- 辞書 (Lexicon) の内容は、**学習なし・決定的・数秒で**メモリに書き込めます（書き込み = コンパイル）。
-- キー：各項目（表記、任意で品詞・文脈の特徴）を共有エンコーダに通して計算します。`[context: …]` もキーに含め、`[default]` は文脈なしのキーにします。
-- バリュー：事前学習済みの読み・アクセントの埋め込みを引きます。
-- 前提：事前学習で「メモリのバリューに従う」ようにモデルを訓練しておきます。
-- 検証：コンパイル済みメモリの適合テスト（各項目が辞書どおりに読まれるか）を自動で回します。
+- The contents of a lexicon can be written into Memory **without training, deterministically, in seconds** (memory write = compilation).
+- Keys: computed by passing each entry (surface form, optionally part-of-speech and context features) through the shared encoder. `[context: …]` is also included in the key, and `[default]` becomes a context-free key.
+- Values: looked up from pre-trained reading and accent embeddings.
+- Prerequisite: during pre-training, the model is trained to "follow the Memory values".
+- Verification: conformance tests on the compiled Memory (whether each entry is read as in the lexicon) run automatically.
 
-## 推論モード（D12）
+## Inference modes (D12)
 
-1. **固定モード**：`@dialect` や言語指定でメモリを1つだけ選びます。RAMが最小で、動作が予測しやすいモードです。
-2. **自動モード**：軽量な判定器が文単位でメモリを選んで切り替えます。
+1. **Fixed mode**: selects a single Memory via `@dialect` or a language specification. Minimal RAM and predictable behavior.
+2. **Auto mode**: a lightweight classifier selects and switches Memory per sentence.
 
-明示的な指定は自動判定より優先します。よく使うメモリはRAMに常駐させます。
+Explicit specification takes precedence over automatic selection. Frequently used Memories stay resident in RAM.
 
-## MoEとの違い
+## Difference from MoE
 
-MoEは学習した経路選択（ルーター）で専門家を選び、すべての専門家をRAMに載せます。MoLDは言語・方言で明示的にメモリを選び、使う分だけを読み込みます。言語を追加するときも、共有の重みは固定したまま、新しいメモリだけを足す想定です。
+MoE selects experts with learned routing (a router) and loads all experts into RAM. MoLD selects a Memory explicitly by language or dialect and loads only what is used. When adding a language, the plan is to keep the shared weights frozen and only add a new Memory.
 
-名前について：略語「MoLD」は画像検出の論文と重なりますが、正式名称は重なっていません（D11の注記）。
+About the name: the abbreviation "MoLD" overlaps with an image-detection paper, but the full name does not (note in D11).
