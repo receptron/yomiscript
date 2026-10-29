@@ -192,8 +192,10 @@ export function join(P){
 // ---- ONNX engine
 export class Engine{
   constructor(ort,loadBytes){this.ort=ort;this.load=loadBytes;this.V={};}
-  async init(model='fp32'){
-    const o=this.ort;const mk=async n=>o.InferenceSession.create(await this.load(`models/${n}.onnx`),{executionProviders:['wasm']});
+  // opts: {suffix:{enc:'',f0n:'',dec:''}, ep:'wasm'|'webgpu'}
+  async init(opts={}){
+    const o=this.ort,sf=opts.suffix||{},ep=opts.ep||'wasm';
+    const mk=async n=>o.InferenceSession.create(await this.load(`models/${n}${sf[n]||''}.onnx`),{executionProviders:ep==='webgpu'?['webgpu','wasm']:['wasm']});
     [this.enc,this.f0n,this.dec]=[await mk('enc'),await mk('f0n'),await mk('dec')];
   }
   async voice(name){

@@ -3,15 +3,18 @@
 <h2>YomiScript → Kokoro (browser)</h2>
 <select id=p></select> <button id=go disabled>Play</button> <span id=st>loading models…</span>
 <textarea id=t></textarea><audio id=a controls></audio>
-<script src="ort/ort.min.js"></script>
+<script src="ort/ort.webgpu.min.js"></script>
 <script type=module>
 import * as Y from './ys.js';
-ort.env.wasm.wasmPaths=new URL('ort/',location.href).href;ort.env.wasm.numThreads=crossOriginIsolated?Math.min(4,navigator.hardwareConcurrency||1):1;
+ort.env.wasm.wasmPaths=new URL('ort/',location.href).href;ort.env.wasm.numThreads=crossOriginIsolated?(+new URLSearchParams(location.search).get('t')||Math.min(4,navigator.hardwareConcurrency||1)):1;
 Y.setData(await (await fetch('data.json')).json());
 const P=await (await fetch('presets.json')).json(),sel=document.getElementById('p'),t=document.getElementById('t'),st=document.getElementById('st'),go=document.getElementById('go');
 P.forEach(x=>sel.add(new Option(x.name,x.ys)));sel.onchange=()=>t.value=sel.value;t.value=P[0].ys;
 const E=new Y.Engine(ort,async p=>{const b=await (await fetch(p)).arrayBuffer();return p.endsWith('.bin')?b:new Uint8Array(b)});
-await E.init();st.textContent='ready';go.disabled=false;
+const Q=new URLSearchParams(location.search),M=Q.get('m')||'w16',EP=Q.get('ep')||'wasm';
+const SUF={fp32:{},w16:{enc:'_w16',f0n:'_w16',dec:'_w16'},i8:{dec:'_i8gemm'},c16:{enc:'_w16',f0n:'_w16',dec:'_c16'}}[M];
+if(EP==='webgpu'&&!navigator.gpu)throw st.textContent='webgpu unavailable';
+await E.init({suffix:SUF,ep:EP});st.textContent='ready';window.__info={M,EP,threads:ort.env.wasm.numThreads,coi:crossOriginIsolated};go.disabled=false;
 go.onclick=async()=>{go.disabled=true;st.textContent='synthesizing…';const t0=performance.now();
  try{const {audio}=await E.synth(t.value);const u=URL.createObjectURL(new Blob([Y.wav(audio)],{type:'audio/wav'}));
  const a=document.getElementById('a');a.src=u;a.play().catch(()=>{});st.textContent=`done ${(audio.length/24000).toFixed(2)}s audio in ${((performance.now()-t0)/1000).toFixed(1)}s`;window.__len=audio.length}
