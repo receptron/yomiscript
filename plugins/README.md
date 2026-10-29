@@ -2,18 +2,10 @@
 
 Plugins that convert YomiScript into TTS engines or each vendor's input format. The name is undecided; for now they are called "YomiScript backend plugins" (D6).
 
-## Proposed interface
+## Reference implementation
 
-```text
-interface KoeBackend {
-  name: string
-  capabilities(): { styles: string[], ipa: bool, lexicon: "pls" | "inline" | "none", accent: bool }
-  render(ir: KoeIR, options) -> Audio | VendorRequest
-}
-```
+The Kokoro-82M backend in [`tts/kokoro_ys/`](../tts/kokoro_ys/) (and the browser demo in [`demo/ys_web/`](../demo/ys_web/)) is the reference implementation of a backend. New backends should follow its behavior.
 
-- **capabilities**: declares the supported styles, the method of reading specification and the lexicon format.
-- **render**: converts YomiScript into audio or into each vendor's request (SSML, etc.).
 - Unsupported styles fall back to the fallback behavior defined in the spec (ignore, or a close tag), with a warning.
 
 ## Conversion examples
