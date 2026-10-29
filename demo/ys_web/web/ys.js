@@ -1,56 +1,21 @@
-// YomiScript -> Kokoro (split ONNX: enc / f0n / dec) — JS port of prosody_v4.py + mix.py + osaka.py (reference implementation)
+// Katarite (Kokoro-82M, split ONNX: enc / f0n / dec). Renders YomiScript; pitch comes only from <f0:…> values.
+// Accent / stress / tone marks are not interpreted here (the Yomite turns them into values, see yomite.js).
+// What stays here is engine-specific: YomiScript IPA -> Kokoro's phoneme symbols, voices, F0 rendering, audio.
+import {parse,isJa} from './yomiscript.js';
 export const SR=24000, BLEND=0.2;
 export const VOICE={'ja':'jf_alpha','ja-x-osaka':'jf_alpha','en-US':'af_heart','en-GB':'bf_emma','en':'af_heart','fr':'ff_siwis','zh':'zf_xiaoxiao'};
-let VOCAB=null,HEP=null;
-export function setData(d){VOCAB=d.vocab;HEP=d.hepburn;}
-const SMALL=new Set('ャュョァィゥェォ'),SUTE=new Set('ゃゅょぁぃぅぇぉ');
-const VL_DEFAULT=['k','s','ɕ','t','ʨ','ʦ','h','ç','ɸ','p'];
+let VOCAB=null;
+export function setData(d){VOCAB=d.vocab;}
 const VOW='AIOQWYaeiouæɑɒɔəɚɛɜɪʊʌᵊɐøœɔ̃';
-const inStr=(ch,s)=>s.includes(ch); // python `ch in s` (substring semantics)
-const k2h=s=>[...s].map(c=>(c>='ァ'&&c<='ヶ')?String.fromCharCode(c.charCodeAt(0)-0x60):c).join('');
-function jmap(pk,kk,nk){
-  const T=HEP;
-  if(pk&&(pk+kk) in T)return T[pk+kk];
-  if(nk&&(kk+nk) in T)return '';
-  if(nk&&SUTE.has(nk))return kk==='っ'?'':T[kk].slice(0,-1)+T[nk];
-  if(SUTE.has(kk))return '';
-  if(kk==='ー')return 'ː';
-  if(kk==='っ')return 'ʔ';
-  if(kk==='ん'){const t=T[nk];
-    if(t){if(inStr(t[0],'mpb'))return 'm';if(inStr(t[0],'kɡ'))return 'ŋ';if(/^[ɲʨʥ]/.test(t))return 'ɲ';if(inStr(t[0],'ntdɾz'))return 'n';}
-    return 'ɴ';}
-  return T[kk]??'';
+function jaKokoro(on,v){
+  // canonical Japanese YomiScript IPA -> the phoneme symbols Kokoro was trained on
+  on=on.replace('tɕ','ʨ').replace('dʑ','ʥ').replace('ts','ʦ').replace('w','β');if(on==='dz'||on==='ʣ')on='ʣ';
+  if(v==='i'&&/^[kɡbpmɾvɸtdʦ]$/.test(on))on+='ʲ';
+  if(v==='ɯ'&&(/ʲ$/.test(on)||/^[ɕʥʨçsʦɲ]$/.test(on)))v='ɨ';
+  if(v==='ɯ'&&on==='ʣ'){on='z';v='ɨ';}
+  return on+v;
 }
 const FOREIGN_JA={'ɨ':'u','ɕ':'ʃ','ʑ':'ʒ','ʨ':'ʧ','ʥ':'ʤ'};
-function jaUnits(body,end,opt={}){
-  const VL=opt.VL??VL_DEFAULT;const U=[];let ph=0;
-  for(const chunk of body.split(/([#_])/)){
-    if(chunk===''||chunk==='#'||chunk==='_'){if(chunk==='_')U.push([', ',null,ph]);ph++;continue;}
-    let state=chunk.includes('[')?'L':'H';const moras=[],marks=[];
-    for(const c of chunk){
-      if(c==='['||c===']'){marks.push([moras.length-1,c]);continue;}
-      if(SMALL.has(c)&&moras.length)moras[moras.length-1]+=c;else moras.push(c);
-    }
-    const rise=new Set(marks.filter(m=>m[1]==='[').map(m=>m[0])),fall=new Set(marks.filter(m=>m[1]===']').map(m=>m[0]));
-    const h=[...k2h(moras.join(''))];const mi=[];moras.forEach((m,k)=>{for(const _ of m)mi.push(k);});
-    const ps=moras.map(()=>'');
-    h.forEach((c,i)=>{ps[mi[i]]+=jmap(i?h[i-1]:null,c,i+1<h.length?h[i+1]:null);});
-    let hk=0;
-    ps.forEach((p0,k)=>{
-      let p=p0;let v;
-      if(state==='H'){v=2.5-0.45*hk;hk++;}else v=(k===0)?-2.0:-2.5-0.3*hk;
-      const nxt=k+1<ps.length?ps[k+1]:'';
-      const sw=(s)=>VL.some(x=>s.startsWith(x));
-      const last=p.slice(-1);
-      const dev=(last!==''&&['i','ɯ','ɨ'].includes(last))&&sw(p)&&(sw(nxt)||(k===ps.length-1&&end==='$'&&(p==='sɯ'||p==='sɨ')));
-      if(opt.foreign)p=[...p].map(c=>FOREIGN_JA[c]??c).join('');
-      U.push([p,dev?null:[v],ph]);
-      if(rise.has(k))state='H';if(fall.has(k))state='L';
-    });
-  }
-  return U;
-}
-const TC={'1':[3,3],'2':[-1,3.5],'3':[-3,-4.5,-3],'4':[4,-3],'5':null};
 const INI=[['zh','ʈʂ'],['ch','ʈʂʰ'],['sh','ʂ'],['b','p'],['p','pʰ'],['m','m'],['f','f'],['d','t'],['t','tʰ'],['n','n'],['l','l'],['g','k'],['k','kʰ'],['h','x'],['j','ʨ'],['q','ʨʰ'],['x','ɕ'],['r','ɻ'],['z','ʦ'],['c','ʦʰ'],['s','s'],['y',''],['w','']];
 const FIN={'a':'a','o':'wo','e':'ɤ','ai':'aI','ei':'eI','ao':'aʊ','ou':'oʊ','an':'an','en':'ən','ang':'aŋ','eng':'əŋ','ong':'ʊŋ','er':'ɚ','i':'i','ia':'ja','ie':'je','iao':'jaʊ','iu':'joʊ','ian':'jɛn','in':'in','iang':'jaŋ','ing':'iŋ','iong':'jʊŋ','u':'u','ua':'wa','uo':'wo','uai':'waI','ui':'weI','uan':'wan','un':'wən','uang':'waŋ','v':'y','ue':'ɥe','ve':'ɥe','uan_j':'ɥɛn','un_j':'yn'};
 const TONE={'1':'→','2':'↗','3':'↓','4':'↘','5':''};
@@ -64,15 +29,6 @@ function zsyl(syl){
   let fi;if(f==='i'&&['z','c','s'].includes(ini))fi='ɹ';else if(f==='i'&&['zh','ch','sh','r'].includes(ini))fi='ɻ';else fi=FIN[f]??f;
   return ip+fi+TONE[t];
 }
-function zhUnits(body){
-  const U=[];let ph=0;
-  for(const w of body.split(' ')){
-    if(w==='#'||w==='_'){if(w==='_')U.push([', ',null,ph]);ph++;continue;}
-    if(U.length&&U[U.length-1][0]!==', ')U.push([' ',null,ph]);
-    for(const s of w.split('.')){const t=s.match(/^[a-zü]+(\d)(?:>(\d))?/);const tt=t[2]||t[1];U.push([zsyl(s),TC[tt]?[...TC[tt]]:null,ph]);}
-  }
-  return U;
-}
 const VOWRE=new RegExp('['+VOW+']');
 function enSyl(x,gb){
   for(const [a,b] of [['tʃ','ʧ'],['dʒ','ʤ'],['eɪ','A'],['aɪ','I'],['aʊ','W'],['ɔɪ','Y'],['oʊ','O'],['əʊ','Q'],['r','ɹ'],['l̩','ᵊl'],['x','k']])x=x.split(a).join(b);
@@ -80,68 +36,32 @@ function enSyl(x,gb){
   let st='';
   if(x[0]==='ˈ'||x[0]==='ˌ'){st=x[0];x=x.slice(1);}
   if(st){const m=x.match(VOWRE);x=m?x.slice(0,m.index)+st+x.slice(m.index):st+x;}
-  return [x,st];
+  return x;
 }
-function eufrUnits(lang,body,end,opt={}){
-  const U=[];let ph=0;const gb=lang==='en-GB';
-  for(const w of body.split(' ')){
-    if(w==='#'||w==='_'){
-      for(let j=U.length-1;j>=0;j--)if(U[j][1]!==null){U[j]=[U[j][0],[...U[j][1],2.5],U[j][2]];break;}
-      if(w==='_')U.push([', ',null,ph]);ph++;continue;
-    }
-    if(U.length&&U[U.length-1][0]!==', ')U.push([' ',null,ph]);
-    const syls=w.split('‿').join('').split('.');
-    syls.forEach((s,j)=>{
-      let p,st;
-      if(lang==='fr'){p=s;st='';}
-      else{[p,st]=enSyl(s,gb);
-        if(!gb&&!opt.noflap&&j>0&&inStr(p.slice(0,1),'td')&&p.length>1&&inStr(p[1],VOW)&&U.length&&inStr(U[U.length-1][0].slice(-1),VOW+'ɹ'))p='ɾ'+p.slice(1);}
-      const c=lang==='fr'?(j===syls.length-1?[0.5]:[-0.5]):({'ˈ':[3.0,1.0],'ˌ':[1.0]}[st]??[-1.5]);
-      U.push([p,c,ph]);
-    });
-  }
-  for(let j=U.length-1;j>=0;j--)if(U[j][1]!==null){U[j]=[U[j][0],end==='$'?[U[j][1][0],-5]:[U[j][1][0],6],U[j][2]];break;}
-  return U;
+function kokoroPhonemes(lang,t,foreign){
+  if(t.kind==='space')return ' ';if(t.kind==='pause')return ', ';if(t.kind==='end')return t.sym;
+  if(isJa(lang)){const p=t.mk==='mora'?jaKokoro(t.on,t.v):t.mk==='Q'?'ʔ':t.ipa;return foreign?[...p].map(c=>FOREIGN_JA[c]??c).join(''):p;}
+  if(lang==='zh')return zsyl(t.raw);
+  if(lang==='fr')return t.raw;
+  return enSyl(t.raw,lang==='en-GB');
 }
-// one YomiScript utterance (no inline sections) -> units
-export function units(ys,opt={}){
-  const m=ys.match(/^\^(?:(ja-x-osaka|en-US|en-GB|en|fr|zh)\|)?(.*)([$?])$/s);
-  if(!m)throw new Error('YomiScript must look like ^[lang|]...$ or ...?');
-  const lang=m[1]||'ja',body=m[2],end=m[3];let U;
-  if(lang==='ja')U=jaUnits(body,end,opt);
-  else if(lang==='ja-x-osaka'){U=jaUnits(body.split('=').join(''),end,{...opt,VL:[]});U=U.map(([p,c,ph])=>[p,c===null?null:[c[0]<0?c[0]:2.5-(2.5-c[0])/3],ph]);}
-  else if(lang==='zh')U=zhUnits(body);
-  else U=eufrUnits(lang,body,end,opt);
-  return [lang,[...U,[end==='?'?'?':'.',null,U.length?U[U.length-1][2]:0]]];
-}
-const TAG=/\{(ja|en-US|en-GB|fr|zh)\|([^{}]*)\}/g;
-const strip=(s,ch)=>{let a=0,b=s.length;while(a<b&&ch.includes(s[a]))a++;while(b>a&&ch.includes(s[b-1]))b--;return s.slice(a,b);};
-export function segs(ys){
-  ys=ys.trim();
-  const m=ys.match(/^\^(?:(ja-x-osaka|en-US|en-GB|fr|zh)\|)?(.*)([$?])$/s);
-  if(!m)throw new Error('YomiScript must look like ^[lang|]...$ or ...?');
-  const top=m[1]||'ja',b=m[2],end=m[3];const S=[];let pos=0;
-  for(const mm of b.matchAll(TAG)){S.push([top,b.slice(pos,mm.index)],[mm[1],mm[2]]);pos=mm.index+mm[0].length;}
-  S.push([top,b.slice(pos)]);
-  return [top,S.map(([l,x])=>[l,strip(x,' _#')]).filter(([l,x])=>x),end];
-}
-const isJa=l=>l==='ja'||l==='ja-x-osaka';
 export function voiceFor(top,l,x){
   if(l===top)return VOICE[top];
   if(x.split(/\s+/).filter(Boolean).length===1&&(isJa(top)||!isJa(l)))return VOICE[l];
   return `${VOICE[top]}+${VOICE[l]}@${BLEND}`;
 }
-// plan: sections with ids + units (no ONNX); used for parity tests and synthesis
+// plan: sections with Kokoro ids + units [phonemes, f0 values|null, phrase] (no ONNX); used for parity tests and synthesis
 export function plan(ys){
-  const [top,S,end]=segs(ys);
-  return S.map(([l,x],i)=>{
-    const e=i===S.length-1?end:'$';const sy=(l==='ja'?'^':'^'+l+'|')+x+e;
-    const opt={foreign:isJa(l)&&!isJa(top),noflap:l.startsWith('en')&&!top.startsWith('en')};
-    const [lang,U]=units(sy,opt);const ids=[0],uid=[-1];
+  const Y=parse(ys);
+  const P=Y.sections.map(sec=>{
+    const foreign=isJa(sec.lang)&&!isJa(Y.top);const U=[],toks=[];
+    for(const t of sec.toks){if(t.kind==='bound')continue;U.push([kokoroPhonemes(sec.lang,t,foreign),t.kind==='unit'&&t.f0?[...t.f0]:null,t.ph]);toks.push(t);}
+    const ids=[0],uid=[-1];
     U.forEach(([p],k)=>{for(const ch of p)if(ch in VOCAB){ids.push(VOCAB[ch]);uid.push(k);}});
     ids.push(0);uid.push(-1);
-    return {ys:sy,voice:voiceFor(top,l,x),ids,uid,U};
+    return {lang:sec.lang,text:sec.text,voice:voiceFor(Y.top,sec.lang,sec.text),ids,uid,U,toks};
   });
+  P.src=Y.ys;return P;
 }
 const mean=a=>a.reduce((s,v)=>s+v,0)/a.length;
 export function f0Override(f0,uid,dur,U,smooth=5,dstep=0.6){
@@ -205,7 +125,8 @@ export class Engine{
     else v=new Float32Array(await this.load(`voices/${name}.bin`));
     return this.V[name]=v;
   }
-  async synthSection(sec,mode='acc'){
+  // Kokoro's own prosody prediction (durations, F0, energy) for one planned section; also used by the Yomite (kokoro_prosody.js)
+  async predict(sec){
     const o=this.ort,T=o.Tensor;const L=sec.ids.length;const V=await this.voice(sec.voice);
     const ref=new T('float32',V.slice((L-2)*256,(L-1)*256),[1,256]);
     const r1=await this.enc.run({ids:new T('int64',BigInt64Array.from(sec.ids.map(BigInt)),[1,L]),ref});
@@ -213,8 +134,12 @@ export class Engine{
     const expand=t=>{const C=t.dims[1],src=t.data,out=new Float32Array(C*Tn);
       for(let c=0;c<C;c++){let q=c*Tn;for(let l=0;l<L;l++){const v=src[c*L+l];for(let r=0;r<dur[l];r++)out[q++]=v;}}return new T('float32',out,[1,C,Tn]);};
     const r2=await this.f0n.run({en:expand(r1.d),ref});
-    const f0=r2.F0.data;const F=mode==='orig'?Float32Array.from(f0):f0Override(f0,sec.uid,dur,sec.U);
-    const r3=await this.dec.run({asr:expand(r1.t_en),F0:new T('float32',F,[1,F.length]),N:r2.N,ref});
+    return {ref,dur,t_en:expand(r1.t_en),f0:r2.F0.data,N:r2.N};
+  }
+  async synthSection(sec,mode='acc'){
+    const T=this.ort.Tensor;const {ref,dur,t_en,f0,N}=await this.predict(sec);
+    const F=mode==='orig'?Float32Array.from(f0):f0Override(f0,sec.uid,dur,sec.U);
+    const r3=await this.dec.run({asr:t_en,F0:new T('float32',F,[1,F.length]),N,ref});
     return {audio:Float32Array.from(r3.audio.data),f0:Float32Array.from(f0),f0new:F};
   }
   async synth(ys,mode='acc'){

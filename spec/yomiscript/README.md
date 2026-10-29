@@ -10,11 +10,10 @@
 |---|---|---|
 | Phoneme layer | IPA (International Phonetic Alphabet) itself | No |
 | Prosody layer | IPA extensions: pitch accent, tone, stress, boundaries, pauses | No (only the set of symbols used varies by language) |
-| Display form (optional) | For Japanese, kana + JSUT-style symbols | Yes |
 
 - **Symbols that already exist in IPA keep their IPA meaning** (ˈ ˌ ː ‖ | ꜜ ꜛ ˥˧˩, etc.). We add only TTS-oriented conventions that IPA lacks.
 - Pronunciations are enclosed in `/…/` (phonemic transcription, not narrow transcription). Narrow transcription in `[…]` is also allowed when needed.
-- Kana is the "display form" for Japanese; it is converted to IPA form during normalization (conversion rules in §4).
+- **No language-specific scripts.** Kana, pinyin or any other native writing system is not YomiScript (D17). Japanese is written in IPA like every other language. A Yomite that produces kana labels (such as Yomi-0 today) converts them to IPA before emitting YomiScript (§4).
 - YomiScript holds **resolved** pronunciations only. Readings, lexicons and inline reading hints belong to Yomite, the step before YomiScript and are specified separately (§3).
 
 ## 2. Symbol list
@@ -49,15 +48,28 @@ As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syl
 | `↘` / `↗` | Sentence-final fall (declarative) / rise (question) | `$` / `?` |
 | Sentence start | No symbol | `^` |
 
+### 2.6 Pitch values (phonetic layer)
+| Notation | Meaning |
+|---|---|
+| `<f0:v>` | Pitch target for the unit (mora or syllable) right before it, in semitones relative to the speaker's register |
+| `<f0:v1,v2,…>` | A contour across that unit (points spread evenly over its duration) |
+
+- YomiScript can carry **both** the phonological marks of §2.2–2.4 (`ꜛ` `ꜜ`, `ˈ` `ˌ`, tones) and these values (D18). Example: `^kʲo<f0:2.5>ꜜː<f0:-2.8>wa<f0:-2.8>$`.
+- **Katarite uses only the values.** It never turns marks into pitch, because that needs language rules (Tokyo vs Osaka, declination, stress patterns). A Yomite writes the values: from rules, from a prosody predictor (e.g. Kokoro's, run on the Yomite side), or by hand.
+- A unit without a value has no pitch target; the Katarite fills it from its engine's own F0 (interpolated between targets). Devoiced units (`◌̥`) normally have no value.
+- Values are relative: the Katarite anchors each phrase (`#`, `_`) to the voice's natural level, so the same YomiScript works with any voice.
+
 ## 3. Readings and lexicons (not part of YomiScript)
 
 Choosing a reading is text analysis, so it happens before YomiScript (D14). Inline reading hints `{表記|読み}`, `@lexicon` / `@import`, `.koedict` files, the conditions `[context: …]`, `[default]`, `[sex: …]`, `[accent: N]`, and the reading priority are all inputs to Yomite. They are specified in [`../lexicon/`](../lexicon/README.md).
 
 The braces `{…|…}` in YomiScript mean only a language section ([`langtags.md`](langtags.md)).
 
-## 4. Japanese: converting Yomi output → YomiScript
+## 4. Japanese in IPA, and converting kana labels (Yomite side)
 
-Yomi currently outputs JSUT style (`^ミ[ズヲ#マ[レ]ーシア…$`). It is converted with the reference implementation [`tools/yomiscript/kana2ipa.py`](../../tools/yomiscript/kana2ipa.py).
+Japanese YomiScript is IPA with `ꜛ` (rise) and `ꜜ` (accent nucleus), e.g. `^kʲoꜜːwa#aꜜmeɡa$`. Kana does not appear in YomiScript.
+
+Yomi-0 currently outputs kana labels in JSUT style (`^ミ[ズヲ#マ[レ]ーシア…$`). That is Yomite-internal: the labels are converted to YomiScript with the reference converter [`tools/yomiscript/kana2ipa.py`](../../tools/yomiscript/kana2ipa.py).
 
 ### 4.1 Mora → IPA (main part)
 | Row | a-column | i-column | u-column | e-column | o-column | Contracted (ャュョ) |
@@ -85,7 +97,7 @@ The ザ row is often realized as the fricative [z] word-medially, but the phonem
 
 To keep mora separators, use `--mora` to insert `.` (the long-vowel `ː` attaches to the preceding mora): `/toꜜː.kʲoː/`.
 
-### 4.3 Conversion examples (from eval/data/jsut_basic5000_subset.jsonl, `--devoice`)
+### 4.3 Conversion examples (kana label → YomiScript; from eval/data/jsut_basic5000_subset.jsonl, `--devoice`)
 ```
 水をマレーシアから買わなくてはならないのです。
 ^ミ[ズヲ#マ[レ]ーシアカラ#カ[ワナ]クテワ#ナ[ラ]ナイノデス$
@@ -115,6 +127,6 @@ I read the book yesterday.
 ## 6. Open questions (to confirm with the user)
 1. Canonical form for tones: IPA tone letters (˥˩) or digits (ma3)? Proposal: "canonical form = tone letters; digits also accepted as input".
 2. Whether to make the mora separator `.` mandatory in the Japanese canonical form (advantageous for model training and for counting accent positions).
-3. **How much allophony to write in YomiScript**, such as devoicing and fricativization of the ザ row (proposal: the phonemic form is canonical, allophones are left to Katarite, with an optional flag to output them).
+3. **How much allophony to write in YomiScript**, such as fricativization of the ザ row. Decided for pronunciation choices: the Yomite writes vowel devoicing (`◌̥`) and the American t/d flap (`ɾ`) explicitly, and the Katarite does not apply them (D18).
 4. Whether to change the header to `#yomiscript`, or also accept `#koe-ir` for compatibility.
 5. Whether to move the other parts of the old `spec/koe-ir/` (style tags, etc.) to `spec/yomiscript/` as well.

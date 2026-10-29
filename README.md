@@ -27,12 +27,13 @@ Adding a language means adding a Yomite (or pointing an LLM at it). Adding a TTS
 - **Phonemes** are plain IPA.
 - **Prosody** uses IPA's own marks wherever they exist: pitch accent (`ꜛ` `ꜜ`), Chao tone letters (`˥˧˩`), stress (`ˈ` `ˌ`), length, boundaries and pauses. Languages differ only in which marks they use.
 - **Language tags** (BCP 47) apply to a whole utterance (`^en-US|…$`) or to a span inside it (`{ja|…}`), so code-switching is native. Dialects use the same mechanism (e.g. `ja-x-osaka`).
-- **Display forms** are optional per-language conveniences (e.g. kana with JSUT-style accent marks for Japanese) that normalize to the IPA form.
+- **Pitch values** `<f0:…>` (semitones, per mora or syllable) can be written next to the marks. A Yomite fills them in; the Katarite renders only the values (D18).
+- **No native scripts.** Kana, pinyin and other writing systems are not YomiScript; every language, Japanese included, is written in IPA (D17).
 
 Example — an English sentence with Japanese names:
 
 ```
-^en-US|maɪ ˈfɹɛnd {ja|タ[ナカ} ˈlɪvz ɪn {ja|ト[ーキョー}$
+^en-US|maɪ ˈfɹɛnd {ja|taꜛnaka} ˈlɪvz ɪn {ja|toꜛːkʲoː}$
 ```
 
 YomiScript carries only resolved pronunciations; it has no lexicons or reading hints (D14).
@@ -75,7 +76,7 @@ Japanese is the hardest case for the Yomite side, not the focus of the project. 
 
 ## Documents
 
-- [Decisions D1–D16](docs/decisions.md)
+- [Decisions D1–D18](docs/decisions.md)
 - [Hypotheses H0–H12](docs/hypotheses.md)
 - [Contributing](CONTRIBUTING.md)
 

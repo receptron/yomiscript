@@ -1,4 +1,4 @@
-# Decisions (D1–D16)
+# Decisions (D1–D18)
 
 D1–D13 decided on 2026-10-24. Those concerning syntax are drafts.
 
@@ -20,3 +20,5 @@ D1–D13 decided on 2026-10-24. Those concerning syntax are drafts.
 | D14 | 2026-10-28 | Lexicons and inline reading hints are not part of YomiScript. YomiScript holds only resolved pronunciations (phonemes, prosody, language tags). `{表記\|読み}`, `@lexicon`, `@import`, `.koedict` and their conditions are inputs to the language-specific analysis step, specified in spec/lexicon/. The reading priority of D1 and D13 applies inside the analyzer. In YomiScript, braces mean only a language section |
 | D15 | 2026-10-28 | Official names for the two modules around YomiScript: **Yomite** (読み手, "the reader") turns text into YomiScript; **Katarite** (語り手, "the narrator") turns YomiScript into sound. A Yomite can be a dedicated model (Yomi-0), a smart LLM, a rule-based analyzer or a person. Katarite plugins replace the provisional "backend plugins" name of D6. Lexicons (D14) are Yomite inputs |
 | D16 | 2026-10-28 | We do not plan to build our own Katarite (acoustic) model. Koe-S (D6) is dropped from the plan. Katarite is provided by existing TTS engines through Katarite plugins, with Kokoro-82M as the reference |
+| D17 | 2026-10-28 | YomiScript contains no language-specific scripts. Every language, Japanese included, is written in IPA with IPA-based prosody marks (Japanese accent: ꜛ ꜜ); the kana "display form" is removed. Kana labels (e.g. Yomi-0's JSUT-style output) are Yomite-internal and are converted with tools/yomiscript/kana2ipa.py. The web Katarite (demo/ys_web) accepts only IPA for Japanese. Chinese pinyin + tone digits is the same kind of exception and is to be replaced with IPA + tone letters |
+| D18 | 2026-10-28 | YomiScript can carry both phonological prosody marks (ꜛ ꜜ, ˈ ˌ, tones) and phonetic pitch values `<f0:…>` (semitones relative to the speaker's register, per mora or syllable). Katarite uses only the values; turning marks into values is the Yomite's job (rules, a prosody predictor, or by hand). Kokoro's duration/F0 predictor is used as a separate component on the Yomite side. Pronunciation choices such as vowel devoicing and the t/d flap are written by the Yomite, not applied by the Katarite |

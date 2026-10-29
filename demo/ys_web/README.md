@@ -1,9 +1,13 @@
 # demo/ys_web — Browser-only YomiScript speech synthesis demo
 
-Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, WASM) to turn it into speech. F0 override from Japanese accent marks is also done in the browser. In YomiScript you write how you want each word to be pronounced.
+Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, WASM) to turn it into speech. A reference Yomite first turns the accent / stress / tone marks into pitch values (`<f0:…>`), and the Katarite renders only those values (D18); the page shows the YomiScript with values it renders. In YomiScript you write how you want each word to be pronounced. Japanese is written in IPA with `ꜛ` (rise) and `ꜜ` (accent nucleus), e.g. `^kʲoꜜːwa#aꜜmeɡa$`; kana is rejected (D17). Kana labels can be converted with `tools/yomiscript/kana2ipa.py`.
 
 ## Layout
-- `web/index.html`, `web/ys.js`: the demo itself (YomiScript conversion, F0 override, inference). `web/presets.json` holds Tokyo/Osaka and mixed-language examples
+- `web/index.html`: the demo page. `web/presets.json` holds Tokyo/Osaka and mixed-language examples
+- `web/yomiscript.js`: YomiScript parser (sections, units, marks, `<f0:…>` values); no engine or language rules
+- `web/yomite.js`: reference Yomite prosody rules: marks → `<f0:…>` values, plus devoicing (`◌̥`) and the t/d flap (`ɾ`)
+- `web/kokoro_prosody.js`: Kokoro's duration + F0 predictor used on the Yomite side: writes Kokoro's predicted pitch as `<f0:…>` values
+- `web/ys.js`: the Katarite: YomiScript IPA → Kokoro phonemes, F0 from the values, ONNX inference, audio
 - `export_split.py`: exports Kokoro as three ONNX files, `enc` / `f0n` / `dec` (so that F0 can be swapped in between)
 - `quant.py`: size reduction. `python quant.py w16` creates a version with only the weights stored in fp16 (compute stays fp32) at `models_q/*_w16.onnx` (used by default, about 163 MB total). `i8` is an int8 trial for the decoder
 - `serve.py`: local server with COOP/COEP headers (required for WASM multithreading)
@@ -32,6 +36,7 @@ python serve.py 8000 web   # open http://localhost:8000/
 URL parameters:
 - `?m=` model: `w16` (default; fp16 weights, about 163 MB total) / `fp32` (about 311 MB) / `i8` (decoder MatMul and Gemm in int8)
 - `?t=` number of WASM threads (default 4; requires COOP/COEP headers, so serve with `serve.py`)
+- `?pitch=` where the pitch values come from: `rules` (default, `yomite.js`) / `kokoro` (Kokoro's prediction, `kokoro_prosody.js`); also selectable on the page
 - `?ep=webgpu` try WebGPU (falls back to WASM where unavailable)
 
 Rough figures (8-core CPU, headless Chromium, 4 threads): 3.5 s of audio synthesized in about 2.8 s (real-time factor about 0.8). Mixed-language sentences run inference per segment, so about 1.2.
