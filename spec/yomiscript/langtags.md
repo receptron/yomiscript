@@ -13,7 +13,7 @@
   - `^キョ]ーワ#{en-US|mə.ˈʃin ˈlɝ.nɪŋ}ノ#ベ[ンキョーヲ#シ[マ]ス$` (今日は machine learning の勉強をします, "Today I will study machine learning")
   - `^en-US|maɪ ˈfɹɛnd {ja|タ[ナカ} ˈlɪvz ɪn {ja|ト[ーキョー}$`
 - Nesting is not allowed. A section boundary also serves as a phrase boundary (`#`). There is only one sentence-final symbol `$` `?` for the whole utterance.
-- These are distinguished from the existing ruby notation `{表記|読み}` by whether the part before `|` is a language code (if it matches the list of language codes, it is a section tag).
+- In YomiScript, braces are used only for language sections. The ruby-style reading hint `{表記|読み}` is an analyzer input and does not appear in YomiScript ([`../lexicon/`](../lexicon/README.md)).
 
 ## 3. Handling on the synthesis side (reference implementation mix.py)
 - Each language tag has its own policy:

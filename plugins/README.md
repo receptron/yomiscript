@@ -13,11 +13,10 @@ The Kokoro-82M backend in [`tts/kokoro_ys/`](../tts/kokoro_ys/) (and the browser
 | YomiScript | Azure | Amazon Polly | ElevenLabs v3 | OpenAI |
 |---|---|---|---|---|
 | `[whisper]` | `mstts:express-as style="whispering"` | `amazon:effect name="whispered"` | `[whispers]` | a sentence in instructions |
-| `{市\|いち}` | `sub alias` / `phoneme` | `sub` / `phoneme` | IPA | (unverified) |
-| `.koedict` | PLS | PLS | PLS | (unverified) |
+| `/iꜜtɕi/` (resolved pronunciation) | `phoneme` | `phoneme` | IPA | (unverified) |
 
 ## Planned implementations
 
 - Plugins for local OSS TTS (Kokoro family, VITS family)
 - Our own acoustic model Koe-S (one plugin implementation)
-- Export to SSML / PLS
+- Export to SSML; export of lexicons (`.koedict`) to PLS is an analysis-side tool ([`spec/lexicon/`](../spec/lexicon/README.md))

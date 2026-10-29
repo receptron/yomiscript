@@ -10,12 +10,12 @@
 |---|---|---|
 | Phoneme layer | IPA (International Phonetic Alphabet) itself | No |
 | Prosody layer | IPA extensions: pitch accent, tone, stress, boundaries, pauses | No (only the set of symbols used varies by language) |
-| Reading and lexicon layer | `{表記|読み}`, `@lexicon`, `[default]`, `[context: …]`, `[sex: …]` | No (readings can be written in IPA or in each language's display form, e.g. kana) |
 | Display form (optional) | For Japanese, kana + JSUT-style symbols | Yes |
 
 - **Symbols that already exist in IPA keep their IPA meaning** (ˈ ˌ ː ‖ | ꜜ ꜛ ˥˧˩, etc.). We add only TTS-oriented conventions that IPA lacks.
 - Pronunciations are enclosed in `/…/` (phonemic transcription, not narrow transcription). Narrow transcription in `[…]` is also allowed when needed.
-- Kana is the "display form" for Japanese. Lexicon readings may be written in kana; they are converted to IPA form during normalization (conversion rules in §4).
+- Kana is the "display form" for Japanese; it is converted to IPA form during normalization (conversion rules in §4).
+- YomiScript holds **resolved** pronunciations only. Readings, lexicons and inline reading hints belong to the analysis step before YomiScript and are specified separately (§3).
 
 ## 2. Symbol list
 
@@ -28,7 +28,6 @@ Syllable separator `.` (optional; in Japanese it is used as the **mora separator
 |---|---|---|
 | `ꜛ` | Pitch rise (low → high) | `[` |
 | `ꜜ` | Accent nucleus (pitch falls right after the preceding mora) | `]` |
-| `[accent: N]` | Nucleus position (in morae, 0 = flat (heiban)). Used as a condition on lexicon entries | Same as the old spec |
 
 `ꜜ` is the IPA downstep symbol and is commonly used to mark the Japanese accent nucleus.
 
@@ -50,30 +49,11 @@ As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syl
 | `↘` / `↗` | Sentence-final fall (declarative) / rise (question) | `$` / `?` |
 | Sentence start | No symbol | `^` |
 
-## 3. Relation to readings, lexicon and context conditions
+## 3. Readings and lexicons (not part of YomiScript)
 
-The grammar of the old KOE-IR ([`../koe-ir/grammar.md`](../koe-ir/grammar.md)) remains valid as is. What changes is that `reading` officially accepts the IPA form, and the condition `[sex: …]` is added.
+Choosing a reading is text analysis, so it happens before YomiScript (D14). Inline reading hints `{表記|読み}`, `@lexicon` / `@import`, `.koedict` files, the conditions `[context: …]`, `[default]`, `[sex: …]`, `[accent: N]`, and the reading priority are all inputs to the analyzer. They are specified in [`../lexicon/`](../lexicon/README.md).
 
-```ebnf
-reading   = kana_with_accent | "/" , ipa_yomiscript , "/" ;
-condition = "[accent:" , int , "]"
-          | "[context:" , word , { "," , word } , "]"
-          | "[sex:" , ( "male" | "female" ) , "]"      (* new proposal *)
-          | "[default]" ;
-```
-
-```text
-@lexicon {
-  橋 = /haɕiꜜ/;            箸 = /haꜜɕi/;          端 = ハシ [accent: 0];
-  智 = サトシ [sex: male];  智 = トモ [sex: female]; 智 = サトシ [default];
-  SIP = /sɪp/ [context: 通信, VoIP];  SIP = エスアイピー [default]
-}
-{梨奈|リナ}さん、{read|/ɹɛd/}（過去形）
-```
-
-- Precedence is the same as in the old spec: inline specification > lexicon (matching condition > `[default]`) > model prediction.
-- `[sex: …]` is treated as a more specific condition than `[context: …]` (if both match, the entry containing `[sex]` wins). The `[context: 男性]` `[context: 女性]` in the current `dict/names/given_names.koedict` is a transitional notation and will be replaced with `[sex: male|female]` during conversion.
-- The only format for lexicons that go into MoLD's Memory is this one (`.koedict`).
+The braces `{…|…}` in YomiScript mean only a language section ([`langtags.md`](langtags.md)).
 
 ## 4. Japanese: converting Yomi output → YomiScript
 
@@ -137,5 +117,4 @@ I read the book yesterday.
 2. Whether to make the mora separator `.` mandatory in the Japanese canonical form (advantageous for model training and for counting accent positions).
 3. **How much allophony to write in YomiScript**, such as devoicing and fricativization of the ザ row (proposal: the phonemic form is canonical, allophones are left to the backend, with an optional flag to output them).
 4. Whether to change the header to `#yomiscript`, or also accept `#koe-ir` for compatibility.
-5. Whether `[sex: …]` should have values other than `neutral`/unspecified.
-6. Whether to move the other parts of the old `spec/koe-ir/` (style tags, etc.) to `spec/yomiscript/` as well.
+5. Whether to move the other parts of the old `spec/koe-ir/` (style tags, etc.) to `spec/yomiscript/` as well.

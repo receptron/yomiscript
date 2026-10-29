@@ -4,6 +4,7 @@ A design that combines language-neutral **shared weights** with a **Memory** tha
 
 ## Compiling lexicons into Memory (H12)
 
+- Lexicons (`.koedict`, [`spec/lexicon/`](../spec/lexicon/README.md)) are inputs to the analysis step; YomiScript itself contains none (D14).
 - The contents of a lexicon can be written into Memory **without training, deterministically, in seconds** (memory write = compilation).
 - Keys: computed by passing each entry (surface form, optionally part-of-speech and context features) through the shared encoder. `[context: …]` is also included in the key, and `[default]` becomes a context-free key.
 - Values: looked up from pre-trained reading and accent embeddings.

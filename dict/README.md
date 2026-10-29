@@ -1,6 +1,6 @@
 # Dictionaries (.koedict)
 
-YomiScript lexicon files. The format is the same as `@lexicon` in [`spec/koe-ir/grammar.md`](../spec/koe-ir/grammar.md).
+Lexicon files for the analysis step (text → YomiScript). Lexicons are not part of YomiScript itself (D14). Format: [`spec/lexicon/`](../spec/lexicon/README.md).
 
 - Domain dictionaries (medical, IT, place names, etc.) are built by the community and managed with semantic versioning (e.g. `medical@1.2.koedict`).
 - Each file starts with its license and author.

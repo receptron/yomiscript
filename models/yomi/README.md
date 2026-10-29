@@ -1,6 +1,6 @@
 # Yomi-0
 
-A small model that outputs readings (phonemes), accents and phrase boundaries from Japanese text. It handles YomiScript's "inference from context" (the third level of the priority order).
+A small model that outputs readings (phonemes), accents and phrase boundaries from Japanese text. It is the Japanese analyzer: it emits YomiScript and handles "inference from context", the third level of the reading priority ([`spec/lexicon/`](../../spec/lexicon/README.md)).
 
 ## Design decisions
 

@@ -1,6 +1,6 @@
 # KOE-IR Specification (v0.1 draft)
 
-> **Note:** KOE-IR is the old name. The current name is **YomiScript**. For the draft of the language-neutral (extended IPA) pronunciation layer, see [`../yomiscript/`](../yomiscript/README.md).
+> **Note:** KOE-IR is the old name. The current name is **YomiScript**. For the draft of the language-neutral (extended IPA) pronunciation layer, see [`../yomiscript/`](../yomiscript/README.md). The reading and lexicon parts of this spec now live in [`../lexicon/`](../lexicon/README.md) and are no longer part of YomiScript (D14).
 
 KOE-IR is an intermediate language for speech synthesis that **does not include timbre**. It separates the front end (reading and accent prediction) from the acoustic backend (TTS engine) so that each can be developed and swapped independently (hypothesis H0).
 
