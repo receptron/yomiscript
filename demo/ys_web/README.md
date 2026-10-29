@@ -7,7 +7,7 @@ Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, W
 - `web/yomiscript.js`: YomiScript parser (sections, units, marks, `<f0:…>` values); no engine or language rules
 - `web/yomite.js`: reference Yomite prosody rules: marks → `<f0:…>` values, plus devoicing (`◌̥`) and the t/d flap (`ɾ`)
 - `web/kokoro_prosody.js`: Kokoro's duration + F0 predictor used on the Yomite side: writes Kokoro's predicted pitch as `<f0:…>` values
-- `web/ys.js`: the Katarite: YomiScript IPA → Kokoro phonemes, F0 from the values, ONNX inference, audio
+- `web/ys.js`: the Katarite: YomiScript IPA → Kokoro phonemes, F0 from the values, ONNX inference, audio. Japanese is passed to Kokoro the way its own front end writes it: words separated by spaces, and ` | `, ` ‖ ` and `↘` become only the word space, because the original drops 。 and 、 (D22). So a Japanese ` ‖ ` gives no pause here.
 - `export_split.py`: exports Kokoro as three ONNX files, `enc` / `f0n` / `dec` (so that F0 can be swapped in between). The decoder uses `exact_stft.py`, an STFT identical to the original's `torch.stft`/`istft` (Kokoro's own ONNX-friendly `CustomSTFT` is only approximate; see `eval/kokoro_parity`). For output identical to the original Kokoro use the fp32 models (`?m=fp32`)
 - `quant.py`: size reduction. `python quant.py w16` creates a version with only the weights stored in fp16 (compute stays fp32) at `models_q/*_w16.onnx` (used by default, about 163 MB total). `i8` is an int8 trial for the decoder
 - `serve.py`: local server with COOP/COEP headers (required for WASM multithreading)

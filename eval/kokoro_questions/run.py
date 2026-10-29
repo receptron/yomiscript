@@ -6,6 +6,7 @@ follows it), mapped to phonemes with the predicted durations. For a few voices i
 KPipeline and measures the pitch of the sound with librosa.pyin, to check that the prediction is what is heard.
 
 usage: python run.py out.json [--audio-voices af_heart,am_michael,bf_emma]
+       python run.py out_ja.json --ja [--audio-voices jf_alpha,jm_kumo]     (Japanese: sentences_ja.json, the 5 ja voices)
 """
 import json, os, sys, warnings
 warnings.filterwarnings("ignore")
@@ -18,7 +19,7 @@ from huggingface_hub import list_repo_files
 from kokoro import KPipeline
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-VOWELS = set("aeiouæɑɒɔəɛɜɪʊʌᵊɐᵻAIOQWY")
+VOWELS = set("aeiouæɑɒɔəɛɜɪʊʌᵊɐᵻAIOQWYɯɨ")
 
 
 def predict(model, ps, ref_s):
@@ -74,15 +75,16 @@ def audio_measures(audio, sr=24000):
             "slope2": slope_second_half(st), "contour": [None if np.isnan(x) else round(float(x), 2) for x in st]}
 
 
-def main(out, audio_voices):
-    sentences = json.load(open(os.path.join(HERE, "sentences.json")))
-    voices = sorted(f[7:-3] for f in list_repo_files("hexgrad/Kokoro-82M") if f.startswith("voices/") and f[7] in "ab" and f[8] in "fm")
-    g2p = {c: KPipeline(lang_code=c, repo_id="hexgrad/Kokoro-82M", model=False) for c in "ab"}  # phonemes only
-    for p in g2p.values():
-        assert p.g2p.fallback is not None
-    pipes = {"a": KPipeline(lang_code="a", repo_id="hexgrad/Kokoro-82M")}                       # with the model, for audio
-    model = pipes["a"].model
-    pipes["b"] = KPipeline(lang_code="b", repo_id="hexgrad/Kokoro-82M", model=model)
+def main(out, audio_voices, langs="ab"):
+    sentences = json.load(open(os.path.join(HERE, "sentences_ja.json" if langs == "j" else "sentences.json")))
+    voices = sorted(f[7:-3] for f in list_repo_files("hexgrad/Kokoro-82M") if f.startswith("voices/") and f[7] in langs and f[8] in "fm")
+    g2p = {c: KPipeline(lang_code=c, repo_id="hexgrad/Kokoro-82M", model=False) for c in langs}  # phonemes only
+    for c, p in g2p.items():
+        assert c not in "ab" or p.g2p.fallback is not None
+    pipes = {langs[0]: KPipeline(lang_code=langs[0], repo_id="hexgrad/Kokoro-82M")}            # with the model, for audio
+    model = pipes[langs[0]].model
+    for c in langs[1:]:
+        pipes[c] = KPipeline(lang_code=c, repo_id="hexgrad/Kokoro-82M", model=model)
     ps_cache = {}
     res = {"voices": voices, "audio_voices": audio_voices, "rows": []}
     for v in voices:
@@ -104,5 +106,6 @@ def main(out, audio_voices):
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    av = a[a.index("--audio-voices") + 1].split(",") if "--audio-voices" in a else ["af_heart", "am_michael", "bf_emma"]
-    main(a[0], av)
+    ja = "--ja" in a
+    av = a[a.index("--audio-voices") + 1].split(",") if "--audio-voices" in a else (["jf_alpha", "jm_kumo"] if ja else ["af_heart", "am_michael", "bf_emma"])
+    main(a[0], av, "j" if ja else "ab")

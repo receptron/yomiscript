@@ -36,8 +36,8 @@ export function parse(ys){
     if(a<z)S.push({lang:l,text:x.slice(a,z),base:b0+s+a});
   }
   S.forEach((sec,i)=>{sec.end=i===S.length-1?end:'$';sec.toks=segment(sec.lang,sec.text,sec.base);
-    // the final ↘ / ↗ is the engine's '.' / '?', unless the utterance already ends with explicit punctuation (<p:!> …)
-    const last=[...sec.toks].reverse().find(t=>t.kind!=='bound');sec.toks.push({kind:'end',sym:last?.kind==='punct'?'':sec.end==='?'?'?':'.',ph:last?last.ph:0});});
+    // the final ↘ / ↗ is the engine's '.' / '?'; ↘ adds nothing if the utterance already ends with punctuation (<p:!> …)
+    const last=[...sec.toks].reverse().find(t=>t.kind!=='bound');sec.toks.push({kind:'end',sym:sec.end==='?'?'?':last?.kind==='punct'?'':'.',ph:last?last.ph:0});});
   return {ys,top,end,sections:S};
 }
 function segment(lang,t,base){return isJa(lang)?jaSeg(t,base):lang==='zh'?zhSeg(t,base):euSeg(t,base);}
@@ -57,7 +57,7 @@ function jaTokens(c,base){
     if(inStr(ch,JV)){let dev=false;i++;if(c[i]===DEVOICE){dev=true;i++;}T.push({t:'V',s:ch,dev,vend:at+1,end:base+i});continue;}
     let s;if(JAFF.includes(two)){s=two;i+=2;}else if(JAFF.includes(ch)||inStr(ch,JCONS)){s=ch;i++;}else if(ch==='g'){s='ɡ';i++;} // IPA: g = ɡ
     else throw new Error(`not Japanese YomiScript IPA: ${JSON.stringify(ch)} in ${JSON.stringify(c)}`+(/[぀-ヿ]/.test(ch)?' (kana is not YomiScript; write IPA with ꜛ ꜜ)':''));
-    if(c[i]==='ʲ'){s+='ʲ';i++;}
+    if(c[i]==='ʲ'||c[i]==='ʷ'){s+=c[i];i++;}
     T.push({t:'C',s,end:base+i});
   }
   return T;
@@ -83,14 +83,31 @@ function jaMoras(c,base){
   return M;
 }
 function jaSeg(t,base){
-  const out=[];let ph=0,s=0,chunk=0;const C=[];
-  for(let k=0;k<=t.length;k++)if(k===t.length||SEP(t[k])){C.push([s,k]);if(k<t.length)C.push([k,k+1]);s=k+1;}
-  for(const [a,z] of C){
-    const c=t.slice(a,z),sep=SEP(c);
-    if(c.trim()===''||sep){if(sep==='_')out.push({kind:'pause',ph});else if(sep==='#')out.push({kind:'bound',sym:'#',ph});ph++;continue;}
-    const M=jaMoras(c,base+a),hasRise=M.some(m=>m.rise);
-    M.forEach((m,k)=>out.push({...m,mk:m.kind,kind:'unit',lang:'ja',ph,chunk,k,hasRise}));chunk++;
+  // words (spaces), ' | ' / ' ‖ ' / ' ↘ ' / ' ↗ ' between them, <p:…> inside or as a word; morae per accent phrase
+  const out=[],W=[];let ph=0,chunk=0,cur=[];
+  for(let i=0,s=-1;i<=t.length;i++){
+    const c=t[i];
+    if(i===t.length||c===' '||SEP(c)){if(s>=0)W.push([s,i]);s=-1;if(c&&SEP(c))W.push([i,i+1]);}
+    else if(s<0)s=i;
   }
+  const flush=()=>{ // one accent phrase: morae numbered k within it; spaces and <p:…> kept in place
+    const M=cur.filter(x=>x.kind!=='space'&&x.kind!=='punct'),hasRise=M.some(m=>m.rise);let k=0;
+    for(const x of cur)out.push(x.kind==='space'||x.kind==='punct'?{...x,ph}:{...x,mk:x.kind,kind:'unit',lang:'ja',ph,chunk,k:k++,hasRise});
+    if(M.length)chunk++;cur=[];
+  };
+  for(const [a,z] of W){
+    const w=t.slice(a,z),sep=SEP(w);
+    if(sep){flush();out.push(sep==='_'?{kind:'pause',ph}:{kind:'bound',sym:'#',ph});ph++;continue;}
+    if(w==='↘'||w==='↗'){flush();out.push({kind:'punct',sym:w==='↗'?'?':'.',sent:true,ph});ph++;continue;} // sentence end inside the utterance
+    const L=cur.length?cur[cur.length-1]:[...out].reverse().find(x=>x.kind!=='bound');
+    if(L&&L.kind!=='pause')cur.push({kind:'space'});
+    for(let i=0,s=0;i<=w.length;){
+      const p=i<w.length?pAt(w,i):null;
+      if(i===w.length||p){if(i>s)cur.push(...jaMoras(w.slice(s,i),base+a+s));if(!p)break;cur.push({kind:'punct',sym:p[0]});i=s=p[1];continue;}
+      i=w.startsWith('<f0:',i)?w.indexOf('>',i)+1||w.length:i+1;
+    }
+  }
+  flush();
   return out;
 }
 

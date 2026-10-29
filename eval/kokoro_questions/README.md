@@ -1,5 +1,7 @@
 # eval/kokoro_questions — Does the original Kokoro raise the pitch at the end of questions?
 
+English below; Japanese at the end.
+
 Original pipeline, unmodified (`kokoro` 0.9.4, `KPipeline` + `KModel`, PyTorch). `run.py` records, for all 28 English voices
 (American and British, female and male) and 63 sentences (`sentences.json`), the F0 the model predicts, mapped to
 phonemes with its predicted durations, and for 3 voices also synthesizes the audio and measures it with librosa.pyin.
@@ -37,3 +39,22 @@ story, an unnamed voice, and a slope-sign rule on the second half of the utteran
 slope was classified as rising, which reads like a typo). With the same slope rule on our audio, yes/no questions rise
 21 % and statements 12.5 % (3 voices); on the model F0 of 28 voices, 6 % for both. We see no effect of the question
 form or the question mark itself.
+
+## Japanese (2026-10-29) — `python run.py out_ja.json --ja`, `results_ja.txt`
+All 5 Japanese voices (jf_alpha, jf_gongitsune, jf_nezumi, jf_tebukuro, jm_kumo), 49 sentences (`sentences_ja.json`).
+The sentences are 12 pairs with the same words ending in `。` or `？`, 8 `〜ますか？` questions with the matching
+`〜ます。` statements, 6 wh-questions and 3 tag questions (`〜よね？`, `〜でしょう？`). Audio for jf_alpha and jm_kumo.
+
+**The Japanese voices do not raise the pitch at the end of questions either.** Not one yes/no question, wh-question
+or tag question ends clearly rising, in the model F0 or in the audio. The `？` reaches the model as `?`; the `。` of
+the statements does not reach it at all (see `yomite/ja_kokoro`). Same words, `？` minus `。`: the end is
+−0.47 ± 4.00 semitones (52 pairs); `〜ますか？` minus `〜ます。`: −2.35 ± 3.18, so the question ends lower, because of the
+extra falling mora か.
+
+| (5 voices, model F0) | clearly rising end | end vs median |
+|---|---|---|
+| same words, `。` | 1.9 % | −6.8 st |
+| same words, `？` | 0.0 % | −7.2 st |
+| `〜ますか？` | 0.0 % | −7.6 st |
+| `〜ます。` | 0.0 % | −4.9 st |
+| wh-questions | 0.0 % | −7.7 st |

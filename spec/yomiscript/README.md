@@ -41,14 +41,14 @@ As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syl
 ### 2.5 Utterance, boundaries, pauses, sentence end
 | Symbol | Meaning | Yomi-0 kana label (Yomite-internal) |
 |---|---|---|
-| Space | Word boundary (optional, for readability) | — |
+| Space | Word boundary. Optional for readability in most languages; a Katarite may pass it on (Kokoro's Japanese front end puts a space between words, D22) | — |
 | ` \| ` | Accent phrase (prosodic word) boundary | `#` |
 | ` ‖ ` | Breath group (intonation phrase) boundary, with a pause | `_` |
 | `<pause:S/M/L>` `<pause:300ms>` | Explicit pause (inherited from the old spec) | — |
 | `↘` / `↗` | Sentence-final fall (declarative) / rise (question) | `$` / `?` |
 | `<lang> /…/` | One utterance: BCP 47 language tag, then the pronunciation between slashes (D19) | `^…$` |
 | ` ↘ ` / ` ↗ ` inside an utterance | A sentence end within the utterance (e.g. two sentences on one line) (D21) | — |
-| `<p:…>` | Punctuation the engine uses as a prosodic cue, passed through where it stands: `<p:!>` `<p:;>` `<p::>` `<p:—>` `<p:...>` `<p:“>` `<p:(>` … If the utterance ends with one, the final `↘` / `↗` adds nothing (D21) | — |
+| `<p:…>` | Engine symbols passed through where they stand: punctuation the engine uses as a prosodic cue (`<p:!>` `<p:;>` `<p::>` `<p:—>` `<p:...>` `<p:“>` `<p:(>` …), or text the original front end left as it is (e.g. Latin letters in Kokoro's Japanese: `<p:iPhone>`). If the utterance ends with one, the final `↘` adds nothing; `↗` still adds the question mark (D21, D22) | — |
 
 ### 2.6 Pitch values (phonetic layer)
 | Notation | Meaning |

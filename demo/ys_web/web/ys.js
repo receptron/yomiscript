@@ -10,7 +10,7 @@ export function setData(d){VOCAB=d.vocab;}
 const VOW='AIOQWYaeiouæɑɒɔəɚɛɜɪʊʌᵊɐøœɔ̃';
 function jaKokoro(on,v){
   // canonical Japanese YomiScript IPA -> the phoneme symbols Kokoro was trained on
-  on=on.replace('tɕ','ʨ').replace('dʑ','ʥ').replace('ts','ʦ').replace('w','β');if(on==='dz'||on==='ʣ')on='ʣ';
+  on=on.replace('tɕ','ʨ').replace('dʑ','ʥ').replace('ts','ʦ').replace('w','β').replace('ʷ','ᵝ');if(on==='dz'||on==='ʣ')on='ʣ';
   if(v==='i'&&/^[kɡbpmɾvɸtdʦ]$/.test(on))on+='ʲ';
   if(v==='ɯ'&&(/ʲ$/.test(on)||/^[ɕʥʨçsʦɲ]$/.test(on)))v='ɨ';
   if(v==='ɯ'&&on==='ʣ'){on='z';v='ɨ';}
@@ -40,8 +40,10 @@ function enSyl(x,gb){
   return x;
 }
 function kokoroPhonemes(lang,t,foreign){
+  if(isJa(lang)){ // as Kokoro's Japanese front end (misaki Cutlet) writes them: 。 and 、 leave only the word space
+    if(t.kind==='space'||t.kind==='pause')return ' ';if(t.kind==='end'||t.kind==='punct')return t.sym==='.'&&(t.kind==='end'||t.sent)?'':t.sym;
+    const p=t.mk==='mora'?jaKokoro(t.on,t.v):t.mk==='Q'?'ʔ':t.ipa;return foreign?[...p].map(c=>FOREIGN_JA[c]??c).join(''):p;}
   if(t.kind==='space')return ' ';if(t.kind==='pause')return ', ';if(t.kind==='end'||t.kind==='punct')return t.sym;
-  if(isJa(lang)){const p=t.mk==='mora'?jaKokoro(t.on,t.v):t.mk==='Q'?'ʔ':t.ipa;return foreign?[...p].map(c=>FOREIGN_JA[c]??c).join(''):p;}
   if(lang==='zh'||lang.startsWith('zh-'))return zsyl(t.raw);
   if(lang==='fr'||lang.startsWith('fr-'))return t.raw.replace(/g/g,'ɡ'); // IPA: g = ɡ
   return enSyl(t.raw,lang==='en-GB');

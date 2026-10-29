@@ -29,8 +29,8 @@ kinds = ["punct_pair", "yn_question", "yn_statement", "wh_question", "tag_questi
 print(f"Model F0 prediction, {len(R['voices'])} voices\n")
 for k in kinds:
     if k == "punct_pair":
-        print(f"{'same words, ending .':24s}", summary([r for r in rows if r["kind"] == k and r["text"].endswith(".")]))
-        print(f"{'same words, ending ?':24s}", summary([r for r in rows if r["kind"] == k and r["text"].endswith("?")]))
+        print(f"{'same words, ending .':24s}", summary([r for r in rows if r["kind"] == k and r["text"][-1] in ".。"]))
+        print(f"{'same words, ending ?':24s}", summary([r for r in rows if r["kind"] == k and r["text"][-1] in "?？"]))
     else:
         print(f"{k:24s}", summary([r for r in rows if r["kind"] == k]))
 
@@ -39,7 +39,7 @@ for name, qk, sk in [("same words  ? vs .", "punct_pair", "punct_pair"), ("yes/n
     by = defaultdict(dict)
     for r in rows:
         if r["kind"] in (qk, sk) and "pair" in r:
-            by[(r["voice"], r["pair"])]["q" if r["text"].endswith("?") else "s"] = r["pred"]
+            by[(r["voice"], r["pair"])]["q" if r["text"][-1] in "?？" else "s"] = r["pred"]
     d_end = np.array([v["q"]["end_vs_median"] - v["s"]["end_vs_median"] for v in by.values() if len(v) == 2])
     d_rise = np.array([v["q"]["end_vs_lastword_min"] - v["s"]["end_vs_lastword_min"] for v in by.values() if len(v) == 2])
     print(f"  {name:24s} n={len(d_end):4d}  Δend {d_end.mean():+5.2f} (± {d_end.std():.2f})   Δrise {d_rise.mean():+5.2f}   "
@@ -47,8 +47,8 @@ for name, qk, sk in [("same words  ? vs .", "punct_pair", "punct_pair"), ("yes/n
 
 print("\nPer voice: yes/no questions rising vs statements rising (model prediction)")
 for v in R["voices"]:
-    q = [r for r in rows if r["voice"] == v and r["kind"] in ("yn_question",) or (r["voice"] == v and r["kind"] == "punct_pair" and r["text"].endswith("?"))]
-    s = [r for r in rows if r["voice"] == v and (r["kind"] == "yn_statement" or (r["kind"] == "punct_pair" and r["text"].endswith(".")))]
+    q = [r for r in rows if r["voice"] == v and r["kind"] in ("yn_question",) or (r["voice"] == v and r["kind"] == "punct_pair" and r["text"][-1] in "?？")]
+    s = [r for r in rows if r["voice"] == v and (r["kind"] == "yn_statement" or (r["kind"] == "punct_pair" and r["text"][-1] in ".。"))]
     print(f"  {v:12s} questions {100*np.mean([rising(r['pred']) for r in q]):5.1f}%   statements {100*np.mean([rising(r['pred']) for r in s]):5.1f}%")
 
 av = [r for r in R["rows"] if r.get("audio") and r["pred"]]
@@ -60,7 +60,7 @@ if av:
         sel = [r for r in av if r["kind"] == k]
         if k == "punct_pair":
             for e in ".?":
-                ss = [r for r in sel if r["text"].endswith(e)]
+                ss = [r for r in sel if r["text"][-1] in {".": ".。", "?": "?？"}[e]]
                 print(f"  {'same words, ending '+e:24s} audio: {summary(ss,'audio')}")
         else:
             print(f"  {k:24s} audio: {summary(sel,'audio')}")

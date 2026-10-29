@@ -1,0 +1,30 @@
+Model F0 prediction, 5 voices
+
+same words, ending .     n=  52  rising   1.9%   rise +4.50   end -6.75   paper-style rising (slope>0)   7.7%
+same words, ending ?     n=  52  rising   0.0%   rise +4.27   end -7.22   paper-style rising (slope>0)   5.8%
+yn_question              n=  32  rising   0.0%   rise +4.78   end -7.59   paper-style rising (slope>0)  12.5%
+yn_statement             n=  37  rising   0.0%   rise +2.45   end -4.91   paper-style rising (slope>0)  16.2%
+wh_question              n=  24  rising   0.0%   rise +4.25   end -7.69   paper-style rising (slope>0)   4.2%
+tag_question             n=  12  rising   0.0%   rise +3.54   end -7.35   paper-style rising (slope>0)   0.0%
+alt_question             –
+
+Paired differences, same voice ('?' version minus '.' version), semitones
+  same words  ? vs .       n=  52  Δend -0.47 (± 4.00)   Δrise -0.23   '?' higher at the end in 31% of pairs (by > 1 st)
+  yes/no q vs statement    n=  32  Δend -2.35 (± 3.18)   Δrise +2.03   '?' higher at the end in 19% of pairs (by > 1 st)
+
+Per voice: yes/no questions rising vs statements rising (model prediction)
+  jf_alpha     questions   0.0%   statements   0.0%
+  jf_gongitsune questions   0.0%   statements   0.0%
+  jf_nezumi    questions   0.0%   statements   0.0%
+  jf_tebukuro  questions   0.0%   statements   5.0%
+  jm_kumo      questions   0.0%   statements   0.0%
+
+Audio check (jf_alpha, jm_kumo; librosa.pyin on the synthesized sound)
+  end vs median: prediction vs audio  correlation 0.44, mean -6.29 vs -5.60
+  same words, ending .     audio: n=  16  rising   0.0%   rise +0.36   end -5.64   paper-style rising (slope>0)   0.0%
+  same words, ending ?     audio: n=  16  rising   0.0%   rise +0.43   end -5.63   paper-style rising (slope>0)   0.0%
+  yn_question              audio: n=   8  rising   0.0%   rise +0.80   end -5.81   paper-style rising (slope>0)   0.0%
+  yn_statement             audio: n=  13  rising   0.0%   rise +0.71   end -4.73   paper-style rising (slope>0)   0.0%
+  wh_question              audio: n=   6  rising   0.0%   rise +0.78   end -6.62   paper-style rising (slope>0)   0.0%
+  tag_question             audio: n=   3  rising   0.0%   rise +0.44   end -6.32   paper-style rising (slope>0)   0.0%
+  alt_question             audio: –

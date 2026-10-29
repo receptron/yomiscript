@@ -1,4 +1,4 @@
-// Compare Yomite (yomite/en_kokoro/g2p.py) + YomiScript + Katarite (demo/ys_web/web/ys.js, ONNX, no pitch values)
+// Compare Yomite (yomite/en_kokoro/g2p.py or yomite/ja_kokoro/g2p.py) + YomiScript + Katarite (demo/ys_web/web/ys.js, ONNX, no pitch values)
 // against the original Kokoro (ref_kokoro.py output): phoneme string, ids, voice-pack index, durations, F0, audio.
 // usage: node compare.mjs <ref_dir> [--m fp32|w16]     env YOMITE_PY: python with kokoro + misaki
 import fs from 'fs';import path from 'path';import {spawnSync} from 'child_process';import {createRequire} from 'module';
@@ -11,7 +11,8 @@ K.setData(JSON.parse(fs.readFileSync(path.join(WEB,'data.json'))));
 const R=JSON.parse(fs.readFileSync(path.join(REF,'ref.json')));
 // 1. Yomite: text -> YomiScript (one utterance per original chunk)
 const texts=[...new Set(R.items.map(x=>x.text))];
-const g=spawnSync(process.env.YOMITE_PY||'python3',[path.join(ROOT,'yomite/en_kokoro/g2p.py'),...texts],{encoding:'utf8',maxBuffer:1<<26});
+const yomite=R.items[0].voice[0]==='j'?'yomite/ja_kokoro/g2p.py':'yomite/en_kokoro/g2p.py'; // the language follows the voice
+const g=spawnSync(process.env.YOMITE_PY||'python3',[path.join(ROOT,yomite),...texts],{encoding:'utf8',maxBuffer:1<<26});
 if(g.status!==0)throw new Error(g.stderr);
 const Y=g.stdout.trim().split('\n').filter(l=>l.startsWith('{')).map(l=>JSON.parse(l));
 // 2. Katarite
@@ -37,7 +38,7 @@ for(const it of R.items){
     r.ids=JSON.stringify(s.ids)===JSON.stringify(c.ids)&&P.length===1;all.ids+=r.ids;
     r.ref=(s.ps.length-1)===c.ref_index;all.ref+=r.ref;
     if(P.length===1&&r.ids){
-      const {audio,sections}=await E.synth(y.ys,'orig');void sections;
+      const {audio}=await E.synthSection(s,'orig');           // with the reference's voice (one section: audio as is)
       const pr=await E.predict(s);
       r.dur_same=pr.dur.filter((d,i)=>d===c.dur[i]).length/c.dur.length;all.dur+=r.dur_same===1;
       const n=Math.min(pr.f0.length,c.f0.length);let se=0,m=0;for(let i=0;i<n;i++)if(c.f0[i]>60&&pr.f0[i]>60){se+=(st(pr.f0[i])-st(c.f0[i]))**2;m++;}

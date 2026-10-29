@@ -23,7 +23,8 @@ for it in R["items"]:
         for m in ms:
             f = os.path.join(ref, f"ours.{m}.{c['wav']}")
             if os.path.exists(f): rows[m].append(cmp(sf.read(f)[0].astype(np.float32), a))
-print(f"{'vs original (af_heart)':28s} {'n':>3s} {'corr mean / min':>18s} {'SNR dB mean':>12s} {'mel L1 dB mean / max':>22s}")
+voices = ', '.join(sorted({it['voice'] for it in R['items']}))
+print(f"{'vs original ('+voices+')':28s} {'n':>3s} {'corr mean / min':>18s} {'SNR dB mean':>12s} {'mel L1 dB mean / max':>22s}")
 for k, v in rows.items():
     if not v: continue
     v = np.array(v)

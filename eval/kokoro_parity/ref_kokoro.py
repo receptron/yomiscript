@@ -6,6 +6,7 @@ espeak-ng (KPipeline's fallback G2P for unknown words) is loaded from Homebrew b
 ignores its data path on this machine; the version is the same (1.52.0). Set ESPEAK_LIB / ESPEAK_DATA to override.
 
 usage: python ref_kokoro.py texts.json out_dir [voice ...]      texts.json: [{"name", "text"}, ...]
+       the language follows the voices (af_heart: en-US, jf_alpha: ja); default af_heart
 """
 import json, os, sys, warnings
 import numpy as np
@@ -20,8 +21,11 @@ from kokoro import KPipeline
 
 def main(texts_file, out_dir, voices):
     os.makedirs(out_dir, exist_ok=True)
-    pipe = KPipeline(lang_code="a")
-    assert pipe.g2p.fallback is not None, "espeak fallback not loaded"
+    lang = voices[0][0]                                   # a / b (English), j (Japanese): from the voice name
+    assert all(v[0] == lang for v in voices), "one language per run"
+    pipe = KPipeline(lang_code=lang, repo_id="hexgrad/Kokoro-82M")
+    if lang in "ab":
+        assert pipe.g2p.fallback is not None, "espeak fallback not loaded"
     model = pipe.model
     cap = {}
     orig = model.predictor.F0Ntrain

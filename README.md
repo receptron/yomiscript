@@ -58,6 +58,7 @@ Spec: [`spec/lexicon/`](spec/lexicon/).
 | **Lexicons (.koedict)** | Yomite input: human-readable lexicons of readings, accents, dialects and context conditions | [`spec/lexicon/`](spec/lexicon/), [`dict/`](dict/) |
 | **Yomi-0** | Japanese Yomite: a small dense model (MLX) that produces readings, pitch accent and phrase boundaries | [`models/yomi/`](models/yomi/) |
 | **English Yomite (Kokoro)** | misaki (Kokoro's G2P) + Kokoro's prosody predictor: English text → YomiScript with pitch values | [`yomite/en_kokoro/`](yomite/en_kokoro/) |
+| **Japanese Yomite (Kokoro)** | Kokoro's Japanese front end (misaki Cutlet) + its prosody predictor: Japanese text → YomiScript, exactly as the original Kokoro reads it | [`yomite/ja_kokoro/`](yomite/ja_kokoro/) |
 | **MoLD** | Mixture of Language-specific Dictionaries: shared weights plus a swappable memory per language or dialect; dictionaries compile into memory without training | [`mold/`](mold/) |
 | **Kokoro reference Katarite** | Synthesizes speech from YomiScript with Kokoro-82M, bypassing its own text analysis; builds F0 from accent/tone marks where appropriate; handles mixed-language utterances | [`tts/kokoro_ys/`](tts/kokoro_ys/) |
 | **Browser demo** | YomiScript → speech entirely in the browser (onnxruntime-web) | [`demo/ys_web/`](demo/ys_web/) |
@@ -77,7 +78,7 @@ Japanese is the hardest case for the Yomite side, not the focus of the project. 
 
 ## Documents
 
-- [Decisions D1–D21](docs/decisions.md)
+- [Decisions D1–D22](docs/decisions.md)
 - [Hypotheses H0–H12](docs/hypotheses.md)
 - [Contributing](CONTRIBUTING.md)
 

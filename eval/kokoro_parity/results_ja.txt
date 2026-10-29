@@ -1,0 +1,56 @@
+vs original (jf_alpha, jm_kumo)   n    corr mean / min  SNR dB mean   mel L1 dB mean / max
+original 2nd run              50   0.9918 / 0.9762         18.2         0.35 / 0.48
+fp32                          50   0.9914 / 0.9773         18.0         0.36 / 0.52
+w16                           50   0.9833 / 0.7980         16.6         0.38 / 0.61
+plain         jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.5dB corr 0.9944 len 57600/57600
+comma         jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 18.4dB corr 0.9927 len 86400/86400
+ka_question   jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 20.3dB corr 0.9953 len 64200/64200
+q_no_ka       jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 16.9dB corr 0.9899 len 42600/42600
+q_ascii       jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 18.4dB corr 0.9928 len 57000/57000
+exclaim       jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.3dB corr 0.9942 len 46200/46200
+quotes        jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 20.0dB corr 0.9950 len 58800/58800
+brackets      jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.5dB corr 0.9944 len 127800/127800
+numbers       jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.4dB corr 0.9943 len 182400/182400
+long_vowels   jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 20.4dB corr 0.9954 len 82800/82800
+geminate      jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 17.9dB corr 0.9919 len 69600/69600
+moraic_n      jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 17.4dB corr 0.9909 len 123000/123000
+loanwords     jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 18.4dB corr 0.9927 len 136200/136200
+two_sentences jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 17.2dB corr 0.9905 len 74400/74400
+q_then_s      jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.9dB corr 0.9949 len 69600/69600
+ellipsis      jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 20.8dB corr 0.9958 len 53400/53400
+no_final      jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.5dB corr 0.9944 len 52800/52800
+colon_semicolon jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 21.0dB corr 0.9961 len 71400/71400
+wave_dash     jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.1dB corr 0.9938 len 81000/81000
+nakaguro      jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 18.9dB corr 0.9936 len 60000/60000
+latin         jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 18.0dB corr 0.9922 len 81600/81600
+kanji_names   jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 18.9dB corr 0.9936 len 114000/114000
+newline       jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 18.8dB corr 0.9934 len 51000/51000
+newline       jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 19.2dB corr 0.9940 len 63600/63600
+long          jf_alpha ps= ids= ref= dur 100% F0 0.000st SNR 13.4dB corr 0.9773 len 766200/766200
+plain         jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 14.2dB corr 0.9811 len 52200/52200
+comma         jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 16.9dB corr 0.9897 len 97800/97800
+ka_question   jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 18.2dB corr 0.9925 len 63600/63600
+q_no_ka       jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 15.7dB corr 0.9864 len 40800/40800
+q_ascii       jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 16.6dB corr 0.9890 len 52800/52800
+exclaim       jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 18.2dB corr 0.9925 len 44400/44400
+quotes        jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 19.2dB corr 0.9940 len 57000/57000
+brackets      jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 16.1dB corr 0.9878 len 143400/143400
+numbers       jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 17.6dB corr 0.9913 len 193800/193800
+long_vowels   jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 19.5dB corr 0.9944 len 81000/81000
+geminate      jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 16.2dB corr 0.9881 len 69600/69600
+moraic_n      jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 18.3dB corr 0.9926 len 123600/123600
+loanwords     jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 15.7dB corr 0.9864 len 145800/145800
+two_sentences jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 17.9dB corr 0.9919 len 82200/82200
+q_then_s      jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 16.6dB corr 0.9890 len 72000/72000
+ellipsis      jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 16.8dB corr 0.9896 len 54600/54600
+no_final      jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 17.5dB corr 0.9910 len 48600/48600
+colon_semicolon jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 17.1dB corr 0.9902 len 72600/72600
+wave_dash     jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 17.8dB corr 0.9917 len 79800/79800
+nakaguro      jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 18.7dB corr 0.9933 len 60600/60600
+latin         jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 17.3dB corr 0.9907 len 83400/83400
+kanji_names   jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 17.7dB corr 0.9915 len 124800/124800
+newline       jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 18.4dB corr 0.9927 len 46800/46800
+newline       jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 14.4dB corr 0.9820 len 60600/60600
+long          jm_kumo ps= ids= ref= dur 100% F0 0.000st SNR 15.5dB corr 0.9861 len 691800/691800
+
+50 chunks: ps identical 50, ids identical 50, voice index identical 50, durations identical 50

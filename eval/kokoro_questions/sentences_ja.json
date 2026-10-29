@@ -1,0 +1,287 @@
+[
+ {
+  "kind": "punct_pair",
+  "name": "pp00.",
+  "text": "明日は雨が降る。",
+  "pair": "pp00"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp00?",
+  "text": "明日は雨が降る？",
+  "pair": "pp00"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp01.",
+  "text": "彼はもう家に帰った。",
+  "pair": "pp01"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp01?",
+  "text": "彼はもう家に帰った？",
+  "pair": "pp01"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp02.",
+  "text": "駅まで歩いて行く。",
+  "pair": "pp02"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp02?",
+  "text": "駅まで歩いて行く？",
+  "pair": "pp02"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp03.",
+  "text": "この本はあなたのです。",
+  "pair": "pp03"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp03?",
+  "text": "この本はあなたのです？",
+  "pair": "pp03"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp04.",
+  "text": "会議は三時から始まる。",
+  "pair": "pp04"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp04?",
+  "text": "会議は三時から始まる？",
+  "pair": "pp04"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp05.",
+  "text": "窓を開けてもいい。",
+  "pair": "pp05"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp05?",
+  "text": "窓を開けてもいい？",
+  "pair": "pp05"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp06.",
+  "text": "お昼ご飯はもう食べた。",
+  "pair": "pp06"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp06?",
+  "text": "お昼ご飯はもう食べた？",
+  "pair": "pp06"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp07.",
+  "text": "鍵は車の中にある。",
+  "pair": "pp07"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp07?",
+  "text": "鍵は車の中にある？",
+  "pair": "pp07"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp08.",
+  "text": "来月東京に引っ越すんだ。",
+  "pair": "pp08"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp08?",
+  "text": "来月東京に引っ越すんだ？",
+  "pair": "pp08"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp09.",
+  "text": "先生はまだ教室にいる。",
+  "pair": "pp09"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp09?",
+  "text": "先生はまだ教室にいる？",
+  "pair": "pp09"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp10.",
+  "text": "それは本当なの。",
+  "pair": "pp10"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp10?",
+  "text": "それは本当なの？",
+  "pair": "pp10"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp11.",
+  "text": "今日は日曜日です。",
+  "pair": "pp11"
+ },
+ {
+  "kind": "punct_pair",
+  "name": "pp11?",
+  "text": "今日は日曜日です？",
+  "pair": "pp11"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn00?",
+  "text": "明日学校に行きますか？",
+  "pair": "yn00"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn00.",
+  "text": "明日学校に行きます。",
+  "pair": "yn00"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn01?",
+  "text": "このバスは駅に止まりますか？",
+  "pair": "yn01"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn01.",
+  "text": "このバスは駅に止まります。",
+  "pair": "yn01"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn02?",
+  "text": "彼女は英語を話せますか？",
+  "pair": "yn02"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn02.",
+  "text": "彼女は英語を話せます。",
+  "pair": "yn02"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn03?",
+  "text": "もう宿題は終わりましたか？",
+  "pair": "yn03"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn03.",
+  "text": "もう宿題は終わりました。",
+  "pair": "yn03"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn04?",
+  "text": "コーヒーを飲みますか？",
+  "pair": "yn04"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn04.",
+  "text": "コーヒーを飲みます。",
+  "pair": "yn04"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn05?",
+  "text": "ここで写真を撮ってもいいですか？",
+  "pair": "yn05"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn05.",
+  "text": "ここで写真を撮ってもいいです。",
+  "pair": "yn05"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn06?",
+  "text": "田中さんは来ましたか？",
+  "pair": "yn06"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn06.",
+  "text": "田中さんは来ました。",
+  "pair": "yn06"
+ },
+ {
+  "kind": "yn_question",
+  "name": "yn07?",
+  "text": "窓を閉めましょうか？",
+  "pair": "yn07"
+ },
+ {
+  "kind": "yn_statement",
+  "name": "yn07.",
+  "text": "窓を閉めましょう。",
+  "pair": "yn07"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh00",
+  "text": "どこに行きますか？"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh01",
+  "text": "何時に始まりますか？"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh02",
+  "text": "誰が来ましたか？"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh03",
+  "text": "どうして遅れたんですか？"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh04",
+  "text": "何を食べたいですか？"
+ },
+ {
+  "kind": "wh_question",
+  "name": "wh05",
+  "text": "いつ日本に来ましたか？"
+ },
+ {
+  "kind": "tag_question",
+  "name": "tag00",
+  "text": "明日は晴れるよね？"
+ },
+ {
+  "kind": "tag_question",
+  "name": "tag01",
+  "text": "これ、あなたのでしょう？"
+ },
+ {
+  "kind": "tag_question",
+  "name": "tag02",
+  "text": "もう出発するんじゃない？"
+ }
+]
