@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "YomiScript CLI: speak YomiScript with a Katarite",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/receptron/yomiscript.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/receptron/yomiscript/tree/main/packages/cli#readme",
+  "bugs": {
+    "url": "https://github.com/receptron/yomiscript/issues"
+  },
   "type": "module",
   "exports": {
     ".": {

@@ -1,6 +1,6 @@
-"""推論 CLI。 python infer.py --ckpt ckpt/tiny "今日は良い天気です。"  (引数なしなら標準入力から1行1文)
-MoLD: --dict ../../../dict/names/given_names.koedict --sex female  (辞書メモリを学習なしで差し込む)
-      --memory mem/xxx.mem.safetensors (学習型メモリ層の差し替え)"""
+"""Inference CLI. python infer.py --ckpt ckpt/tiny "今日は良い天気です。"  (without arguments, one sentence per line from stdin)
+MoLD: --dict ../../../dict/names/given_names.koedict --sex female  (plug in lexicon memory without training)
+      --memory mem/xxx.mem.safetensors (swap the learned memory layer)"""
 
 import argparse
 import sys
@@ -13,13 +13,13 @@ import mold
 ap = argparse.ArgumentParser()
 ap.add_argument("--ckpt", default="ckpt/tiny")
 ap.add_argument("--dtype", default=None, choices=["float32", "bfloat16", "float16"])
-ap.add_argument("--plain", action="store_true", help="韻律記号を除いたカナだけ出す")
-ap.add_argument("--dict", action="append", default=[], help=".koedict (複数可, 後勝ちではなく注記>文脈>default の順)")
-ap.add_argument("--dialect", default=None, help="fixed モード: @lexicon(dialect: X) を使う")
-ap.add_argument("--sex", default=None, help="male/female (人名の文脈条件)")
-ap.add_argument("--context", action="append", default=[], help="任意の文脈語")
+ap.add_argument("--plain", action="store_true", help="output only the kana, without prosody symbols")
+ap.add_argument("--dict", action="append", default=[], help=".koedict (repeatable; not last-wins but ordered annotation > context > default)")
+ap.add_argument("--dialect", default=None, help="fixed mode: use @lexicon(dialect: X)")
+ap.add_argument("--sex", default=None, help="male/female (context condition for personal names)")
+ap.add_argument("--context", action="append", default=[], help="arbitrary context word")
 ap.add_argument("--memory", default=None)
-ap.add_argument("--show", action="store_true", help="辞書メモリの適用ログを出す")
+ap.add_argument("--show", action="store_true", help="print the log of lexicon-memory applications")
 ap.add_argument("text", nargs="*")
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt, getattr(mx, a.dtype) if a.dtype else None, memory=a.memory)

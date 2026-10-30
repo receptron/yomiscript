@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "MCP server: a speak tool that takes YomiScript written by the calling LLM",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/receptron/yomiscript.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://github.com/receptron/yomiscript/tree/main/packages/mcp#readme",
+  "bugs": {
+    "url": "https://github.com/receptron/yomiscript/issues"
+  },
   "type": "module",
   "exports": {
     ".": {

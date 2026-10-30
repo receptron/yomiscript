@@ -1,6 +1,6 @@
-"""pyopenjtalk ベースライン (H1): 精度と CPU 速度を測る。
+"""pyopenjtalk baseline (H1): measures accuracy and CPU speed.
 
-python eval/scripts/run_pyopenjtalk_baseline.py  -> eval/results/*.json, 誤り例 *.tsv
+python eval/scripts/run_pyopenjtalk_baseline.py  -> eval/results/*.json, error examples *.tsv
 """
 
 import json
@@ -27,7 +27,7 @@ def _num(rx, s):
 
 
 def pp_symbols(labels):
-    """フルコンテキストラベル -> 音素+韻律記号 (ESPnet pyopenjtalk_prosody と同じ規則)。"""
+    """Full-context labels -> phonemes + prosody symbols (the same rules as ESPnet pyopenjtalk_prosody)."""
     pp, n_ = [], len(labels)
     for n, lab in enumerate(labels):
         p3 = re.search(r"\-(.*?)\+", lab).group(1)
@@ -139,7 +139,7 @@ def main():
         for x in errs:
             f.write("\t".join(map(str, x)) + "\n")
 
-    # ハードセット
+    # hard set
     rows = [l.rstrip("\n").split("\t") for l in open(EV / "data/hard_set.tsv", encoding="utf-8") if l.strip() and not l.startswith("#")]
     cats, hard = {}, []
     for hid, cat, text, gold, *_note in rows:
@@ -174,7 +174,7 @@ def main():
         "pyopenjtalk": pyopenjtalk.__version__,
         "python": platform.python_version(),
         "cpu": platform.processor() or platform.machine(),
-        "note": "1プロセス・1スレッド逐次、ウォームアップ後",
+        "note": "1 process, 1 thread, sequential, after warm-up",
     }
     json.dump({"env": env, "jsut": jres, "hard": hres}, open(OUT / "pyopenjtalk_baseline.json", "w"), ensure_ascii=False, indent=2)
     print(json.dumps({"jsut": jres, "hard": hres}, ensure_ascii=False, indent=1))

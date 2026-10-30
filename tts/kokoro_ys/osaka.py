@@ -1,5 +1,5 @@
-"""Tokyo vs Keihan (ja-x-osaka): same words, only accent differs. Keihan: '=' phrase-initial 高起 (explicit high start),
-'[' may appear at any mora (低起: low until '['), ']' nucleus as usual; high-start stretches are flat (平進)."""
+"""Tokyo vs Keihan (ja-x-osaka): same words, only accent differs. Keihan: '=' marks a phrase-initial high start (高起),
+'[' may appear at any mora (low start, 低起: low until '['), ']' nucleus as usual; high-start stretches are flat (平進)."""
 
 import re
 import sys

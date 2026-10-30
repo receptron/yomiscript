@@ -1,4 +1,4 @@
-"""MoLD デモ: 同じ重みのまま辞書メモリを差し込み/外して読みが変わることと、遅延の増分を見る。
+"""MoLD demo: with the same weights, plug lexicon memory in and out to see the readings change, and measure the added latency.
 python mold_demo.py --ckpt ckpt/tiny_aug [--extra mem/base_pyopenjtalk.koedict]"""
 
 import argparse
@@ -16,7 +16,7 @@ ap.add_argument("--extra", action="append", default=[])
 ap.add_argument("--n", type=int, default=20)
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt)
-demo = ROOT / "dict/names/demo_extra.koedict"  # 辞書に無い名前を「その場で」足す例
+demo = ROOT / "dict/names/demo_extra.koedict"  # example of adding a name missing from the lexicon "on the spot"
 router = mold.MemoryRouter(
     [
         mold.LexMemory.from_file(p)

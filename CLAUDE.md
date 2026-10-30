@@ -1,4 +1,4 @@
-# CLAUDE.md — mulmovoice
+# CLAUDE.md — yomiscript
 
 Working notes for AI coding agents in this repo. Human-facing docs (what it is, the architecture, each part's setup)
 live in **README.md** and the README of each directory — read them for anything not covered here. The coding rules
@@ -75,8 +75,7 @@ stays text (`↘ ↗ ‖ ꜛ ꜜ` are YomiScript, not decoration).
 
 ## Documentation language
 Documentation is in English. Japanese appears only in examples and data (readings, example sentences, dictionary
-entries). Write new comments and docstrings in English too. Older Japanese comments in `models/yomi/mlx` and `tts/`
-predate this rule.
+entries). Comments, docstrings and messages (print, help, errors) are in English too.
 
 ## Layout
 - `spec/`: YomiScript and lexicon specifications. `docs/`: decisions (D…), hypotheses (H…) and the distribution plan

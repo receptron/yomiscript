@@ -1,6 +1,6 @@
-"""評価指標: カナCER、アクセント核、句境界F1。
+"""Evaluation metrics: kana CER, accent nucleus, phrase boundary F1.
 
-韻律記号は jsut-label e2e_symbol 形式 (^ $ ? _ # [ ])。
+Prosody symbols are in the jsut-label e2e_symbol format (^ $ ? _ # [ ]).
 """
 
 import re
@@ -25,7 +25,7 @@ _VOW = {c: v for v, cs in _ROWS.items() for c in cs}
 
 
 def loose_kana(s):
-    """表記ゆれ正規化 (副次指標用): ー→直前の母音、エ段+イ→エ段+エ、オ段+ウ→オ段+オ、ヲ→オ。"""
+    """Spelling-variant normalization (for the secondary metric): ー -> the preceding vowel, e-row + イ -> e-row + エ, o-row + ウ -> o-row + オ, ヲ -> オ."""
     out = []
     for c in norm_kana(s):
         prev = _VOW.get(out[-1]) if out else None
@@ -50,7 +50,7 @@ def edit_distance(a, b):
 
 
 def split_prosody(tokens):
-    """記号付き系列 -> (音素リスト, {(位置, 記号)})。位置=その記号より前の音素数。"""
+    """Sequence with symbols -> (phoneme list, {(position, symbol)}). Position = the number of phonemes before the symbol."""
     phones, events = [], set()
     for t in tokens:
         if t in PROSODY:
@@ -71,7 +71,7 @@ def _nuclei(events):
 
 
 def prosody_compare(gold_tokens, pred_tokens):
-    """音素を整列し、一致区間で対応づけた位置で韻律イベントを比較する。"""
+    """Align the phonemes and compare the prosody events at the positions mapped through the matching blocks."""
     gp, ge = split_prosody(gold_tokens)
     pp, pe = split_prosody(pred_tokens)
     m = {}
@@ -94,7 +94,7 @@ def prosody_compare(gold_tokens, pred_tokens):
         "ph_err": edit_distance(gp, pp),
         "ph_len": len(gp),
     }
-    # アクセント句単位: 両端の境界と核位置(有無含む)が一致した句の割合
+    # Per accent phrase: the share of phrases whose boundaries at both ends and nucleus position (including none) match
     cuts = [0] + sorted(gb) + [len(gp)]
     ok = tot = 0
     for a, b in zip(cuts, cuts[1:], strict=False):

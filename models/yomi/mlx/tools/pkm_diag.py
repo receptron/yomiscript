@@ -1,4 +1,4 @@
-"""学習型メモリ (PKM) の診断: スロット使用率、メモリ出力のノルムと残差のノルムの比、勾配ノルム。
+"""Diagnostics for the learned memory (PKM): slot usage, the ratio of the memory output norm to the residual norm, gradient norms.
 python tools/pkm_diag.py --ckpt ckpt/mold_tiny [--pkm X.mem.safetensors] [--data data/names/names_train.jsonl] [--n 256]"""
 
 import argparse
@@ -21,8 +21,8 @@ ap.add_argument("--ckpt", required=True)
 ap.add_argument("--pkm", action="append")
 ap.add_argument("--data", default="data/names/names_train.jsonl")
 ap.add_argument("--n", type=int, default=256)
-ap.add_argument("--json", action="store_true", help="全 JSON を標準出力にも出す (既定は eval_out/ に保存して要約だけ表示)")
-ap.add_argument("--gen-data", default="data/dev.jsonl", help="条件付きゲートの比較用の一般文 (人名なし)")
+ap.add_argument("--json", action="store_true", help="also print the full JSON to stdout (by default it is saved under eval_out/ and only the summary is shown)")
+ap.add_argument("--gen-data", default="data/dev.jsonl", help="general sentences (no personal names) to compare the conditional gate against")
 a = ap.parse_args()
 model, sv, tv, _ = yomi.load(a.ckpt, memory=a.pkm)
 model.train()
@@ -68,7 +68,7 @@ mold.ProductKeyMemory.probe = None
 
 
 def gate_stats(rs):
-    """条件付きゲートのトークン別統計: 人名トークン / それ以外。メモリごと。"""
+    """Per-token statistics of the conditional gate: personal-name tokens / others. Per memory."""
     S, Ti, To = train.collate(rs, sv, tv)
     _, N = train.span_labels(rs, S.shape[1])
     model.eval()
@@ -106,7 +106,7 @@ fp = od / f"{Path(a.ckpt).name}.pkm_diag.json"
 fp.write_text(js, encoding="utf-8")
 if a.json:
     print(js)
-# 最後の数行 = 要約 (貼り付け用)
+# The last few lines = the summary (for pasting)
 for p in mold.split_pkm(a.pkm):
     print(f"file {Path(p).name}: {mold.memory_file_summary(p)}")
 print(f"pkm_diag {a.ckpt}  loss {res['loss']:.4f}  full: {fp}")

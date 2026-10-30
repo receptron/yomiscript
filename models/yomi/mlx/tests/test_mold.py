@@ -5,9 +5,13 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 ROOT = HERE.parents[2]
 import mlx.core as mx
+import pytest
 import yomi
 
 import mold
+
+# the personal-name dictionaries are kept outside the repository (dict/names/README.md)
+needs_names = pytest.mark.skipif(not (ROOT / "dict/names/surnames.koedict").exists(), reason="no dict/names data (dict/names/README.md)")
 
 
 def test_parse_sample():
@@ -16,15 +20,16 @@ def test_parse_sample():
     assert any(e.dialect == "kansai" for e in es)
 
 
+@needs_names
 def test_priority_and_sex():
     g = mold.LexMemory.from_file(ROOT / "dict/names/given_names.koedict")
     s = mold.LexMemory.from_file(ROOT / "dict/names/surnames.koedict")
     r = mold.MemoryRouter([s, g])
     assert r.resolve("智さんが来た", {"sex": "female"})[0] == "トモさんが来た"
     assert r.resolve("智さんが来た", {"sex": "male"})[0] == "サトシさんが来た"
-    assert r.resolve("{智|ちえ}さんが来た", {"sex": "male"})[0] == "チエさんが来た"  # 注記が最優先
-    assert r.resolve("正しい", None)[0] == "正しい"  # 人名でない位置には出ない
-    assert r.resolve("佐藤光が来た", {"sex": "female"})[0].startswith("サトーヒカリ")  # 苗字の隣は人名
+    assert r.resolve("{智|ちえ}さんが来た", {"sex": "male"})[0] == "チエさんが来た"  # the annotation comes first
+    assert r.resolve("正しい", None)[0] == "正しい"  # not applied outside name positions
+    assert r.resolve("佐藤光が来た", {"sex": "female"})[0].startswith("サトーヒカリ")  # next to a surname is a personal name
 
 
 def test_context_and_default():
@@ -43,7 +48,7 @@ def test_swap_and_backcompat(tmp_path):
     mm.load_weights(list(tree_flatten(base.parameters())), strict=False)
     src = mx.array([[5, 6, 7, 0]])
     tin = mx.array([[1, 4, 5]])
-    assert mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()  # v2: 値0 (ゲート1) → 出力同一
+    assert mx.allclose(base(src, tin), mm(src, tin), atol=1e-5).item()  # v2: values 0 (gate 1) -> identical output
     assert float(mm.enc[1].mem.gate.item()) == 1.0
     p = tmp_path / "a.mem.safetensors"
     mm.enc[1].mem.slots = mx.ones_like(mm.enc[1].mem.slots)
@@ -61,12 +66,11 @@ def test_layer_override(tmp_path):
     u.write_text("@lexicon { 市場 = イチバ; }\n")
     r = mold.MemoryRouter([mold.LexMemory.from_file(b), mold.LexMemory.from_file(u)])
     assert r.resolve("市場へ")[0] == "イチバへ"
-    import pytest
-
     with pytest.raises(ValueError):
         mold.LexMemory.from_file(tmp_path / "x.csv")
 
 
+@needs_names
 def test_pron_normalization():
     assert mold.to_pron("サトウ") == "サトー" and mold.to_pron("ケイ") == "ケー" and mold.to_pron("ユウコ") == "ユーコ" and mold.to_pron("ユイ") == "ユイ"
     s = mold.LexMemory.from_file(ROOT / "dict/names/surnames.koedict")
@@ -74,6 +78,7 @@ def test_pron_normalization():
     assert mold.MemoryRouter([s, g], tokenizer=None).resolve("佐藤光が来た", ["female"])[0].startswith("サトーヒカリ")
 
 
+@needs_names
 def test_split_name_phrases():
     assert mold.split_name_phrases("^サ[トーヒ]カリガ$", [("サトー", "ヒカリ")]) == "^サ[トー#ヒ]カリガ$"
     assert mold.split_name_phrases("^サ[トーヒカリガ$", [("サトー", "ヒカリ")]) == "^サ[トー#ヒ[カリガ$"
@@ -90,26 +95,26 @@ def test_no_replace_inside_word():
     for tok in (None, "auto"):
         r = mold.MemoryRouter([m], tokenizer=tok)
         out = r.resolve("朝市の市で魚を買う。")[0]
-        assert out.startswith("朝市の"), out  # 朝市 の中は置換しない
-        assert "のイチで" in out, out  # 独立した 市 は文脈 (朝市) で イチ
+        assert out.startswith("朝市の"), out  # no replacement inside 朝市
+        assert "のイチで" in out, out  # a standalone 市 is イチ by context (朝市)
     b = Path(__file__).parent / "_tmp_base.koedict"
     b.write_text("# layer: base\n@lexicon { 朝市 = アサイチ; }\n")
     try:
         r = mold.MemoryRouter([mold.LexMemory.from_file(b), m], tokenizer=None)
-        assert r.resolve("朝市の市で")[0] == "アサイチのイチで"  # 長い一致 (base) が勝つ
+        assert r.resolve("朝市の市で")[0] == "アサイチのイチで"  # the longer match (base) wins
     finally:
         b.unlink()
 
 
 def test_pkm_cosine_routing_not_collapsed():
-    """v2: コサイン類似度 x 温度なのでスコアが有界、softmax が one-hot にならず、ゲートも 0 でない。"""
+    """v2: cosine similarity x temperature, so scores are bounded, softmax is not one-hot, and the gate is nonzero."""
     import mlx.nn as nn
 
     mx.random.seed(0)
     m = mold.ProductKeyMemory(64, n_keys=16, k_dim=16, topk=4, temp=15.0)
-    x = mx.random.normal((4, 32, 64)) * 20.0  # 残差ノルムが大きくてもスコアは膨らまない
-    assert float(mx.abs(m(x)).max()) == 0.0  # 値 0 初期化 → 開始時の出力は 0
-    m.slots = mx.random.normal(m.slots.shape)  # 学習後を模擬
+    x = mx.random.normal((4, 32, 64)) * 20.0  # scores do not blow up even with a large residual norm
+    assert float(mx.abs(m(x)).max()) == 0.0  # values initialized to 0 -> output 0 at the start
+    m.slots = mx.random.normal(m.slots.shape)  # simulate after training
     mold.ProductKeyMemory.probe = []
     out = m(x)
     w, idx, _, _, sc = mold.ProductKeyMemory.probe[0]
@@ -122,7 +127,7 @@ def test_pkm_cosine_routing_not_collapsed():
     aux = m._st.aux
     assert float(aux) >= -1e-4
 
-    # 負荷分散 loss の勾配は query / subkeys に流れる
+    # The gradient of the load-balancing loss flows to query / subkeys
     def f(mod, x):
         mod(x)
         return mod._st.aux
@@ -131,7 +136,7 @@ def test_pkm_cosine_routing_not_collapsed():
     r = mx.random.normal(x.shape)
     m.slots = mx.zeros_like(m.slots)
     _, gs = nn.value_and_grad(m, lambda mod, x: (mod(x) * r).sum())(m, x)
-    assert float(mx.abs(gs["slots"]).sum()) > 0  # 値 0 でもゲート 1 なので値に勾配が流れる
+    assert float(mx.abs(gs["slots"]).sum()) > 0  # values are 0 but the gate is 1, so the values get a gradient
     assert float(mx.abs(g["subkeys"]).sum()) > 0 and float(mx.abs(g["query"]["weight"]).sum()) > 0
     assert "_st" not in dict(__import__("mlx.utils", fromlist=["x"]).tree_flatten(m.parameters()))
 
@@ -169,13 +174,13 @@ def test_leak_losses():
     train.LEAK.update(kl=1.0, gate_l1=0.1, gate_sup=1.0, group="mem2")
     base = float(train.train_loss_fn(mm, S, Ti, To, 0.0))
     tot = float(train.leak_loss_fn(mm, S, Ti, To, 0.0, G, N))
-    assert tot > base  # KL は 0 (mem2 値 0)、ゲート項 (0.5) が乗る
+    assert tot > base  # KL is 0 (mem2 values 0); the gate term (0.5) is added
     assert not mm.enc[1].mem2._st.off
     train.LEAK.update(kl=0.0, gate_l1=0.0, gate_sup=0.0)
 
 
 def test_stacked_load_keeps_default_memory(tmp_path):
-    """回帰: 積み重ね読み込み (ckpt の値とは別の既定メモリ + mem2) で mem0 のゲート・値がファイルと一致する。"""
+    """Regression: with stacked loading (a default memory other than the ckpt values + mem2), mem0's gate and values match the file."""
     import json as _j
 
     from mlx.utils import tree_flatten
@@ -190,8 +195,8 @@ def test_stacked_load_keeps_default_memory(tmp_path):
     mm.enc[1].mem2.slots = mx.full(mm.enc[1].mem2.slots.shape, 0.5)
     b = tmp_path / "n.mem2.safetensors"
     mold.save_memory(mm, b, group="mem2")
-    assert all(".mem2." in k for k in mx.load(str(b)))  # mem2 ファイルに mem0 は入らない
-    # ckpt 側は mem0 がオフ (ゲート0・値0)
+    assert all(".mem2." in k for k in mx.load(str(b)))  # the mem2 file does not contain mem0
+    # On the ckpt side mem0 is off (gate 0, values 0)
     mm.enc[1].mem.slots = mx.zeros_like(mm.enc[1].mem.slots)
     mm.enc[1].mem.gate = mx.array([0.0])
     ck = tmp_path / "ck"
@@ -214,10 +219,10 @@ def test_gate_floor_and_cg_thresh():
     m.eval()
     assert float(mx.abs(m(x)).sum()) == 0.0  # eval: cg=0.5 < 0.6 → 0
     m.train()
-    assert float(mx.abs(m(x)).sum()) > 0  # 学習中: ゲート下限 0.3 で出力あり
+    assert float(mx.abs(m(x)).sum()) > 0  # during training: gate floor 0.3, so there is output
 
     def f(gt):
         m.gate = gt
         return m(x).sum()
 
-    assert float(mx.abs(mx.grad(f)(mx.array([0.0]))).sum()) > 0  # straight-through: ゲートへ勾配が流れる
+    assert float(mx.abs(mx.grad(f)(mx.array([0.0]))).sum()) > 0  # straight-through: the gradient flows to the gate

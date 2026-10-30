@@ -1,9 +1,9 @@
-"""学習型メモリ (PKM) の差し替え比較。models/yomi/mlx から実行:
+"""Compare swapped learned memories (PKM). Run from models/yomi/mlx:
   python tools/pkm_compare.py [--ckpt ckpt/mold_tiny] [--mem name=path ...] [--limit N] [--skip-jsut] [--skip-names]
-各メモリについて eval_names.py と evaluate.py を --pkm 付きで実行し、出力全体を eval_out/ に保存して表にまとめる。
-存在しないメモリは飛ばす。--mem を指定すると既定 (default/names/general) を同名で上書き・追加する。
---mem name=a.mem.safetensors,b.mem.safetensors で積み重ね、末尾に @ckpt/X を付けるとその項目だけ別の ckpt を使う
-(末尾に #cg0.5 で推論時ゲート閾値。例: --mem default=ckpt/mfz_default.mem.safetensors@ckpt/mfz_general
+For each memory, runs eval_names.py and evaluate.py with --pkm, saves the full output under eval_out/ and summarizes it in a table.
+Memories that do not exist are skipped. --mem overrides or adds to the defaults (default/names/general) under the same name.
+--mem name=a.mem.safetensors,b.mem.safetensors stacks them; a trailing @ckpt/X uses another ckpt for that entry only
+(a trailing #cg0.5 sets the inference-time gate threshold. E.g.: --mem default=ckpt/mfz_default.mem.safetensors@ckpt/mfz_general
  --mem stacked=ckpt/mfz_default.mem.safetensors,ckpt/names2.mem.safetensors@ckpt/mfz_stack)"""
 
 import argparse
@@ -18,7 +18,7 @@ DEFAULTS = {"default": "ckpt/mold_tiny/default.mem.safetensors", "names": "ckpt/
 
 
 def last_json_object(text):
-    """ログ行の後ろに出る JSON (複数行) を取り出す。最後に読める '{' から始まる塊を返す。"""
+    """Extract the JSON (several lines) that follows the log lines. Returns the last parsable chunk starting with '{'."""
     dec = json.JSONDecoder()
     for m in reversed([m.start() for m in re.finditer(r"^\{", text, re.M)]):
         try:
@@ -31,7 +31,7 @@ def last_json_object(text):
 
 
 def parse_names(text):
-    """eval_names.py の 'split mode {json}' 行を {split/mode: dict} にする。"""
+    """Turn eval_names.py's 'split mode {json}' lines into {split/mode: dict}."""
     res = {}
     for line in text.splitlines():
         m = re.match(r"^((?:names|places)_eval_\w+)\s+(model|memory)\s+(\{.*\})\s*$", line)
@@ -60,7 +60,7 @@ def run(cmd, log):
     p = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True, env={**os.environ, **ENV})
     log.write_text(f"$ {' '.join(cmd)}\n# exit {p.returncode}\n{p.stdout}\n--- stderr ---\n{p.stderr}", encoding="utf-8")
     if p.returncode:
-        print(f"  失敗 (exit {p.returncode}): {log}", file=sys.stderr)
+        print(f"  failed (exit {p.returncode}): {log}", file=sys.stderr)
     return p.stdout
 
 
@@ -71,19 +71,19 @@ def fmt(v, pct=True):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ckpt", default="ckpt/mold_tiny")
-    ap.add_argument("--mem", action="append", default=[], help="name=path (複数可)")
-    ap.add_argument("--only", nargs="*", help="比較するメモリ名だけに絞る")
+    ap.add_argument("--mem", action="append", default=[], help="name=path (repeatable)")
+    ap.add_argument("--only", nargs="*", help="compare only these memory names")
     ap.add_argument("--out-dir", default="eval_out")
-    ap.add_argument("--limit", type=int, default=0, help="eval_names.py の --limit (動作確認用)")
-    ap.add_argument("--general-eval", type=int, default=0, metavar="N", help="一般文 held-out の N 文も評価 (表に gen/gCER 列)")
-    ap.add_argument("--places", default="data/places", help="地名評価 (places_eval_seen/unseen) の場所。無ければ省略")
+    ap.add_argument("--limit", type=int, default=0, help="--limit for eval_names.py (for a quick check)")
+    ap.add_argument("--general-eval", type=int, default=0, metavar="N", help="also evaluate N held-out general sentences (gen/gCER columns in the table)")
+    ap.add_argument("--places", default="data/places", help="location of the place-name evaluation (places_eval_seen/unseen). Skipped if missing")
     ap.add_argument("--skip-jsut", action="store_true")
     ap.add_argument("--skip-names", action="store_true")
     a = ap.parse_args()
     mems = dict(DEFAULTS)
     for s in a.mem:
         if "=" not in s:
-            ap.error(f"--mem は name=path 形式: {s}")
+            ap.error(f"--mem takes the form name=path: {s}")
         k, v = s.split("=", 1)
         mems[k] = v
     if a.only:
@@ -93,7 +93,7 @@ def main():
     tag = Path(a.ckpt).name
     rows = []
     for name, spec in mems.items():
-        spec, *opts = spec.split("#")  # 末尾 #cg0.5 = 推論時ゲート閾値 (MOLD_CG_THRESH)
+        spec, *opts = spec.split("#")  # trailing #cg0.5 = inference-time gate threshold (MOLD_CG_THRESH)
         ENV.clear()
         for o in opts:
             ENV.update({"MOLD_CG_THRESH": o[2:]} if o.startswith("cg") else {"MOLD_MEM_OFF": o[4:]} if o.startswith("off=") else {})
@@ -101,14 +101,14 @@ def main():
         ck = ck or a.ckpt
         miss = [p for p in path.split(",") if p and not (HERE / p).exists() and not Path(p).exists()]
         if miss:
-            print(f"skip {name}: {', '.join(miss)} がありません", file=sys.stderr)
+            print(f"skip {name}: {', '.join(miss)} not found", file=sys.stderr)
             continue
         print(f"== {name}: {path} (ckpt {ck})", file=sys.stderr, flush=True)
         r = {"memory": name}
         if not a.skip_names:
             cmd = [sys.executable, "eval_names.py", "--ckpt", ck] + (["--pkm", path] if path else []) + (["--limit", str(a.limit)] if a.limit else [])
             r["names"] = parse_names(run(cmd, out / f"{tag}.{name}.eval_names.log"))
-            if (HERE / a.places).exists():  # 地名 (mem3) の読み正解率
+            if (HERE / a.places).exists():  # place-name (mem3) reading accuracy
                 r["names"].update(
                     parse_names(
                         run(
@@ -132,10 +132,10 @@ def main():
         rows.append(r)
     (out / f"{tag}.compare.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
     if not rows:
-        print("比較できるメモリがありません")
+        print("no memories to compare")
         return 1
-    # 最後の数行だけ貼れば足りるよう、1 メモリ 1 行の表で終える (この後は何も出さない)
-    print(f"出力: {out}/  ckpt {a.ckpt}  [%]  人名=辞書なし(model) の read/pros", flush=True)
+    # End with a table of one line per memory, so pasting the last few lines is enough (nothing is printed after it)
+    print(f"output: {out}/  ckpt {a.ckpt}  [%]  names = read/pros without the lexicon (model)", flush=True)
     print(
         f"{'memory':10} {'CER':>5} {'sent':>5} {'loose':>5} {'hard':>5} {'bndF1':>5} {'accF1':>5} {'gen':>5} "
         f"{'gCER':>5} | {'seenR':>5} {'seenP':>5} {'unsR':>5} {'unsP':>5} | {'plcS':>5} {'plcU':>5}"

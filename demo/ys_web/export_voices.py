@@ -1,6 +1,6 @@
-"""Kokoro-82M の voices-v1.0.bin（npz）から、デモ用の声ファイル voices/<名前>.bin を書き出す。
-各ファイルは style ベクトル (510, 1, 256) float32 をリトルエンディアンの生バイト列で保存したもの（522,240 バイト）。
-使い方: python export_voices.py [voices-v1.0.bin] [声の名前 ...]
+"""Write the demo's voice files voices/<name>.bin from Kokoro-82M's voices-v1.0.bin (npz).
+Each file holds the style vectors (510, 1, 256) float32 as raw little-endian bytes (522,240 bytes).
+Usage: python export_voices.py [voices-v1.0.bin] [voice name ...]
 """
 
 import os

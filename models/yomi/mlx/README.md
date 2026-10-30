@@ -4,12 +4,10 @@ A small dense Transformer (encoder-decoder, no MoE, D2) that turns Japanese text
 The input is a character-level vocabulary; the output is a kana + prosody symbol sequence in the jsut-label `e2e_symbol` format.
 
 ```
-入力: 水をマレーシアから買わなくてはならないのです。
-出力: ^ミ[ズヲ#マ[レ]ーシアカラ#カ[ワナ]クテワ#ナ[ラ]ナイノデス$
-記号: ^文頭 $文末 ?疑問 #アクセント句境界 _ポーズ [上昇 ]アクセント核
+Input:   水をマレーシアから買わなくてはならないのです。
+Output:  ^ミ[ズヲ#マ[レ]ーシアカラ#カ[ワナ]クテワ#ナ[ラ]ナイノデス$
+Symbols: ^ sentence start  $ sentence end  ? question  # accent phrase boundary  _ pause  [ rise  ] accent nucleus
 ```
-
-(Input / output / symbols: `^` sentence start, `$` sentence end, `?` question, `#` accent phrase boundary, `_` pause, `[` rise, `]` accent nucleus.)
 
 ## Size (measured parameter counts; vocabulary from BASIC5000: 2639 input, 91 output)
 
@@ -30,7 +28,7 @@ The input is a character-level vocabulary; the output is a kana + prosody symbol
 ## Setup on Mac (Apple Silicon)
 
 ```bash
-git clone https://github.com/receptron/mulmovoice && cd mulmovoice/models/yomi/mlx
+git clone https://github.com/receptron/yomiscript && cd yomiscript/models/yomi/mlx
 uv venv && source .venv/bin/activate      # without uv: python3 -m venv .venv && source .venv/bin/activate
 uv pip install -r requirements.txt         # or pip install -r requirements.txt
 # to also use distillation: uv pip install pyopenjtalk
@@ -75,7 +73,7 @@ The checkpoint format is unchanged, so `ckpt/tiny_aug`, whether still training o
 Run these after training finishes (when the GPU is not busy).
 
 ```bash
-cd mulmovoice && git pull && cd models/yomi/mlx
+cd yomiscript && git pull && cd models/yomi/mlx
 source .venv/bin/activate
 python bench.py --ckpt ckpt/tiny_aug --device gpu
 python bench.py --ckpt ckpt/tiny_aug --device cpu
@@ -118,12 +116,12 @@ Sources and licenses: [`aug/LICENSE_DATA.md`](aug/LICENSE_DATA.md).
 
 ### Option A: prebuilt data tarball (about 22MB)
 
-Download it from [release yomi-aug-v1](https://github.com/receptron/mulmovoice/releases/tag/yomi-aug-v1) and extract it into `data/` (the repository is private, so download with `gh`).
+Download it from [release yomi-aug-v1](https://github.com/receptron/yomiscript/releases/tag/yomi-aug-v1) and extract it into `data/` (with `gh` as below, or from the release page).
 
 ```bash
-cd mulmovoice && git pull && cd models/yomi/mlx
+cd yomiscript && git pull && cd models/yomi/mlx
 source .venv/bin/activate
-mkdir -p data && gh release download yomi-aug-v1 -R receptron/mulmovoice -p yomi_aug_data_v1.tar.gz -D /tmp --clobber
+mkdir -p data && gh release download yomi-aug-v1 -R receptron/yomiscript -p yomi_aug_data_v1.tar.gz -D /tmp --clobber
 tar xzf /tmp/yomi_aug_data_v1.tar.gz -C data
 python train.py --config configs/tiny_aug.json --out ckpt/tiny_aug --distill
 ```
@@ -133,7 +131,7 @@ See `aug/LICENSE_DATA.md` for licenses (the Wikipedia-derived part is CC BY-SA).
 ### Option B: build from scratch on Mac (requires pyopenjtalk; no multi-GB downloads, about 1GB)
 
 ```bash
-cd mulmovoice && git pull && cd models/yomi/mlx
+cd yomiscript && git pull && cd models/yomi/mlx
 source .venv/bin/activate
 uv pip install -r aug/requirements.txt     # pyopenjtalk, pyarrow
 python aug/build_text.py                   # Tatoeba + 1 Wikipedia shard (about 170MB) -> data/aug_text/*.txt

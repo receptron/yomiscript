@@ -1,12 +1,12 @@
-"""人名入り学習文の生成 (MoLD / 名前の読み・アクセント対策)。
-苗字 (dict/names/surnames_top200.csv) × 下の名前 (given_names_by_generation.csv, 性別つき) をテンプレートに入れ、
-pyopenjtalk で韻律 (アクセント/句境界) を付ける。名前の読みは辞書の読みに **強制** する:
-  - pyopenjtalk の読みが辞書と一致 → そのまま (自然なアクセント)
-  - 不一致 → NJD の該当ノードを辞書の読みに書き換え、アクセント核は「読みのカタカナだけを pyopenjtalk に通した推定」を使う
-最後にラベルのカナに名前の読みが入っていることを検証する。
+"""Generate training sentences containing personal names (MoLD / for name readings and accents).
+Surnames (dict/names/surnames_top200.csv) x given names (given_names_by_generation.csv, with sex) are put into templates,
+and pyopenjtalk adds the prosody (accent / phrase boundaries). The name reading is **forced** to the lexicon reading:
+  - pyopenjtalk reading matches the lexicon -> kept as is (natural accent)
+  - mismatch -> the NJD node is rewritten to the lexicon reading, and the accent nucleus is "estimated by running only the katakana reading through pyopenjtalk"
+Finally, check that the name reading is present in the label kana.
 
   python aug/names.py --out data/names --n-train 30000 --n-eval 1000 [--estimated skip|down|keep]
-出力: names_train.jsonl (学習用, src=names), names_eval_seen.jsonl, names_eval_unseen.jsonl (未学習の名前), names_stats.json
+Output: names_train.jsonl (for training, src=names), names_eval_seen.jsonl, names_eval_unseen.jsonl (names not trained on), names_stats.json
 """
 
 import argparse
@@ -73,7 +73,7 @@ def _acc_of(pron):
 
 
 def label(text, forced):
-    """forced: [(start, end, pron)] (text 上の文字位置)。戻り値 (target, info) または (None, 理由)。"""
+    """forced: [(start, end, pron)] (character positions in text). Returns (target, info) or (None, reason)."""
     import pyopenjtalk
     from run_pyopenjtalk_baseline import pp_symbols
 
@@ -119,7 +119,7 @@ def label(text, forced):
 
 
 def name_region(target, pron):
-    """target 中で名前の読みを覆う部分 (記号込み) を返す。名前のアクセント評価用。"""
+    """Return the part of target that covers the name reading (including symbols). For evaluating the name accent."""
     ks = [i for i, c in enumerate(target) if c not in "^$?#_[]"]
     st = "".join(target[i] for i in ks)
     j = st.find(pron)
@@ -157,8 +157,8 @@ def main():
     ap.add_argument("--out", type=Path, default=HERE / "data/names")
     ap.add_argument("--n-train", type=int, default=30000)
     ap.add_argument("--n-eval", type=int, default=1000)
-    ap.add_argument("--estimated", default="down", choices=["skip", "down", "keep"], help="is_estimated の行: 除外/重み0.3/そのまま")
-    ap.add_argument("--unseen-frac", type=float, default=0.1, help="評価専用 (学習に出さない) 名前の割合")
+    ap.add_argument("--estimated", default="down", choices=["skip", "down", "keep"], help="rows with is_estimated: exclude / weight 0.3 / keep as is")
+    ap.add_argument("--unseen-frac", type=float, default=0.1, help="fraction of names kept for evaluation only (never shown in training)")
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     rng = random.Random(a.seed)

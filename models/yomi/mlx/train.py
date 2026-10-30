@@ -1,4 +1,4 @@
-"""Yomi-0 学習。 python train.py --config configs/tiny.json --out ckpt/tiny [--dtype bfloat16] [--distill]"""
+"""Yomi-0 training. python train.py --config configs/tiny.json --out ckpt/tiny [--dtype bfloat16] [--distill]"""
 
 import argparse
 import json
@@ -24,9 +24,10 @@ def read(p):
 
 
 def mem_augment(rows, dicts, p_names, p_general, rng):
-    """メモリを意識した学習: 推論時の MemoryRouter と同じ経路 (to_pron・人名判定・形態素境界) で
-    辞書が当たる部分の入力をカナに置き換えた版を作る。正解 (target) はそのまま。
-    人名文は p_names、その他で辞書が当たる文は p_general の割合で置き換え版を使う (各文1回だけ決める)。"""
+    """Memory-aware training: build a version whose input has the lexicon-matched parts replaced by kana, via the same path as
+    the MemoryRouter at inference (to_pron, personal-name detection, morpheme boundaries). The target stays the same.
+    The replaced version is used with probability p_names for personal-name sentences and p_general for other sentences a lexicon matches
+    (decided once per sentence)."""
     import mold
 
     router = mold.MemoryRouter([mold.LexMemory.from_file(d) for d in dicts])
@@ -41,12 +42,12 @@ def mem_augment(rows, dicts, p_names, p_general, rng):
                 n_n += is_name
                 n_g += not is_name
         out.append(r)
-    print(f"mem-aug: 人名文 {n_n} / その他 {n_g} 文の入力を辞書のカナに置換 (辞書 {len(dicts)} 個)", flush=True)
+    print(f"mem-aug: replaced the input with lexicon kana in {n_n} personal-name / {n_g} other sentences ({len(dicts)} lexicons)", flush=True)
     return out
 
 
 def batches(rows, sv, tv, bs, max_len, rng):
-    """長さの近い文をまとめたバッチを無限に出す。"""
+    """Yield batches of sentences of similar length, forever."""
     rows = [r for r in rows if len(r["text"]) < max_len and len(r["target"]) + 1 < max_len]
     while True:
         idx = sorted(range(len(rows)), key=lambda i: len(rows[i]["target"]) + rng.random() * 8)
@@ -62,7 +63,7 @@ def collate(rs, sv, tv):
     s = [sv.encode(r["text"]) for r in rs]
     t = [[BOS] + tv.encode(r["target"]) + [EOS] for r in rs]
 
-    # 長さを16の倍数に丸めて形状の種類を減らす(MLXのカーネル/バッファキャッシュ肥大による減速対策)
+    # Round lengths up to a multiple of 16 to reduce the number of shapes (avoids slowdowns from MLX kernel/buffer cache growth)
     def r16(n):
         return -(-n // 16) * 16
 
@@ -73,9 +74,9 @@ def collate(rs, sv, tv):
 
 
 def span_labels(rs, Ls, Lt=None):
-    """G: 一般文なら 1 (人名データ以外) (B,)、N: 入力文字が人名スパン内なら 1 (B,Ls)。
-    Lt を渡すと NT: 出力 (To) の位置が人名の読み (name_target) の範囲なら 1 (B,Lt) も返す。"""
-    ps = LEAK.get("pos_src")  # 指定時はその src の行だけを正例 (それ以外の人名文などは一般文 = ゲート0・KL 対象)
+    """G: 1 for general sentences (not personal-name data) (B,); N: 1 where the input character is inside a personal-name span (B,Ls).
+    Given Lt, also returns NT: 1 where the output (To) position is inside the personal-name reading (name_target) (B,Lt)."""
+    ps = LEAK.get("pos_src")  # when set, only rows of that src are positives (other personal-name sentences etc. are general = gate 0, KL target)
 
     def pos(r):
         return r.get("src") in ps if ps else r.get("source") == "names" or bool(r.get("names"))
@@ -98,21 +99,22 @@ def span_labels(rs, Ls, Lt=None):
         lab = [0.0] * Lt
         nt = r.get("name_target") if pos(r) else None
         if nt and (i := r["target"].find(nt)) >= 0:
-            for j in range(max(0, i - 1), min(i + len(nt) + 1, Lt)):  # 前後 1 文字 (境界記号) も人名側
+            for j in range(max(0, i - 1), min(i + len(nt) + 1, Lt)):  # one character on each side (boundary symbols) also counts as the name
                 lab[j] = 1.0
         elif pos(r) and r.get("names"):
-            lab = [1.0] * Lt  # 読みの位置が分からない人名文は KL をかけない
+            lab = [1.0] * Lt  # no KL on personal-name sentences whose reading position is unknown
         NT.append(lab)
     return G, mx.array(N), mx.array(NT)
 
 
-LEAK = {"kl_all": False, "kl": 0.0, "gate_l1": 0.0, "gate_sup": 0.0, "gate_sup_neg": 1.0, "group": "mem2"}  # 積み重ねメモリの漏れ対策 (main で設定)
+# Leak countermeasures for stacked memories (set in main)
+LEAK = {"kl_all": False, "kl": 0.0, "gate_l1": 0.0, "gate_sup": 0.0, "gate_sup_neg": 1.0, "group": "mem2"}
 
 
 def leak_loss_fn(model, S, Ti, To, ls, G, N, NT=None):
-    """CE + aux + 漏れ対策:
-    kl: 一般文で「積み重ね出力」を「対象メモリ無しの出力 (凍結した教師)」に KL で合わせる
-    gate_l1: 人名以外の入力トークンで条件付きゲートを 0 へ / gate_sup: ゲートを人名スパンの 0/1 で教師あり BCE"""
+    """CE + aux + leak countermeasures:
+    kl: on general sentences, match the "stacked output" to the "output without the target memory (frozen teacher)" by KL
+    gate_l1: push the conditional gate to 0 on non-name input tokens / gate_sup: supervised BCE of the gate against the 0/1 personal-name spans"""
     mask = (To != PAD).astype(mx.float32)
     tgt = mold.memories(model, LEAK["group"])
     tot = 0.0
@@ -124,7 +126,9 @@ def leak_loss_fn(model, S, Ti, To, ls, G, N, NT=None):
             m._st.off = False
     logits = model(S, Ti).astype(mx.float32)
     ce = nn.losses.cross_entropy(logits, To, label_smoothing=ls) * mask
-    if LEAK.get("span_w", 1.0) != 1.0 and NT is not None:  # 正例文の固有名詞の読み位置の CE を span_w 倍 (正規化は元の mask のまま)
+    if (
+        LEAK.get("span_w", 1.0) != 1.0 and NT is not None
+    ):  # multiply the CE at the proper-noun reading positions of positive sentences by span_w (normalized by the original mask)
         ce = ce * (1 + (LEAK["span_w"] - 1) * (1 - G[:, None]) * NT)
     tot = ce.sum() / mask.sum() + mold.memory_aux_loss(model)
     if LEAK["kl"]:
@@ -142,21 +146,21 @@ def leak_loss_fn(model, S, Ti, To, ls, G, N, NT=None):
             tot = tot + LEAK["gate_l1"] * (cg * w).sum() / mx.maximum(1.0, w.sum())
         if LEAK["gate_sup"]:
             c = mx.clip(cg, 1e-5, 1 - 1e-5)
-            w = sm * (1 + (LEAK["gate_sup_neg"] - 1) * G[:, None])  # 一般文の全トークンを 0 目標として重み付け
+            w = sm * (1 + (LEAK["gate_sup_neg"] - 1) * G[:, None])  # weight every token of general sentences as a 0 target
             bce = -(N * mx.log(c) + (1 - N) * mx.log(1 - c)) * w
             tot = tot + LEAK["gate_sup"] * bce.sum() / w.sum()
     return tot
 
 
 def loss_fn(model, S, Ti, To, ls):
-    logits = model(S, Ti).astype(mx.float32)  # 損失は float32 で計算 (BF16 学習でも安定)
+    logits = model(S, Ti).astype(mx.float32)  # compute the loss in float32 (stable even with BF16 training)
     mask = (To != PAD).astype(mx.float32)
     ce = nn.losses.cross_entropy(logits, To, label_smoothing=ls) * mask
     return ce.sum() / mask.sum()
 
 
 def train_loss_fn(model, S, Ti, To, ls):
-    """学習用: CE + メモリ層の負荷分散 aux loss。"""
+    """For training: CE + the load-balancing aux loss of the memory layers."""
     return loss_fn(model, S, Ti, To, ls) + mold.memory_aux_loss(model)
 
 
@@ -176,41 +180,59 @@ def parse_args():
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--out", type=Path, default=HERE / "ckpt/tiny")
     ap.add_argument("--dtype", default="float32", choices=list(DT))
-    ap.add_argument("--distill", action="store_true", help="data/distill.jsonl も混ぜる (蒸留: 品質は pyopenjtalk が上限)")
+    ap.add_argument("--distill", action="store_true", help="also mix in data/distill.jsonl (distillation: quality is capped by pyopenjtalk)")
     ap.add_argument("--steps", type=int)
     ap.add_argument("--resume", action="store_true")
-    ap.add_argument("--extra", type=Path, nargs="*", default=[], help="追加の学習 jsonl (例 data/names/names_train.jsonl)")
-    ap.add_argument("--only-extra", action="store_true", help="data/train.jsonl を使わず --extra だけで学習 (例: 人名メモリだけ作る)")
-    ap.add_argument("--extra-repeat", type=int, default=1, help="--extra を何回繰り返して混ぜるか")
-    ap.add_argument("--init", type=Path, help="MoLD: 既存チェックポイント (例 ckpt/tiny_aug) の共有重みから始める。メモリ層は0初期化")
-    ap.add_argument("--memory-only", action="store_true", help="MoLD: 共有重みを凍結し、メモリ層だけ学習 (ドメイン/方言メモリ作り)")
-    ap.add_argument("--save-memory", type=Path, help="終了時にメモリ層だけを *.mem.safetensors に保存")
-    ap.add_argument("--pkm", action="append", default=[], help="--init の後に読み込むメモリ (複数可/カンマ区切り, 積み重ね)")
+    ap.add_argument("--extra", type=Path, nargs="*", default=[], help="additional training jsonl (e.g. data/names/names_train.jsonl)")
+    ap.add_argument("--only-extra", action="store_true", help="train on --extra only, without data/train.jsonl (e.g. to build just the personal-name memory)")
+    ap.add_argument("--extra-repeat", type=int, default=1, help="how many times to repeat --extra in the mix")
+    ap.add_argument("--init", type=Path, help="MoLD: start from the shared weights of an existing checkpoint (e.g. ckpt/tiny_aug). Memory layers start at 0")
+    ap.add_argument(
+        "--memory-only", action="store_true", help="MoLD: freeze the shared weights and train only the memory layers (to build a domain/dialect memory)"
+    )
+    ap.add_argument("--save-memory", type=Path, help="at the end, save only the memory layers to *.mem.safetensors")
+    ap.add_argument("--pkm", action="append", default=[], help="memories to load after --init (repeatable / comma-separated, stacked)")
     ap.add_argument(
         "--train-mem",
         choices=["all", "mem", "mem2", "mem3"],
         default="all",
-        help="--memory-only で学習するメモリ群。mem2 なら mem (一般) は凍結。--save-memory もこの群だけ保存",
+        help="memory group trained with --memory-only. With mem2, mem (general) is frozen. --save-memory also saves only this group",
     )
     ap.add_argument(
         "--mem-aug",
         type=Path,
         nargs="*",
         default=None,
-        help="メモリを意識した学習に使う .koedict (省略時 dict/names の姓・名)。config の train.mem_aug でも指定可",
+        help=".koedict files for memory-aware training (default: the surnames and given names in dict/names). Can also be set by train.mem_aug in the config",
     )
-    ap.add_argument("--mem-aug-names", type=float, help="人名文で入力をカナ置換する割合 (既定 0.4)")
-    ap.add_argument("--mem-aug-general", type=float, help="その他の文で辞書が当たるとき置換する割合 (既定 0.1)")
+    ap.add_argument("--mem-aug-names", type=float, help="fraction of personal-name sentences whose input is replaced by kana (default 0.4)")
+    ap.add_argument("--mem-aug-general", type=float, help="fraction of other sentences replaced when a lexicon matches (default 0.1)")
     ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--leak-kl", type=float, default=0.0, help="一般文で --train-mem のメモリ無しの出力へ KL で合わせる係数")
-    ap.add_argument("--leak-kl-all", action="store_true", help="KL を人名文の人名以外の出力位置にもかける")
-    ap.add_argument("--gate-l1", type=float, default=0.0, help="人名以外のトークンで条件付きゲートにかける L1 係数")
-    ap.add_argument("--gate-sup-neg", type=float, default=1.0, help="gate-sup で一般文 (人名なし) のトークンにかける重み (>1 で一般文のゲートを強く 0 へ)")
-    ap.add_argument("--span-w", type=float, default=1.0, help="正例文の固有名詞 (name_target) の読み位置の CE 重み")
-    ap.add_argument("--pos-src", nargs="*", help="漏れ対策で正例とする src (例 places)。他の src の固有名詞文は一般文扱い")
-    ap.add_argument("--gate-sup", type=float, default=0.0, help="条件付きゲートを人名スパン (names 欄) で教師あり BCE する係数")
+    ap.add_argument("--leak-kl", type=float, default=0.0, help="coefficient of the KL toward the output without the --train-mem memory on general sentences")
+    ap.add_argument("--leak-kl-all", action="store_true", help="also apply the KL to the non-name output positions of personal-name sentences")
+    ap.add_argument("--gate-l1", type=float, default=0.0, help="L1 coefficient on the conditional gate for non-name tokens")
     ap.add_argument(
-        "--compile", action="store_true", help="学習ステップを mx.compile する (loss は同一。Linux CPU では形状ごとの再コンパイルで約5%遅かったので既定はオフ)"
+        "--gate-sup-neg",
+        type=float,
+        default=1.0,
+        help="weight of gate-sup on tokens of general sentences (no names) (>1 pushes the gate harder to 0 on general sentences)",
+    )
+    ap.add_argument("--span-w", type=float, default=1.0, help="CE weight at the reading positions of proper nouns (name_target) in positive sentences")
+    ap.add_argument(
+        "--pos-src",
+        nargs="*",
+        help="src values treated as positives by the leak countermeasures (e.g. places). Proper-noun sentences of other srcs count as general",
+    )
+    ap.add_argument(
+        "--gate-sup",
+        type=float,
+        default=0.0,
+        help="coefficient of the supervised BCE of the conditional gate against the personal-name spans (the names field)",
+    )
+    ap.add_argument(
+        "--compile",
+        action="store_true",
+        help="mx.compile the training step (same loss; off by default because on Linux CPU recompiling per shape made it about 5%% slower)",
     )
     return ap.parse_args()
 
@@ -220,13 +242,13 @@ def load_data(a, tc, rng):
     train, dev = read(a.data / "train.jsonl"), read(a.data / "dev.jsonl")
     if a.distill:
         d = read(a.data / "distill.jsonl")
-        print(f"蒸留データ {len(d)} 文を追加")
+        print(f"added {len(d)} distillation sentences")
         train += d
     if a.only_extra:
         train = []
     for p in a.extra:
         d = read(p)
-        print(f"追加データ {p}: {len(d)} 文 x{a.extra_repeat}")
+        print(f"extra data {p}: {len(d)} sentences x{a.extra_repeat}")
         train += d * a.extra_repeat
     ma = tc.get("mem_aug", {})
     if a.mem_aug is not None or ma:
@@ -257,13 +279,13 @@ def build_model(a, cfg, sv, tv):
         miss = [k for k in own if k not in w]
         bad = [k for k in own if k in w and w[k].shape != own[k].shape]
         if bad:
-            raise SystemExit(f"--init {a.init}: 形が合わない重み {bad[:3]} (config の model 設定を初期化元と揃えてください)")
+            raise SystemExit(f"--init {a.init}: mismatched weight shapes {bad[:3]} (make the model settings in the config match the source checkpoint)")
         dead = [k for k in w if k.endswith(".mem.slots") and float(mx.abs(w[k]).max()) < 1e-2 and k[: -len("slots")] + "gate" not in w]
-        if dead:  # 旧版 (値 0 初期化・ゲートなし) のメモリは学習できないので、新しい初期化を使う
-            print(f"旧メモリ層 {dead} は値0・ゲートなし (旧形式) のため読み込まず、新しい初期化を使う")
+        if dead:  # old memories (values initialized to 0, no gate) cannot be trained, so use a fresh initialization
+            print(f"old memory layers {dead} have values 0 and no gate (old format), so they are not loaded and a fresh initialization is used")
             w = {k: v for k, v in w.items() if not mold.is_mem_key(k)}
         model.load_weights([(k, v) for k, v in w.items() if k in own], strict=False)
-        print(f"init from {a.init}: {len(w)} tensors, 新規 (メモリ層) {len(miss)}")
+        print(f"init from {a.init}: {len(w)} tensors, new (memory layers) {len(miss)}")
     for p in mold.split_pkm(a.pkm):
         mold.load_memory(model, p)
         print(f"memory <- {p}")
@@ -271,7 +293,7 @@ def build_model(a, cfg, sv, tv):
         model.freeze()
         for m in mold.memories(model, None if a.train_mem == "all" else a.train_mem):
             m.unfreeze()
-        print(f"memory-only: 学習対象 {sum(v.size for _, v in __import__('mlx.utils', fromlist=['x']).tree_flatten(model.trainable_parameters()))/1e6:.2f}M")
+        print(f"memory-only: trainable {sum(v.size for _, v in __import__('mlx.utils', fromlist=['x']).tree_flatten(model.trainable_parameters()))/1e6:.2f}M")
     model.set_dtype(DT[a.dtype])
     return model, start
 
@@ -285,12 +307,12 @@ def make_optimizer(a, cfg, tc, model):
     opt = optim.AdamW(learning_rate=sched, weight_decay=tc["weight_decay"])
     mm = tc.get("mem_lr_mult", 10.0)
     if any(cfg["model"].get(k) for k in ("memory", "memory2", "memory3")) and mm != 1.0:
-        # メモリ層は1ステップで触られるスロットが一部だけ (疎) なので学習率を上げ、値テーブルには重み減衰をかけない
+        # A step touches only a few memory slots (sparse), so raise the learning rate and apply no weight decay to the value table
         def msched(s):
             return mm * sched(s)
 
         opt = optim.MultiOptimizer([optim.AdamW(learning_rate=msched, weight_decay=0.0), opt], [lambda path, w: mold.is_mem_key(path)])
-        print(f"メモリ層の学習率 x{mm}")
+        print(f"memory layer learning rate x{mm}")
     if a.resume and (a.out / "optimizer.safetensors").exists():
         from mlx.utils import tree_unflatten
 
@@ -313,7 +335,7 @@ def make_step(a, tc, model, opt):
     )
     use_leak = bool(a.leak_kl or a.gate_l1 or a.gate_sup)
     if use_leak:
-        print(f"漏れ対策 {LEAK}")
+        print(f"leak countermeasures {LEAK}")
     lg = nn.value_and_grad(model, leak_loss_fn if use_leak else train_loss_fn)
     ls = tc["label_smoothing"]
 
@@ -326,7 +348,7 @@ def make_step(a, tc, model, opt):
     if a.compile:
         from functools import partial
 
-        if not opt.state:  # 状態を先に作っておく (コンパイル関数の入出力として追跡するため)
+        if not opt.state:  # create the state first (to trace it as an input/output of the compiled function)
             opt.init(model.trainable_parameters())
         st = [model.state, opt.state, mx.random.state]
         train_step = partial(mx.compile, inputs=st, outputs=st)(train_step)
@@ -355,7 +377,7 @@ def main():
     mx.random.seed(a.seed)
     rng = random.Random(a.seed)
     voc = json.load(open(a.data / "vocab.json", encoding="utf-8"))
-    if a.init:  # 埋め込みの行番号を合わせるため、初期化元の語彙を使う
+    if a.init:  # use the vocabulary of the source checkpoint so the embedding rows line up
         voc = json.load(open(a.init / "meta.json", encoding="utf-8"))["vocab"]
     sv, tv = Vocab(voc["src"]), Vocab(voc["tgt"])
     train, dev = load_data(a, tc, rng)

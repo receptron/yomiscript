@@ -1,6 +1,6 @@
-# mulmovoice
+# yomiscript
 
-mulmovoice is an open speech front-end built around **YomiScript**, a language-neutral DSL for pronunciation and prosody. YomiScript sits between two modules — **Yomite** (読み手, "the reader": text → YomiScript) and **Katarite** (語り手, "the narrator": YomiScript → sound) — so the two can be developed, swapped and improved independently.
+An open speech front-end built around **YomiScript**, a language-neutral DSL for pronunciation and prosody. YomiScript sits between two modules — **Yomite** (読み手, "the reader": text → YomiScript) and **Katarite** (語り手, "the narrator": YomiScript → sound) — so the two can be developed, swapped and improved independently.
 
 Status: early design. The YomiScript spec is a v0.2 draft and all syntax may change.
 

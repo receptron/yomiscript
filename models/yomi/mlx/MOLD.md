@@ -55,7 +55,7 @@ It can also be used for a "mismatch check" that compares pyopenjtalk's readings 
 
 ## Commands to try on the Mac
 ```bash
-cd mulmovoice && git pull
+cd yomiscript && git pull
 cd models/yomi/mlx
 pip install pytest && python -m pytest -q tests          # unit tests
 

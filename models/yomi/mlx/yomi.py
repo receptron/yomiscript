@@ -1,4 +1,4 @@
-"""Yomi-0 MLX 試作: 文字入力 -> カナ+韻律記号を出す小型 Transformer エンコーダ・デコーダ (密, MoEなし)。"""
+"""Yomi-0 MLX prototype: a small Transformer encoder-decoder (dense, no MoE) from character input to kana + prosody symbols."""
 
 import json
 from pathlib import Path
@@ -43,7 +43,7 @@ class MHA(nn.Module):
         q = self.q(x).reshape(B, L, self.h, -1).transpose(0, 2, 1, 3)
         k = self.k(mem).reshape(B, mem.shape[1], self.h, -1).transpose(0, 2, 1, 3)
         v = self.v(mem).reshape(B, mem.shape[1], self.h, -1).transpose(0, 2, 1, 3)
-        if cache is not None:  # 自己注意の KV キャッシュ
+        if cache is not None:  # self-attention KV cache
             if cache[0] is not None:
                 k = mx.concatenate([cache[0], k], axis=2)
                 v = mx.concatenate([cache[1], v], axis=2)
@@ -67,11 +67,11 @@ class EncLayer(nn.Module):
         self.n1, self.n2, self.att, self.ff = nn.LayerNorm(d), nn.LayerNorm(d), MHA(d, h), FF(d, f)
         from mold import ProductKeyMemory
 
-        if memory:  # MoLD: 学習型 product-key メモリ (値テーブルは差し替え可能)
+        if memory:  # MoLD: learned product-key memory (the value table can be swapped)
             self.mem = ProductKeyMemory(d, **{k: v for k, v in memory.items() if k != "layers"})
-        if memory2:  # 積み重ね用の 2 つ目のメモリ (例: 人名)。mem の後に足す。独自のキー・値・ゲート
+        if memory2:  # a second memory for stacking (e.g. personal names). Added after mem. Its own keys, values and gate
             self.mem2 = ProductKeyMemory(d, **{k: v for k, v in memory2.items() if k != "layers"})
-        if memory3:  # 3 つ目 (例: 地名)。mem2 の後に足す
+        if memory3:  # the third (e.g. place names). Added after mem2
             self.mem3 = ProductKeyMemory(d, **{k: v for k, v in memory3.items() if k != "layers"})
 
     def __call__(self, x, mask):
@@ -140,7 +140,7 @@ class Yomi(nn.Module):
         return self.decode(tgt_in, mem, m)
 
     def generate_legacy(self, src, max_new=None):
-        """旧デコード (比較用): 自己注意KVを毎ステップ連結、交差注意K/Vも毎ステップ再計算。戻り値: list[list[int]]"""
+        """Old decoding (for comparison): concatenates the self-attention KV and recomputes the cross-attention K/V every step. Returns list[list[int]]"""
         B = src.shape[0]
         max_new = max_new or min(self.max_len - 1, int(src.shape[1] * 3) + 8)
         mem, m = self.encode(src)
@@ -158,7 +158,7 @@ class Yomi(nn.Module):
         return mx.stack(outs, axis=1).tolist()
 
     def generate_nocache(self, src, max_new=None):
-        """参照実装: 毎ステップ接頭辞全体を再計算する貪欲デコード (等価性テスト用, 遅い)。"""
+        """Reference implementation: greedy decoding that recomputes the whole prefix every step (for equivalence tests, slow)."""
         B = src.shape[0]
         max_new = max_new or min(self.max_len - 1, int(src.shape[1] * 3) + 8)
         mem, m = self.encode(src)
@@ -172,7 +172,7 @@ class Yomi(nn.Module):
                 break
         return mx.stack(outs, axis=1).tolist()
 
-    # ---- 高速デコード: 固定長KVキャッシュ + 交差注意K/Vの事前計算 + mx.compile ----
+    # ---- Fast decoding: fixed-length KV cache + precomputed cross-attention K/V + mx.compile ----
     def _cross_kv(self, mem):
         B, S, _ = mem.shape
         ks, vs = [], []
@@ -183,7 +183,7 @@ class Yomi(nn.Module):
         return ks, vs
 
     def _step(self, tok, t, ks, vs, cks, cvs, mmask):
-        """1トークン分のデコード。tok:(B,1) t:()int32配列。ks/vs: 層ごとの (B,h,T,dh) 固定長キャッシュ。"""
+        """Decode one token. tok: (B,1), t: () int32 array. ks/vs: per-layer fixed-length (B,h,T,dh) caches."""
         B = tok.shape[0]
         T = ks[0].shape[2]
         x = self.tgt_emb(tok) + self.pos.weight[t][None, None, :]
@@ -221,12 +221,12 @@ class Yomi(nn.Module):
         return self._compiled_step
 
     def generate(self, src, max_new=None, compile=True):
-        """貪欲デコード (バッチ対応, 高速版)。generate_nocache と同じトークン列を返す。戻り値: list[list[int]]"""
+        """Greedy decoding (batched, fast version). Returns the same token sequences as generate_nocache. Returns list[list[int]]"""
         B = src.shape[0]
         max_new = max_new or min(self.max_len - 1, int(src.shape[1] * 3) + 8)
         mem, m = self.encode(src)
         cks, cvs = self._cross_kv(mem)
-        T = min(-(-max_new // 32) * 32, self.max_len)  # キャッシュ長を32刻みに丸めて再コンパイルを減らす
+        T = min(-(-max_new // 32) * 32, self.max_len)  # round the cache length up to a multiple of 32 to reduce recompiles
         h = self.dec[0].sa.h
         ks = [mx.zeros((B, h, T, mem.shape[-1] // h), dtype=mem.dtype) for _ in self.dec]
         vs = [mx.zeros((B, h, T, mem.shape[-1] // h), dtype=mem.dtype) for _ in self.dec]
@@ -259,7 +259,7 @@ def save(path, model, cfg, vocab, step, opt=None):
 
 
 def load(path, dtype=None, memory=None):
-    """memory: 差し替える *.mem.safetensors (任意)。既存の tiny_aug などメモリ無しのチェックポイントもそのまま読める。"""
+    """memory: *.mem.safetensors to swap in (optional). Existing checkpoints without memory, such as tiny_aug, load as they are."""
     path = Path(path)
     meta = json.load(open(path / "meta.json", encoding="utf-8"))
     src, tgt = Vocab(meta["vocab"]["src"]), Vocab(meta["vocab"]["tgt"])
@@ -268,22 +268,22 @@ def load(path, dtype=None, memory=None):
     own = dict(tree_flatten(model.parameters()))
     miss = [k for k in own if k not in w]
     if any(not k.endswith(".mem.gate") for k in miss) or any(k not in own for k in w):
-        model.load_weights(list(w.items()))  # 通常のエラーを出す
-    model.load_weights(list(w.items()), strict=False)  # 旧形式 (ゲートなし・値0) のメモリ層はゲート初期値のまま
-    if memory:  # 1 つのパス、カンマ区切り、またはリスト (積み重ね: 各ファイルは自分のグループのキーだけを持つ)
+        model.load_weights(list(w.items()))  # raise the usual error
+    model.load_weights(list(w.items()), strict=False)  # memory layers in the old format (no gate, values 0) keep the initial gate
+    if memory:  # one path, comma-separated, or a list (stacking: each file holds only the keys of its own group)
         import mold
 
         for p in mold.split_pkm(memory):
             mold.load_memory(model, p)
     import os
 
-    if os.environ.get("MOLD_CG_THRESH"):  # 推論時だけ条件付きゲートを閾値で切る (例 0.5)。config の cg_thresh を上書き
+    if os.environ.get("MOLD_CG_THRESH"):  # at inference only, cut the conditional gate at a threshold (e.g. 0.5). Overrides cg_thresh in the config
         import mold
 
         for m in mold.memories(model):
             if "cgate" in m:
                 m.cg_thresh = float(os.environ["MOLD_CG_THRESH"])
-    if os.environ.get("MOLD_MEM_OFF"):  # 評価用: 指定グループ (例 mem2) を止める (単体比較)
+    if os.environ.get("MOLD_MEM_OFF"):  # for evaluation: switch off the given group (e.g. mem2) (single-memory comparison)
         import mold
 
         for g in os.environ["MOLD_MEM_OFF"].split(","):
@@ -296,8 +296,8 @@ def load(path, dtype=None, memory=None):
 
 
 def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=True, router=None, context=None, logs=None):
-    """mode: fast (既定) | legacy (旧デコード) | nocache (参照)。
-    router: mold.MemoryRouter (辞書メモリ。学習なしで差し替え可能)。context: {'sex': 'female'} など。"""
+    """mode: fast (default) | legacy (old decoding) | nocache (reference).
+    router: mold.MemoryRouter (lexicon memory, swappable without training). context: e.g. {'sex': 'female'}."""
     res = None
     if router is not None:
         res = [router.resolve(t, context) for t in texts]
@@ -315,6 +315,6 @@ def predict(model, src_vocab, tgt_vocab, texts, batch=32, mode="fast", compile=T
         else:
             gen = model.generate_legacy(arr) if mode == "legacy" else model.generate_nocache(arr)
         out += [tgt_vocab.decode(g) for g in gen]
-    if res is not None:  # 苗字+名前の句境界を補う
+    if res is not None:  # add the phrase boundary between surname and given name
         out = [router.postprocess(o, r[1]) for o, r in zip(out, res, strict=False)]
     return out

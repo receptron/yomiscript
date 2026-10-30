@@ -11,5 +11,11 @@
 - Audio (wav) is not included.
 
 ## data/hard_set.tsv
-- Created by the mulmovoice project. CC BY 4.0.
+- Created by the yomiscript project. CC BY 4.0.
 - **The reference readings are provisional and need human review.**
+
+## data/general_heldout.jsonl
+- 3,000 sentences from Japanese Wikipedia (HF `wikimedia/wikipedia`, 20231101.ja, shard 14) that are not used in
+  Yomi-0's training, with readings and prosody from pyopenjtalk (`models/yomi/mlx/tools/build_general_eval.py`).
+- The text is from Wikipedia: **CC BY-SA 4.0** (and GFDL). Attribution: the authors of each Japanese Wikipedia
+  article. The repository's Apache-2.0 license does not apply.

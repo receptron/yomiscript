@@ -1,10 +1,10 @@
-"""青空文庫 (著作権切れ・新字新仮名の作品) から文とルビを取り出す。
+"""Extract sentences and ruby from Aozora Bunko (works out of copyright, in modern kanji and kana (新字新仮名)).
 
-ルビ (｜漢字《かんじ》 / 漢字《かんじ》) は人手で付けられた読みなので、ラベル付けの「正解の制約」として使う。
-入力テキストからはルビ記法を除き、ルビは {"ruby": [[親文字, よみ], ...]} として別に持つ。
-旧仮名を避けるため、作品は文字遣い種別「新字新仮名」のみ。さらに ゐ・ゑ・ヰ・ヱ を含む文は捨てる。
+Ruby (｜漢字《かんじ》 / 漢字《かんじ》) is a reading assigned by hand, so it is used as a "constraint from the reference" when labelling.
+The ruby markup is removed from the input text, and the ruby is kept separately as {"ruby": [[base text, reading], ...]}.
+To avoid historical kana usage, only works whose orthography type is 「新字新仮名」 are used, and sentences containing ゐ・ゑ・ヰ・ヱ are dropped.
 
-python aug/aozora.py --works 400      # data/aug_text/aozora.jsonl を作る
+python aug/aozora.py --works 400      # builds data/aug_text/aozora.jsonl
 """
 
 import argparse
@@ -36,7 +36,7 @@ def works(cache, n):
         if r[9] == "新字新仮名" and r[10] == "なし" and r[23] == "著者" and url.endswith(".zip") and "aozora.gr.jp" in url and r[0] not in seen:
             seen.add(r[0])
             out.append((r[0], url))
-    step = max(1, len(out) // n)  # 作家・時代が偏らないよう全体から等間隔に選ぶ
+    step = max(1, len(out) // n)  # pick at even intervals from the whole list so authors and periods are not skewed
     return out[::step][:n]
 
 

@@ -1,6 +1,6 @@
-"""レイテンシ計測: 旧デコード vs 新デコード(KVキャッシュ固定長+交差注意K/V事前計算+mx.compile) を並べて出す。
+"""Latency measurement: old decoding vs new decoding (fixed-length KV cache + precomputed cross-attention K/V + mx.compile), side by side.
   python bench.py --ckpt ckpt/tiny_aug [--device cpu|gpu] [--dtype bfloat16] [--batch 32] [--modes legacy,fast]
-1文ずつ(バッチ1)のレイテンシと、--batch 文ずつまとめた場合の1文あたり処理時間を測る。"""
+Measures the latency per sentence (batch 1) and the time per sentence when --batch sentences are processed together."""
 
 import argparse
 import json
@@ -16,10 +16,10 @@ REPO = Path(__file__).resolve().parents[3]
 ap = argparse.ArgumentParser()
 ap.add_argument("--ckpt", default="ckpt/tiny")
 ap.add_argument("--dtype", default=None, choices=["float32", "bfloat16", "float16"])
-ap.add_argument("--device", default=None, choices=["cpu", "gpu"], help="既定は MLX の既定デバイス (Mac なら gpu)")
+ap.add_argument("--device", default=None, choices=["cpu", "gpu"], help="defaults to the MLX default device (gpu on a Mac)")
 ap.add_argument("--n", type=int, default=100)
-ap.add_argument("--batch", type=int, default=32, help="バッチ推論の計測に使うバッチサイズ (0 で省略)")
-ap.add_argument("--modes", default="legacy,fast,fast_nocompile", help="legacy=旧, fast=新(compileあり), fast_nocompile=新(compileなし)")
+ap.add_argument("--batch", type=int, default=32, help="batch size for the batched-inference measurement (0 to skip)")
+ap.add_argument("--modes", default="legacy,fast,fast_nocompile", help="legacy=old, fast=new (with compile), fast_nocompile=new (without compile)")
 a = ap.parse_args()
 if a.device:
     mx.set_default_device(mx.cpu if a.device == "cpu" else mx.gpu)
@@ -36,7 +36,7 @@ def stats(lat):
 res, outs = {}, {}
 for name in a.modes.split(","):
     kw = MODES[name]
-    yomi.predict(model, sv, tv, texts, batch=1, **kw)  # ウォームアップ (全長さでコンパイル済みにする)
+    yomi.predict(model, sv, tv, texts, batch=1, **kw)  # warm-up (compile for every length)
     lat, o = [], []
     for t in texts:
         s = time.perf_counter()

@@ -1,10 +1,10 @@
-"""数字・日付・助数詞・略語のルールベース例文 (mulmovoice 作成, CC BY 4.0)。
+"""Rule-based example sentences for numbers, dates, counter words (助数詞) and abbreviations (written by yomiscript, CC BY 4.0).
 
-各例は (text, pron_text): text は学習入力 (数字・英字のまま)、pron_text は該当部分をカタカナ読みに
-置き換えた文。prepare_data.py が pron_text を pyopenjtalk に通してアクセント・句境界を付け、
-カナがルールの読みと一致したものだけ採用する。
-表記の約束は eval/data/hard_set.tsv と同じ (発音カナ、長音は「ー」、は→ワ)。
-ハードセットの文はコピーしない。ハードセットに出てくる略語は評価の汚染を避けるため使わない。
+Each example is (text, pron_text): text is the training input (digits and Latin letters as they are), pron_text is the sentence with those parts
+replaced by their katakana reading. prepare_data.py runs pron_text through pyopenjtalk to add accents and phrase boundaries,
+and keeps only the examples whose kana match the rule reading.
+The spelling conventions are those of eval/data/hard_set.tsv (pronounced kana, long vowels as 「ー」, は→ワ).
+No sentence is copied from the hard set. Abbreviations that appear in the hard set are not used, to avoid contaminating the evaluation.
 """
 
 import random
@@ -15,7 +15,7 @@ THOU = {1: "セン", 3: "サンゼン", 8: "ハッセン"}
 
 
 def under10k(n):
-    """0<n<10000 の読み。戻り値 (読み, 末尾の種類)。末尾: 1..9 の数字 / 'J'十 / 'H'百 / 'S'千"""
+    """Reading of 0<n<10000. Returns (reading, kind of ending). Ending: a digit 1..9 / 'J' 十 / 'H' 百 / 'S' 千"""
     s, last = "", None
     th, h, t, o = n // 1000, n // 100 % 10, n // 10 % 10, n % 10
     if th:
@@ -48,7 +48,7 @@ def num(n):
 
 
 def _sokuon(base, last):
-    """1・6・8・10・100 で促音化する読みのため、末尾を差し替える"""
+    """Replace the ending, for readings that take a geminate (促音) with 1, 6, 8, 10 and 100"""
     if last == 1:
         return base[:-2] + "イッ"
     if last == 6:
@@ -63,10 +63,10 @@ def _sokuon(base, last):
 
 
 def _k_counter(b, last, c):
-    """個 回 冊 件 階 歳: カ行・サ行の助数詞"""
+    """個 回 冊 件 階 歳: counter words starting in the k- and s-rows"""
     k = {"個": "コ", "回": "カイ", "冊": "サツ", "件": "ケン", "階": "カイ", "歳": "サイ"}[c]
     so = _sokuon(b, last)
-    if c == "冊" or c == "歳":  # サ行は 1・8・10 のみ促音
+    if c == "冊" or c == "歳":  # the s-row takes a geminate only with 1, 8 and 10
         if so and last in (1, 8, "J"):
             return so + k
         return b + k
@@ -152,7 +152,7 @@ def hour(h):
     return {4: "ヨジ", 7: "シチジ", 9: "クジ"}.get(h, num(h)[0] + "ジ")
 
 
-# 略語 (ハードセットに出るものは除外: SAP SIP NHK AI USB NASA JR GPU API IoT SNS UNESCO)
+# Abbreviations (those in the hard set are excluded: SAP SIP NHK AI USB NASA JR GPU API IoT SNS UNESCO)
 ACRONYMS = {
     "PC": "ピーシー",
     "CPU": "シーピーユー",
@@ -233,12 +233,12 @@ def gen(seed=0, n_per=1):
         for n in range(1, 61) if c in ("分", "歳") else nums:
             t = R.choice(["およそ{N}かかった。", "それは{N}だと聞いた。", "ちょうど{N}になった。"])
             add(t.format(N=f"{n}{c}"), t.format(N=counter(n, c)))
-    for _ in range(600):  # 金額・大きな数
+    for _ in range(600):  # amounts of money, large numbers
         n = R.choice([R.randint(1, 99) * 10 ** R.randint(0, 5), R.randint(1, 99999999)])
         t = R.choice(["料金は{N}でした。", "合計で{N}かかった。", "{N}を支払った。"])
         d = f"{n:,}" if R.random() < 0.3 and n >= 1000 else str(n)
         add(t.format(N=d + "円"), t.format(N=counter(n, "円")))
-    for m in range(1, 13):  # 日付
+    for m in range(1, 13):  # dates
         for d in range(1, 32):
             if d > [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]:
                 continue
@@ -248,7 +248,7 @@ def gen(seed=0, n_per=1):
         y, m, d = R.randint(1990, 2035), R.randint(1, 12), R.randint(1, 28)
         t = R.choice(["{D}に設立された。", "{D}の記録を見る。"])
         add(t.format(D=f"{y}年{m}月{d}日"), t.format(D=counter(y, "年") + month(m) + day(d)))
-    for h in range(1, 13):  # 時刻
+    for h in range(1, 13):  # times of day
         for mi in [0, 5, 10, 15, 20, 30, 45]:
             t = R.choice(["{T}に駅前で会おう。", "朝{T}に起きた。", "{T}から授業が始まる。"])
             tt = f"{h}時" + (f"{mi}分" if mi else "")

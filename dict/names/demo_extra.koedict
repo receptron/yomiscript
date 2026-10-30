@@ -1,4 +1,4 @@
-# demo_extra.koedict — MoLD デモ用: 学習なしで辞書メモリに名前を足す例
+# demo_extra.koedict — for the MoLD demo: an example of adding names to the lexicon memory without training
 # license: CC BY 4.0
 # scope: name
 @lexicon {

@@ -1,6 +1,7 @@
-"""地名データの「KEN_ALL の読み」と「pyopenjtalk の文中の読み」のずれを分類する (学習データ作成・分析用)。
+"""Classify the mismatches between "the KEN_ALL reading" and "pyopenjtalk's in-sentence reading" in the place-name data
+(for building and analyzing training data).
   python tools/place_label_audit.py [--data data/places] [--files places_train places_eval_seen] [--preds p.jsonl]
---preds (eval_names の予測 {"id","pred"}) を渡すと、評価の誤りをずれの種類別に数える。"""
+With --preds (eval_names predictions {"id","pred"}), counts the evaluation errors by mismatch kind."""
 
 import argparse
 import json
@@ -21,7 +22,7 @@ _IRow = set("イキシチニヒミリギジヂビピ")
 
 
 def norm_kana(k):
-    """郵便番号データの読み (表記寄り) を発音形へ: to_pron (オウ→オー, エイ→エー) + ヅ→ズ ヂ→ジ + o段+オ→ー (オオタ→オータ)。"""
+    """Postal-code readings (close to spelling) to the pronounced form: to_pron (オウ→オー, エイ→エー) + ヅ→ズ ヂ→ジ + o-row + オ → ー (オオタ→オータ)."""
     k = to_pron(k).replace("ヅ", "ズ").replace("ヂ", "ジ")
     out = []
     for c in k:
@@ -40,7 +41,7 @@ def ojt_spans(text):
 
 
 def ojt_read(text, s, e):
-    """[s,e) を覆う形態素の発音 (境界がずれていれば None)。"""
+    """Pronunciation of the morphemes covering [s,e) (None if the boundaries do not line up)."""
     sp = [x for x in ojt_spans(text) if x[0] < e and x[1] > s]
     if not sp or sp[0][0] != s or sp[-1][1] != e:
         return None, len(sp)
@@ -71,7 +72,7 @@ def category(surf, gold, ojt, nm):
 
 
 def audit_row(r):
-    """各地名スパンの分類。戻り値 [(surface, gold, ojt, cat)]。"""
+    """Classification of each place-name span. Returns [(surface, gold, ojt, cat)]."""
     out, pos = [], 0
     golds = split_gold(r)
     for surf, gold in zip(r["names"], golds, strict=False):
@@ -84,7 +85,7 @@ def audit_row(r):
 
 
 def split_gold(r):
-    """name_pron を各スパンに分ける (行に parts があればそれ、無ければ 1 スパンとみなす)。"""
+    """Split name_pron into the spans (the row's parts if present, otherwise one span)."""
     if r.get("parts_pron"):
         return r["parts_pron"]
     if len(r["names"]) == 1:
@@ -93,7 +94,8 @@ def split_gold(r):
 
 
 def audit_preds(fn, n_ex=3):
-    """eval_names.py --preds の失敗行をスパン単位で分類: 正解 / pyopenjtalk 通り (=ラベル側の差, 監査分類つき) / どちらでもない (モデル誤り)。"""
+    """Classify the failed rows of eval_names.py --preds per span: correct / as pyopenjtalk (= label-side difference, with the audit category)
+    / neither (model error)."""
 
     def strip(s):
         return "".join(c for c in s if c not in "^$?#_[]")
@@ -107,9 +109,9 @@ def audit_preds(fn, n_ex=3):
                 continue
             k = "正解" if gold in p else f"ojt通り:{cat}" if o and norm_kana(o) in p else f"モデル誤り:{cat}"
             c[k] += 1
-            ex.setdefault(k, []).append(f"{surf} 正{gold} ojt{o}")
+            ex.setdefault(k, []).append(f"{surf} gold{gold} ojt{o}")
     n = sum(c.values())
-    print(f"{fn} 失敗文のスパン {n}: " + "  ".join(f"{k} {v/n*100:.0f}%" for k, v in c.most_common(10)))
+    print(f"{fn} spans in failed sentences {n}: " + "  ".join(f"{k} {v/n*100:.0f}%" for k, v in c.most_common(10)))
     g = Counter()
     for k, v in c.items():
         g[
@@ -121,7 +123,7 @@ def audit_preds(fn, n_ex=3):
             if k.split(":")[1] in ("一致", "一致(分割のみ)")
             else "モデル誤り(正≠ojt)"
         ] += v
-    print("  件数: " + "  ".join(f"{k} {v}" for k, v in g.most_common()))
+    print("  counts: " + "  ".join(f"{k} {v}" for k, v in g.most_common()))
     for k, _ in c.most_common(4):
         print(f"  {k}: " + " / ".join(ex[k][:n_ex]))
 
@@ -150,11 +152,11 @@ def main():
         n = sum(c.values())
         rc = [{x[3] for x in audit_row(r)} for r in rows]
         print(
-            f"{fn}: 文単位 pyopenjtalk 一致 {sum(x <= OK for x in rc)/len(rc)*100:.1f}%  "
-            f"表記差のみ {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音'} for x in rc)/len(rc)*100:.1f}%  "
-            f"町村差まで {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音', '町 チョウ/マチ', '村 ソン/ムラ', 'ケ/ガ'} for x in rc)/len(rc)*100:.1f}%"
+            f"{fn}: sentence-level pyopenjtalk match {sum(x <= OK for x in rc)/len(rc)*100:.1f}%  "
+            f"spelling differences only {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音'} for x in rc)/len(rc)*100:.1f}%  "
+            f"up to 町/村 differences {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音', '町 チョウ/マチ', '村 ソン/ムラ', 'ケ/ガ'} for x in rc)/len(rc)*100:.1f}%"
         )
-        print(f"{fn} ({n} スパン): " + "  ".join(f"{k} {v/n*100:.1f}%" for k, v in c.most_common()))
+        print(f"{fn} ({n} spans): " + "  ".join(f"{k} {v/n*100:.1f}%" for k, v in c.most_common()))
         for k, _ in c.most_common():
             if k not in ("一致", "一致(分割のみ)"):
                 print(f"   {k}: " + " ".join(ex[k][: a.examples]))

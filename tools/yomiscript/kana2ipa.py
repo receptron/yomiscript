@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""YomiScript 参照変換器: Yomi/JSUT式カナ韻律ラベル -> YomiScript(IPA形)。
+"""YomiScript reference converter: Yomi/JSUT-style kana prosody labels -> YomiScript (IPA form).
 
-入力記号: ^ 文頭, $ 文末(平叙), ? 文末(疑問), [ 上昇, ] 下降(アクセント核の直後),
-          # アクセント句境界, _ ポーズ(呼気段落境界)
-出力記号: ꜛ 上昇, ꜜ アクセント核, | アクセント句境界, ‖ 呼気段落境界/ポーズ,
-          文末 ↘(平叙) / ↗(疑問)。文頭は記号なし。
-使い方: python kana2ipa.py '^キョ]ーワ#ヨ]イ#テ[ンキデス$' [--devoice] [--mora]
+Input symbols:  ^ sentence start, $ sentence end (statement), ? sentence end (question), [ rise, ] fall (right after
+                the accent nucleus), # accent phrase boundary, _ pause (breath group boundary)
+Output symbols: ꜛ rise, ꜜ accent nucleus, | accent phrase boundary, ‖ breath group boundary / pause,
+                sentence end ↘ (statement) / ↗ (question). No symbol at the sentence start.
+Usage: python kana2ipa.py '^キョ]ーワ#ヨ]イ#テ[ンキデス$' [--devoice] [--mora]
 """
 
 import sys
@@ -29,7 +29,7 @@ MORA = dict(V)
 for k, vs in _rows.items():
     MORA.update(zip(k, vs, strict=False))
 MORA.update({"ヤ": "ja", "ユ": "jɯ", "ヨ": "jo", "ワ": "wa", "ヲ": "o", "ヴ": "vɯ", "ァ": "a", "ィ": "i", "ゥ": "ɯ", "ェ": "e", "ォ": "o"})
-# 拗音・外来音 (2文字)
+# Contracted sounds and loanword sounds (two characters)
 _yo = {"キ": "k", "ギ": "ɡ", "シ": "ɕ", "ジ": "dʑ", "チ": "tɕ", "ヂ": "dʑ", "ニ": "ɲ", "ヒ": "ç", "ビ": "b", "ピ": "p", "ミ": "m", "リ": "ɾ"}
 _pal = {"キ", "ギ", "ビ", "ピ", "ミ", "リ"}
 for c, onset in _yo.items():
@@ -70,7 +70,7 @@ VOWELS = "aiɯeo"
 
 
 def tokenize(s):
-    """カナラベル -> [(kind, value)]  kind: mora / Q / N / R(長音) / P(韻律)"""
+    """Kana label -> [(kind, value)]  kind: mora / Q / N / R (long vowel) / P (prosody)"""
     s = s.translate(str.maketrans({chr(c): chr(c + 0x60) for c in range(0x3041, 0x3097)}))
     out, i = [], 0
     while i < len(s):
@@ -120,7 +120,7 @@ def _n_allophone(nxt):
         return "n"
     if nxt[0] in "kɡ":
         return "ŋ"
-    return "ɴ"  # 母音・半母音・s/h/ɸ の前 (実際は鼻母音)
+    return "ɴ"  # before a vowel, a semivowel or s/h/ɸ (in fact a nasalized vowel)
 
 
 def convert(label, devoice=False, mora_sep=False):
@@ -147,7 +147,7 @@ def convert(label, devoice=False, mora_sep=False):
             segs.append((PROSODY[v], False))
             continue
         segs.append((ipa, True))
-    if devoice:  # 無声子音に挟まれた i/ɯ、文末「ス」の ɯ を無声化 (簡易規則・任意)
+    if devoice:  # devoice i/ɯ between voiceless consonants and the ɯ of a sentence-final ス (simple rule, optional)
         moras = [j for j, (_, m) in enumerate(segs) if m]
         for n, j in enumerate(moras):
             s = segs[j][0]

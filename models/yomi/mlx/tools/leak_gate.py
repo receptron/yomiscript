@@ -1,6 +1,6 @@
-"""人名メモリ (mem2) の漏れ診断: none では正解・mem2 付きでは誤る JSUT 文で、条件付きゲートが立っているか。
-使い方: python tools/leak_gate.py --ckpt C --pkm P --a none.preds.jsonl --b mem.preds.jsonl  (最後の行が要約)
-判定: 漏れ文の最大ゲートが高い → ゲート漏れ (閾値/gate-sup で切れる) / 低い → 低ゲートでもメモリ出力が効いている。"""
+"""Leak diagnosis for the personal-name memory (mem2): on JSUT sentences that are right with none but wrong with mem2, is the conditional gate open?
+Usage: python tools/leak_gate.py --ckpt C --pkm P --a none.preds.jsonl --b mem.preds.jsonl  (the last line is the summary)
+Verdict: high max gate on the leaked sentences -> gate leak (cut by a threshold / gate-sup) / low -> the memory output has an effect even with a low gate."""
 
 import argparse
 import json
@@ -53,6 +53,6 @@ def fr(G, t):
 
 
 print(
-    f"leak_gate: 漏れ {len(leak)} 文 maxgate平均 {mx_(gl):.2f} (>=0.5 {fr(gl,.5):.0%} >=0.8 {fr(gl,.8):.0%}) "
-    f"| 正解文 {len(go)} maxgate平均 {mx_(go):.2f} (>=0.5 {fr(go,.5):.0%} >=0.8 {fr(go,.8):.0%})"
+    f"leak_gate: leaked {len(leak)} sentences mean maxgate {mx_(gl):.2f} (>=0.5 {fr(gl,.5):.0%} >=0.8 {fr(gl,.8):.0%}) "
+    f"| correct sentences {len(go)} mean maxgate {mx_(go):.2f} (>=0.5 {fr(go,.5):.0%} >=0.8 {fr(go,.8):.0%})"
 )

@@ -1,6 +1,6 @@
-# 手作りハードセット v0 — 正解読みは暫定 (PROVISIONAL)。人手レビュー必須。
-# 列: id<TAB>category<TAB>text<TAB>gold(発音カタカナ、は→ワ・を→ヲ・長音→ー、複数正解は|区切り)<TAB>note
-# ライセンス: CC BY 4.0 (mulmovoice プロジェクト作成)
+# Hand-made hard set v0 — the gold readings are PROVISIONAL and need human review.
+# Columns: id<TAB>category<TAB>text<TAB>gold (katakana by pronunciation: は→ワ, を→ヲ, long vowel→ー; several correct readings separated by |)<TAB>note
+# License: CC BY 4.0 (created by the yomiscript project)
 h001	homograph	シアトルの市では、魚が売られている。	シアトルノイチデワサカナガウラレテイル	市=いち(市場)。ユーザー例文。「し」とも読める文脈あり、要レビュー
 h002	homograph	市役所は駅の近くにある。	シヤクショワエキノチカクニアル	市=し
 h003	homograph	毎月八日に朝市が開かれる。	マイツキヨーカニアサイチガヒラカレル	市=いち、八日=ようか

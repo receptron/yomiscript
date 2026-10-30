@@ -1,6 +1,6 @@
-"""学習に使っていない一般文の評価セット (pyopenjtalk 蒸留の正解) を作る。
-wiki shard の未採用文 (aug_text / distill / train に無い) から --n 文。出力は JSUT と同じ形式 (text, kana_prosody)。
-python tools/build_general_eval.py --n 3000  ->  eval/data/general_heldout.jsonl (リポジトリに置く)"""
+"""Build an evaluation set of general sentences not used in training (pyopenjtalk-distilled references).
+--n sentences from the unused sentences of the wiki shard (not in aug_text / distill / train). The output has the same format as JSUT (text, kana_prosody).
+python tools/build_general_eval.py --n 3000  ->  eval/data/general_heldout.jsonl (kept in the repository)"""
 
 import argparse
 import json
@@ -42,4 +42,4 @@ for s in pool:
     if len(out) >= a.n:
         break
 a.out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in out), encoding="utf-8")
-print(f"build_general_eval: {len(out)} 文 (未使用候補 {len(pool)}) -> {a.out}")
+print(f"build_general_eval: {len(out)} sentences (unused candidates {len(pool)}) -> {a.out}")

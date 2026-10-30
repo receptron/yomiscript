@@ -1,18 +1,18 @@
-"""Yomi-0 学習データ作成: テキスト -> カナ+韻律記号 (jsut-label e2e_symbol 形式)。
+"""Yomi-0 training data: text -> kana + prosody symbols (jsut-label e2e_symbol format).
 
-出力 (data/): train.jsonl, dev.jsonl, [distill.jsonl], vocab.json
-  各行 {"id", "text", "target", "source"}  target 例: ^ミ[ズヲ#マ[レ]ーシアカラ$
-  記号: ^ 文頭 / $ 文末 / ? 疑問文末 / # アクセント句境界 / _ ポーズ / [ ピッチ上昇 / ] アクセント核
+Output (data/): train.jsonl, dev.jsonl, [distill.jsonl], vocab.json
+  Each row {"id", "text", "target", "source"}  target e.g.: ^ミ[ズヲ#マ[レ]ーシアカラ$
+  Symbols: ^ sentence start / $ sentence end / ? question end / # accent phrase boundary / _ pause / [ pitch rise / ] accent nucleus
 
-人手ラベル: jsut-label BASIC5000 (eval/data の280文は除外)。ライセンスは eval/LICENSE_DATA.md 参照。
-蒸留 (任意, --distill-text): 1行1文のテキストを pyopenjtalk でラベル付け。source="distill"。
-  ※蒸留データの品質は pyopenjtalk 以下に頭打ちになる (誤読もそのまま学習する)。
+Human labels: jsut-label BASIC5000 (the 280 sentences in eval/data are excluded). See eval/LICENSE_DATA.md for the license.
+Distillation (optional, --distill-text): label a one-sentence-per-line text with pyopenjtalk. source="distill".
+  Note: the quality of distilled data is capped at pyopenjtalk's (its misreadings are learned too).
 
-python prepare_data.py                      # jsut-label を自動 clone
+python prepare_data.py                      # clones jsut-label automatically
 python prepare_data.py --jsut-label /path/to/jsut-label --distill-text my_corpus.txt --distill-max 50000
-python prepare_data.py --aug        # data/aug_text/*.txt (aug/build_text.py で作成) + ルールセット(aug/rules.py) を追加
-  各行に "src": "distill" (pyopenjtalk 蒸留) / "rule" (ルールで読みを決め pyopenjtalk で韻律付与) を付ける。
-  フィルタ統計は data/aug_stats.json に出力。
+python prepare_data.py --aug        # adds data/aug_text/*.txt (built by aug/build_text.py) + the rule set (aug/rules.py)
+  Each row gets "src": "distill" (pyopenjtalk distillation) / "rule" (reading decided by rules, prosody added by pyopenjtalk).
+  Filter statistics are written to data/aug_stats.json.
 """
 
 import argparse
@@ -55,7 +55,7 @@ def morae(kana):
 
 
 def distill_one(text):
-    """pyopenjtalk: カナ + 韻律記号を作る。韻律はモーラ位置に差し込む。失敗時 None。"""
+    """pyopenjtalk: build kana + prosody symbols. The prosody is inserted at mora positions. None on failure."""
     import pyopenjtalk
 
     sys.path.insert(0, str(REPO / "eval/scripts"))
@@ -85,12 +85,12 @@ def _h2k(s):
 
 
 def _loose(s):
-    # 長音の書き方 (きょう/キョー) の違いを吸収するゆるい比較用
+    # Loose comparison that absorbs differences in how long vowels are written (きょう/キョー)
     return re.sub(r"[ーウイ]", "", _h2k(s)).replace("ヲ", "オ").replace("ヅ", "ズ").replace("ヂ", "ジ")
 
 
 def label_ruby(item):
-    """青空文庫の文: ルビを正解の制約にする。戻り値 (row, why, n_ruby, n_agree)"""
+    """An Aozora Bunko sentence: use the ruby as a constraint from the reference. Returns (row, why, n_ruby, n_agree)"""
     rid, text, ruby = item
     row, why = _label(("distill_aozora", rid, text, text, None))
     if not ruby:
@@ -103,7 +103,7 @@ def label_ruby(item):
         if agree == len(ruby):
             row["ruby_checked"] = True
             return row, "ok(ルビと一致)", len(ruby), agree
-    # 不一致: 親文字をルビのカタカナに置き換えて付け直し、全ルビ読みが入っていれば採用 (src="ruby")
+    # Mismatch: replace the base text with the ruby katakana and relabel; accept if every ruby reading is present (src="ruby")
     pron = text
     for b, y in ruby:
         if b not in pron:
@@ -119,8 +119,8 @@ def label_ruby(item):
 
 
 def label(item):
-    """ルール例はまず元の文で pyopenjtalk に通し、読みがルールと一致すれば自然な韻律をそのまま使う。
-    一致しなければカタカナに置き換えた文 (pron) で韻律を付ける。"""
+    """For rule examples, first run the original sentence through pyopenjtalk and, if the reading matches the rule, keep its natural prosody.
+    Otherwise add the prosody from the sentence with the katakana substituted (pron)."""
     kind, rid, text, pron, expect = item
     if expect:
         row, why = _label((kind, rid, text, text, expect))
@@ -136,7 +136,7 @@ def label(item):
 
 
 def _label(item):
-    """(kind, id, text, pron_text, expect) -> (row, reason)。expect があればカナにその読みが含まれることを要求。"""
+    """(kind, id, text, pron_text, expect) -> (row, reason). If expect is given, the kana must contain that reading."""
     import pyopenjtalk
 
     kind, rid, text, pron, expect = item
@@ -179,7 +179,7 @@ def run_aug(a, eval_norm):
         if re.sub(r"[、。]", "", unicodedata.normalize("NFKC", t)) in eval_norm:
             continue
         seg = None
-        # pron と text の差分 = ルールで決めた読み
+        # The difference between pron and text = the reading decided by the rule
         i = 0
         while i < min(len(t), len(pr)) and t[i] == pr[i]:
             i += 1
@@ -230,10 +230,10 @@ def main():
     ap.add_argument("--dev-size", type=int, default=200)
     ap.add_argument("--distill-text", type=Path, nargs="*", default=[])
     ap.add_argument("--distill-max", type=int, default=100000)
-    ap.add_argument("--aug", action="store_true", help="増量データ (aug_text + ルールセット) を distill.jsonl に入れる")
+    ap.add_argument("--aug", action="store_true", help="put the augmentation data (aug_text + the rule set) into distill.jsonl")
     ap.add_argument("--aug-text", type=Path, default=HERE / "data/aug_text")
-    ap.add_argument("--aug-max", type=int, default=100000, help="ソースごとの最大文数")
-    ap.add_argument("--rule-repeat", type=int, default=5, help="ルールセットを何回繰り返して混ぜるか (数が少ないため)")
+    ap.add_argument("--aug-max", type=int, default=100000, help="maximum number of sentences per source")
+    ap.add_argument("--rule-repeat", type=int, default=5, help="how many times to repeat the rule set in the mix (it is small)")
     ap.add_argument("--workers", type=int, default=os.cpu_count())
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
@@ -242,7 +242,7 @@ def main():
     rows, nex = load_jsut(a.jsut_label)
     random.Random(0).shuffle(rows)
     dev, train = rows[: a.dev_size], rows[a.dev_size :]
-    print(f"jsut: {len(rows)} 文 (評価用 {nex} 文を除外) -> train {len(train)} / dev {len(dev)}")
+    print(f"jsut: {len(rows)} sentences ({nex} evaluation sentences excluded) -> train {len(train)} / dev {len(dev)}")
     distill = []
     eval_texts = {json.loads(l)["text"] for l in open(EVAL_JSUT, encoding="utf-8")}
     for p in a.distill_text:
@@ -269,11 +269,11 @@ def main():
                 for r in rs:
                     f.write(json.dumps(r, ensure_ascii=False) + "\n")
     if distill:
-        print(f"distill: {len(distill)} 文 (pyopenjtalk 蒸留。品質は pyopenjtalk が上限)")
+        print(f"distill: {len(distill)} sentences (pyopenjtalk distillation; quality is capped by pyopenjtalk)")
     src = sorted({c for r in train + distill for c in r["text"]})
     tgt = sorted({c for r in train + dev + distill for c in r["target"]})
     json.dump({"src": src, "tgt": tgt}, open(a.out / "vocab.json", "w", encoding="utf-8"), ensure_ascii=False)
-    print(f"vocab: 入力 {len(src)} 文字, 出力 {len(tgt)} 記号 -> {a.out}")
+    print(f"vocab: input {len(src)} characters, output {len(tgt)} symbols -> {a.out}")
 
 
 if __name__ == "__main__":

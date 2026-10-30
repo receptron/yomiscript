@@ -1,6 +1,6 @@
 # Contributing Guide
 
-Contributions to mulmovoice are welcome.
+Contributions to yomiscript are welcome.
 
 ## Process
 

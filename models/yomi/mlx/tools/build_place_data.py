@@ -1,9 +1,9 @@
-"""地名の読み (mem3) の学習・評価データを郵便番号データ (日本郵便 utf_ken_all.csv, 著作権主張なし) から作る。
-地名スパンの読みは KEN_ALL のカナに強制 (aug/names.label)、他の部分とアクセントは pyopenjtalk。
-地名単位 (市区町村・町域) の 10% を評価専用 (unseen) にする。生データは data/geo/ (gitignore, 無ければ取得)。
+"""Build training and evaluation data for place-name readings (mem3) from the postal code data (Japan Post utf_ken_all.csv, no copyright claimed).
+The reading of the place-name span is forced to the KEN_ALL kana (aug/names.label); the rest and the accent come from pyopenjtalk.
+10% of the place-name units (municipalities, town areas) are kept for evaluation only (unseen). Raw data is in data/geo/ (gitignored, downloaded if missing).
   python tools/build_place_data.py [--out data/places] [--n-train 30000] [--n-eval 500] [--n-neg 6000]
-出力: places_train.jsonl, places_eval_seen.jsonl, places_eval_unseen.jsonl, places_hardneg.jsonl (一般文・地名なし), places_stats.json
-各行は names と同じ形 (names=地名スパン, name_pron, name_target) なので train.py の gate-sup / leak-kl と eval_names.py がそのまま使える。"""
+Output: places_train.jsonl, places_eval_seen.jsonl, places_eval_unseen.jsonl, places_hardneg.jsonl (general sentences, no place names), places_stats.json
+Each row has the same shape as names (names=place-name span, name_pron, name_target), so train.py's gate-sup / leak-kl and eval_names.py use it as is."""
 
 import argparse
 import csv
@@ -28,7 +28,7 @@ from mold import to_pron  # noqa: E402
 sys.path.insert(0, str(HERE / "tools"))
 from place_label_audit import audit_row, norm_kana  # noqa: E402
 
-SAFE = {"一致", "一致(分割のみ)", "表記 (ヅ/オオ等)", "長音", "町 チョウ/マチ", "村 ソン/ムラ", "ケ/ガ"}  # --confident で残すずれ
+SAFE = {"一致", "一致(分割のみ)", "表記 (ヅ/オオ等)", "長音", "町 チョウ/マチ", "村 ソン/ムラ", "ケ/ガ"}  # mismatch kinds kept by --confident
 
 GEO_URL = "https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip"
 T_ONE = [
@@ -69,7 +69,7 @@ def read_ken(path):
 
 
 def sample(g, split):
-    """(text, forced, pron, names)。評価対象の単位 (市区町村 or 町域) が seen/unseen 側から選ばれる。"""
+    """(text, forced, pron, names). The unit under evaluation (municipality or town area) is drawn from the seen/unseen side."""
     ok = (lambda s: s in g.unseen) if split == "unseen" else (lambda s: s not in g.unseen)
     kind = g.rng.choices(["city", "town", "addr", "pref"], [0.35, 0.3, 0.3, 0.05 if split != "unseen" else 0])[0]
     if kind == "pref":
@@ -124,7 +124,9 @@ def gen(g, split, n, fn):
                 "parts_pron": [p for *_, p in forced],
             }
         )
-    if g.a.confident and fn == "places_train":  # 生成後に絞る (乱数列を変えないので評価セットは --confident なしと同じ)
+    if (
+        g.a.confident and fn == "places_train"
+    ):  # filter after generation (the random sequence is unchanged, so the evaluation sets equal those without --confident)
         cats = [{x[3] for x in audit_row(r)} for r in rows]
         c["confident_drop"] = sum(not (x <= SAFE) for x in cats)
         rows = [r for r, x in zip(rows, cats, strict=False) if x <= SAFE]
@@ -143,11 +145,15 @@ def main():
     ap.add_argument("--n-neg", type=int, default=6000)
     ap.add_argument("--unseen-frac", type=float, default=0.1)
     ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--no-kana-norm", action="store_true", help="郵便番号の読みを発音形 (ヅ→ズ, オオ→オー, イイ→イー) に直さない (v12/v13 の挙動)")
+    ap.add_argument(
+        "--no-kana-norm",
+        action="store_true",
+        help="do not convert postal readings to the pronounced form (ヅ→ズ, オオ→オー, イイ→イー) (the v12/v13 behaviour)",
+    )
     ap.add_argument(
         "--confident",
         action="store_true",
-        help="学習データは pyopenjtalk との差が表記・長音・町村 (チョウ/マチ, ソン/ムラ)・ケ/ガ だけの文に限る (評価は全部残す)",
+        help="keep only training sentences that differ from pyopenjtalk just in spelling, long vowels, 町/村 (チョウ/マチ, ソン/ムラ) or ケ/ガ (eval: all)",
     )
     a = ap.parse_args()
     rng = random.Random(a.seed)
@@ -163,7 +169,8 @@ def main():
     gen(g, "seen", a.n_train, "places_train")
     gen(g, "seen", a.n_eval, "places_eval_seen")
     gen(g, "unseen", a.n_eval, "places_eval_unseen")
-    # 一般文の負例: 地名に多い漢字を含むが pyopenjtalk で地名・人名 (固有名詞) が無い学習文 (学習データ作成時のみの判定)
+    # Negative examples from general sentences: training sentences containing kanji common in place names but in which pyopenjtalk
+    # finds no place or personal name (proper noun). Judged only when building training data
     import pyopenjtalk
 
     pc = Counter(c for s in list(units) + list(pref) for c in s if "一" <= c <= "鿿")

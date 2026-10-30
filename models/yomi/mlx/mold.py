@@ -1,14 +1,14 @@
 """MoLD (Memory-of-Language/Domain) for Yomi-0.
 
-2種類の Memory を持つ:
-  1. LexMemory  : .koedict を学習なしで決定的にコンパイルした「辞書メモリ」(差し替え可能)。
-                  key = 表層形 (+ 文脈条件), value = 読み(カナ, アクセント記号)。
-                  推論時に入力中の該当スパンを見つけ、優先順位
-                  「その場の注記 {表層|読み} > 文脈一致の項目 > [default] > 先頭項目 > モデル」で読みを決め、
-                  エンコーダ入力のそのスパンを読み(カナ)で置き換える。モデルはカナをそのまま写し、アクセント/境界だけ予測する。
-  2. ProductKeyMemory (PKM): エンコーダ層に挿す学習型 key-value メモリ。値テーブルだけを
-                  別ファイル (*.mem.safetensors) に保存・差し替えできる (言語/方言/ドメインごと)。
-モード: fixed (@dialect や設定で指定) / auto (入力から推定)。明示指定が常に勝つ。
+It has two kinds of memory:
+  1. LexMemory  : a "lexicon memory" compiled deterministically from .koedict without training (swappable).
+                  key = surface form (+ context condition), value = reading (kana, accent marks).
+                  At inference it finds the matching spans in the input, decides the reading by the priority
+                  "inline annotation {surface|reading} > entry whose context matches > [default] > first entry > model",
+                  and replaces that span of the encoder input with the reading (kana). The model copies the kana and predicts only accent/boundaries.
+  2. ProductKeyMemory (PKM): a learned key-value memory inserted into the encoder layers. Only the value table
+                  can be saved to and swapped from a separate file (*.mem.safetensors) (per language / dialect / domain).
+Modes: fixed (given by @dialect or settings) / auto (inferred from the input). An explicit setting always wins.
 """
 
 import json
@@ -20,7 +20,7 @@ import mlx.core as mx
 import mlx.nn as nn
 
 
-# ---------------------------------------------------------------- .koedict パーサ
+# ---------------------------------------------------------------- .koedict parser
 @dataclass
 class Entry:
     surface: str
@@ -39,7 +39,7 @@ def hira2kata(s):
 
 
 def parse_koedict(text):
-    """KOE-IR v0.1 の @lexicon ブロックを読む。戻り値: list[Entry]"""
+    """Read the @lexicon blocks of KOE-IR v0.1. Returns list[Entry]"""
     text = "\n".join(l.split("#", 1)[0] if not l.lstrip().startswith("#") else "" for l in text.splitlines())
     out = []
     for m in re.finditer(r"@lexicon\s*(?:\(\s*dialect:\s*(\w+)\s*\))?\s*\{(.*?)\}", text, re.S):
@@ -63,16 +63,17 @@ def parse_koedict(text):
     return out
 
 
-# ---- 長音の正規化: 学習ラベル (pyopenjtalk の pron 形, g2p(kana=True)) に合わせる
+# ---- Long-vowel normalization: match the training labels (pyopenjtalk's pron form, g2p(kana=True))
 _O = set("オコソトノホモヨロヲゴゾドボポョォ")
 _E = set("エケセテネヘメレゲゼデベペェ")
 _U = set("ウクスツヌフムユルグズヅブプュゥ")
 
 
 def to_pron(kana):
-    """辞書の読み (表記形: サトウ, ケイ) を発音形 (サトー, ケー) にする。o段/u段+ウ→ー, e段+イ→ー (pyopenjtalk: 優→ユー, 裕子→ユーコ)。
-    pyopenjtalk は語中のこれらを長音にするため、名前・名詞の辞書読みではこれで学習ラベルと揃う。
-    動詞の語尾 (オモウ等) は辞書側で ' や [pron] を付けず、そのまま書いた場合でも人名用途では問題になりにくい。"""
+    """Turn a lexicon reading (spelling form: サトウ, ケイ) into the pronounced form (サトー, ケー).
+    o/u-row + ウ → ー, e-row + イ → ー (pyopenjtalk: 優→ユー, 裕子→ユーコ).
+    pyopenjtalk makes these long vowels inside words, so for lexicon readings of names and nouns this matches the training labels.
+    Verb endings (オモウ etc.) written as is in the lexicon, without ' or [pron], are unlikely to matter for personal names."""
     out = []
     for c in kana:
         if out and ((c == "ウ" and (out[-1] in _O or out[-1] in _U)) or (c == "イ" and out[-1] in _E)):
@@ -96,20 +97,20 @@ def morae(k):
 
 
 def split_name_phrases(output, pairs):
-    """苗字+名前が1つのアクセント句に融合した出力に '#' を差し込み、名前側を新しい句にする。
-    pairs: [(苗字の読み, 名前の読み)] (発音形)。名前側の先頭が頭高 ']' でなければ1モーラ目の後に '[' を入れる。"""
+    """Insert '#' into output where surname + given name fused into one accent phrase, making the given name a new phrase.
+    pairs: [(surname reading, given-name reading)] (pronounced form). If the given name does not start with a head-high ']', insert '[' after its first mora."""
     for sur, giv in pairs:
         kana_pos = [i for i, c in enumerate(output) if c not in "^$?#_[]"]
         stream = "".join(output[i] for i in kana_pos)
         j = stream.find(sur + giv)
         if j < 0:
             continue
-        b = kana_pos[j + len(sur)]  # 名前の先頭文字の出力位置
+        b = kana_pos[j + len(sur)]  # output position of the first character of the given name
         pre = output[:b]
         if pre.endswith("#"):
             continue
         post = output[b:]
-        # 名前側の最初のモーラの後ろを調べる
+        # Look at what follows the first mora of the given name
         m1 = morae(giv)[0]
         after = post[len(m1) :]
         if not after.startswith(("]", "[")):
@@ -119,11 +120,11 @@ def split_name_phrases(output, pairs):
     return output
 
 
-# 性別などの文脈キーの同義語 (KOE-IR に [sex:] が入るまでの橋渡し)
+# Synonyms for context keys such as sex (a bridge until [sex:] is in KOE-IR)
 CTX_ALIASES = {"male": "男性", "m": "男性", "男": "男性", "female": "女性", "f": "女性", "女": "女性"}
 HONORIFICS = ("さん", "くん", "君", "ちゃん", "様", "さま", "氏", "先生", "選手", "殿")
 KANJI = re.compile(r"[\u4e00-\u9fff々〆ヶ]")
-# 名前の前に来やすい語 (父の匠 / 名前は璃子 / 彼女八重子)。敬称が無くても人名辞書を使う手がかり。
+# Words that tend to precede a name (父の匠 / 名前は璃子 / 彼女八重子). Cues to use the personal-name lexicon even without an honorific.
 NAME_CUES = (
     "父の",
     "母の",
@@ -151,9 +152,9 @@ ANNOT = re.compile(r"\{([^{}|]+)\|([^{}|]+)\}")
 
 
 class LexMemory:
-    """学習なしでコンパイルされる辞書メモリ。scope='always' は常に適用、'name' は人名らしい位置だけ適用。"""
+    """Lexicon memory compiled without training. scope='always' always applies; 'name' applies only in positions that look like personal names."""
 
-    # レイヤー優先度 (大きいほど勝つ): base(pyopenjtalk変換) < clean(青空ルビ/人手確認) < user(.koedict)
+    # Layer priority (higher wins): base (converted from pyopenjtalk) < clean (Aozora ruby / checked by hand) < user (.koedict)
     PRIORITY = {"base": 0, "clean": 50, "user": 100}
 
     def __init__(self, entries, name="lex", scope="always", dialect=None, layer="user"):
@@ -168,11 +169,11 @@ class LexMemory:
 
     @classmethod
     def from_file(cls, path, scope=None, dialect=None, layer=None):
-        """入力は .koedict のみ (pyopenjtalk 辞書などは tools/pyopenjtalk_to_koedict.py で先に変換)。
-        ヘッダの '# layer: base|clean|user' と '# scope: always|name' を読む。"""
+        """Input is .koedict only (convert the pyopenjtalk dictionary and the like first with tools/pyopenjtalk_to_koedict.py).
+        Reads the header lines '# layer: base|clean|user' and '# scope: always|name'."""
         p = Path(path)
         if p.suffix != ".koedict":
-            raise ValueError("Memory コンパイラは .koedict だけを受け付けます")
+            raise ValueError("the Memory compiler accepts only .koedict")
         txt = p.read_text(encoding="utf-8")
         hdr = dict(re.findall(r"^#\s*(layer|scope):\s*(\w+)", txt, re.M))
         scope = scope or hdr.get("scope") or ("name" if "names" in p.parts else "always")
@@ -183,7 +184,7 @@ class LexMemory:
         return sum(len(v) for v in self.table.values())
 
     def choose(self, surface, sentence, ctx):
-        """読みの決定: 文脈一致 > [default] > 先頭。"""
+        """Decide the reading: context match > [default] > first."""
         cands = self.table[surface]
         for e in cands:
             if e.contexts and any(c in ctx or (len(c) > 1 and c in sentence) for c in e.contexts):
@@ -195,7 +196,7 @@ class LexMemory:
         return (plain or cands)[0], "first"
 
     def matches(self, text):
-        """最長一致で候補スパンを列挙: list[(start, end, surface)]"""
+        """List candidate spans by longest match: list[(start, end, surface)]"""
         i, out = 0, []
         while i < len(text):
             for L in range(min(self.maxlen, len(text) - i), 0, -1):
@@ -208,7 +209,7 @@ class LexMemory:
         return out
 
     def all_matches(self, text):
-        """重なりを許して全一致を列挙 (ルーターで最長一致をレイヤー横断で選ぶため)。"""
+        """List all matches, overlaps allowed (so the router can pick the longest match across layers)."""
         out = []
         for i in range(len(text)):
             for L in range(1, min(self.maxlen, len(text) - i) + 1):
@@ -217,7 +218,7 @@ class LexMemory:
         return out
 
     def to_arrays(self, tgt_vocab=None):
-        """メモリをテンソル形式 (keys=表層のハッシュ, values=読みのトークン列) にする。保存/検査用。"""
+        """Turn the memory into tensor form (keys = surface hashes, values = reading token sequences). For saving / inspection."""
         surfs = sorted(self.table)
         keys = mx.array([hash_surface(s) for s in surfs], dtype=mx.uint32)
         reads = [self.choose(s, "", set())[0].reading for s in surfs]
@@ -242,11 +243,11 @@ def _is_namey(text, s, e, name_spans):
         return True
     if after.startswith(NAME_TAILS) and (s == 0 or not KANJI.match(text[s - 1])) and before.endswith(("の", "は", "が", "、")):
         return True
-    return any(ns_e == s or ns_s == e for ns_s, ns_e in name_spans)  # 苗字+名前のように隣接
+    return any(ns_e == s or ns_s == e for ns_s, ns_e in name_spans)  # adjacent, like surname + given name
 
 
 def _default_tokenizer():
-    """形態素境界の判定に pyopenjtalk (あれば) を使う。無ければ None (簡易規則にフォールバック)。"""
+    """Use pyopenjtalk (if installed) to find morpheme boundaries. None if not (fall back to the simple rule)."""
     try:
         import pyopenjtalk
     except Exception:
@@ -266,9 +267,9 @@ def _default_tokenizer():
 
 
 class MemoryRouter:
-    """複数の LexMemory を束ね、優先順位どおりに入力を書き換える。
-    tokenizer: text -> 形態素境界の位置集合。'always' 辞書の項目はスパンが形態素境界に揃うときだけ使う
-    (朝市 の中の 市 は置換しない)。'auto' なら pyopenjtalk があれば使い、無ければ「前後が漢字でない」簡易規則。"""
+    """Combine several LexMemory objects and rewrite the input in priority order.
+    tokenizer: text -> set of morpheme boundary positions. Entries of 'always' lexicons are used only when the span is aligned with morpheme boundaries
+    (the 市 inside 朝市 is not replaced). 'auto' uses pyopenjtalk if installed, otherwise the simple rule "the neighbors are not kanji"."""
 
     def __init__(self, memories=(), tokenizer="auto", normalize=True, split_names=True):
         self.memories = list(memories)
@@ -306,7 +307,7 @@ class MemoryRouter:
         return to_pron(r) if self.normalize else r
 
     def resolve(self, text, context=None):
-        """戻り値: (書き換え後テキスト, 適用ログ list[dict])。context: {'sex':'female'} や ['朝市'] など。"""
+        """Returns (rewritten text, application log list[dict]). context: e.g. {'sex':'female'} or ['朝市']."""
         ctx = set()
         if isinstance(context, dict):
             for v in context.values():
@@ -314,7 +315,7 @@ class MemoryRouter:
         elif context:
             ctx |= {CTX_ALIASES.get(str(c).lower(), str(c)) for c in context}
         log, spans = [], []  # spans: (s, e, reading)
-        # 1) その場の注記が最優先
+        # 1) Inline annotations come first
         plain, pos, _mapping = [], 0, []
         for m in ANNOT.finditer(text):
             plain.append(text[pos : m.start()])
@@ -329,7 +330,8 @@ class MemoryRouter:
         def taken(s, e):
             return any(not (e <= a or s >= b) for a, b, _ in spans)
 
-        # 2) 常時適用の辞書 → 3) 人名辞書 (人名らしい位置だけ)。苗字が見つかると隣の名前も人名扱い。
+        # 2) Always-applied lexicons -> 3) personal-name lexicons (only in positions that look like names).
+        #    A surname found makes the adjacent name a personal name too.
         name_mems = [m for m in self.memories if m.scope == "name"]
         cand = []
         for m in sorted(name_mems, key=lambda m: -m.priority):
@@ -341,7 +343,7 @@ class MemoryRouter:
             for s, e, sf, m in sorted(cand, key=lambda x: (x[0], -(x[1] - x[0]))):
                 if taken(s, e) or (s, e) in name_spans:
                     continue
-                pair = any(m2 is not m and (s2 == e or e2 == s) for s2, e2, _, m2 in cand)  # 苗字+名前の並び
+                pair = any(m2 is not m and (s2 == e or e2 == s) for s2, e2, _, m2 in cand)  # surname + given name side by side
                 if pair or _is_namey(text, s, e, name_spans):
                     ent, by = m.choose(sf, text, ctx)
                     rp = self._pron(ent.reading)
@@ -349,7 +351,7 @@ class MemoryRouter:
                     name_spans.append((s, e))
                     changed = True
                     log.append({"surface": sf, "reading": ent.reading, "reading_pron": rp, "by": by, "memory": m.name, "name_start": s, "name_end": e})
-        # always 辞書: 全レイヤーの候補を「長い一致 > 高いレイヤー」の順に取る。形態素の途中は使わない。
+        # Always lexicons: take candidates from all layers in the order "longer match > higher layer". Never inside a morpheme.
         cands = []
         for m in self.memories:
             if m.scope == "always":
@@ -371,10 +373,10 @@ class MemoryRouter:
         return "".join(out), log
 
 
-# ---------------------------------------------------------------- 学習型メモリ層 (Product-Key Memory)
+# ---------------------------------------------------------------- Learned memory layer (Product-Key Memory)
 class ProductKeyMemory(nn.Module):
-    """Lample+ 2019 の product-key memory。n_keys^2 個のスロット、トークンごとに top-k を読む。
-    values は初期値 0 なので、既存チェックポイントに足しても出力は変わらない (後方互換)。"""
+    """The product-key memory of Lample+ 2019. n_keys^2 slots; each token reads its top-k.
+    values start at 0, so adding it to an existing checkpoint does not change the output (backward compatible)."""
 
     def __init__(
         self,
@@ -392,46 +394,48 @@ class ProductKeyMemory(nn.Module):
         cg_thresh=0.0,
     ):
         super().__init__()
-        # gate_floor: 出力に使うゲートの下限 (straight-through: 勾配はそのままゲートへ流れるので回復できる)。
-        #   強い本体 (tiny_aug) を凍結してメモリだけ学習すると、初期の値の雑音でゲートが 0 へ落ち、値の勾配も gate 倍で消えて
-        #   二度と戻らない (Mac の mfz_default: gate 0.0003)。下限があれば値は学習を続ける
-        # cg_thresh: 推論時 (eval) に条件付きゲートが閾値未満のトークンでは出力を 0 にする (一般文への漏れを切る)
+        # gate_floor: lower bound of the gate used for the output (straight-through: the gradient still flows to the gate, so it can recover).
+        #   When a strong base model (tiny_aug) is frozen and only the memory is trained, the noise of the initial values drives the gate to 0,
+        #   the value gradients vanish as they are scaled by the gate, and it never comes back (mfz_default on the Mac: gate 0.0003).
+        #   With a floor the values keep learning
+        # cg_thresh: at inference (eval), zero the output for tokens whose conditional gate is below the threshold (cuts leaks into general sentences)
         self.gate_floor, self.cg_thresh = gate_floor, cg_thresh
         self.n_keys, self.topk, self.k_dim = n_keys, topk, k_dim
         self.norm = nn.LayerNorm(d)
         self.query = nn.Linear(d, 2 * k_dim, bias=False)
         self.subkeys = mx.random.normal((2, n_keys, k_dim)) * (k_dim**-0.5)
-        # 値テーブルは 0、ゲートは 0 でない値 (既定 1) から始める。開始時の出力は 0 (後方互換・雑音を足さない) で、
-        # 値には gate*rms 倍の勾配がすぐ流れる。旧版 (乱数値+ゲート0) は ゲートが ~0 のまま動かず、乱数値は雑音になった
+        # The value table starts at 0 and the gate at a nonzero value (default 1). The output at the start is 0 (backward compatible, no added noise),
+        # and the values get a gradient scaled by gate*rms right away. The old version (random values + gate 0) left the gate stuck at ~0,
+        # and the random values became noise
         self.slots = mx.zeros((n_keys * n_keys, d))
         self.gate = mx.full((1,), gate_init)
-        # v2: query 半分と subkey を L2 正規化したコサイン類似度 x 温度。生の内積はスコアが ~300 に
-        # 膨らみ softmax が one-hot になってスロットが偏る (routing collapse) ため
+        # v2: cosine similarity of the L2-normalized query halves and subkeys x temperature. The raw dot product inflates scores to ~300,
+        # making softmax one-hot and skewing the slots (routing collapse)
         self.temp = temp
-        self.balance = balance  # 負荷分散の補助 loss の係数 (train.train_loss_fn が aux を足す)
-        # aux は配列なのでモジュール属性にするとパラメータ扱いになる。ただの入れ物に入れる
+        self.balance = balance  # coefficient of the auxiliary load-balancing loss (train.train_loss_fn adds aux)
+        # aux is an array, so as a module attribute it would count as a parameter. Keep it in a plain container
         self._st = __import__("types").SimpleNamespace(aux=None, off=False, cg=None)
-        if cond_gate:  # 入力に応じたゲート sigmoid(w·LN(x)+b): 一般文では黙る (積み重ねた人名メモリ用)
+        if cond_gate:  # input-dependent gate sigmoid(w·LN(x)+b): stays silent on general sentences (for the stacked personal-name memory)
             self.cgate = nn.Linear(d, 1)
             self.cgate.weight = mx.zeros_like(self.cgate.weight)
             self.cgate.bias = mx.full((1,), cond_bias)
 
-    probe = None  # 診断用: list を入れると (重み, スロット番号, 出力, 入力, スコア) を貯める
+    probe = None  # for diagnostics: set it to a list to collect (weights, slot ids, output, input, scores)
 
     @staticmethod
     def _l2(v):
         return v * mx.rsqrt((v * v).sum(-1, keepdims=True) + 1e-6)
 
     def __call__(self, x):
-        if self._st.off:  # 教師 (このメモリ無し) の出力を作るときに一時的に止める
+        if self._st.off:  # switched off temporarily to produce the teacher output (without this memory)
             return mx.zeros_like(x)
         B, L, D = x.shape
         q = self.query(self.norm(x)).reshape(B, L, 2, self.k_dim).astype(mx.float32)
         q = self._l2(q)
         sk = self._l2(self.subkeys.astype(mx.float32))
-        s1 = (q[..., 0, :] @ sk[0].T) * self.temp  # (B,L,n) 値域 [-temp, temp]
+        s1 = (q[..., 0, :] @ sk[0].T) * self.temp  # (B,L,n) range [-temp, temp]
         s2 = (q[..., 1, :] @ sk[1].T) * self.temp
-        # 負荷分散: 各半分のキー分布 (全トークン平均) が一様から外れるほど大きい。一様なら 0
+        # Load balancing: grows as the key distribution of each half (averaged over all tokens) departs from uniform. 0 if uniform
         p1 = mx.softmax(s1, axis=-1).reshape(-1, self.n_keys).mean(0)
         p2 = mx.softmax(s2, axis=-1).reshape(-1, self.n_keys).mean(0)
         self._st.aux = self.n_keys * ((p1 * p1).sum() + (p2 * p2).sum()) - 2.0
@@ -447,7 +451,7 @@ class ProductKeyMemory(nn.Module):
         w = mx.softmax(sc, axis=-1).astype(x.dtype)
         vals = self.slots[idx]  # (B,L,k,D)
         out = (w[..., None] * vals).sum(axis=2)
-        # 残差の大きさ (RMS) に合わせて出力を拡大する。残差のノルムが ~150 あるため、生の値では効かない
+        # Scale the output to the size (RMS) of the residual. The residual norm is ~150, so the raw values have no effect
         rms = mx.stop_gradient(mx.sqrt(mx.mean(x.astype(mx.float32) ** 2, axis=-1, keepdims=True))).astype(x.dtype)
         g0 = self.gate
         if self.gate_floor:
@@ -455,7 +459,7 @@ class ProductKeyMemory(nn.Module):
         out = g0 * rms * out
         if "cgate" in self:
             g = mx.sigmoid(self.cgate(self.norm(x)).astype(mx.float32))
-            self._st.cg = g[..., 0]  # (B,L) 条件付きゲート値 (漏れ対策の loss と診断用)
+            self._st.cg = g[..., 0]  # (B,L) conditional gate values (for the leak loss and diagnostics)
             if self.cg_thresh and not self.training:
                 g = g * (g >= self.cg_thresh)
             out = g.astype(out.dtype) * out
@@ -465,7 +469,7 @@ class ProductKeyMemory(nn.Module):
 
 
 def memory_aux_loss(model):
-    """メモリ層の負荷分散 loss (係数込み) の合計。メモリ層がなければ 0。"""
+    """Sum of the load-balancing losses of the memory layers (with coefficients). 0 if there are no memory layers."""
     tot = 0.0
     for m in memories(model):
         if m._st.aux is not None and m.balance:
@@ -483,7 +487,7 @@ def is_mem_key(k, group=None):
 
 
 def memories(model, group=None):
-    """エンコーダ内のメモリ層を順番 (層順, 各層で mem→mem2) に返す。"""
+    """Return the memory layers of the encoder in order (layer order, mem -> mem2 within each layer)."""
     out = []
     for l in getattr(model, "enc", []):
         for g in MEM_GROUPS:
@@ -493,7 +497,7 @@ def memories(model, group=None):
 
 
 def split_pkm(spec):
-    """--pkm の指定 (str / カンマ区切り / list, 入れ子可) を平坦なパスのリストにする。"""
+    """Flatten a --pkm value (str / comma-separated / list, nesting allowed) into a list of paths."""
     if not spec:
         return []
     if isinstance(spec, (list, tuple)):
@@ -502,7 +506,7 @@ def split_pkm(spec):
 
 
 def memory_params(model, group=None):
-    """差し替え対象 (メモリ層) のパラメータだけを平坦な dict で返す。group: "mem" / "mem2" / None (全部)。"""
+    """Return only the parameters to swap (the memory layers) as a flat dict. group: "mem" / "mem2" / None (all)."""
     from mlx.utils import tree_flatten
 
     return {k: v for k, v in tree_flatten(model.parameters()) if is_mem_key(k, group)}
@@ -511,30 +515,30 @@ def memory_params(model, group=None):
 def save_memory(model, path, meta=None, group=None):
     p = memory_params(model, group)
     if not p:
-        raise ValueError("このモデルにはメモリ層がありません (config.model.memory を設定)")
+        raise ValueError("this model has no memory layers (set config.model.memory)")
     mx.save_safetensors(str(path), p, metadata={"mold": json.dumps(meta or {}, ensure_ascii=False)})
 
 
 def load_memory(model, path):
-    """共有重みはそのまま、メモリ層だけを差し替える。"""
+    """Swap only the memory layers, keeping the shared weights."""
     w = mx.load(str(path))
     own = memory_params(model)
     bad = [k for k in w if k not in own or own[k].shape != w[k].shape]
     if bad:
-        raise ValueError(f"メモリの形が合いません: {bad[:3]}")
+        raise ValueError(f"memory shapes do not match: {bad[:3]}")
     model.load_weights(list(w.items()), strict=False)
     groups = sorted({_MEM_RE.search(k).group(2) for k in w if _MEM_RE.search(k)})
-    for k, v in w.items():  # 読み込んだメモリが実質オフ (ゲート≈0 / 値≈0) なら警告: 積み重ね時に既定メモリが効いていない原因になる
+    for k, v in w.items():  # warn if the loaded memory is effectively off (gate ~ 0 / values ~ 0): that is why a default memory has no effect when stacking
         if k.endswith(".gate") and is_mem_key(k) and float(mx.abs(v).max()) < 1e-3:
-            print(f"警告: {path}: {k} = {float(v.reshape(-1)[0]):.4f} (ゲート≈0 → このメモリは出力に効かない)", file=__import__("sys").stderr)
+            print(f"warning: {path}: {k} = {float(v.reshape(-1)[0]):.4f} (gate ~ 0 -> this memory has no effect on the output)", file=__import__("sys").stderr)
     if not any(k.endswith(".gate") for k in w):
-        print(f"警告: {path}: ゲートを含まない (チェックポイント側のゲートのまま)", file=__import__("sys").stderr)
+        print(f"warning: {path}: no gate included (the checkpoint's gate is kept)", file=__import__("sys").stderr)
     model._mem_sources = getattr(model, "_mem_sources", []) + [(str(path), groups)]
     return model
 
 
 def memory_file_summary(path):
-    """メモリファイルの中身の要約 (グループ・ゲート値・値の絶対値平均)。"""
+    """Summary of a memory file's contents (groups, gate values, mean absolute value)."""
     w = mx.load(str(path))
     return {
         k: (round(float(v.reshape(-1)[0]), 4) if k.endswith(".gate") else round(float(mx.abs(v).mean()), 5))
@@ -544,7 +548,7 @@ def memory_file_summary(path):
 
 
 def detect_mode(text, explicit=None):
-    """auto モードの簡易推定。明示指定 (explicit) が常に勝つ。"""
+    """Simple inference for auto mode. An explicit setting (explicit) always wins."""
     if explicit:
         return explicit
     if re.search(r"(さかい|やねん|あかん|ほんま|おおきに)", text):

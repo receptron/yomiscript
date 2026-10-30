@@ -1,9 +1,9 @@
-"""増量用のオープンライセンス日本語テキストを集めて 1行1文 の txt にする。
+"""Collect openly licensed Japanese text for augmentation into txt files with one sentence per line.
 
-出力 (data/aug_text/): wiki.txt, tatoeba.txt  (重複除去・評価セットとの重複除去済み)
-  - Wikipedia 日本語版 (CC BY-SA 4.0): HF wikimedia/wikipedia 20231101.ja の1シャード
-  - Tatoeba 日本語文 (CC BY 2.0 FR): downloads.tatoeba.org per_language/jpn
-必要: pyarrow (Wikipedia の parquet 読み込み用)
+Output (data/aug_text/): wiki.txt, tatoeba.txt  (deduplicated, and with overlaps with the evaluation sets removed)
+  - Japanese Wikipedia (CC BY-SA 4.0): one shard of HF wikimedia/wikipedia 20231101.ja
+  - Tatoeba Japanese sentences (CC BY 2.0 FR): downloads.tatoeba.org per_language/jpn
+Requires: pyarrow (to read the Wikipedia parquet)
 
 python aug/build_text.py --wiki-max 150000
 """
@@ -21,7 +21,7 @@ HERE = Path(__file__).resolve().parents[1]
 REPO = HERE.parents[2]
 WIKI_URL = "https://huggingface.co/datasets/wikimedia/wikipedia/resolve/main/20231101.ja/train-{:05d}-of-00015.parquet"
 TATOEBA_URL = "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_sentences.tsv.bz2"
-# 許可する文字: ひらがな・カタカナ・漢字・々〆ヶ・数字・基本的な句読点。英字や記号の多い文は落とす。
+# Allowed characters: hiragana, katakana, kanji, 々〆ヶ, digits and basic punctuation. Sentences with many Latin letters or symbols are dropped.
 OK = re.compile(r"^[\u3041-\u3096\u30A1-\u30FA\u30FC\u4E00-\u9FFF\u3005\u3006\u30F6０-９0-9、。，．！？「」『』・ー〜]+$")
 KANA = re.compile(r"[\u3041-\u3096]")
 DIGIT = re.compile(r"[0-9０-９]")
@@ -79,7 +79,7 @@ def wiki_sents(paths):
         for i in range(f.num_row_groups):
             for t in f.read_row_group(i, columns=["text"]).column("text").to_pylist():
                 for para in t.split("\n"):
-                    if para.endswith("。"):  # 本文の段落だけ (見出し・箇条書きは除く)
+                    if para.endswith("。"):  # body paragraphs only (no headings or bullet lists)
                         for s in re.findall(r"[^。]+。", para):
                             yield s
 

@@ -1,19 +1,19 @@
-# sample.koedict — KOE-IR 辞書のサンプル（v0.1 草案）
+# sample.koedict — a sample KOE-IR lexicon (v0.1 draft)
 # license: CC BY 4.0
-# author: mulmovoice contributors
-# 注：読み・アクセントは説明用の例で、検証済みではありません。
+# author: yomiscript contributors
+# Note: the readings and accents are illustrative examples and have not been verified.
 
 @lexicon {
-  # 英語の略語
+  # English abbreviations
   SAP = エスエーピー;
   SIP = シップ [context: 通信, VoIP, 電話];
   SIP = エスアイピー [context: 投資, 積立];
 
-  # 同形異音語（文脈条件 + 既定）
+  # Homographs (context conditions + default)
   市 = イチ [context: 朝市, 魚, 市場];
   市 = シ [default];
 
-  # アクセント
+  # Accent
   箸 = ハ'シ;
   橋 = ハシ';
   端 = ハシ [accent: 0]

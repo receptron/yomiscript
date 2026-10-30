@@ -1,6 +1,6 @@
-"""pyopenjtalk (NAIST-jdic 系) の読みを .koedict (base レイヤー) に変換する。出力はローカル専用で、コミットしない。
-辞書バイナリを直接展開するのではなく、手元のコーパスを pyopenjtalk で解析し、漢字を含む形態素の
-「表層 → 最頻の読み」を集める (複数読みがあれば2番目以降は記録のみ)。
+"""Convert pyopenjtalk (NAIST-jdic family) readings into a .koedict (base layer). The output is local only and is not committed.
+Instead of unpacking the dictionary binary directly, it analyzes a local corpus with pyopenjtalk and collects, for morphemes containing kanji,
+"surface -> most frequent reading" (when there are several readings, the second and later are only recorded).
   python tools/pyopenjtalk_to_koedict.py --text data/aug_text/*.txt --out mem/base_pyopenjtalk.koedict --min-count 2
 """
 
@@ -11,10 +11,10 @@ import json
 import re
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--text", nargs="+", required=True, help="テキスト/jsonl ファイル (jsonl なら text 列)")
+ap.add_argument("--text", nargs="+", required=True, help="text / jsonl files (the text column for jsonl)")
 ap.add_argument("--out", required=True)
 ap.add_argument("--min-count", type=int, default=2)
-ap.add_argument("--limit", type=int, default=0, help="解析する行数の上限 (0=全部)")
+ap.add_argument("--limit", type=int, default=0, help="maximum number of lines to analyze (0 = all)")
 a = ap.parse_args()
 import pyopenjtalk
 
@@ -48,4 +48,4 @@ with open(a.out, "w", encoding="utf-8") as w:
             w.write(f"  {s} = {pron} [accent: {acc}];{note}\n")
             k += 1
     w.write("}\n")
-print(f"{n} 行を解析, {k} 項目 -> {a.out}")
+print(f"analyzed {n} lines, {k} entries -> {a.out}")

@@ -1,5 +1,5 @@
-"""2 つの evaluate.py --preds jsonl を比べ、B だけが誤る文の誤りを分類する。
-使い方: python tools/jsut_diff.py none.jsonl gs.jsonl  (最後の行が要約)"""
+"""Compare two evaluate.py --preds jsonl files and classify the errors in sentences that only B gets wrong.
+Usage: python tools/jsut_diff.py none.jsonl gs.jsonl  (the last line is the summary)"""
 
 import difflib
 import json
@@ -29,4 +29,4 @@ for a, b in zip(A, B, strict=False):
         if len(ex) < 6:
             ex.append(f"  {b['text'][:30]} | {g[:40]} -> {q[:40]}")
 print("\n".join(ex))
-print(f"jsut_diff: Bのみ誤り {nb} 文 / Aのみ誤り {na} 文 | 種類 {dict(cat)}")
+print(f"jsut_diff: only B wrong {nb} sentences / only A wrong {na} sentences | kinds {dict(cat)}")

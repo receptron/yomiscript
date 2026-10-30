@@ -2,6 +2,15 @@
 
 Reading data for Japanese personal names (surnames). Used for YomiScript dictionaries (`.koedict`) and for generating training data, to cover Yomi-0's weakness in reading personal names (e.g. 梨奈).
 
+## Not in this repository
+
+The redistribution terms of the statistics these files come from have not been confirmed, so the data files
+(`surnames_top200.csv`, `given_names_by_generation.csv`, `surnames.koedict`, `given_names.koedict`) are not in the
+repository (they are in `.gitignore`). They are kept in a separate private repository, `yomiscript-names`; copy its
+files into this directory. Without them, the Yomi-0 / MoLD tests that read them are skipped; the scripts that read
+them (`aug/names.py`, `train.py`'s default memory dictionaries, `eval_names.py`, `mold_demo.py`,
+`tools/mine_hardneg.py`) report the missing file. `demo_extra.koedict` is the project's own and stays here.
+
 ## Files
 
 | File | Contents |
@@ -29,7 +38,7 @@ Leading/trailing whitespace removed, NFKC normalization, readings unified to hir
 - Each element of `alt_readings` → a separate unconditioned entry
 - No accents yet. Context conditions (e.g. sex, region) are planned.
 
-## Source and license (to be confirmed)
+## Source and license (to be confirmed; the reason the data is kept outside the repository)
 
 - The data was provided by the project owner (S. Nakajima).
 - Ranks and counts are approximate figures based on the provided data; accuracy is not guaranteed.

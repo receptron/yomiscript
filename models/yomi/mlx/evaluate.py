@@ -1,7 +1,7 @@
-"""eval/ の指標で評価 (JSUT 280文 + ハードセット)。 python evaluate.py --ckpt ckpt/tiny
+"""Evaluate with the eval/ metrics (JSUT 280 sentences + the hard set). python evaluate.py --ckpt ckpt/tiny
 
-韻律 (句境界・アクセント核) は出力のカナ+記号列を文字単位で正解の kana_prosody と整列して比較する。
-pyopenjtalk ベースラインは音素単位の比較なので、数値は近いが厳密に同一の手順ではない。
+Prosody (phrase boundaries, accent nuclei) is compared by aligning the output kana + symbol string character by character with the reference kana_prosody.
+The pyopenjtalk baseline compares per phoneme, so the numbers are close but the procedure is not strictly identical.
 """
 
 import argparse
@@ -20,17 +20,17 @@ from metrics import edit_distance, f1, loose_kana, norm_kana, prosody_compare
 ap = argparse.ArgumentParser()
 ap.add_argument("--ckpt", default="ckpt/tiny")
 ap.add_argument("--dtype", default=None, choices=["float32", "bfloat16", "float16"])
-ap.add_argument("--pkm", action="append", default=None, help="差し替える学習型メモリ *.mem.safetensors (複数可/カンマ区切り, 積み重ね)")
+ap.add_argument("--pkm", action="append", default=None, help="learned memory *.mem.safetensors to swap in (repeatable / comma-separated, stacked)")
 ap.add_argument("--out", type=Path)
 ap.add_argument(
     "--general-eval",
     type=int,
     default=0,
     metavar="N",
-    help="学習に使っていない一般文 (eval/data/general_heldout.jsonl, pyopenjtalk 蒸留の正解) の先頭 N 文も評価 (0=しない)",
+    help="also evaluate the first N general sentences not used in training (eval/data/general_heldout.jsonl, pyopenjtalk-distilled references) (0 = off)",
 )
-ap.add_argument("--general-preds", type=Path, help="一般文の全予測を jsonl で保存")
-ap.add_argument("--preds", type=Path, help="JSUT の全予測を jsonl で保存 (誤り分析用)")
+ap.add_argument("--general-preds", type=Path, help="save all predictions on the general sentences as jsonl")
+ap.add_argument("--preds", type=Path, help="save all JSUT predictions as jsonl (for error analysis)")
 a = ap.parse_args()
 model, sv, tv, meta = yomi.load(a.ckpt, getattr(mx, a.dtype) if a.dtype else None, memory=a.pkm)
 jsut = [json.loads(l) for l in open(REPO / "eval/data/jsut_basic5000_subset.jsonl", encoding="utf-8")]

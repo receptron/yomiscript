@@ -1,7 +1,8 @@
-"""人名メモリの「漏れやすい一般文」(hard negative) を集める。
-(1) gate: 現在の mem2 の条件付きゲートが人名でない文で --thr を超える文
-(2) chars: 人名に多い漢字 (names_train の名前の文字統計) を含む一般文 (人名データ以外 = 人名でない文脈)
-出力 jsonl は train.py --extra に渡す (一般文扱い → gate-sup の 0 目標 / leak-kl がかかる)。最後の行が要約。"""
+"""Collect "general sentences that leak easily" (hard negatives) for the personal-name memory.
+(1) gate: sentences without personal names in which the current mem2 conditional gate exceeds --thr
+(2) chars: general sentences containing kanji common in personal names (character statistics of the names in names_train)
+    (outside the name data = contexts without personal names)
+Pass the output jsonl to train.py --extra (treated as general sentences -> gate-sup target 0 / leak-kl apply). The last line is the summary."""
 
 import argparse
 import json
@@ -27,13 +28,26 @@ ap.add_argument("--thr", type=float, default=0.5)
 ap.add_argument("--max-gate", type=int, default=3000)
 ap.add_argument("--max-chars", type=int, default=2000)
 ap.add_argument("--top-chars", type=int, default=300)
-ap.add_argument("--compounds", type=int, default=0, help="(3) 人名に偏る漢字を含む普通の熟語 (直刀・蛍火 型) の文をこの数まで追加")
-ap.add_argument("--compound-pool", type=int, default=150000, help="(3) で熟語を探す一般文の数")
-ap.add_argument("--per-compound", type=int, default=2, help="(3) 熟語 1 つあたりの文数 (多様性のため)")
-ap.add_argument("--geo", default="data/geo/utf_ken_all.csv", help="(3) 地名除外用 日本郵便 郵便番号データ (無ければ取得。著作権主張なし・再配布自由)")
-ap.add_argument("--mine-mem", default="mem2", help="(1) ゲートを見るメモリ群 (地名なら mem3)")
-ap.add_argument("--bias-data", default="data/names/names_train.jsonl", help="(2)(3) 偏り漢字を数える正例 (地名なら data/places/places_train.jsonl)")
-ap.add_argument("--no-ojt-filter", action="store_true", help="(3) pyopenjtalk 辞書の固有名詞判定で除外しない")
+ap.add_argument(
+    "--compounds",
+    type=int,
+    default=0,
+    help="(3) add up to this many sentences with ordinary compounds containing kanji skewed toward personal names (like 直刀, 蛍火)",
+)
+ap.add_argument("--compound-pool", type=int, default=150000, help="(3) number of general sentences to search for compounds")
+ap.add_argument("--per-compound", type=int, default=2, help="(3) sentences per compound (for diversity)")
+ap.add_argument(
+    "--geo",
+    default="data/geo/utf_ken_all.csv",
+    help="(3) Japan Post postal code data for excluding place names (downloaded if missing; no copyright claimed, freely redistributable)",
+)
+ap.add_argument("--mine-mem", default="mem2", help="(1) memory group whose gate is inspected (mem3 for place names)")
+ap.add_argument(
+    "--bias-data",
+    default="data/names/names_train.jsonl",
+    help="(2)(3) positive examples for counting skewed kanji (data/places/places_train.jsonl for place names)",
+)
+ap.add_argument("--no-ojt-filter", action="store_true", help="(3) do not exclude by the proper-noun judgement of the pyopenjtalk dictionary")
 ap.add_argument("--out", default="data/names/hardneg.jsonl")
 a = ap.parse_args()
 rows = [json.loads(l) for l in open(a.data, encoding="utf-8")]
@@ -54,7 +68,7 @@ if a.pkm:
         gate_hits += [(g, r) for g, r in zip(cg, ch, strict=False) if g > a.thr]
     gate_hits = [r for _, r in sorted(gate_hits, key=lambda x: -x[0])[: a.max_gate]]
 nc = Counter(c for l in open(a.bias_data, encoding="utf-8") for n in json.loads(l).get("names", []) for c in n)
-gc = Counter(c for r in rows for c in r["text"])  # 一般文での頻度で割って「人名に偏る漢字」を選ぶ
+gc = Counter(c for r in rows for c in r["text"])  # divide by the frequency in general sentences to pick "kanji skewed toward personal names"
 top = set(sorted((c for c in nc if "一" <= c <= "鿿" and gc[c] >= 3), key=lambda c: -nc[c] / (gc[c] + 20))[: a.top_chars])
 seen = {r["text"] for r in gate_hits}
 char_hits = []
@@ -67,12 +81,12 @@ for r in rows:
     char_hits.append(r)
     seen.add(t)
 GEO_URL = "https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip"
-GIVEN_SUF = set("也蔵郎吉衛門助介太夫兵輔丸彦雄男夫子美江代枝乃奈菜香恵")  # 下の名前に多い末尾
+GIVEN_SUF = set("也蔵郎吉衛門助介太夫兵輔丸彦雄男夫子美江代枝乃奈菜香恵")  # common endings of given names
 GEO_SUF = set("都道府県市町村区郡")
 
 
 def geo_words(path):
-    """郵便番号データから都道府県・市区町村・町域名 (と接尾辞を外した語幹) を集める (学習データの除外用)。"""
+    """Collect prefecture, municipality and town-area names (and their stems without the suffix) from the postal code data (to exclude from training)."""
     import csv
     import io
     import re
@@ -108,7 +122,8 @@ def person_words():
 
 
 def ojt_proper(text):
-    """pyopenjtalk 辞書で固有名詞 (人名・地域・組織) と判定された語の文字範囲 (学習データの除外用。推論では使わない)。"""
+    """Character spans of words the pyopenjtalk dictionary judges to be proper nouns (person, region, organization).
+    For excluding from training data; not used at inference."""
     import pyopenjtalk
 
     spans, i = [], 0
@@ -130,15 +145,15 @@ if a.compounds:
     geo = geo_words(a.geo)
     rej = Counter()
     bias = {c: nc[c] / (gc[c] + 20) for c in top}
-    nsub = {n[i:j] for n in names for i in range(len(n)) for j in range(i + 2, len(n) + 1)}  # 人名の 2 文字以上の部分列
+    nsub = {n[i:j] for n in names for i in range(len(n)) for j in range(i + 2, len(n) + 1)}  # substrings of 2+ characters of personal names
     hon = {m.group(1) for r in allrows[: a.compound_pool] for m in re.finditer(r"([一-鿿々]{2,4})(?:さん|君|くん|ちゃん|氏|様|殿|先生)", r["text"])}
     cnt = Counter(w for r in allrows[: a.compound_pool] for w in re.findall(r"[一-鿿々]{2,4}", r["text"]))
-    cands, bad = {}, set()  # 熟語 -> 文 / 一度でも固有名詞と判定された語
+    cands, bad = {}, set()  # compound -> sentence / words judged a proper noun even once
     for r in allrows[: a.compound_pool]:
         if r.get("names") or r["text"] in seen:
             continue
         for w in re.findall(r"[一-鿿々]{2,4}", r["text"]):
-            # 普通の語だけ: 人名 (の部分) を含まない・人名に含まれない・2 回以上出る
+            # Ordinary words only: do not contain (part of) a personal name, are not contained in one, and appear at least twice
             if (
                 cnt[w] < 2
                 or w in nsub
@@ -155,7 +170,7 @@ if a.compounds:
                 st, sp = r["text"].find(w), ojt_proper(r["text"])
                 if any(b0 < st + len(w) and st < b1 for b0, b1 in sp):
                     why = "ojt_proper"
-                elif sp:  # 文中に別の固有名詞があれば、その文は負例に使わない (語は除外しない)
+                elif sp:  # if the sentence has another proper noun, do not use it as a negative (the word itself is not excluded)
                     rej["sent_proper"] += 1
                     continue
             if why:
@@ -167,9 +182,9 @@ if a.compounds:
             l = cands.setdefault(w, [])
             if len(l) < a.per_compound:
                 l.append(r)
-    by = {}  # 漢字ごとに熟語を並べ、人名に偏る漢字から順に 1 語ずつ取る (多様性)
+    by = {}  # list compounds per kanji and take one word at a time, starting from the kanji most skewed toward personal names (diversity)
     cands = {w: v for w, v in cands.items() if w not in bad}
-    print(f"  除外 {dict(rej)}")
+    print(f"  excluded {dict(rej)}")
     for w in sorted(cands, key=lambda w: -cnt[w]):
         by.setdefault(max((c for c in w if c in bias), key=bias.get), []).append(w)
     order, k = sorted(by, key=lambda c: -bias[c]), 0
@@ -183,8 +198,8 @@ if a.compounds:
                     if r["text"] not in seen and len(comp_hits) < a.compounds:
                         comp_hits.append(r)
                         seen.add(r["text"])
-    print(f"  熟語候補 {len(cands)} 語 / 採用 {len(picked)} 語 例: {' '.join(picked[:15])}")
+    print(f"  compound candidates {len(cands)} words / picked {len(picked)} words e.g.: {' '.join(picked[:15])}")
 with open(a.out, "w", encoding="utf-8") as f:
     for r in gate_hits + char_hits + comp_hits:
         f.write(json.dumps({**r, "hardneg": 1}, ensure_ascii=False) + "\n")
-print(f"mine_hardneg: {len(rows)} 文から gate>{a.thr} {len(gate_hits)} 文 + 人名漢字 {len(char_hits)} 文 + 熟語 {len(comp_hits)} 文 -> {a.out}")
+print(f"mine_hardneg: from {len(rows)} sentences gate>{a.thr} {len(gate_hits)} + name kanji {len(char_hits)} + compounds {len(comp_hits)} sentences -> {a.out}")
