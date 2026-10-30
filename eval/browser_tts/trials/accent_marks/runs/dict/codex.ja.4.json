@@ -1,0 +1,31 @@
+{
+ "llm": "codex",
+ "rep": 4,
+ "set": "ja",
+ "output": {
+  "plain": "ja /kʲoꜜː<t:今日> wa<t:は> | iꜜː<t:いい> | teꜜŋki<t:天気> desɯ<t:です> ne<t:ね。> ↘/",
+  "comma": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯɾi<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> | kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+  "ka_question": "ja /aꜛɕitaꜜ<t:明日> wa<t:は> | ɡaꜛkkoː<t:学校> ɲi<t:に> | iꜛki<t:行き> maꜜsɯ<t:ます> ka<t:か？> ↗/",
+  "q_no_ka": "ja /moꜜː<t:もう> | kaꜜeɾɯ<t:帰る> no<t:の？> ↗/",
+  "q_ascii": "ja /hoꜛntoː<t:本当> ɲi<t:に> | soꜛɾe<t:それ> de<t:で> | iꜜː<t:いい> no<t:の?> ↗/",
+  "exclaim": "ja /sɯꜛɡoꜜi<t:すごい！> ↘ | jaꜜtta<t:やった> ne<t:ね！> ↘/",
+  "quotes": "ja /<t:「> | koꜛɲɲitɕiwa<t:こんにちは」> | to<t:と> | kaꜜɾe<t:彼> wa<t:は> | iꜛtta<t:言った。> ↘/",
+  "brackets": "ja /<t:『> | waꜛɡahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある』> | wa<t:は> | naꜛtsɯme<t:夏目> | soꜜːseki<t:漱石（> | naꜛtsɯme<t:なつめ> soꜜːseki<t:そうせき）> | no<t:の> | ɕoꜛːsetsɯ<t:小説> deꜜsɯ<t:です。> ↘/",
+  "numbers": "ja /ɲiseɴɲɯːdʑɯːɾokɯneɴ<t:2026年> | dʑɯꜛːɡatsɯ<t:10月> | ɲidʑɯːkɯɲitɕi<t:29日> no<t:の> | ɡoꜜɡo<t:午後> | saꜛnꜜdʑi<t:3時> | dʑɯːɡoɸɯɴ<t:15分> ɲi<t:に> ‖<t:、> happʲakɯɡodʑɯːeɴ<t:850円> o<t:を> | haꜛɾai<t:払い> maꜜɕita<t:ました。> ↘/",
+  "long_vowels": "ja /toꜛːkʲoː<t:東京> no<t:の> | oꜛːdoꜜːɾi<t:大通り> de<t:で> | koꜛːçiꜜː<t:コーヒー> o<t:を> | noꜛmi<t:飲み> maꜜɕita<t:ました。> ↘/",
+  "geminate": "ja /tɕoꜜtto<t:ちょっと> | maꜜtte<t:待って> ‖<t:、> | kiꜛtte<t:切手> o<t:を> | kaꜛtte<t:買って> | kiꜛ<t:き> maꜜsɯ<t:ます。> ↘/",
+  "moraic_n": "ja /saꜛmpo<t:散歩> no<t:の> | toꜛtɕɯː<t:途中> de<t:で> ‖<t:、> | hoꜜɴja<t:本屋> san<t:さん> to<t:と> | ɡiꜛŋkoː<t:銀行> to<t:と> | ɕiꜛŋkaꜜnseɴ<t:新幹線> no<t:の> | eꜜki<t:駅> ɲi<t:に> | joꜛtta<t:寄った。> ↘/",
+  "loanwords": "ja /paꜜːtiː<t:パーティー> de<t:で> | ɸaꜜɴ<t:ファン> ɡa<t:が> | vaioɾiɴ<t:ヴァイオリン> o<t:を> | çiꜜki<t:弾き、> ‖ | wiꜜːɴ<t:ウィーン> no<t:の> | ɸoꜛːkɯdaꜜnsɯ<t:フォークダンス> to<t:と> | kɯꜛaꜜɾɯtetto<t:クァルテット> o<t:を> | taꜛnoɕiꜜnda<t:楽しんだ。> ↘/",
+  "two_sentences": "ja /aꜜme<t:雨> ɡa<t:が> | jaꜛmi<t:止み> maꜜɕita<t:ました。> ↘ | saꜛmpo<t:散歩> ɲi<t:に> | iꜛki<t:行き> maɕoꜜː<t:ましょう。> ↘/",
+  "q_then_s": "ja /doꜜko<t:どこ> ɲi<t:に> | iꜛkɯꜜ<t:行く> no<t:の？> ↗ | eꜜki<t:駅> made<t:まで> | oꜛkɯɾɯ<t:送る> jo<t:よ。> ↘/",
+  "ellipsis": "ja /eꜜːto<t:ええと> ‖<t:…> soɾe<t:それ> wa<t:は> ‖<t:、> tɕotto<t:ちょっと> ‖<t:…> ↘/",
+  "no_final": "ja /ɕiꜛŋkaꜜnseɴ<t:新幹線> wa<t:は> | haꜛjaꜜi<t:速い> ↘/",
+  "colon_semicolon": "ja /moꜛtɕiꜜmono<t:持ち物> ‖<t:：> | oꜛbentoꜜː<t:お弁当> ‖<t:；> | sɯꜛitoː<t:水筒> ‖<t:；> | taꜜoɾɯ<t:タオル。> ↘/",
+  "wave_dash": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+  "nakaguro": "ja /dʑoꜜɴ<t:ジョン・> | sɯꜜmisɯ<t:スミス> san<t:さん> ɡa<t:が> | kiꜛ<t:来> maꜜɕita<t:ました。> ↘/",
+  "latin": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aiɸoɴ<t:iPhone> to<t:と> makkɯbɯkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+  "kanji_names": "ja /sɯꜛdzɯki<t:鈴木> san<t:さん> to<t:と> | taꜛkaꜜhaɕi<t:高橋> san<t:さん> wa<t:は> ‖<t:、> | kʲoꜜːto<t:京都> no<t:の> | kiꜛjomidzɯdeɾa<t:清水寺> o<t:を> | oꜛtodzɯꜜɾeta<t:訪れた。> ↘/",
+  "newline": "ja /oꜛhajoː<t:おはよう> ɡodzai<t:ござい> maꜜsɯ<t:ます。> ↘ ‖<t:\n> | kʲoꜜː<t:今日> mo<t:も> | joꜛɾoɕikɯ<t:よろしく> oneɡai<t:お願い> ɕi<t:し> maꜜsɯ<t:ます。> ↘/",
+  "long": "ja /waꜛɡahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ | naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ | doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛntoꜜː<t:見当> ɡa<t:が> | tsɯꜛka<t:つか> nɯ<t:ぬ。> ↘ nandemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ | waꜛɡahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ | ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡentɕɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜdzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ | koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | toꜛɾaeꜜte<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜː<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ | ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜɴ<t:何> to<t:と> | iꜛɯ<t:いう> | kaŋɡae<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdan<t:別段> | osoɾoɕiː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ | taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜçiɾa<t:掌> ɲi<t:に> | noꜛseɾaɾete<t:載せられて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜɾaɾeta<t:持ち上げられた> | toꜛki<t:時> | naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛndʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ | teꜛnoꜜçiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | mihadʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ | koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛndʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> demo<t:でも> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daiitɕi<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/"
+ }
+}

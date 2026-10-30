@@ -1,0 +1,81 @@
+{
+ "worst": {
+  "rules": 1,
+  "kokoro": 9
+ },
+ "misread": {},
+ "answers": {
+  "hard.h001": {
+   "worst": "rules",
+   "misread": []
+  },
+  "hard.h004": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "hard.h007": {
+   "worst": null,
+   "misread": []
+  },
+  "hard.h011": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "hard.h012": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "hard.h017": {
+   "worst": null,
+   "misread": []
+  },
+  "hard.h020": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "hard.h021": {
+   "worst": null,
+   "misread": []
+  },
+  "hard.h024": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "hard.h025": {
+   "worst": null,
+   "misread": []
+  },
+  "hard.h026": {
+   "worst": null,
+   "misread": []
+  },
+  "hard.h031": {
+   "worst": null,
+   "misread": []
+  },
+  "ja.plain": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "ja.comma": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "ja.ka_question": {
+   "worst": null,
+   "misread": []
+  },
+  "ja.geminate": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "ja.two_sentences": {
+   "worst": "kokoro",
+   "misread": []
+  },
+  "ja.kanji_names": {
+   "worst": null,
+   "misread": []
+  }
+ }
+}

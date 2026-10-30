@@ -1,0 +1,9589 @@
+{
+"ja": {
+"plain": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+}
+],
+"comma": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+}
+],
+"ka_question": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"q_no_ka": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+}
+],
+"q_ascii": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+}
+],
+"exclaim": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+}
+],
+"quotes": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+}
+],
+"brackets": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 7
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 7
+}
+],
+"numbers": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 7
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 7
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 8
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 8
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 9
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 9
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 9
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 9
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 10
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 10
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 10
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 10
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 11
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 11
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 11
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 11
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 11
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 11
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 12
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 12
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 12
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 12
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 12
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 12
+}
+],
+"long_vowels": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+}
+],
+"geminate": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+}
+],
+"moraic_n": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 6
+}
+],
+"loanwords": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 7
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 7
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 7
+}
+],
+"two_sentences": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+}
+],
+"q_then_s": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+}
+],
+"ellipsis": [
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+}
+],
+"no_final": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+}
+],
+"colon_semicolon": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+}
+],
+"wave_dash": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+}
+],
+"nakaguro": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"latin": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 4
+}
+],
+"kanji_names": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 4
+}
+],
+"newline": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"long": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 7
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 7
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 8
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 8
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 8
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 8
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 8
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 9
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 9
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 9
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 10
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 10
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 10
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 10
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 11
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 11
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 11
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 11
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 11
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 12
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 12
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 12
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 12
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 13
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 13
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 14
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 14
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 14
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 14
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 15
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 15
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 15
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 15
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 16
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 16
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 16
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 17
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 17
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 18
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 18
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 18
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 18
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 18
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 19
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 19
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 19
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 20
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 20
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 21
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 21
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 22
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 22
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 22
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 22
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 22
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 23
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 23
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 23
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 24
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 24
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 24
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 24
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 25
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 25
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 25
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 25
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 25
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 26
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 26
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 27
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 27
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 27
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 28
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 28
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 29
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 29
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 29
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 30
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 30
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 30
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 31
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 31
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 31
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 32
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 32
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 32
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 33
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 33
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 33
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 33
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 34
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 34
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 35
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 35
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 35
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 35
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 35
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 35
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 35
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 36
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 36
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 36
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 36
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 37
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 37
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 37
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 37
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 37
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 38
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 38
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 38
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 38
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 38
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 38
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 38
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 39
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 39
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 39
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 40
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 40
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 41
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 41
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 41
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 41
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 42
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 42
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 43
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 43
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 44
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 44
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 44
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 44
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 45
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 45
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 45
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 45
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 45
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 46
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 46
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 46
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 46
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 47
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 47
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 48
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 48
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 48
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 49
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 49
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 50
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 50
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 50
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 50
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 50
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 50
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 51
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 51
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 51
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 52
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 52
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 53
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 53
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 53
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 53
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 54
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 54
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 54
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 55
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 55
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 56
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 56
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 56
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 57
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 57
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 57
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 57
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 57
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 57
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 58
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 58
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 58
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 58
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 59
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 59
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 59
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 60
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 60
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 60
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 61
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 61
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 61
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 61
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 61
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 61
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 61
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 62
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 62
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 63
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 63
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 63
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 64
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 64
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 64
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 64
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 64
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 65
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 65
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 65
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 65
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 65
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 66
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 66
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 66
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 67
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 67
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 67
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 67
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 67
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 67
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 67
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 68
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 68
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 69
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 69
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 69
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 69
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 70
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 70
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 70
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 70
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 71
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 71
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 72
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 72
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 72
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 72
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 73
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 73
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 74
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 74
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 74
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 74
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 74
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 75
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 75
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 75
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 76
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 76
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 76
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 77
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 77
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 77
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 77
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 77
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 78
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 78
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 78
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 78
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 79
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 79
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 79
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 80
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 80
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 81
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 81
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 82
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 82
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 82
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 82
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 83
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 83
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 83
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 83
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 83
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 84
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 84
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 84
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 84
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 84
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 85
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 86
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 86
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 86
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 86
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 86
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 86
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 86
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 87
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 87
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 88
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 88
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 89
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 89
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 89
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 90
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 90
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 90
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 90
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 91
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 91
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 91
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 91
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 92
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 92
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 92
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 92
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 93
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 93
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 93
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 93
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 94
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 94
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 94
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 94
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 95
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 95
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 96
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 96
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 97
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 97
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 97
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 97
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 97
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 98
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 98
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 98
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 99
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 99
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 99
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 99
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 100
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 100
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 100
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 100
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 101
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 101
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 101
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 102
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 102
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 102
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 103
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 103
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 103
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 103
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 104
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 104
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 105
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 105
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 105
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 106
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 106
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 106
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 106
+}
+]
+},
+"hard": {
+"h001": [
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+}
+],
+"h002": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+}
+],
+"h003": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+}
+],
+"h004": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h005": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+}
+],
+"h006": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h007": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h008": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h009": [
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+}
+],
+"h010": [
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+}
+],
+"h011": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+}
+],
+"h012": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+}
+],
+"h013": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h014": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+}
+],
+"h015": [
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+}
+],
+"h016": [
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+}
+],
+"h017": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+}
+],
+"h018": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+}
+],
+"h019": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+}
+],
+"h020": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+}
+],
+"h021": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+}
+],
+"h022": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+}
+],
+"h023": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+}
+],
+"h024": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+}
+],
+"h025": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+}
+],
+"h026": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h027": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+}
+],
+"h028": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+}
+],
+"h029": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+}
+],
+"h030": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+}
+],
+"h031": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h032": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+}
+],
+"h033": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h034": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h035": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+}
+],
+"h036": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+}
+],
+"h037": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+}
+],
+"h038": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h039": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+}
+],
+"h040": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+}
+],
+"h041": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+}
+],
+"h042": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h043": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+}
+],
+"h044": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+}
+],
+"h045": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+}
+],
+"h046": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h047": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+}
+],
+"h048": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+}
+],
+"h049": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h050": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h051": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h052": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+}
+],
+"h053": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+}
+],
+"h054": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+}
+],
+"h055": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+}
+],
+"h056": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+}
+],
+"h057": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+}
+],
+"h058": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+}
+],
+"h059": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h060": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h061": [
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 4
+}
+],
+"h062": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 6
+}
+],
+"h063": [
+{
+"key": "o",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+}
+],
+"h064": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+}
+],
+"h065": [
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+}
+],
+"h066": [
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+}
+],
+"h067": [
+{
+"key": "i",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "cl",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "cl",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+}
+],
+"h068": [
+{
+"key": "o",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+}
+],
+"h069": [
+{
+"key": "e",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "u",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 4
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "i",
+"hl": "L",
+"phrase": 5
+},
+{
+"key": "a",
+"hl": "L",
+"phrase": 6
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 6
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 6
+}
+],
+"h070": [
+{
+"key": "a",
+"hl": "L",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 0
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 1
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "i",
+"hl": "H",
+"phrase": 1
+},
+{
+"key": "e",
+"hl": "L",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "e",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "N",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 2
+},
+{
+"key": "o",
+"hl": "L",
+"phrase": 3
+},
+{
+"key": "o",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "a",
+"hl": "H",
+"phrase": 3
+},
+{
+"key": "u",
+"hl": "H",
+"phrase": 3
+}
+]
+}
+}

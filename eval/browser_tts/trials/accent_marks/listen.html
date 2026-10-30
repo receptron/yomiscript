@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accent trial listening</title>
+    <style>
+      :root {
+        --bg: #fff;
+        --fg: #1d1d1f;
+        --muted: #6e6e73;
+        --line: #d2d2d7;
+        --accent: #0a66c2;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #1c1c1e;
+          --fg: #f2f2f7;
+          --muted: #a1a1a6;
+          --line: #3a3a3c;
+          --accent: #64a8ff;
+        }
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          15px/1.5 system-ui,
+          sans-serif;
+        margin: 0 auto;
+        max-width: 860px;
+        padding: 16px;
+      }
+      .item {
+        border-top: 1px solid var(--line);
+        padding: 12px 0;
+      }
+      .text {
+        font-size: 18px;
+      }
+      .marks,
+      .note {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .marks {
+        display: none;
+        font-family: ui-monospace, monospace;
+        overflow-wrap: anywhere;
+      }
+      .revealed .marks {
+        display: block;
+      }
+      .opts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .opt {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px 10px;
+      }
+      .who {
+        color: var(--accent);
+        display: none;
+        font-weight: 600;
+      }
+      .revealed .who {
+        display: inline;
+      }
+      button {
+        font: inherit;
+      }
+      textarea {
+        box-sizing: border-box;
+        font:
+          12px ui-monospace,
+          monospace;
+        height: 140px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Accent trial: blind listening</h1>
+    <p class="note">
+      Each sentence is spoken three ways with the same reading (the same phonemes); only the pitch differs. The order of A / B / C is shuffled per sentence.
+      Pick the one whose accent sounds worst, and tick any that sounds misread (a word heard as another word). Then press "Reveal" and copy the result.
+    </p>
+    <div id="items"></div>
+    <p>
+      <button id="reveal">Reveal</button>
+    </p>
+    <div id="summary"></div>
+    <textarea id="out" readonly></textarea>
+    <script>
+      const LETTERS = ["A", "B", "C"];
+      const TEST = new URLSearchParams(location.search).get("test"),
+        BASE = TEST ? `audio/${TEST}/` : "audio/";
+      function permutations(v) {
+        return v.length <= 1 ? [v] : v.flatMap((x, i) => permutations([...v.slice(0, i), ...v.slice(i + 1)]).map((p) => [x, ...p]));
+      }
+      function order(k, variants) {
+        // a fixed order per sentence, going through every permutation in a scrambled sequence, so each variant comes
+        // at each letter equally often over the sentences
+        const P = permutations(variants);
+        return P[(k * 5 + Math.floor(k / P.length)) % P.length];
+      }
+      const state = {};
+      function render({ variants, items }) {
+        const root = document.getElementById("items");
+        items.forEach((it, k) => {
+          const id = `${it.set}.${it.name}`,
+            ord = order(k, variants);
+          state[id] = { order: ord, worst: null, misread: [] };
+          const div = document.createElement("div");
+          div.className = "item";
+          div.innerHTML = `<div class="text">${it.text}</div><div class="marks">${it.marks}</div><div class="opts"></div>`;
+          const opts = div.querySelector(".opts");
+          ord.forEach((v, i) => {
+            const o = document.createElement("div");
+            o.className = "opt";
+            o.innerHTML = `<strong>${LETTERS[i]}</strong> <span class="who">${v}</span><br><audio controls preload="none" src="${BASE}${v}/${id}.wav"></audio><br>
+              <label><input type="radio" name="${id}"> worst accent</label> <label><input type="checkbox"> misread</label>`;
+            o.querySelector("input[type=radio]").onchange = () => (state[id].worst = v);
+            o.querySelector("input[type=checkbox]").onchange = (e) => {
+              const m = state[id].misread.filter((x) => x !== v);
+              state[id].misread = e.target.checked ? [...m, v] : m;
+            };
+            opts.appendChild(o);
+          });
+          root.appendChild(div);
+        });
+      }
+      document.getElementById("reveal").onclick = () => {
+        document.body.classList.add("revealed");
+        const worst = {},
+          mis = {};
+        for (const s of Object.values(state)) {
+          if (s.worst) worst[s.worst] = (worst[s.worst] ?? 0) + 1;
+          for (const v of s.misread) mis[v] = (mis[v] ?? 0) + 1;
+        }
+        document.getElementById("summary").textContent = `worst: ${JSON.stringify(worst)}  misread: ${JSON.stringify(mis)}`;
+        const answers = Object.fromEntries(Object.entries(state).map(([k, s]) => [k, { worst: s.worst, misread: s.misread }]));
+        document.getElementById("out").value = JSON.stringify({ test: TEST ?? "twopass", worst, misread: mis, answers });
+      };
+      fetch(`${BASE}listen.json`)
+        .then((r) => r.json())
+        .then(render);
+    </script>
+  </body>
+</html>

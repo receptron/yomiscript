@@ -12,6 +12,11 @@ export interface Edit {
 }
 export interface RealizeOptions {
   dialect?: { ja?: "tokyo" | "osaka" };
+  /** only the Japanese accent phrases that carry ꜛ or ꜜ get values (and no devoicing is written); everything else is
+   * left to the Katarite's own prosody. For callers that mark the accent only where they know it (D25) */
+  markedOnly?: boolean;
+  /** multiplies the values written for Japanese (1 by default; 0.5 is the gentler pitch the tools use, D25) */
+  jaScale?: number;
 }
 const inStr = (ch: string, s: string): boolean => s.includes(ch);
 const fmt = (v: number): string => String(Math.round(v * 100) / 100);
@@ -31,7 +36,12 @@ function devoiced(M: Token[], k: number, end: string): boolean {
   if (voicelessStart(M[k + 1])) return true;
   return k === M.length - 1 && end === "$" && (m.ipa === "sɯ" || m.ipa === "sɨ");
 }
-function jaPhrase(M: Token[], end: string, osaka: boolean, E: Edit[]): void {
+interface JaOptions {
+  osaka: boolean;
+  devoice: boolean;
+  scale: number;
+}
+function jaPhrase(M: Token[], end: string, E: Edit[], { osaka, devoice, scale }: JaOptions): void {
   // one accent phrase: high after ꜛ (or from the start without ꜛ), low after ꜜ; declining within the high stretch
   let state = M[0].hasRise ? "L" : "H",
     hk = 0;
@@ -39,15 +49,16 @@ function jaPhrase(M: Token[], end: string, osaka: boolean, E: Edit[]): void {
     let v;
     if (state === "H") v = 2.5 - 0.45 * hk++;
     else v = k === 0 ? -2.0 : -2.5 - 0.3 * hk;
-    const auto = !osaka && devoiced(M, k, end);
+    const auto = devoice && !osaka && devoiced(M, k, end);
     if (auto && !m.dev) E.push({ at: m.vend ?? 0, ins: "̥" });
     if (osaka && v >= 0) v = 2.5 - (2.5 - v) / 3;
-    if (!m.dev && !auto && !m.f0) E.push({ at: m.end ?? 0, ins: f0Mark([v]) });
+    if (!m.dev && !auto && !m.f0) E.push({ at: m.end ?? 0, ins: f0Mark([v * scale]) });
     if (m.rise) state = "H";
     if (m.fall) state = "L";
   });
 }
-function jaRules(sec: Section, E: Edit[], dialect: string | undefined): void {
+const marked = (M: Token[]): boolean => M.some((m) => m.rise || m.fall);
+function jaRules(sec: Section, E: Edit[], opt: RealizeOptions): void {
   const C: Token[][] = [];
   for (const t of sec.toks) {
     if (t.kind !== "unit") continue;
@@ -55,7 +66,8 @@ function jaRules(sec: Section, E: Edit[], dialect: string | undefined): void {
     C[c] ??= [];
     C[c].push(t);
   }
-  for (const M of C) jaPhrase(M, sec.end, dialect === "osaka", E);
+  const o = { osaka: opt.dialect?.ja === "osaka", devoice: !opt.markedOnly, scale: opt.jaScale ?? 1 };
+  for (const M of C) if (!opt.markedOnly || marked(M)) jaPhrase(M, sec.end, E, o);
 }
 // English / French: stress-based pitch, phrase-boundary rise, sentence-final fall or rise
 function flaps(t: Token, prev: Token | null): boolean {
@@ -108,10 +120,10 @@ function zhRules(sec: Section, E: Edit[]): void {
 }
 export function realize(ys: string, opt: RealizeOptions = {}): string {
   const Y = parse(ys),
-    E: Edit[] = [],
-    D = opt.dialect ?? {};
+    E: Edit[] = [];
   for (const sec of Y.sections) {
-    if (isJa(sec.lang)) jaRules(sec, E, D.ja);
+    if (isJa(sec.lang)) jaRules(sec, E, opt);
+    else if (opt.markedOnly) continue;
     else if (sec.lang === "zh") zhRules(sec, E);
     else euRules(sec, E, Y.top);
   }

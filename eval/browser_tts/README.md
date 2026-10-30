@@ -65,3 +65,14 @@ item); the second added the spec's mora table and the one-utterance rule; the th
 - A long text (the `long` item) cannot be spoken by Kokoro from a single LLM utterance: the Katarite does not split
   it into pieces of 510 phonemes yet (`docs/plan.md`).
 
+## Trials
+
+- [`trials/accent_marks/`](trials/accent_marks/): the LLM writes Japanese accent marks and the rules give those
+  phrases their pitch (2026-10-29, reverted). Listening found no improvement and more misreadings; at least
+  one is the LLM's (市 written as し), hidden by an unchanged score, and Whisper did not notice. Repeated runs
+  (three per prompt) and a blind test with the reading fixed: the marks bring the pitch closer to the dictionary
+  accent, no misreading comes from the sound, and in a worst-accent test Kokoro's own pitch was the worst in 9 of the
+  10 sentences where one was heard. Writing the marks changes the LLM's readings (Claude: 市 -> し, 捕えて ->
+  とらえて; Codex: broken phonemes). Marks from OpenJTalk's dictionary, written only where its reading agrees with
+  the LLM's, keep every reading and sounded as good (Kokoro's pitch the worst in 7 of 8). That is now what the
+  tools do (`packages/ja-accent`, D25).

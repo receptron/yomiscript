@@ -18,5 +18,9 @@ dict/names/given_names_by_generation.csv
 dict/names/surnames.koedict
 dict/names/given_names.koedict
 
+# the Rust build of packages/ja-accent/wasm (its output, wasm/pkg, is kept)
+packages/ja-accent/wasm/target/
+
 # copied in by tools/prepack.mjs when a package is packed
 packages/*/LICENSE
+eval/browser_tts/trials/accent_marks/audio/

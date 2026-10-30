@@ -1,0 +1,493 @@
+{
+ "runs": [
+  {
+   "prompt": "addmarks",
+   "set": "hard",
+   "rep": 1,
+   "items": 70,
+   "valid": 70,
+   "right": 69,
+   "kept": 70,
+   "ph": 234,
+   "mph": 218,
+   "markN": 885,
+   "markOk": 777,
+   "trans": 314,
+   "follow": {
+    "kokoro": 184,
+    "late": 228,
+    "rules": 256,
+    "halved": 247
+   }
+  },
+  {
+   "prompt": "addmarks",
+   "set": "hard",
+   "rep": 2,
+   "items": 70,
+   "valid": 69,
+   "right": 67,
+   "kept": 69,
+   "ph": 225,
+   "mph": 211,
+   "markN": 890,
+   "markOk": 795,
+   "trans": 308,
+   "follow": {
+    "kokoro": 182,
+    "late": 223,
+    "rules": 246,
+    "halved": 235
+   }
+  },
+  {
+   "prompt": "addmarks",
+   "set": "hard",
+   "rep": 3,
+   "items": 70,
+   "valid": 69,
+   "right": 68,
+   "kept": 68,
+   "ph": 228,
+   "mph": 212,
+   "markN": 878,
+   "markOk": 731,
+   "trans": 310,
+   "follow": {
+    "kokoro": 186,
+    "late": 226,
+    "rules": 239,
+    "halved": 224
+   }
+  },
+  {
+   "prompt": "addmarks",
+   "set": "ja",
+   "rep": 1,
+   "items": 24,
+   "valid": 24,
+   "right": 15,
+   "kept": 24,
+   "ph": 189,
+   "mph": 177,
+   "markN": 381,
+   "markOk": 343,
+   "trans": 130,
+   "follow": {
+    "kokoro": 80,
+    "late": 94,
+    "rules": 112,
+    "halved": 108
+   }
+  },
+  {
+   "prompt": "addmarks",
+   "set": "ja",
+   "rep": 2,
+   "items": 24,
+   "valid": 24,
+   "right": 16,
+   "kept": 24,
+   "ph": 195,
+   "mph": 180,
+   "markN": 369,
+   "markOk": 334,
+   "trans": 128,
+   "follow": {
+    "kokoro": 77,
+    "late": 92,
+    "rules": 108,
+    "halved": 103
+   }
+  },
+  {
+   "prompt": "addmarks",
+   "set": "ja",
+   "rep": 3,
+   "items": 24,
+   "valid": 24,
+   "right": 15,
+   "kept": 24,
+   "ph": 187,
+   "mph": 172,
+   "markN": 392,
+   "markOk": 346,
+   "trans": 129,
+   "follow": {
+    "kokoro": 81,
+    "late": 95,
+    "rules": 109,
+    "halved": 103
+   }
+  },
+  {
+   "prompt": "every",
+   "set": "hard",
+   "rep": 1,
+   "items": 70,
+   "valid": 70,
+   "right": 69,
+   "kept": 0,
+   "ph": 217,
+   "mph": 171,
+   "markN": 686,
+   "markOk": 598,
+   "trans": 315,
+   "follow": {
+    "kokoro": 189,
+    "late": 229,
+    "rules": 239,
+    "halved": 227
+   }
+  },
+  {
+   "prompt": "every",
+   "set": "hard",
+   "rep": 2,
+   "items": 70,
+   "valid": 70,
+   "right": 70,
+   "kept": 0,
+   "ph": 218,
+   "mph": 183,
+   "markN": 751,
+   "markOk": 638,
+   "trans": 314,
+   "follow": {
+    "kokoro": 186,
+    "late": 226,
+    "rules": 235,
+    "halved": 225
+   }
+  },
+  {
+   "prompt": "every",
+   "set": "hard",
+   "rep": 3,
+   "items": 70,
+   "valid": 70,
+   "right": 66,
+   "kept": 0,
+   "ph": 228,
+   "mph": 212,
+   "markN": 901,
+   "markOk": 765,
+   "trans": 311,
+   "follow": {
+    "kokoro": 186,
+    "late": 227,
+    "rules": 240,
+    "halved": 228
+   }
+  },
+  {
+   "prompt": "every",
+   "set": "ja",
+   "rep": 1,
+   "items": 24,
+   "valid": 24,
+   "right": 14,
+   "kept": 0,
+   "ph": 184,
+   "mph": 170,
+   "markN": 405,
+   "markOk": 362,
+   "trans": 130,
+   "follow": {
+    "kokoro": 81,
+    "late": 95,
+    "rules": 114,
+    "halved": 108
+   }
+  },
+  {
+   "prompt": "every",
+   "set": "ja",
+   "rep": 2,
+   "items": 24,
+   "valid": 24,
+   "right": 14,
+   "kept": 0,
+   "ph": 186,
+   "mph": 159,
+   "markN": 371,
+   "markOk": 339,
+   "trans": 130,
+   "follow": {
+    "kokoro": 85,
+    "late": 98,
+    "rules": 114,
+    "halved": 110
+   }
+  },
+  {
+   "prompt": "every",
+   "set": "ja",
+   "rep": 3,
+   "items": 24,
+   "valid": 24,
+   "right": 14,
+   "kept": 0,
+   "ph": 176,
+   "mph": 134,
+   "markN": 363,
+   "markOk": 338,
+   "trans": 130,
+   "follow": {
+    "kokoro": 85,
+    "late": 98,
+    "rules": 114,
+    "halved": 110
+   }
+  },
+  {
+   "prompt": "none",
+   "set": "hard",
+   "rep": 1,
+   "items": 70,
+   "valid": 70,
+   "right": 69,
+   "kept": 0,
+   "ph": 71,
+   "mph": 0,
+   "markN": 0,
+   "markOk": 0,
+   "trans": 314,
+   "follow": {
+    "kokoro": 184,
+    "late": 228,
+    "rules": 184,
+    "halved": 184
+   }
+  },
+  {
+   "prompt": "none",
+   "set": "hard",
+   "rep": 2,
+   "items": 70,
+   "valid": 69,
+   "right": 67,
+   "kept": 0,
+   "ph": 70,
+   "mph": 0,
+   "markN": 0,
+   "markOk": 0,
+   "trans": 308,
+   "follow": {
+    "kokoro": 182,
+    "late": 223,
+    "rules": 182,
+    "halved": 182
+   }
+  },
+  {
+   "prompt": "none",
+   "set": "hard",
+   "rep": 3,
+   "items": 70,
+   "valid": 68,
+   "right": 67,
+   "kept": 0,
+   "ph": 69,
+   "mph": 0,
+   "markN": 0,
+   "markOk": 0,
+   "trans": 306,
+   "follow": {
+    "kokoro": 184,
+    "late": 222,
+    "rules": 184,
+    "halved": 184
+   }
+  },
+  {
+   "prompt": "none",
+   "set": "ja",
+   "rep": 1,
+   "items": 24,
+   "valid": 24,
+   "right": 15,
+   "kept": 0,
+   "ph": 51,
+   "mph": 0,
+   "markN": 0,
+   "markOk": 0,
+   "trans": 130,
+   "follow": {
+    "kokoro": 80,
+    "late": 94,
+    "rules": 80,
+    "halved": 80
+   }
+  },
+  {
+   "prompt": "none",
+   "set": "ja",
+   "rep": 2,
+   "items": 24,
+   "valid": 24,
+   "right": 16,
+   "kept": 0,
+   "ph": 50,
+   "mph": 0,
+   "markN": 0,
+   "markOk": 0,
+   "trans": 128,
+   "follow": {
+    "kokoro": 77,
+    "late": 92,
+    "rules": 77,
+    "halved": 77
+   }
+  },
+  {
+   "prompt": "none",
+   "set": "ja",
+   "rep": 3,
+   "items": 24,
+   "valid": 24,
+   "right": 15,
+   "kept": 0,
+   "ph": 50,
+   "mph": 0,
+   "markN": 0,
+   "markOk": 0,
+   "trans": 129,
+   "follow": {
+    "kokoro": 81,
+    "late": 95,
+    "rules": 81,
+    "halved": 81
+   }
+  }
+ ],
+ "wrong": {
+  "hard h005 今日の日本経済を論じる。": [
+   "addmarks1",
+   "addmarks3",
+   "every3",
+   "none1",
+   "none3"
+  ],
+  "hard h029 何本ありますか。": [
+   "addmarks2",
+   "none2"
+  ],
+  "hard h039 AIの研究が進んでいる。": [
+   "addmarks2",
+   "none2"
+  ],
+  "ja ka_question 明日は学校に行きますか？": [
+   "addmarks1",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none3"
+  ],
+  "ja q_ascii 本当にそれでいいの?": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "ja brackets 『吾輩は猫である』は夏目漱石（なつめそうせき）の小説です。": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "ja numbers 2026年10月29日の午後3時15分に、850円を払いました。": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "ja loanwords パーティーでファンがヴァイオリンを弾き、ウィーンのフォークダンスとクァルテットを楽しんだ。": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "ja wave_dash 営業時間は9時〜17時です。": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "ja latin 新しいiPhoneとMacBookをOKしました。": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "ja kanji_names 鈴木さんと高橋さんは、京都の清水寺を訪れた。": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "ja long 吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。": [
+   "addmarks1",
+   "addmarks2",
+   "addmarks3",
+   "every1",
+   "every2",
+   "every3",
+   "none1",
+   "none2",
+   "none3"
+  ],
+  "hard h001 シアトルの市では、魚が売られている。": [
+   "every1",
+   "every3"
+  ],
+  "hard h009 舞台の上手から役者が登場した。": [
+   "every3"
+  ],
+  "hard h010 囲碁では彼の方が一枚上手だ。": [
+   "every3"
+  ],
+  "ja newline おはようございます。\n今日もよろしくお願いします。": [
+   "every1",
+   "every2",
+   "every3"
+  ]
+ }
+}

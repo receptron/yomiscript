@@ -1,0 +1,5583 @@
+{
+"ja": {
+"plain": [
+{
+"start": 0,
+"end": 3,
+"kana": "キョーワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kʲoːwa"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "イイ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "ii"
+},
+{
+"start": 5,
+"end": 10,
+"kana": "テンキデスネ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "teŋkidesɯne"
+}
+],
+"comma": [
+{
+"start": 0,
+"end": 2,
+"kana": "アメガ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ameɡa"
+},
+{
+"start": 2,
+"end": 9,
+"kana": "オリソーナノデ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "oɾisoːnanode"
+},
+{
+"start": 10,
+"end": 12,
+"kana": "カサヲ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kasao"
+},
+{
+"start": 12,
+"end": 15,
+"kana": "モッテ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "motte"
+},
+{
+"start": 15,
+"end": 20,
+"kana": "デカケマス",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "dekakemasɯ"
+}
+],
+"ka_question": [
+{
+"start": 0,
+"end": 3,
+"kana": "アシタワ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "aɕitawa"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ガッコーニ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ɡakkoːɲi"
+},
+{
+"start": 6,
+"end": 11,
+"kana": "イキマスカ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "ikimasɯka"
+}
+],
+"q_no_ka": [
+{
+"start": 0,
+"end": 2,
+"kana": "モー",
+"hl": [
+"H",
+"L"
+],
+"ipa": "moː"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "カエルノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "kaeɾɯno"
+}
+],
+"q_ascii": [
+{
+"start": 0,
+"end": 3,
+"kana": "ホントーニ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "hontoːɲi"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ソレデ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "soɾede"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "イイノ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "iino"
+}
+],
+"exclaim": [
+{
+"start": 0,
+"end": 3,
+"kana": "スゴイ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "sɯɡoi"
+},
+{
+"start": 4,
+"end": 8,
+"kana": "ヤッタネ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "jattane"
+}
+],
+"quotes": [
+{
+"start": 1,
+"end": 6,
+"kana": "コンニチワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "koɲɲitɕiwa"
+},
+{
+"start": 7,
+"end": 8,
+"kana": "ト",
+"hl": [
+"H"
+],
+"ipa": "to"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "カレワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kaɾewa"
+},
+{
+"start": 10,
+"end": 13,
+"kana": "イッタ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "itta"
+}
+],
+"brackets": [
+{
+"start": 1,
+"end": 4,
+"kana": "ワガハイワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "waɡahaiwa"
+},
+{
+"start": 4,
+"end": 8,
+"kana": "ネコデアル",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "nekodeaɾɯ"
+},
+{
+"start": 9,
+"end": 10,
+"kana": "ワ",
+"hl": [
+"H"
+],
+"ipa": "wa"
+},
+{
+"start": 10,
+"end": 12,
+"kana": "ナツメ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "natsɯme"
+},
+{
+"start": 12,
+"end": 14,
+"kana": "ソーセキ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "soːseki"
+},
+{
+"start": 15,
+"end": 22,
+"kana": "ナツメソーセキ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "natsɯmesoːseki"
+},
+{
+"start": 23,
+"end": 24,
+"kana": "ノ",
+"hl": [
+"H"
+],
+"ipa": "no"
+},
+{
+"start": 24,
+"end": 28,
+"kana": "ショーセツデス",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "ɕoːsetsɯdesɯ"
+}
+],
+"numbers": [
+{
+"start": 5,
+"end": 8,
+"kana": "ジューガツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "dʑɯːɡatsɯ"
+},
+{
+"start": 12,
+"end": 14,
+"kana": "ゴゴ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "ɡoɡo"
+},
+{
+"start": 14,
+"end": 16,
+"kana": "サンジ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "saɲdʑi"
+},
+{
+"start": 26,
+"end": 31,
+"kana": "ハライマシタ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "haɾaimaɕita"
+}
+],
+"long_vowels": [
+{
+"start": 0,
+"end": 3,
+"kana": "トーキョーノ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "toːkʲoːno"
+},
+{
+"start": 3,
+"end": 7,
+"kana": "オードーリデ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "oːdoːɾide"
+},
+{
+"start": 7,
+"end": 12,
+"kana": "コーヒーヲ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "koːçiːo"
+},
+{
+"start": 12,
+"end": 17,
+"kana": "ノミマシタ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "nomimaɕita"
+}
+],
+"geminate": [
+{
+"start": 0,
+"end": 4,
+"kana": "チョット",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "tɕotto"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "マッテ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "matte"
+},
+{
+"start": 8,
+"end": 11,
+"kana": "キッテヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kitteo"
+},
+{
+"start": 11,
+"end": 14,
+"kana": "カッテ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "katte"
+},
+{
+"start": 14,
+"end": 17,
+"kana": "キマス",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "kimasɯ"
+}
+],
+"moraic_n": [
+{
+"start": 0,
+"end": 3,
+"kana": "サンポノ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "sampono"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "トチューデ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "totɕɯːde"
+},
+{
+"start": 7,
+"end": 12,
+"kana": "ホンヤサント",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "hoɴjasanto"
+},
+{
+"start": 12,
+"end": 15,
+"kana": "ギンコート",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ɡiŋkoːto"
+},
+{
+"start": 15,
+"end": 19,
+"kana": "シンカンセンノ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "ɕiŋkaɴsenno"
+},
+{
+"start": 19,
+"end": 21,
+"kana": "エキニ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ekiɲi"
+},
+{
+"start": 21,
+"end": 24,
+"kana": "ヨッタ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "jotta"
+}
+],
+"loanwords": [
+{
+"start": 0,
+"end": 6,
+"kana": "パーティーデ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "paːtiːde"
+},
+{
+"start": 6,
+"end": 10,
+"kana": "ファンガ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ɸaŋɡa"
+},
+{
+"start": 10,
+"end": 17,
+"kana": "バイオリンヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "baioɾiɴo"
+},
+{
+"start": 17,
+"end": 19,
+"kana": "ヒキ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "çiki"
+},
+{
+"start": 20,
+"end": 25,
+"kana": "ウィーンノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "wiːnno"
+},
+{
+"start": 25,
+"end": 33,
+"kana": "フォークダンスト",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɸoːkɯdaɴsɯto"
+},
+{
+"start": 33,
+"end": 40,
+"kana": "クァルテットヲ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "kɯaɾɯtettoo"
+},
+{
+"start": 40,
+"end": 44,
+"kana": "タノシンダ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "tanoɕinda"
+}
+],
+"two_sentences": [
+{
+"start": 0,
+"end": 2,
+"kana": "アメガ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ameɡa"
+},
+{
+"start": 2,
+"end": 7,
+"kana": "ヤミマシタ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "jamimaɕita"
+},
+{
+"start": 8,
+"end": 11,
+"kana": "サンポニ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "sampoɲi"
+},
+{
+"start": 11,
+"end": 17,
+"kana": "イキマショー",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "ikimaɕoː"
+}
+],
+"q_then_s": [
+{
+"start": 0,
+"end": 3,
+"kana": "ドコニ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "dokoɲi"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "イクノ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "ikɯno"
+},
+{
+"start": 7,
+"end": 10,
+"kana": "エキマデ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ekimade"
+},
+{
+"start": 10,
+"end": 13,
+"kana": "オクルヨ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "okɯɾɯjo"
+}
+],
+"ellipsis": [
+{
+"start": 0,
+"end": 3,
+"kana": "エエト",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "eeto"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "ソレワ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "soɾewa"
+},
+{
+"start": 10,
+"end": 14,
+"kana": "チョット",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "tɕotto"
+}
+],
+"no_final": [
+{
+"start": 0,
+"end": 4,
+"kana": "シンカンセンワ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "ɕiŋkaɴseɴwa"
+},
+{
+"start": 4,
+"end": 6,
+"kana": "ハヤイ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "hajai"
+}
+],
+"colon_semicolon": [
+{
+"start": 0,
+"end": 3,
+"kana": "モチモノ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "motɕimono"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "オベントー",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "obentoː"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "スイトー",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "sɯitoː"
+},
+{
+"start": 11,
+"end": 14,
+"kana": "タオル",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "taoɾɯ"
+}
+],
+"wave_dash": [
+{
+"start": 0,
+"end": 2,
+"kana": "エーギョー",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "eːɡʲoː"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "ジカンワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "dʑikaɴwa"
+},
+{
+"start": 5,
+"end": 7,
+"kana": "クジ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "kɯdʑi"
+}
+],
+"nakaguro": [
+{
+"start": 0,
+"end": 3,
+"kana": "ジョン",
+"hl": [
+"H",
+"L"
+],
+"ipa": "dʑoɴ"
+},
+{
+"start": 4,
+"end": 10,
+"kana": "スミスサンガ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "sɯmisɯsaŋɡa"
+},
+{
+"start": 10,
+"end": 14,
+"kana": "キマシタ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "kimaɕita"
+}
+],
+"latin": [
+{
+"start": 0,
+"end": 3,
+"kana": "アタラシイ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "ataɾaɕii"
+},
+{
+"start": 3,
+"end": 10,
+"kana": "アイフォーント",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "aiɸoːnto"
+},
+{
+"start": 10,
+"end": 18,
+"kana": "エムエーシービーオーオーケーヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "emɯeːɕiːbiːoːoːkeːo"
+},
+{
+"start": 18,
+"end": 20,
+"kana": "オーケイ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "oːkei"
+},
+{
+"start": 20,
+"end": 24,
+"kana": "シマシタ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "ɕimaɕita"
+}
+],
+"kanji_names": [
+{
+"start": 0,
+"end": 5,
+"kana": "スズキサント",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "sɯdzɯkisanto"
+},
+{
+"start": 5,
+"end": 10,
+"kana": "タカハシサンワ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "takahaɕisaɴwa"
+},
+{
+"start": 11,
+"end": 14,
+"kana": "キョートノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "kʲoːtono"
+},
+{
+"start": 14,
+"end": 18,
+"kana": "キヨミズデラヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "kijomidzɯdeɾao"
+},
+{
+"start": 18,
+"end": 21,
+"kana": "オトズレタ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "otodzɯɾeta"
+}
+],
+"newline": [
+{
+"start": 0,
+"end": 9,
+"kana": "オハヨーゴザイマス",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "ohajoːɡodzaimasɯ"
+},
+{
+"start": 11,
+"end": 14,
+"kana": "キョーモ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kʲoːmo"
+},
+{
+"start": 14,
+"end": 24,
+"kana": "ヨロシクオネガイシマス",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "joɾoɕikɯoneɡaiɕimasɯ"
+}
+],
+"long": [
+{
+"start": 0,
+"end": 3,
+"kana": "ワガハイワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "waɡahaiwa"
+},
+{
+"start": 3,
+"end": 7,
+"kana": "ネコデアル",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "nekodeaɾɯ"
+},
+{
+"start": 8,
+"end": 11,
+"kana": "ナマエワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "namaewa"
+},
+{
+"start": 11,
+"end": 13,
+"kana": "マダ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "mada"
+},
+{
+"start": 13,
+"end": 15,
+"kana": "ナイ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "nai"
+},
+{
+"start": 16,
+"end": 19,
+"kana": "ドコデ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "dokode"
+},
+{
+"start": 19,
+"end": 23,
+"kana": "ウマレタカ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "ɯmaɾetaka"
+},
+{
+"start": 23,
+"end": 26,
+"kana": "トント",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "tonto"
+},
+{
+"start": 26,
+"end": 29,
+"kana": "ケントーガ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "kentoːɡa"
+},
+{
+"start": 29,
+"end": 32,
+"kana": "ツカヌ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "tsɯkanɯ"
+},
+{
+"start": 33,
+"end": 36,
+"kana": "ナニデモ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "naɲidemo"
+},
+{
+"start": 36,
+"end": 39,
+"kana": "ウスグライ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ɯsɯɡɯɾai"
+},
+{
+"start": 39,
+"end": 43,
+"kana": "ジメジメ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "dʑimedʑime"
+},
+{
+"start": 43,
+"end": 45,
+"kana": "シタ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕita"
+},
+{
+"start": 45,
+"end": 47,
+"kana": "トコロデ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "tokoɾode"
+},
+{
+"start": 47,
+"end": 53,
+"kana": "ニャーニャー",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɲaːɲaː"
+},
+{
+"start": 53,
+"end": 56,
+"kana": "ナイテ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "naite"
+},
+{
+"start": 56,
+"end": 58,
+"kana": "イタ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ita"
+},
+{
+"start": 58,
+"end": 62,
+"kana": "コトダケワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "kotodakewa"
+},
+{
+"start": 62,
+"end": 64,
+"kana": "キオク",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "kiokɯ"
+},
+{
+"start": 64,
+"end": 66,
+"kana": "シテ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕite"
+},
+{
+"start": 66,
+"end": 68,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+},
+{
+"start": 69,
+"end": 72,
+"kana": "ワガハイワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "waɡahaiwa"
+},
+{
+"start": 72,
+"end": 75,
+"kana": "ココデ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "kokode"
+},
+{
+"start": 75,
+"end": 78,
+"kana": "ハジメテ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "hadʑimete"
+},
+{
+"start": 78,
+"end": 81,
+"kana": "ニンゲント",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ɲiŋɡento"
+},
+{
+"start": 81,
+"end": 83,
+"kana": "イウ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɯ"
+},
+{
+"start": 83,
+"end": 86,
+"kana": "モノヲ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "monoo"
+},
+{
+"start": 86,
+"end": 88,
+"kana": "ミタ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "mita"
+},
+{
+"start": 89,
+"end": 92,
+"kana": "シカモ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "ɕikamo"
+},
+{
+"start": 92,
+"end": 95,
+"kana": "アトデ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "atode"
+},
+{
+"start": 95,
+"end": 98,
+"kana": "キクト",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "kikɯto"
+},
+{
+"start": 98,
+"end": 101,
+"kana": "ソレワ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "soɾewa"
+},
+{
+"start": 101,
+"end": 104,
+"kana": "ショセート",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕoseːto"
+},
+{
+"start": 104,
+"end": 106,
+"kana": "イウ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɯ"
+},
+{
+"start": 106,
+"end": 110,
+"kana": "ニンゲンチューデ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ɲiŋɡeɲtɕɯːde"
+},
+{
+"start": 110,
+"end": 112,
+"kana": "イチバン",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "itɕibaɴ"
+},
+{
+"start": 112,
+"end": 115,
+"kana": "ドーアクナ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "doːakɯna"
+},
+{
+"start": 115,
+"end": 121,
+"kana": "シュゾクデアッタ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "ɕɯdzokɯdeatta"
+},
+{
+"start": 121,
+"end": 124,
+"kana": "ソーダ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "soːda"
+},
+{
+"start": 125,
+"end": 127,
+"kana": "コノ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "kono"
+},
+{
+"start": 127,
+"end": 130,
+"kana": "ショセート",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕoseːto"
+},
+{
+"start": 130,
+"end": 132,
+"kana": "イウ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɯ"
+},
+{
+"start": 132,
+"end": 134,
+"kana": "ノワ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "nowa"
+},
+{
+"start": 134,
+"end": 136,
+"kana": "トキドキ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "tokidoki"
+},
+{
+"start": 136,
+"end": 139,
+"kana": "ワレワレヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "waɾewaɾeo"
+},
+{
+"start": 139,
+"end": 142,
+"kana": "トラエテ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "toɾaete"
+},
+{
+"start": 142,
+"end": 144,
+"kana": "ニテ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɲite"
+},
+{
+"start": 144,
+"end": 147,
+"kana": "クウト",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kɯɯto"
+},
+{
+"start": 147,
+"end": 149,
+"kana": "イウ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɯ"
+},
+{
+"start": 149,
+"end": 153,
+"kana": "ハナシデアル",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "hanaɕideaɾɯ"
+},
+{
+"start": 154,
+"end": 157,
+"kana": "シカシ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "ɕikaɕi"
+},
+{
+"start": 157,
+"end": 159,
+"kana": "ソノ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "sono"
+},
+{
+"start": 159,
+"end": 162,
+"kana": "トージワ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "toːdʑiwa"
+},
+{
+"start": 162,
+"end": 164,
+"kana": "ナント",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "nanto"
+},
+{
+"start": 164,
+"end": 166,
+"kana": "イウ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɯ"
+},
+{
+"start": 166,
+"end": 168,
+"kana": "コーモ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "koːmo"
+},
+{
+"start": 168,
+"end": 174,
+"kana": "ナカッタカラ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "nakattakaɾa"
+},
+{
+"start": 174,
+"end": 176,
+"kana": "ベツダン",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "betsɯdaɴ"
+},
+{
+"start": 176,
+"end": 178,
+"kana": "コワシ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "kowaɕi"
+},
+{
+"start": 178,
+"end": 181,
+"kana": "イトモ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "itomo"
+},
+{
+"start": 181,
+"end": 187,
+"kana": "オモワナカッタ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "omowanakatta"
+},
+{
+"start": 188,
+"end": 190,
+"kana": "タダ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "tada"
+},
+{
+"start": 190,
+"end": 192,
+"kana": "カレノ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kaɾeno"
+},
+{
+"start": 192,
+"end": 194,
+"kana": "テノヒラニ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "tenoçiɾaɲi"
+},
+{
+"start": 194,
+"end": 199,
+"kana": "ノセラレテ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "noseɾaɾete"
+},
+{
+"start": 199,
+"end": 202,
+"kana": "スート",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "sɯːto"
+},
+{
+"start": 202,
+"end": 209,
+"kana": "モチアゲラレタ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "motɕiaɡeɾaɾeta"
+},
+{
+"start": 209,
+"end": 210,
+"kana": "トキ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "toki"
+},
+{
+"start": 210,
+"end": 213,
+"kana": "ナンダカ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "nandaka"
+},
+{
+"start": 213,
+"end": 217,
+"kana": "フワフワ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɸɯwaɸɯwa"
+},
+{
+"start": 217,
+"end": 219,
+"kana": "シタ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕita"
+},
+{
+"start": 219,
+"end": 222,
+"kana": "カンジガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kaɲdʑiɡa"
+},
+{
+"start": 222,
+"end": 231,
+"kana": "アッタバカリデアル",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "attabakaɾideaɾɯ"
+},
+{
+"start": 232,
+"end": 234,
+"kana": "テノヒラノ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "tenoçiɾano"
+},
+{
+"start": 234,
+"end": 236,
+"kana": "ウエデ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "ɯede"
+},
+{
+"start": 236,
+"end": 238,
+"kana": "スコシ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "sɯkoɕi"
+},
+{
+"start": 238,
+"end": 243,
+"kana": "オチツイテ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "otɕitsɯite"
+},
+{
+"start": 243,
+"end": 246,
+"kana": "ショセーノ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕoseːno"
+},
+{
+"start": 246,
+"end": 248,
+"kana": "カオヲ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "kaoo"
+},
+{
+"start": 248,
+"end": 250,
+"kana": "ミタ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "mita"
+},
+{
+"start": 250,
+"end": 252,
+"kana": "ノガ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "noɡa"
+},
+{
+"start": 252,
+"end": 256,
+"kana": "イワユル",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "iwajɯɾɯ"
+},
+{
+"start": 256,
+"end": 259,
+"kana": "ニンゲント",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ɲiŋɡento"
+},
+{
+"start": 259,
+"end": 264,
+"kana": "イウモノノ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "iɯmonono"
+},
+{
+"start": 264,
+"end": 265,
+"kana": "ミ",
+"hl": [
+"H"
+],
+"ipa": "mi"
+},
+{
+"start": 265,
+"end": 270,
+"kana": "ハジメデアロー",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "hadʑimedeaɾoː"
+},
+{
+"start": 271,
+"end": 273,
+"kana": "コノ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "kono"
+},
+{
+"start": 273,
+"end": 274,
+"kana": "トキ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "toki"
+},
+{
+"start": 274,
+"end": 276,
+"kana": "ミョーナ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "mʲoːna"
+},
+{
+"start": 276,
+"end": 280,
+"kana": "モノダト",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "monodato"
+},
+{
+"start": 280,
+"end": 283,
+"kana": "オモッタ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "omotta"
+},
+{
+"start": 283,
+"end": 286,
+"kana": "カンジガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kaɲdʑiɡa"
+},
+{
+"start": 286,
+"end": 289,
+"kana": "イマデモ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "imademo"
+},
+{
+"start": 289,
+"end": 292,
+"kana": "ノコッテ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "nokotte"
+},
+{
+"start": 292,
+"end": 294,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+},
+{
+"start": 295,
+"end": 296,
+"kana": "ダイ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "dai"
+},
+{
+"start": 296,
+"end": 299,
+"kana": "イチモーヲ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "itɕimoːo"
+},
+{
+"start": 299,
+"end": 302,
+"kana": "モッテ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "motte"
+},
+{
+"start": 302,
+"end": 304,
+"kana": "ソーショク",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "soːɕokɯ"
+},
+{
+"start": 304,
+"end": 308,
+"kana": "サレベキ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "saɾebeki"
+},
+{
+"start": 308,
+"end": 311,
+"kana": "ハズノ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "hadzɯno"
+},
+{
+"start": 311,
+"end": 313,
+"kana": "カオガ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "kaoɡa"
+},
+{
+"start": 313,
+"end": 317,
+"kana": "ツルツル",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "tsɯɾɯtsɯɾɯ"
+},
+{
+"start": 317,
+"end": 319,
+"kana": "シテ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕite"
+},
+{
+"start": 319,
+"end": 322,
+"kana": "マルデ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "maɾɯde"
+},
+{
+"start": 322,
+"end": 325,
+"kana": "ヤカンダ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "jakanda"
+}
+]
+},
+"hard": {
+"h001": [
+{
+"start": 0,
+"end": 5,
+"kana": "シアトルノ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "ɕiatoɾɯno"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "シデワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ɕidewa"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "サカナガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "sakanaɡa"
+},
+{
+"start": 11,
+"end": 15,
+"kana": "ウラレテ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɯɾaɾete"
+},
+{
+"start": 15,
+"end": 17,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+}
+],
+"h002": [
+{
+"start": 0,
+"end": 4,
+"kana": "シヤクショワ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɕijakɯɕowa"
+},
+{
+"start": 4,
+"end": 6,
+"kana": "エキノ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ekino"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "チカクニ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "tɕikakɯɲi"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "アル",
+"hl": [
+"H",
+"L"
+],
+"ipa": "aɾɯ"
+}
+],
+"h003": [
+{
+"start": 0,
+"end": 2,
+"kana": "マイツキ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "maitsɯki"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "ヨーカニ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "joːkaɲi"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "アサイチガ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "asaitɕiɡa"
+},
+{
+"start": 8,
+"end": 12,
+"kana": "ヒラカレル",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "çiɾakaɾeɾɯ"
+}
+],
+"h004": [
+{
+"start": 0,
+"end": 3,
+"kana": "キョーワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kʲoːwa"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ハレテ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "haɾete"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "イマス",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "imasɯ"
+}
+],
+"h005": [
+{
+"start": 0,
+"end": 3,
+"kana": "キョーノ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kʲoːno"
+},
+{
+"start": 3,
+"end": 8,
+"kana": "ニッポンケーザイヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "ɲippoŋkeːdzaio"
+},
+{
+"start": 8,
+"end": 11,
+"kana": "ロンジル",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɾoɲdʑiɾɯ"
+}
+],
+"h006": [
+{
+"start": 0,
+"end": 4,
+"kana": "イチニチカラ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "itɕiɲitɕikaɾa"
+},
+{
+"start": 4,
+"end": 8,
+"kana": "ミッカマデ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "mikkamade"
+},
+{
+"start": 8,
+"end": 12,
+"kana": "ヤスミデス",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "jasɯmidesɯ"
+}
+],
+"h007": [
+{
+"start": 0,
+"end": 3,
+"kana": "イチニチジュー",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "itɕiɲitɕidʑɯː"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ズット",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "dzɯtto"
+},
+{
+"start": 6,
+"end": 10,
+"kana": "アメダッタ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "amedatta"
+}
+],
+"h008": [
+{
+"start": 0,
+"end": 2,
+"kana": "カレワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kaɾewa"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "リョーリガ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɾʲoːɾiɡa"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "ジョーズダ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "dʑoːdzɯda"
+}
+],
+"h009": [
+{
+"start": 0,
+"end": 3,
+"kana": "ブタイノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "bɯtaino"
+},
+{
+"start": 3,
+"end": 7,
+"kana": "ジョーズカラ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "dʑoːdzɯkaɾa"
+},
+{
+"start": 7,
+"end": 10,
+"kana": "ヤクシャガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "jakɯɕaɡa"
+},
+{
+"start": 10,
+"end": 12,
+"kana": "トージョー",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "toːdʑoː"
+},
+{
+"start": 12,
+"end": 14,
+"kana": "シタ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕita"
+}
+],
+"h010": [
+{
+"start": 0,
+"end": 4,
+"kana": "イゴデワ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "iɡodewa"
+},
+{
+"start": 4,
+"end": 6,
+"kana": "カレノ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kaɾeno"
+},
+{
+"start": 6,
+"end": 8,
+"kana": "ホーガ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "hoːɡa"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "イチマイ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "itɕimai"
+},
+{
+"start": 10,
+"end": 13,
+"kana": "ウワテダ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɯwateda"
+}
+],
+"h011": [
+{
+"start": 0,
+"end": 2,
+"kana": "コノ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "kono"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "アタリワ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ataɾiwa"
+},
+{
+"start": 5,
+"end": 7,
+"kana": "ヨルニ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "joɾɯɲi"
+},
+{
+"start": 7,
+"end": 10,
+"kana": "ナルト",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "naɾɯto"
+},
+{
+"start": 10,
+"end": 13,
+"kana": "ニンキガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɲiŋkiɡa"
+},
+{
+"start": 13,
+"end": 15,
+"kana": "ナイ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "nai"
+}
+],
+"h012": [
+{
+"start": 0,
+"end": 3,
+"kana": "カノジョワ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "kanodʑowa"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ニンキガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɲiŋkiɡa"
+},
+{
+"start": 6,
+"end": 8,
+"kana": "アル",
+"hl": [
+"H",
+"L"
+],
+"ipa": "aɾɯ"
+},
+{
+"start": 8,
+"end": 11,
+"kana": "カシュダ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kaɕɯda"
+}
+],
+"h013": [
+{
+"start": 0,
+"end": 5,
+"kana": "オーヤサンニ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "oːjasaɲɲi"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "ヤチンヲ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "jatɕiɴo"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "ハラウ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "haɾaɯ"
+}
+],
+"h014": [
+{
+"start": 0,
+"end": 2,
+"kana": "カレワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kaɾewa"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "ショドーノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɕodoːno"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "オーヤト",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "oːjato"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "シテ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕite"
+},
+{
+"start": 10,
+"end": 14,
+"kana": "シラレル",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕiɾaɾeɾɯ"
+}
+],
+"h015": [
+{
+"start": 0,
+"end": 3,
+"kana": "セーブツノ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "seːbɯtsɯno"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ジュギョーデ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "dʑɯɡʲoːde"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "サイボーヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "saiboːo"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "マナブ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "manabɯ"
+}
+],
+"h016": [
+{
+"start": 0,
+"end": 3,
+"kana": "セーブツワ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "seːbɯtsɯwa"
+},
+{
+"start": 3,
+"end": 7,
+"kana": "オハヤメニ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ohajameɲi"
+},
+{
+"start": 7,
+"end": 17,
+"kana": "オメシアガリクダサイ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "omeɕiaɡaɾikɯdasai"
+}
+],
+"h017": [
+{
+"start": 0,
+"end": 3,
+"kana": "アシタワ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "aɕitawa"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "アメガ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ameɡa"
+},
+{
+"start": 5,
+"end": 11,
+"kana": "フルデショー",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "ɸɯɾɯdeɕoː"
+}
+],
+"h018": [
+{
+"start": 0,
+"end": 3,
+"kana": "イッコーワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ikkoːwa"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ブジニ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "bɯdʑiɲi"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "サンチョーニ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "saɲtɕoːɲi"
+},
+{
+"start": 9,
+"end": 12,
+"kana": "ツイタ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "tsɯita"
+}
+],
+"h019": [
+{
+"start": 0,
+"end": 3,
+"kana": "サイショノ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "saiɕono"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "イッコーヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ikkoːo"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "ヨンデ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "jonde"
+},
+{
+"start": 9,
+"end": 13,
+"kana": "クダサイ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "kɯdasai"
+}
+],
+"h020": [
+{
+"start": 0,
+"end": 2,
+"kana": "カレワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kaɾewa"
+},
+{
+"start": 2,
+"end": 4,
+"kana": "ツライ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "tsɯɾai"
+},
+{
+"start": 4,
+"end": 8,
+"kana": "カレーガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kaɾeːɡa"
+},
+{
+"start": 8,
+"end": 11,
+"kana": "スキダ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "sɯkida"
+}
+],
+"h021": [
+{
+"start": 0,
+"end": 3,
+"kana": "ワカレワ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "wakaɾewa"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "イツモ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "itsɯmo"
+},
+{
+"start": 6,
+"end": 8,
+"kana": "ツライ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "tsɯɾai"
+},
+{
+"start": 8,
+"end": 11,
+"kana": "モノダ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "monoda"
+}
+],
+"h022": [
+{
+"start": 0,
+"end": 3,
+"kana": "モッカノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "mokkano"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "カダイワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kadaiwa"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "シキンノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɕikinno"
+},
+{
+"start": 9,
+"end": 12,
+"kana": "カクホダ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "kakɯhoda"
+}
+],
+"h023": [
+{
+"start": 0,
+"end": 3,
+"kana": "モッカノ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "mokkano"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "モノニモ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "monoɲimo"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "テーネーニ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "teːneːɲi"
+},
+{
+"start": 9,
+"end": 12,
+"kana": "セッスル",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "sessɯɾɯ"
+}
+],
+"h024": [
+{
+"start": 0,
+"end": 2,
+"kana": "カクヲ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kakɯo"
+},
+{
+"start": 2,
+"end": 6,
+"kana": "マガルト",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "maɡaɾɯto"
+},
+{
+"start": 6,
+"end": 10,
+"kana": "パンヤガ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "paɴjaɡa"
+},
+{
+"start": 10,
+"end": 12,
+"kana": "アル",
+"hl": [
+"H",
+"L"
+],
+"ipa": "aɾɯ"
+}
+],
+"h025": [
+{
+"start": 0,
+"end": 2,
+"kana": "ウシノ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "ɯɕino"
+},
+{
+"start": 2,
+"end": 4,
+"kana": "カクワ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "kakɯwa"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "イガイト",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "iɡaito"
+},
+{
+"start": 7,
+"end": 9,
+"kana": "カタイ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "katai"
+}
+],
+"h026": [
+{
+"start": 0,
+"end": 3,
+"kana": "サムケガ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "samɯkeɡa"
+},
+{
+"start": 3,
+"end": 7,
+"kana": "スルノデ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "sɯɾɯnode"
+},
+{
+"start": 7,
+"end": 11,
+"kana": "ハヤクネル",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "hajakɯneɾɯ"
+}
+],
+"h027": [
+{
+"start": 0,
+"end": 2,
+"kana": "ツヨイ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "tsɯjoi"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "サムケガ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "samɯkeɡa"
+},
+{
+"start": 5,
+"end": 7,
+"kana": "ナンカ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "naŋka"
+},
+{
+"start": 7,
+"end": 9,
+"kana": "シテ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕite"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+}
+],
+"h028": [
+{
+"start": 0,
+"end": 2,
+"kana": "ナニガ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "naɲiɡa"
+},
+{
+"start": 2,
+"end": 6,
+"kana": "ホシイノ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "hoɕiino"
+}
+],
+"h029": [
+{
+"start": 0,
+"end": 2,
+"kana": "ナンボン",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "namboɴ"
+},
+{
+"start": 2,
+"end": 7,
+"kana": "アリマスカ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "aɾimasɯka"
+}
+],
+"h030": [
+{
+"start": 0,
+"end": 3,
+"kana": "イロガミニ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "iɾoɡamiɲi"
+},
+{
+"start": 3,
+"end": 7,
+"kana": "サインヲ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "saiɴo"
+},
+{
+"start": 7,
+"end": 11,
+"kana": "モラッタ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "moɾatta"
+}
+],
+"h031": [
+{
+"start": 0,
+"end": 3,
+"kana": "イロガミデ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "iɾoɡamide"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "ツルヲ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "tsɯɾɯo"
+},
+{
+"start": 5,
+"end": 7,
+"kana": "オル",
+"hl": [
+"H",
+"L"
+],
+"ipa": "oɾɯ"
+}
+],
+"h032": [
+{
+"start": 0,
+"end": 3,
+"kana": "ウマク",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "ɯmakɯ"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "セツメー",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "setsɯmeː"
+},
+{
+"start": 5,
+"end": 9,
+"kana": "デキナイ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "dekinai"
+}
+],
+"h033": [
+{
+"start": 0,
+"end": 3,
+"kana": "ケビョーヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kebʲoːo"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ツカッテ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "tsɯkatte"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "ヤスンダ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "jasɯnda"
+}
+],
+"h034": [
+{
+"start": 0,
+"end": 3,
+"kana": "コトシノ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kotoɕino"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "コーヨーワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "koːjoːwa"
+},
+{
+"start": 6,
+"end": 10,
+"kana": "キレイダ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "kiɾeida"
+}
+],
+"h035": [
+{
+"start": 0,
+"end": 3,
+"kana": "ヘタナ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "hetana"
+},
+{
+"start": 3,
+"end": 7,
+"kana": "イーワケワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "iːwakewa"
+},
+{
+"start": 7,
+"end": 12,
+"kana": "ヤメナサイ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "jamenasai"
+}
+],
+"h036": [
+{
+"start": 0,
+"end": 4,
+"kana": "エスエーピーノ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "esɯeːpiːno"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "ドーニューヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "doːɲɯːo"
+},
+{
+"start": 7,
+"end": 9,
+"kana": "ケントー",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kentoː"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "シテ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕite"
+},
+{
+"start": 11,
+"end": 13,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+}
+],
+"h037": [
+{
+"start": 0,
+"end": 4,
+"kana": "エスアイピーデ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "esɯaipiːde"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "デンワヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "deɴwao"
+},
+{
+"start": 7,
+"end": 10,
+"kana": "ツナグ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "tsɯnaɡɯ"
+}
+],
+"h038": [
+{
+"start": 0,
+"end": 4,
+"kana": "エヌエイチケイノ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "enɯeitɕikeino"
+},
+{
+"start": 4,
+"end": 9,
+"kana": "ニュースヲ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɲɯːsɯo"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "ミタ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "mita"
+}
+],
+"h039": [
+{
+"start": 0,
+"end": 3,
+"kana": "エーアイノ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "eːaino"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "ケンキューガ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "keŋkʲɯːɡa"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "ススンデ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "sɯsɯnde"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+}
+],
+"h040": [
+{
+"start": 0,
+"end": 7,
+"kana": "ユーエスビーメモリヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "jɯːesɯbiːmemoɾio"
+},
+{
+"start": 7,
+"end": 11,
+"kana": "サシコム",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "saɕikomɯ"
+}
+],
+"h041": [
+{
+"start": 0,
+"end": 5,
+"kana": "ナサガ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "nasaɡa"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "アタラシイ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "ataɾaɕii"
+},
+{
+"start": 8,
+"end": 12,
+"kana": "タンサキヲ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "taɴsakio"
+},
+{
+"start": 12,
+"end": 17,
+"kana": "ウチアゲタ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "ɯtɕiaɡeta"
+}
+],
+"h042": [
+{
+"start": 0,
+"end": 3,
+"kana": "ジェイアールノ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "dʑeiaːɾɯno"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "エキデ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ekide"
+},
+{
+"start": 5,
+"end": 11,
+"kana": "マチアワセル",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "matɕiawaseɾɯ"
+}
+],
+"h043": [
+{
+"start": 0,
+"end": 4,
+"kana": "ジーピーユーヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "dʑiːpiːjɯːo"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "ツカッテ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "tsɯkatte"
+},
+{
+"start": 7,
+"end": 11,
+"kana": "モデルヲ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "modeɾɯo"
+},
+{
+"start": 11,
+"end": 13,
+"kana": "ガクシュー",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɡakɯɕɯː"
+},
+{
+"start": 13,
+"end": 15,
+"kana": "スル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "sɯɾɯ"
+}
+],
+"h044": [
+{
+"start": 0,
+"end": 4,
+"kana": "エーピーアイノ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "eːpiːaino"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "シヨーヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕijoːo"
+},
+{
+"start": 7,
+"end": 9,
+"kana": "カクニン",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kakɯɲiɴ"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "スル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "sɯɾɯ"
+}
+],
+"h045": [
+{
+"start": 0,
+"end": 6,
+"kana": "アイオーティーキキガ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "aioːtiːkikiɡa"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "フエテ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "ɸɯete"
+},
+{
+"start": 9,
+"end": 11,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+}
+],
+"h046": [
+{
+"start": 0,
+"end": 4,
+"kana": "エスエヌエスデ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "esɯenɯesɯde"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "ワダイニ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "wadaiɲi"
+},
+{
+"start": 7,
+"end": 10,
+"kana": "ナッタ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "natta"
+}
+],
+"h047": [
+{
+"start": 0,
+"end": 7,
+"kana": "ユネスコノ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "jɯnesɯkono"
+},
+{
+"start": 7,
+"end": 12,
+"kana": "セカイイサンニ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "sekaiisaɲɲi"
+},
+{
+"start": 12,
+"end": 14,
+"kana": "トーロク",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "toːɾokɯ"
+},
+{
+"start": 14,
+"end": 17,
+"kana": "サレタ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "saɾeta"
+}
+],
+"h048": [
+{
+"start": 0,
+"end": 4,
+"kana": "リンゴヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɾiŋɡoo"
+},
+{
+"start": 4,
+"end": 6,
+"kana": "サンコ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "saŋko"
+},
+{
+"start": 6,
+"end": 9,
+"kana": "カッタ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "katta"
+}
+],
+"h049": [
+{
+"start": 0,
+"end": 4,
+"kana": "サンカシャワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "saŋkaɕawa"
+}
+],
+"h050": [
+{
+"start": 0,
+"end": 3,
+"kana": "カカクワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kakakɯwa"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "イチマン",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "itɕimaɴ"
+},
+{
+"start": 5,
+"end": 12,
+"kana": "ニセンエンデス",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "ɲiseɴendesɯ"
+}
+],
+"h051": [
+{
+"start": 0,
+"end": 3,
+"kana": "ロッポンノ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɾopponno"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "エンピツガ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "empitsɯɡa"
+},
+{
+"start": 6,
+"end": 8,
+"kana": "アル",
+"hl": [
+"H",
+"L"
+],
+"ipa": "aɾɯ"
+}
+],
+"h052": [
+{
+"start": 0,
+"end": 3,
+"kana": "サンビキノ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "sambikino"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "ネコヲ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "nekoo"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "カッテ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "katte"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "イル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "iɾɯ"
+}
+],
+"h053": [
+{
+"start": 0,
+"end": 3,
+"kana": "キオンワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kioɴwa"
+},
+{
+"start": 6,
+"end": 10,
+"kana": "ゴドマデ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɡodomade"
+},
+{
+"start": 10,
+"end": 14,
+"kana": "アガッタ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "aɡatta"
+}
+],
+"h054": [
+{
+"start": 0,
+"end": 4,
+"kana": "ハップンゴニ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "happɯŋɡoɲi"
+},
+{
+"start": 4,
+"end": 6,
+"kana": "シュッパツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕɯppatsɯ"
+},
+{
+"start": 6,
+"end": 8,
+"kana": "スル",
+"hl": [
+"L",
+"H"
+],
+"ipa": "sɯɾɯ"
+}
+],
+"h055": [
+{
+"start": 0,
+"end": 4,
+"kana": "ジュッポンノ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "dʑɯpponno"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "バラヲ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "baɾao"
+},
+{
+"start": 7,
+"end": 9,
+"kana": "オクル",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "okɯɾɯ"
+}
+],
+"h056": [
+{
+"start": 0,
+"end": 3,
+"kana": "フタリデ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "ɸɯtaɾide"
+},
+{
+"start": 3,
+"end": 6,
+"kana": "リョコーニ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɾʲokoːɲi"
+},
+{
+"start": 6,
+"end": 8,
+"kana": "イク",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ikɯ"
+}
+],
+"h057": [
+{
+"start": 0,
+"end": 3,
+"kana": "ヒトリデ",
+"hl": [
+"L",
+"H",
+"L",
+"L"
+],
+"ipa": "çitoɾide"
+},
+{
+"start": 3,
+"end": 5,
+"kana": "キテ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "kite"
+},
+{
+"start": 5,
+"end": 9,
+"kana": "クダサイ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "kɯdasai"
+}
+],
+"h058": [
+{
+"start": 0,
+"end": 1,
+"kana": "ダイ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "dai"
+},
+{
+"start": 1,
+"end": 4,
+"kana": "サンショーヲ",
+"hl": [
+"L",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "saɴɕoːo"
+},
+{
+"start": 4,
+"end": 7,
+"kana": "ヨンデ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "jonde"
+},
+{
+"start": 7,
+"end": 10,
+"kana": "オイテ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "oite"
+},
+{
+"start": 10,
+"end": 14,
+"kana": "クダサイ",
+"hl": [
+"L",
+"H",
+"H",
+"L"
+],
+"ipa": "kɯdasai"
+}
+],
+"h059": [
+{
+"start": 0,
+"end": 3,
+"kana": "タイジューガ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "taidʑɯːɡa"
+},
+{
+"start": 3,
+"end": 9,
+"kana": "サンビャクグラム",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "sambʲakɯɡɯɾamɯ"
+},
+{
+"start": 9,
+"end": 12,
+"kana": "フエタ",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "ɸɯeta"
+}
+],
+"h060": [
+{
+"start": 0,
+"end": 2,
+"kana": "シガツ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "ɕiɡatsɯ"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "ツイタチワ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "tsɯitatɕiwa"
+},
+{
+"start": 5,
+"end": 9,
+"kana": "ニューガクシキダ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "ɲɯːɡakɯɕikida"
+}
+],
+"h061": [
+{
+"start": 0,
+"end": 3,
+"kana": "ジューガツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "dʑɯːɡatsɯ"
+},
+{
+"start": 7,
+"end": 10,
+"kana": "カイギガ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "kaiɡiɡa"
+},
+{
+"start": 10,
+"end": 12,
+"kana": "アル",
+"hl": [
+"H",
+"L"
+],
+"ipa": "aɾɯ"
+}
+],
+"h062": [
+{
+"start": 5,
+"end": 8,
+"kana": "ジューガツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "dʑɯːɡatsɯ"
+},
+{
+"start": 8,
+"end": 12,
+"kana": "ハツカニ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "hatsɯkaɲi"
+},
+{
+"start": 12,
+"end": 14,
+"kana": "ハツバイ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "hatsɯbai"
+},
+{
+"start": 14,
+"end": 17,
+"kana": "サレタ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "saɾeta"
+}
+],
+"h063": [
+{
+"start": 0,
+"end": 2,
+"kana": "ゴガツ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "ɡoɡatsɯ"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "イツカワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "itsɯkawa"
+},
+{
+"start": 5,
+"end": 9,
+"kana": "コドモノ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "kodomono"
+},
+{
+"start": 9,
+"end": 12,
+"kana": "ヒデス",
+"hl": [
+"L",
+"H",
+"L"
+],
+"ipa": "çidesɯ"
+}
+],
+"h064": [
+{
+"start": 0,
+"end": 2,
+"kana": "シチガツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕitɕiɡatsɯ"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "ナノカワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "nanokawa"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "タナバタダ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "tanabatada"
+}
+],
+"h065": [
+{
+"start": 0,
+"end": 2,
+"kana": "クジ",
+"hl": [
+"H",
+"L"
+],
+"ipa": "kɯdʑi"
+},
+{
+"start": 2,
+"end": 6,
+"kana": "サンジュップンニ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "saɲdʑɯppɯɲɲi"
+},
+{
+"start": 6,
+"end": 10,
+"kana": "シューゴーデス",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H",
+"L"
+],
+"ipa": "ɕɯːɡoːdesɯ"
+}
+],
+"h066": [
+{
+"start": 0,
+"end": 2,
+"kana": "サンガツ",
+"hl": [
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "saŋɡatsɯ"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "ミッカワ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "mikkawa"
+},
+{
+"start": 5,
+"end": 10,
+"kana": "ヒナマツリダ",
+"hl": [
+"L",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "çinamatsɯɾida"
+}
+],
+"h067": [
+{
+"start": 0,
+"end": 2,
+"kana": "イチガツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "itɕiɡatsɯ"
+},
+{
+"start": 2,
+"end": 6,
+"kana": "ジューヨッカニ",
+"hl": [
+"H",
+"L",
+"L",
+"L",
+"L",
+"L"
+],
+"ipa": "dʑɯːjokkaɲi"
+},
+{
+"start": 6,
+"end": 8,
+"kana": "シュッパツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɕɯppatsɯ"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "シタ",
+"hl": [
+"L",
+"H"
+],
+"ipa": "ɕita"
+}
+],
+"h068": [
+{
+"start": 0,
+"end": 2,
+"kana": "ロクガツ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "ɾokɯɡatsɯ"
+},
+{
+"start": 2,
+"end": 6,
+"kana": "ハツカニ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "hatsɯkaɲi"
+},
+{
+"start": 6,
+"end": 10,
+"kana": "タンジョービヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L"
+],
+"ipa": "taɲdʑoːbio"
+},
+{
+"start": 10,
+"end": 13,
+"kana": "ムカエル",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "mɯkaeɾɯ"
+}
+],
+"h069": [
+{
+"start": 0,
+"end": 2,
+"kana": "ヘーセー",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "heːseː"
+},
+{
+"start": 5,
+"end": 7,
+"kana": "シガツ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "ɕiɡatsɯ"
+},
+{
+"start": 7,
+"end": 11,
+"kana": "サンジューニチニ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"L",
+"L",
+"L"
+],
+"ipa": "saɲdʑɯːɲitɕiɲi"
+},
+{
+"start": 11,
+"end": 13,
+"kana": "タイイ",
+"hl": [
+"H",
+"L",
+"L"
+],
+"ipa": "taii"
+},
+{
+"start": 13,
+"end": 16,
+"kana": "サレタ",
+"hl": [
+"L",
+"H",
+"H"
+],
+"ipa": "saɾeta"
+}
+],
+"h070": [
+{
+"start": 0,
+"end": 2,
+"kana": "マイツキ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "maitsɯki"
+},
+{
+"start": 2,
+"end": 5,
+"kana": "ヨーカニ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "joːkaɲi"
+},
+{
+"start": 5,
+"end": 8,
+"kana": "テンケンヲ",
+"hl": [
+"L",
+"H",
+"H",
+"H",
+"H"
+],
+"ipa": "teŋkeɴo"
+},
+{
+"start": 8,
+"end": 10,
+"kana": "オコナウ",
+"hl": [
+"L",
+"H",
+"H",
+"H"
+],
+"ipa": "okonaɯ"
+}
+]
+}
+}

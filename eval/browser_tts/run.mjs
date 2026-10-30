@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 import { call, json } from "../llm_yomite/llm.mjs";
-import { HERE, SETS } from "./sets.mjs";
+import { buildPrompt, HERE, SETS } from "./sets.mjs";
 
 const OUT = path.join(HERE, "results");
 const args = process.argv.slice(2),
@@ -11,13 +11,7 @@ const args = process.argv.slice(2),
 const NAMES = si >= 0 ? args.slice(si + 1) : Object.keys(SETS),
   LLMS = (si >= 0 ? args.slice(0, si) : args).filter(Boolean);
 const TEMPLATE = fs.readFileSync(path.join(HERE, "prompt.md"), "utf8");
-const EXAMPLES = JSON.parse(fs.readFileSync(path.join(HERE, "examples.json"), "utf8"));
-
-function prompt(items) {
-  const ex = EXAMPLES.map((x) => `Input (${x.lang}): ${x.text}\nOutput: ${x.ys}`).join("\n\n");
-  const it = items.map((x) => `- ${x.name} (${x.lang}): ${x.text}`).join("\n");
-  return TEMPLATE.replace("{{EXAMPLES}}", ex).replace("{{ITEMS}}", it);
-}
+const prompt = (items) => buildPrompt(TEMPLATE, items);
 fs.mkdirSync(OUT, { recursive: true });
 for (const llm of LLMS.length ? LLMS : ["claude", "codex"])
   for (const set of NAMES) {
