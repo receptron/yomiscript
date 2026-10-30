@@ -14,7 +14,7 @@
   },
   "type": "module",
   "bin": {
-    "yomiscript-mcp": "./dist/server.js"
+    "yomiscript-mcp": "dist/server.js"
   },
   "exports": {
     ".": {

@@ -39,6 +39,10 @@ cache and read from there afterwards (the progress goes to stderr):
   models; otherwise from [Supertone/supertonic-3](https://huggingface.co/Supertone/supertonic-3) into
   `~/.cache/yomiscript/supertonic` (380 MB). Its weights are under OpenRAIL-M, with use-based restrictions.
 
+npm may warn that it did not run `onnxruntime-node`'s install script ("allow-scripts"). The CPU runtime, which is
+what yomiscript uses, is in the package itself, so the warning can be ignored; the script only fetches the CUDA (GPU)
+libraries on Linux x64.
+
 ## As a library
 
 `yomiscript` also exports what the Node apps share (`runtime.ts`): `openKatarite(name, opts)` (the Katarites by

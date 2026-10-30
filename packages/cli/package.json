@@ -14,7 +14,7 @@
   },
   "type": "module",
   "bin": {
-    "yomiscript": "./dist/cli.js"
+    "yomiscript": "dist/cli.js"
   },
   "exports": {
     ".": {

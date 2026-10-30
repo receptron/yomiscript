@@ -49,3 +49,7 @@ Claude Desktop (`claude_desktop_config.json`):
 
 The first call downloads the models (Kokoro fp32: 325 MB, from Hugging Face; see the CLI's README), so it takes a
 while; the progress goes to stderr, which MCP clients keep in their logs. Later calls read the cache.
+
+npm may warn that it did not run `onnxruntime-node`'s install script ("allow-scripts"). The CPU runtime, which is
+what the server uses, is in the package itself, so the warning can be ignored; the script only fetches the CUDA (GPU)
+libraries on Linux x64.
