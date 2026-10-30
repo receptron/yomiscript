@@ -1,6 +1,6 @@
 {
   "name": "yomiscript",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "YomiScript CLI: speak YomiScript with a Katarite",
   "license": "Apache-2.0",
   "repository": {
@@ -31,7 +31,7 @@
     "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
   },
   "dependencies": {
-    "@yomiscript/core": "^0.1.0",
+    "@yomiscript/core": "^0.1.1",
     "@yomiscript/ja-accent": "^0.1.0",
     "@yomiscript/kokoro": "^0.1.0",
     "@yomiscript/supertonic": "^0.1.0",

@@ -1,6 +1,6 @@
 {
   "name": "@yomiscript/gui-chat-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "gui-chat-protocol plugin: the LLM speaks (YomiScript) while the original text is shown",
   "license": "Apache-2.0",
   "repository": {
@@ -41,7 +41,7 @@
     "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
   },
   "dependencies": {
-    "@yomiscript/core": "^0.1.0",
+    "@yomiscript/core": "^0.1.1",
     "@yomiscript/ja-accent": "^0.1.0",
     "@yomiscript/kokoro": "^0.1.0",
     "onnxruntime-web": "1.22.0"

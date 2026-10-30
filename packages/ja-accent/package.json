@@ -38,6 +38,6 @@
     "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
   },
   "dependencies": {
-    "@yomiscript/core": "^0.1.0"
+    "@yomiscript/core": "^0.1.1"
   }
 }

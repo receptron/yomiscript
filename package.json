@@ -10,6 +10,7 @@
     "format": "prettier --write . && ruff format",
     "format:check": "prettier --check . && ruff format --check",
     "lint": "eslint . --cache && ruff check",
+    "release": "sh tools/publish.sh",
     "test": "vitest run",
     "build": "tsc -b packages/core packages/kokoro packages/supertonic packages/ja-accent packages/cli packages/mcp && yarn workspace @yomiscript/gui-chat-plugin build",
     "typecheck": "tsc -b packages/core packages/kokoro packages/supertonic packages/ja-accent packages/cli packages/mcp"

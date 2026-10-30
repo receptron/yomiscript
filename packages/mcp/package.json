@@ -1,6 +1,6 @@
 {
   "name": "@yomiscript/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server: a speak tool that takes YomiScript written by the calling LLM",
   "license": "Apache-2.0",
   "repository": {
@@ -34,11 +34,11 @@
     "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
   },
   "dependencies": {
-    "@yomiscript/core": "^0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@yomiscript/core": "^0.1.1",
     "@yomiscript/kokoro": "^0.1.0",
     "@yomiscript/supertonic": "^0.1.0",
-    "@modelcontextprotocol/sdk": "^1.32.2",
-    "zod": "^4.6.7",
-    "yomiscript": "^0.1.0"
+    "yomiscript": "^0.1.1",
+    "zod": "^4.6.7"
   }
 }
