@@ -40,7 +40,8 @@ A paper draft is in [`paper/`](paper/).
 
 ## Packages
 
-TypeScript, in [`packages/`](packages/) (to be published on npm). The models are not in the packages.
+TypeScript, in [`packages/`](packages/) (to be published on npm). The models are not in the packages: the CLI and the
+MCP server download them from Hugging Face on first use.
 
 | Package | What it is |
 |---|---|

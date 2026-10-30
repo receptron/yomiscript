@@ -3,14 +3,14 @@
 // module and a byte loader, so the same code runs on onnxruntime-web (browser) and onnxruntime-node (CLI, MCP).
 import type { InferenceSession, Tensor } from "onnxruntime-common";
 import { chunkText, preprocess, textIds, unsupported, type Indexer } from "./preprocess.ts";
+import type { LoadBytes } from "@yomiscript/core";
+export type { LoadBytes };
 
 /** the parts of onnxruntime this engine uses (onnxruntime-web and onnxruntime-node both have them) */
 export interface Ort {
   InferenceSession: { create(model: Uint8Array | ArrayBuffer, options?: InferenceSession.SessionOptions): Promise<InferenceSession> };
   Tensor: new (type: "float32" | "int64", data: Float32Array | BigInt64Array, dims: readonly number[]) => Tensor;
 }
-/** reads a file of the model directory (onnx/…, voice_styles/…) as bytes */
-export type LoadBytes = (path: string) => Promise<Uint8Array | ArrayBuffer>;
 export interface EngineOptions {
   executionProviders?: string[];
 }

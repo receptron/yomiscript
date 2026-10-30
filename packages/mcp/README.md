@@ -17,9 +17,10 @@ of its own (D24).
 
 | variable | default | |
 |---|---|---|
-| `YOMISCRIPT_MODELS` | `~/.cache/yomiscript/kokoro` | directory with `models/` and `voices/` |
+| `YOMISCRIPT_MODELS` | `~/.cache/yomiscript/kokoro`, downloaded on first use | Kokoro models in this directory instead, not downloaded |
 | `YOMISCRIPT_MODEL` | `fp32` | `fp32` or `w16` |
-| `YOMISCRIPT_KATARITE` | `kokoro` | which Katarite: `kokoro` or `supertonic` (models from `$YOMISCRIPT_SUPERTONIC`, default `~/.cache/supertonic3`) |
+| `YOMISCRIPT_KATARITE` | `kokoro` | which Katarite: `kokoro` or `supertonic` |
+| `YOMISCRIPT_SUPERTONIC` | `~/.cache/supertonic3` if it has the models, else `~/.cache/yomiscript/supertonic`, downloaded on first use | Supertonic models in this directory instead, not downloaded |
 | `YOMISCRIPT_PLAY` | `1` | `0`: do not play on this machine |
 | `YOMISCRIPT_RETURN_AUDIO` | `0` | `1`: also return the audio to the client as MCP audio content (base64 WAV) |
 
@@ -28,7 +29,7 @@ of its own (D24).
 Claude Code:
 
 ```bash
-claude mcp add yomiscript -e YOMISCRIPT_MODELS=/path/to/models -- npx -y @yomiscript/mcp
+claude mcp add yomiscript -- npx -y @yomiscript/mcp
 # from this repository, before it is published:
 claude mcp add yomiscript -e YOMISCRIPT_MODELS=$PWD/demo/ys_web -- node $PWD/packages/mcp/dist/server.js
 ```
@@ -40,11 +41,11 @@ Claude Desktop (`claude_desktop_config.json`):
   "mcpServers": {
     "yomiscript": {
       "command": "npx",
-      "args": ["-y", "@yomiscript/mcp"],
-      "env": { "YOMISCRIPT_MODELS": "/path/to/models" }
+      "args": ["-y", "@yomiscript/mcp"]
     }
   }
 }
 ```
 
-TODO: download the models from Hugging Face on first use, so that `YOMISCRIPT_MODELS` is optional.
+The first call downloads the models (Kokoro fp32: 325 MB, from Hugging Face; see the CLI's README), so it takes a
+while; the progress goes to stderr, which MCP clients keep in their logs. Later calls read the cache.

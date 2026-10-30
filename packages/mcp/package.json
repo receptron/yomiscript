@@ -13,6 +13,9 @@
     "url": "https://github.com/receptron/yomiscript/issues"
   },
   "type": "module",
+  "bin": {
+    "yomiscript-mcp": "./dist/server.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -23,18 +26,19 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
   },
   "dependencies": {
-    "@yomiscript/core": "*",
-    "@yomiscript/kokoro": "*",
-    "@yomiscript/supertonic": "*",
+    "@yomiscript/core": "^0.1.0",
+    "@yomiscript/kokoro": "^0.1.0",
+    "@yomiscript/supertonic": "^0.1.0",
     "@modelcontextprotocol/sdk": "^1.32.2",
     "zod": "^4.6.7",
-    "yomiscript": "*"
-  },
-  "bin": {
-    "yomiscript-mcp": "./dist/server.js"
+    "yomiscript": "^0.1.0"
   }
 }

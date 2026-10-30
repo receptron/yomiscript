@@ -31,23 +31,28 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build && tsc -p tsconfig.build.json",
     "dev": "vite",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
   },
   "dependencies": {
-    "@yomiscript/core": "*",
-    "@yomiscript/kokoro": "*"
+    "@yomiscript/core": "^0.1.0",
+    "@yomiscript/kokoro": "^0.1.0",
+    "onnxruntime-web": "1.22.0"
+  },
+  "peerDependencies": {
+    "gui-chat-protocol": "^2.3.0",
+    "vue": "^3.5.0"
   },
   "devDependencies": {
     "gui-chat-protocol": "^2.3.0",
     "vue": "^3.5.43",
     "@vitejs/plugin-vue": "^6.0.10",
     "vue-tsc": "^3.3.14"
-  },
-  "peerDependencies": {
-    "gui-chat-protocol": "^2.3.0",
-    "vue": "^3.5.0"
   }
 }

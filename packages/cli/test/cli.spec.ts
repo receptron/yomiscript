@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import type { Katarite } from "@yomiscript/core";
 import { parseCommand, UsageError } from "../src/args.ts";
 import { EXIT, main, type Io } from "../src/main.ts";
-import { modelsDir, openKatarite, player } from "../src/runtime.ts";
+import { kokoroSource, modelsDir, openKatarite, player, supertonicSource } from "../src/runtime.ts";
 
 const JA = "ja /kʲoː<t:今日> wa<t:は> ‖<t:、> ame<t:雨> desɯ<t:です。> ↘/";
 const fake = (seconds = 0.5): Katarite => ({
@@ -105,6 +105,19 @@ describe("runtime", () => {
     expect(modelsDir("/a", { YOMISCRIPT_MODELS: "/b" })).toBe("/a");
     expect(modelsDir(undefined, { YOMISCRIPT_MODELS: "/b" })).toBe("/b");
     expect(modelsDir(undefined, {})).toMatch(/\.cache\/yomiscript\/kokoro$/);
+  });
+  it("downloads only into the default cache, never into a directory the user named", async () => {
+    expect(kokoroSource("/a", {})).toEqual({ dir: "/a" });
+    expect(kokoroSource(undefined, { YOMISCRIPT_MODELS: "/b" })).toEqual({ dir: "/b" });
+    expect(kokoroSource(undefined, {}, "https://example.com/k/")).toEqual({ dir: modelsDir(undefined, {}), download: "https://example.com/k/" });
+    const home = fs.mkdtempSync(path.join(os.tmpdir(), "yomiscript-home-"));
+    expect(await supertonicSource({ YOMISCRIPT_SUPERTONIC: "/s" }, home)).toEqual({ dir: "/s" });
+    expect(await supertonicSource({}, home, "https://example.com/s/")).toEqual({
+      dir: path.join(home, ".cache/yomiscript/supertonic"),
+      download: "https://example.com/s/",
+    });
+    fs.mkdirSync(path.join(home, ".cache/supertonic3/onnx"), { recursive: true }); // the Python SDK's cache is used as it is
+    expect(await supertonicSource({}, home)).toEqual({ dir: path.join(home, ".cache/supertonic3") });
   });
   it("opens a Katarite once per settings, and again after a failed load", async () => {
     let n = 0;

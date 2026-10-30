@@ -22,3 +22,6 @@ export interface Katarite {
   readonly languages: readonly string[];
   speak(ys: string): Promise<Speech>;
 }
+
+/** how a Katarite's engine reads a file of its model directory (in the browser a fetch, in Node a file or a download) */
+export type LoadBytes = (path: string) => Promise<Uint8Array | ArrayBuffer>;

@@ -10,3 +10,5 @@ sound. Specification: `spec/yomiscript/README.md` in the repository.
   spoken out).
 - `YOMISCRIPT_INSTRUCTIONS`: what an LLM needs to write YomiScript; the description of the `speak` tool in the MCP
   server and the gui-chat-protocol plugin.
+- `LoadBytes`: how a Katarite's engine reads a model file. `@yomiscript/core/node` has `cachedLoader({ dir, baseUrl })`,
+  which reads from a directory and downloads a missing file into it once (Node only).

@@ -4,3 +4,4 @@ export * from "./engine.ts";
 export * from "./prosody.ts";
 export { VOCAB } from "./vocab.ts";
 export * from "./katarite.ts";
+export * from "./models.ts";

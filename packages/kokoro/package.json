@@ -27,13 +27,26 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
   },
   "dependencies": {
-    "@yomiscript/core": "*",
-    "onnxruntime-web": "1.22.0",
-    "onnxruntime-node": "1.22.0",
+    "@yomiscript/core": "^0.1.0",
     "onnxruntime-common": "1.22.0"
+  },
+  "peerDependencies": {
+    "onnxruntime-node": "1.22.0"
+  },
+  "peerDependenciesMeta": {
+    "onnxruntime-node": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "onnxruntime-node": "1.22.0"
   }
 }

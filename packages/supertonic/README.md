@@ -18,8 +18,10 @@ Supertonic predicts only the length of the whole utterance and aligns text and s
 ## Use
 
 ```ts
+import { SUPERTONIC_MODELS_URL } from "@yomiscript/supertonic";
 import { nodeSupertonic } from "@yomiscript/supertonic/node";
-const k = await nodeSupertonic({ dir: `${process.env.HOME}/.cache/supertonic3` }); // voice F1, 8 steps, speed 1.05
+// voice F1, 8 steps, speed 1.05; missing files are downloaded into dir once (omit download to read dir only)
+const k = await nodeSupertonic({ dir: `${process.env.HOME}/.cache/supertonic3`, download: SUPERTONIC_MODELS_URL });
 const speech = await k.speak("ja /tsɯitatɕi<t:一日> kaɾa<t:から> mikka<t:三日> made<t:まで> jasɯmi<t:休み> desɯ<t:です。> ↘/");
 ```
 
@@ -27,7 +29,8 @@ In the browser, build a `SupertonicEngine` with onnxruntime-web and a loader tha
 in a `SupertonicKatarite` with the ambiguous set (`AMBIGUOUS_URL`, `ambiguousSet`).
 
 The model directory is laid out as the Hugging Face repository `Supertone/supertonic-3` (`onnx/…`, `voice_styles/…`,
-385 MB); the Python SDK caches it in `~/.cache/supertonic3`.
+380 MB); the Python SDK caches it in `~/.cache/supertonic3`. `onnxruntime-node` is an optional peer dependency:
+install it for `./node`.
 
 ## The port
 
@@ -50,7 +53,7 @@ non-ASCII letter.
 
 `data/ambiguous.json` lists the 12,875 written forms with kanji that IPAdic gives more than one pronunciation
 (long-vowel spellings merged), built by `tools/build-ambiguous.ts` from the IPAdic CSV files
-(github.com/taku910/mecab, `mecab-ipadic/`; copyright Nara Institute of Science and Technology, see its COPYING). Only
+(github.com/taku910/mecab, `mecab-ipadic/`; copyright Nara Institute of Science and Technology, see its COPYING). IPAdic's license is in `data/IPADIC-COPYING`, which is shipped with the package. Only
 this list is derived from it.
 
 Supertonic's weights are under OpenRAIL-M, with use-based restrictions that must be passed on; they are not part of

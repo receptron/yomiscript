@@ -17,3 +17,6 @@ dict/names/surnames_top200.csv
 dict/names/given_names_by_generation.csv
 dict/names/surnames.koedict
 dict/names/given_names.koedict
+
+# copied in by tools/prepack.mjs when a package is packed
+packages/*/LICENSE

@@ -44,7 +44,8 @@ Packages, on npm as `@yomiscript/core`, `@yomiscript/kokoro`, `@yomiscript/super
 5. **gui-chat-protocol plugin**: speaks the YomiScript and shows the original text (`<t:…>`, D23) while it is spoken,
    highlighting the current word.
 
-Models are not in the npm packages: they are downloaded on first use (Hugging Face) and cached.
+Models are not in the npm packages: the CLI and the MCP server download them on first use from Hugging Face
+(`receptron/yomiscript-kokoro`, `Supertone/supertonic-3`) into `~/.cache/yomiscript/`.
 
 ## To do before release
 
@@ -59,6 +60,9 @@ Models are not in the npm packages: they are downloaded on first use (Hugging Fa
   the original's own run-to-run spread (0.9918 / 0.9943).
 - Done 2026-10-29: Supertonic 3 inference in TypeScript, checked against the Python SDK 1.3.1 with the same noise:
   input ids identical, audio correlation 1.000000 (max abs difference 3.3e-4); the CLI and MCP server offer it.
+- Done 2026-10-30: npm packaging: versions between the packages (`^0.1.0`), LICENSE in each tarball (`tools/prepack.mjs`),
+  public access, a build before packing, `onnxruntime-node` an optional peer of the Katarites (the browser plugin
+  does not install it), and the download of the models on first use.
 - Declaration files keep `.ts` import specifiers (rewriteRelativeImportExtensions rewrites only the JavaScript).
   TypeScript 6 consumers resolve them (checked with an outside project); check older TypeScript before publishing.
 - Licenses: Kokoro (Apache 2.0); Supertonic 3 weights (OpenRAIL-M, with use-based restrictions that must be passed

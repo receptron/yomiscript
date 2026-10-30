@@ -3,14 +3,14 @@
 import type { InferenceSession, Tensor } from "onnxruntime-common";
 import { plan, type Plan, type PlannedSection } from "./plan.ts";
 import { f0Override, join } from "./render.ts";
+import type { LoadBytes } from "@yomiscript/core";
+export type { LoadBytes };
 
 /** the parts of onnxruntime this engine uses (onnxruntime-web and onnxruntime-node both have them) */
 export interface Ort {
   InferenceSession: { create(model: Uint8Array | ArrayBuffer, options?: InferenceSession.SessionOptions): Promise<InferenceSession> };
   Tensor: new (type: "float32" | "int64", data: Float32Array | BigInt64Array, dims: readonly number[]) => Tensor;
 }
-/** reads a file of the model directory (models/<name>.onnx, voices/<name>.bin) as bytes */
-export type LoadBytes = (path: string) => Promise<Uint8Array | ArrayBuffer>;
 export interface EngineOptions {
   /** model file suffix per part: {} = fp32 (identical to the original Kokoro), W16 = fp16 weights */
   suffix?: Partial<Record<"enc" | "f0n" | "dec", string>>;

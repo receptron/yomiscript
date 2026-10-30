@@ -6,9 +6,12 @@ Given a YomiScript written by the original Kokoro front end, it hands Kokoro exa
 
 - `plan(ys)`: what Kokoro is given, per language section (no ONNX).
 - `Engine(ort, loadBytes)`: the ONNX engine, for onnxruntime-web (browser; `W16`, fp16 weights) or onnxruntime-node
-  (`FP32`, identical to the original). `nodeEngine({ dir, model })` from `@yomiscript/kokoro/node`.
+  (`FP32`, identical to the original). `nodeEngine({ dir, model, download })` from `@yomiscript/kokoro/node`; with `download: KOKORO_MODELS_URL`, missing
+  files are downloaded into `dir` once.
 - `KokoroKatarite(engine, { voice })`: core's `Katarite` (audio at 24 kHz and the time of each `<t:…>` span).
 - `KokoroProsody`: Kokoro's predicted pitch written back as `<f0:…>` values (a Yomite tool).
 
-Models: `models/{enc,f0n,dec}[_w16].onnx` and `voices/<voice>.bin` in one directory (made by `demo/ys_web/export_split.py`
-and `export_voices.py`; distribution from Hugging Face is to do, see `docs/plan.md`).
+Models: `models/{enc,f0n,dec}[_w16].onnx` and `voices/<voice>.bin` in one directory, on Hugging Face as
+[receptron/yomiscript-kokoro](https://huggingface.co/receptron/yomiscript-kokoro) (`KOKORO_MODELS_URL`; made by
+`demo/ys_web/export_split.py`, `exact_stft.py` and `quant.py`). `onnxruntime-node` is an optional peer dependency: install it
+for `./node`; in the browser, pass onnxruntime-web to `Engine`.
