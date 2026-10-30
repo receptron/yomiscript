@@ -5,7 +5,7 @@
               hard_set.tsv, e.g. 一日=ついたち): what "plain text plus hints" gives an engine that reads raw text
               -> audio/supertonic_hints/hard.<name>.wav
   --ys LLM [RULE]  the Supertonic Katarite: the LLM's YomiScript (results/<LLM>.<set>.json) as the original text (D23)
-              with kana where RULE says (ambiguous (default), kanji), by packages/katarite-supertonic via render_text.mjs
+              with kana where RULE says (ambiguous (default), kanji), by packages/supertonic via render_text.mjs
               -> audio/supertonic_ys_<LLM>_<RULE>/<set>.<name>.wav
 
 usage: python audio_supertonic.py [--hints | --ys claude|codex [ambiguous|kanji]]

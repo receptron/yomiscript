@@ -6,7 +6,7 @@ not fit in a browser (the UniDic connection table alone is 413 MB gzip), so this
 possible for Japanese.
 
 The LLM writes YomiScript **without pitch values or accent marks**; Kokoro's own predictor makes the prosody, as in the
-original. Everything is compared at the phoneme string Kokoro is given (the Katarite's plan in `packages/katarite-kokoro`).
+original. Everything is compared at the phoneme string Kokoro is given (the Katarite's plan in `packages/kokoro`).
 
 ## Sets (read in place by `sets.mjs`)
 

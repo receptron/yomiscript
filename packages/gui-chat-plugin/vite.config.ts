@@ -20,7 +20,7 @@ const TYPES: Record<string, string> = {
 
 function serveModels(): Plugin {
   return {
-    name: "mulmovoice-serve-models",
+    name: "yomiscript-serve-models",
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = decodeURIComponent((req.url ?? "").split("?")[0]);
@@ -41,7 +41,7 @@ export default defineConfig(({ command }) => ({
   root: command === "serve" ? path.join(here, "demo") : here,
   plugins: [serveModels()],
   // in the demo, the sibling packages come from their TypeScript sources (no build needed)
-  resolve: command === "serve" ? { alias: { "@mulmovoice/core": src("core"), "@mulmovoice/katarite-kokoro": src("katarite-kokoro") } } : {},
+  resolve: command === "serve" ? { alias: { "@yomiscript/core": src("core"), "@yomiscript/kokoro": src("kokoro") } } : {},
   optimizeDeps: { exclude: ["onnxruntime-web"] },
   server: { fs: { allow: [repo] } },
   build: {
@@ -50,7 +50,7 @@ export default defineConfig(({ command }) => ({
       formats: ["es"],
       fileName: (_format, entry) => `${entry}.js`,
     },
-    rollupOptions: { external: ["vue", "gui-chat-protocol", "onnxruntime-web", /^@mulmovoice\//] },
+    rollupOptions: { external: ["vue", "gui-chat-protocol", "onnxruntime-web", /^@yomiscript\//] },
     outDir: path.join(here, "dist"),
     emptyOutDir: true,
   },

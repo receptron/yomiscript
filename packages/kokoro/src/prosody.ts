@@ -1,7 +1,7 @@
 // Kokoro's prosody prediction, used on the Yomite side: runs Kokoro's duration + F0 predictor (enc + f0n) on a
 // YomiScript and writes the predicted pitch back as <f0:…> values (semitones relative to the section's mean),
 // up to three points per unit (start, middle, end). Units that already carry values, and unvoiced units, are left alone.
-import { applyEdits, f0Mark, type Edit } from "@mulmovoice/core";
+import { applyEdits, f0Mark, type Edit } from "@yomiscript/core";
 import type { Engine } from "./engine.ts";
 import { plan } from "./plan.ts";
 

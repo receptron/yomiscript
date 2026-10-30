@@ -1,7 +1,7 @@
 // Katarite (Kokoro-82M): YomiScript -> what Kokoro is given. Pitch comes only from <f0:…> values; accent / stress /
 // tone marks are not interpreted here (the Yomite turns them into values). What stays here is engine-specific:
 // YomiScript IPA -> Kokoro's phoneme symbols and input ids, and the voice for each section.
-import { parse, isJa, VOWELS, type Token } from "@mulmovoice/core";
+import { parse, isJa, VOWELS, type Token } from "@yomiscript/core";
 import { VOCAB } from "./vocab.ts";
 
 export const SR = 24000,

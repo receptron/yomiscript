@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// mulmovoice: speak YomiScript with a Katarite (see main.ts and README.md).
+// yomiscript: speak YomiScript with a Katarite (see main.ts and README.md).
 import { main } from "./main.ts";
 
 async function stdin(): Promise<string | undefined> {

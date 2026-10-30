@@ -5,11 +5,11 @@ import { defineConfig } from "vitest/config";
 const src = (p) => fileURLToPath(new URL(`./packages/${p}/src/index.ts`, import.meta.url));
 export default defineConfig({
   resolve: {
-    // exact names only: subpaths such as @mulmovoice/katarite-kokoro/node resolve as usual
+    // exact names only: subpaths such as @yomiscript/kokoro/node resolve as usual
     alias: [
-      { find: /^@mulmovoice\/core$/, replacement: src("core") },
-      { find: /^@mulmovoice\/katarite-kokoro$/, replacement: src("katarite-kokoro") },
-      { find: /^@mulmovoice\/katarite-supertonic$/, replacement: src("katarite-supertonic") },
+      { find: /^@yomiscript\/core$/, replacement: src("core") },
+      { find: /^@yomiscript\/kokoro$/, replacement: src("kokoro") },
+      { find: /^@yomiscript\/supertonic$/, replacement: src("supertonic") },
     ],
   },
   test: { include: ["test/**/*.spec.js", "test/**/*.spec.ts", "packages/*/test/**/*.spec.ts"] },

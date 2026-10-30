@@ -17,7 +17,7 @@
 
 ## 3. Handling on the synthesis side (reference implementation mix.py)
 
-In the web reference (`demo/ys_web`) the pitch rules below live in the Yomite (`packages/core/src/yomite.ts`), which writes `<f0:…>` values; the Katarite (`packages/katarite-kokoro`) renders only the values (D18). The Python reference (`tts/kokoro_ys`) still applies them in the synthesizer.
+In the web reference (`demo/ys_web`) the pitch rules below live in the Yomite (`packages/core/src/yomite.ts`), which writes `<f0:…>` values; the Katarite (`packages/kokoro`) renders only the values (D18). The Python reference (`tts/kokoro_ys`) still applies them in the synthesizer.
 - Each language tag has its own policy:
   - `ja`: build F0 (pitch) from the accent marks and override it
   - `en-US` / `en-GB`: only pass the stress marks; do not override F0 (Kokoro's natural intonation is better)

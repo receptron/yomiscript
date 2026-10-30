@@ -31,11 +31,11 @@ pitch:
 <script src="ort/ort.webgpu.min.js"></script>
 <!-- the TypeScript packages, built (yarn build) and served from pkg/ (a link to packages/) -->
 <script type="importmap">
-  { "imports": { "@mulmovoice/core": "./pkg/core/dist/index.js", "@mulmovoice/katarite-kokoro": "./pkg/katarite-kokoro/dist/index.js" } }
+  { "imports": { "@yomiscript/core": "./pkg/core/dist/index.js", "@yomiscript/kokoro": "./pkg/kokoro/dist/index.js" } }
 </script>
 <script type="module">
-  import * as Y from "@mulmovoice/katarite-kokoro";
-  import { realize } from "@mulmovoice/core";
+  import * as Y from "@yomiscript/kokoro";
+  import { realize } from "@yomiscript/core";
   const { KokoroProsody } = Y;
   ort.env.wasm.wasmPaths = new URL("ort/", location.href).href;
   ort.env.wasm.numThreads = crossOriginIsolated ? +new URLSearchParams(location.search).get("t") || Math.min(4, navigator.hardwareConcurrency || 1) : 1;

@@ -4,7 +4,7 @@
 import fs from "fs";
 import path from "path";
 import { K } from "../../demo/ys_web/node.mjs";
-import { parse } from "@mulmovoice/core";
+import { parse } from "@yomiscript/core";
 import { HERE, SETS } from "./sets.mjs";
 
 const OUT = path.join(HERE, "results");

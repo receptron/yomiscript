@@ -1,6 +1,6 @@
 // The plugin's pure parts, without models: the tool definition, execute's validation, the timeline.
 import { describe, expect, it } from "vitest";
-import { YOMISCRIPT_INSTRUCTIONS, parse } from "@mulmovoice/core";
+import { YOMISCRIPT_INSTRUCTIONS, parse } from "@yomiscript/core";
 import { TOOL_DEFINITION, TOOL_NAME } from "../src/core/definition.ts";
 import { executeSpeak } from "../src/core/plugin.ts";
 import { SAMPLES } from "../src/core/samples.ts";

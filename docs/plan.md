@@ -30,13 +30,14 @@ Evidence so far (`eval/browser_tts`, one run each, provisional gold):
 The shipped packages contain no Python. Python stays only in research and evaluation that is not shipped
 (Yomi-0, the ONNX export, `eval/`, the Kokoro Yomites that reproduce the original front end for the parity checks).
 
-Packages (names to decide):
+Packages, on npm as `@yomiscript/core`, `@yomiscript/kokoro`, `@yomiscript/supertonic`, `@yomiscript/mcp`,
+`@yomiscript/gui-chat-plugin`, and the CLI as `yomiscript`:
 
 1. **core**: the YomiScript parser and types, the rule prosody, the Katarite interface, the
    YomiScript text of the tool description (the prompt: the subset a Katarite needs, examples).
-2. **katarite-kokoro**: the plan (YomiScript -> Kokoro input), the engine and Kokoro's prosody, with a loader for onnxruntime-web (w16) and
+2. **kokoro**: the plan (YomiScript -> Kokoro input), the engine and Kokoro's prosody, with a loader for onnxruntime-web (w16) and
    onnxruntime-node (fp32).
-3. **katarite-supertonic**: the text with kana hints (`text.ts`, `ambiguous.json`) and Supertonic's inference in
+3. **supertonic**: the text with kana hints (`text.ts`, `ambiguous.json`) and Supertonic's inference in
    TypeScript (preprocessing, duration, the flow-matching loop, vocoder). The comparison in `eval/browser_tts` still
    runs the Python SDK (`audio_supertonic.py`).
 4. **mcp**: an MCP server with a `speak` tool (YomiScript in; plays it or returns audio), and a CLI on the same code.
@@ -51,7 +52,7 @@ Models are not in the npm packages: they are downloaded on first use (Hugging Fa
   LLM utterance fails; the original front end chunks before Kokoro).
 - Katarite: whether to accept phonemic `hi` / `ni` for Japanese as `çi` / `ɲi` (LLMs sometimes write them; the
   original never does, so parity is unaffected). A behaviour change, to decide explicitly.
-- Done 2026-10-29: the JavaScript is TypeScript in `packages/` (core, katarite-kokoro, katarite-supertonic text); the
+- Done 2026-10-29: the JavaScript is TypeScript in `packages/` (core, kokoro, supertonic text); the
   demo uses the built packages through an import map.
 - Done 2026-10-29: fp32 on onnxruntime-node against the original Kokoro (`eval/kokoro_parity` chunks): audio
   correlation 0.9910 (ja, 50 chunks) and 0.9944 (en, 23), the same as onnxruntime-web (0.9913 / 0.9939) and within

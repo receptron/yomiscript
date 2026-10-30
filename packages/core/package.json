@@ -1,5 +1,5 @@
 {
-  "name": "@mulmovoice/core",
+  "name": "@yomiscript/core",
   "version": "0.1.0",
   "description": "YomiScript: parser, types and the rule-based prosody (Yomite tools)",
   "license": "Apache-2.0",

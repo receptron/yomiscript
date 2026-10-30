@@ -1,4 +1,4 @@
-# @mulmovoice/katarite-supertonic
+# @yomiscript/supertonic
 
 The Supertonic 3 Katarite: YomiScript in, 44.1 kHz audio out, in TypeScript with no Python (D24). It runs on
 onnxruntime-node (CLI, MCP) and onnxruntime-web (browser).
@@ -18,7 +18,7 @@ Supertonic predicts only the length of the whole utterance and aligns text and s
 ## Use
 
 ```ts
-import { nodeSupertonic } from "@mulmovoice/katarite-supertonic/node";
+import { nodeSupertonic } from "@yomiscript/supertonic/node";
 const k = await nodeSupertonic({ dir: `${process.env.HOME}/.cache/supertonic3` }); // voice F1, 8 steps, speed 1.05
 const speech = await k.speak("ja /tsɯitatɕi<t:一日> kaɾa<t:から> mikka<t:三日> made<t:まで> jasɯmi<t:休み> desɯ<t:です。> ↘/");
 ```

@@ -1,6 +1,6 @@
 // The CLI's work, with its inputs and outputs passed in (the bin, cli.ts, gives it the real ones).
 import fs from "node:fs/promises";
-import { YOMISCRIPT_INSTRUCTIONS } from "@mulmovoice/core";
+import { YOMISCRIPT_INSTRUCTIONS } from "@yomiscript/core";
 import { parseCommand, UsageError, USAGE, type SpeakCommand } from "./args.ts";
 import { durationOf, openKatarite, originalText, playWav, writeWav, KATARITES, type KatariteFactory } from "./runtime.ts";
 

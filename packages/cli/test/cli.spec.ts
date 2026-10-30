@@ -3,7 +3,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { Katarite } from "@mulmovoice/core";
+import type { Katarite } from "@yomiscript/core";
 import { parseCommand, UsageError } from "../src/args.ts";
 import { EXIT, main, type Io } from "../src/main.ts";
 import { modelsDir, openKatarite, player } from "../src/runtime.ts";
@@ -27,7 +27,7 @@ function io(stdin?: string, played = true) {
   };
   return { x, out, err, plays };
 }
-const tmp = (name: string) => path.join(fs.mkdtempSync(path.join(os.tmpdir(), "mulmovoice-test-")), name);
+const tmp = (name: string) => path.join(fs.mkdtempSync(path.join(os.tmpdir(), "yomiscript-test-")), name);
 
 describe("command line", () => {
   it("reads speak with its options", () => {
@@ -102,9 +102,9 @@ describe("main", () => {
 
 describe("runtime", () => {
   it("finds the models from the option, then the environment, then the cache", () => {
-    expect(modelsDir("/a", { MULMOVOICE_MODELS: "/b" })).toBe("/a");
-    expect(modelsDir(undefined, { MULMOVOICE_MODELS: "/b" })).toBe("/b");
-    expect(modelsDir(undefined, {})).toMatch(/\.cache\/mulmovoice\/kokoro$/);
+    expect(modelsDir("/a", { YOMISCRIPT_MODELS: "/b" })).toBe("/a");
+    expect(modelsDir(undefined, { YOMISCRIPT_MODELS: "/b" })).toBe("/b");
+    expect(modelsDir(undefined, {})).toMatch(/\.cache\/yomiscript\/kokoro$/);
   });
   it("opens a Katarite once per settings, and again after a failed load", async () => {
     let n = 0;

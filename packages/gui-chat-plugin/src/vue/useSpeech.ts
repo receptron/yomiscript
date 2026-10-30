@@ -1,7 +1,7 @@
 // The state of one spoken result: load and synthesize, play / stop, and the span being spoken (following the audio
 // clock with requestAnimationFrame).
 import { onBeforeUnmount, onMounted, ref, type Ref } from "vue";
-import type { Speech } from "@mulmovoice/core";
+import type { Speech } from "@yomiscript/core";
 import { play, synthesize, type Playback } from "../core/speaker.ts";
 import { spanAt } from "../core/timeline.ts";
 

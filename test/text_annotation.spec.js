@@ -2,8 +2,8 @@
 // without the annotations, the rule Yomite keeps them in place, and the spans give back the text.
 import fs from "fs";
 import { describe, expect, it } from "vitest";
-import { parse, realize } from "@mulmovoice/core";
-import { plan } from "@mulmovoice/katarite-kokoro";
+import { parse, realize } from "@yomiscript/core";
+import { plan } from "@yomiscript/kokoro";
 
 const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url)));
 const ORIGINAL = read("./fixtures/kokoro_original.json");

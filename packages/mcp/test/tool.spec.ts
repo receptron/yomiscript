@@ -2,7 +2,7 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { describe, expect, it } from "vitest";
-import type { Katarite, Speech } from "@mulmovoice/core";
+import type { Katarite, Speech } from "@yomiscript/core";
 import { createServer, TOOL_DESCRIPTION, type SpeakDeps } from "../src/tool.ts";
 
 const JA = "ja /kʲoː<t:今日> wa<t:は> ‖<t:、> ame<t:雨> desɯ<t:です。> ↘/";

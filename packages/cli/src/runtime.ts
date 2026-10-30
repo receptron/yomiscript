@@ -4,12 +4,12 @@ import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { parse, type Katarite, type Speech } from "@mulmovoice/core";
-import { wav } from "@mulmovoice/katarite-kokoro";
+import { parse, type Katarite, type Speech } from "@yomiscript/core";
+import { wav } from "@yomiscript/kokoro";
 
 export type ModelPrecision = "fp32" | "w16";
 export interface KatariteOptions {
-  /** directory with models/ and voices/; default: $MULMOVOICE_MODELS, then ~/.cache/mulmovoice/kokoro */
+  /** directory with models/ and voices/; default: $YOMISCRIPT_MODELS, then ~/.cache/yomiscript/kokoro */
   models?: string;
   /** fp32 (identical to the original Kokoro, the default in Node) or w16 (fp16 weights, as in the browser) */
   model?: ModelPrecision;
@@ -19,33 +19,33 @@ export interface KatariteOptions {
 export type KatariteFactory = (opts: KatariteOptions) => Promise<Katarite>;
 
 export function modelsDir(opt?: string, env: NodeJS.ProcessEnv = process.env): string {
-  return opt ?? env.MULMOVOICE_MODELS ?? path.join(os.homedir(), ".cache", "mulmovoice", "kokoro");
+  return opt ?? env.YOMISCRIPT_MODELS ?? path.join(os.homedir(), ".cache", "yomiscript", "kokoro");
 }
 
 async function kokoro(opts: KatariteOptions): Promise<Katarite> {
   // loaded here, not at the top: onnxruntime-node is only needed once something is spoken
-  const { nodeEngine } = await import("@mulmovoice/katarite-kokoro/node");
-  const { KokoroKatarite } = await import("@mulmovoice/katarite-kokoro");
+  const { nodeEngine } = await import("@yomiscript/kokoro/node");
+  const { KokoroKatarite } = await import("@yomiscript/kokoro");
   const dir = modelsDir(opts.models);
   try {
     await fs.access(path.join(dir, "models"));
   } catch {
-    throw new Error(`no Kokoro models in ${dir} (expected models/ and voices/; set MULMOVOICE_MODELS or --models)`);
+    throw new Error(`no Kokoro models in ${dir} (expected models/ and voices/; set YOMISCRIPT_MODELS or --models)`);
   }
   return new KokoroKatarite(await nodeEngine({ dir, model: opts.model ?? "fp32" }), { voice: opts.voice });
 }
-/** Supertonic's models: $MULMOVOICE_SUPERTONIC, then ~/.cache/supertonic3 (where its Python SDK caches them) */
+/** Supertonic's models: $YOMISCRIPT_SUPERTONIC, then ~/.cache/supertonic3 (where its Python SDK caches them) */
 export function supertonicDir(env: NodeJS.ProcessEnv = process.env): string {
-  return env.MULMOVOICE_SUPERTONIC ?? path.join(os.homedir(), ".cache", "supertonic3");
+  return env.YOMISCRIPT_SUPERTONIC ?? path.join(os.homedir(), ".cache", "supertonic3");
 }
 
 async function supertonic(): Promise<Katarite> {
-  const { nodeSupertonic } = await import("@mulmovoice/katarite-supertonic/node");
+  const { nodeSupertonic } = await import("@yomiscript/supertonic/node");
   const dir = supertonicDir();
   try {
     await fs.access(path.join(dir, "onnx"));
   } catch {
-    throw new Error(`no Supertonic models in ${dir} (expected onnx/ and voice_styles/ from Supertone/supertonic-3; set MULMOVOICE_SUPERTONIC)`);
+    throw new Error(`no Supertonic models in ${dir} (expected onnx/ and voice_styles/ from Supertone/supertonic-3; set YOMISCRIPT_SUPERTONIC)`);
   }
   return nodeSupertonic({ dir });
 }
@@ -72,7 +72,7 @@ export const durationOf = (s: Speech): number => s.samples.length / s.sampleRate
 export const toWav = (s: Speech): Buffer => Buffer.from(wav(s.samples, s.sampleRate));
 
 export async function writeWav(s: Speech, file?: string): Promise<string> {
-  const out = file ?? path.join(os.tmpdir(), `mulmovoice-${process.pid}-${Date.now()}.wav`);
+  const out = file ?? path.join(os.tmpdir(), `yomiscript-${process.pid}-${Date.now()}.wav`);
   await fs.writeFile(out, toWav(s));
   return out;
 }

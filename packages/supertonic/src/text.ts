@@ -3,7 +3,7 @@
 // The kana is written by pronunciation, as the YomiScript says it: は → わ, へ → え, を → お, ー for every long vowel
 // (spelling it by the vowel would make カレー into かれい, a different word), っ for a geminate, ん for the moraic nasal.
 // Pitch values and accent marks are dropped: the engine makes its own prosody.
-import { parse, type Token, type Utterance } from "@mulmovoice/core";
+import { parse, type Token, type Utterance } from "@yomiscript/core";
 
 const VOWEL: Record<string, string> = { a: "あ", i: "い", ɯ: "う", e: "え", o: "お" };
 const ROWS: Record<string, string> = {

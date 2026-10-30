@@ -1,7 +1,7 @@
 // The plugin logic without UI: validate the LLM's YomiScript with the parser and hand it to the view. A parse error
 // goes back to the LLM as the result, so it can correct the YomiScript and call again.
 import type { ToolContext, ToolPluginCore, ToolResult } from "gui-chat-protocol";
-import { parse } from "@mulmovoice/core";
+import { parse } from "@yomiscript/core";
 import { TOOL_DEFINITION } from "./definition.ts";
 import { SAMPLES } from "./samples.ts";
 import type { SpeakArgs, SpeakData } from "./types.ts";

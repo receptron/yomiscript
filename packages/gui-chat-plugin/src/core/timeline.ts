@@ -1,5 +1,5 @@
 // Which span of the original text is being spoken at a time: the highlight in the view.
-import type { SpanTime } from "@mulmovoice/core";
+import type { SpanTime } from "@yomiscript/core";
 
 /** the span being spoken at time t (seconds from the start of the audio), or -1 between and outside spans */
 export function spanAt(times: readonly SpanTime[], t: number): number {

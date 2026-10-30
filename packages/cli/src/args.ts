@@ -3,16 +3,16 @@ import { parseArgs } from "node:util";
 import type { ModelPrecision } from "./runtime.ts";
 
 export const USAGE = `usage:
-  mulmovoice speak [YomiScript]     speak it (from the argument, --file, or stdin)
+  yomiscript speak [YomiScript]     speak it (from the argument, --file, or stdin)
       --out FILE.wav                write the audio instead of playing it (add --play to do both)
       --play                        play even with --out
       --katarite NAME               kokoro (default) | supertonic
       --model fp32|w16              Kokoro weights: fp32 (default, identical to the original) or w16
-      --models DIR                  directory with models/ and voices/ (default: $MULMOVOICE_MODELS)
+      --models DIR                  directory with models/ and voices/ (default: $YOMISCRIPT_MODELS)
       --voice NAME                  a voice for everything (Kokoro: jf_alpha, jm_kumo, af_heart, …)
       --file FILE                   read the YomiScript from a file ("-" = stdin)
-  mulmovoice instructions           print how to write YomiScript (for an LLM's prompt)
-  mulmovoice --help`;
+  yomiscript instructions           print how to write YomiScript (for an LLM's prompt)
+  yomiscript --help`;
 
 export interface SpeakCommand {
   cmd: "speak";

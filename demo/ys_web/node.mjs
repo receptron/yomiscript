@@ -1,11 +1,11 @@
-// The Kokoro Katarite in Node for the eval scripts: the katarite-kokoro package (built: yarn build) with
+// The Kokoro Katarite in Node for the eval scripts: the @yomiscript/kokoro package (built: yarn build) with
 // onnxruntime-web, as in the browser (the parity results in eval/kokoro_parity were measured this way), reading the
 // demo's models and voices (see README.md for how they get there). The CLI and MCP server use onnxruntime-node instead.
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import * as ort from "onnxruntime-web";
-import * as K from "@mulmovoice/katarite-kokoro";
+import * as K from "@yomiscript/kokoro";
 
 export const WEB = path.join(path.dirname(fileURLToPath(import.meta.url)), "web");
 export { K, ort };

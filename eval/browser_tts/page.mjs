@@ -3,7 +3,7 @@
 // usage: node page.mjs   (after audio_*.{mjs,py,sh} and score.mjs)
 import fs from "fs";
 import path from "path";
-import { ambiguousSet, toText } from "@mulmovoice/katarite-supertonic";
+import { ambiguousSet, toText } from "@yomiscript/supertonic";
 import { HERE, SETS } from "./sets.mjs";
 
 const ITEMS = JSON.parse(fs.readFileSync(path.join(HERE, "results/items.json"), "utf8"));
@@ -19,7 +19,7 @@ export const SYSTEMS = [
   { key: "system", label: "macOS system voice (Web Speech on a Mac)" },
 ];
 // what the Supertonic Katarite was given: the original text with kana hints, from the LLM's YomiScript
-const AMBIGUOUS = ambiguousSet(JSON.parse(fs.readFileSync(path.join(HERE, "../../packages/katarite-supertonic/data/ambiguous.json"), "utf8")));
+const AMBIGUOUS = ambiguousSet(JSON.parse(fs.readFileSync(path.join(HERE, "../../packages/supertonic/data/ambiguous.json"), "utf8")));
 function kanaGiven(key, set, name) {
   const [llm, rule] = key.replace("supertonic_ys_", "").split("_");
   const ys = JSON.parse(fs.readFileSync(path.join(HERE, `results/${llm}.${set}.json`), "utf8")).output?.[name];

@@ -1,4 +1,4 @@
-# @mulmovoice/core
+# @yomiscript/core
 
 YomiScript: the notation in which an LLM (or any Yomite) writes how a text is read, and a Katarite turns it into
 sound. Specification: `spec/yomiscript/README.md` in the repository.

@@ -3,7 +3,7 @@
 // so the LLM can fix what it wrote. Everything it needs from outside comes in through SpeakDeps.
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import { parse, YOMISCRIPT_INSTRUCTIONS, type Katarite, type Speech } from "@mulmovoice/core";
+import { parse, YOMISCRIPT_INSTRUCTIONS, type Katarite, type Speech } from "@yomiscript/core";
 import { z } from "zod";
 
 export interface SpeakDeps {
@@ -47,7 +47,7 @@ export async function speakTool(ys: string, deps: SpeakDeps): Promise<CallToolRe
 }
 
 export function createServer(deps: SpeakDeps, version = "0.1.0"): McpServer {
-  const server = new McpServer({ name: "mulmovoice", version });
+  const server = new McpServer({ name: "yomiscript", version });
   // one utterance at a time, so two calls do not talk over each other
   let queue: Promise<unknown> = Promise.resolve();
   server.registerTool(

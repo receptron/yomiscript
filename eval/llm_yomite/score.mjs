@@ -4,7 +4,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { parse, isJa, realize } from "@mulmovoice/core";
+import { parse, isJa, realize } from "@yomiscript/core";
 import { K, WEB } from "../../demo/ys_web/node.mjs";
 const HERE = path.dirname(fileURLToPath(import.meta.url)),
   OUT = path.join(HERE, "results");

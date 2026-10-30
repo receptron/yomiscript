@@ -6,7 +6,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { realize } from "@mulmovoice/core";
+import { realize } from "@yomiscript/core";
 import { call, json } from "./llm.mjs";
 const HERE = path.dirname(fileURLToPath(import.meta.url)),
   OUT = path.join(HERE, "results");

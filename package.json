@@ -12,7 +12,7 @@
     "lint": "eslint . --cache && ruff check",
     "test": "vitest run",
     "build": "yarn workspaces run build",
-    "typecheck": "tsc -b packages/core packages/katarite-kokoro packages/katarite-supertonic packages/cli packages/mcp"
+    "typecheck": "tsc -b packages/core packages/kokoro packages/supertonic packages/cli packages/mcp"
   },
   "dependencies": {
     "onnxruntime-web": "1.22.0"

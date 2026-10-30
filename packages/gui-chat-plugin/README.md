@@ -1,11 +1,11 @@
-# @mulmovoice/gui-chat-plugin
+# @yomiscript/gui-chat-plugin
 
 A [GUI Chat Protocol](https://github.com/receptron/gui-chat-protocol) plugin that lets the LLM speak. The LLM calls
 the `speak` tool with one YomiScript utterance it wrote itself; the plugin speaks it in the browser with the Kokoro
 Katarite (fp16 weights on onnxruntime-web, D24) and shows the original text (`<t:…>`, D23), highlighting the word
 being spoken.
 
-- **Tool:** `speak({ yomiscript })`. Its description is `YOMISCRIPT_INSTRUCTIONS` from `@mulmovoice/core` with a short
+- **Tool:** `speak({ yomiscript })`. Its description is `YOMISCRIPT_INSTRUCTIONS` from `@yomiscript/core` with a short
   preface. `execute` checks the YomiScript with the parser. A parse error goes back to the LLM as the result message
   (no card) with instructions to fix it and call again.
 - **View:** the text with the current span highlighted (requestAnimationFrame against the AudioContext clock), play /
@@ -19,7 +19,7 @@ being spoken.
 ## Setup in a host
 
 ```ts
-import { plugin, configureSpeaker } from "@mulmovoice/gui-chat-plugin";
+import { plugin, configureSpeaker } from "@yomiscript/gui-chat-plugin";
 
 configureSpeaker({
   modelBase: "https://example.com/kokoro/", // models/{enc,f0n,dec}_w16.onnx and voices/<voice>.bin
@@ -29,7 +29,7 @@ configureSpeaker({
 ```
 
 The models are downloaded on first use: about 163 MB, plus 0.5 MB per voice. The browser caches them.
-`onnxruntime-web` is pinned to 1.22.0 through `@mulmovoice/katarite-kokoro`.
+`onnxruntime-web` is pinned to 1.22.0 through `@yomiscript/kokoro`.
 
 ## Demo
 

@@ -1,8 +1,8 @@
 // The Kokoro Katarite in the browser: onnxruntime-web with the w16 models (D24), loaded once and shared by every
 // tool result. Where the models, voices and onnxruntime's wasm files are served from is set with configureSpeaker().
 import * as ort from "onnxruntime-web";
-import type { Speech } from "@mulmovoice/core";
-import { Engine, KokoroKatarite, W16, type Ort } from "@mulmovoice/katarite-kokoro";
+import type { Speech } from "@yomiscript/core";
+import { Engine, KokoroKatarite, W16, type Ort } from "@yomiscript/kokoro";
 
 export interface SpeakerOptions {
   /** URL of the directory with models/<part>_w16.onnx and voices/<voice>.bin */

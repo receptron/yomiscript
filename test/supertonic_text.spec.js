@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toText } from "@mulmovoice/katarite-supertonic";
+import { toText } from "@yomiscript/supertonic";
 
 describe("Supertonic Katarite: the reading as kana, by pronunciation", () => {
   // one span with kanji over the whole utterance: the rule "kanji" gives all of it as kana

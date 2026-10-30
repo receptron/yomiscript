@@ -1,6 +1,6 @@
 // The Supertonic Katarite behind the shared interface (core's Katarite): YomiScript in, audio out. The engine reads
 // text, so it is given the original text of each span with kana where the reading could go wrong (text.ts, D23).
-import { parse, type Katarite, type Speech } from "@mulmovoice/core";
+import { parse, type Katarite, type Speech } from "@yomiscript/core";
 import { DEFAULTS, type SupertonicEngine } from "./engine.ts";
 import { SUPERTONIC_LANGUAGES, UNKNOWN_LANGUAGE } from "./preprocess.ts";
 import { toText, type HintRule } from "./text.ts";

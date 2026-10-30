@@ -11,15 +11,15 @@ numbered D1, D2, … in `docs/decisions.md`. A change to the notation or to who 
 silent edit.
 
 ## Stack & package manager
-- **TypeScript** for everything that ships (D24): yarn workspaces in `packages/` (core, katarite-kokoro,
-  katarite-supertonic, cli, mcp, gui-chat-plugin), `tsc -b` to `dist/` (`yarn build`). Relative imports use `.ts`
-  (rewritten to `.js` on build); packages import each other by name (`@mulmovoice/core`). The browser demo loads the
+- **TypeScript** for everything that ships (D24): yarn workspaces in `packages/` (core, kokoro,
+  supertonic, cli, mcp, gui-chat-plugin; published as `@yomiscript/*`, the CLI as `yomiscript`), `tsc -b` to `dist/` (`yarn build`). Relative imports use `.ts`
+  (rewritten to `.js` on build); packages import each other by name (`@yomiscript/core`). The browser demo loads the
   built packages through an import map; Node scripts (`eval/`, `yomite/`) import the built packages too, so run
   `yarn build` after changing a package. Vitest reads the sources directly. No Python in what ships.
 - **Python 3.11+**: each part keeps its own `requirements.txt` (`eval/`, `models/yomi/mlx/` with its own `.venv`).
   The Kokoro Yomites need `pip install kokoro "misaki[ja]"`.
 - **yarn** (classic) workspaces: the root `package.json` holds the dev tools, each package its own dependencies.
-  Use `yarn add` (`yarn workspace @mulmovoice/<p> add …`); don't hand-edit versions. `onnxruntime-web` and
+  Use `yarn add` (`yarn workspace @yomiscript/<p> add …`); don't hand-edit versions. `onnxruntime-web` and
   `onnxruntime-node` are pinned to exactly **1.22.0**: the parity results in `eval/kokoro_parity` were measured with
   it, so a new version is a change to re-measure, not a routine bump.
 
@@ -30,7 +30,7 @@ silent edit.
 - `yarn test` runs Vitest (`test/**/*.spec.js`, `packages/*/test/**/*.spec.ts`). Tests run without models, Python, network or API keys. Mock
   external services; never call them.
 - Yomi-0: `cd models/yomi/mlx && .venv/bin/python -m pytest -q tests`.
-- When you touch the Kokoro Katarite (`packages/katarite-kokoro`, the parser in `packages/core`) or a Kokoro Yomite
+- When you touch the Kokoro Katarite (`packages/kokoro`, the parser in `packages/core`) or a Kokoro Yomite
   (`yomite/*_kokoro/`), `yarn test` checks the phoneme string and ids. The audio check is `eval/kokoro_parity`
   (README there). It needs the exported ONNX models and takes minutes; run it before claiming parity.
 
@@ -53,7 +53,7 @@ A value or function two places need lives in ONE place, and both import it. Neve
 copies in sync" comment. Examples already in the repo:
 - The parser, the rule prosody and the YomiScript instructions for LLMs (`YOMISCRIPT_INSTRUCTIONS`) live in
   `packages/core`; the demo, the eval scripts, the CLI, the MCP server and the plugin all import them.
-- Kokoro's vocabulary lives in `packages/katarite-kokoro/src/vocab.ts`; `VOWELS` in core's `yomiscript.ts`;
+- Kokoro's vocabulary lives in `packages/kokoro/src/vocab.ts`; `VOWELS` in core's `yomiscript.ts`;
   `f0_override.py` is the one Python copy of the F0 rendering (for the Python checks only).
 - `demo/ys_web/node.mjs` is the eval scripts' entry to the Kokoro package with onnxruntime-web;
   `yomite/kokoro_yomite.mjs` is what the Kokoro Yomites share; the CLI's `runtime.ts` is what the CLI and MCP share.
@@ -81,7 +81,7 @@ predate this rule.
 ## Layout
 - `spec/`: YomiScript and lexicon specifications. `docs/`: decisions (D…), hypotheses (H…) and the distribution plan
   (`plan.md`: TypeScript on npm, no Python in what ships, D24).
-- `packages/`: what ships on npm (D24): `core` (YomiScript), `katarite-kokoro`, `katarite-supertonic`, `cli`,
+- `packages/`: what ships on npm (D24): `core` (YomiScript), `kokoro`, `supertonic`, `cli`,
   `mcp`, `gui-chat-plugin`.
 - `demo/ys_web/`: the browser demo (`web/`, using the built packages). It also has the ONNX export
   (`export_split.py`, `exact_stft.py`).

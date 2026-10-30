@@ -1,6 +1,6 @@
 // The tool the LLM calls: one YomiScript utterance in, spoken in the browser while its text is shown.
 import type { ToolDefinition } from "gui-chat-protocol";
-import { YOMISCRIPT_INSTRUCTIONS } from "@mulmovoice/core";
+import { YOMISCRIPT_INSTRUCTIONS } from "@yomiscript/core";
 
 export const TOOL_NAME = "speak";
 

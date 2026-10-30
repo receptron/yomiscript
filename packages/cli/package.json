@@ -1,7 +1,7 @@
 {
-  "name": "@mulmovoice/cli",
+  "name": "yomiscript",
   "version": "0.1.0",
-  "description": "mulmovoice CLI: speak YomiScript with a Katarite",
+  "description": "YomiScript CLI: speak YomiScript with a Katarite",
   "license": "Apache-2.0",
   "type": "module",
   "exports": {
@@ -18,11 +18,11 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@mulmovoice/core": "*",
-    "@mulmovoice/katarite-kokoro": "*",
-    "@mulmovoice/katarite-supertonic": "*"
+    "@yomiscript/core": "*",
+    "@yomiscript/kokoro": "*",
+    "@yomiscript/supertonic": "*"
   },
   "bin": {
-    "mulmovoice": "./dist/cli.js"
+    "yomiscript": "./dist/cli.js"
   }
 }

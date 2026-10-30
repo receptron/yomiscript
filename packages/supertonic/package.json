@@ -1,5 +1,5 @@
 {
-  "name": "@mulmovoice/katarite-supertonic",
+  "name": "@yomiscript/supertonic",
   "version": "0.1.0",
   "description": "Supertonic 3 Katarite: YomiScript -> original text with kana hints for ambiguous words -> audio",
   "license": "Apache-2.0",
@@ -23,7 +23,7 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@mulmovoice/core": "*",
+    "@yomiscript/core": "*",
     "onnxruntime-web": "1.22.0",
     "onnxruntime-node": "1.22.0",
     "onnxruntime-common": "1.22.0"

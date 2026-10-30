@@ -4,7 +4,7 @@ Turns Japanese text into YomiScript, optionally with pitch values, using the two
 
 ```
 Japanese text ─► g2p.py (Kokoro's Japanese front end: misaki Cutlet + UniDic) ─► YomiScript: IPA morae, words, boundaries
-              ─► Kokoro's prosody predictor (ONNX enc + f0n, packages/katarite-kokoro/src/prosody.ts) ─► + <f0:…> values
+              ─► Kokoro's prosody predictor (ONNX enc + f0n, packages/kokoro/src/prosody.ts) ─► + <f0:…> values
 ```
 
 - `g2p.py` runs the original front end unchanged (`KPipeline(lang_code='j', model=False)`: line splitting, chunking at 400 characters, truncation at 510 phonemes) and rewrites each chunk's phoneme string as YomiScript (D22):

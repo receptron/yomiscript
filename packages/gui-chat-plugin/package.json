@@ -1,5 +1,5 @@
 {
-  "name": "@mulmovoice/gui-chat-plugin",
+  "name": "@yomiscript/gui-chat-plugin",
   "version": "0.1.0",
   "description": "gui-chat-protocol plugin: the LLM speaks (YomiScript) while the original text is shown",
   "license": "Apache-2.0",
@@ -28,8 +28,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@mulmovoice/core": "*",
-    "@mulmovoice/katarite-kokoro": "*"
+    "@yomiscript/core": "*",
+    "@yomiscript/kokoro": "*"
   },
   "devDependencies": {
     "gui-chat-protocol": "^2.3.0",

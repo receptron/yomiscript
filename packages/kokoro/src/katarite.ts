@@ -1,5 +1,5 @@
 // The Kokoro Katarite behind the shared interface (core's Katarite): YomiScript in, audio and span times out.
-import { parse, type Katarite, type SpanTime, type Speech } from "@mulmovoice/core";
+import { parse, type Katarite, type SpanTime, type Speech } from "@yomiscript/core";
 import type { Engine } from "./engine.ts";
 import { plan, SR, type PlannedSection } from "./plan.ts";
 import { join } from "./render.ts";
