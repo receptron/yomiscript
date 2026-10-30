@@ -1,5 +1,7 @@
 # MoLD (Mixture of Language-specific Dictionaries, working name)
 
+> **Status: earlier experiment** (Yomi-0's memories), not used by the packages; see [`models/yomi/`](../models/yomi/).
+
 A design that combines language-neutral **shared weights** with a **Memory** that can be swapped per language or dialect (D10, D11). At run time, only the shared weights and the one Memory currently in use are loaded. As a result, RAM usage is expected to barely grow as supported languages are added (estimate, to be tested in H11).
 
 ## Compiling lexicons into Memory (H12)

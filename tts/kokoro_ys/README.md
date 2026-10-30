@@ -1,5 +1,8 @@
 # tts/kokoro_ys — YomiScript → Kokoro-82M speech synthesis (reference implementation)
 
+> **Status: earlier experiment in the old notation.** The Kokoro Katarite is now `@yomiscript/kokoro`
+> ([`packages/kokoro/`](../../packages/kokoro/)), which reproduces the original Kokoro exactly (D21, D22).
+
 A reference implementation that generates speech from YomiScript input alone. It does not use text analysis (misaki's front stage); instead it converts YomiScript's symbols into Kokoro phoneme sequences and pitch instructions. In YomiScript you write how you want each word to be pronounced.
 
 ## Main files

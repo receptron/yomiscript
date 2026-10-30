@@ -1,5 +1,9 @@
 # Yomi-0
 
+> **Status: earlier experiment, not used by the packages.** The Yomite is now the calling LLM (D23, D24). Yomi-0 is
+> kept for reference and for the comparison in the paper: distilled from pyopenjtalk, it stayed below its teacher
+> (JSUT sentence accuracy 68.2% vs 72.5%, hard set 57.1% vs 71.4%; measured with `mlx/evaluate.py` on the `tiny_aug` checkpoint).
+
 A small model that outputs readings (phonemes), accents and phrase boundaries from Japanese text. It is the Japanese Yomite: it emits YomiScript and handles "inference from context", the third level of the reading priority ([`spec/lexicon/`](../../spec/lexicon/README.md)).
 
 ## Design decisions

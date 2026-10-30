@@ -4,7 +4,7 @@
 
 ## Reference implementation
 
-The Kokoro-82M Katarite in [`tts/kokoro_ys/`](../tts/kokoro_ys/) (and the browser demo in [`demo/ys_web/`](../demo/ys_web/)) is the reference Katarite. New Katarite plugins should follow its behavior.
+The Kokoro-82M Katarite in [`packages/kokoro/`](../packages/kokoro/) (used by the browser demo in [`demo/ys_web/`](../demo/ys_web/)) is the reference Katarite. New Katarite plugins should follow its behavior.
 
 - Unsupported styles fall back to the fallback behavior defined in the spec (ignore, or a close tag), with a warning.
 

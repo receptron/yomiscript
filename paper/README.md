@@ -5,8 +5,9 @@ First draft, 2026-10-29. Every number comes from files in the repository:
 
 - `eval/browser_tts/results/summary.md`, `asr_summary.md`, `README.md` (readings, text layer, cost, intelligibility)
 - `eval/kokoro_parity/README.md` (the Kokoro Katarite reproduces the original)
-- `eval/llm_yomite/results/summary.md` (LLM pitch values), `models/yomi/mlx/ckpt/tiny_aug/eval.json` and
-  `eval/RESULTS.md` (Yomi-0 and the pyopenjtalk baseline)
+- `eval/llm_yomite/results/summary.md` (LLM pitch values)
+- `models/yomi/README.md` (Yomi-0, measured with `models/yomi/mlx/evaluate.py` on the `tiny_aug` checkpoint, which is
+  not in the repository) and `eval/RESULTS.md` (the pyopenjtalk baseline)
 
 What is missing before submission: `TODO.md`. Unverified bibliography entries are marked `TODO verify` in
 `references.bib`.

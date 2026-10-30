@@ -1,89 +1,118 @@
 # yomiscript
 
-An open speech front-end built around **YomiScript**, a language-neutral DSL for pronunciation and prosody. YomiScript sits between two modules — **Yomite** (読み手, "the reader": text → YomiScript) and **Katarite** (語り手, "the narrator": YomiScript → sound) — so the two can be developed, swapped and improved independently.
+Text-to-speech with few misreadings: the LLM that writes a sentence also writes how it is read, and a small TTS
+engine speaks exactly that. The notation between the two is **YomiScript**, a language-neutral DSL for pronunciation
+and prosody (IPA with prosody marks). It is offered as a replacement for the OpenAI and Gemini speech APIs, above all
+for Japanese, where one written form often has several readings (一日: ついたち or いちにち, 上手: じょうず or うわて).
 
-Status: early design. The YomiScript spec is a v0.2 draft and all syntax may change.
+Status: early. The YomiScript spec is a v0.2 draft, and the packages are not yet on npm.
 
-## Architecture
+## How it works
 
 ```
- inputs                    Yomite (text → YomiScript)       language-neutral hub        Katarite (YomiScript → sound)
- ──────                    ──────────────────────────       ────────────────────        ─────────────────────────────
- text                  ─┐  ja: Yomi-0 + MoLD memories ─┐                              ┌── Kokoro-82M (reference)
- lexicons (.koedict)   ─┼► LLMs, other analyzers      ─┼──►     YomiScript       ─────┼── Katarite plugins
- inline reading hints  ─┘                              │   phonemes, accent, tone,    └── …
-                           hand-written by people     ─┘   stress, boundaries,
-                                                           language tags
+ LLM (writes the text and its reading)          YomiScript                   Katarite (YomiScript -> sound)
+ ─────────────────────────────────────          ──────────                   ──────────────────────────────
+ "一日から三日まで休みです。"         ──►  ja /tsɯitatɕi<t:一日> kaɾa<t:から>   ──►  Kokoro-82M (reference)
+                                           mikka<t:三日> made<t:まで> ...↘/      Supertonic 3
 ```
 
-- **Yomite** (text → YomiScript) is the only language-specific part: resolving readings, homographs, names, numbers and prosody. A Yomite can be a small dedicated model (Yomi-0 for Japanese), a smart LLM, a rule-based analyzer, or a person writing YomiScript by hand. Lexicons (`.koedict`) and inline reading hints are its inputs.
-- **YomiScript** describes *how the text should be pronounced*, independent of any voice or engine. It is prescriptive: whoever writes it — a Yomite or a person — decides the pronunciation, and the engine follows it.
-- **Katarite** (YomiScript → sound) needs no language-specific text analysis. It only has to render phonemes and prosody.
+- **Yomite** (読み手, "the reader") turns text into YomiScript. Here it is the calling LLM: it has the context the text
+  was written in, so it knows which reading is meant. A Yomite can also be rules, a dedicated model or a person.
+- **YomiScript** says how the text is pronounced, independent of any voice or engine. Whoever writes it decides the
+  pronunciation; the engine follows it.
+- **Katarite** (語り手, "the narrator") turns YomiScript into sound. It needs no text analysis of its own.
 
-Adding a language means adding a Yomite (or pointing an LLM at it). Adding a TTS engine means adding a Katarite. Neither changes the other.
+The TTS has no LLM and no text front end of its own: in an MCP server or a chat plugin, the calling LLM writes the
+YomiScript as the tool's argument (D24).
+
+## Results so far
+
+From [`eval/browser_tts`](eval/browser_tts/) (one run each; the gold readings are provisional):
+
+- Readings on a 70-sentence hard set (homographs, numbers, names): Codex 100%, Claude 98.6%, pyopenjtalk 78.6%, the
+  original Kokoro front end 32.9%.
+- Intelligibility (Whisper, kana error rate on the hard set): LLM-written YomiScript with Kokoro 3.7-3.9%, the
+  original Kokoro 10.3%, Supertonic 3 on plain text 13.8% (5.6-7.6% when given kana for the ambiguous words), the
+  macOS voice 5.5%.
+- Cost: YomiScript is about 3 times the characters of the Japanese text (6 times with the original text `<t:…>`).
+
+A paper draft is in [`paper/`](paper/).
+
+## Packages
+
+TypeScript, in [`packages/`](packages/) (to be published on npm). The models are not in the packages.
+
+| Package | What it is |
+|---|---|
+| [`@yomiscript/core`](packages/core/) | The YomiScript parser and types, the rule prosody, the Katarite interface, and `YOMISCRIPT_INSTRUCTIONS` (how to write YomiScript, for an LLM's prompt or a tool description) |
+| [`@yomiscript/kokoro`](packages/kokoro/) | The Kokoro-82M Katarite: onnxruntime-node (fp32, identical to the original Kokoro, D21 / D22) and onnxruntime-web (fp16 weights) |
+| [`@yomiscript/supertonic`](packages/supertonic/) | The Supertonic 3 Katarite: the original text with kana for the words it might misread (D23) |
+| [`yomiscript`](packages/cli/) | The CLI: `yomiscript speak "ja /ame<t:雨> desɯ<t:です。> ↘/"` |
+| [`@yomiscript/mcp`](packages/mcp/) | An MCP server with one tool, `speak` |
+| [`@yomiscript/gui-chat-plugin`](packages/gui-chat-plugin/) | A [GUI Chat Protocol](https://github.com/receptron/gui-chat-protocol) plugin that speaks in the browser and highlights the word being spoken |
+
+The browser demo [`demo/ys_web/`](demo/ys_web/) plays YomiScript entirely in the browser (it also has the ONNX
+export of Kokoro).
 
 ## YomiScript
 
 - **Phonemes** are plain IPA.
-- **Prosody** uses IPA's own marks wherever they exist: pitch accent (`ꜛ` `ꜜ`), Chao tone letters (`˥˧˩`), stress (`ˈ` `ˌ`), length, boundaries (` | ` ` ‖ `) and sentence-final `↘` `↗`. Languages differ only in which marks they use.
-- **Language tags** (BCP 47) apply to a whole utterance (`en-US /… ↘/`) or to a span inside it (`{ja …}`), so code-switching is native. Dialects are not tagged: a dialect is a Yomite setting, and its effect is already in the IPA and the pitch values (D19).
-- **Pitch values** `<f0:…>` (semitones, per mora or syllable) can be written next to the marks. A Yomite fills them in; the Katarite renders only the values (D18).
-- **No native scripts.** Kana, pinyin and other writing systems are not YomiScript; every language, Japanese included, is written in IPA (D17).
+- **Prosody** uses IPA's own marks wherever they exist: pitch accent (`ꜛ` `ꜜ`), Chao tone letters (`˥˧˩`), stress
+  (`ˈ` `ˌ`), length, boundaries (` | ` ` ‖ `) and sentence-final `↘` `↗`. Languages differ only in which marks they
+  use.
+- **Language tags** (BCP 47) apply to a whole utterance (`en-US /… ↘/`) or to a span inside it (`{ja …}`), so
+  code-switching is native. Dialects are not tagged: a dialect is a Yomite setting, and its effect is already in the
+  IPA and the pitch values (D19).
+- **Pitch values** `<f0:…>` (semitones, per mora or syllable) can be written next to the marks. The Katarite renders
+  only the values (D18).
+- **The original text** `<t:…>` can follow each span (D23). It never changes the pronunciation; it lets a player show
+  the text and lets a text-based engine such as Supertonic read it.
+- **No native scripts** in the reading: kana, pinyin and other writing systems are not YomiScript; every language,
+  Japanese included, is written in IPA (D17).
 
-Example — an English sentence with Japanese names:
+Example, an English sentence with Japanese names:
 
 ```
 en-US /maɪ ˈfɹɛnd {ja taꜛnaka} ˈlɪvz ɪn {ja toꜛːkʲoː} ↘/
 ```
 
-YomiScript carries only resolved pronunciations; it has no lexicons or reading hints (D14).
+Spec: [`spec/yomiscript/`](spec/yomiscript/) (language tags: [`langtags.md`](spec/yomiscript/langtags.md)). Lexicons
+(`.koedict`) and inline reading hints are inputs to a Yomite, not part of YomiScript (D14): [`spec/lexicon/`](spec/lexicon/).
 
-Spec: [`spec/yomiscript/`](spec/yomiscript/) (language tags: [`langtags.md`](spec/yomiscript/langtags.md)). The earlier KOE-IR v0.1 draft is kept in [`spec/koe-ir/`](spec/koe-ir/).
+## Other parts of the repository
 
-## Lexicons (Yomite input)
-
-Lexicons tell a Yomite how to read specific words. They are not part of YomiScript.
-
-- **`.koedict` files** and in-document `@lexicon` / `@import`, with `[context: …]`, `[default]`, `[sex: …]` and `[accent: N]` conditions and dialect sections.
-- **Inline reading hints** `{text|reading}` in the source text.
-- Reading priority: **inline hint > lexicon entry matching the conditions > `[default]` entry > model inference** ([D1, D13](docs/decisions.md)).
-
-Spec: [`spec/lexicon/`](spec/lexicon/).
-
-## Components
-
-| Component | Role | Location |
+| Part | What it is | Location |
 |---|---|---|
-| **YomiScript** | The language-neutral pronunciation and prosody DSL at the center of the architecture | [`spec/yomiscript/`](spec/yomiscript/) |
-| **Lexicons (.koedict)** | Yomite input: human-readable lexicons of readings, accents, dialects and context conditions | [`spec/lexicon/`](spec/lexicon/), [`dict/`](dict/) |
-| **Yomi-0** | Japanese Yomite: a small dense model (MLX) that produces readings, pitch accent and phrase boundaries | [`models/yomi/`](models/yomi/) |
-| **English Yomite (Kokoro)** | misaki (Kokoro's G2P) + Kokoro's prosody predictor: English text → YomiScript with pitch values | [`yomite/en_kokoro/`](yomite/en_kokoro/) |
-| **Japanese Yomite (Kokoro)** | Kokoro's Japanese front end (misaki Cutlet) + its prosody predictor: Japanese text → YomiScript, exactly as the original Kokoro reads it | [`yomite/ja_kokoro/`](yomite/ja_kokoro/) |
-| **MoLD** | Mixture of Language-specific Dictionaries: shared weights plus a swappable memory per language or dialect; dictionaries compile into memory without training | [`mold/`](mold/) |
-| **Kokoro reference Katarite** | Synthesizes speech from YomiScript with Kokoro-82M, bypassing its own text analysis; builds F0 from accent/tone marks where appropriate; handles mixed-language utterances | [`tts/kokoro_ys/`](tts/kokoro_ys/) |
-| **Browser demo** | YomiScript → speech entirely in the browser (onnxruntime-web) | [`demo/ys_web/`](demo/ys_web/) |
-| **Katarite plugins** | Adapters from YomiScript to other TTS engines and vendor formats | [`plugins/`](plugins/) |
-| **Evaluation** | Benchmarks against baselines (e.g. pyopenjtalk on JSUT) | [`eval/`](eval/) |
+| Kokoro Yomites | Kokoro's own English and Japanese front ends, rewritten as YomiScript, to check that the Katarite reproduces the original Kokoro exactly | [`yomite/`](yomite/), [`eval/kokoro_parity/`](eval/kokoro_parity/) |
+| Evaluation | The LLM-as-Yomite experiments, the browser TTS comparison, the JSUT baselines | [`eval/`](eval/) |
+| Katarite plugins | Notes on mapping YomiScript to other TTS engines and vendor formats | [`plugins/`](plugins/) |
 
-### Why so much Japanese?
+### Earlier experiments
 
-Japanese is the hardest case for the Yomite side, not the focus of the project. Kanji readings are highly ambiguous (homographs, personal and place names), and pitch accent is not written in the text at all. Most of the modeling work so far (Yomi-0, the name and place-name memories, MoLD) is therefore the Japanese Yomite. YomiScript and Katarite are designed for every language from the start; the reference Katarite already handles English, French and Chinese.
+Kept for reference and for the comparison in the paper; not used by the packages.
+
+| Part | What it was | Location |
+|---|---|---|
+| Yomi-0 | A dedicated 7.7M-parameter Japanese reading model (MLX), distilled from pyopenjtalk. It stayed below its teacher (JSUT sentence accuracy 68.2% vs 72.5%, hard set 57.1% vs 71.4%): distillation inherits the teacher's context-free readings, which is what the LLM Yomite avoids | [`models/yomi/`](models/yomi/) |
+| MoLD | Shared weights plus a swappable memory per language or dialect for Yomi-0, with lexicons compiled into memory | [`mold/`](mold/), [`models/yomi/mlx/MOLD.md`](models/yomi/mlx/MOLD.md) |
+| Python Kokoro Katarite | The first Kokoro Katarite, in the old notation; replaced by `@yomiscript/kokoro` | [`tts/kokoro_ys/`](tts/kokoro_ys/) |
+| KOE-IR | The v0.1 draft that YomiScript replaced | [`spec/koe-ir/`](spec/koe-ir/) |
 
 ## Terminology (D9)
 
 - **Lexicon**: the human-readable `.koedict` / `@lexicon` dictionaries given to a Yomite.
-- **Memory**: a key–value memory inside a neural network, used in training and inference.
-- **Memory write**: loading a lexicon's contents into a memory.
-- Device RAM is always qualified ("unified memory", "RAM usage") to keep it distinct from Memory.
+- **Memory**: a key-value memory inside a neural network (MoLD).
 
 ## Documents
 
-- [Decisions D1–D22](docs/decisions.md)
-- [Hypotheses H0–H12](docs/hypotheses.md)
+- [Decisions D1-D24](docs/decisions.md), [hypotheses H0-H12](docs/hypotheses.md)
+- [Distribution plan](docs/plan.md)
 - [Contributing](CONTRIBUTING.md)
 
 ## License
 
 - Code: Apache License 2.0 ([`LICENSE`](LICENSE))
 - Specifications (under `spec/`): CC BY 4.0 ([`spec/LICENSE`](spec/LICENSE))
-- Dictionaries and training data follow their own licenses, stated in each file.
+- Dictionaries and data follow their own licenses, stated in each file (for example
+  [`eval/LICENSE_DATA.md`](eval/LICENSE_DATA.md)). Model weights are not in the repository; Kokoro-82M is Apache 2.0,
+  Supertonic 3 is OpenRAIL-M.
