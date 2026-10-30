@@ -25,10 +25,15 @@ configureSpeaker({
   modelBase: "https://example.com/kokoro/", // models/{enc,f0n,dec}_w16.onnx and voices/<voice>.bin
   ortWasmBase: "https://example.com/ort/", // onnxruntime-web's dist/ (its .wasm and .mjs files)
   // executionProviders: ["webgpu", "wasm"],
+  // accentBase: null, // no Japanese dictionary accent; default: the dictionary on Hugging Face (DICT_URL)
 });
 ```
 
-The models are downloaded on first use: about 163 MB, plus 0.5 MB per voice. The browser caches them.
+The models are downloaded on first use: about 163 MB, plus 0.5 MB per voice. The browser caches them. Japanese
+gets the dictionary accent of `@yomiscript/ja-accent` (D25): its dictionary (28 MB) is fetched from `accentBase` the
+first time Japanese is spoken, and its WebAssembly (1.4 MB) is resolved by the host's bundler next to the package's
+glue (`new URL(…, import.meta.url)`). If the dictionary cannot be loaded, Kokoro's own pitch is used (a console
+warning says so).
 `onnxruntime-web` is pinned to 1.22.0 through `@yomiscript/kokoro`.
 
 ## Demo
@@ -37,8 +42,10 @@ The models are downloaded on first use: about 163 MB, plus 0.5 MB per voice. The
 cd packages/gui-chat-plugin && npx vite        # http://localhost:5173
 ```
 
-The dev server serves the Kokoro models and voices from `demo/ys_web/web/`, and onnxruntime's files from
-`node_modules/onnxruntime-web/dist/`, where they already are (`vite.config.ts`); nothing is copied. The sample calls
+The dev server serves the Kokoro models and voices from `demo/ys_web/web/`, onnxruntime's files from
+`node_modules/onnxruntime-web/dist/`, where they already are, and the accent dictionary from the CLI's cache
+(`$YOMISCRIPT_JA_DICT` or `~/.cache/yomiscript/ja-dict/jpreprocess-0.15.0`; run the CLI on Japanese once to fill it)
+(`vite.config.ts`); nothing is copied. The sample calls
 are YomiScript written by Codex for `eval/browser_tts` (Japanese homographs, a date, English). A text box takes any
 YomiScript, so the error path can be tried too.
 

@@ -18,6 +18,7 @@ yomiscript instructions        # how to write YomiScript: paste it into an LLM's
 | `--katarite NAME` | `kokoro` (default) or `supertonic` (needs `<t:…>`; models: see below) |
 | `--model fp32\|w16` | Kokoro weights: `fp32` (default) or `w16` (fp16 weights, what the browser uses) |
 | `--models DIR` | Kokoro models in this directory (`models/{enc,f0n,dec}[_w16].onnx`, `voices/*.bin`), not downloaded |
+| `--no-accent` | Kokoro: no Japanese dictionary accent (Kokoro's own pitch everywhere, as the original Kokoro) |
 | `--file FILE` | read the YomiScript from a file (`-` = stdin) |
 
 Exit codes: 0 done, 1 the YomiScript or the synthesis failed, 2 the command line is wrong. The text and the timing
@@ -35,6 +36,12 @@ cache and read from there afterwards (the progress goes to stderr):
   `~/.cache/yomiscript/kokoro` (fp32: 325 MB, plus 0.5 MB per voice). A directory given with `--models` or
   `$YOMISCRIPT_MODELS` is used as it is, with no download; in this repository `YOMISCRIPT_MODELS=demo/ys_web` works
   once the demo's models are exported (`demo/ys_web/README.md`).
+- The Japanese accent dictionary (Kokoro, D25, `@yomiscript/ja-accent`): from
+  [receptron/yomiscript-ja-dict](https://huggingface.co/receptron/yomiscript-ja-dict) into
+  `~/.cache/yomiscript/ja-dict/jpreprocess-0.15.0` (28 MB) the first time Japanese is spoken; `$YOMISCRIPT_JA_DICT`
+  is used as it is. With it, the accent phrases the dictionary reads the same way as the YomiScript get the
+  dictionary's accent (at half the rules' strength); everything else keeps Kokoro's own pitch. If it cannot be
+  loaded, Kokoro's own pitch is used and stderr says so.
 - Supertonic: `$YOMISCRIPT_SUPERTONIC` as it is; otherwise the Python SDK's cache `~/.cache/supertonic3` if it has the
   models; otherwise from [Supertone/supertonic-3](https://huggingface.co/Supertone/supertonic-3) into
   `~/.cache/yomiscript/supertonic` (380 MB). Its weights are under OpenRAIL-M, with use-based restrictions.

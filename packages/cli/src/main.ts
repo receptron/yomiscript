@@ -32,7 +32,7 @@ async function speak(c: SpeakCommand, io: Io): Promise<number> {
     return EXIT.failed;
   }
   const t0 = Date.now();
-  const k = await openKatarite(c.katarite, { model: c.model, models: c.models, voice: c.voice }, io.factories ?? KATARITES);
+  const k = await openKatarite(c.katarite, { model: c.model, models: c.models, voice: c.voice, accent: c.accent }, io.factories ?? KATARITES);
   const s = await k.speak(ys);
   const took = (Date.now() - t0) / 1000;
   const file = await writeWav(s, c.out);

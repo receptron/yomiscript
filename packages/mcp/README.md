@@ -23,6 +23,8 @@ of its own (D24).
 | `YOMISCRIPT_SUPERTONIC` | `~/.cache/supertonic3` if it has the models, else `~/.cache/yomiscript/supertonic`, downloaded on first use | Supertonic models in this directory instead, not downloaded |
 | `YOMISCRIPT_PLAY` | `1` | `0`: do not play on this machine |
 | `YOMISCRIPT_RETURN_AUDIO` | `0` | `1`: also return the audio to the client as MCP audio content (base64 WAV) |
+| `YOMISCRIPT_ACCENT` | `1` | `0`: no Japanese dictionary accent (Kokoro's own pitch everywhere); see the CLI's README |
+| `YOMISCRIPT_JA_DICT` | `~/.cache/yomiscript/ja-dict/jpreprocess-0.15.0`, downloaded on first Japanese use (28 MB) | the accent dictionary in this directory instead, not downloaded |
 
 ## Register it
 

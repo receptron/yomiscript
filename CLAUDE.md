@@ -12,7 +12,7 @@ silent edit.
 
 ## Stack & package manager
 - **TypeScript** for everything that ships (D24): yarn workspaces in `packages/` (core, kokoro,
-  supertonic, cli, mcp, gui-chat-plugin; published as `@yomiscript/*`, the CLI as `yomiscript`), `tsc -b` to `dist/` (`yarn build`). Relative imports use `.ts`
+  supertonic, ja-accent, cli, mcp, gui-chat-plugin; published as `@yomiscript/*`, the CLI as `yomiscript`), `tsc -b` to `dist/` (`yarn build`). Relative imports use `.ts`
   (rewritten to `.js` on build); packages import each other by name (`@yomiscript/core`). The browser demo loads the
   built packages through an import map; Node scripts (`eval/`, `yomite/`) import the built packages too, so run
   `yarn build` after changing a package. Vitest reads the sources directly. No Python in what ships.
@@ -80,8 +80,9 @@ entries). Comments, docstrings and messages (print, help, errors) are in English
 ## Layout
 - `spec/`: YomiScript and lexicon specifications. `docs/`: decisions (D…), hypotheses (H…) and the distribution plan
   (`plan.md`: TypeScript on npm, no Python in what ships, D24).
-- `packages/`: what ships on npm (D24): `core` (YomiScript), `kokoro`, `supertonic`, `cli`,
-  `mcp`, `gui-chat-plugin`.
+- `packages/`: what ships on npm (D24): `core` (YomiScript), `kokoro`, `supertonic`, `ja-accent` (the Japanese
+  dictionary accent, D25; its WebAssembly is built from Rust in `wasm/`, the build kept in `wasm/pkg/`), `cli`, `mcp`,
+  `gui-chat-plugin`.
 - `demo/ys_web/`: the browser demo (`web/`, using the built packages). It also has the ONNX export
   (`export_split.py`, `exact_stft.py`).
 - `yomite/`: the Kokoro-based Yomites (`en_kokoro`, `ja_kokoro`), used for the parity checks.

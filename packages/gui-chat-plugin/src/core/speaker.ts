@@ -1,7 +1,9 @@
 // The Kokoro Katarite in the browser: onnxruntime-web with the w16 models (D24), loaded once and shared by every
-// tool result. Where the models, voices and onnxruntime's wasm files are served from is set with configureSpeaker().
+// tool result, with the Japanese dictionary accent (D25). Where the models, voices, onnxruntime's wasm files and the
+// accent dictionary are served from is set with configureSpeaker().
 import * as ort from "onnxruntime-web";
-import type { Speech } from "@yomiscript/core";
+import type { Katarite, Speech } from "@yomiscript/core";
+import { accentYomite, DICT_URL, loadFrontend, withAccent } from "@yomiscript/ja-accent";
 import { Engine, KokoroKatarite, W16, type Ort } from "@yomiscript/kokoro";
 
 export interface SpeakerOptions {
@@ -11,9 +13,12 @@ export interface SpeakerOptions {
   ortWasmBase?: string;
   /** onnxruntime execution providers, ["wasm"] by default (["webgpu", "wasm"] to try WebGPU first) */
   executionProviders?: string[];
+  /** URL of the Japanese accent dictionary (<file>.gz; Hugging Face by default, about 28 MB the first time Japanese
+   * is spoken); null: no dictionary accent, Kokoro's own pitch everywhere */
+  accentBase?: string | null;
 }
-let options: SpeakerOptions = { modelBase: "/kokoro/" };
-let katarite: Promise<KokoroKatarite> | null = null;
+let options: SpeakerOptions = { modelBase: "/kokoro/", accentBase: DICT_URL };
+let katarite: Promise<Katarite> | null = null;
 const cache = new Map<string, Promise<Speech>>();
 
 export function configureSpeaker(o: Partial<SpeakerOptions>): void {
@@ -25,20 +30,26 @@ export function speakerOptions(): Readonly<SpeakerOptions> {
   return options;
 }
 const absolute = (base: string): URL => new URL(base.endsWith("/") ? base : base + "/", globalThis.location?.href ?? "http://localhost/");
+const fetcher =
+  (base: URL) =>
+  async (p: string): Promise<Uint8Array> => {
+    const r = await fetch(new URL(p, base));
+    if (!r.ok) throw new Error(`cannot load ${p}: HTTP ${r.status}`);
+    return new Uint8Array(await r.arrayBuffer());
+  };
 
 /** the Katarite, created on first use (downloads about 165 MB of models the first time; the browser caches them) */
-export function loadKatarite(): Promise<KokoroKatarite> {
+export function loadKatarite(): Promise<Katarite> {
   katarite ??= (async () => {
     if (options.ortWasmBase) ort.env.wasm.wasmPaths = absolute(options.ortWasmBase).href;
     ort.env.wasm.numThreads = 1; // no cross-origin isolation needed
-    const base = absolute(options.modelBase);
-    const load = async (p: string): Promise<Uint8Array> => {
-      const r = await fetch(new URL(p, base));
-      if (!r.ok) throw new Error(`cannot load ${p}: HTTP ${r.status}`);
-      return new Uint8Array(await r.arrayBuffer());
-    };
+    const load = fetcher(absolute(options.modelBase));
     const engine = await new Engine(ort as unknown as Ort, load).init({ suffix: W16, executionProviders: options.executionProviders ?? ["wasm"] });
-    return new KokoroKatarite(engine);
+    const k = new KokoroKatarite(engine),
+      dict = options.accentBase;
+    if (!dict) return k;
+    const step = async () => accentYomite(await loadFrontend(fetcher(absolute(dict))));
+    return withAccent(k, step, (e) => console.warn("yomiscript: no Japanese dictionary accent, Kokoro's own pitch is used:", e));
   })();
   katarite.catch(() => (katarite = null)); // a failed load can be retried
   return katarite;

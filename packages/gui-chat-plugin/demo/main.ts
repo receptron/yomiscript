@@ -3,7 +3,7 @@ import { createApp, defineComponent, h, ref, shallowRef } from "vue";
 import type { ToolResultComplete } from "gui-chat-protocol";
 import { configureSpeaker, executeSpeak, plugin, SAMPLES, TOOL_DEFINITION, type SpeakData } from "../src/index.ts";
 
-configureSpeaker({ modelBase: "/kokoro/", ortWasmBase: "/ort/" }); // served by vite.config.ts from the repo
+configureSpeaker({ modelBase: "/kokoro/", ortWasmBase: "/ort/", accentBase: "/ja-dict/" }); // served by vite.config.ts
 
 const App = defineComponent({
   setup() {

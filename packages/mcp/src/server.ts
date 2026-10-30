@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // yomiscript-mcp: the MCP server on stdio. Settings come from the environment (see README.md):
 //   YOMISCRIPT_KATARITE (kokoro), YOMISCRIPT_MODEL (fp32 | w16), YOMISCRIPT_MODELS (dir with models/ and voices/), YOMISCRIPT_VOICE,
-//   YOMISCRIPT_PLAY (1; 0 = do not play here), YOMISCRIPT_RETURN_AUDIO (0; 1 = also return the WAV to the client)
+//   YOMISCRIPT_PLAY (1; 0 = do not play here), YOMISCRIPT_RETURN_AUDIO (0; 1 = also return the WAV to the client),
+//   YOMISCRIPT_ACCENT (1; 0 = no Japanese dictionary accent), YOMISCRIPT_JA_DICT (dir with the accent dictionary)
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { openKatarite, playWav, toWav, writeWav, type ModelPrecision } from "yomiscript";
 import fs from "node:fs/promises";
@@ -12,7 +13,13 @@ const on = (v: string | undefined, dflt: boolean): boolean => (v === undefined ?
 const model: ModelPrecision = env.YOMISCRIPT_MODEL === "w16" ? "w16" : "fp32";
 
 const server = createServer({
-  katarite: () => openKatarite(env.YOMISCRIPT_KATARITE ?? "kokoro", { model, models: env.YOMISCRIPT_MODELS, voice: env.YOMISCRIPT_VOICE }),
+  katarite: () =>
+    openKatarite(env.YOMISCRIPT_KATARITE ?? "kokoro", {
+      model,
+      models: env.YOMISCRIPT_MODELS,
+      voice: env.YOMISCRIPT_VOICE,
+      accent: on(env.YOMISCRIPT_ACCENT, true),
+    }),
   play: on(env.YOMISCRIPT_PLAY, true)
     ? async (s) => {
         const file = await writeWav(s);

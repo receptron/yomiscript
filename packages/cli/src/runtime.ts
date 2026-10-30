@@ -5,6 +5,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { parse, type Katarite, type Speech } from "@yomiscript/core";
+import { DICT_URL, DICT_VERSION, withAccent } from "@yomiscript/ja-accent";
 import { KOKORO_MODELS_URL, wav } from "@yomiscript/kokoro";
 import { SUPERTONIC_MODELS_URL } from "@yomiscript/supertonic";
 
@@ -16,6 +17,8 @@ export interface KatariteOptions {
   model?: ModelPrecision;
   /** a voice for every section (Kokoro: e.g. jm_kumo), instead of each language's default */
   voice?: string;
+  /** Kokoro: the Japanese dictionary accent (D25); true by default */
+  accent?: boolean;
 }
 export type KatariteFactory = (opts: KatariteOptions) => Promise<Katarite>;
 
@@ -41,6 +44,18 @@ export function kokoroSource(opt?: string, env: NodeJS.ProcessEnv = process.env,
   const named = opt ?? env.YOMISCRIPT_MODELS;
   return named ? { dir: named } : { dir: modelsDir(undefined, env), download: url };
 }
+/** the Japanese accent dictionary: $YOMISCRIPT_JA_DICT as it is, else the yomiscript cache, which downloads it */
+export function jaDictSource(env: NodeJS.ProcessEnv = process.env, home = os.homedir(), url = DICT_URL): ModelSource {
+  if (env.YOMISCRIPT_JA_DICT) return { dir: env.YOMISCRIPT_JA_DICT };
+  return { dir: path.join(home, ".cache", "yomiscript", "ja-dict", DICT_VERSION), download: url };
+}
+async function accentStep(): Promise<(ys: string) => string> {
+  const { nodeAnalyzer } = await import("@yomiscript/ja-accent/node");
+  const { accentYomite } = await import("@yomiscript/ja-accent");
+  return accentYomite(await nodeAnalyzer({ ...jaDictSource(), onDownload: tell }));
+}
+const accentFailed = (e: unknown) => process.stderr.write(`yomiscript: no Japanese dictionary accent (${(e as Error).message}); Kokoro's own pitch is used\n`);
+
 /** Supertonic: $YOMISCRIPT_SUPERTONIC as it is, then the Python SDK's cache if it has the models, then the yomiscript
  * cache, which downloads what is missing from Supertone/supertonic-3 */
 export async function supertonicSource(env: NodeJS.ProcessEnv = process.env, home = os.homedir(), url = SUPERTONIC_MODELS_URL): Promise<ModelSource> {
@@ -58,7 +73,8 @@ async function kokoro(opts: KatariteOptions): Promise<Katarite> {
   if (!download && !(await exists(path.join(dir, "models")))) {
     throw new Error(`no Kokoro models in ${dir} (expected models/ and voices/; unset YOMISCRIPT_MODELS and --models to download them)`);
   }
-  return new KokoroKatarite(await nodeEngine({ dir, model: opts.model ?? "fp32", download, onDownload: tell }), { voice: opts.voice });
+  const k = new KokoroKatarite(await nodeEngine({ dir, model: opts.model ?? "fp32", download, onDownload: tell }), { voice: opts.voice });
+  return opts.accent === false ? k : withAccent(k, accentStep, accentFailed);
 }
 
 async function supertonic(): Promise<Katarite> {
@@ -84,7 +100,7 @@ const cache = new Map<string, Promise<Katarite>>();
 export function openKatarite(name: string, opts: KatariteOptions = {}, factories = KATARITES): Promise<Katarite> {
   const make = factories[name];
   if (!make) throw new Error(`unknown Katarite "${name}" (available: ${Object.keys(factories).join(", ")})`);
-  const key = JSON.stringify([name, modelsDir(opts.models), opts.model ?? "fp32"]);
+  const key = JSON.stringify([name, modelsDir(opts.models), opts.model ?? "fp32", opts.accent !== false]);
   let k = cache.get(key);
   if (!k) {
     k = make(opts);

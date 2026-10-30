@@ -1,0 +1,43 @@
+{
+  "name": "@yomiscript/ja-accent",
+  "version": "0.1.0",
+  "description": "Japanese dictionary accent for YomiScript: OpenJTalk's front end (jpreprocess, NAIST-JDIC) as WebAssembly marks the accent phrases whose reading it shares",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/receptron/yomiscript.git",
+    "directory": "packages/ja-accent"
+  },
+  "homepage": "https://github.com/receptron/yomiscript/tree/main/packages/ja-accent#readme",
+  "bugs": {
+    "url": "https://github.com/receptron/yomiscript/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "wasm/pkg",
+    "NOTICE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:wasm": "cargo build --release --target wasm32-unknown-unknown --manifest-path wasm/Cargo.toml && wasm-bindgen --target web --out-dir wasm/pkg --out-name frontend wasm/target/wasm32-unknown-unknown/release/yomiscript_ja_accent.wasm",
+    "prepack": "yarn --cwd ../.. build && node ../../tools/prepack.mjs"
+  },
+  "dependencies": {
+    "@yomiscript/core": "^0.1.0"
+  }
+}

@@ -41,13 +41,15 @@ A paper draft is in [`paper/`](paper/).
 ## Packages
 
 TypeScript, in [`packages/`](packages/) (to be published on npm). The models are not in the packages: the CLI and the
-MCP server download them from Hugging Face on first use.
+MCP server download them from Hugging Face on first use, and the Japanese accent dictionary the first time Japanese
+is spoken.
 
 | Package | What it is |
 |---|---|
 | [`@yomiscript/core`](packages/core/) | The YomiScript parser and types, the rule prosody, the Katarite interface, and `YOMISCRIPT_INSTRUCTIONS` (how to write YomiScript, for an LLM's prompt or a tool description) |
 | [`@yomiscript/kokoro`](packages/kokoro/) | The Kokoro-82M Katarite: onnxruntime-node (fp32, identical to the original Kokoro, D21 / D22) and onnxruntime-web (fp16 weights) |
 | [`@yomiscript/supertonic`](packages/supertonic/) | The Supertonic 3 Katarite: the original text with kana for the words it might misread (D23) |
+| [`@yomiscript/ja-accent`](packages/ja-accent/) | The Japanese dictionary accent the tools add before Kokoro (D25): OpenJTalk's front end (jpreprocess, NAIST-JDIC) as WebAssembly marks the accent phrases it reads the same way as the YomiScript |
 | [`yomiscript`](packages/cli/) | The CLI: `yomiscript speak "ja /ame<t:雨> desɯ<t:です。> ↘/"` |
 | [`@yomiscript/mcp`](packages/mcp/) | An MCP server with one tool, `speak` |
 | [`@yomiscript/gui-chat-plugin`](packages/gui-chat-plugin/) | A [GUI Chat Protocol](https://github.com/receptron/gui-chat-protocol) plugin that speaks in the browser and highlights the word being spoken |

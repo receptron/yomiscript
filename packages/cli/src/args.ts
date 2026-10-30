@@ -10,6 +10,7 @@ export const USAGE = `usage:
       --model fp32|w16              Kokoro weights: fp32 (default, identical to the original) or w16
       --models DIR                  directory with models/ and voices/ (default: $YOMISCRIPT_MODELS)
       --voice NAME                  a voice for everything (Kokoro: jf_alpha, jm_kumo, af_heart, …)
+      --no-accent                   Kokoro: no Japanese dictionary accent (Kokoro's own pitch everywhere)
       --file FILE                   read the YomiScript from a file ("-" = stdin)
   yomiscript instructions           print how to write YomiScript (for an LLM's prompt)
   yomiscript --help`;
@@ -24,6 +25,7 @@ export interface SpeakCommand {
   model: ModelPrecision;
   models?: string;
   voice?: string;
+  accent: boolean;
 }
 export type Command = SpeakCommand | { cmd: "instructions" } | { cmd: "help" };
 
@@ -40,6 +42,7 @@ function speak(rest: string[]): SpeakCommand {
       model: { type: "string", default: "fp32" },
       models: { type: "string" },
       voice: { type: "string" },
+      "no-accent": { type: "boolean" },
       file: { type: "string", short: "f" },
     },
   });
@@ -56,6 +59,7 @@ function speak(rest: string[]): SpeakCommand {
     model: values.model,
     models: values.models,
     voice: values.voice,
+    accent: !values["no-accent"],
   };
 }
 
