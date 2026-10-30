@@ -3,11 +3,10 @@
 // (yomite/en_kokoro, yomite/ja_kokoro) wrote for the same text; eval/kokoro_parity has the full comparison with audio.
 import fs from "fs";
 import { describe, expect, it } from "vitest";
-import { plan, setData } from "../demo/ys_web/web/ys.js";
-import { realize } from "../demo/ys_web/web/yomite.js";
+import { realize } from "@mulmovoice/core";
+import { plan } from "@mulmovoice/katarite-kokoro";
 
 const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url)));
-setData(read("../demo/ys_web/web/data.json"));
 const ORIGINAL = read("./fixtures/kokoro_original.json");
 const PRESETS = read("../demo/ys_web/web/presets.json");
 const REALIZED = read("./fixtures/presets_realized.json"); // the rule Yomite's output, recorded before the 2026-10-29 refactor

@@ -17,7 +17,7 @@
 
 ## 3. Handling on the synthesis side (reference implementation mix.py)
 
-In the web reference (`demo/ys_web`) the pitch rules below live in the Yomite (`web/yomite.js`), which writes `<f0:…>` values; the Katarite (`web/ys.js`) renders only the values (D18). The Python reference (`tts/kokoro_ys`) still applies them in the synthesizer.
+In the web reference (`demo/ys_web`) the pitch rules below live in the Yomite (`packages/core/src/yomite.ts`), which writes `<f0:…>` values; the Katarite (`packages/katarite-kokoro`) renders only the values (D18). The Python reference (`tts/kokoro_ys`) still applies them in the synthesizer.
 - Each language tag has its own policy:
   - `ja`: build F0 (pitch) from the accent marks and override it
   - `en-US` / `en-GB`: only pass the stress marks; do not override F0 (Kokoro's natural intonation is better)
@@ -46,5 +46,5 @@ In the web reference (`demo/ys_web`) the pitch rules below live in the Yomite (`
   - High-onset: a phrase with no `ꜛ`. Pitch stays flat and high up to the nucleus `ꜜ` (level). Examples: 橋が `haꜜɕiɡa` (high-low-low), 端が `haɕiɡa` (high-high-high)
   - Low-onset: `ꜛ` marks where the pitch rises. Unlike Tokyo-type accent, `ꜛ` can be placed anywhere from the 2nd mora on. Examples: 箸が `haꜛɕiꜜɡa` (low-high-low), 雨が `aꜛmeꜜɡa`, うさぎ `ɯsaꜛɡi`
   - Falls within a mora (e.g. an isolated 「あめぇ」) are not written in v0 (undecided).
-- Yomite side (`demo/ys_web/web/yomite.js`; Python reference: osaka.py): in the high stretches of high-onset words, the declination is made smaller and flatter than for Tokyo-type accent.
+- Yomite side (`packages/core/src/yomite.ts`; Python reference: osaka.py): in the high stretches of high-onset words, the declination is made smaller and flatter than for Tokyo-type accent.
 - Sources: 郡史郎『大阪のアクセント（実用的な解説）』大阪大学 2025; Wikipedia 「京阪式アクセント」「日本語の方言のアクセント」 (classification of 2-mora nouns).

@@ -3,8 +3,9 @@
 // env: YOMITE_PY  python with kokoro (and misaki[ja] for Japanese) installed (default: python3)
 import { spawnSync } from "child_process";
 import { pathToFileURL } from "url";
-import { engine } from "../demo/ys_web/node.mjs";
-import { KokoroProsody } from "../demo/ys_web/web/kokoro_prosody.js";
+import { engine, K } from "../demo/ys_web/node.mjs";
+
+const { KokoroProsody } = K;
 
 // one JSON object per chunk of the original pipeline: {"index", "text", "ys", "kokoro"}
 export function runG2p(script, args) {

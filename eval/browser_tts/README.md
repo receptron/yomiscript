@@ -6,7 +6,7 @@ not fit in a browser (the UniDic connection table alone is 413 MB gzip), so this
 possible for Japanese.
 
 The LLM writes YomiScript **without pitch values or accent marks**; Kokoro's own predictor makes the prosody, as in the
-original. Everything is compared at the phoneme string Kokoro is given (the Katarite's plan in `demo/ys_web/web/ys.js`).
+original. Everything is compared at the phoneme string Kokoro is given (the Katarite's plan in `packages/katarite-kokoro`).
 
 ## Sets (read in place by `sets.mjs`)
 
@@ -28,7 +28,7 @@ node run.mjs                      # Claude and Codex, all sets -> results/<llm>.
 node score.mjs                    # -> results/summary.md, results/items.json
 node audio_kokoro.mjs             # Kokoro audio for the original front end and both LLMs (demo models, w16)
 python audio_supertonic.py        # Supertonic 3 audio from the plain text (pip install supertonic; downloads 385 MB once)
-python audio_supertonic.py --ys codex ambiguous   # the Supertonic Katarite from the LLM's YomiScript (also: no rule = all kana)
+python audio_supertonic.py --ys codex ambiguous   # the Supertonic Katarite from the LLM's YomiScript (rule: ambiguous or kanji)
 sh audio_say.sh                   # macOS system voices
 python asr.py && python asr_score.py   # Whisper transcripts -> results/asr_summary.md (mlx_whisper, pyopenjtalk)
 node page.mjs                     # -> audio/listen.json; then serve this directory and open listen.html
@@ -51,13 +51,15 @@ Prompt rounds: the first gave the LLMs too little of the notation (they wrote `n
 item); the second added the spec's mora table and the one-utterance rule; the third added the original text
 (`<t:…>`, D23). The numbers below are from the third.
 
-- Readings, hard set (gold): Codex 100%, Claude 98.6% (the one error: 上手 read わて for うわて); pyopenjtalk 78.6%,
+- Readings, hard set (gold): Codex 100%, Claude 98.6% (the one miss is notation, not reading: 経済 written `keːzai`,
+  where the spec writes ザ as `dza`; in the second round it was 上手 read わて for うわて); pyopenjtalk 78.6%,
   the original Kokoro front end 32.9% (it leaves Latin letters as they are and misreads dates).
 - Original text: joining the `<t:…>` values gives back the input in 232 of 232 outputs.
 - Cost: the YomiScript is 5.6-6.1 times the characters of the Japanese text (2.7-3.2 without `<t:…>`), 3.1 times for
   English; Claude wrote 8,400-11,100 output tokens per set.
 - Intelligibility (Whisper, kana error rate on the hard set): LLM YomiScript with Kokoro 3.7-3.9%; with the Supertonic
-  Katarite 5.6-7.6% (text with kana for ambiguous words) and 6.2-6.5% (all kana); Supertonic on the plain text 13.8%.
+  Katarite 5.6-7.6% (text with kana for ambiguous words; an all-kana rendering, 6.2-6.5%, was dropped); Supertonic on
+  the plain text 13.8%.
   Whisper and pyopenjtalk add their own errors, so these compare systems only; naturalness is for listening.
 - The hint rule leaves 3 of the 35 homographs as written, all in words that fix the reading (市役所, 朝市, 何本).
 - A long text (the `long` item) cannot be spoken by Kokoro from a single LLM utterance: the Katarite does not split

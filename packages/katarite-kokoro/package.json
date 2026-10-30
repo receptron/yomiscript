@@ -1,0 +1,30 @@
+{
+  "name": "@mulmovoice/katarite-kokoro",
+  "version": "0.1.0",
+  "description": "Kokoro-82M Katarite: YomiScript -> Kokoro input -> audio (onnxruntime-web w16 in the browser, onnxruntime-node fp32 in Node)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mulmovoice/core": "*",
+    "onnxruntime-web": "1.22.0",
+    "onnxruntime-node": "1.22.0",
+    "onnxruntime-common": "1.22.0"
+  }
+}

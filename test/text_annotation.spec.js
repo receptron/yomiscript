@@ -2,12 +2,10 @@
 // without the annotations, the rule Yomite keeps them in place, and the spans give back the text.
 import fs from "fs";
 import { describe, expect, it } from "vitest";
-import { parse } from "../demo/ys_web/web/yomiscript.js";
-import { plan, setData } from "../demo/ys_web/web/ys.js";
-import { realize } from "../demo/ys_web/web/yomite.js";
+import { parse, realize } from "@mulmovoice/core";
+import { plan } from "@mulmovoice/katarite-kokoro";
 
 const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url)));
-setData(read("../demo/ys_web/web/data.json"));
 const ORIGINAL = read("./fixtures/kokoro_original.json");
 const annotate = (ys) => ys.replace(/(\S)(?= |\s*[↘↗]\/$)/g, "$1<t:w>"); // a <t:…> after every word
 const strip = (ys) => ys.replace(/<t:[^>]*>/g, "");

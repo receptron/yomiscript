@@ -4,7 +4,8 @@ Japanese: the transcript is read with pyopenjtalk and compared, in katakana, wit
 (kana error rate). English: word error rate against the text. Whisper and pyopenjtalk make their own mistakes,
 the same for every system, so the numbers compare systems; they are not absolute error rates.
 
-  katarite   Kokoro vs Supertonic given the same LLM YomiScript; the reference is that YomiScript as kana
+  katarite   Kokoro vs Supertonic given the same LLM YomiScript; the reference is that YomiScript's reading (its text with
+             kana for every word with kanji, read with pyopenjtalk like the transcripts)
   hard       every system on the hard set; the reference is the gold reading
   en         every system on the English texts; the reference is the text
 
@@ -19,7 +20,7 @@ from pathlib import Path
 import pyopenjtalk
 
 HERE = Path(__file__).parent
-RENDER = HERE.parents[1] / "katarite/supertonic/render.mjs"
+RENDER = HERE / "render_text.mjs"
 ROWS = {  # katakana by the vowel they end in, for ー
     "ア": "アカサタナハマヤラワガザダバパァャ",
     "イ": "イキシチニヒミリギジヂビピィ",
@@ -87,13 +88,12 @@ def main():
         for s in ("ja", "hard"):
             names = [x["name"] for x in sets[s] if out[s].get(x["name"])]
             kana = json.loads(
-                subprocess.run(["node", str(RENDER)], input=json.dumps([out[s][n] for n in names]), capture_output=True, text=True, check=True).stdout
+                subprocess.run(["node", str(RENDER), "kanji"], input=json.dumps([out[s][n] for n in names]), capture_output=True, text=True, check=True).stdout
             )
-            ref[s] = {n: norm(k["text"]) for n, k in zip(names, kana, strict=True) if "text" in k}
+            ref[s] = {n: heard(k["text"]) for n, k in zip(names, kana, strict=True) if "text" in k}
         pair = (
             ("Kokoro", llm),
             ("Supertonic 3, kana for ambiguous words", f"supertonic_ys_{llm}_ambiguous"),
-            ("Supertonic 3, all kana", f"supertonic_ys_{llm}"),
         )
         for kat, sysname in pair:
             cells = []
@@ -108,8 +108,6 @@ def main():
         "claude",
         "supertonic_ys_codex_ambiguous",
         "supertonic_ys_claude_ambiguous",
-        "supertonic_ys_codex",
-        "supertonic_ys_claude",
         "kokoro",
         "supertonic",
         "supertonic_hints",

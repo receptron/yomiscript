@@ -22,3 +22,6 @@ models/yomi/mlx/.venv
 models/yomi/mlx/ckpt
 models/yomi/mlx/data
 models/yomi/mlx/eval_out
+
+# built TypeScript
+packages/*/dist/

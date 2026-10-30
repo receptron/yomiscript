@@ -1,0 +1,355 @@
+% First draft, 2026-10-29. Build with LuaLaTeX (Japanese via luatexja, IPA via a font that has it): see README.md.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{luatexja-fontspec}
+\setmainfont{Charis SIL}          % IPA, including the pitch-accent letters U+A71B / U+A71C
+\setmonofont{DejaVu Sans Mono}
+\setmainjfont{Noto Serif CJK JP}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+% YomiScript and IPA examples: copied exactly from the spec and the result files
+\newcommand{\ys}[1]{\mbox{\texttt{#1}}}
+\newcommand{\provisional}{\textsuperscript{\textdagger}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{The Author Knows the Reading:\\
+LLM-Written Pronunciation for Small Browser Text-to-Speech, with Japanese Homographs}
+\author{\todo{authors and affiliations}}
+\date{Draft, 29 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Text-to-speech (TTS) front ends choose a reading for every word before any audio is made, and in Japanese that choice
+is often ambiguous: the same written form has several readings (homographs such as 一日, 上手, 人気), numbers and dates
+change their sound with the counter, and Latin-script words must be rendered in Japanese phonology. Dictionary-based
+front ends such as OpenJTalk pick the most frequent reading and do not look at context. We observe that when speech is
+produced for a large language model (LLM), the LLM that wrote the sentence already knows which reading it meant. We
+let that LLM write the pronunciation itself, in YomiScript, an IPA-based, language-neutral notation that separates the
+\emph{Yomite} (who decides how text is read) from the \emph{Katarite} (the synthesizer that turns the resolved
+pronunciation into sound). The TTS then needs no front end of its own: only a small acoustic model, which runs in a
+web browser. On a 70-sentence hard set of Japanese homographs, acronyms, numbers and dates, LLM-written YomiScript was
+read correctly in 100\% (Codex) and 98.6\% (Claude) of sentences, against 78.6\% for pyopenjtalk and 32.9\% for the
+original front end of Kokoro-82M; on the 35 homograph sentences alone, 100\% and 97.1\% against 60.0\% and 51.4\%.
+We describe a Katarite for Kokoro that reproduces the original Kokoro exactly when given its own front end's output,
+a second Katarite for a text-reading engine (Supertonic 3) that receives kana only for ambiguous words, and an
+optional original-text layer that lets the same YomiScript drive both and show the text being spoken. These are
+preliminary results with provisional gold readings, small sets and one run per LLM; we list what is needed to confirm them.
+\end{abstract}
+
+\section{Introduction}
+
+Speech interfaces to LLMs usually send the generated text to a cloud speech API. Moving synthesis onto the device,
+into the browser tab that shows the chat, removes the network round trip and the per-character cost, and small
+open models such as Kokoro-82M~\citep{kokoro82m} now make this practical. What does not move easily is the front end:
+the grapheme-to-phoneme (G2P) step that decides how each word is read. For English it is a pronunciation dictionary
+plus rules; for Japanese it is a morphological analyser with a large dictionary. Kokoro's own Japanese front end
+(misaki~\citep{misaki}, built on MeCab~\citep{kudo2004mecab} with UniDic 3.1.0~\citep{den2008unidic}) needs a
+connection-cost table of 481\,MB (413\,MB compressed with gzip) and a 243\,MB dictionary; it cannot be shipped to a
+browser.
+
+Even where a front end fits, it reads without understanding. In Japanese the problem is common: 一日 is
+\emph{tsuitachi} (the first day of the month) or \emph{ichinichi} (one day), 上手 is \emph{jōzu} (skilful),
+\emph{kamite} (stage left) or \emph{uwate} (superior), 人気 is \emph{ninki} (popularity) or \emph{hitoke} (signs of
+people). OpenJTalk~\citep{openjtalk} and its Python wrapper pyopenjtalk~\citep{pyopenjtalk} choose one reading per
+written form from the dictionary; on our hand-made hard set pyopenjtalk reads 60.0\% of the homograph sentences correctly
+under the scoring of Section~\ref{sec:setup} (51.4\% under the strict, spelling-sensitive scoring of an earlier baseline run).
+
+The observation behind this work is simple: in an LLM application, the text to be spoken was written by an LLM, and
+that LLM knows what it meant. If it writes the pronunciation as well as the text, the hardest part of the front end
+is done by the component that has the context. What remains for the TTS is to turn a resolved pronunciation into
+sound, which a small acoustic model can do in the browser.
+
+Our contributions:
+\begin{itemize}
+  \item \textbf{YomiScript}, a pronunciation notation in IPA~\citep{ipa1999handbook} with accent, stress and tone
+  marks, phrase boundaries, optional pitch values and an optional original-text layer, which separates the
+  \emph{Yomite} (text to YomiScript: an LLM, rules, a dedicated model or a person) from the \emph{Katarite}
+  (YomiScript to sound) (Section~\ref{sec:yomiscript}).
+  \item A \textbf{Kokoro Katarite} that, given YomiScript written from Kokoro's own front end, hands the model exactly
+  the phoneme string and ids of the original pipeline, with identical durations and F0, and audio within the
+  original's own run-to-run variation (Section~\ref{sec:parity}).
+  \item An evaluation of \textbf{LLMs as the Yomite} for Kokoro on Japanese and English, against the original front
+  end and pyopenjtalk, on readings, faithfulness of the text layer, intelligibility and cost (Section~\ref{sec:results}).
+  \item A \textbf{second Katarite} for an engine that reads characters rather than IPA (Supertonic~3~\citep{supertonic3}),
+  which uses the text layer and gives kana only for words whose written form is ambiguous.
+\end{itemize}
+
+\section{Related work}
+
+\paragraph{Japanese front ends.} OpenJTalk~\citep{openjtalk} (and pyopenjtalk~\citep{pyopenjtalk}) analyses text with
+MeCab and a NAIST-JDIC-based dictionary and produces readings, accent phrases and accent nuclei; it is the de facto
+front end of open Japanese TTS. misaki~\citep{misaki}, the G2P of Kokoro, reads Japanese with UniDic through a
+romanisation-based path. MARINE~\citep{park2022marine} estimates accent with multi-task learning. zenz~\citep{zenz}
+models the reverse direction (kana-kanji conversion) with a small GPT-2 model. All choose readings from a dictionary
+or a model trained on dictionary output; none is given the writer's intent.
+
+\paragraph{Neural G2P, homographs and text normalisation.} Multilingual neural G2P such as ByT5-based
+models~\citep{zhu2022byt5g2p} learns pronunciations from lexicons. Homograph disambiguation with contextual
+embeddings has been studied for English TTS~\citep{nicolis2021homograph}, and text normalisation (numbers, dates,
+symbols into words) is a long-standing hard problem~\citep{sproat2016normalization}. LLMs have been tried for G2P and
+normalisation \todo{cite LLM-based G2P and normalisation work, e.g. benchmarks of LLM G2P; verify}. We differ in who
+does it: not a separate model reading someone else's text, but the author of the text.
+
+\paragraph{Small and browser TTS.} Kokoro-82M~\citep{kokoro82m} is a StyleTTS~2-style~\citep{li2023styletts2} model with
+an iSTFTNet~\citep{kaneko2022istftnet} decoder that takes phonemes. Piper~\citep{piper}, based on VITS~\citep{kim2021vits},
+runs in the browser through ONNX Runtime~\citep{onnxruntime}; piper-plus~\citep{piperplus} adds Japanese with OpenJTalk
+compiled to WebAssembly. kokoro-js~\citep{kokorojs} runs Kokoro in the browser with English voices only.
+SupertonicTTS~\citep{kim2025supertonic} reads raw characters (no G2P), learns text-speech alignment with flow
+matching~\citep{lipman2023flow} and predicts only the utterance duration; Supertonic~3~\citep{supertonic3} covers 31
+languages including Japanese. Phonon~\citep{phonon} is a 31M/40M on-device model with a WebAssembly build, without
+Japanese at launch. The Web Speech API~\citep{webspeech} exposes the operating system's voices. In all of them the
+reading is decided inside the TTS, by a dictionary front end or by the acoustic model itself.
+
+\section{YomiScript}\label{sec:yomiscript}
+
+\paragraph{Roles.} A \emph{Yomite} (読み手, the reader) turns text into YomiScript; a \emph{Katarite} (語り手, the
+narrator) turns YomiScript into sound. Lexicons and reading hints are inputs to the Yomite and are not part of
+YomiScript, which holds only resolved pronunciation.
+
+\paragraph{Notation.} An utterance is a BCP~47 language tag and the pronunciation between slashes, ending in a fall
+(\ys{↘}) or rise (\ys{↗}). Every language is written in IPA, Japanese included, mora by mora, with \ys{ꜛ} after the
+mora where the pitch rises and \ys{ꜜ} after the accent nucleus; English uses \ys{ˈ}/\ys{ˌ}. \ys{|} is an accent-phrase
+boundary and \ys{‖} a breath group with a pause. Optional pitch values \ys{<f0:v>} give a target in semitones relative
+to the speaker's register for the unit before them; a Katarite that has its own prosody model may ignore marks and fill
+pitch itself. Examples from the specification:
+
+\begin{quote}
+\ys{ja /kʲoꜜːwa | joꜜi | teꜛŋkidesɯ ↘/}\\
+\ys{en-US /ˈaɪ ˈɹɛd ðə ˈbʊk | ˈjɛstɚˌdeɪ ↘/}
+\end{quote}
+
+\paragraph{Original text.} \ys{<t:…>} closes a span: the units since the previous \ys{<t:…>} are the reading of that
+text, and a \ys{<t:…>} with no units before it is text that is not spoken (punctuation). Joining the values gives back
+the text. The layer never changes the pronunciation: the parser removes it before reading the IPA, and Kokoro's input
+is identical with or without it (checked on the 48 fixtures of Section~\ref{sec:parity}). It serves two purposes:
+showing the text while it is spoken (a chat client highlighting the current word), and Katarites whose engine reads
+characters. An LLM output from our hard set, for 一日から三日まで休みです (``closed from the 1st to the 3rd''):
+
+\begin{quote}
+\ys{ja /tsɯitatɕi<t:一日> kaɾa<t:から> mikka<t:三日> made<t:まで> jasɯmi<t:休み> desɯ<t:です。> ↘/}
+\end{quote}
+
+and for 舞台の上手から役者が登場した (``an actor entered from stage left''), where 上手 is \emph{kamite}:
+
+\begin{quote}
+\ys{ja /bɯtai<t:舞台> no<t:の> kamite<t:上手> kaɾa<t:から> jakɯɕa<t:役者> ɡa<t:が> toːdʑoː<t:登場> ɕita<t:した。> ↘/}
+\end{quote}
+
+\paragraph{Katarites.} The \emph{Kokoro Katarite} maps YomiScript IPA to Kokoro's phoneme inventory and runs the
+model's three ONNX parts (text encoder with duration prediction, F0/energy prediction, decoder) in the browser or in
+Node. The \emph{Supertonic Katarite} gives the engine text: each span as written, except spans whose written form (or
+a 2--8 character form inside it) has more than one reading in a list of 12{,}875 forms derived from
+IPAdic~\citep{ipadic}, or that contain numbers, Latin letters, symbols or kanji numerals; those are given as kana from
+the YomiScript reading (は as わ, long vowels as ー). The list and the rule belong to the Katarite; the Yomite writes
+only YomiScript.
+
+\section{Experimental setup}\label{sec:setup}
+
+\paragraph{Sets.} (1)~\emph{ja}: 24 Japanese texts written to probe Kokoro's front end (punctuation, questions, numbers,
+loanwords, Latin script, a long passage); (2)~\emph{en}: 22 English texts of the same kind; (3)~\emph{hard}: 70
+Japanese sentences, 35 homograph sentences, 12 with acronyms, 12 with numbers and 11 with dates, with gold readings in
+katakana. The gold readings are provisional (Section~\ref{sec:limits}).
+
+\paragraph{Yomites.} Two LLMs through their command-line agents with all tools disabled: Claude Code
+(\texttt{claude-opus-5-5}) and Codex (\texttt{gpt-6.1-sol}), as reported by the CLIs. One call per set, with a prompt
+giving the subset of YomiScript Kokoro needs (IPA, word spaces, \ys{‖}, \ys{↘}/\ys{↗}, no pitch values or accent marks,
+since Kokoro predicts prosody), the Japanese mora-to-IPA table of the specification, the text layer, and five examples
+written by Kokoro's own front end on sentences outside the test sets. Baselines: Kokoro's original front end (misaki,
+via KPipeline) and pyopenjtalk~0.4.1 (the same OpenJTalk and NAIST-JDIC front end that piper-plus compiles to
+WebAssembly; we use it as piper-plus's stand-in for readings).
+
+\paragraph{Prompt rounds.} The prompt was revised twice, for notation only: the first round gave too little of it (the
+LLMs wrote phonemic \ys{ni} for に where the specification writes \ys{ɲi}, and several utterances per item); the second
+added the specification's mora table and the one-utterance rule; the third added the text layer. The instruction about
+readings (``each word read the way it is meant in its context'') did not change. All numbers are from the third round
+unless stated otherwise.
+
+\paragraph{Scoring.} Every output goes through the Kokoro Katarite's planner to the phoneme string Kokoro is given. On
+\emph{ja} and \emph{en} we compare with the original front end; on \emph{hard} with the gold. A reading counts as
+\emph{the same} when the phonemes match after removing word spaces and punctuation and merging spellings that do not
+change the reading: long-vowel spelling (イイ/イー), Kokoro's ɨ for a devoiced ɯ, the allophone written for a moraic
+nasal, and h/n before i written without their palatal allophone (for English: stress marks, Kokoro's reduced vowels and
+flap). Intelligibility is measured by transcribing the audio with Whisper large-v3-turbo~\citep{radford2023whisper},
+converting the transcript to katakana with pyopenjtalk, and computing the kana error rate against what the system was
+meant to say (English: word error rate against the text).
+
+\section{Results}\label{sec:results}
+
+\subsection{The Kokoro Katarite reproduces the original}\label{sec:parity}
+
+Given YomiScript written from Kokoro's own front end, the Katarite hands Kokoro the same input as the original
+pipeline (Table~\ref{tab:parity}). With fp32 weights the audio differs from the original no more than the original
+differs from itself (its decoder draws random numbers); the fp16-weight model used in the browser is close but not
+identical. This makes the comparisons below about readings, not about a different synthesizer.
+
+\begin{table}[t]
+\centering\small
+\caption{Kokoro Katarite vs the original Kokoro pipeline (kokoro 0.9.4 KPipeline), given the original front end's
+pronunciation as YomiScript. Correlation of the waveform with the original's; the baseline is a second run of the original.}
+\label{tab:parity}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{English (23 chunks)} & \multicolumn{2}{c}{Japanese (50 chunks)}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Phoneme string, ids, voice index, durations & \multicolumn{2}{c}{23/23 identical} & \multicolumn{2}{c}{50/50 identical}\\
+F0 (RMSE) & \multicolumn{2}{c}{0.000 st} & \multicolumn{2}{c}{0.000 st}\\
+\midrule
+Audio correlation & mean & min & mean & min\\
+Original, second run & 0.9943 & 0.9924 & 0.9918 & 0.9762\\
+Katarite, fp32 & 0.9944 & 0.9888 & 0.9914 & 0.9773\\
+Katarite, fp16 weights (browser) & 0.9854 & 0.8545 & 0.9833 & 0.7980\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Readings}
+
+\begin{table}[t]
+\centering\small
+\caption{Sentences read correctly on the hard set (gold\provisional). One run per LLM.}
+\label{tab:hard}
+\begin{tabular}{lccccc}
+\toprule
+System & all (70) & homograph (35) & acronym (12) & number (12) & date (11)\\
+\midrule
+LLM Yomite: Codex & \textbf{100.0\%} & \textbf{100.0\%} & 100.0\% & 100.0\% & 100.0\%\\
+LLM Yomite: Claude & 98.6\% & 97.1\% & 100.0\% & 100.0\% & 100.0\%\\
+pyopenjtalk (piper-plus front end) & 78.6\% & 60.0\% & 100.0\% & 91.7\% & 100.0\%\\
+Kokoro's original front end (misaki) & 32.9\% & 51.4\% & 0.0\% & 41.7\% & 0.0\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:hard} shows the main result. Both LLMs read the homographs from context; pyopenjtalk reads 21 of 35 and
+Kokoro's front end 18 of 35. Kokoro's front end also leaves Latin-script acronyms (NHK, SAP) as they are and misreads
+dates (24日 as \emph{nijūyon-nichi} rather than \emph{nijūyokka}). Claude's one miss (今日の日本経済を論じる) is a
+notation slip rather than a misreading: it wrote \ys{keːzai} where the specification writes ザ as \ys{dza}; the reading
+of the homograph 今日 (\emph{konnichi}) is correct. In the first prompt round, when the LLMs had not been given the mora
+table, the same sets scored 55.7\% and 51.4\% on the hard set, almost entirely because of such notation mismatches; we
+report this to make clear that the notation, not only the model, determines the score.
+
+\begin{table}[t]
+\centering\small
+\caption{Agreement with Kokoro's original front end on the parity sets (same reading after merging spellings; Section~\ref{sec:setup}).}
+\label{tab:paritysets}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{Japanese (24 texts)} & \multicolumn{2}{c}{English (22 texts)}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+System & same reading & phoneme error & same reading & phoneme error\\
+\midrule
+LLM Yomite: Claude & 62.5\% & 9.22\% & 31.8\% & 10.36\%\\
+LLM Yomite: Codex & 62.5\% & 8.97\% & 40.9\% & 9.39\%\\
+pyopenjtalk & 62.5\% & 10.92\% & -- & --\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Agreement with Kokoro's own front end (Table~\ref{tab:paritysets}) is not a quality measure: in Japanese most
+differences are the original's misreadings (清水寺 as \emph{shimizu-tera} for \emph{kiyomizu-dera}, 9時 as
+\emph{kyū-ji} for \emph{ku-ji}, iPhone left in Latin letters). In English the differences are mostly phonetic detail
+(stress placement, Kokoro's reduced-vowel symbols), which the model does hear; we leave English to listening tests.
+
+\subsection{Text layer and cost}
+
+Joining the \ys{<t:…>} values gave back the input exactly (whitespace ignored) in all 232 outputs (2 LLMs $\times$ 116
+texts). The layer roughly doubles the output: the YomiScript is 5.6--6.1 times the characters of the Japanese text
+(2.7--3.2 without it) and 3.1 times for English; Claude wrote 10{,}692, 8{,}424 and 11{,}111 output tokens for the
+\emph{ja}, \emph{en} and \emph{hard} sets. The calls took 31--112\,s per set (\emph{not} a latency measure: one call
+for a whole set).
+
+\subsection{Intelligibility and the two Katarites}
+
+\begin{table}[t]
+\centering\small
+\caption{Kana error rate of Whisper transcripts on the hard set (lower is better), against the gold reading. A proxy:
+Whisper and pyopenjtalk add their own errors, equally for all systems.}
+\label{tab:asr}
+\begin{tabular}{lcc}
+\toprule
+System & all (70) & homographs (35)\\
+\midrule
+Claude YomiScript $\to$ Kokoro & 3.7\% & 6.6\%\\
+Codex YomiScript $\to$ Kokoro & 3.9\% & 7.0\%\\
+Codex YomiScript $\to$ Supertonic Katarite (kana for ambiguous words) & 5.6\% & 8.2\%\\
+Claude YomiScript $\to$ Supertonic Katarite (kana for ambiguous words) & 7.6\% & 9.2\%\\
+macOS system voice (Kyoko) & 5.5\% & 10.1\%\\
+Kokoro with its original front end & 10.3\% & 9.6\%\\
+Supertonic 3 on the plain text & 13.8\% & 14.4\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+With the same YomiScript, Kokoro was the more intelligible Katarite (Table~\ref{tab:asr}). Supertonic~3 on the plain
+text had the highest error, and giving it kana for ambiguous words, chosen by its Katarite from the YomiScript and the
+text layer, cut the error on the hard set by about half. The rule left 3 of 35 homographs as written (市役所, 朝市,
+何本), all in words that fix the reading. In informal listening by the authors, Supertonic sounded more natural than
+Kokoro when its reading was right; Whisper cannot measure this, and we have no listening test yet. On English the word
+error rates were close (2.0--3.2\%).
+
+\subsection{Context: other Yomites we tried}
+
+In an earlier experiment (7 Japanese items) the LLMs wrote complete YomiScript with accent marks and pitch values from
+plain text; their accent-nucleus F1 against a rule-based reference was 0.82 (Claude) and 0.60 (Codex), and adding pitch
+values to YomiScript whose marks were given was easy for both. Accent from plain text is the weaker part, so here the
+Katarite's engine predicts prosody. A dedicated 7.7M-parameter reading model (Yomi-0) trained on
+300k sentences labelled by pyopenjtalk stayed below its teacher (JSUT~\citep{sonobe2017jsut,jsutlabel} sentence
+accuracy 68.2\% vs 72.5\%; hard set 57.1\% vs 71.4\%): distillation inherits the teacher's context-free readings, which
+is the problem this work avoids.
+
+\section{Discussion}
+
+\paragraph{Why it works.} The author of the text has the context, and in an LLM application the author is a model that
+can also write IPA. A dictionary front end must guess; the author does not.
+
+\paragraph{What it buys for the browser.} No front end ships: the browser needs only the Katarite (Kokoro with fp16
+weights, 163\,MB plus a 0.5\,MB voice; Supertonic~3, 385\,MB). Compared with shipping OpenJTalk (piper-plus: about
+19\,MB of WebAssembly, by its documentation), the gain is not size but readings.
+
+\paragraph{Delivery.} The same idea fits a Model Context Protocol~\citep{mcp} server or a chat-client plugin: the
+calling LLM writes YomiScript as the argument of a \texttt{speak} tool, and the client can show the text from the text
+layer while it is spoken. The TTS has no LLM and no front end of its own.
+
+\paragraph{Costs.} The calling LLM writes several times more characters than the text, which delays the first audio and
+costs tokens; streaming per sentence and a lighter notation (for example omitting the text layer when not displayed)
+are ways to reduce it.
+
+\section{Limitations}\label{sec:limits}
+
+The following weaken the claims above, and Section~\ref{sec:results} should be read with them.
+\begin{itemize}
+  \item \textbf{Provisional gold (weakens Table~\ref{tab:hard}).} The hard set and its gold readings were written by
+  the project, marked provisional and not reviewed by independent annotators; LLM assistance in writing them cannot be
+  ruled out, which could favour the LLMs. Several items admit two readings.
+  \item \textbf{Small sets (weakens all tables).} 35 homograph sentences and 70 hard sentences; one wrong answer moves
+  the homograph score by 2.9 points. No confidence intervals are reported.
+  \item \textbf{One run per LLM (weakens Tables~\ref{tab:hard}--\ref{tab:asr}).} LLM outputs vary between calls; one
+  Codex call returned malformed JSON and was repeated.
+  \item \textbf{Prompt revisions.} The prompt was revised twice after seeing results, for notation; the reading
+  instruction did not change, but the revision was informed by the test sets.
+  \item \textbf{Two frontier LLMs only.} Smaller or local models, which an MCP server will also meet, were not tested.
+  \item \textbf{Intelligibility is a proxy (weakens Table~\ref{tab:asr}).} ASR transcripts, read back with pyopenjtalk,
+  carry both systems' errors; naturalness was not measured.
+  \item \textbf{Baselines.} pyopenjtalk stands in for piper-plus; context-aware Japanese G2P models were not compared.
+  \item \textbf{Long utterances.} The Kokoro Katarite does not yet split an utterance longer than Kokoro's 510 phonemes;
+  the one long passage could not be spoken from a single LLM utterance.
+\end{itemize}
+
+\section{Conclusion}
+
+When an LLM speaks, it can also say how its words are read. Writing that reading in a language-neutral notation lets a
+small synthesizer in the browser speak Japanese homographs, numbers, dates and acronyms that dictionary front ends
+misread, with the reading decided by the one component that knows what was meant. Our preliminary results are strong
+but small; the next step is an independent, larger evaluation with human listening tests.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

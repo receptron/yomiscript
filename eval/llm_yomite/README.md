@@ -6,7 +6,7 @@ Asks LLM coding agents (Claude Code and Codex, non-interactive) to write YomiScr
 - **`text`** — the LLM is the whole Yomite: plain text (+ language, + dialect) → YomiScript with IPA, accent marks, boundaries and pitch values.
 - **`marked`** — the LLM is only the prosody stage: YomiScript with accent marks (from `items.json`) → the same text with pitch values added.
 
-Both prompts (`prompt.md`) explain YomiScript and give two worked examples whose values come from the rule-based prosody in `demo/ys_web/web/yomite.js`, so the scale of the values is shown. Each LLM gets all items in one call and returns JSON. The LLMs run in an empty temporary directory with file and shell tools disabled (Claude Code) or a read-only sandbox (Codex), so they cannot read the repository.
+Both prompts (`prompt.md`) explain YomiScript and give two worked examples whose values come from the rule-based prosody in `packages/core/src/yomite.ts`, so the scale of the values is shown. Each LLM gets all items in one call and returns JSON. The LLMs run in an empty temporary directory with file and shell tools disabled (Claude Code) or a read-only sandbox (Codex), so they cannot read the repository.
 
 ## Files
 - `items.json`: test items (source text, language, dialect, reference marked YomiScript) and the two prompt examples

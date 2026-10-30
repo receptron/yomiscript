@@ -3,7 +3,7 @@
 // usage: node page.mjs   (after audio_*.{mjs,py,sh} and score.mjs)
 import fs from "fs";
 import path from "path";
-import { toKana, toText } from "../../katarite/supertonic/kana.js";
+import { ambiguousSet, toText } from "@mulmovoice/katarite-supertonic";
 import { HERE, SETS } from "./sets.mjs";
 
 const ITEMS = JSON.parse(fs.readFileSync(path.join(HERE, "results/items.json"), "utf8"));
@@ -13,22 +13,19 @@ export const SYSTEMS = [
   { key: "codex", label: "Codex → YomiScript → Kokoro", scored: "codex" },
   { key: "supertonic_ys_claude_ambiguous", label: "Claude → YomiScript → Supertonic 3 Katarite (text, kana for ambiguous words)", optional: true },
   { key: "supertonic_ys_codex_ambiguous", label: "Codex → YomiScript → Supertonic 3 Katarite (text, kana for ambiguous words)", optional: true },
-  { key: "supertonic_ys_claude", label: "Claude → YomiScript → Supertonic 3 Katarite (all kana)", optional: true },
-  { key: "supertonic_ys_codex", label: "Codex → YomiScript → Supertonic 3 Katarite (all kana)", optional: true },
   { key: "kokoro", label: "Original Kokoro front end → Kokoro", scored: "original Kokoro" },
   { key: "supertonic", label: "Supertonic 3 (raw text)" },
   { key: "supertonic_hints", label: "Supertonic 3, reading hint as kana", optional: true },
-  { key: "supertonic_kana", label: "Supertonic 3, all in hiragana", optional: true },
   { key: "system", label: "macOS system voice (Web Speech on a Mac)" },
 ];
-// what the Supertonic Katarite was given: the LLM's YomiScript as all kana, or as text with kana hints
-const AMBIGUOUS = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(HERE, "../../katarite/supertonic/ambiguous.json"), "utf8"))));
+// what the Supertonic Katarite was given: the original text with kana hints, from the LLM's YomiScript
+const AMBIGUOUS = ambiguousSet(JSON.parse(fs.readFileSync(path.join(HERE, "../../packages/katarite-supertonic/data/ambiguous.json"), "utf8")));
 function kanaGiven(key, set, name) {
   const [llm, rule] = key.replace("supertonic_ys_", "").split("_");
   const ys = JSON.parse(fs.readFileSync(path.join(HERE, `results/${llm}.${set}.json`), "utf8")).output?.[name];
   if (!ys) return undefined;
   try {
-    return rule ? toText(ys, AMBIGUOUS, rule) : toKana(ys);
+    return toText(ys, AMBIGUOUS, rule);
   } catch {
     return undefined;
   }

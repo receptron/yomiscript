@@ -32,13 +32,13 @@ The shipped packages contain no Python. Python stays only in research and evalua
 
 Packages (names to decide):
 
-1. **core**: the YomiScript parser and types (`demo/ys_web/web/yomiscript.js` today), the Katarite interface, the
+1. **core**: the YomiScript parser and types, the rule prosody, the Katarite interface, the
    YomiScript text of the tool description (the prompt: the subset a Katarite needs, examples).
-2. **katarite-kokoro**: the plan and engine of `demo/ys_web/web/ys.js`, with a loader for onnxruntime-web (w16) and
+2. **katarite-kokoro**: the plan (YomiScript -> Kokoro input), the engine and Kokoro's prosody, with a loader for onnxruntime-web (w16) and
    onnxruntime-node (fp32).
-3. **katarite-supertonic**: `katarite/supertonic/kana.js` and `ambiguous.json`, plus Supertonic's inference ported
-   to TypeScript (text indexing, duration predictor, the flow-matching loop, vocoder). Supertonic ships an
-   onnxruntime-web example to start from. Today the comparison runs it from Python (`eval/browser_tts/audio_supertonic.py`).
+3. **katarite-supertonic**: the text with kana hints (`text.ts`, `ambiguous.json`) and Supertonic's inference in
+   TypeScript (preprocessing, duration, the flow-matching loop, vocoder). The comparison in `eval/browser_tts` still
+   runs the Python SDK (`audio_supertonic.py`).
 4. **mcp**: an MCP server with a `speak` tool (YomiScript in; plays it or returns audio), and a CLI on the same code.
 5. **gui-chat-protocol plugin**: speaks the YomiScript and shows the original text (`<t:…>`, D23) while it is spoken,
    highlighting the current word.
@@ -51,9 +51,15 @@ Models are not in the npm packages: they are downloaded on first use (Hugging Fa
   LLM utterance fails; the original front end chunks before Kokoro).
 - Katarite: whether to accept phonemic `hi` / `ni` for Japanese as `çi` / `ɲi` (LLMs sometimes write them; the
   original never does, so parity is unaffected). A behaviour change, to decide explicitly.
-- Move the JavaScript to TypeScript. CLAUDE.md says "no TypeScript, no build step" for the demo today; that rule
-  changes with this plan.
-- Check fp32 on onnxruntime-node against the parity results (`eval/kokoro_parity` was measured with onnxruntime-web 1.22.0).
+- Done 2026-10-29: the JavaScript is TypeScript in `packages/` (core, katarite-kokoro, katarite-supertonic text); the
+  demo uses the built packages through an import map.
+- Done 2026-10-29: fp32 on onnxruntime-node against the original Kokoro (`eval/kokoro_parity` chunks): audio
+  correlation 0.9910 (ja, 50 chunks) and 0.9944 (en, 23), the same as onnxruntime-web (0.9913 / 0.9939) and within
+  the original's own run-to-run spread (0.9918 / 0.9943).
+- Done 2026-10-29: Supertonic 3 inference in TypeScript, checked against the Python SDK 1.3.1 with the same noise:
+  input ids identical, audio correlation 1.000000 (max abs difference 3.3e-4); the CLI and MCP server offer it.
+- Declaration files keep `.ts` import specifiers (rewriteRelativeImportExtensions rewrites only the JavaScript).
+  TypeScript 6 consumers resolve them (checked with an outside project); check older TypeScript before publishing.
 - Licenses: Kokoro (Apache 2.0); Supertonic 3 weights (OpenRAIL-M, with use-based restrictions that must be passed
   on); IPAdic, from which `ambiguous.json` is built (its notice must be kept).
 - How well smaller and local LLMs write YomiScript (the MCP server will be called by many kinds of LLM).

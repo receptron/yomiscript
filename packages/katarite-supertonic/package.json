@@ -1,0 +1,31 @@
+{
+  "name": "@mulmovoice/katarite-supertonic",
+  "version": "0.1.0",
+  "description": "Supertonic 3 Katarite: YomiScript -> original text with kana hints for ambiguous words -> audio",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "data"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mulmovoice/core": "*",
+    "onnxruntime-web": "1.22.0",
+    "onnxruntime-node": "1.22.0",
+    "onnxruntime-common": "1.22.0"
+  }
+}

@@ -68,7 +68,7 @@ function audioCheck(r, audio, ref) {
 }
 async function modelCheck(r, s, c) {
   // what the model does with it: durations, F0, audio (with the reference's voice; one section: audio as is)
-  const { audio } = await E.synthSection(s, "orig");
+  const { audio } = await E.synthSection(s, "engine");
   const pr = await E.predict(s);
   r.dur_same = pr.dur.filter((d, i) => d === c.dur[i]).length / c.dur.length;
   r.f0_rmse_st = f0Rmse(pr.f0, c.f0);

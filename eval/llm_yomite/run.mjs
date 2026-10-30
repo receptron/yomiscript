@@ -6,7 +6,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { realize } from "../../demo/ys_web/web/yomite.js";
+import { realize } from "@mulmovoice/core";
 import { call, json } from "./llm.mjs";
 const HERE = path.dirname(fileURLToPath(import.meta.url)),
   OUT = path.join(HERE, "results");

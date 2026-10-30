@@ -4,12 +4,11 @@
   --hints     the hard set's homographs with the intended word replaced by its reading in hiragana (the note in
               hard_set.tsv, e.g. 一日=ついたち): what "plain text plus hints" gives an engine that reads raw text
               -> audio/supertonic_hints/hard.<name>.wav
-  --kana      the hard set's homographs written entirely in hiragana (the gold reading) -> audio/supertonic_kana/hard.<name>.wav
-  --ys LLM [RULE]  the Supertonic Katarite: the LLM's YomiScript (results/<LLM>.<set>.json) rendered as text by
-              katarite/supertonic/kana.js: all kana (no RULE), or the original text (D23) with kana where RULE says
-              (ambiguous, kanji) -> audio/supertonic_ys_<LLM>[_<RULE>]/<set>.<name>.wav
+  --ys LLM [RULE]  the Supertonic Katarite: the LLM's YomiScript (results/<LLM>.<set>.json) as the original text (D23)
+              with kana where RULE says (ambiguous (default), kanji), by packages/katarite-supertonic via render_text.mjs
+              -> audio/supertonic_ys_<LLM>_<RULE>/<set>.<name>.wav
 
-usage: python audio_supertonic.py [--hints | --kana | --ys claude|codex [ambiguous|kanji]]
+usage: python audio_supertonic.py [--hints | --ys claude|codex [ambiguous|kanji]]
        (python with supertonic installed; downloads the model on first use)
 """
 
@@ -28,10 +27,6 @@ HERE = Path(__file__).parent
 HINT = re.compile(r"^([^=、。\s]+)=([ぁ-ゖー]+)")
 
 
-def hiragana(kata):
-    return "".join(chr(ord(c) - 0x60) if "ァ" <= c <= "ヶ" else c for c in kata)
-
-
 def hinted(items, how):
     # homographs only; the note names the word and its intended reading
     notes = {l.split("\t")[0]: l.split("\t")[4] for l in (HERE.parent / "data/hard_set.tsv").read_text().splitlines() if l and not l.startswith("#")}
@@ -40,21 +35,21 @@ def hinted(items, how):
         m = HINT.match(notes.get(x["name"], ""))
         if x["category"] != "homograph" or not m:
             continue
-        text = x["text"].replace(m[1], m[2], 1) if how == "hints" else hiragana(x["gold"][0])
+        text = x["text"].replace(m[1], m[2], 1)
         out.append({**x, "text": text})
     return out
 
 
 def katarite(sets, llm, rule):
-    # the same YomiScript Kokoro is given, as text; English needs the original text (a rule), IPA has no spelling to go back to
+    # the same YomiScript Kokoro is given, as the original text with kana where the rule says
     out = {}
-    for name in ("ja", "hard", "en") if rule else ("ja", "hard"):
+    for name in ("ja", "hard", "en"):
         R = json.loads((HERE / f"results/{llm}.{name}.json").read_text())
         items = [x for x in sets[name] if R["output"].get(x["name"])]
         ys = [R["output"][x["name"]] for x in items]
         kana = json.loads(
             subprocess.run(
-                ["node", str(HERE.parents[1] / "katarite/supertonic/render.mjs"), *([rule] if rule else [])],
+                ["node", str(HERE / "render_text.mjs"), rule],
                 input=json.dumps(ys),
                 capture_output=True,
                 text=True,
@@ -73,8 +68,8 @@ def main():
     )
     how = sys.argv[1][2:] if len(sys.argv) > 1 else None
     if how == "ys":
-        rule = sys.argv[3] if len(sys.argv) > 3 else None
-        how = f"ys_{sys.argv[2]}" + (f"_{rule}" if rule else "")
+        rule = sys.argv[3] if len(sys.argv) > 3 else "ambiguous"
+        how = f"ys_{sys.argv[2]}_{rule}"
         sets = katarite(sets, sys.argv[2], rule)
     elif how:
         sets = {"hard": hinted(sets["hard"], how)}

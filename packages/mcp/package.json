@@ -1,0 +1,31 @@
+{
+  "name": "@mulmovoice/mcp",
+  "version": "0.1.0",
+  "description": "MCP server: a speak tool that takes YomiScript written by the calling LLM",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mulmovoice/core": "*",
+    "@mulmovoice/katarite-kokoro": "*",
+    "@mulmovoice/katarite-supertonic": "*",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7",
+    "@mulmovoice/cli": "*"
+  },
+  "bin": {
+    "mulmovoice-mcp": "./dist/server.js"
+  }
+}

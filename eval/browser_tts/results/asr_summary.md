@@ -6,7 +6,8 @@ Japanese: the transcript is read with pyopenjtalk and compared, in katakana, wit
 (kana error rate). English: word error rate against the text. Whisper and pyopenjtalk make their own mistakes,
 the same for every system, so the numbers compare systems; they are not absolute error rates.
 
-  katarite   Kokoro vs Supertonic given the same LLM YomiScript; the reference is that YomiScript as kana
+  katarite   Kokoro vs Supertonic given the same LLM YomiScript; the reference is that YomiScript's reading (its text with
+             kana for every word with kanji, read with pyopenjtalk like the transcripts)
   hard       every system on the hard set; the reference is the gold reading
   en         every system on the English texts; the reference is the text
 
@@ -14,12 +15,10 @@ the same for every system, so the numbers compare systems; they are not absolute
 
 | Yomite | Katarite | ja parity | hard set |
 |---|---|---|---|
-| codex | Kokoro | 4.9% (23) | 3.9% (70) |
-| codex | Supertonic 3, kana for ambiguous words | 9.4% (23) | 5.6% (70) |
-| codex | Supertonic 3, all kana | 8.5% (23) | 6.5% (70) |
-| claude | Kokoro | 4.8% (23) | 3.7% (70) |
-| claude | Supertonic 3, kana for ambiguous words | 11.3% (23) | 7.6% (70) |
-| claude | Supertonic 3, all kana | 7.2% (23) | 6.2% (70) |
+| codex | Kokoro | 5.2% (23) | 4.3% (70) |
+| codex | Supertonic 3, kana for ambiguous words | 8.6% (23) | 6.1% (70) |
+| claude | Kokoro | 6.2% (23) | 4.2% (70) |
+| claude | Supertonic 3, kana for ambiguous words | 8.8% (23) | 8.0% (70) |
 
 ## Hard set: every system vs the gold reading (kana error rate)
 
@@ -29,8 +28,6 @@ the same for every system, so the numbers compare systems; they are not absolute
 | claude | 3.7% (70) | 6.6% (35) |
 | supertonic_ys_codex_ambiguous | 5.6% (70) | 8.2% (35) |
 | supertonic_ys_claude_ambiguous | 7.6% (70) | 9.2% (35) |
-| supertonic_ys_codex | 6.5% (70) | 8.0% (35) |
-| supertonic_ys_claude | 6.2% (70) | 8.6% (35) |
 | kokoro | 10.3% (70) | 9.6% (35) |
 | supertonic | 13.8% (70) | 14.4% (35) |
 | supertonic_hints | 7.4% (32) | 7.4% (32) |

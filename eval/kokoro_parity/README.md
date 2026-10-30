@@ -3,7 +3,7 @@
 English (D21) and Japanese (D22, at the end).
 
 Reference: the original pipeline, unmodified (`kokoro` 0.9.4: `KPipeline` with misaki + espeak-ng fallback, `KModel` in PyTorch).
-Tested: `yomite/en_kokoro/g2p.py` (the original front end, text → YomiScript) → `demo/ys_web/web/ys.js` (Katarite, ONNX, no pitch values).
+Tested: `yomite/en_kokoro/g2p.py` (the original front end, text → YomiScript) → `packages/katarite-kokoro` (Katarite, ONNX, no pitch values).
 
 - `texts.json`: 22 English texts (plain, lists, questions, `!` `;` `:` `—`, quotes, parentheses, numbers, money, abbreviations, contractions, several sentences per line, `...`, an unknown word, a line break, a 510+ phoneme text)
 - `ref_kokoro.py`: runs the original and records the phoneme string, input ids, voice-pack index, durations, F0 (captured from `predictor.F0Ntrain`) and audio per chunk

@@ -3,6 +3,7 @@ import globals from "globals";
 import sonarjs from "eslint-plugin-sonarjs";
 import security from "eslint-plugin-security";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
+import tseslint from "typescript-eslint";
 
 // Same policy as ../mulmoterminal: take each preset's choice of rules, but run every one of them at error. A warning
 // does not fail anything, so a rule left at warn reports a violation and ships it. A rule that must not fail the
@@ -16,11 +17,23 @@ const enforced = (config) =>
   config.rules ? { ...config, rules: Object.fromEntries(Object.entries(config.rules).map(([id, entry]) => [id, raise(entry)])) } : config;
 
 export default [
-  { ignores: ["**/node_modules/", "demo/ys_web/web/ort/", "demo/ys_web/web/models/", "demo/ys_web/web/voices/", "models/yomi/mlx/"] },
+  {
+    ignores: [
+      "**/node_modules/",
+      "packages/*/dist/",
+      "paper/",
+      "demo/ys_web/web/ort/",
+      "demo/ys_web/web/models/",
+      "demo/ys_web/web/voices/",
+      "models/yomi/mlx/",
+    ],
+  },
   { linterOptions: { reportUnusedDisableDirectives: "error" } },
   enforced(js.configs.recommended),
   enforced(sonarjs.configs.recommended),
   enforced(security.configs.recommended),
+  // TypeScript (packages/): the typescript-eslint recommended rules, at error like the rest
+  ...tseslint.configs.recommended.map((c) => enforced({ ...c, files: ["**/*.ts", "**/*.tsx", "**/*.vue"] })),
   {
     languageOptions: { ecmaVersion: "latest", sourceType: "module", globals: { ...globals.node } },
     rules: {

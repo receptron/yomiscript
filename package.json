@@ -10,7 +10,9 @@
     "format": "prettier --write . && ruff format",
     "format:check": "prettier --check . && ruff format --check",
     "lint": "eslint . --cache && ruff check",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "yarn workspaces run build",
+    "typecheck": "tsc -b packages/core packages/katarite-kokoro packages/katarite-supertonic packages/cli packages/mcp"
   },
   "dependencies": {
     "onnxruntime-web": "1.22.0"
@@ -26,6 +28,12 @@
     "playwright": "1.48",
     "prettier": "^3.9.10",
     "vite": "^8.3.5",
-    "vitest": "^5.0.5"
-  }
+    "vitest": "^5.0.5",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "@types/node": "^24.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

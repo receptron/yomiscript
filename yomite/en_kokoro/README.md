@@ -4,7 +4,7 @@ Turns English text into YomiScript with pitch values, using the two halves of Ko
 
 ```
 English text ─► g2p.py (misaki, Kokoro's English G2P) ─► YomiScript: IPA, stress, syllables, boundaries
-             ─► Kokoro's prosody predictor (ONNX enc + f0n, demo/ys_web/web/kokoro_prosody.js) ─► + <f0:…> values
+             ─► Kokoro's prosody predictor (ONNX enc + f0n, packages/katarite-kokoro/src/prosody.ts) ─► + <f0:…> values
 ```
 
 - `g2p.py`: runs the original Kokoro front end unchanged (`KPipeline(model=False)`: misaki with the espeak-ng fallback, line splitting, chunking at 510) and rewrites each chunk's phoneme string as YomiScript, losslessly: Kokoro notation → IPA (`A`→`eɪ`, `I`→`aɪ`, `W`→`aʊ`, `Y`→`ɔɪ`, `O`→`oʊ`, `Q`→`əʊ`, `ʧ`→`tʃ`, `ʤ`→`dʒ`, `T`→`ɾ`), syllables (maximal legal onset), stress at the start of the syllable, `, ` → ` ‖ `, sentence ends → `↘` / `↗` (also inside the utterance), other punctuation → `<p:…>` (D21).

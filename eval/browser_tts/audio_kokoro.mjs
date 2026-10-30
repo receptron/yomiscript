@@ -13,7 +13,7 @@ const silence = new Float32Array(K.SR * 0.2);
 
 async function speak(utterances) {
   const parts = [];
-  for (const ys of utterances) parts.push((await E.synth(ys, "orig")).audio, silence);
+  for (const ys of utterances) parts.push((await E.synth(ys, "engine")).audio, silence);
   const a = new Float32Array(parts.reduce((n, p) => n + p.length, 0));
   parts.reduce((o, p) => (a.set(p, o), o + p.length), 0);
   return a;

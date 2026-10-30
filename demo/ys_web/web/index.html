@@ -29,13 +29,16 @@ pitch:
 <div>YomiScript with pitch values (what the Katarite renders):</div>
 <textarea id="r" readonly></textarea><audio id="a" controls></audio>
 <script src="ort/ort.webgpu.min.js"></script>
+<!-- the TypeScript packages, built (yarn build) and served from pkg/ (a link to packages/) -->
+<script type="importmap">
+  { "imports": { "@mulmovoice/core": "./pkg/core/dist/index.js", "@mulmovoice/katarite-kokoro": "./pkg/katarite-kokoro/dist/index.js" } }
+</script>
 <script type="module">
-  import * as Y from "./ys.js";
-  import { realize } from "./yomite.js";
-  import { KokoroProsody } from "./kokoro_prosody.js";
+  import * as Y from "@mulmovoice/katarite-kokoro";
+  import { realize } from "@mulmovoice/core";
+  const { KokoroProsody } = Y;
   ort.env.wasm.wasmPaths = new URL("ort/", location.href).href;
   ort.env.wasm.numThreads = crossOriginIsolated ? +new URLSearchParams(location.search).get("t") || Math.min(4, navigator.hardwareConcurrency || 1) : 1;
-  Y.setData(await (await fetch("data.json")).json());
   const P = await (await fetch("presets.json")).json();
   try {
     const r = await fetch("llm_presets.json");
@@ -63,7 +66,7 @@ pitch:
     EP = Q.get("ep") || "wasm";
   const SUF = { fp32: {}, w16: { enc: "_w16", f0n: "_w16", dec: "_w16" }, i8: { dec: "_i8gemm" }, c16: { enc: "_w16", f0n: "_w16", dec: "_c16" } }[M];
   if (EP === "webgpu" && !navigator.gpu) throw (st.textContent = "webgpu unavailable");
-  await E.init({ suffix: SUF, ep: EP });
+  await E.init({ suffix: SUF, executionProviders: EP === "webgpu" ? ["webgpu", "wasm"] : ["wasm"] });
   const KP = new KokoroProsody(E),
     pm = document.getElementById("pm"),
     r = document.getElementById("r");

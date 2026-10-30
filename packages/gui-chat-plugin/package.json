@@ -1,0 +1,44 @@
+{
+  "name": "@mulmovoice/gui-chat-plugin",
+  "version": "0.1.0",
+  "description": "gui-chat-protocol plugin: the LLM speaks (YomiScript) while the original text is shown",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./vue": {
+      "types": "./dist/vue/index.d.ts",
+      "import": "./dist/vue.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "dev": "vite",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@mulmovoice/core": "*",
+    "@mulmovoice/katarite-kokoro": "*"
+  },
+  "devDependencies": {
+    "gui-chat-protocol": "^2.3.0",
+    "vue": "^3.5.43",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "vue-tsc": "^3.3.14"
+  },
+  "peerDependencies": {
+    "gui-chat-protocol": "^2.3.0",
+    "vue": "^3.5.0"
+  }
+}

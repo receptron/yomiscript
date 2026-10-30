@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speak Plugin Demo</title>
+    <link rel="icon" href="data:," />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fbfbfa;
+        --fg: #1d1d1b;
+        --line: #d9d9d4;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #171716;
+          --fg: #ececea;
+          --line: #34342f;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          15px/1.5 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      button,
+      textarea {
+        font: inherit;
+        color: inherit;
+        background: transparent;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+      }
+      button {
+        padding: 4px 10px;
+        margin: 0 6px 6px 0;
+        cursor: pointer;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 4.5em;
+        padding: 8px;
+        font-family: ui-monospace, monospace;
+        font-size: 13px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin-top: 12px;
+      }
+      .message {
+        font-size: 13px;
+        opacity: 0.75;
+        margin: 8px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app"></main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

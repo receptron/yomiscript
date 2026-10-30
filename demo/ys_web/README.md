@@ -4,17 +4,19 @@ Enter YomiScript and the demo runs Kokoro-82M in the browser (onnxruntime-web, W
 
 ## Layout
 - `web/index.html`: the demo page. `web/presets.json` holds Tokyo/Osaka and mixed-language examples
-- `web/yomiscript.js`: YomiScript parser (sections, units, marks, `<f0:…>` values); no engine or language rules
-- `web/yomite.js`: reference Yomite prosody rules: marks → `<f0:…>` values, plus devoicing (`◌̥`) and the t/d flap (`ɾ`)
-- `web/kokoro_prosody.js`: Kokoro's duration + F0 predictor used on the Yomite side: writes Kokoro's predicted pitch as `<f0:…>` values
-- `web/ys.js`: the Katarite: YomiScript IPA → Kokoro phonemes, F0 from the values, ONNX inference, audio. Japanese is passed to Kokoro the way its own front end writes it: words separated by spaces, and ` | `, ` ‖ ` and `↘` become only the word space, because the original drops 。 and 、 (D22). So a Japanese ` ‖ ` gives no pause here.
+The code is in the TypeScript packages (`yarn build` at the root builds them; the page loads them from `web/pkg/`,
+a link to `packages/`, through an import map):
+- `packages/core`: the YomiScript parser (sections, units, marks, `<f0:…>` values, `<t:…>` text) and the reference
+  Yomite prosody rules (`yomite.ts`: marks → `<f0:…>` values, plus devoicing `◌̥` and the t/d flap `ɾ`)
+- `packages/katarite-kokoro`: Kokoro's prosody predictor used on the Yomite side (`prosody.ts`), and the Katarite:
+  YomiScript IPA → Kokoro phonemes (`plan.ts`), F0 from the values (`render.ts`), ONNX inference (`engine.ts`), audio. Japanese is passed to Kokoro the way its own front end writes it: words separated by spaces, and ` | `, ` ‖ ` and `↘` become only the word space, because the original drops 。 and 、 (D22). So a Japanese ` ‖ ` gives no pause here.
 - `export_split.py`: exports Kokoro as three ONNX files, `enc` / `f0n` / `dec` (so that F0 can be swapped in between). The decoder uses `exact_stft.py`, an STFT identical to the original's `torch.stft`/`istft` (Kokoro's own ONNX-friendly `CustomSTFT` is only approximate; see `eval/kokoro_parity`). For output identical to the original Kokoro use the fp32 models (`?m=fp32`)
 - `quant.py`: size reduction. `python quant.py w16` creates a version with only the weights stored in fp16 (compute stays fp32) at `models_q/*_w16.onnx` (used by default, about 163 MB total). `i8` is an int8 trial for the decoder
 - `serve.py`: local server with COOP/COEP headers (required for WASM multithreading)
 - `qeval.py`: quality comparison against fp32 (pyin F0 correlation, mel difference). `drift.py`: per-segment comparison of torch, Python ONNX and JS
-- `node.mjs`: the Katarite in Node (vocab loaded, ONNX engine reading `web/models` and `web/voices`); used by the Yomites and `eval/`
+- `node.mjs`: the Katarite package in Node with onnxruntime-web, reading `web/models` and `web/voices`; used by the Yomites and `eval/`
 - `f0_override.py`: Python copy of `f0Override` for the ONNX check scripts below
-- `parity.mjs` / `node_test.mjs` / `pw_test.mjs` / `pw_bench.mjs` / `ort_check.py`: parity checks against the Python version, tests and speed measurement in Node and Playwright (from an earlier stage; `parity.mjs`, `node_test.mjs`, `drift.py` and `ort_check.py` need reference files that are not in the repository)
+- `pw_test.mjs` / `pw_bench.mjs` / `ort_check.py`: tests and speed measurement in Playwright and Python (from an earlier stage; `drift.py` and `ort_check.py` need reference files that are not in the repository)
 
 ## Exporting the split ONNX (Python 3.11)
 ```
@@ -29,7 +31,7 @@ Weights and voices are fetched automatically from `hexgrad/Kokoro-82M` (Apache-2
 
 ## Running
 ```
-yarn install               # at the repository root: onnxruntime-web 1.22.0 and the dev tools (package.json)
+yarn install && yarn build  # at the repository root: dependencies, then the TypeScript packages
 python quant.py w16
 cd web && ln -s ../models models && ln -s ../voices voices && ln -s ../../../node_modules/onnxruntime-web/dist ort && cd ..
 for f in enc_w16 f0n_w16 dec_w16; do ln -s ../models_q/$f.onnx models/$f.onnx; done
@@ -38,7 +40,7 @@ python serve.py 8000 web   # open http://localhost:8000/
 URL parameters:
 - `?m=` model: `w16` (default; fp16 weights, about 163 MB total) / `fp32` (about 311 MB) / `i8` (decoder MatMul and Gemm in int8)
 - `?t=` number of WASM threads (default 4; requires COOP/COEP headers, so serve with `serve.py`)
-- `?pitch=` where the pitch values come from: `rules` (default, `yomite.js`) / `kokoro` (Kokoro's prediction, `kokoro_prosody.js`); also selectable on the page
+- `?pitch=` where the pitch values come from: `rules` (default, core's `yomite.ts`) / `kokoro` (Kokoro's prediction, `prosody.ts`); also selectable on the page
 - `?ep=webgpu` try WebGPU (falls back to WASM where unavailable)
 
 Rough figures (8-core CPU, headless Chromium, 4 threads): 3.5 s of audio synthesized in about 2.8 s (real-time factor about 0.8). Mixed-language sentences run inference per segment, so about 1.2.
