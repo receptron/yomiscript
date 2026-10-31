@@ -6,19 +6,21 @@ Japanese: the transcript is read with pyopenjtalk and compared, in katakana, wit
 (kana error rate). English: word error rate against the text. Whisper and pyopenjtalk make their own mistakes,
 the same for every system, so the numbers compare systems; they are not absolute error rates.
 
-  katarite   Kokoro vs Supertonic given the same LLM YomiScript; the reference is that YomiScript's reading (its text with
+  katarite   Kokoro vs the text engines (Supertonic, Audio8) given the same LLM YomiScript; the reference is that YomiScript's reading (its text with
              kana for every word with kanji, read with pyopenjtalk like the transcripts)
   hard       every system on the hard set; the reference is the gold reading
   en         every system on the English texts; the reference is the text
 
-## Katarite: Kokoro vs Supertonic, same YomiScript (kana error rate vs that YomiScript)
+## Katarite: Kokoro vs the text engines, same YomiScript (kana error rate vs that YomiScript)
 
 | Yomite | Katarite | ja parity | hard set |
 |---|---|---|---|
 | codex | Kokoro | 5.2% (23) | 4.3% (70) |
 | codex | Supertonic 3, kana for ambiguous words | 8.6% (23) | 6.1% (70) |
+| codex | Audio8 0.1B, kana for ambiguous words | 9.7% (23) | 6.9% (70) |
 | claude | Kokoro | 6.2% (23) | 4.2% (70) |
 | claude | Supertonic 3, kana for ambiguous words | 8.8% (23) | 8.0% (70) |
+| claude | Audio8 0.1B, kana for ambiguous words | 9.7% (23) | 6.6% (70) |
 
 ## Hard set: every system vs the gold reading (kana error rate)
 
@@ -32,6 +34,10 @@ the same for every system, so the numbers compare systems; they are not absolute
 | supertonic | 13.8% (70) | 14.4% (35) |
 | supertonic_hints | 7.4% (32) | 7.4% (32) |
 | system | 5.5% (70) | 10.1% (35) |
+| audio8_ys_codex_ambiguous | 6.5% (70) | 8.4% (35) |
+| audio8_ys_claude_ambiguous | 6.1% (70) | 8.4% (35) |
+| audio8_ys_claude_kanji | 5.8% (70) | 7.4% (35) |
+| audio8 | 13.9% (70) | 16.4% (35) |
 
 ## English: word error rate vs the text
 

@@ -12,14 +12,13 @@ usage: python audio_supertonic.py [--hints | --ys claude|codex [ambiguous|kanji]
        (python with supertonic installed; downloads the model on first use)
 """
 
-import json
 import re
-import subprocess
 import sys
 import time
 from pathlib import Path
 
 from supertonic import TTS
+from texts import katarite, load_sets
 
 HERE = Path(__file__).parent
 
@@ -40,32 +39,8 @@ def hinted(items, how):
     return out
 
 
-def katarite(sets, llm, rule):
-    # the same YomiScript Kokoro is given, as the original text with kana where the rule says
-    out = {}
-    for name in ("ja", "hard", "en"):
-        R = json.loads((HERE / f"results/{llm}.{name}.json").read_text())
-        items = [x for x in sets[name] if R["output"].get(x["name"])]
-        ys = [R["output"][x["name"]] for x in items]
-        kana = json.loads(
-            subprocess.run(
-                ["node", str(HERE / "render_text.mjs"), rule],
-                input=json.dumps(ys),
-                capture_output=True,
-                text=True,
-                check=True,
-            ).stdout
-        )
-        out[name] = [{**x, "text": k["text"]} for x, k in zip(items, kana, strict=True) if "text" in k]
-    return out
-
-
 def main():
-    sets = json.loads(
-        subprocess.run(
-            ["node", "-e", 'import("./sets.mjs").then(m=>console.log(JSON.stringify(m.SETS)))'], cwd=HERE, capture_output=True, text=True, check=True
-        ).stdout
-    )
+    sets = load_sets()
     how = sys.argv[1][2:] if len(sys.argv) > 1 else None
     if how == "ys":
         rule = sys.argv[3] if len(sys.argv) > 3 else "ambiguous"

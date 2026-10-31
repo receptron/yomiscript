@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kokoro vs Audio8</title>
+    <style>
+      :root {
+        --bg: #fff;
+        --fg: #1d1d1f;
+        --muted: #6e6e73;
+        --line: #d2d2d7;
+        --accent: #0a66c2;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #1c1c1e;
+          --fg: #f2f2f7;
+          --muted: #a1a1a6;
+          --line: #3a3a3c;
+          --accent: #64a8ff;
+        }
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          15px/1.5 system-ui,
+          sans-serif;
+        margin: 0 auto;
+        max-width: 860px;
+        padding: 16px;
+      }
+      .note {
+        color: var(--muted);
+      }
+      .item {
+        border-top: 1px solid var(--line);
+        padding: 12px 0;
+      }
+      .text {
+        font-size: 17px;
+        margin-bottom: 6px;
+      }
+      .opts {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+      }
+      .opt {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px 10px;
+      }
+      .opt audio {
+        width: 100%;
+      }
+      .who {
+        color: var(--accent);
+        display: none;
+        font-weight: 600;
+      }
+      .revealed .who {
+        display: inline;
+      }
+      .pick {
+        margin-top: 6px;
+      }
+      textarea {
+        box-sizing: border-box;
+        font:
+          12px ui-monospace,
+          monospace;
+        height: 140px;
+        width: 100%;
+      }
+      @media (max-width: 560px) {
+        .opts {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Kokoro vs Audio8: blind listening</h1>
+    <p class="note">
+      Each sentence is spoken by two systems from the same reading. Which is A and which is B changes from sentence to sentence. Pick the one that sounds more
+      natural (accent, rhythm, voice), or "no difference", and tick any that sounds misread (a word heard as another word). Then press "Reveal" and copy the
+      result.
+    </p>
+    <div id="items"></div>
+    <p><button id="reveal">Reveal</button></p>
+    <div id="summary"></div>
+    <textarea id="out" readonly></textarea>
+    <script>
+      const BASE = "audio/blind/",
+        LETTERS = ["A", "B"];
+      // a fixed order per sentence, each system first in half of them, not in a pattern that is easy to follow
+      const order = (k, [x, y]) => ((k * 5 + Math.floor(k / 2)) % 2 ? [y, x] : [x, y]);
+      const state = {};
+      const el = (tag, text) => Object.assign(document.createElement(tag), text === undefined ? {} : { textContent: text });
+      function radio(name, label, onPick) {
+        const l = el("label"),
+          r = Object.assign(el("input"), { type: "radio", name });
+        r.onchange = onPick;
+        l.append(r, " " + label);
+        return l;
+      }
+      function option(id, v, letter) {
+        const o = el("div");
+        o.className = "opt";
+        const who = el("span", v);
+        who.className = "who";
+        const a = Object.assign(el("audio"), { controls: true, preload: "none", src: `${BASE}${v}/${id}.wav` });
+        const mis = el("label"),
+          box = Object.assign(el("input"), { type: "checkbox" });
+        box.onchange = () => {
+          const m = state[id].misread.filter((x) => x !== v);
+          state[id].misread = box.checked ? [...m, v] : m;
+        };
+        mis.append(box, " misread");
+        o.append(el("strong", letter), " ", who, el("br"), a, el("br"), mis);
+        return o;
+      }
+      function render({ variants, items }) {
+        const root = document.getElementById("items");
+        items.forEach((it, k) => {
+          const id = `${it.set}.${it.name}`,
+            ord = order(k, variants);
+          state[id] = { order: ord, better: null, misread: [] };
+          const d = el("div");
+          d.className = "item";
+          const opts = el("div");
+          opts.className = "opts";
+          ord.forEach((v, i) => opts.append(option(id, v, LETTERS[i])));
+          const pick = el("div");
+          pick.className = "pick";
+          pick.append("More natural: ");
+          ord.forEach((v, i) =>
+            pick.append(
+              radio(id, LETTERS[i], () => (state[id].better = v)),
+              "  ",
+            ),
+          );
+          pick.append(radio(id, "no difference", () => (state[id].better = "same")));
+          d.append(el("div", `${k + 1}. ${it.text}`), opts, pick);
+          d.firstChild.className = "text";
+          root.append(d);
+        });
+      }
+      document.getElementById("reveal").onclick = () => {
+        document.body.classList.add("revealed");
+        const better = {},
+          misread = {};
+        for (const s of Object.values(state)) {
+          if (s.better) better[s.better] = (better[s.better] ?? 0) + 1;
+          for (const v of s.misread) misread[v] = (misread[v] ?? 0) + 1;
+        }
+        document.getElementById("summary").textContent = `more natural: ${JSON.stringify(better)}  misread: ${JSON.stringify(misread)}`;
+        const answers = Object.fromEntries(Object.entries(state).map(([k, s]) => [k, { better: s.better, misread: s.misread }]));
+        document.getElementById("out").value = JSON.stringify({ test: "kokoro_vs_audio8", better, misread, answers });
+      };
+      fetch(`${BASE}listen.json`)
+        .then((r) => r.json())
+        .then(render);
+    </script>
+  </body>
+</html>
