@@ -18,7 +18,8 @@ original. Everything is compared at the phoneme string Kokoro is given (the Kata
 
 Systems: Claude and Codex as the Yomite (`prompt.md`, `examples.json`), the original Kokoro front end, pyopenjtalk
 (OpenJTalk + NAIST-JDIC, the front end piper-plus runs as WASM; used as its stand-in for readings), and, for listening
-only, Supertonic 3 (raw text in) and the macOS system voices (what the Web Speech API uses on a Mac).
+only, Supertonic 3 (raw text in), Audio8 TTS 0.1B (raw text and the LLM's YomiScript as text, made by
+`eval/audio8`) and the macOS system voices (what the Web Speech API uses on a Mac).
 
 ## Run
 

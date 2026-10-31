@@ -17,11 +17,25 @@ export const SYSTEMS = [
   { key: "supertonic", label: "Supertonic 3 (raw text)" },
   { key: "supertonic_hints", label: "Supertonic 3, reading hint as kana", optional: true },
   { key: "system", label: "macOS system voice (Web Speech on a Mac)" },
+  { key: "audio8_ys_claude_ambiguous", label: "Claude → YomiScript → Audio8 0.1B (text, kana for ambiguous words; JSUT voice)", optional: true },
+  { key: "audio8_ys_codex_ambiguous", label: "Codex → YomiScript → Audio8 0.1B (text, kana for ambiguous words; JSUT voice)", optional: true },
+  { key: "audio8_ys_claude_kanji", label: "Claude → YomiScript → Audio8 0.1B (kana for every word with kanji; JSUT voice)", optional: true },
+  {
+    key: "audio8_ys_claude_kanji_kokoro",
+    label: "Claude → YomiScript → Audio8 0.1B (kana for every word with kanji; voice cloned from Kokoro)",
+    optional: true,
+  },
+  {
+    key: "audio8_ys_claude_kanji_default",
+    label: "Claude → YomiScript → Audio8 0.1B (kana for every word with kanji; the model's bundled voice)",
+    optional: true,
+  },
+  { key: "audio8", label: "Audio8 0.1B (raw text; JSUT voice)", optional: true },
 ];
-// what the Supertonic Katarite was given: the original text with kana hints, from the LLM's YomiScript
+// what a text engine (Supertonic, Audio8) was given: the original text with kana hints, from the LLM's YomiScript
 const AMBIGUOUS = ambiguousSet(JSON.parse(fs.readFileSync(path.join(HERE, "../../packages/supertonic/data/ambiguous.json"), "utf8")));
 function kanaGiven(key, set, name) {
-  const [llm, rule] = key.replace("supertonic_ys_", "").split("_");
+  const [llm, rule] = key.split("_ys_")[1].split("_");
   const ys = JSON.parse(fs.readFileSync(path.join(HERE, `results/${llm}.${set}.json`), "utf8")).output?.[name];
   if (!ys) return undefined;
   try {
@@ -44,7 +58,7 @@ for (const [set, items] of Object.entries(SETS))
       const file = `audio/${s.key}/${set}.${x.name}.wav`,
         sc = s.scored && (s.key === "kokoro" && set !== "hard" ? null : scoredAs(set, s.scored)?.[i]);
       let ps = s.key === "kokoro" ? REFS[set][i].ps.join(" ") : sc?.ps;
-      if (s.key.startsWith("supertonic_ys_")) ps = kanaGiven(s.key, set, x.name);
+      if (s.key.includes("_ys_")) ps = kanaGiven(s.key, set, x.name);
       return { key: s.key, file: fs.existsSync(path.join(HERE, file)) ? file : null, ps, ok: sc ? sc.ok : undefined };
     }),
   }));

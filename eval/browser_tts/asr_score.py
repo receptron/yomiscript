@@ -4,7 +4,7 @@ Japanese: the transcript is read with pyopenjtalk and compared, in katakana, wit
 (kana error rate). English: word error rate against the text. Whisper and pyopenjtalk make their own mistakes,
 the same for every system, so the numbers compare systems; they are not absolute error rates.
 
-  katarite   Kokoro vs Supertonic given the same LLM YomiScript; the reference is that YomiScript's reading (its text with
+  katarite   Kokoro vs the text engines (Supertonic, Audio8) given the same LLM YomiScript; the reference is that YomiScript's reading (its text with
              kana for every word with kanji, read with pyopenjtalk like the transcripts)
   hard       every system on the hard set; the reference is the gold reading
   en         every system on the English texts; the reference is the text
@@ -77,7 +77,7 @@ def main():
     got = lambda sys, set_, name: asr.get(f"audio/{sys}/{set_}.{name}.wav")  # noqa: E731
     md = ["# Intelligibility (Whisper large-v3-turbo transcripts)", "", __doc__.split("usage:")[0].strip(), ""]
     md += [
-        "## Katarite: Kokoro vs Supertonic, same YomiScript (kana error rate vs that YomiScript)",
+        "## Katarite: Kokoro vs the text engines, same YomiScript (kana error rate vs that YomiScript)",
         "",
         "| Yomite | Katarite | ja parity | hard set |",
         "|---|---|---|---|",
@@ -91,10 +91,12 @@ def main():
                 subprocess.run(["node", str(RENDER), "kanji"], input=json.dumps([out[s][n] for n in names]), capture_output=True, text=True, check=True).stdout
             )
             ref[s] = {n: heard(k["text"]) for n, k in zip(names, kana, strict=True) if "text" in k}
-        pair = (
+        pair = [
             ("Kokoro", llm),
             ("Supertonic 3, kana for ambiguous words", f"supertonic_ys_{llm}_ambiguous"),
-        )
+            ("Audio8 0.1B, kana for ambiguous words", f"audio8_ys_{llm}_ambiguous"),
+        ]
+        pair = [(kat, x) for kat, x in pair if (HERE / "audio" / x).is_dir()]
         for kat, sysname in pair:
             cells = []
             for s in ("ja", "hard"):
@@ -112,8 +114,12 @@ def main():
         "supertonic",
         "supertonic_hints",
         "system",
+        "audio8_ys_codex_ambiguous",
+        "audio8_ys_claude_ambiguous",
+        "audio8_ys_claude_kanji",
+        "audio8",
     ]
-    for sysname in systems:
+    for sysname in [x for x in systems if (HERE / "audio" / x).is_dir()]:
         cells = []
         for only in (None, "homograph"):
             items = [x for x in sets["hard"] if only in (None, x["category"]) and got(sysname, "hard", x["name"]) is not None]

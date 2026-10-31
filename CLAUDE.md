@@ -87,7 +87,7 @@ entries). Comments, docstrings and messages (print, help, errors) are in English
   (`export_split.py`, `exact_stft.py`).
 - `yomite/`: the Kokoro-based Yomites (`en_kokoro`, `ja_kokoro`), used for the parity checks.
 - `models/yomi/mlx/`: Yomi-0 and MoLD (training, tools, tests). `mold/`, `dict/`: lexicons and memories.
-- `eval/`: benchmarks and investigations (`kokoro_parity`, `kokoro_questions`, `llm_yomite`, `browser_tts`, JSUT baselines).
+- `eval/`: benchmarks and investigations (`kokoro_parity`, `kokoro_questions`, `llm_yomite`, `browser_tts`, `audio8`, JSUT baselines).
 - `tts/`: earlier Python Kokoro experiments (old notation). `tools/`: converters (kana labels → YomiScript).
 - `test/`: Vitest specs and fixtures across packages (the parity fixtures); each package has its own `test/`.
 - `paper/`: the paper draft (LaTeX).

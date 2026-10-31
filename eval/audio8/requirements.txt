@@ -1,0 +1,6 @@
+# the inference part of onnx_runtime_0_1b_int8/requirements.txt in Audio8_TTS (its HTTP service is not used here)
+numpy>=1.24,<3
+onnxruntime>=1.22,<1.24
+tokenizers>=0.20,<0.23
+soundfile>=0.12,<1
+scipy>=1.10,<2

@@ -109,8 +109,9 @@
     <main>
       <h1>Browser TTS: listening comparison</h1>
       <p class="note">
-        Same text, five systems. The LLM rows are the LLM writing YomiScript for Kokoro (no pitch values; Kokoro makes the prosody). Under each row: the phoneme
-        string Kokoro was given, and whether the reading matches the gold (hard set) or the original front end (parity sets).
+        Same text, every system (or only those named in <code>?systems=a,b</code>, by key). The LLM rows are the LLM writing YomiScript for Kokoro (no pitch
+        values; Kokoro makes the prosody). Under each row: the phoneme string Kokoro was given, and whether the reading matches the gold (hard set) or the
+        original front end (parity sets).
       </p>
       <nav id="sets"></nav>
       <div id="list"></div>
@@ -118,6 +119,7 @@
     <script type="module">
       const data = await (await fetch("audio/listen.json")).json();
       const label = Object.fromEntries(data.systems.map((s) => [s.key, s.label]));
+      const only = new URLSearchParams(location.search).get("systems")?.split(",");
       const NAMES = { hard: "Japanese hard set (70)", ja: "Japanese parity texts (24)", en: "English parity texts (22)" };
       const nav = document.getElementById("sets"),
         list = document.getElementById("list");
@@ -139,7 +141,7 @@
           d.append(el("div", "text", it.text));
           const meta = [it.name, it.category, it.gold && "gold: " + it.gold.join(" / ")].filter(Boolean).join(" · ");
           d.append(el("div", "meta", meta));
-          for (const s of it.systems) {
+          for (const s of it.systems.filter((x) => !only || only.includes(x.key))) {
             const r = el("div", "row");
             r.append(el("div", "", label[s.key]));
             const a = el("audio");
