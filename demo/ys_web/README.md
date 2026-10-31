@@ -9,7 +9,7 @@ a link to `packages/`, through an import map):
 - `packages/core`: the YomiScript parser (sections, units, marks, `<f0:…>` values, `<t:…>` text) and the reference
   Yomite prosody rules (`yomite.ts`: marks → `<f0:…>` values, plus devoicing `◌̥` and the t/d flap `ɾ`)
 - `packages/kokoro`: Kokoro's prosody predictor used on the Yomite side (`prosody.ts`), and the Katarite:
-  YomiScript IPA → Kokoro phonemes (`plan.ts`), F0 from the values (`render.ts`), ONNX inference (`engine.ts`), audio. Japanese is passed to Kokoro the way its own front end writes it: words separated by spaces, and ` | `, ` ‖ ` and `↘` become only the word space, because the original drops 。 and 、 (D22). So a Japanese ` ‖ ` gives no pause here.
+  YomiScript IPA → Kokoro phonemes (`plan.ts`), F0 from the values (`render.ts`), ONNX inference (`engine.ts`), audio. Japanese is passed to Kokoro with words separated by spaces, as its own front end writes it; ` ‖ ` and an inner `↘` become `,` and `.` as in English (D26), where the original drops 。 and 、 (D22, kept as `plan(ys, { original: true })`).
 - `export_split.py`: exports Kokoro as three ONNX files, `enc` / `f0n` / `dec` (so that F0 can be swapped in between). The decoder uses `exact_stft.py`, an STFT identical to the original's `torch.stft`/`istft` (Kokoro's own ONNX-friendly `CustomSTFT` is only approximate; see `eval/kokoro_parity`). For output identical to the original Kokoro use the fp32 models (`?m=fp32`)
 - `quant.py`: size reduction. `python quant.py w16` creates a version with only the weights stored in fp16 (compute stays fp32) at `models_q/*_w16.onnx` (used by default, about 163 MB total). `i8` is an int8 trial for the decoder
 - `serve.py`: local server with COOP/COEP headers (required for WASM multithreading)

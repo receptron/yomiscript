@@ -61,13 +61,13 @@ copies in sync" comment. Examples already in the repo:
 
 If two sides genuinely differ, share the common core and keep each side's extras local.
 
-## The Kokoro reference reproduces the original exactly (D21, D22)
-The first target is a Yomite + Katarite that behaves exactly like the original Kokoro: same phoneme string, ids,
-voice-pack entry, durations, F0, and audio within the original's own run-to-run spread. **Don't "fix" Kokoro's
-behaviour on your own.** That includes its question intonation and the Japanese front end dropping 。 and 、. Report
-what the original does, and propose a correction as a separate, explicit change.
-`test/fixtures/kokoro_original.json` was recorded from the original pipeline. Regenerate it only from the original
-(`eval/kokoro_parity/ref_kokoro.py`), never from our own output.
+## The Kokoro reference: the original as the baseline, improved from there (D21, D22, D26)
+The first stage reproduced the original Kokoro exactly (same phoneme string, ids, voice-pack entry, durations, F0,
+audio within its run-to-run spread). That stage is done; from here the Katarite and the Yomites are improved
+wherever the original reads unnaturally (D26: Japanese 。 and 、 are passed as `.` and `,`). Each such change is a D
+entry and is checked by listening. The original's behaviour stays reproducible as the baseline (`plan(ys, { original:
+true })`, `eval/kokoro_parity`). `test/fixtures/kokoro_original.json` was recorded from the original pipeline.
+Regenerate it only from the original (`eval/kokoro_parity/ref_kokoro.py`), never from our own output.
 
 ## No emojis
 No emojis anywhere you write in this repository: code, comments, docs, commit messages, CLI output. Compact notation

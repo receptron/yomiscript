@@ -13,10 +13,20 @@ const REALIZED = read("./fixtures/presets_realized.json"); // the rule Yomite's 
 
 describe("YomiScript -> Kokoro input, as the original Kokoro gets it", () => {
   it.each(ORIGINAL.map((c) => [c.name, c]))("%s", (_, c) => {
-    const P = plan(c.ys);
+    const P = plan(c.ys, { original: true });
     expect(P).toHaveLength(1);
     expect(P[0].ps).toBe(c.ps);
     expect(P[0].ids).toEqual(c.ids);
+  });
+});
+
+describe("Japanese pauses and inner sentence ends, as in English (D26)", () => {
+  const ys = "ja /kʲoː wa ‖ haɾete imasɯ ↘ asɯ wa ame ↗ soː desɯ ↘/";
+  it("renders ‖ as ', ' and an inner ↘ as '.'", () => {
+    expect(plan(ys)[0].ps).toBe("kʲoː βa, haɾete imasɨ. asɨ βa ame? soː desɨ");
+  });
+  it("leaves only the word space with original", () => {
+    expect(plan(ys, { original: true })[0].ps).toBe("kʲoː βa haɾete imasɨ asɨ βa ame? soː desɨ");
   });
 });
 

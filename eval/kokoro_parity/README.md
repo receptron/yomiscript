@@ -64,7 +64,9 @@ What it took (no change to Kokoro's behaviour):
    Japanese spaces and ` | ` now become one space.
 2. **。 and 、.** The original drops them, so the model never gets `.` or `,` in Japanese (UniDic tags them as
    known words, and Cutlet maps their reading `*` to nothing). The Yomite still writes `↘` / `‖` there. The Katarite
-   renders Japanese `‖`, inner `↘` and final `↘` as only the word space; `↗` is `?`.
+   renders Japanese `‖`, inner `↘` and final `↘` as only the word space; `↗` is `?`. Since D26 this is
+   `plan(ys, { original: true })`, which `compare.mjs` uses; the default renders `‖` and an inner `↘` as `,` and `.`,
+   at which the Japanese voices pause.
 3. **Notation.** Kokoro's symbols map to YomiScript IPA and back (`ʨ`↔`tɕ`, `β`↔`w`, `ɨ`↔`ɯ`, `kʲi`↔`ki`, `ʔ` before a
    consonant ↔ a doubled consonant, `ᵝ`↔`ʷ`). Latin letters the front end leaves in, and a phoneme cut at 510,
    go into `<p:…>`.

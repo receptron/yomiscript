@@ -156,17 +156,19 @@ function enSyl(x: string, gb: boolean): string {
   }
   return x;
 }
-function jaPhonemes(t: Token, foreign: boolean): string {
-  // as Kokoro's Japanese front end (misaki Cutlet) writes them: 。 and 、 leave only the word space
-  if (t.kind === "space" || t.kind === "pause") return " ";
-  if (t.kind === "end" || t.kind === "punct") return t.sym === "." && (t.kind === "end" || t.sent) ? "" : (t.sym ?? "");
+function jaPhonemes(t: Token, foreign: boolean, original: boolean): string {
+  // ‖ and an inner ↘ as in English (', ' and '.', D26); original: as Kokoro's Japanese front end (misaki Cutlet)
+  // writes them, 。 and 、 leave only the word space (D22)
+  if (t.kind === "space") return " ";
+  if (t.kind === "pause") return original ? " " : ", ";
+  if (t.kind === "end" || t.kind === "punct") return t.sym === "." && (t.kind === "end" || (original && t.sent)) ? "" : (t.sym ?? "");
   let p = t.ipa ?? "";
   if (t.mk === "mora") p = jaKokoro(t.on ?? "", t.v ?? "");
   else if (t.mk === "Q") p = "ʔ";
   return foreign ? [...p].map((c) => FOREIGN_JA[c] ?? c).join("") : p;
 }
-function kokoroPhonemes(lang: string, t: Token, foreign: boolean): string {
-  if (isJa(lang)) return jaPhonemes(t, foreign);
+function kokoroPhonemes(lang: string, t: Token, foreign: boolean, original: boolean): string {
+  if (isJa(lang)) return jaPhonemes(t, foreign, original);
   if (t.kind === "space") return " ";
   if (t.kind === "pause") return ", ";
   if (t.kind === "end" || t.kind === "punct") return t.sym ?? "";
@@ -187,7 +189,7 @@ export interface PlannedSection {
   lang: string;
   text: string;
   voice: string;
-  /** the phoneme string the original Kokoro would get */
+  /** the phoneme string Kokoro is given */
   ps: string;
   ids: number[];
   /** the unit index of each id (-1 for BOS / EOS) */
@@ -197,8 +199,12 @@ export interface PlannedSection {
 }
 export type Plan = PlannedSection[] & { src: string };
 
+export interface PlanOptions {
+  /** Japanese punctuation as the original Kokoro gets it (D22), for the parity checks */
+  original?: boolean;
+}
 // plan: sections with Kokoro ids + units (no ONNX); used for parity tests and synthesis
-export function plan(ys: string): Plan {
+export function plan(ys: string, opts: PlanOptions = {}): Plan {
   const Y = parse(ys);
   const P = Y.sections.map((sec): PlannedSection => {
     const foreign = isJa(sec.lang) && !isJa(Y.top);
@@ -206,7 +212,7 @@ export function plan(ys: string): Plan {
       toks: Token[] = [];
     for (const t of sec.toks) {
       if (t.kind === "bound") continue;
-      U.push([kokoroPhonemes(sec.lang, t, foreign), t.kind === "unit" && t.f0 ? [...t.f0] : null, t.ph]);
+      U.push([kokoroPhonemes(sec.lang, t, foreign, opts.original ?? false), t.kind === "unit" && t.f0 ? [...t.f0] : null, t.ph]);
       toks.push(t);
     }
     const ids = [0],

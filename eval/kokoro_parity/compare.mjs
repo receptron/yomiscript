@@ -80,7 +80,7 @@ async function check(it, c, y) {
   const r = { name: it.name, voice: it.voice, chunk: c.text.slice(0, 40) };
   if (!y) return { ...r, err: "no Yomite chunk" };
   r.ys = y.ys;
-  const P = K.plan(y.ys);
+  const P = K.plan(y.ys, { original: true });
   for (const s of P) s.voice = it.voice;
   inputCheck(r, P, c);
   if (P.length === 1 && r.ids) await modelCheck(r, P[0], c);
