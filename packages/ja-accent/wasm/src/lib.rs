@@ -2,6 +2,7 @@
 //! (NJD) and the full-context labels of a text. The dictionary is given as bytes, so it runs where there is no file
 //! system (the browser).
 use jpreprocess::{DefaultTokenizer, Dictionary, JPreprocess};
+use jpreprocess_dictionary::dictionary::to_dict::JPreprocessDictionaryBuilder;
 use lindera_dictionary::dictionary::{
     character_definition::CharacterDefinition, connection_cost_matrix::ConnectionCostMatrix,
     metadata::Metadata, prefix_dictionary::PrefixDictionary, unknown_dictionary::UnknownDictionary,
@@ -20,9 +21,11 @@ pub struct Frontend(JPreprocess<DefaultTokenizer>);
 
 #[wasm_bindgen]
 impl Frontend {
-    /// `bytes`: the dictionary files one after another (in the order of DICT_FILES); `lengths`: the length of each.
+    /// `bytes`: the dictionary files one after another (in the order of DICT_FILES); `lengths`: the length of each;
+    /// `user`: a user dictionary, rows in the system dictionary's CSV format (one per line, `#` comments), whose
+    /// entries take part in the analysis next to the system dictionary's.
     #[wasm_bindgen(constructor)]
-    pub fn new(bytes: Vec<u8>, lengths: Vec<u32>) -> Result<Frontend, JsError> {
+    pub fn new(bytes: Vec<u8>, lengths: Vec<u32>, user: Option<String>) -> Result<Frontend, JsError> {
         if lengths.len() != FILES {
             return Err(JsError::new("expected the 8 dictionary files"));
         }
@@ -40,14 +43,27 @@ impl Frontend {
         parts.reverse();
         let [metadata, char_def, matrix, da, vals, words_idx, words, unk]: [Vec<u8>; 8] =
             parts.try_into().map_err(|_| JsError::new("expected the 8 dictionary files"))?;
+        let metadata = Metadata::load(&metadata).map_err(err)?;
+        let user_dictionary = match user {
+            Some(csv) => {
+                let rows: Vec<Vec<&str>> = csv
+                    .lines()
+                    .map(str::trim)
+                    .filter(|l| !l.is_empty() && !l.starts_with('#'))
+                    .map(|l| l.split(',').collect())
+                    .collect();
+                Some(JPreprocessDictionaryBuilder::new(metadata.clone()).build_user_dict_from_data(rows).map_err(err)?)
+            }
+            None => None,
+        };
         let dictionary = Dictionary {
-            metadata: Metadata::load(&metadata).map_err(err)?,
+            metadata,
             prefix_dictionary: PrefixDictionary::load(da, vals, words_idx, words, true).map_err(err)?,
             connection_cost_matrix: ConnectionCostMatrix::load(matrix).map_err(err)?,
             character_definition: CharacterDefinition::load(&char_def).map_err(err)?,
             unknown_dictionary: UnknownDictionary::load(&unk).map_err(err)?,
         };
-        Ok(Frontend(JPreprocess::with_dictionaries(dictionary, None)))
+        Ok(Frontend(JPreprocess::with_dictionaries(dictionary, user_dictionary)))
     }
 
     /// `[njd, labels]` as JSON: the NJD features of each word (CSV, as pyopenjtalk's run_frontend prints them) and

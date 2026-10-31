@@ -2,6 +2,7 @@
 // the files of DICT_FILES, each gzipped (<file>.gz), read with a LoadBytes (downloaded once from DICT_URL by default).
 import type { LoadBytes } from "@yomiscript/core";
 import init, { Frontend, initSync } from "../wasm/pkg/frontend.js";
+import { USER_DICT } from "./userdict.ts";
 
 /** the dictionary is built by the jpreprocess version the WebAssembly uses (README); its files live under this name */
 export const DICT_VERSION = "jpreprocess-0.15.0";
@@ -24,7 +25,8 @@ async function gunzip(b: Uint8Array | ArrayBuffer): Promise<Uint8Array> {
   const s = new Blob([b as BlobPart]).stream().pipeThrough(new DecompressionStream("gzip"));
   return new Uint8Array(await new Response(s).arrayBuffer());
 }
-/** the front end with its dictionary; wasm: the module's bytes (Node), or none to fetch it next to the glue (browser) */
+/** the front end with its dictionary and the user dictionary (userdict.ts); wasm: the module's bytes (Node), or none
+ * to fetch it next to the glue (browser) */
 export async function loadFrontend(load: LoadBytes, wasm?: BufferSource): Promise<Analyzer> {
   if (wasm) initSync({ module: wasm });
   else await init();
@@ -35,7 +37,7 @@ export async function loadFrontend(load: LoadBytes, wasm?: BufferSource): Promis
     bytes.set(p, at);
     at += p.length;
   }
-  const fe = new Frontend(bytes, Uint32Array.from(parts.map((p) => p.length)));
+  const fe = new Frontend(bytes, Uint32Array.from(parts.map((p) => p.length)), USER_DICT);
   return {
     analyze: (text) => {
       const [njd, labels] = JSON.parse(fe.analyze(text)) as [string[], string[]];

@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import { describe, expect, it, vi } from "vitest";
 import type { Katarite, Speech } from "@yomiscript/core";
-import { accentMarks, accentYomite, labelMorae, needsAccent, withAccent, type Analyzer } from "../src/index.ts";
+import { accentMarks, accentYomite, labelMorae, needsAccent, USER_DICT, withAccent, type Analyzer } from "../src/index.ts";
 
 interface Recorded {
   ys: string;
@@ -40,6 +40,9 @@ describe("accentMarks", () => {
   it("leaves a phrase read another way unmarked (市: the YomiScript いち, the dictionary し)", () => {
     expect(bare(accentMarks(shiatoru, fake))).toBe("ja /ɕiꜜatoɾɯ no | itɕi de wa ‖ saꜛkana ɡa | ɯꜛɾaɾete | iꜛɾɯ ↘/");
   });
+  it("accepts a consonant + j for the palatalized consonant (kjoː = kʲoː)", () => {
+    expect(bare(accentMarks(kyou.replace("kʲoː", "kjoː"), fake))).toContain("kjoꜜː wa");
+  });
   it("finds the phrases after a character NFKC changes the length of (…)", () => {
     expect(bare(accentMarks(eeto, fake))).toBe("ja /eꜜːto ‖ soꜛɾe wa ‖ tɕoꜜtto ↘/");
   });
@@ -67,9 +70,9 @@ describe("needsAccent", () => {
 });
 
 describe("accentYomite", () => {
-  it("writes the rules' values for the marked phrases at half strength", () => {
+  it("writes the rules' values for the marked phrases at three-quarter strength (ACCENT_SCALE)", () => {
     expect(bare(accentYomite(fake)(kyou))).toBe(
-      "ja /kʲo<f0:1.25>ꜜː<f0:-1.4> wa<f0:-1.4> | ha<f0:-1>ꜛɾe<f0:1.25>ꜜte<f0:-1.4> | i<f0:-1>ꜛma<f0:1.25>ꜜsɯ<f0:-1.4> ↘/",
+      "ja /kʲo<f0:1.88>ꜜː<f0:-2.1> wa<f0:-2.1> | ha<f0:-1.5>ꜛɾe<f0:1.88>ꜜte<f0:-2.1> | i<f0:-1.5>ꜛma<f0:1.88>ꜜsɯ<f0:-2.1> ↘/",
     );
   });
   it("leaves a YomiScript it does not mark as it is", () => {
@@ -93,7 +96,7 @@ describe("withAccent", () => {
     await w.speak(kyou);
     await w.speak(kyou);
     expect(load).toHaveBeenCalledTimes(1);
-    expect(k.got[1]).toContain("<f0:1.25>");
+    expect(k.got[1]).toContain("<f0:1.88>");
   });
   it("speaks the YomiScript as it is when the step cannot be loaded, and says so once", async () => {
     const k = inner(),
@@ -103,5 +106,19 @@ describe("withAccent", () => {
     await w.speak(kyou);
     expect(k.got).toEqual([kyou, kyou]);
     expect(onError).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("USER_DICT", () => {
+  const rows = USER_DICT.split("\n").filter((l) => l.trim() && !l.startsWith("#"));
+  it("has rows in NAIST-JDIC's format: 15 fields, numeric ids and cost, katakana readings, accent/morae", () => {
+    expect(rows.length).toBeGreaterThan(0);
+    for (const r of rows) {
+      const f = r.split(",");
+      expect(f).toHaveLength(15);
+      expect(f.slice(1, 4).every((x) => /^-?\d+$/.test(x))).toBe(true);
+      expect(f[11]).toMatch(/^[ァ-ヴー]+$/);
+      expect(f[13]).toMatch(/^\d+\/\d+$/);
+    }
   });
 });

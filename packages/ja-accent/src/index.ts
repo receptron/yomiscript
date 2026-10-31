@@ -1,5 +1,5 @@
-// The Japanese dictionary accent (D25): the YomiScript keeps its reading, and OpenJTalk's dictionary adds ꜛ / ꜜ to
-// the accent phrases it reads the same way; the rules then give those phrases their pitch at half strength, and the
+// The Japanese dictionary accent (D25, D27): the YomiScript keeps its reading, and OpenJTalk's dictionary adds ꜛ / ꜜ to
+// the accent phrases it reads the same way; the rules then give those phrases their pitch (ACCENT_SCALE), and the
 // rest keeps the Katarite's own prosody.
 import { isJa, parse, realize, type Katarite } from "@yomiscript/core";
 import type { Analyzer } from "./frontend.ts";
@@ -10,6 +10,7 @@ export { DICT_FILES, DICT_URL, DICT_VERSION, loadFrontend, type Analysis, type A
 export { labelMorae, type HL, type LabelMora } from "./labels.ts";
 export { dictPhrases, type DictPhrase } from "./phrases.ts";
 export { writeMarks, type MarkStats } from "./marks.ts";
+export { USER_DICT } from "./userdict.ts";
 
 /** Japanese, with <t:…>, and no accent marks or pitch values of its own (those are the writer's, left as written);
  * false when it does not parse */
@@ -31,8 +32,9 @@ export function accentMarks(ys: string, a: Analyzer): string {
     P = dictPhrases(text, njd, labels);
   return P ? writeMarks(ys, P).ys : ys;
 }
-/** how strongly the rules render the dictionary's marks: half, the strength never heard as the worst (D25) */
-export const ACCENT_SCALE = 0.5;
+/** how strongly the rules render the dictionary's marks: three quarters, the closest to OpenAI, Gemini and ElevenLabs
+ * of 0.5 / 0.75 / 1 / 1.5 (D27, eval/prosody_ref; D25 had half, the strength never heard as the worst) */
+export const ACCENT_SCALE = 0.75;
 /** the Yomite step before Kokoro: the dictionary's marks, then pitch values for the marked phrases only */
 export function accentYomite(a: Analyzer): (ys: string) => string {
   return (ys) => {

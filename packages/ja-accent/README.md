@@ -1,21 +1,24 @@
 # @yomiscript/ja-accent
 
-The Japanese dictionary accent of the yomiscript tools (D25). The calling LLM writes only the reading; this package
+The Japanese dictionary accent of the yomiscript tools (D25, D27). The calling LLM writes only the reading; this package
 adds the accent from a dictionary, where the dictionary reads a phrase the same way, so the reading never changes.
 
 ```
 YomiScript (reading, <t:…>) ─► OpenJTalk's front end on its original text (jpreprocess + NAIST-JDIC, WebAssembly)
                             ─► ꜛ / ꜜ and ` | ` on the accent phrases the dictionary reads the same way
-                            ─► realize(…, { markedOnly: true, jaScale: 0.5 }): pitch values for those phrases only
+                            ─► realize(…, { markedOnly: true, jaScale: 0.75 }): pitch values for those phrases only
                             ─► Kokoro (its own pitch everywhere else)
 ```
 
 - Each accent phrase of OpenJTalk (its characters of the text, its morae and their Tokyo H / L) is matched with the
   YomiScript words covering the same characters (by `<t:…>`). When the morae are the same, mora by mora, the phrase
   gets the dictionary's marks. A phrase read another way stays unmarked: that also keeps the dictionary's own
-  misreadings out (上手 かみて, 角 かど, 辛い からい are read by OpenJTalk as じょうず, かく, つらい).
-- The marks are rendered by the rule Yomite at half strength (`ACCENT_SCALE`), the strength never heard as the worst
-  in the listening tests (`eval/browser_tts/trials/accent_marks/README.md`).
+  misreadings out (上手 かみて, 角 かど, 辛い からい are read by OpenJTalk as じょうず, かく, つらい). Spellings that
+  do not change a mora are the same (`hi` / `çi`, `z` / `dz`, `kj` / `kʲ`, `v` / `b`); `writeMarks` lists each phrase
+  read another way in `stats.misses`.
+- The marks are rendered by the rule Yomite at three-quarter strength (`ACCENT_SCALE`, D27): of 0.5, 0.75, 1 and
+  1.5, the closest to the pitch of OpenAI, Gemini and ElevenLabs on the same texts (`eval/prosody_ref`). D25 had 0.5,
+  the strength never heard as the worst in the listening tests (`eval/browser_tts/trials/accent_marks/README.md`).
 - A YomiScript that is not Japanese, has no `<t:…>`, or carries its own `ꜛ ꜜ` or `<f0:…>` is left as it is
   (`needsAccent`).
 
@@ -25,7 +28,7 @@ import { nodeAnalyzer } from "@yomiscript/ja-accent/node";
 
 const step = accentYomite(await nodeAnalyzer({ dir: "/path/to/ja-dict", download: DICT_URL }));
 step("ja /kʲoː<t:今日> wa<t:は> ame<t:雨> desɯ<t:です。> ↘/");
-// -> ja /kʲo<f0:1.25>ꜜː<f0:-1.4><t:今日> wa<f0:-1.4><t:は> | a<f0:1.25>ꜜme<f0:-1.4><t:雨> de<f0:-1.4>sɯ<f0:-1.4><t:です。> ↘/
+// -> ja /kʲo<f0:1.88>ꜜː<f0:-2.1><t:今日> wa<f0:-2.1><t:は> | a<f0:1.88>ꜜme<f0:-2.1><t:雨> de<f0:-2.1>sɯ<f0:-2.1><t:です。> ↘/
 const katarite = withAccent(kokoro, async () => step); // the dictionary is loaded the first time Japanese is spoken
 ```
 
@@ -42,12 +45,23 @@ works only with the jpreprocess version that built it, so it is built by the ver
 sh wasm/build-dict.sh OUT    # cargo install jpreprocess =0.15.0 with naist-jdic; OUT/jpreprocess-0.15.0/*.gz
 ```
 
+### The user dictionary
+
+`src/userdict.ts` (`USER_DICT`) is a short list of rows in NAIST-JDIC's CSV format, built into the front end next to
+the system dictionary when it loads (no file to download). Each row is NAIST-JDIC's own entry for a reading, with a
+lower cost, where NAIST-JDIC prefers a reading LLMs do not write (日本 ニッポン over ニホン): the dictionary then agrees
+with the YomiScript, so the phrase gets its accent. The reading spoken is still the YomiScript's. A row is a decision
+(D27 in `docs/decisions.md`): take it from NAIST-JDIC (the source is
+[jpreprocess/naist-jdic](https://github.com/jpreprocess/naist-jdic) v0.1.3) rather than writing an accent by hand,
+and measure it with `eval/prosody_ref` (`node mismatch.mjs` lists the phrases read another way).
+
 ## The WebAssembly
 
 `wasm/` is a small Rust crate around [jpreprocess](https://github.com/jpreprocess/jpreprocess) (OpenJTalk's front
-end rewritten in Rust, BSD-3-Clause): `Frontend(bytes, lengths)` builds the dictionary from bytes, `analyze(text)`
+end rewritten in Rust, BSD-3-Clause): `Frontend(bytes, lengths, user)` builds the dictionary from bytes (and the user
+dictionary from CSV rows), `analyze(text)`
 returns the words after the front end's rules (NJD, as pyopenjtalk's `run_frontend`) and the full-context labels. Its
-build (`wasm/pkg/`, about 1.4 MB) is kept in the repository, so `yarn build` needs no Rust. To rebuild it (Rust 1.88
+build (`wasm/pkg/`, about 1.5 MB) is kept in the repository, so `yarn build` needs no Rust. To rebuild it (Rust 1.88
 or later, the `wasm32-unknown-unknown` target and `wasm-bindgen-cli` of the version in `wasm/Cargo.lock`):
 
 ```bash

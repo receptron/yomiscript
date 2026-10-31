@@ -38,23 +38,29 @@ export class Frontend {
         }
     }
     /**
-     * `bytes`: the dictionary files one after another (in the order of DICT_FILES); `lengths`: the length of each.
+     * `bytes`: the dictionary files one after another (in the order of DICT_FILES); `lengths`: the length of each;
+     * `user`: a user dictionary, rows in the system dictionary's CSV format (one per line, `#` comments), whose
+     * entries take part in the analysis next to the system dictionary's.
      * @param {Uint8Array | number[]} bytes
      * @param {Uint32Array | number[]} lengths
+     * @param {string | null} [user]
      */
-    constructor(bytes, lengths) {
-        let ptr0, len0, ptr1, len1;
+    constructor(bytes, lengths, user) {
+        let ptr0, len0, ptr1, len1, ptr2, len2;
         try {
             ptr0 = passArray8ToWasm0(bytes, wasm.__wbindgen_malloc);
             len0 = WASM_VECTOR_LEN;
             ptr1 = passArray32ToWasm0(lengths, wasm.__wbindgen_malloc);
             len1 = WASM_VECTOR_LEN;
+            ptr2 = isLikeNone(user) ? 0 : passStringToWasm0(user, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+            len2 = WASM_VECTOR_LEN;
         } catch (e) {
+            if (ptr2) { wasm.__wbindgen_free(ptr2, len2 * 1, 1); }
             if (ptr1) { wasm.__wbindgen_free(ptr1, len1 * 4, 4); }
             if (ptr0) { wasm.__wbindgen_free(ptr0, len0 * 1, 1); }
             throw e;
         }
-        const ret = wasm.frontend_new(ptr0, len0, ptr1, len1);
+        const ret = wasm.frontend_new(ptr0, len0, ptr1, len1, ptr2, len2);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -112,6 +118,10 @@ function getUint8ArrayMemory0() {
         cachedUint8ArrayMemory0 = new Uint8Array(wasm.memory.buffer);
     }
     return cachedUint8ArrayMemory0;
+}
+
+function isLikeNone(x) {
+    return x === undefined || x === null;
 }
 
 function passArray32ToWasm0(arg, malloc) {

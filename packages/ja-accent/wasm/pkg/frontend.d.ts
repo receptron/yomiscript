@@ -10,9 +10,11 @@ export class Frontend {
      */
     analyze(text: string): string;
     /**
-     * `bytes`: the dictionary files one after another (in the order of DICT_FILES); `lengths`: the length of each.
+     * `bytes`: the dictionary files one after another (in the order of DICT_FILES); `lengths`: the length of each;
+     * `user`: a user dictionary, rows in the system dictionary's CSV format (one per line, `#` comments), whose
+     * entries take part in the analysis next to the system dictionary's.
      */
-    constructor(bytes: Uint8Array | number[], lengths: Uint32Array | number[]);
+    constructor(bytes: Uint8Array | number[], lengths: Uint32Array | number[], user?: string | null);
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -21,7 +23,7 @@ export interface InitOutput {
     readonly memory: WebAssembly.Memory;
     readonly __wbg_frontend_free: (a: number, b: number) => void;
     readonly frontend_analyze: (a: number, b: number, c: number) => [number, number, number, number];
-    readonly frontend_new: (a: number, b: number, c: number, d: number) => [number, number, number];
+    readonly frontend_new: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
     readonly __wbindgen_externrefs: WebAssembly.Table;
     readonly __wbindgen_malloc: (a: number, b: number) => number;
     readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;

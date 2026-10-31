@@ -41,8 +41,16 @@ const ONSET: Record<string, string> = {
 };
 /** one mora as both sides are compared: spellings that do not change the mora are made the same */
 function moraKey(onset: string, vowel: string): string {
+  // a consonant + j is the palatalized consonant (kjo = kʲo); v is the b the dictionary writes for ヴ
   const v = vowel.toLowerCase().replace(/[uɨ]/g, "ɯ"),
-    o = onset.replace(/g/g, "ɡ").replace(/^z/, "dz").replace(/^ʑ/, "dʑ").replace(/^hʲ$/, "ç").replace(/^nʲ$/, "ɲ");
+    o = onset
+      .replace(/g/g, "ɡ")
+      .replace(/^([kɡbpmɾtd])j$/, "$1ʲ")
+      .replace(/^v/, "b")
+      .replace(/^z/, "dz")
+      .replace(/^ʑ/, "dʑ")
+      .replace(/^h[ʲj]$/, "ç")
+      .replace(/^n[ʲj]$/, "ɲ");
   if (v === "i" && o === "h") return "çi";
   if (v === "i" && o === "n") return "ɲi";
   return o + v;
@@ -125,20 +133,32 @@ export interface MarkStats {
   reading: number;
   /** not starting and ending at the YomiScript's word boundaries */
   words: number;
+  /** each phrase read another way: its text and both readings, mora by mora as they are compared */
+  misses: { text: string; dict: string[]; ys: string[] }[];
+}
+function dictKeys(M: LabelMora[]): string[] {
+  let prev = "";
+  return M.map((m) => {
+    const k = dictKey(m, prev);
+    if (k !== "R" && k !== "N" && k !== "Q") prev = k.slice(-1);
+    return k;
+  });
 }
 /** writes the dictionary's marks onto ys; text is the utterance's original text (its <t:…> joined) */
 export function writeMarks(ys: string, P: DictPhrase[]): { ys: string; stats: MarkStats } {
   const u = parse(ys),
     text = u.texts.join(""),
     W = words(u, ys),
-    stats: MarkStats = { phrases: P.length, marked: 0, reading: 0, words: 0 },
+    stats: MarkStats = { phrases: P.length, marked: 0, reading: 0, words: 0, misses: [] },
     E: Edit[] = [];
   for (const p of P) {
     const C = cover(W, p, text),
       U = C?.flatMap((w) => w.units) ?? [];
     if (!C || !U.length) stats.words++;
-    else if (!sameMorae(p.morae, U)) stats.reading++;
-    else {
+    else if (!sameMorae(p.morae, U)) {
+      stats.reading++;
+      stats.misses.push({ text: text.slice(p.start, p.end), dict: dictKeys(p.morae), ys: U.map(unitKey) });
+    } else {
       stats.marked++;
       E.push(...phraseEdits(p, C, U));
     }

@@ -26,3 +26,12 @@ packages/ja-accent/wasm/target/
 # copied in by tools/prepack.mjs when a package is packed
 packages/*/LICENSE
 eval/browser_tts/trials/accent_marks/audio/
+
+# API keys for the eval scripts (eval/prosody_ref/refs.mjs): never committed
+.env
+
+# eval/prosody_ref audio (regenerated: refs.mjs, ours.mjs) and the per-mora scores of every render (score.py tool;
+# the README has the numbers)
+eval/prosody_ref/audio/
+eval/prosody_ref/results/tool.json
+eval/prosody_ref/results/*.pkl

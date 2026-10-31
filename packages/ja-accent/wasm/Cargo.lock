@@ -1206,6 +1206,7 @@ name = "yomiscript-ja-accent"
 version = "0.1.0"
 dependencies = [
  "jpreprocess",
+ "jpreprocess-dictionary",
  "lindera-dictionary",
  "serde_json",
  "wasm-bindgen",
