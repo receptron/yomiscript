@@ -7,6 +7,8 @@
 #        yarn release --dry-run   (what would be published)
 set -eu
 cd "$(dirname "$0")/.."
+# yarn runs scripts with npm_config_registry=https://registry.yarnpkg.com, where npm login's token does not apply
+export npm_config_registry=https://registry.npmjs.org/
 ORDER="core kokoro supertonic ja-accent cli mcp gui-chat-plugin"
 DRY=""
 [ "${1:-}" = "--dry-run" ] && DRY="--dry-run"
