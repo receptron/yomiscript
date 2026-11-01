@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>アクセントの聞き比べ</title>
+    <style>
+      :root {
+        --bg: #fff;
+        --fg: #1d1d1f;
+        --muted: #6e6e73;
+        --line: #d2d2d7;
+        --accent: #0a66c2;
+        --mark: #fff1a8;
+        --panel: #f5f5f7;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #1c1c1e;
+          --fg: #f2f2f7;
+          --muted: #a1a1a6;
+          --line: #3a3a3c;
+          --accent: #64a8ff;
+          --mark: #5a4a00;
+          --panel: #2c2c2e;
+        }
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+        margin: 0 auto;
+        max-width: 760px;
+        padding: 16px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .hidden {
+        display: none;
+      }
+      button {
+        font: inherit;
+        padding: 6px 14px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--fg);
+        cursor: pointer;
+      }
+      button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
+      input[type="text"] {
+        font: inherit;
+        padding: 4px 8px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--bg);
+        color: var(--fg);
+        max-width: 100%;
+      }
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin: 12px 0;
+      }
+      .sentence {
+        font-size: 22px;
+        margin: 16px 0;
+        padding: 12px;
+        background: var(--panel);
+        border-radius: 8px;
+      }
+      mark {
+        background: var(--mark);
+        color: inherit;
+        padding: 0 2px;
+        border-radius: 3px;
+      }
+      fieldset {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin: 12px 0;
+        padding: 8px 12px;
+      }
+      legend {
+        font-weight: 600;
+      }
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin: 4px 16px 4px 0;
+        cursor: pointer;
+      }
+      progress {
+        width: 160px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>アクセントの聞き比べ</h1>
+    <section id="start">
+      <p>
+        同じ文を、アクセントの付け方だけが違う 2 つの方式で読み上げた音声（X と Y）です。どちらがどの方式かは伏せてあります。
+        黄色の語のアクセントが違います。共通語（東京式）として、どちらが自然かを選んでください。
+      </p>
+      <ul class="note">
+        <li>X と Y は何度でも聞き直せます（ボタン、またはキーボードの 1 と 2）。</li>
+        <li>
+          選択肢は「X の方が自然」「Y の方が自然」「同じに聞こえる」「どちらも不自然」です（キーボードの x / y / s / b でも選べます）。Enter で次へ進みます。
+        </li>
+        <li>気づいたことがあればメモに書いてください（任意）。</li>
+        <li>回答はこのブラウザに自動で保存されます。終わったら「回答をダウンロード」でファイルを保存してください。</li>
+      </ul>
+      <div class="bar">
+        <label>お名前（ニックネーム可） <input id="name" type="text" autocomplete="off" /></label>
+      </div>
+      <div class="bar">
+        <button id="begin" class="primary">開始</button>
+      </div>
+    </section>
+
+    <section id="main" class="hidden">
+      <div class="bar note">
+        <span id="who"></span>
+        <progress id="progress" value="0" max="1"></progress>
+        <span id="count"></span>
+      </div>
+      <div class="bar note" id="itemno"></div>
+      <div class="sentence" id="sentence"></div>
+      <div class="bar">
+        <button id="playX">X を再生</button>
+        <button id="playY">Y を再生</button>
+        <audio id="audio" preload="auto"></audio>
+      </div>
+      <fieldset id="choice">
+        <legend>黄色の語のアクセントは、どちらが自然ですか</legend>
+      </fieldset>
+      <div class="bar">
+        <label>メモ（任意） <input id="memo" type="text" autocomplete="off" size="40" /></label>
+      </div>
+      <div class="bar">
+        <button id="prev">前へ</button>
+        <button id="next" class="primary">次へ</button>
+      </div>
+      <div class="bar">
+        <button id="download">回答をダウンロード</button>
+        <span class="note" id="saved"></span>
+      </div>
+    </section>
+
+    <section id="done" class="hidden">
+      <p>すべてに回答しました。ありがとうございました。「回答をダウンロード」でファイルを保存してください。</p>
+      <div class="bar">
+        <button id="download2" class="primary">回答をダウンロード</button>
+        <button id="back">見直す</button>
+      </div>
+    </section>
+
+    <script type="module">
+      import { shuffled } from "./shuffle.mjs";
+
+      const $ = (id) => document.getElementById(id);
+      const CHOICES = [
+        ["x", "X の方が自然", "x"],
+        ["y", "Y の方が自然", "y"],
+        ["same", "同じに聞こえる", "s"],
+        ["bad", "どちらも不自然", "b"],
+      ];
+      const store = {
+        get(key) {
+          try {
+            return JSON.parse(localStorage.getItem(key) ?? "null");
+          } catch {
+            return null;
+          }
+        },
+        put(key, value) {
+          try {
+            localStorage.setItem(key, JSON.stringify(value));
+            return true;
+          } catch {
+            return false;
+          }
+        },
+      };
+      const set = await (await fetch("set.json")).json();
+      const state = { name: "", order: [], pos: 0, answers: {} };
+      const key = () => `accentLookup:${set.seed}:${state.name}`;
+      const item = () => state.order[state.pos];
+      const answer = () => (state.answers[item().item] ??= { choice: null, note: "", plays: { x: 0, y: 0 } });
+
+      function save() {
+        const ok = store.put(key(), { pos: state.pos, answers: state.answers });
+        $("saved").textContent = ok ? "保存しました" : "このブラウザには保存できません。こまめにダウンロードしてください。";
+      }
+
+      function begin(name) {
+        state.name = name.trim();
+        if (!state.name) return;
+        store.put("accentLookup:listener", state.name);
+        const saved = store.get(key()) ?? {};
+        state.answers = saved.answers ?? {};
+        state.order = shuffled(set.items, `${set.seed} ${state.name}`);
+        state.pos = Math.min(saved.pos ?? 0, state.order.length - 1);
+        $("start").classList.add("hidden");
+        $("main").classList.remove("hidden");
+        $("who").textContent = `回答者: ${state.name}`;
+        show();
+      }
+
+      function play(side) {
+        const audio = $("audio");
+        audio.src = `clip/${item()[side]}.wav`;
+        audio.play().catch(() => {});
+        answer().plays[side] += 1;
+        save();
+      }
+
+      function sentence(it) {
+        const box = $("sentence");
+        box.replaceChildren();
+        for (const w of it.words) {
+          if (!w.changed) box.append(w.t);
+          else {
+            const m = document.createElement("mark");
+            m.textContent = w.t;
+            box.append(m);
+          }
+        }
+      }
+
+      function choiceField() {
+        const box = $("choice"),
+          a = answer();
+        box.replaceChildren(box.querySelector("legend"));
+        for (const [value, text] of CHOICES) {
+          const label = document.createElement("label"),
+            input = document.createElement("input");
+          Object.assign(input, { type: "radio", name: "choice", value, checked: a.choice === value });
+          input.addEventListener("change", () => {
+            a.choice = value;
+            update();
+          });
+          label.append(input, text);
+          box.append(label);
+        }
+      }
+
+      function show() {
+        $("itemno").textContent = `${state.pos + 1} / ${state.order.length}`;
+        sentence(item());
+        choiceField();
+        $("memo").value = answer().note;
+        update();
+      }
+
+      function update() {
+        const n = state.order.filter((it) => state.answers[it.item]?.choice).length;
+        Object.assign($("progress"), { value: n, max: state.order.length });
+        $("count").textContent = `回答済み ${n} / ${state.order.length}`;
+        $("prev").disabled = state.pos === 0;
+        $("next").disabled = !answer().choice;
+        save();
+      }
+
+      function go(pos) {
+        $("audio").pause();
+        if (pos >= state.order.length) {
+          $("main").classList.add("hidden");
+          $("done").classList.remove("hidden");
+          return;
+        }
+        state.pos = pos;
+        show();
+      }
+
+      function download() {
+        const body = { listener: state.name, set: set.seed, saved: new Date().toISOString(), answers: state.answers };
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([JSON.stringify(body, null, 1)], { type: "application/json" }));
+        a.download = `listening.${state.name.replace(/[^\p{L}\p{N}_-]+/gu, "_")}.json`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+
+      function pick(value) {
+        const input = $("choice").querySelector(`input[value="${value}"]`);
+        input.checked = true;
+        input.dispatchEvent(new Event("change"));
+      }
+
+      $("begin").addEventListener("click", () => begin($("name").value));
+      $("name").addEventListener("keydown", (e) => e.key === "Enter" && begin($("name").value));
+      $("memo").addEventListener("input", () => ((answer().note = $("memo").value), save()));
+      $("playX").addEventListener("click", () => play("x"));
+      $("playY").addEventListener("click", () => play("y"));
+      $("prev").addEventListener("click", () => go(state.pos - 1));
+      $("next").addEventListener("click", () => go(state.pos + 1));
+      $("download").addEventListener("click", download);
+      $("download2").addEventListener("click", download);
+      $("back").addEventListener("click", () => {
+        $("done").classList.add("hidden");
+        $("main").classList.remove("hidden");
+        show();
+      });
+      document.addEventListener("keydown", (e) => {
+        if ($("main").classList.contains("hidden") || e.target.type === "text") return;
+        if (e.key === "Enter" && !$("next").disabled) return go(state.pos + 1);
+        if (e.key === "1") return play("x");
+        if (e.key === "2") return play("y");
+        const c = CHOICES.find((x) => x[2] === e.key.toLowerCase());
+        if (c) pick(c[0]);
+      });
+      $("name").value = store.get("accentLookup:listener") ?? "";
+    </script>
+  </body>
+</html>

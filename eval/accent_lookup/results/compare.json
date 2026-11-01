@@ -1,0 +1,1588 @@
+{
+ "n": 465,
+ "failed": 1,
+ "same": 362,
+ "lost": 0,
+ "words": 3772,
+ "fallback": 159,
+ "total": {
+  "analysis": {
+   "phrases": 2230,
+   "marked": 2057,
+   "reading": 119,
+   "words": 54
+  },
+  "lookup": {
+   "phrases": 2224,
+   "marked": 2162,
+   "reading": 25,
+   "words": 37
+  }
+ },
+ "perWord": {
+  "same": 3345,
+  "differ": 17,
+  "gained": 245,
+  "lost": 5,
+  "neither": 160
+ },
+ "examples": {
+  "gained": [
+   "市: - / iꜜtɕi",
+   "で: - / de",
+   "は: - / wa",
+   "今日: - / koꜜɲɲitɕi",
+   "の: - / no",
+   "上手: - / kaꜛmite",
+   "から: - / kaɾa",
+   "人気: - / hiꜛtoke",
+   "が: - / ɡa",
+   "大家: - / taꜜika",
+   "と: - / to",
+   "生物: - / naꜜmamono",
+   "は: - / wa",
+   "一行: - / iꜛtɕiꜜɡʲoː",
+   "を: - / o",
+   "辛い: - / kaꜛɾaꜜi",
+   "目下: - / meꜛɕitaꜜ",
+   "の: - / no",
+   "角: - / kaꜜdo",
+   "を: - / o",
+   "角: - / tsɯꜜno",
+   "は: - / wa",
+   "寒気: - / kaꜜŋki",
+   "が: - / ɡa",
+   "色紙: - / ɕiꜛkiꜜɕi",
+   "に: - / ɲi",
+   "市: - / iꜜtɕi",
+   "で: - / de",
+   "は: - / wa",
+   "今日: - / koꜜɲɲitɕi",
+   "の: - / no",
+   "上手: - / kaꜛmite",
+   "から: - / kaɾa",
+   "人気: - / çiꜛtoke",
+   "が: - / ɡa",
+   "大家: - / taꜜika",
+   "と: - / to",
+   "生物: - / naꜜmamono",
+   "は: - / wa",
+   "一行: - / iꜛtɕiꜜɡʲoː",
+   "を: - / o",
+   "辛い: - / kaꜛɾaꜜi",
+   "目下: - / meꜛɕitaꜜ",
+   "の: - / no",
+   "角: - / kaꜜdo",
+   "を: - / o",
+   "角: - / tsɯꜜno",
+   "は: - / wa",
+   "寒気: - / kaꜜŋki",
+   "が: - / ɡa",
+   "色紙: - / ɕiꜛkiꜜɕi",
+   "に: - / ɲi",
+   "市: - / iꜜtɕi",
+   "で: - / de",
+   "は: - / wa",
+   "今日: - / koꜜɲɲitɕi",
+   "の: - / no",
+   "上手: - / kaꜛmite",
+   "から: - / kaɾa",
+   "人気: - / çiꜛtoke",
+   "が: - / ɡa",
+   "大家: - / taꜜika",
+   "と: - / to",
+   "生物: - / naꜜmamono",
+   "は: - / wa",
+   "一行: - / iꜛtɕiꜜɡʲoː",
+   "を: - / o",
+   "辛い: - / kaꜛɾaꜜi",
+   "目下: - / meꜛɕitaꜜ",
+   "の: - / no",
+   "角: - / kaꜜdo",
+   "を: - / o",
+   "角: - / tsɯꜜno",
+   "は: - / wa",
+   "寒気: - / kaꜜŋki",
+   "が: - / ɡa",
+   "色紙: - / ɕiꜛkiꜜɕi",
+   "に: - / ɲi",
+   "市: - / iꜜtɕi",
+   "で: - / de",
+   "は: - / wa",
+   "今日: - / koꜜɲɲitɕi",
+   "の: - / no",
+   "上手: - / kaꜛmite",
+   "から: - / kaɾa",
+   "人気: - / hiꜛtoke",
+   "が: - / ɡa",
+   "大家: - / taꜜika",
+   "と: - / to",
+   "生物: - / naꜜmamono",
+   "は: - / wa",
+   "一行: - / iꜛtɕiꜜɡʲoː",
+   "を: - / o",
+   "辛い: - / kaꜛɾaꜜi",
+   "目下: - / meꜛɕitaꜜ",
+   "の: - / no",
+   "角: - / kaꜜdo",
+   "を: - / o",
+   "角: - / tsɯꜜno",
+   "は: - / wa",
+   "寒気: - / kaꜜŋki",
+   "が: - / ɡa",
+   "色紙: - / ɕiꜛkiꜜɕi",
+   "に: - / ɲi",
+   "市: - / iꜜtɕi",
+   "で: - / de",
+   "は: - / wa",
+   "今日: - / koꜜɲɲitɕi",
+   "の: - / no",
+   "上手: - / kaꜛmite",
+   "から: - / kaɾa",
+   "人気: - / hiꜛtoke",
+   "が: - / ɡa",
+   "大家: - / taꜜika",
+   "と: - / to",
+   "生物: - / naꜜmamono",
+   "は: - / wa",
+   "一行: - / iꜛtɕiꜜɡʲoː",
+   "を: - / o",
+   "辛い: - / kaꜛɾaꜜi",
+   "目下: - / meꜛɕitaꜜ",
+   "の: - / no",
+   "角: - / kaꜜdo",
+   "を: - / o",
+   "角: - / tsɯꜜno",
+   "は: - / wa",
+   "寒気: - / kaꜜŋki",
+   "が: - / ɡa",
+   "色紙: - / ɕiꜛkiꜜɕi",
+   "に: - / ɲi",
+   "降り: - / ɸɯꜛɾiꜜ",
+   "そう: - / soː",
+   "な: - / na",
+   "ので: - / node",
+   "営業時間: - / eꜛːɡʲoːdʑiꜜkaɴ",
+   "は: - / wa",
+   "〜: - / kaꜛɾa",
+   "iPhone: - / aꜜiɸoɴ",
+   "と: - / to",
+   "MacBook: - / maꜛkkɯbɯꜜkkɯ",
+   "を: - / o",
+   "何でも: - / naꜜndemo",
+   "人間中: - / ɲiꜛŋɡeɲdʑɯː",
+   "で: - / de",
+   "考: - / kaŋɡaeꜜ",
+   "も: - / mo",
+   "恐しい: - / oꜛsoɾoɕiꜜː",
+   "と: - / to",
+   "も: - / mo",
+   "見始: - / miꜛhaꜜdʑime",
+   "で: - / de",
+   "あろう。: - / aɾoː",
+   "第一: - / daꜛiitɕiꜜ",
+   "毛: - / ke",
+   "を: - / o",
+   "降り: - / ɸɯꜛɾiꜜ",
+   "そう: - / soː",
+   "な: - / na",
+   "ので: - / node",
+   "明日: - / aꜛsɯꜜ",
+   "は: - / wa",
+   "〜: - / kaꜛɾa",
+   "iPhone: - / aꜜiɸon",
+   "と: - / to",
+   "MacBook: - / maꜛkkɯbɯꜜkkɯ",
+   "を: - / o",
+   "何でも: - / naꜜndemo",
+   "考: - / kaŋɡaeꜜ",
+   "も: - / mo",
+   "恐しい: - / oꜛsoɾoɕiꜜː",
+   "と: - / to",
+   "も: - / mo",
+   "見始: - / miꜛhaꜜdʑime",
+   "で: - / de",
+   "あろう。: - / aɾoː",
+   "第一: - / daꜛiitɕiꜜ",
+   "毛: - / ke",
+   "を: - / o",
+   "降り: - / ɸɯꜛɾiꜜ",
+   "そう: - / soː",
+   "な: - / na",
+   "ので: - / node",
+   "〜: - / kaꜛɾa",
+   "iPhone: - / aꜜiɸoɴ",
+   "と: - / to",
+   "MacBook: - / bɯꜜkkɯ",
+   "を: - / o",
+   "何でも: - / naꜜndemo",
+   "人間中: - / ɲiꜛŋɡeɲdʑɯː",
+   "で: - / de",
+   "考: - / kaŋɡaeꜜ",
+   "も: - / mo",
+   "恐しい: - / oꜛsoɾoɕiꜜː",
+   "と: - / to",
+   "も: - / mo",
+   "見始: - / miꜛhaꜜdʑime",
+   "で: - / de",
+   "あろう。: - / aɾoː",
+   "第一: - / daꜛiitɕiꜜ",
+   "毛: - / ke",
+   "を: - / o",
+   "降り: - / ɸɯꜛɾiꜜ",
+   "そう: - / soː",
+   "な: - / na",
+   "ので: - / node",
+   "〜: - / kaꜛɾa",
+   "iPhone: - / aꜜiɸon",
+   "と: - / to",
+   "MacBook: - / maꜛkkɯbɯꜜkkɯ",
+   "を: - / o",
+   "何でも: - / naꜜndemo",
+   "人間中: - / ɲiꜛŋɡeɲdʑɯː",
+   "で: - / de",
+   "考: - / kaŋɡaeꜜ",
+   "も: - / mo",
+   "恐しい: - / oꜛsoɾoɕiꜜː",
+   "と: - / to",
+   "も: - / mo",
+   "見始: - / miꜛhaꜜdʑime",
+   "で: - / de",
+   "あろう。: - / aɾoː",
+   "第一: - / daꜛiitɕiꜜ",
+   "毛: - / ke",
+   "を: - / o",
+   "降り: - / ɸɯꜛɾiꜜ",
+   "そう: - / soː",
+   "な: - / na",
+   "ので: - / node",
+   "〜: - / kaꜛɾa",
+   "iPhone: - / aꜜiɸoɴ",
+   "と: - / to",
+   "MacBook: - / maꜛkkɯbɯꜜkkɯ",
+   "を: - / o",
+   "何でも: - / naꜜndemo",
+   "考: - / kaŋɡaeꜜ",
+   "も: - / mo",
+   "恐しい: - / oꜛsoɾoɕiꜜː",
+   "と: - / to",
+   "も: - / mo",
+   "見始: - / miꜛhaꜜdʑime",
+   "で: - / de",
+   "あろう。: - / aɾoː",
+   "第一: - / daꜛiitɕiꜜ",
+   "毛: - / ke",
+   "を: - / o"
+  ],
+  "lost": [
+   "IoT: aꜛioːtiːꜜ / -",
+   "IoT: aꜛioːtiːꜜ / -",
+   "IoT: aꜛioːtiːꜜ / -",
+   "IoT: aꜛioːtiːꜜ / -",
+   "IoT: aꜛioːtiːꜜ / -"
+  ],
+  "differ": [
+   "上手: ɯꜛwate / ɯwate",
+   "機器: kiki / kiꜜki",
+   "2人: ɸɯꜛtaɾiꜜ / ɸɯꜛtaɾi",
+   "上手: ɯꜛwate / ɯwate",
+   "SIP: eꜛsɯaipiː / eꜛsɯaꜜipiː",
+   "機器: kiki / kiꜜki",
+   "2人: ɸɯꜛtaɾiꜜ / ɸɯꜛtaɾi",
+   "上手: ɯꜛwate / ɯwate",
+   "機器: kiki / kiꜜki",
+   "2人: ɸɯꜛtaɾiꜜ / ɸɯꜛtaɾi",
+   "上手: ɯꜛwate / ɯwate",
+   "SIP: eꜛsɯaipiː / eꜛsɯaꜜipiː",
+   "機器: kiki / kiꜜki",
+   "2人: ɸɯꜛtaɾiꜜ / ɸɯꜛtaɾi",
+   "上手: ɯꜛwate / ɯwate",
+   "機器: kiki / kiꜜki",
+   "2人: ɸɯꜛtaɾiꜜ / ɸɯꜛtaɾi"
+  ]
+ },
+ "fellWords": [
+  "一日",
+  "SIP",
+  "1500人",
+  "1万2000",
+  "6本",
+  "3匹",
+  "25.5",
+  "8分後",
+  "10本",
+  "300",
+  "24日",
+  "2026年",
+  "20日",
+  "5日",
+  "7日",
+  "9時",
+  "30分",
+  "3日",
+  "14日",
+  "20日",
+  "31年",
+  "30日",
+  "8日",
+  "一日",
+  "1500",
+  "2000",
+  "6本",
+  "3匹",
+  "25",
+  ".",
+  "8分後",
+  "10本",
+  "300",
+  "24日",
+  "5日",
+  "7日",
+  "9時",
+  "30分",
+  "3日",
+  "14日",
+  "20日",
+  "31",
+  "30日",
+  "8日",
+  "一日",
+  "SIP",
+  "1500",
+  "2000",
+  "3匹",
+  "25.5",
+  "8分",
+  "10本",
+  "300",
+  "24日",
+  "2026",
+  "20日",
+  "5日",
+  "7日",
+  "9時",
+  "30分",
+  "3日",
+  "14日",
+  "20日",
+  "31",
+  "30日",
+  "8日",
+  "一日",
+  "1500",
+  "2000",
+  "6本",
+  "3匹",
+  "25",
+  ".",
+  "8分",
+  "10本",
+  "300",
+  "24日",
+  "2026年",
+  "20日",
+  "5日",
+  "7日",
+  "9時",
+  "30分",
+  "3日",
+  "14日",
+  "20日",
+  "31年",
+  "30日",
+  "8日",
+  "一日",
+  "SIP",
+  "1500",
+  "2000",
+  "3匹",
+  "25",
+  ".",
+  "8分",
+  "10本",
+  "300",
+  "24日",
+  "2026",
+  "年",
+  "20日",
+  "5日",
+  "7日",
+  "9時",
+  "30分",
+  "3日",
+  "14日",
+  "20日",
+  "31",
+  "30日",
+  "8日",
+  "2026年",
+  "29日",
+  "15分",
+  "850円",
+  "クァルテット",
+  "9時",
+  "17時",
+  "捕えて",
+  "2026年",
+  "29日",
+  "15分",
+  "850円",
+  "クァルテット",
+  "9時",
+  "17時",
+  "捕えて",
+  "漱石（なつめそうせき）",
+  "2026年",
+  "29日",
+  "15分",
+  "850円",
+  "クァルテット",
+  "9時",
+  "17時",
+  "清水寺",
+  "捕えて",
+  "吾輩",
+  "2026年",
+  "29日",
+  "15分",
+  "850円",
+  "クァルテット",
+  "9時",
+  "17時",
+  "吾輩",
+  "吾輩",
+  "捕えて",
+  "漱石（なつめそうせき）",
+  "2026年",
+  "29日",
+  "15分",
+  "850円",
+  "クァルテット",
+  "9時",
+  "17時",
+  "捕えて"
+ ],
+ "diffs": [
+  {
+   "run": "none.hard.1.json",
+   "id": "h001",
+   "text": "シアトルの市では、魚が売られている。",
+   "analysis": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | iꜜtɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "市では"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h005",
+   "text": "今日の日本経済を論じる。",
+   "analysis": "ja /koɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoŋ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "lookup": "ja /koꜜɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoŋ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "missesAnalysis": [
+    "今日の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h009",
+   "text": "舞台の上手から役者が登場した。",
+   "analysis": "ja /bɯꜜtai<t:舞台> no<t:の> | kamite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "lookup": "ja /bɯꜜtai<t:舞台> no<t:の> | kaꜛmite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "missesAnalysis": [
+    "上手から"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h010",
+   "text": "囲碁では彼の方が一枚上手だ。",
+   "analysis": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> | ɯꜛwate<t:上手> da<t:だ。> ↘/",
+   "lookup": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h011",
+   "text": "この辺りは夜になると人気がない。",
+   "analysis": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hitoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "lookup": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hiꜛtoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "missesAnalysis": [
+    "人気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h014",
+   "text": "彼は書道の大家として知られる。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taꜜika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "missesAnalysis": [
+    "大家と"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h016",
+   "text": "生物はお早めにお召し上がりください。",
+   "analysis": "ja /namamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "lookup": "ja /naꜜmamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "missesAnalysis": [
+    "生物は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h019",
+   "text": "最初の一行を読んでください。",
+   "analysis": "ja /saꜛiɕo<t:最初> no<t:の> | itɕiɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "lookup": "ja /saꜛiɕo<t:最初> no<t:の> | iꜛtɕiꜜɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "missesAnalysis": [
+    "一行を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h020",
+   "text": "彼は辛いカレーが好きだ。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | kaɾai<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | kaꜛɾaꜜi<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "辛い"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h023",
+   "text": "目下の者にも丁寧に接する。",
+   "analysis": "ja /meɕita<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "lookup": "ja /meꜛɕitaꜜ<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "missesAnalysis": [
+    "目下の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h024",
+   "text": "角を曲がるとパン屋がある。",
+   "analysis": "ja /kado<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "lookup": "ja /kaꜜdo<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "missesAnalysis": [
+    "角を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h025",
+   "text": "牛の角は意外と硬い。",
+   "analysis": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "lookup": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯꜜno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "missesAnalysis": [
+    "角は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h027",
+   "text": "強い寒気が南下している。",
+   "analysis": "ja /tsɯꜛjoꜜi<t:強い> | kaŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /tsɯꜛjoꜜi<t:強い> | kaꜜŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "寒気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h030",
+   "text": "色紙にサインをもらった。",
+   "analysis": "ja /ɕikiɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "lookup": "ja /ɕiꜛkiꜜɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "missesAnalysis": [
+    "色紙に"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h045",
+   "text": "IoT機器が増えている。",
+   "analysis": "ja /aꜛioːtiːꜜ<t:IoT> kiki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /aioːtiː<t:IoT> | kiꜜki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.1.json",
+   "id": "h056",
+   "text": "2人で旅行に行く。",
+   "analysis": "ja /ɸɯꜛtaɾiꜜ<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "lookup": "ja /ɸɯꜛtaɾi<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h001",
+   "text": "シアトルの市では、魚が売られている。",
+   "analysis": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | iꜜtɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "市では"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h005",
+   "text": "今日の日本経済を論じる。",
+   "analysis": "ja /koɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoŋ<t:日本> keꜜːdzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "lookup": "ja /koꜜɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoŋ<t:日本> keꜜːdzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "missesAnalysis": [
+    "今日の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h009",
+   "text": "舞台の上手から役者が登場した。",
+   "analysis": "ja /bɯꜜtai<t:舞台> no<t:の> | kamite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "lookup": "ja /bɯꜜtai<t:舞台> no<t:の> | kaꜛmite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "missesAnalysis": [
+    "上手から"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h010",
+   "text": "囲碁では彼の方が一枚上手だ。",
+   "analysis": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> | ɯꜛwate<t:上手> da<t:だ。> ↘/",
+   "lookup": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h011",
+   "text": "この辺りは夜になると人気がない。",
+   "analysis": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | çitoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "lookup": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | çiꜛtoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "missesAnalysis": [
+    "人気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h014",
+   "text": "彼は書道の大家として知られる。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taꜜika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "missesAnalysis": [
+    "大家と"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h016",
+   "text": "生物はお早めにお召し上がりください。",
+   "analysis": "ja /namamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "lookup": "ja /naꜜmamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "missesAnalysis": [
+    "生物は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h019",
+   "text": "最初の一行を読んでください。",
+   "analysis": "ja /saꜛiɕo<t:最初> no<t:の> | itɕiɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "lookup": "ja /saꜛiɕo<t:最初> no<t:の> | iꜛtɕiꜜɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "missesAnalysis": [
+    "一行を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h020",
+   "text": "彼は辛いカレーが好きだ。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | kaɾai<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | kaꜛɾaꜜi<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "辛い"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h023",
+   "text": "目下の者にも丁寧に接する。",
+   "analysis": "ja /meɕita<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "lookup": "ja /meꜛɕitaꜜ<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "missesAnalysis": [
+    "目下の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h024",
+   "text": "角を曲がるとパン屋がある。",
+   "analysis": "ja /kado<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "lookup": "ja /kaꜜdo<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "missesAnalysis": [
+    "角を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h025",
+   "text": "牛の角は意外と硬い。",
+   "analysis": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "lookup": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯꜜno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "missesAnalysis": [
+    "角は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h027",
+   "text": "強い寒気が南下している。",
+   "analysis": "ja /tsɯꜛjoꜜi<t:強い> | kaŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /tsɯꜛjoꜜi<t:強い> | kaꜜŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "寒気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h030",
+   "text": "色紙にサインをもらった。",
+   "analysis": "ja /ɕikiɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "lookup": "ja /ɕiꜛkiꜜɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "missesAnalysis": [
+    "色紙に"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h037",
+   "text": "SIPで電話をつなぐ。",
+   "analysis": "ja /eꜛsɯaipiː<t:SIP> de<t:で> | deꜛɴwa<t:電話> o<t:を> | tsɯꜛnaɡɯ<t:つなぐ。> ↘/",
+   "lookup": "ja /eꜛsɯaꜜipiː<t:SIP> de<t:で> | deꜛɴwa<t:電話> o<t:を> | tsɯꜛnaɡɯ<t:つなぐ。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h045",
+   "text": "IoT機器が増えている。",
+   "analysis": "ja /aꜛioːtiːꜜ<t:IoT> kiki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /aioːtiː<t:IoT> | kiꜜki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.2.json",
+   "id": "h056",
+   "text": "2人で旅行に行く。",
+   "analysis": "ja /ɸɯꜛtaɾiꜜ<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "lookup": "ja /ɸɯꜛtaɾi<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h001",
+   "text": "シアトルの市では、魚が売られている。",
+   "analysis": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | iꜜtɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "市では"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h005",
+   "text": "今日の日本経済を論じる。",
+   "analysis": "ja /koɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "lookup": "ja /koꜜɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "missesAnalysis": [
+    "今日の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h009",
+   "text": "舞台の上手から役者が登場した。",
+   "analysis": "ja /bɯꜜtai<t:舞台> no<t:の> | kamite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "lookup": "ja /bɯꜜtai<t:舞台> no<t:の> | kaꜛmite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "missesAnalysis": [
+    "上手から"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h010",
+   "text": "囲碁では彼の方が一枚上手だ。",
+   "analysis": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> | ɯꜛwate<t:上手> da<t:だ。> ↘/",
+   "lookup": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h011",
+   "text": "この辺りは夜になると人気がない。",
+   "analysis": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | çitoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "lookup": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | çiꜛtoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "missesAnalysis": [
+    "人気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h014",
+   "text": "彼は書道の大家として知られる。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taꜜika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "missesAnalysis": [
+    "大家と"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h016",
+   "text": "生物はお早めにお召し上がりください。",
+   "analysis": "ja /namamono<t:生物> wa<t:は> | oꜛhaꜜjame<t:お早め> ɲi<t:に> | oꜛmeɕiaɡaɾi<t:お召し上がり> kɯdasai<t:ください。> ↘/",
+   "lookup": "ja /naꜜmamono<t:生物> wa<t:は> | oꜛhaꜜjame<t:お早め> ɲi<t:に> | oꜛmeɕiaɡaɾi<t:お召し上がり> kɯdasai<t:ください。> ↘/",
+   "missesAnalysis": [
+    "生物は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h019",
+   "text": "最初の一行を読んでください。",
+   "analysis": "ja /saꜛiɕo<t:最初> no<t:の> | itɕiɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "lookup": "ja /saꜛiɕo<t:最初> no<t:の> | iꜛtɕiꜜɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "missesAnalysis": [
+    "一行を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h020",
+   "text": "彼は辛いカレーが好きだ。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | kaɾai<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | kaꜛɾaꜜi<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "辛い"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h023",
+   "text": "目下の者にも丁寧に接する。",
+   "analysis": "ja /meɕita<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "lookup": "ja /meꜛɕitaꜜ<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "missesAnalysis": [
+    "目下の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h024",
+   "text": "角を曲がるとパン屋がある。",
+   "analysis": "ja /kado<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "lookup": "ja /kaꜜdo<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "missesAnalysis": [
+    "角を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h025",
+   "text": "牛の角は意外と硬い。",
+   "analysis": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "lookup": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯꜜno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "missesAnalysis": [
+    "角は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h027",
+   "text": "強い寒気が南下している。",
+   "analysis": "ja /tsɯꜛjoꜜi<t:強い> | kaŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /tsɯꜛjoꜜi<t:強い> | kaꜜŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "寒気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h030",
+   "text": "色紙にサインをもらった。",
+   "analysis": "ja /ɕikiɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "lookup": "ja /ɕiꜛkiꜜɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "missesAnalysis": [
+    "色紙に"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h045",
+   "text": "IoT機器が増えている。",
+   "analysis": "ja /aꜛioːtiːꜜ<t:IoT> kiki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /aioːtiː<t:IoT> | kiꜜki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.3.json",
+   "id": "h056",
+   "text": "2人で旅行に行く。",
+   "analysis": "ja /ɸɯꜛtaɾiꜜ<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "lookup": "ja /ɸɯꜛtaɾi<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h001",
+   "text": "シアトルの市では、魚が売られている。",
+   "analysis": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | iꜜtɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "市では"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h005",
+   "text": "今日の日本経済を論じる。",
+   "analysis": "ja /koɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "lookup": "ja /koꜜɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "missesAnalysis": [
+    "今日の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h009",
+   "text": "舞台の上手から役者が登場した。",
+   "analysis": "ja /bɯꜜtai<t:舞台> no<t:の> | kamite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "lookup": "ja /bɯꜜtai<t:舞台> no<t:の> | kaꜛmite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "missesAnalysis": [
+    "上手から"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h010",
+   "text": "囲碁では彼の方が一枚上手だ。",
+   "analysis": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> | ɯꜛwate<t:上手> da<t:だ。> ↘/",
+   "lookup": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h011",
+   "text": "この辺りは夜になると人気がない。",
+   "analysis": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hitoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "lookup": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hiꜛtoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "missesAnalysis": [
+    "人気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h014",
+   "text": "彼は書道の大家として知られる。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taꜜika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "missesAnalysis": [
+    "大家と"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h016",
+   "text": "生物はお早めにお召し上がりください。",
+   "analysis": "ja /namamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "lookup": "ja /naꜜmamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "missesAnalysis": [
+    "生物は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h019",
+   "text": "最初の一行を読んでください。",
+   "analysis": "ja /saꜛiɕo<t:最初> no<t:の> | itɕiɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "lookup": "ja /saꜛiɕo<t:最初> no<t:の> | iꜛtɕiꜜɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "missesAnalysis": [
+    "一行を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h020",
+   "text": "彼は辛いカレーが好きだ。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | kaɾai<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | kaꜛɾaꜜi<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "辛い"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h023",
+   "text": "目下の者にも丁寧に接する。",
+   "analysis": "ja /meɕita<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "lookup": "ja /meꜛɕitaꜜ<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "missesAnalysis": [
+    "目下の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h024",
+   "text": "角を曲がるとパン屋がある。",
+   "analysis": "ja /kado<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴ<t:パン> ja<t:屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "lookup": "ja /kaꜜdo<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴ<t:パン> ja<t:屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "missesAnalysis": [
+    "角を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h025",
+   "text": "牛の角は意外と硬い。",
+   "analysis": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "lookup": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯꜜno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "missesAnalysis": [
+    "角は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h027",
+   "text": "強い寒気が南下している。",
+   "analysis": "ja /tsɯꜛjoꜜi<t:強い> | kaŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /tsɯꜛjoꜜi<t:強い> | kaꜜŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "寒気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h030",
+   "text": "色紙にサインをもらった。",
+   "analysis": "ja /ɕikiɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "lookup": "ja /ɕiꜛkiꜜɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "missesAnalysis": [
+    "色紙に"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h037",
+   "text": "SIPで電話をつなぐ。",
+   "analysis": "ja /eꜛsɯaipiː<t:SIP> de<t:で> | deꜛɴwa<t:電話> o<t:を> | tsɯꜛnaɡɯ<t:つなぐ。> ↘/",
+   "lookup": "ja /eꜛsɯaꜜipiː<t:SIP> de<t:で> | deꜛɴwa<t:電話> o<t:を> | tsɯꜛnaɡɯ<t:つなぐ。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h045",
+   "text": "IoT機器が増えている。",
+   "analysis": "ja /aꜛioːtiːꜜ<t:IoT> kiki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /aioːtiː<t:IoT> | kiꜜki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.4.json",
+   "id": "h056",
+   "text": "2人で旅行に行く。",
+   "analysis": "ja /ɸɯꜛtaɾiꜜ<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "lookup": "ja /ɸɯꜛtaɾi<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h001",
+   "text": "シアトルの市では、魚が売られている。",
+   "analysis": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | iꜜtɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "市では"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h005",
+   "text": "今日の日本経済を論じる。",
+   "analysis": "ja /koɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːdzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "lookup": "ja /koꜜɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːdzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/",
+   "missesAnalysis": [
+    "今日の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h009",
+   "text": "舞台の上手から役者が登場した。",
+   "analysis": "ja /bɯꜜtai<t:舞台> no<t:の> | kamite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "lookup": "ja /bɯꜜtai<t:舞台> no<t:の> | kaꜛmite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/",
+   "missesAnalysis": [
+    "上手から"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h010",
+   "text": "囲碁では彼の方が一枚上手だ。",
+   "analysis": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> | ɯꜛwate<t:上手> da<t:だ。> ↘/",
+   "lookup": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h011",
+   "text": "この辺りは夜になると人気がない。",
+   "analysis": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hitoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "lookup": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hiꜛtoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/",
+   "missesAnalysis": [
+    "人気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h014",
+   "text": "彼は書道の大家として知られる。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taꜜika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/",
+   "missesAnalysis": [
+    "大家と"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h016",
+   "text": "生物はお早めにお召し上がりください。",
+   "analysis": "ja /namamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "lookup": "ja /naꜜmamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+   "missesAnalysis": [
+    "生物は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h019",
+   "text": "最初の一行を読んでください。",
+   "analysis": "ja /saꜛiɕo<t:最初> no<t:の> | itɕiɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "lookup": "ja /saꜛiɕo<t:最初> no<t:の> | iꜛtɕiꜜɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/",
+   "missesAnalysis": [
+    "一行を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h020",
+   "text": "彼は辛いカレーが好きだ。",
+   "analysis": "ja /kaꜜɾe<t:彼> wa<t:は> | kaɾai<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "lookup": "ja /kaꜜɾe<t:彼> wa<t:は> | kaꜛɾaꜜi<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "辛い"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h023",
+   "text": "目下の者にも丁寧に接する。",
+   "analysis": "ja /meɕita<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "lookup": "ja /meꜛɕitaꜜ<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/",
+   "missesAnalysis": [
+    "目下の"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h024",
+   "text": "角を曲がるとパン屋がある。",
+   "analysis": "ja /kado<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "lookup": "ja /kaꜜdo<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/",
+   "missesAnalysis": [
+    "角を"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h025",
+   "text": "牛の角は意外と硬い。",
+   "analysis": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "lookup": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯꜜno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/",
+   "missesAnalysis": [
+    "角は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h027",
+   "text": "強い寒気が南下している。",
+   "analysis": "ja /tsɯꜛjoꜜi<t:強い> | kaŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /tsɯꜛjoꜜi<t:強い> | kaꜜŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [
+    "寒気が"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h030",
+   "text": "色紙にサインをもらった。",
+   "analysis": "ja /ɕikiɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "lookup": "ja /ɕiꜛkiꜜɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/",
+   "missesAnalysis": [
+    "色紙に"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h045",
+   "text": "IoT機器が増えている。",
+   "analysis": "ja /aꜛioːtiːꜜ<t:IoT> kiki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "lookup": "ja /aioːtiː<t:IoT> | kiꜜki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.hard.5.json",
+   "id": "h056",
+   "text": "2人で旅行に行く。",
+   "analysis": "ja /ɸɯꜛtaɾiꜜ<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "lookup": "ja /ɸɯꜛtaɾi<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.1.json",
+   "id": "comma",
+   "text": "雨が降りそうなので、傘を持って出かけます。",
+   "analysis": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯɾi<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "lookup": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯꜛɾiꜜ<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "missesAnalysis": [
+    "降りそうなので"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.1.json",
+   "id": "wave_dash",
+   "text": "営業時間は9時〜17時です。",
+   "analysis": "ja /eːɡʲoːdʑikaɴ<t:営業時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "lookup": "ja /eꜛːɡʲoːdʑiꜜkaɴ<t:営業時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaꜛɾa<t:〜> | dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.1.json",
+   "id": "latin",
+   "text": "新しいiPhoneとMacBookをOKしました。",
+   "analysis": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aiɸoɴ<t:iPhone> to<t:と> makkɯbɯkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "lookup": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aꜜiɸoɴ<t:iPhone> to<t:と> | maꜛkkɯbɯꜜkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "missesAnalysis": [
+    "iPhoneと",
+    "MacBookを"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.1.json",
+   "id": "long",
+   "text": "吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。",
+   "analysis": "ja /waꜛgahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛntoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ nandemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛgahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜː<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> | kaŋɡae<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | osoɾoɕiː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛse<t:載せ> ɾaɾete<t:られて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜ<t:持ち上げ> ɾaɾeta<t:られた> | toꜛki<t:時> ‖ naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | mihadʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> de<t:で> mo<t:も> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daiitɕi<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/",
+   "lookup": "ja /waꜛgahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛntoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ naꜜndemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛgahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜː<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> kaŋɡaeꜜ<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | oꜛsoɾoɕiꜜː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛse<t:載せ> ɾaɾete<t:られて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜ<t:持ち上げ> ɾaɾeta<t:られた> | toꜛki<t:時> ‖ naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | miꜛhaꜜdʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> de<t:で> mo<t:も> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daꜛiitɕiꜜ<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "何でも",
+    "人間中で",
+    "捕えて",
+    "考も"
+   ],
+   "missesLookup": [
+    "捕えて"
+   ]
+  },
+  {
+   "run": "none.ja.2.json",
+   "id": "comma",
+   "text": "雨が降りそうなので、傘を持って出かけます。",
+   "analysis": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯɾi<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "lookup": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯꜛɾiꜜ<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "missesAnalysis": [
+    "降りそうなので"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.2.json",
+   "id": "ka_question",
+   "text": "明日は学校に行きますか？",
+   "analysis": "ja /asɯ<t:明日> wa<t:は> | ɡaꜛkkoː<t:学校> ɲi<t:に> | iꜛki<t:行き> maꜜsɯ<t:ます> ka<t:か？> ↗/",
+   "lookup": "ja /aꜛsɯꜜ<t:明日> wa<t:は> | ɡaꜛkkoː<t:学校> ɲi<t:に> | iꜛki<t:行き> maꜜsɯ<t:ます> ka<t:か？> ↗/",
+   "missesAnalysis": [
+    "明日は"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.2.json",
+   "id": "wave_dash",
+   "text": "営業時間は9時〜17時です。",
+   "analysis": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "lookup": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaꜛɾa<t:〜> | dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.2.json",
+   "id": "latin",
+   "text": "新しいiPhoneとMacBookをOKしました。",
+   "analysis": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aiɸon<t:iPhone> to<t:と> makkɯbɯkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "lookup": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aꜜiɸon<t:iPhone> to<t:と> | maꜛkkɯbɯꜜkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "missesAnalysis": [
+    "iPhoneと",
+    "MacBookを"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.2.json",
+   "id": "long",
+   "text": "吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。",
+   "analysis": "ja /waꜛɡahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛntoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ nandemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛɡahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɲtɕɯː<t:人間中> de<t:で> | iꜛtɕiꜜban<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜː<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> | kaŋɡae<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | osoɾoɕiː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛseɾaɾete<t:載せられて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜɾaɾeta<t:持ち上げられた> | toꜛki<t:時> | naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | mihadʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> demo<t:でも> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daiitɕi<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkan<t:薬缶> da<t:だ。> ↘/",
+   "lookup": "ja /waꜛɡahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛntoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ naꜜndemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛɡahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɲtɕɯː<t:人間中> de<t:で> | iꜛtɕiꜜban<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜː<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> kaŋɡaeꜜ<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | oꜛsoɾoɕiꜜː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛseɾaɾete<t:載せられて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜɾaɾeta<t:持ち上げられた> | toꜛki<t:時> | naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | miꜛhaꜜdʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> demo<t:でも> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daꜛiitɕiꜜ<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkan<t:薬缶> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "何でも",
+    "捕えて",
+    "考も"
+   ],
+   "missesLookup": [
+    "捕えて"
+   ]
+  },
+  {
+   "run": "none.ja.3.json",
+   "id": "comma",
+   "text": "雨が降りそうなので、傘を持って出かけます。",
+   "analysis": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯɾi<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "lookup": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯꜛɾiꜜ<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "missesAnalysis": [
+    "降りそうなので"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.3.json",
+   "id": "wave_dash",
+   "text": "営業時間は9時〜17時です。",
+   "analysis": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "lookup": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaꜛɾa<t:〜> | dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.3.json",
+   "id": "latin",
+   "text": "新しいiPhoneとMacBookをOKしました。",
+   "analysis": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aiɸoɴ<t:iPhone> to<t:と> makkɯ bɯkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "lookup": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aꜜiɸoɴ<t:iPhone> to<t:と> | maꜛkkɯ bɯꜜkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "missesAnalysis": [
+    "iPhoneと",
+    "MacBookを"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.3.json",
+   "id": "long",
+   "text": "吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。",
+   "analysis": "ja /waꜛgahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛntoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ nandemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛgahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜdzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜɯ<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> | kaŋɡae<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | osoɾoɕiː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛseɾaɾete<t:載せられて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜɾaɾeta<t:持ち上げられた> | toꜛki<t:時> | naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | mihadʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> demo<t:でも> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daiitɕi<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/",
+   "lookup": "ja /waꜛgahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛntoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ naꜜndemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛgahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜdzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜɯ<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> kaŋɡaeꜜ<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | oꜛsoɾoɕiꜜː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛseɾaɾete<t:載せられて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜɾaɾeta<t:持ち上げられた> | toꜛki<t:時> | naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | miꜛhaꜜdʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> demo<t:でも> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daꜛiitɕiꜜ<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "何でも",
+    "人間中で",
+    "捕えて",
+    "考も"
+   ],
+   "missesLookup": [
+    "捕えて"
+   ]
+  },
+  {
+   "run": "none.ja.4.json",
+   "id": "comma",
+   "text": "雨が降りそうなので、傘を持って出かけます。",
+   "analysis": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯɾi<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "lookup": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯꜛɾiꜜ<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "missesAnalysis": [
+    "降りそうなので"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.4.json",
+   "id": "wave_dash",
+   "text": "営業時間は9時〜17時です。",
+   "analysis": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "lookup": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaꜛɾa<t:〜> | dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.4.json",
+   "id": "latin",
+   "text": "新しいiPhoneとMacBookをOKしました。",
+   "analysis": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aiɸon<t:iPhone> to<t:と> makkɯbɯkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "lookup": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aꜜiɸon<t:iPhone> to<t:と> | maꜛkkɯbɯꜜkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "missesAnalysis": [
+    "iPhoneと",
+    "MacBookを"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.4.json",
+   "id": "long",
+   "text": "吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。",
+   "analysis": "ja /ɡahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛŋtoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ nandemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ ɡahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜban<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜɯ<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜn<t:何> to<t:と> | iꜛɯ<t:いう> | kaŋɡae<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> ‖ beꜛtsɯdaɴ<t:別段> | osoɾoɕiː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛse<t:載せ> ɾaɾete<t:られて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜ<t:持ち上げ> ɾaɾeta<t:られた> | toꜛki<t:時> ‖ naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | mihadʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> de<t:で> mo<t:も> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daiitɕi<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkan<t:薬缶> da<t:だ。> ↘/",
+   "lookup": "ja /ɡahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛŋtoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ naꜜndemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ ɡahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜban<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜɯ<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜn<t:何> to<t:と> | iꜛɯ<t:いう> kaŋɡaeꜜ<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> ‖ beꜛtsɯdaɴ<t:別段> | oꜛsoɾoɕiꜜː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛse<t:載せ> ɾaɾete<t:られて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜ<t:持ち上げ> ɾaɾeta<t:られた> | toꜛki<t:時> ‖ naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡen<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | miꜛhaꜜdʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛɲdʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> de<t:で> mo<t:も> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daꜛiitɕiꜜ<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkan<t:薬缶> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "吾輩は",
+    "何でも",
+    "吾輩は",
+    "人間中で",
+    "捕えて",
+    "考も"
+   ],
+   "missesLookup": [
+    "吾輩は",
+    "吾輩は",
+    "捕えて"
+   ]
+  },
+  {
+   "run": "none.ja.5.json",
+   "id": "comma",
+   "text": "雨が降りそうなので、傘を持って出かけます。",
+   "analysis": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯɾi<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "lookup": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯꜛɾiꜜ<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/",
+   "missesAnalysis": [
+    "降りそうなので"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.5.json",
+   "id": "wave_dash",
+   "text": "営業時間は9時〜17時です。",
+   "analysis": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "lookup": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaꜛɾa<t:〜> | dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+   "missesAnalysis": [],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.5.json",
+   "id": "latin",
+   "text": "新しいiPhoneとMacBookをOKしました。",
+   "analysis": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aiɸoɴ<t:iPhone> to<t:と> makkɯbɯkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "lookup": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aꜜiɸoɴ<t:iPhone> to<t:と> | maꜛkkɯbɯꜜkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/",
+   "missesAnalysis": [
+    "iPhoneと",
+    "MacBookを"
+   ],
+   "missesLookup": []
+  },
+  {
+   "run": "none.ja.5.json",
+   "id": "long",
+   "text": "吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。",
+   "analysis": "ja /waꜛgahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛŋtoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ nandemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛgahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɴtɕɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜdzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜː<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> | kaŋɡae<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | osoɾoɕiː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛseɾaɾete<t:載せられて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜɾaɾeta<t:持ち上げられた> | toꜛki<t:時> | naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛndʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | mihadʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛndʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> demo<t:でも> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daiitɕi<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/",
+   "lookup": "ja /waꜛgahai<t:吾輩> wa<t:は> | neꜜko<t:猫> de<t:で> aɾɯ<t:ある。> ↘ naꜛmae<t:名前> wa<t:は> | maꜜda<t:まだ> | naꜜi<t:無い。> ↘ doꜜko<t:どこ> de<t:で> | ɯꜛmaɾetaꜜ<t:生れた> ka<t:か> | toꜛnto<t:とんと> | keꜛŋtoꜜː<t:見当> ɡa<t:が> | tsɯꜛkanɯ<t:つかぬ。> ↘ naꜜndemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ waꜛgahai<t:吾輩> wa<t:は> | koꜛko<t:ここ> de<t:で> | haꜛdʑimete<t:始めて> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> | moꜛnoꜜ<t:もの> o<t:を> | miꜜta<t:見た。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɴtɕɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜdzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ koꜛno<t:この> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | noꜛ<t:の> wa<t:は> | toꜛkidoki<t:時々> | waꜛɾewaɾe<t:我々> o<t:を> | tsɯkamaete<t:捕えて> | ɲiꜛte<t:煮て> | kɯꜜː<t:食う> to<t:と> | iꜛɯ<t:いう> | haꜛnaɕiꜜ<t:話> de<t:で> aɾɯ<t:ある。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> kaŋɡaeꜜ<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | oꜛsoɾoɕiꜜː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ taꜜda<t:ただ> | kaꜜɾe<t:彼> no<t:の> | teꜛnoꜜhiɾa<t:掌> ɲi<t:に> | noꜛseɾaɾete<t:載せられて> | sɯꜛː<t:スー> to<t:と> | moꜛtɕiaɡeꜜɾaɾeta<t:持ち上げられた> | toꜛki<t:時> | naꜜndaka<t:何だか> | ɸɯꜜwaɸɯwa<t:フワフワ> | ɕiꜛta<t:した> | kaꜛndʑi<t:感じ> ɡa<t:が> | aꜜtta<t:あった> bakaɾi<t:ばかり> de<t:で> aɾɯ<t:ある。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | miꜛhaꜜdʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ koꜛno<t:この> | toꜛki<t:時> | mʲoꜜː<t:妙> na<t:な> | moꜛnoꜜ<t:もの> da<t:だ> to<t:と> | oꜛmoꜜtta<t:思った> | kaꜛndʑi<t:感じ> ɡa<t:が> | iꜜma<t:今> demo<t:でも> | noꜛkoꜜtte<t:残って> | iꜛɾɯ<t:いる。> ↘ daꜛiitɕiꜜ<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/",
+   "missesAnalysis": [
+    "何でも",
+    "捕えて",
+    "考も"
+   ],
+   "missesLookup": [
+    "捕えて"
+   ]
+  }
+ ]
+}

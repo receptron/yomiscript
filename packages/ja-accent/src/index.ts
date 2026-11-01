@@ -1,15 +1,18 @@
-// The Japanese dictionary accent (D25, D27): the YomiScript keeps its reading, and OpenJTalk's dictionary adds ꜛ / ꜜ to
-// the accent phrases it reads the same way; the rules then give those phrases their pitch (ACCENT_SCALE), and the
-// rest keeps the Katarite's own prosody.
+// The Japanese dictionary accent (D25, D27, D31): the YomiScript keeps its reading, and OpenJTalk's dictionary adds
+// ꜛ / ꜜ to the accent phrases it reads the same way; the rules then give those phrases their pitch (ACCENT_SCALE), and
+// the rest keeps the Katarite's own prosody. The dictionary is looked up with the YomiScript's own words and readings
+// (lookup.ts, D31); `{ analysis: true }` lets OpenJTalk analyse the text again instead (D25, D27), the earlier way.
 import { isJa, parse, realize, type Katarite } from "@yomiscript/core";
 import type { Analyzer } from "./frontend.ts";
+import { lookupAnalysis } from "./lookup.ts";
 import { dictPhrases } from "./phrases.ts";
 import { writeMarks } from "./marks.ts";
 
-export { DICT_FILES, DICT_URL, DICT_VERSION, loadFrontend, type Analysis, type Analyzer } from "./frontend.ts";
+export { DICT_FILES, DICT_URL, DICT_VERSION, loadFrontend, type Analysis, type Analyzer, type Cand, type Sentence } from "./frontend.ts";
+export { bestPath, lookupAnalysis, wordsOf } from "./lookup.ts";
 export { labelMorae, type HL, type LabelMora } from "./labels.ts";
 export { dictPhrases, type DictPhrase } from "./phrases.ts";
-export { writeMarks, type MarkStats } from "./marks.ts";
+export { sameMorae, writeMarks, type MarkStats } from "./marks.ts";
 export { USER_DICT } from "./userdict.ts";
 
 /** Japanese, with <t:…>, and no accent marks or pitch values of its own (those are the writer's, left as written);
@@ -24,11 +27,17 @@ export function needsAccent(ys: string): boolean {
   const ja = u.sections.filter((s) => isJa(s.lang));
   return !!u.texts.length && ja.length > 0 && !ja.some((s) => s.toks.some((t) => t.rise || t.fall || t.f0));
 }
+export interface AccentOptions {
+  /** let OpenJTalk analyse the text again and mark only the phrases it reads the same way (D25, D27), instead of
+   * looking the YomiScript's own words and readings up (D31) */
+  analysis?: boolean;
+}
 /** the YomiScript with the dictionary's accent marks; unchanged when it does not need them (needsAccent) */
-export function accentMarks(ys: string, a: Analyzer): string {
+export function accentMarks(ys: string, a: Analyzer, opts: AccentOptions = {}): string {
   if (!needsAccent(ys)) return ys;
-  const text = parse(ys).texts.join(""),
-    { njd, labels } = a.analyze(text),
+  const u = parse(ys),
+    text = u.texts.join(""),
+    { njd, labels } = opts.analysis ? a.analyze(text) : lookupAnalysis(u, a),
     P = dictPhrases(text, njd, labels);
   return P ? writeMarks(ys, P).ys : ys;
 }
@@ -36,9 +45,9 @@ export function accentMarks(ys: string, a: Analyzer): string {
  * had half and D27 three quarters of the earlier phrase rule) */
 export const ACCENT_SCALE = 1;
 /** the Yomite step before Kokoro: the dictionary's marks, then pitch values for the marked phrases only */
-export function accentYomite(a: Analyzer): (ys: string) => string {
+export function accentYomite(a: Analyzer, opts: AccentOptions = {}): (ys: string) => string {
   return (ys) => {
-    const marked = accentMarks(ys, a);
+    const marked = accentMarks(ys, a, opts);
     return marked === ys ? ys : realize(marked, { markedOnly: true, jaScale: ACCENT_SCALE });
   };
 }

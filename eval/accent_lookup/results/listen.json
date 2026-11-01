@@ -1,0 +1,216 @@
+{
+ "seed": "accent-lookup-1",
+ "total": {
+  "lookup": 7,
+  "analysis": 0,
+  "same": 12,
+  "bad": 3
+ },
+ "rows": [
+  {
+   "listener": "satoshi",
+   "item": "i01",
+   "changed": [
+    "市 itɕi -> iꜜtɕi"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i02",
+   "changed": [
+    "今日 koɲɲitɕi -> koꜜɲɲitɕi"
+   ],
+   "verdict": "lookup",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i03",
+   "changed": [
+    "上手 kamite -> kaꜛmite"
+   ],
+   "verdict": "lookup",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i04",
+   "changed": [
+    "上手 ɯꜛwate -> ɯwate"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i05",
+   "changed": [
+    "人気 hitoke -> hiꜛtoke"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i06",
+   "changed": [
+    "大家 taika -> taꜜika"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i07",
+   "changed": [
+    "生物 namamono -> naꜜmamono"
+   ],
+   "verdict": "lookup",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i08",
+   "changed": [
+    "一行 itɕiɡʲoː -> iꜛtɕiꜜɡʲoː"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i09",
+   "changed": [
+    "辛い kaɾai -> kaꜛɾaꜜi"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i10",
+   "changed": [
+    "目下 meɕita -> meꜛɕitaꜜ"
+   ],
+   "verdict": "lookup",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i11",
+   "changed": [
+    "角 kado -> kaꜜdo"
+   ],
+   "verdict": "lookup",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i12",
+   "changed": [
+    "角 tsɯno -> tsɯꜜno"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i13",
+   "changed": [
+    "寒気 kaŋki -> kaꜜŋki"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i14",
+   "changed": [
+    "色紙 ɕikiɕi -> ɕiꜛkiꜜɕi"
+   ],
+   "verdict": "bad",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i15",
+   "changed": [
+    "IoT aꜛioːtiːꜜ -> aioːtiː",
+    "機器 kiki -> kiꜜki"
+   ],
+   "verdict": "bad",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i16",
+   "changed": [
+    "2人 ɸɯꜛtaɾiꜜ -> ɸɯꜛtaɾi"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i17",
+   "changed": [
+    "SIP eꜛsɯaipiː -> eꜛsɯaꜜipiː"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i18",
+   "changed": [
+    "降り ɸɯɾi -> ɸɯꜛɾiꜜ"
+   ],
+   "verdict": "lookup",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i19",
+   "changed": [
+    "〜 kaɾa -> kaꜛɾa"
+   ],
+   "verdict": "bad",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i20",
+   "changed": [
+    "iPhone aiɸoɴ -> aꜜiɸoɴ",
+    "MacBook makkɯbɯkkɯ -> maꜛkkɯbɯꜜkkɯ"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i21",
+   "changed": [
+    "何でも nandemo -> naꜜndemo",
+    "人間中 ɲiŋɡeɲdʑɯː -> ɲiꜛŋɡeɲdʑɯː",
+    "考 kaŋɡae -> kaŋɡaeꜜ",
+    "恐しい osoɾoɕiː -> oꜛsoɾoɕiꜜː",
+    "見始 mihadʑime -> miꜛhaꜜdʑime",
+    "第一 daiitɕi -> daꜛiitɕiꜜ"
+   ],
+   "verdict": "same",
+   "note": ""
+  },
+  {
+   "listener": "satoshi",
+   "item": "i22",
+   "changed": [
+    "明日 asɯ -> aꜛsɯꜜ"
+   ],
+   "verdict": "lookup",
+   "note": "学校の部分が違う"
+  }
+ ]
+}

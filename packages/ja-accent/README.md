@@ -1,21 +1,33 @@
 # @yomiscript/ja-accent
 
-The Japanese dictionary accent of the yomiscript tools (D25, D27). The calling LLM writes only the reading; this package
-adds the accent from a dictionary, where the dictionary reads a phrase the same way, so the reading never changes.
+The Japanese dictionary accent of the yomiscript tools (D25, D27, D31). The calling LLM writes only the reading; this
+package adds the accent from a dictionary, looked up with the YomiScript's own words and readings, so the reading
+never changes.
 
 ```
-YomiScript (reading, <t:…>) ─► OpenJTalk's front end on its original text (jpreprocess + NAIST-JDIC, WebAssembly)
-                            ─► ꜛ / ꜜ and ` | ` on the accent phrases the dictionary reads the same way
+YomiScript (reading, <t:…>) ─► every NAIST-JDIC entry of the sentence (jpreprocess, WebAssembly)
+                            ─► the cheapest path of entries that reads as the YomiScript does
+                            ─► OpenJTalk's rules on that path (accent phrases, accent combination)
+                            ─► ꜛ / ꜜ and ` | ` on the accent phrases
                             ─► realize(…, { markedOnly: true }): pitch values for those phrases only
                             ─► Kokoro (its own pitch everywhere else)
 ```
 
-- Each accent phrase of OpenJTalk (its characters of the text, its morae and their Tokyo H / L) is matched with the
-  YomiScript words covering the same characters (by `<t:…>`). When the morae are the same, mora by mora, the phrase
-  gets the dictionary's marks. A phrase read another way stays unmarked: that also keeps the dictionary's own
-  misreadings out (上手 かみて, 角 かど, 辛い からい are read by OpenJTalk as じょうず, かく, つらい). Spellings that
-  do not change a mora are the same (`hi` / `çi`, `z` / `dz`, `kj` / `kʲ`, `v` / `b`); `writeMarks` lists each phrase
-  read another way in `stats.misses`.
+- The LLM has already split the text into words (`<t:…>`) and read each one from the context, so OpenJTalk does not
+  analyse the text again (D31, `src/lookup.ts`). Every entry of the system and user dictionaries in the sentence is
+  listed with its morae and costs (`candidates`), and the cheapest path (OpenJTalk's word and connection costs,
+  `conn`) is taken whose morae read as the YomiScript does, with the same number of morae at every word boundary.
+  An entry may cross a boundary (の|で read as one ので); a word of another language takes any entries; an entry
+  starting inside a word joins the accent phrase before, so a word is never split between two phrases. OpenJTalk's
+  rules then run on the path (`label`), and each accent phrase is matched with the YomiScript words covering the
+  same characters (by `<t:…>`) and gets the dictionary's marks.
+- A word that no entry reads the YomiScript's way (捕えて つかまえて; numbers with a counter, 9時, whose readings
+  OpenJTalk's digit rules make after the dictionary) is taken as OpenJTalk's analysis reads it, at a large cost, so
+  only where nothing else fits; its phrase is then read another way and stays unmarked. Spellings that do not change
+  a mora are the same (`hi` / `çi`, `z` / `dz`, `kj` / `kʲ`, `v` / `b`).
+- `accentMarks(ys, a, { analysis: true })` is the earlier way (D25, D27): OpenJTalk analyses the text
+  (`analyze`) and only the phrases it reads the same way are marked (`stats.misses` of `writeMarks` lists the
+  others). It loses the words the LLM reads from the context (市 いち: OpenJTalk reads し).
 - The marks are rendered by the rule Yomite at full strength (`ACCENT_SCALE`): three values per mora from the marks
   of the whole sentence (D28, D29, `jaContour` in `@yomiscript/core`). D25 had half and D27 three quarters of the earlier
   phrase rule, whose values were heard as too strong above 1.
@@ -49,8 +61,9 @@ sh wasm/build-dict.sh OUT    # cargo install jpreprocess =0.15.0 with naist-jdic
 
 `src/userdict.ts` (`USER_DICT`) is a short list of rows in NAIST-JDIC's CSV format, built into the front end next to
 the system dictionary when it loads (no file to download). Each row is NAIST-JDIC's own entry for a reading, with a
-lower cost, where NAIST-JDIC prefers a reading LLMs do not write (日本 ニッポン over ニホン): the dictionary then agrees
-with the YomiScript, so the phrase gets its accent. The reading spoken is still the YomiScript's. A row is a decision
+lower cost, where NAIST-JDIC prefers a reading LLMs do not write (日本 ニッポン over ニホン): with the analysis of D25
+and D27 the dictionary then agrees with the YomiScript, so the phrase gets its accent (`{ analysis: true }`; the
+lookup of D31 takes the YomiScript's reading of a word from any entry that has it). The reading spoken is still the YomiScript's. A row is a decision
 (D27 in `docs/decisions.md`): take it from NAIST-JDIC (the source is
 [jpreprocess/naist-jdic](https://github.com/jpreprocess/naist-jdic) v0.1.3) rather than writing an accent by hand,
 and measure it with `eval/prosody_ref` (`node mismatch.mjs` lists the phrases read another way).
@@ -60,7 +73,9 @@ and measure it with `eval/prosody_ref` (`node mismatch.mjs` lists the phrases re
 `wasm/` is a small Rust crate around [jpreprocess](https://github.com/jpreprocess/jpreprocess) (OpenJTalk's front
 end rewritten in Rust, BSD-3-Clause): `Frontend(bytes, lengths, user)` builds the dictionary from bytes (and the user
 dictionary from CSV rows), `analyze(text)`
-returns the words after the front end's rules (NJD, as pyopenjtalk's `run_frontend`) and the full-context labels. Its
+returns the words after the front end's rules (NJD, as pyopenjtalk's `run_frontend`) and the full-context labels;
+`candidates(words)`, `conn(r, l)` and `label(request)` are the lookup of D31 (`analyze` is built on the same tokenizer
+and gave the same NJD and labels as jpreprocess's own on 3,120 texts, 2026-11-01). Its
 build (`wasm/pkg/`, about 1.5 MB) is kept in the repository, so `yarn build` needs no Rust. To rebuild it (Rust 1.88
 or later, the `wasm32-unknown-unknown` target and `wasm-bindgen-cli` of the version in `wasm/Cargo.lock`):
 

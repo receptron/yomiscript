@@ -1,0 +1,1822 @@
+{
+ "seed": "accent-lookup-1",
+ "built": "2026-11-01",
+ "items": [
+  {
+   "item": "i01",
+   "words": [
+    {
+     "t": "シアトル",
+     "changed": false,
+     "analysis": "ɕiꜜatoɾɯ",
+     "lookup": "ɕiꜜatoɾɯ"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "市",
+     "changed": true,
+     "analysis": "itɕi",
+     "lookup": "iꜜtɕi"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "、",
+     "changed": false,
+     "analysis": "‖",
+     "lookup": "‖"
+    },
+    {
+     "t": "魚",
+     "changed": false,
+     "analysis": "saꜛkana",
+     "lookup": "saꜛkana"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "売られて",
+     "changed": false,
+     "analysis": "ɯꜛɾaɾete",
+     "lookup": "ɯꜛɾaɾete"
+    },
+    {
+     "t": "いる。",
+     "changed": false,
+     "analysis": "iꜛɾɯ",
+     "lookup": "iꜛɾɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c461652",
+    "method": "analysis",
+    "ys": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/"
+   },
+   "y": {
+    "id": "c819560",
+    "method": "lookup",
+    "ys": "ja /ɕiꜜatoɾɯ<t:シアトル> no<t:の> | iꜜtɕi<t:市> de<t:で> wa<t:は> ‖<t:、> saꜛkana<t:魚> ɡa<t:が> | ɯꜛɾaɾete<t:売られて> | iꜛɾɯ<t:いる。> ↘/"
+   }
+  },
+  {
+   "item": "i02",
+   "words": [
+    {
+     "t": "今日",
+     "changed": true,
+     "analysis": "koɲɲitɕi",
+     "lookup": "koꜜɲɲitɕi"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "日本",
+     "changed": false,
+     "analysis": "ɲiꜛhoɴ",
+     "lookup": "ɲiꜛhoɴ"
+    },
+    {
+     "t": "経済",
+     "changed": false,
+     "analysis": "keꜜːzai",
+     "lookup": "keꜜːzai"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "論じる。",
+     "changed": false,
+     "analysis": "ɾoꜛɲdʑiɾɯ",
+     "lookup": "ɾoꜛɲdʑiɾɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c097353",
+    "method": "lookup",
+    "ys": "ja /koꜜɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/"
+   },
+   "y": {
+    "id": "c972161",
+    "method": "analysis",
+    "ys": "ja /koɲɲitɕi<t:今日> no<t:の> | ɲiꜛhoɴ<t:日本> keꜜːzai<t:経済> o<t:を> | ɾoꜛɲdʑiɾɯ<t:論じる。> ↘/"
+   }
+  },
+  {
+   "item": "i03",
+   "words": [
+    {
+     "t": "舞台",
+     "changed": false,
+     "analysis": "bɯꜜtai",
+     "lookup": "bɯꜜtai"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "上手",
+     "changed": true,
+     "analysis": "kamite",
+     "lookup": "kaꜛmite"
+    },
+    {
+     "t": "から",
+     "changed": false,
+     "analysis": "kaɾa",
+     "lookup": "kaɾa"
+    },
+    {
+     "t": "役者",
+     "changed": false,
+     "analysis": "jaꜛkɯɕa",
+     "lookup": "jaꜛkɯɕa"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "登場",
+     "changed": false,
+     "analysis": "toꜛːdʑoː",
+     "lookup": "toꜛːdʑoː"
+    },
+    {
+     "t": "した。",
+     "changed": false,
+     "analysis": "ɕiꜛta",
+     "lookup": "ɕiꜛta"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c652842",
+    "method": "lookup",
+    "ys": "ja /bɯꜜtai<t:舞台> no<t:の> | kaꜛmite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/"
+   },
+   "y": {
+    "id": "c044550",
+    "method": "analysis",
+    "ys": "ja /bɯꜜtai<t:舞台> no<t:の> | kamite<t:上手> kaɾa<t:から> | jaꜛkɯɕa<t:役者> ɡa<t:が> | toꜛːdʑoː<t:登場> | ɕiꜛta<t:した。> ↘/"
+   }
+  },
+  {
+   "item": "i04",
+   "words": [
+    {
+     "t": "囲碁",
+     "changed": false,
+     "analysis": "iꜜɡo",
+     "lookup": "iꜜɡo"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "彼",
+     "changed": false,
+     "analysis": "kaꜜɾe",
+     "lookup": "kaꜜɾe"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "方",
+     "changed": false,
+     "analysis": "hoꜜː",
+     "lookup": "hoꜜː"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "一枚",
+     "changed": false,
+     "analysis": "iꜜtɕimai",
+     "lookup": "iꜜtɕimai"
+    },
+    {
+     "t": "上手",
+     "changed": true,
+     "analysis": "ɯꜛwate",
+     "lookup": "ɯwate"
+    },
+    {
+     "t": "だ。",
+     "changed": false,
+     "analysis": "da",
+     "lookup": "da"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c596883",
+    "method": "lookup",
+    "ys": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/"
+   },
+   "y": {
+    "id": "c592555",
+    "method": "analysis",
+    "ys": "ja /iꜜɡo<t:囲碁> de<t:で> wa<t:は> | kaꜜɾe<t:彼> no<t:の> | hoꜜː<t:方> ɡa<t:が> | iꜜtɕimai<t:一枚> | ɯꜛwate<t:上手> da<t:だ。> ↘/"
+   }
+  },
+  {
+   "item": "i05",
+   "words": [
+    {
+     "t": "この",
+     "changed": false,
+     "analysis": "koꜛno",
+     "lookup": "koꜛno"
+    },
+    {
+     "t": "辺り",
+     "changed": false,
+     "analysis": "aꜜtaɾi",
+     "lookup": "aꜜtaɾi"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "夜",
+     "changed": false,
+     "analysis": "joꜜɾɯ",
+     "lookup": "joꜜɾɯ"
+    },
+    {
+     "t": "に",
+     "changed": false,
+     "analysis": "ɲi",
+     "lookup": "ɲi"
+    },
+    {
+     "t": "なる",
+     "changed": false,
+     "analysis": "naꜜɾɯ",
+     "lookup": "naꜜɾɯ"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "人気",
+     "changed": true,
+     "analysis": "hitoke",
+     "lookup": "hiꜛtoke"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "ない。",
+     "changed": false,
+     "analysis": "naꜜi",
+     "lookup": "naꜜi"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c394388",
+    "method": "lookup",
+    "ys": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hiꜛtoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/"
+   },
+   "y": {
+    "id": "c760752",
+    "method": "analysis",
+    "ys": "ja /koꜛno<t:この> | aꜜtaɾi<t:辺り> wa<t:は> | joꜜɾɯ<t:夜> ɲi<t:に> | naꜜɾɯ<t:なる> to<t:と> | hitoke<t:人気> ɡa<t:が> | naꜜi<t:ない。> ↘/"
+   }
+  },
+  {
+   "item": "i06",
+   "words": [
+    {
+     "t": "彼",
+     "changed": false,
+     "analysis": "kaꜜɾe",
+     "lookup": "kaꜜɾe"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "書道",
+     "changed": false,
+     "analysis": "ɕoꜜdoː",
+     "lookup": "ɕoꜜdoː"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "大家",
+     "changed": true,
+     "analysis": "taika",
+     "lookup": "taꜜika"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "して",
+     "changed": false,
+     "analysis": "ɕiꜛte",
+     "lookup": "ɕiꜛte"
+    },
+    {
+     "t": "知られる。",
+     "changed": false,
+     "analysis": "ɕiꜛɾaɾeɾɯ",
+     "lookup": "ɕiꜛɾaɾeɾɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c376277",
+    "method": "lookup",
+    "ys": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taꜜika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/"
+   },
+   "y": {
+    "id": "c776189",
+    "method": "analysis",
+    "ys": "ja /kaꜜɾe<t:彼> wa<t:は> | ɕoꜜdoː<t:書道> no<t:の> | taika<t:大家> to<t:と> | ɕiꜛte<t:して> | ɕiꜛɾaɾeɾɯ<t:知られる。> ↘/"
+   }
+  },
+  {
+   "item": "i07",
+   "words": [
+    {
+     "t": "生物",
+     "changed": true,
+     "analysis": "namamono",
+     "lookup": "naꜜmamono"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "お",
+     "changed": false,
+     "analysis": "oꜛ",
+     "lookup": "oꜛ"
+    },
+    {
+     "t": "早め",
+     "changed": false,
+     "analysis": "haꜜjame",
+     "lookup": "haꜜjame"
+    },
+    {
+     "t": "に",
+     "changed": false,
+     "analysis": "ɲi",
+     "lookup": "ɲi"
+    },
+    {
+     "t": "お",
+     "changed": false,
+     "analysis": "oꜛ",
+     "lookup": "oꜛ"
+    },
+    {
+     "t": "召し上がり",
+     "changed": false,
+     "analysis": "meɕiaɡaɾi",
+     "lookup": "meɕiaɡaɾi"
+    },
+    {
+     "t": "ください。",
+     "changed": false,
+     "analysis": "kɯdasai",
+     "lookup": "kɯdasai"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c749266",
+    "method": "analysis",
+    "ys": "ja /namamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/"
+   },
+   "y": {
+    "id": "c428502",
+    "method": "lookup",
+    "ys": "ja /naꜜmamono<t:生物> wa<t:は> | oꜛ<t:お> haꜜjame<t:早め> ɲi<t:に> | oꜛ<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/"
+   }
+  },
+  {
+   "item": "i08",
+   "words": [
+    {
+     "t": "最初",
+     "changed": false,
+     "analysis": "saꜛiɕo",
+     "lookup": "saꜛiɕo"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "一行",
+     "changed": true,
+     "analysis": "itɕiɡʲoː",
+     "lookup": "iꜛtɕiꜜɡʲoː"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "読んで",
+     "changed": false,
+     "analysis": "joꜜnde",
+     "lookup": "joꜜnde"
+    },
+    {
+     "t": "ください。",
+     "changed": false,
+     "analysis": "kɯꜛdasaꜜi",
+     "lookup": "kɯꜛdasaꜜi"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c613967",
+    "method": "lookup",
+    "ys": "ja /saꜛiɕo<t:最初> no<t:の> | iꜛtɕiꜜɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/"
+   },
+   "y": {
+    "id": "c492215",
+    "method": "analysis",
+    "ys": "ja /saꜛiɕo<t:最初> no<t:の> | itɕiɡʲoː<t:一行> o<t:を> | joꜜnde<t:読んで> | kɯꜛdasaꜜi<t:ください。> ↘/"
+   }
+  },
+  {
+   "item": "i09",
+   "words": [
+    {
+     "t": "彼",
+     "changed": false,
+     "analysis": "kaꜜɾe",
+     "lookup": "kaꜜɾe"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "辛い",
+     "changed": true,
+     "analysis": "kaɾai",
+     "lookup": "kaꜛɾaꜜi"
+    },
+    {
+     "t": "カレー",
+     "changed": false,
+     "analysis": "kaꜛɾeː",
+     "lookup": "kaꜛɾeː"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "好き",
+     "changed": false,
+     "analysis": "sɯꜛkiꜜ",
+     "lookup": "sɯꜛkiꜜ"
+    },
+    {
+     "t": "だ。",
+     "changed": false,
+     "analysis": "da",
+     "lookup": "da"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c759420",
+    "method": "analysis",
+    "ys": "ja /kaꜜɾe<t:彼> wa<t:は> | kaɾai<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/"
+   },
+   "y": {
+    "id": "c017264",
+    "method": "lookup",
+    "ys": "ja /kaꜜɾe<t:彼> wa<t:は> | kaꜛɾaꜜi<t:辛い> | kaꜛɾeː<t:カレー> ɡa<t:が> | sɯꜛkiꜜ<t:好き> da<t:だ。> ↘/"
+   }
+  },
+  {
+   "item": "i10",
+   "words": [
+    {
+     "t": "目下",
+     "changed": true,
+     "analysis": "meɕita",
+     "lookup": "meꜛɕitaꜜ"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "者",
+     "changed": false,
+     "analysis": "moꜛnoꜜ",
+     "lookup": "moꜛnoꜜ"
+    },
+    {
+     "t": "に",
+     "changed": false,
+     "analysis": "ɲi",
+     "lookup": "ɲi"
+    },
+    {
+     "t": "も",
+     "changed": false,
+     "analysis": "mo",
+     "lookup": "mo"
+    },
+    {
+     "t": "丁寧",
+     "changed": false,
+     "analysis": "teꜜːneː",
+     "lookup": "teꜜːneː"
+    },
+    {
+     "t": "に",
+     "changed": false,
+     "analysis": "ɲi",
+     "lookup": "ɲi"
+    },
+    {
+     "t": "接する。",
+     "changed": false,
+     "analysis": "seꜛssɯɾɯ",
+     "lookup": "seꜛssɯɾɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c249073",
+    "method": "lookup",
+    "ys": "ja /meꜛɕitaꜜ<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/"
+   },
+   "y": {
+    "id": "c295561",
+    "method": "analysis",
+    "ys": "ja /meɕita<t:目下> no<t:の> | moꜛnoꜜ<t:者> ɲi<t:に> mo<t:も> | teꜜːneː<t:丁寧> ɲi<t:に> | seꜛssɯɾɯ<t:接する。> ↘/"
+   }
+  },
+  {
+   "item": "i11",
+   "words": [
+    {
+     "t": "角",
+     "changed": true,
+     "analysis": "kado",
+     "lookup": "kaꜜdo"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "曲がる",
+     "changed": false,
+     "analysis": "maꜛɡaɾɯ",
+     "lookup": "maꜛɡaɾɯ"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "パン屋",
+     "changed": false,
+     "analysis": "paꜛɴja",
+     "lookup": "paꜛɴja"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "ある。",
+     "changed": false,
+     "analysis": "aꜜɾɯ",
+     "lookup": "aꜜɾɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c130243",
+    "method": "lookup",
+    "ys": "ja /kaꜜdo<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/"
+   },
+   "y": {
+    "id": "c721595",
+    "method": "analysis",
+    "ys": "ja /kado<t:角> o<t:を> | maꜛɡaɾɯ<t:曲がる> to<t:と> | paꜛɴja<t:パン屋> ɡa<t:が> | aꜜɾɯ<t:ある。> ↘/"
+   }
+  },
+  {
+   "item": "i12",
+   "words": [
+    {
+     "t": "牛",
+     "changed": false,
+     "analysis": "ɯꜛɕi",
+     "lookup": "ɯꜛɕi"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "角",
+     "changed": true,
+     "analysis": "tsɯno",
+     "lookup": "tsɯꜜno"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "意外",
+     "changed": false,
+     "analysis": "iꜛɡai",
+     "lookup": "iꜛɡai"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "硬い。",
+     "changed": false,
+     "analysis": "kaꜛtai",
+     "lookup": "kaꜛtai"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c153690",
+    "method": "lookup",
+    "ys": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯꜜno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/"
+   },
+   "y": {
+    "id": "c465942",
+    "method": "analysis",
+    "ys": "ja /ɯꜛɕi<t:牛> no<t:の> | tsɯno<t:角> wa<t:は> | iꜛɡai<t:意外> to<t:と> | kaꜛtai<t:硬い。> ↘/"
+   }
+  },
+  {
+   "item": "i13",
+   "words": [
+    {
+     "t": "強い",
+     "changed": false,
+     "analysis": "tsɯꜛjoꜜi",
+     "lookup": "tsɯꜛjoꜜi"
+    },
+    {
+     "t": "寒気",
+     "changed": true,
+     "analysis": "kaŋki",
+     "lookup": "kaꜜŋki"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "南下",
+     "changed": false,
+     "analysis": "naꜛŋka",
+     "lookup": "naꜛŋka"
+    },
+    {
+     "t": "して",
+     "changed": false,
+     "analysis": "ɕiꜛte",
+     "lookup": "ɕiꜛte"
+    },
+    {
+     "t": "いる。",
+     "changed": false,
+     "analysis": "iꜛɾɯ",
+     "lookup": "iꜛɾɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c453369",
+    "method": "lookup",
+    "ys": "ja /tsɯꜛjoꜜi<t:強い> | kaꜜŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/"
+   },
+   "y": {
+    "id": "c434193",
+    "method": "analysis",
+    "ys": "ja /tsɯꜛjoꜜi<t:強い> | kaŋki<t:寒気> ɡa<t:が> | naꜛŋka<t:南下> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘/"
+   }
+  },
+  {
+   "item": "i14",
+   "words": [
+    {
+     "t": "色紙",
+     "changed": true,
+     "analysis": "ɕikiɕi",
+     "lookup": "ɕiꜛkiꜜɕi"
+    },
+    {
+     "t": "に",
+     "changed": false,
+     "analysis": "ɲi",
+     "lookup": "ɲi"
+    },
+    {
+     "t": "サイン",
+     "changed": false,
+     "analysis": "saꜜiɴ",
+     "lookup": "saꜜiɴ"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "もらった。",
+     "changed": false,
+     "analysis": "moꜛɾatta",
+     "lookup": "moꜛɾatta"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c422424",
+    "method": "lookup",
+    "ys": "ja /ɕiꜛkiꜜɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/"
+   },
+   "y": {
+    "id": "c321252",
+    "method": "analysis",
+    "ys": "ja /ɕikiɕi<t:色紙> ɲi<t:に> | saꜜiɴ<t:サイン> o<t:を> | moꜛɾatta<t:もらった。> ↘/"
+   }
+  },
+  {
+   "item": "i15",
+   "words": [
+    {
+     "t": "IoT",
+     "changed": true,
+     "analysis": "aꜛioːtiːꜜ",
+     "lookup": "aioːtiː"
+    },
+    {
+     "t": "機器",
+     "changed": true,
+     "analysis": "kiki",
+     "lookup": "kiꜜki"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "増えて",
+     "changed": false,
+     "analysis": "ɸɯꜛeꜜte",
+     "lookup": "ɸɯꜛeꜜte"
+    },
+    {
+     "t": "いる。",
+     "changed": false,
+     "analysis": "iꜛɾɯ",
+     "lookup": "iꜛɾɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c380999",
+    "method": "analysis",
+    "ys": "ja /aꜛioːtiːꜜ<t:IoT> kiki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/"
+   },
+   "y": {
+    "id": "c330879",
+    "method": "lookup",
+    "ys": "ja /aioːtiː<t:IoT> | kiꜜki<t:機器> ɡa<t:が> | ɸɯꜛeꜜte<t:増えて> | iꜛɾɯ<t:いる。> ↘/"
+   }
+  },
+  {
+   "item": "i16",
+   "words": [
+    {
+     "t": "2人",
+     "changed": true,
+     "analysis": "ɸɯꜛtaɾiꜜ",
+     "lookup": "ɸɯꜛtaɾi"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "旅行",
+     "changed": false,
+     "analysis": "ɾʲoꜛkoː",
+     "lookup": "ɾʲoꜛkoː"
+    },
+    {
+     "t": "に",
+     "changed": false,
+     "analysis": "ɲi",
+     "lookup": "ɲi"
+    },
+    {
+     "t": "行く。",
+     "changed": false,
+     "analysis": "iꜛkɯ",
+     "lookup": "iꜛkɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c848582",
+    "method": "lookup",
+    "ys": "ja /ɸɯꜛtaɾi<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/"
+   },
+   "y": {
+    "id": "c829794",
+    "method": "analysis",
+    "ys": "ja /ɸɯꜛtaɾiꜜ<t:2人> de<t:で> | ɾʲoꜛkoː<t:旅行> ɲi<t:に> | iꜛkɯ<t:行く。> ↘/"
+   }
+  },
+  {
+   "item": "i17",
+   "words": [
+    {
+     "t": "SIP",
+     "changed": true,
+     "analysis": "eꜛsɯaipiː",
+     "lookup": "eꜛsɯaꜜipiː"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "電話",
+     "changed": false,
+     "analysis": "deꜛɴwa",
+     "lookup": "deꜛɴwa"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "つなぐ。",
+     "changed": false,
+     "analysis": "tsɯꜛnaɡɯ",
+     "lookup": "tsɯꜛnaɡɯ"
+    }
+   ],
+   "runs": 2,
+   "x": {
+    "id": "c150981",
+    "method": "lookup",
+    "ys": "ja /eꜛsɯaꜜipiː<t:SIP> de<t:で> | deꜛɴwa<t:電話> o<t:を> | tsɯꜛnaɡɯ<t:つなぐ。> ↘/"
+   },
+   "y": {
+    "id": "c545549",
+    "method": "analysis",
+    "ys": "ja /eꜛsɯaipiː<t:SIP> de<t:で> | deꜛɴwa<t:電話> o<t:を> | tsɯꜛnaɡɯ<t:つなぐ。> ↘/"
+   }
+  },
+  {
+   "item": "i18",
+   "words": [
+    {
+     "t": "雨",
+     "changed": false,
+     "analysis": "aꜜme",
+     "lookup": "aꜜme"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "降り",
+     "changed": true,
+     "analysis": "ɸɯɾi",
+     "lookup": "ɸɯꜛɾiꜜ"
+    },
+    {
+     "t": "そう",
+     "changed": false,
+     "analysis": "soː",
+     "lookup": "soː"
+    },
+    {
+     "t": "な",
+     "changed": false,
+     "analysis": "na",
+     "lookup": "na"
+    },
+    {
+     "t": "ので",
+     "changed": false,
+     "analysis": "node",
+     "lookup": "node"
+    },
+    {
+     "t": "、",
+     "changed": false,
+     "analysis": "‖",
+     "lookup": "‖"
+    },
+    {
+     "t": "傘",
+     "changed": false,
+     "analysis": "kaꜜsa",
+     "lookup": "kaꜜsa"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "持って",
+     "changed": false,
+     "analysis": "moꜜtte",
+     "lookup": "moꜜtte"
+    },
+    {
+     "t": "出かけ",
+     "changed": false,
+     "analysis": "deꜛkake",
+     "lookup": "deꜛkake"
+    },
+    {
+     "t": "ます。",
+     "changed": false,
+     "analysis": "maꜜsɯ",
+     "lookup": "maꜜsɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c982980",
+    "method": "lookup",
+    "ys": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯꜛɾiꜜ<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/"
+   },
+   "y": {
+    "id": "c985792",
+    "method": "analysis",
+    "ys": "ja /aꜜme<t:雨> ɡa<t:が> | ɸɯɾi<t:降り> soː<t:そう> na<t:な> node<t:ので> ‖<t:、> kaꜜsa<t:傘> o<t:を> | moꜜtte<t:持って> | deꜛkake<t:出かけ> maꜜsɯ<t:ます。> ↘/"
+   }
+  },
+  {
+   "item": "i19",
+   "words": [
+    {
+     "t": "営業",
+     "changed": false,
+     "analysis": "eꜛːɡʲoː",
+     "lookup": "eꜛːɡʲoː"
+    },
+    {
+     "t": "時間",
+     "changed": false,
+     "analysis": "dʑiꜛkaɴ",
+     "lookup": "dʑiꜛkaɴ"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "9時",
+     "changed": false,
+     "analysis": "kɯꜜdʑi",
+     "lookup": "kɯꜜdʑi"
+    },
+    {
+     "t": "〜",
+     "changed": true,
+     "analysis": "kaɾa",
+     "lookup": "kaꜛɾa"
+    },
+    {
+     "t": "17時",
+     "changed": false,
+     "analysis": "dʑɯːɕitɕidʑi",
+     "lookup": "dʑɯːɕitɕidʑi"
+    },
+    {
+     "t": "です。",
+     "changed": false,
+     "analysis": "desɯ",
+     "lookup": "desɯ"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c096683",
+    "method": "lookup",
+    "ys": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaꜛɾa<t:〜> | dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/"
+   },
+   "y": {
+    "id": "c645571",
+    "method": "analysis",
+    "ys": "ja /eꜛːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> wa<t:は> | kɯꜜdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/"
+   }
+  },
+  {
+   "item": "i20",
+   "words": [
+    {
+     "t": "新しい",
+     "changed": false,
+     "analysis": "aꜛtaɾaɕiꜜː",
+     "lookup": "aꜛtaɾaɕiꜜː"
+    },
+    {
+     "t": "iPhone",
+     "changed": true,
+     "analysis": "aiɸoɴ",
+     "lookup": "aꜜiɸoɴ"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "MacBook",
+     "changed": true,
+     "analysis": "makkɯbɯkkɯ",
+     "lookup": "maꜛkkɯbɯꜜkkɯ"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "OK",
+     "changed": false,
+     "analysis": "oꜜːkeː",
+     "lookup": "oꜜːkeː"
+    },
+    {
+     "t": "し",
+     "changed": false,
+     "analysis": "ɕiꜛ",
+     "lookup": "ɕiꜛ"
+    },
+    {
+     "t": "ました。",
+     "changed": false,
+     "analysis": "maꜜɕita",
+     "lookup": "maꜜɕita"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c818846",
+    "method": "analysis",
+    "ys": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aiɸoɴ<t:iPhone> to<t:と> makkɯbɯkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/"
+   },
+   "y": {
+    "id": "c658754",
+    "method": "lookup",
+    "ys": "ja /aꜛtaɾaɕiꜜː<t:新しい> | aꜜiɸoɴ<t:iPhone> to<t:と> | maꜛkkɯbɯꜜkkɯ<t:MacBook> o<t:を> | oꜜːkeː<t:OK> | ɕiꜛ<t:し> maꜜɕita<t:ました。> ↘/"
+   }
+  },
+  {
+   "item": "i21",
+   "words": [
+    {
+     "t": "何でも",
+     "changed": true,
+     "analysis": "nandemo",
+     "lookup": "naꜜndemo"
+    },
+    {
+     "t": "薄暗い",
+     "changed": false,
+     "analysis": "ɯꜛsɯɡɯɾai",
+     "lookup": "ɯꜛsɯɡɯɾai"
+    },
+    {
+     "t": "じめじめ",
+     "changed": false,
+     "analysis": "dʑiꜜmedʑime",
+     "lookup": "dʑiꜜmedʑime"
+    },
+    {
+     "t": "した",
+     "changed": false,
+     "analysis": "ɕiꜛta",
+     "lookup": "ɕiꜛta"
+    },
+    {
+     "t": "所",
+     "changed": false,
+     "analysis": "toꜛkoɾo",
+     "lookup": "toꜛkoɾo"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "ニャーニャー",
+     "changed": false,
+     "analysis": "ɲaꜜːɲaː",
+     "lookup": "ɲaꜜːɲaː"
+    },
+    {
+     "t": "泣いて",
+     "changed": false,
+     "analysis": "naꜛite",
+     "lookup": "naꜛite"
+    },
+    {
+     "t": "いた",
+     "changed": false,
+     "analysis": "iꜛta",
+     "lookup": "iꜛta"
+    },
+    {
+     "t": "事",
+     "changed": false,
+     "analysis": "koꜛto",
+     "lookup": "koꜛto"
+    },
+    {
+     "t": "だけ",
+     "changed": false,
+     "analysis": "dake",
+     "lookup": "dake"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "記憶",
+     "changed": false,
+     "analysis": "kiꜛokɯ",
+     "lookup": "kiꜛokɯ"
+    },
+    {
+     "t": "して",
+     "changed": false,
+     "analysis": "ɕiꜛte",
+     "lookup": "ɕiꜛte"
+    },
+    {
+     "t": "いる。",
+     "changed": false,
+     "analysis": "iꜛɾɯ",
+     "lookup": "iꜛɾɯ"
+    },
+    {
+     "t": "しかも",
+     "changed": false,
+     "analysis": "ɕiꜛkaꜜmo",
+     "lookup": "ɕiꜛkaꜜmo"
+    },
+    {
+     "t": "あと",
+     "changed": false,
+     "analysis": "aꜜto",
+     "lookup": "aꜜto"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "聞く",
+     "changed": false,
+     "analysis": "kiꜛkɯ",
+     "lookup": "kiꜛkɯ"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "それ",
+     "changed": false,
+     "analysis": "soꜛɾe",
+     "lookup": "soꜛɾe"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "書生",
+     "changed": false,
+     "analysis": "ɕoꜛseː",
+     "lookup": "ɕoꜛseː"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "いう",
+     "changed": false,
+     "analysis": "iꜛɯ",
+     "lookup": "iꜛɯ"
+    },
+    {
+     "t": "人間中",
+     "changed": true,
+     "analysis": "ɲiŋɡeɲdʑɯː",
+     "lookup": "ɲiꜛŋɡeɲdʑɯː"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "一番",
+     "changed": false,
+     "analysis": "iꜛtɕiꜜbaɴ",
+     "lookup": "iꜛtɕiꜜbaɴ"
+    },
+    {
+     "t": "獰悪",
+     "changed": false,
+     "analysis": "doꜛːakɯ",
+     "lookup": "doꜛːakɯ"
+    },
+    {
+     "t": "な",
+     "changed": false,
+     "analysis": "na",
+     "lookup": "na"
+    },
+    {
+     "t": "種族",
+     "changed": false,
+     "analysis": "ɕɯꜜzokɯ",
+     "lookup": "ɕɯꜜzokɯ"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "あった",
+     "changed": false,
+     "analysis": "atta",
+     "lookup": "atta"
+    },
+    {
+     "t": "そう",
+     "changed": false,
+     "analysis": "soꜛː",
+     "lookup": "soꜛː"
+    },
+    {
+     "t": "だ。",
+     "changed": false,
+     "analysis": "da",
+     "lookup": "da"
+    },
+    {
+     "t": "しかし",
+     "changed": false,
+     "analysis": "ɕiꜛkaꜜɕi",
+     "lookup": "ɕiꜛkaꜜɕi"
+    },
+    {
+     "t": "その",
+     "changed": false,
+     "analysis": "soꜛno",
+     "lookup": "soꜛno"
+    },
+    {
+     "t": "当時",
+     "changed": false,
+     "analysis": "toꜜːdʑi",
+     "lookup": "toꜜːdʑi"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "何と",
+     "changed": false,
+     "analysis": "naꜜnto",
+     "lookup": "naꜜnto"
+    },
+    {
+     "t": "いう",
+     "changed": false,
+     "analysis": "iꜛɯ",
+     "lookup": "iꜛɯ"
+    },
+    {
+     "t": "考",
+     "changed": true,
+     "analysis": "kaŋɡae",
+     "lookup": "kaŋɡaeꜜ"
+    },
+    {
+     "t": "も",
+     "changed": false,
+     "analysis": "mo",
+     "lookup": "mo"
+    },
+    {
+     "t": "なかった",
+     "changed": false,
+     "analysis": "naꜜkatta",
+     "lookup": "naꜜkatta"
+    },
+    {
+     "t": "から",
+     "changed": false,
+     "analysis": "kaɾa",
+     "lookup": "kaɾa"
+    },
+    {
+     "t": "別段",
+     "changed": false,
+     "analysis": "beꜛtsɯdaɴ",
+     "lookup": "beꜛtsɯdaɴ"
+    },
+    {
+     "t": "恐しい",
+     "changed": true,
+     "analysis": "osoɾoɕiː",
+     "lookup": "oꜛsoɾoɕiꜜː"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "も",
+     "changed": false,
+     "analysis": "mo",
+     "lookup": "mo"
+    },
+    {
+     "t": "思わ",
+     "changed": false,
+     "analysis": "oꜛmowaꜜ",
+     "lookup": "oꜛmowaꜜ"
+    },
+    {
+     "t": "なかった。",
+     "changed": false,
+     "analysis": "nakatta",
+     "lookup": "nakatta"
+    },
+    {
+     "t": "掌",
+     "changed": false,
+     "analysis": "teꜛnoꜜhiɾa",
+     "lookup": "teꜛnoꜜhiɾa"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "上",
+     "changed": false,
+     "analysis": "ɯꜛe",
+     "lookup": "ɯꜛe"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "少し",
+     "changed": false,
+     "analysis": "sɯꜛkoꜜɕi",
+     "lookup": "sɯꜛkoꜜɕi"
+    },
+    {
+     "t": "落ちついて",
+     "changed": false,
+     "analysis": "oꜛtɕitsɯite",
+     "lookup": "oꜛtɕitsɯite"
+    },
+    {
+     "t": "書生",
+     "changed": false,
+     "analysis": "ɕoꜛseː",
+     "lookup": "ɕoꜛseː"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "顔",
+     "changed": false,
+     "analysis": "kaꜛo",
+     "lookup": "kaꜛo"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "見た",
+     "changed": false,
+     "analysis": "miꜜta",
+     "lookup": "miꜜta"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "noꜛ",
+     "lookup": "noꜛ"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "いわゆる",
+     "changed": false,
+     "analysis": "iꜛwajɯꜜɾɯ",
+     "lookup": "iꜛwajɯꜜɾɯ"
+    },
+    {
+     "t": "人間",
+     "changed": false,
+     "analysis": "ɲiꜛŋɡeɴ",
+     "lookup": "ɲiꜛŋɡeɴ"
+    },
+    {
+     "t": "と",
+     "changed": false,
+     "analysis": "to",
+     "lookup": "to"
+    },
+    {
+     "t": "いう",
+     "changed": false,
+     "analysis": "iꜛɯ",
+     "lookup": "iꜛɯ"
+    },
+    {
+     "t": "もの",
+     "changed": false,
+     "analysis": "mono",
+     "lookup": "mono"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "見始",
+     "changed": true,
+     "analysis": "mihadʑime",
+     "lookup": "miꜛhaꜜdʑime"
+    },
+    {
+     "t": "で",
+     "changed": false,
+     "analysis": "de",
+     "lookup": "de"
+    },
+    {
+     "t": "あろう。",
+     "changed": false,
+     "analysis": "aɾoː",
+     "lookup": "aɾoː"
+    },
+    {
+     "t": "第一",
+     "changed": true,
+     "analysis": "daiitɕi",
+     "lookup": "daꜛiitɕiꜜ"
+    },
+    {
+     "t": "毛",
+     "changed": false,
+     "analysis": "ke",
+     "lookup": "ke"
+    },
+    {
+     "t": "を",
+     "changed": false,
+     "analysis": "o",
+     "lookup": "o"
+    },
+    {
+     "t": "もって",
+     "changed": false,
+     "analysis": "moꜜtte",
+     "lookup": "moꜜtte"
+    },
+    {
+     "t": "装飾",
+     "changed": false,
+     "analysis": "soꜛːɕokɯ",
+     "lookup": "soꜛːɕokɯ"
+    },
+    {
+     "t": "され",
+     "changed": false,
+     "analysis": "saꜛɾe",
+     "lookup": "saꜛɾe"
+    },
+    {
+     "t": "べき",
+     "changed": false,
+     "analysis": "beꜜki",
+     "lookup": "beꜜki"
+    },
+    {
+     "t": "はず",
+     "changed": false,
+     "analysis": "haꜛdzɯ",
+     "lookup": "haꜛdzɯ"
+    },
+    {
+     "t": "の",
+     "changed": false,
+     "analysis": "no",
+     "lookup": "no"
+    },
+    {
+     "t": "顔",
+     "changed": false,
+     "analysis": "kaꜛo",
+     "lookup": "kaꜛo"
+    },
+    {
+     "t": "が",
+     "changed": false,
+     "analysis": "ɡa",
+     "lookup": "ɡa"
+    },
+    {
+     "t": "つるつる",
+     "changed": false,
+     "analysis": "tsɯꜜɾɯtsɯɾɯ",
+     "lookup": "tsɯꜜɾɯtsɯɾɯ"
+    },
+    {
+     "t": "して",
+     "changed": false,
+     "analysis": "ɕiꜛte",
+     "lookup": "ɕiꜛte"
+    },
+    {
+     "t": "まるで",
+     "changed": false,
+     "analysis": "maꜛɾɯde",
+     "lookup": "maꜛɾɯde"
+    },
+    {
+     "t": "薬缶",
+     "changed": false,
+     "analysis": "jaꜛkaɴ",
+     "lookup": "jaꜛkaɴ"
+    },
+    {
+     "t": "だ。",
+     "changed": false,
+     "analysis": "da",
+     "lookup": "da"
+    }
+   ],
+   "runs": 5,
+   "x": {
+    "id": "c475422",
+    "method": "analysis",
+    "ys": "ja /nandemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> | kaŋɡae<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | osoɾoɕiː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | mihadʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ daiitɕi<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/"
+   },
+   "y": {
+    "id": "c893506",
+    "method": "lookup",
+    "ys": "ja /naꜜndemo<t:何でも> | ɯꜛsɯɡɯɾai<t:薄暗い> | dʑiꜜmedʑime<t:じめじめ> | ɕiꜛta<t:した> | toꜛkoɾo<t:所> de<t:で> | ɲaꜜːɲaː<t:ニャーニャー> | naꜛite<t:泣いて> | iꜛta<t:いた> | koꜛto<t:事> dake<t:だけ> wa<t:は> | kiꜛokɯ<t:記憶> | ɕiꜛte<t:して> | iꜛɾɯ<t:いる。> ↘ ɕiꜛkaꜜmo<t:しかも> | aꜜto<t:あと> de<t:で> | kiꜛkɯ<t:聞く> to<t:と> | soꜛɾe<t:それ> wa<t:は> | ɕoꜛseː<t:書生> to<t:と> | iꜛɯ<t:いう> | ɲiꜛŋɡeɲdʑɯː<t:人間中> de<t:で> | iꜛtɕiꜜbaɴ<t:一番> | doꜛːakɯ<t:獰悪> na<t:な> | ɕɯꜜzokɯ<t:種族> de<t:で> atta<t:あった> | soꜛː<t:そう> da<t:だ。> ↘ ɕiꜛkaꜜɕi<t:しかし> | soꜛno<t:その> | toꜜːdʑi<t:当時> wa<t:は> | naꜜnto<t:何と> | iꜛɯ<t:いう> kaŋɡaeꜜ<t:考> mo<t:も> | naꜜkatta<t:なかった> kaɾa<t:から> | beꜛtsɯdaɴ<t:別段> | oꜛsoɾoɕiꜜː<t:恐しい> to<t:と> mo<t:も> | oꜛmowaꜜ<t:思わ> nakatta<t:なかった。> ↘ teꜛnoꜜhiɾa<t:掌> no<t:の> | ɯꜛe<t:上> de<t:で> | sɯꜛkoꜜɕi<t:少し> | oꜛtɕitsɯite<t:落ちついて> | ɕoꜛseː<t:書生> no<t:の> | kaꜛo<t:顔> o<t:を> | miꜜta<t:見た> | noꜛ<t:の> ɡa<t:が> | iꜛwajɯꜜɾɯ<t:いわゆる> | ɲiꜛŋɡeɴ<t:人間> to<t:と> | iꜛɯ<t:いう> mono<t:もの> no<t:の> | miꜛhaꜜdʑime<t:見始> de<t:で> aɾoː<t:あろう。> ↘ daꜛiitɕiꜜ<t:第一> ke<t:毛> o<t:を> | moꜜtte<t:もって> | soꜛːɕokɯ<t:装飾> | saꜛɾe<t:され> beꜜki<t:べき> | haꜛdzɯ<t:はず> no<t:の> | kaꜛo<t:顔> ɡa<t:が> | tsɯꜜɾɯtsɯɾɯ<t:つるつる> | ɕiꜛte<t:して> | maꜛɾɯde<t:まるで> | jaꜛkaɴ<t:薬缶> da<t:だ。> ↘/"
+   }
+  },
+  {
+   "item": "i22",
+   "words": [
+    {
+     "t": "明日",
+     "changed": true,
+     "analysis": "asɯ",
+     "lookup": "aꜛsɯꜜ"
+    },
+    {
+     "t": "は",
+     "changed": false,
+     "analysis": "wa",
+     "lookup": "wa"
+    },
+    {
+     "t": "学校",
+     "changed": false,
+     "analysis": "ɡaꜛkkoː",
+     "lookup": "ɡaꜛkkoː"
+    },
+    {
+     "t": "に",
+     "changed": false,
+     "analysis": "ɲi",
+     "lookup": "ɲi"
+    },
+    {
+     "t": "行き",
+     "changed": false,
+     "analysis": "iꜛki",
+     "lookup": "iꜛki"
+    },
+    {
+     "t": "ます",
+     "changed": false,
+     "analysis": "maꜜsɯ",
+     "lookup": "maꜜsɯ"
+    },
+    {
+     "t": "か？",
+     "changed": false,
+     "analysis": "ka",
+     "lookup": "ka"
+    }
+   ],
+   "runs": 1,
+   "x": {
+    "id": "c335787",
+    "method": "lookup",
+    "ys": "ja /aꜛsɯꜜ<t:明日> wa<t:は> | ɡaꜛkkoː<t:学校> ɲi<t:に> | iꜛki<t:行き> maꜜsɯ<t:ます> ka<t:か？> ↗/"
+   },
+   "y": {
+    "id": "c208579",
+    "method": "analysis",
+    "ys": "ja /asɯ<t:明日> wa<t:は> | ɡaꜛkkoː<t:学校> ɲi<t:に> | iꜛki<t:行き> maꜜsɯ<t:ます> ka<t:か？> ↗/"
+   }
+  }
+ ]
+}

@@ -17,8 +17,35 @@ export interface Analysis {
   /** the full-context label of each phoneme */
   labels: string[];
 }
+/** one dictionary entry of a sentence: characters [s, e) of the normalized text, its morae as OpenJTalk phonemes
+ * (["k","o"], ["N"], ["cl"], ["-"] for a long vowel), its word cost and context ids (-1: an unknown word) */
+export interface Cand {
+  s: number;
+  e: number;
+  ph: string[][];
+  cost: number;
+  l: number;
+  r: number;
+}
+/** every dictionary entry of a sentence given as its words (D31) */
+export interface Sentence {
+  /** the words normalized one by one and joined */
+  norm: string;
+  /** the character where each word starts in norm, and the end */
+  starts: number[];
+  cands: Cand[];
+  /** OpenJTalk's own analysis of norm, as indices into cands */
+  alone: number[];
+}
 export interface Analyzer {
+  /** the text as OpenJTalk analyses it */
   analyze(text: string): Analysis;
+  /** every dictionary entry of the sentence whose words these are */
+  candidates(words: string[]): Sentence;
+  /** the connection cost from right id r to left id l (0: the start or end of the sentence) */
+  conn(r: number, l: number): number;
+  /** OpenJTalk's rules on a path of candidates(words).cands */
+  label(words: string[], path: number[]): Analysis;
 }
 
 async function gunzip(b: Uint8Array | ArrayBuffer): Promise<Uint8Array> {
@@ -38,10 +65,14 @@ export async function loadFrontend(load: LoadBytes, wasm?: BufferSource): Promis
     at += p.length;
   }
   const fe = new Frontend(bytes, Uint32Array.from(parts.map((p) => p.length)), USER_DICT);
+  const analysis = (json: string): Analysis => {
+    const [njd, labels] = JSON.parse(json) as [string[], string[]];
+    return { njd, labels };
+  };
   return {
-    analyze: (text) => {
-      const [njd, labels] = JSON.parse(fe.analyze(text)) as [string[], string[]];
-      return { njd, labels };
-    },
+    analyze: (text) => analysis(fe.analyze(text)),
+    candidates: (words) => JSON.parse(fe.candidates(JSON.stringify(words))) as Sentence,
+    conn: (r, l) => fe.conn(r, l),
+    label: (words, path) => analysis(fe.label(JSON.stringify({ words, path }))),
   };
 }

@@ -3,6 +3,9 @@
 export const memory: WebAssembly.Memory;
 export const __wbg_frontend_free: (a: number, b: number) => void;
 export const frontend_analyze: (a: number, b: number, c: number) => [number, number, number, number];
+export const frontend_candidates: (a: number, b: number, c: number) => [number, number, number, number];
+export const frontend_conn: (a: number, b: number, c: number) => number;
+export const frontend_label: (a: number, b: number, c: number) => [number, number, number, number];
 export const frontend_new: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
 export const __wbindgen_externrefs: WebAssembly.Table;
 export const __wbindgen_malloc: (a: number, b: number) => number;

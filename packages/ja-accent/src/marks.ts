@@ -69,7 +69,7 @@ function unitKey(t: Token): string {
   return moraKey(t.on ?? "", t.v ?? "");
 }
 /** the same reading: the same morae, mora by mora (a long vowel also matches its vowel written again) */
-function sameMorae(M: LabelMora[], U: Token[]): boolean {
+export function sameMorae(M: LabelMora[], U: Token[]): boolean {
   if (M.length !== U.length) return false;
   let prev = "";
   return M.every((m, i) => {

@@ -13,7 +13,7 @@ export class Frontend {
     }
     /**
      * `[njd, labels]` as JSON: the NJD features of each word (CSV, as pyopenjtalk's run_frontend prints them) and
-     * the full-context label of each phoneme.
+     * the full-context label of each phoneme, for the text as OpenJTalk analyses it
      * @param {string} text
      * @returns {string}
      */
@@ -38,9 +38,73 @@ export class Frontend {
         }
     }
     /**
+     * `words`: the text of each word of a YomiScript (JSON array of strings) -> a Sentence as JSON
+     * @param {string} words
+     * @returns {string}
+     */
+    candidates(words) {
+        let deferred3_0;
+        let deferred3_1;
+        try {
+            const ptr0 = passStringToWasm0(words, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+            const len0 = WASM_VECTOR_LEN;
+            const ret = wasm.frontend_candidates(this.__wbg_ptr, ptr0, len0);
+            var ptr2 = ret[0];
+            var len2 = ret[1];
+            if (ret[3]) {
+                ptr2 = 0; len2 = 0;
+                throw takeFromExternrefTable0(ret[2]);
+            }
+            deferred3_0 = ptr2;
+            deferred3_1 = len2;
+            return getStringFromWasm0(ptr2, len2);
+        } finally {
+            wasm.__wbindgen_free(deferred3_0, deferred3_1, 1);
+        }
+    }
+    /**
+     * the connection cost from an entry with right id `r` to one with left id `l` (0: the start or end of the
+     * sentence; -1: an unknown word, 0 cost)
+     * @param {number} r
+     * @param {number} l
+     * @returns {number}
+     */
+    conn(r, l) {
+        const ret = wasm.frontend_conn(this.__wbg_ptr, r, l);
+        return ret;
+    }
+    /**
+     * `request`: `{ words, path }`, the words as given to `candidates` and the chosen entries in order (indices into
+     * its cands) -> `[njd, labels]` as `analyze` returns them. An entry that starts inside a word of the YomiScript
+     * (and each later part of a compound entry) joins the accent phrase before, so a word is never split between
+     * two phrases; marks keep OpenJTalk's rule.
+     * @param {string} request
+     * @returns {string}
+     */
+    label(request) {
+        let deferred3_0;
+        let deferred3_1;
+        try {
+            const ptr0 = passStringToWasm0(request, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+            const len0 = WASM_VECTOR_LEN;
+            const ret = wasm.frontend_label(this.__wbg_ptr, ptr0, len0);
+            var ptr2 = ret[0];
+            var len2 = ret[1];
+            if (ret[3]) {
+                ptr2 = 0; len2 = 0;
+                throw takeFromExternrefTable0(ret[2]);
+            }
+            deferred3_0 = ptr2;
+            deferred3_1 = len2;
+            return getStringFromWasm0(ptr2, len2);
+        } finally {
+            wasm.__wbindgen_free(deferred3_0, deferred3_1, 1);
+        }
+    }
+    /**
      * `bytes`: the dictionary files one after another (in the order of DICT_FILES); `lengths`: the length of each;
      * `user`: a user dictionary, rows in the system dictionary's CSV format (one per line, `#` comments), whose
-     * entries take part in the analysis next to the system dictionary's.
+     * entries take part next to the system dictionary's.
      * @param {Uint8Array | number[]} bytes
      * @param {Uint32Array | number[]} lengths
      * @param {string | null} [user]

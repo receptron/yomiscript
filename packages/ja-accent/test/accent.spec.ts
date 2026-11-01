@@ -1,9 +1,23 @@
 // The dictionary accent without the dictionary: the front end's output for four sentences is recorded in
-// fixtures/analysis.json (from the WebAssembly with the NAIST-JDIC dictionary) and replayed by a fake analyzer.
+// fixtures/analysis.json (its analysis of the text) and fixtures/lookup.json (what the lookup of D31 asks it:
+// fixtures/record.mjs), from the WebAssembly with the NAIST-JDIC dictionary, and replayed by a fake analyzer.
 import fs from "node:fs";
+import { parse } from "@yomiscript/core";
 import { describe, expect, it, vi } from "vitest";
 import type { Katarite, Speech } from "@yomiscript/core";
-import { accentMarks, accentYomite, labelMorae, needsAccent, USER_DICT, withAccent, type Analyzer } from "../src/index.ts";
+import {
+  accentMarks,
+  accentYomite,
+  bestPath,
+  labelMorae,
+  needsAccent,
+  USER_DICT,
+  withAccent,
+  wordsOf,
+  type Analysis,
+  type Analyzer,
+  type Sentence,
+} from "../src/index.ts";
 
 interface Recorded {
   ys: string;
@@ -12,12 +26,22 @@ interface Recorded {
   labels: string[];
 }
 const REC: Recorded[] = JSON.parse(fs.readFileSync(new URL("./fixtures/analysis.json", import.meta.url), "utf8"));
+const LOOKUP: { candidates: Record<string, Sentence>; conn: Record<string, number>; label: Record<string, Analysis> } = JSON.parse(
+  fs.readFileSync(new URL("./fixtures/lookup.json", import.meta.url), "utf8"),
+);
+function recorded<T>(table: Record<string, T>, key: string): T {
+  if (!(key in table)) throw new Error(`not recorded: ${key}`);
+  return table[key];
+}
 const fake: Analyzer = {
   analyze: (text) => {
     const r = REC.find((x) => x.text === text);
     if (!r) throw new Error(`not recorded: ${text}`);
     return { njd: r.njd, labels: r.labels };
   },
+  candidates: (words) => recorded(LOOKUP.candidates, JSON.stringify(words)),
+  conn: (r, l) => recorded(LOOKUP.conn, `${r},${l}`),
+  label: (words, path) => recorded(LOOKUP.label, JSON.stringify([words, path])),
 };
 const [shiatoru, kyou, eeto, shigatsu] = REC.map((r) => r.ys);
 const bare = (ys: string) => ys.replace(/<t:[^>]*>/g, "");
@@ -37,8 +61,11 @@ describe("accentMarks", () => {
   it("marks the phrases the dictionary reads the same way", () => {
     expect(bare(accentMarks(kyou, fake))).toBe("ja /kʲoꜜː wa | haꜛɾeꜜte | iꜛmaꜜsɯ ↘/");
   });
-  it("leaves a phrase read another way unmarked (市: the YomiScript いち, the dictionary し)", () => {
-    expect(bare(accentMarks(shiatoru, fake))).toBe("ja /ɕiꜜatoɾɯ no | itɕi de wa ‖ saꜛkana ɡa | ɯꜛɾaɾete | iꜛɾɯ ↘/");
+  it("looks up the YomiScript's own reading (市: the YomiScript いち, OpenJTalk's analysis し)", () => {
+    expect(bare(accentMarks(shiatoru, fake))).toBe("ja /ɕiꜜatoɾɯ no | iꜜtɕi de wa ‖ saꜛkana ɡa | ɯꜛɾaɾete | iꜛɾɯ ↘/");
+  });
+  it("with { analysis: true }, leaves a phrase OpenJTalk's analysis reads another way unmarked (D25)", () => {
+    expect(bare(accentMarks(shiatoru, fake, { analysis: true }))).toBe("ja /ɕiꜜatoɾɯ no | itɕi de wa ‖ saꜛkana ɡa | ɯꜛɾaɾete | iꜛɾɯ ↘/");
   });
   it("accepts a consonant + j for the palatalized consonant (kjoː = kʲoː)", () => {
     expect(bare(accentMarks(kyou.replace("kʲoː", "kjoː"), fake))).toContain("kjoꜜː wa");
@@ -55,6 +82,29 @@ describe("accentMarks", () => {
       const plain = (s: string) => s.replace(/[ꜛꜜ]/g, "").replace(/ \| /g, " ").replace(/\s+/g, " ");
       expect(plain(out)).toBe(plain(ys));
     }
+  });
+});
+
+describe("bestPath", () => {
+  // 市で as two words; the dictionary has 市 as シ (cheaper) and イチ, and で; every connection costs 0
+  const S: Sentence = {
+    norm: "市で",
+    starts: [0, 1, 2],
+    cands: [
+      { s: 0, e: 1, ph: [["sh", "i"]], cost: 100, l: 1, r: 1 },
+      { s: 0, e: 1, ph: [["i"], ["ch", "i"]], cost: 500, l: 1, r: 1 },
+      { s: 1, e: 2, ph: [["d", "e"]], cost: 100, l: 2, r: 2 },
+    ],
+    alone: [0, 2],
+  };
+  const flat = { conn: () => 0 } as unknown as Analyzer;
+  const words = (ys: string) => wordsOf(parse(ys));
+  it("takes the entries that read as the YomiScript does, not the cheapest", () => {
+    expect(bestPath(S, words("ja /itɕi<t:市> de<t:で> ↘/"), flat)).toEqual({ path: [1, 2], fell: [] });
+    expect(bestPath(S, words("ja /ɕi<t:市> de<t:で> ↘/"), flat)).toEqual({ path: [0, 2], fell: [] });
+  });
+  it("takes a word no entry reads that way as OpenJTalk's analysis reads it", () => {
+    expect(bestPath(S, words("ja /matɕi<t:市> de<t:で> ↘/"), flat)).toEqual({ path: [0, 2], fell: [0] });
   });
 });
 
