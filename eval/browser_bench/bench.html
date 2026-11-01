@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Browser bench</title>
+    <!-- the Kokoro Katarite in the browser, timed (eval/browser_bench). Served by bench.mjs from a folder that links
+         this page, sentences.json and the repository's packages, models, voices and onnxruntime-web.
+         ?t= WASM threads (default 4); ?ep= wasm (default) or webgpu; ?gpu= the parts on WebGPU with ep=webgpu
+         (default enc,f0n,dec); ?cache=storage keeps the files in the Cache Storage API instead of the HTTP cache -->
+    <script type="importmap">
+      { "imports": { "@yomiscript/core": "./pkg/core/dist/index.js", "@yomiscript/kokoro": "./pkg/kokoro/dist/index.js" } }
+    </script>
+  </head>
+  <body>
+    <pre id="st">loading</pre>
+    <script type="module">
+      // every time is performance.now(), in ms from the start of the navigation
+      const q = new URLSearchParams(location.search);
+      const EP = q.get("ep") ?? "wasm",
+        THREADS = +(q.get("t") ?? 4),
+        GPU_PARTS = (q.get("gpu") ?? "enc,f0n,dec").split(","),
+        STORAGE = q.get("cache") === "storage";
+      const st = document.getElementById("st");
+      const R = {
+        ep: EP,
+        gpuParts: EP === "webgpu" ? GPU_PARTS : [],
+        cacheStorage: STORAGE,
+        coi: crossOriginIsolated,
+        hardwareConcurrency: navigator.hardwareConcurrency,
+        fetch: {},
+      };
+      let K, engine;
+
+      // the response for a file: from the network (and the HTTP cache), or from the Cache Storage API with ?cache=storage
+      async function get(p) {
+        if (!STORAGE) return { r: await fetch(p), hit: null };
+        const c = await caches.open("browser_bench");
+        const hit = await c.match(p);
+        if (hit) return { r: hit, hit: true };
+        const r = await fetch(p);
+        if (r.ok) await c.put(p, r.clone());
+        return { r, hit: false };
+      }
+      // the bytes of a model or voice file, with the time getting them took
+      async function load(p) {
+        const t0 = performance.now();
+        const { r, hit } = await get(p);
+        if (!r.ok) throw new Error(`${p}: ${r.status}`);
+        const b = new Uint8Array(await r.arrayBuffer());
+        R.fetch[p] = { ms: performance.now() - t0, bytes: b.length, cacheStorageHit: hit };
+        return p.endsWith(".bin") ? b.buffer : b;
+      }
+      // onnxruntime with the execution providers chosen per part: Engine.init creates enc, f0n, dec in this order
+      function perPart(ort) {
+        const parts = ["enc", "f0n", "dec"];
+        let k = 0;
+        const create = (model, opts) => {
+          const gpu = EP === "webgpu" && GPU_PARTS.includes(parts[k++]);
+          return ort.InferenceSession.create(model, { ...opts, executionProviders: gpu ? ["webgpu", "wasm"] : ["wasm"] });
+        };
+        return { Tensor: ort.Tensor, InferenceSession: { create } };
+      }
+      // the audio's loudness in 50 ms frames, to check that two conditions say the same thing
+      function envelope(audio) {
+        const n = Math.round(K.SR / 20),
+          out = [];
+        for (let i = 0; i < audio.length; i += n) {
+          const f = audio.subarray(i, i + n);
+          out.push(+Math.sqrt(f.reduce((s, x) => s + x * x, 0) / f.length).toFixed(4));
+        }
+        return out;
+      }
+      async function gpuInfo() {
+        if (!navigator.gpu) return { available: false, reason: "no navigator.gpu" };
+        const a = await navigator.gpu.requestAdapter();
+        if (!a) return { available: false, reason: "requestAdapter() returned null" };
+        const i = a.info ?? {};
+        return { available: true, vendor: i.vendor, architecture: i.architecture, description: i.description, fallback: a.isFallbackAdapter };
+      }
+      async function start() {
+        R.pageStart = performance.now();
+        K = await import("@yomiscript/kokoro");
+        const ort = await import("./ort/ort.min.mjs");
+        R.imported = performance.now();
+        ort.env.wasm.wasmPaths = new URL("ort/", location.href).href;
+        ort.env.wasm.numThreads = crossOriginIsolated ? THREADS : 1;
+        R.threads = ort.env.wasm.numThreads;
+        R.gpu = await gpuInfo();
+        if (EP === "webgpu" && !R.gpu.available) throw new Error(`webgpu unavailable: ${R.gpu.reason}`);
+        const E = new K.Engine(perPart(ort), load);
+        await E.init({ suffix: K.W16 });
+        R.initDone = performance.now();
+        await E.synth("ja /a ↘/"); // the first run prepares the sessions, as demo/ys_web/web/misread.html does
+        R.ready = performance.now();
+        R.resources = performance
+          .getEntriesByType("resource")
+          .filter((e) => /\.(onnx|bin|wasm)$/.test(e.name))
+          .map((e) => ({ name: e.name.replace(location.origin, ""), transferSize: e.transferSize, encodedBodySize: e.encodedBodySize }));
+        engine = E;
+      }
+      // each YomiScript in turn: synthesis time, audio length, and the time it ended
+      window.__synth = async (list) => {
+        const out = [];
+        for (const ys of list) {
+          const t0 = performance.now();
+          const { audio } = await engine.synth(ys);
+          const end = performance.now();
+          out.push({ ms: end - t0, audioMs: (audio.length / K.SR) * 1000, end, envelope: envelope(audio) });
+        }
+        return out;
+      };
+      try {
+        await start();
+        window.__ready = R;
+        st.textContent = "ready";
+      } catch (e) {
+        window.__ready = { ...R, error: String(e) };
+        st.textContent = `error ${e}`;
+      }
+    </script>
+  </body>
+</html>
