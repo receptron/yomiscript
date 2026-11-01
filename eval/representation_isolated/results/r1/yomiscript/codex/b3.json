@@ -1,0 +1,40 @@
+{
+ "llm": "codex",
+ "condition": "yomiscript",
+ "run": 1,
+ "batch": 3,
+ "items": [
+  "h004",
+  "h013",
+  "h030",
+  "h035",
+  "h040",
+  "h041",
+  "h043",
+  "h047",
+  "h049",
+  "h065"
+ ],
+ "model": "gpt-6.1-sol",
+ "seconds": 19.436,
+ "tries": [
+  {
+   "seconds": 19.436,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:00:35.920Z",
+ "output": {
+  "h004": "ja /kʲoː<t:今日> wa<t:は> haɾe<t:晴れ> te<t:て> imasɯ<t:います。> ↘/",
+  "h013": "ja /oːja<t:大家> san<t:さん> ɲi<t:に> jatɕiɴ<t:家賃> o<t:を> haɾaɯ<t:払う。> ↘/",
+  "h030": "ja /ɕikiɕi<t:色紙> ɲi<t:に> saiɴ<t:サイン> o<t:を> moɾatta<t:もらった。> ↘/",
+  "h035": "ja /heta<t:下手> na<t:な> iːwake<t:言い訳> wa<t:は> jame<t:やめ> nasai<t:なさい。> ↘/",
+  "h040": "ja /jɯːesɯbiː<t:USB> memoɾi<t:メモリ> o<t:を> saɕikomɯ<t:差し込む。> ↘/",
+  "h041": "ja /nasa<t:NASA> ɡa<t:が> ataɾaɕiː<t:新しい> tansa ki<t:探査機> o<t:を> ɯtɕiaɡe<t:打ち上げ> ta<t:た。> ↘/",
+  "h043": "ja /dʑiːpiːjɯː<t:GPU> o<t:を> tsɯkatte<t:使って> modeɾɯ<t:モデル> o<t:を> ɡakɯɕɯː<t:学習> sɯɾɯ<t:する。> ↘/",
+  "h047": "ja /jɯnesɯko<t:UNESCO> no<t:の> sekai<t:世界> isaɴ<t:遺産> ɲi<t:に> toːɾokɯ<t:登録> sa<t:さ> ɾeta<t:れた。> ↘/",
+  "h049": "ja /saŋkaɕa<t:参加者> wa<t:は> seŋɡoçakɯ<t:1500> ɲin<t:人> datta<t:だった。> ↘/",
+  "h065": "ja /kɯ<t:9> dʑi<t:時> saɲdʑɯppɯn<t:30分> ɲi<t:に> ɕɯːɡoː<t:集合> desɯ<t:です。> ↘/"
+ },
+ "raw": "{\n  \"h004\": \"ja /kʲoː<t:今日> wa<t:は> haɾe<t:晴れ> te<t:て> imasɯ<t:います。> ↘/\",\n  \"h013\": \"ja /oːja<t:大家> san<t:さん> ɲi<t:に> jatɕiɴ<t:家賃> o<t:を> haɾaɯ<t:払う。> ↘/\",\n  \"h030\": \"ja /ɕikiɕi<t:色紙> ɲi<t:に> saiɴ<t:サイン> o<t:を> moɾatta<t:もらった。> ↘/\",\n  \"h035\": \"ja /heta<t:下手> na<t:な> iːwake<t:言い訳> wa<t:は> jame<t:やめ> nasai<t:なさい。> ↘/\",\n  \"h040\": \"ja /jɯːesɯbiː<t:USB> memoɾi<t:メモリ> o<t:を> saɕikomɯ<t:差し込む。> ↘/\",\n  \"h041\": \"ja /nasa<t:NASA> ɡa<t:が> ataɾaɕiː<t:新しい> tansa ki<t:探査機> o<t:を> ɯtɕiaɡe<t:打ち上げ> ta<t:た。> ↘/\",\n  \"h043\": \"ja /dʑiːpiːjɯː<t:GPU> o<t:を> tsɯkatte<t:使って> modeɾɯ<t:モデル> o<t:を> ɡakɯɕɯː<t:学習> sɯɾɯ<t:する。> ↘/\",\n  \"h047\": \"ja /jɯnesɯko<t:UNESCO> no<t:の> sekai<t:世界> isaɴ<t:遺産> ɲi<t:に> toːɾokɯ<t:登録> sa<t:さ> ɾeta<t:れた。> ↘/\",\n  \"h049\": \"ja /saŋkaɕa<t:参加者> wa<t:は> seŋɡoçakɯ<t:1500> ɲin<t:人> datta<t:だった。> ↘/\",\n  \"h065\": \"ja /kɯ<t:9> dʑi<t:時> saɲdʑɯppɯn<t:30分> ɲi<t:に> ɕɯːɡoː<t:集合> desɯ<t:です。> ↘/\"\n}"
+}

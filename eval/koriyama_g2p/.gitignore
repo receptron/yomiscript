@@ -1,0 +1,7 @@
+# The benchmark data (CC BY-SA 4.0, fetched by fetch.mjs) and everything that repeats its text (the raw answers hold the
+# sentences in <t:...>, the prompts list them, items.json pairs them with the gold): kept outside the repository.
+# Only the aggregate scores (results/summary.md, results/scores.json) are committed.
+data/
+results/raw/
+results/items.json
+results/*.log

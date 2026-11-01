@@ -1,0 +1,41 @@
+{
+ "llm": "claude",
+ "condition": "ssml_bunsetsu",
+ "run": 2,
+ "batch": 1,
+ "items": [
+  "h001",
+  "h009",
+  "h017",
+  "h018",
+  "h022",
+  "h027",
+  "h029",
+  "h058",
+  "h063",
+  "h066"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 19.689,
+ "outputTokens": 2066,
+ "tries": [
+  {
+   "seconds": 19.689,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:02:31.644Z",
+ "output": {
+  "h001": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕiatoɾɯ no'>シアトルの</phoneme><phoneme alphabet='ipa' ph='itɕi de wa'>市では</phoneme>、<phoneme alphabet='ipa' ph='sakana ɡa'>魚が</phoneme><phoneme alphabet='ipa' ph='ɯɾaɾete iɾɯ'>売られている</phoneme>。</speak>",
+  "h009": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='bɯtai no'>舞台の</phoneme><phoneme alphabet='ipa' ph='kamite kaɾa'>上手から</phoneme><phoneme alphabet='ipa' ph='jakɯɕa ɡa'>役者が</phoneme><phoneme alphabet='ipa' ph='toːdʑoː ɕita'>登場した</phoneme>。</speak>",
+  "h017": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='aɕita wa'>明日は</phoneme><phoneme alphabet='ipa' ph='ame ɡa'>雨が</phoneme><phoneme alphabet='ipa' ph='ɸɯɾɯ deɕoː'>降るでしょう</phoneme>。</speak>",
+  "h018": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ikkoː wa'>一行は</phoneme><phoneme alphabet='ipa' ph='bɯdʑi ni'>無事に</phoneme><phoneme alphabet='ipa' ph='saɲtɕoː ni'>山頂に</phoneme><phoneme alphabet='ipa' ph='tsɯita'>着いた</phoneme>。</speak>",
+  "h022": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='mokka no'>目下の</phoneme><phoneme alphabet='ipa' ph='kadai wa'>課題は</phoneme><phoneme alphabet='ipa' ph='ɕikin no'>資金の</phoneme><phoneme alphabet='ipa' ph='kakɯho da'>確保だ</phoneme>。</speak>",
+  "h027": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='tsɯjoi'>強い</phoneme><phoneme alphabet='ipa' ph='kaŋki ɡa'>寒気が</phoneme><phoneme alphabet='ipa' ph='naŋka ɕite iɾɯ'>南下している</phoneme>。</speak>",
+  "h029": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='nambon'>何本</phoneme><phoneme alphabet='ipa' ph='aɾimasɯ ka'>ありますか</phoneme>。</speak>",
+  "h058": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='daisaɴɕoː o'>第3章を</phoneme><phoneme alphabet='ipa' ph='jonde oite kɯdasai'>読んでおいてください</phoneme>。</speak>",
+  "h063": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɡoɡatsɯ itsɯka wa'>5月5日は</phoneme><phoneme alphabet='ipa' ph='kodomo no'>こどもの</phoneme><phoneme alphabet='ipa' ph='çi desɯ'>日です</phoneme>。</speak>",
+  "h066": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='saŋɡatsɯ mikka wa'>3月3日は</phoneme><phoneme alphabet='ipa' ph='çinamatsɯɾi da'>ひな祭りだ</phoneme>。</speak>"
+ },
+ "raw": "```json\n{\"h001\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕiatoɾɯ no'>シアトルの</phoneme><phoneme alphabet='ipa' ph='itɕi de wa'>市では</phoneme>、<phoneme alphabet='ipa' ph='sakana ɡa'>魚が</phoneme><phoneme alphabet='ipa' ph='ɯɾaɾete iɾɯ'>売られている</phoneme>。</speak>\", \"h009\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='bɯtai no'>舞台の</phoneme><phoneme alphabet='ipa' ph='kamite kaɾa'>上手から</phoneme><phoneme alphabet='ipa' ph='jakɯɕa ɡa'>役者が</phoneme><phoneme alphabet='ipa' ph='toːdʑoː ɕita'>登場した</phoneme>。</speak>\", \"h017\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='aɕita wa'>明日は</phoneme><phoneme alphabet='ipa' ph='ame ɡa'>雨が</phoneme><phoneme alphabet='ipa' ph='ɸɯɾɯ deɕoː'>降るでしょう</phoneme>。</speak>\", \"h018\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ikkoː wa'>一行は</phoneme><phoneme alphabet='ipa' ph='bɯdʑi ni'>無事に</phoneme><phoneme alphabet='ipa' ph='saɲtɕoː ni'>山頂に</phoneme><phoneme alphabet='ipa' ph='tsɯita'>着いた</phoneme>。</speak>\", \"h022\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='mokka no'>目下の</phoneme><phoneme alphabet='ipa' ph='kadai wa'>課題は</phoneme><phoneme alphabet='ipa' ph='ɕikin no'>資金の</phoneme><phoneme alphabet='ipa' ph='kakɯho da'>確保だ</phoneme>。</speak>\", \"h027\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='tsɯjoi'>強い</phoneme><phoneme alphabet='ipa' ph='kaŋki ɡa'>寒気が</phoneme><phoneme alphabet='ipa' ph='naŋka ɕite iɾɯ'>南下している</phoneme>。</speak>\", \"h029\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='nambon'>何本</phoneme><phoneme alphabet='ipa' ph='aɾimasɯ ka'>ありますか</phoneme>。</speak>\", \"h058\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='daisaɴɕoː o'>第3章を</phoneme><phoneme alphabet='ipa' ph='jonde oite kɯdasai'>読んでおいてください</phoneme>。</speak>\", \"h063\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɡoɡatsɯ itsɯka wa'>5月5日は</phoneme><phoneme alphabet='ipa' ph='kodomo no'>こどもの</phoneme><phoneme alphabet='ipa' ph='çi desɯ'>日です</phoneme>。</speak>\", \"h066\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='saŋɡatsɯ mikka wa'>3月3日は</phoneme><phoneme alphabet='ipa' ph='çinamatsɯɾi da'>ひな祭りだ</phoneme>。</speak>\"}\n```"
+}

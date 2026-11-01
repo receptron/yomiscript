@@ -1,0 +1,771 @@
+{
+ "300": {
+  "resamples": 2000,
+  "systems": [
+   {
+    "key": "yomiscript.claude",
+    "label": "YomiScript, Claude",
+    "model": "claude-opus-5-5",
+    "strict": {
+     "cer": 0.4763564540490299,
+     "ci": [
+      0.27720862962516574,
+      0.7254261878853827
+     ]
+    },
+    "merged": {
+     "cer": 0.4763564540490299,
+     "ci": [
+      0.27720862962516574,
+      0.7254261878853827
+     ]
+    },
+    "phoneme": {
+     "cer": 0.4851465408387054,
+     "ci": [
+      0.29832107673095604,
+      0.7105263157894737
+     ]
+    },
+    "mergedParsed": 0.41943376441803565,
+    "exact": 92,
+    "missing": 0,
+    "unparsed": 1,
+    "foreign": 0,
+    "calls": 6,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 128.82516666666666,
+    "secondsTotal": 772.951
+   },
+   {
+    "key": "yomiscript.codex",
+    "label": "YomiScript, Codex",
+    "model": "gpt-6.1-sol",
+    "strict": {
+     "cer": 0.8132915069129778,
+     "ci": [
+      0.5381658429434377,
+      1.1194029850746268
+     ]
+    },
+    "merged": {
+     "cer": 0.8132915069129778,
+     "ci": [
+      0.5381658429434377,
+      1.1194029850746268
+     ]
+    },
+    "phoneme": {
+     "cer": 0.6978135176447132,
+     "ci": [
+      0.44861619159362276,
+      0.9813943978736455
+     ]
+    },
+    "mergedParsed": 0.5830556877677296,
+    "exact": 89,
+    "missing": 0,
+    "unparsed": 7,
+    "foreign": 0,
+    "calls": 6,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 84.53766666666667,
+    "secondsTotal": 507.226
+   },
+   {
+    "key": "yomiscript.agy",
+    "label": "YomiScript, Antigravity",
+    "model": "gemini-4-argon-medium",
+    "strict": {
+     "cer": 0.7087254560241664,
+     "ci": [
+      0.4218914801359428,
+      1.0730825708799276
+     ]
+    },
+    "merged": {
+     "cer": 0.7087254560241664,
+     "ci": [
+      0.4218914801359428,
+      1.0730825708799276
+     ]
+    },
+    "phoneme": {
+     "cer": 0.6645843025187745,
+     "ci": [
+      0.38092736109286746,
+      1.0486493661644654
+     ]
+    },
+    "mergedParsed": 0.4132231404958678,
+    "exact": 90.66666666666667,
+    "missing": 0,
+    "unparsed": 5,
+    "foreign": 0,
+    "calls": 6,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 56.844500000000004,
+    "secondsTotal": 341.067
+   },
+   {
+    "key": "kana.claude",
+    "label": "kana, Claude",
+    "model": "claude-opus-5-5",
+    "strict": {
+     "cer": 2.1145579179737424,
+     "ci": [
+      1.8132056106739651,
+      2.4062609508235018
+     ]
+    },
+    "merged": {
+     "cer": 0.3369350528639479,
+     "ci": [
+      0.15351913084553614,
+      0.5481688826685328
+     ]
+    },
+    "phoneme": {
+     "cer": 0.33229215125938727,
+     "ci": [
+      0.14238253440911247,
+      0.5601687096349018
+     ]
+    },
+    "mergedParsed": 0.3369350528639479,
+    "exact": 95,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 6,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 38.84683333333333,
+    "secondsTotal": 233.081
+   },
+   {
+    "key": "kana.codex",
+    "label": "kana, Codex",
+    "model": "gpt-6.1-sol",
+    "strict": {
+     "cer": 2.149413268270013,
+     "ci": [
+      1.8499248468030987,
+      2.447248205351316
+     ]
+    },
+    "merged": {
+     "cer": 0.3601719530614616,
+     "ci": [
+      0.17299042786299157,
+      0.58776074680189
+     ]
+    },
+    "phoneme": {
+     "cer": 0.29906293613344853,
+     "ci": [
+      0.14606293984862567,
+      0.48510982347392534
+     ]
+    },
+    "mergedParsed": 0.3601719530614616,
+    "exact": 95,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 6,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 27.2865,
+    "secondsTotal": 163.719
+   },
+   {
+    "key": "kana.agy",
+    "label": "kana, Antigravity",
+    "model": "gemini-4-argon-medium",
+    "strict": {
+     "cer": 2.207505518763797,
+     "ci": [
+      1.899886234357224,
+      2.496776462313914
+     ]
+    },
+    "merged": {
+     "cer": 0.4298826536540026,
+     "ci": [
+      0.24822695035460993,
+      0.6281109267598957
+     ]
+    },
+    "phoneme": {
+     "cer": 0.3522296803349505,
+     "ci": [
+      0.20286718961319988,
+      0.5246519136342235
+     ]
+    },
+    "mergedParsed": 0.4298826536540026,
+    "exact": 92.33333333333333,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 6,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 25.344333333333328,
+    "secondsTotal": 152.06599999999997
+   },
+   {
+    "key": "openjtalk",
+    "label": "pyopenjtalk (plain text)",
+    "model": "",
+    "strict": {
+     "cer": 2.811664923899152,
+     "ci": [
+      2.248333521635973,
+      3.519344341328191
+     ]
+    },
+    "merged": {
+     "cer": 1.0572789589868712,
+     "ci": [
+      0.5726120857699805,
+      1.7709849587578845
+     ]
+    },
+    "phoneme": {
+     "cer": 0.8772512793247823,
+     "ci": [
+      0.5023132848645075,
+      1.3950276243093922
+     ]
+    },
+    "mergedParsed": 1.0572789589868712,
+    "exact": 87.66666666666667,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 0,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": null,
+    "secondsTotal": 0
+   }
+  ],
+  "differences": [
+   {
+    "llm": "claude",
+    "diff": 0.13942140118508195,
+    "ci": [
+     -0.04676174888940848,
+     0.3584657665192974
+    ]
+   },
+   {
+    "llm": "codex",
+    "diff": 0.4531195538515162,
+    "ci": [
+     0.21902017291066284,
+     0.6952491309385864
+    ]
+   },
+   {
+    "llm": "agy",
+    "diff": 0.2788428023701638,
+    "ci": [
+     -0.011661807580174932,
+     0.6480218281036836
+    ]
+   }
+  ]
+ },
+ "1250": {
+  "resamples": 2000,
+  "systems": [
+   {
+    "key": "yomiscript.claude",
+    "label": "YomiScript, Claude",
+    "model": "claude-opus-5-5",
+    "strict": {
+     "cer": 0.7709613696224759,
+     "ci": [
+      0.6002920339624682,
+      0.9689338990009579
+     ]
+    },
+    "merged": {
+     "cer": 0.7709613696224759,
+     "ci": [
+      0.6002920339624682,
+      0.9689338990009579
+     ]
+    },
+    "phoneme": {
+     "cer": 0.6682248121598092,
+     "ci": [
+      0.5333208214079044,
+      0.8210411301022399
+     ]
+    },
+    "mergedParsed": 0.6461273952469426,
+    "exact": 88.8,
+    "missing": 0,
+    "unparsed": 10,
+    "foreign": 3,
+    "calls": 25,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 133.81184000000002,
+    "secondsTotal": 3345.2960000000003
+   },
+   {
+    "key": "yomiscript.codex",
+    "label": "YomiScript, Codex",
+    "model": "gpt-6.1-sol",
+    "strict": {
+     "cer": 0.8807067603160668,
+     "ci": [
+      0.7288787730992251,
+      1.0415518571586024
+     ]
+    },
+    "merged": {
+     "cer": 0.8807067603160668,
+     "ci": [
+      0.7288787730992251,
+      1.0415518571586024
+     ]
+    },
+    "phoneme": {
+     "cer": 0.7670467914228797,
+     "ci": [
+      0.6371631294935733,
+      0.9100196463654224
+     ]
+    },
+    "mergedParsed": 0.6470306917602048,
+    "exact": 87.36,
+    "missing": 0,
+    "unparsed": 29,
+    "foreign": 3,
+    "calls": 25,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 80.79964,
+    "secondsTotal": 2019.991
+   },
+   {
+    "key": "yomiscript.agy",
+    "label": "YomiScript, Antigravity",
+    "model": "gemini-4-argon-medium",
+    "strict": {
+     "cer": 0.9712467076382791,
+     "ci": [
+      0.7810775005519982,
+      1.1645792133597013
+     ]
+    },
+    "merged": {
+     "cer": 0.9712467076382791,
+     "ci": [
+      0.7810775005519982,
+      1.1645792133597013
+     ]
+    },
+    "phoneme": {
+     "cer": 0.8611629621496133,
+     "ci": [
+      0.6843159205941249,
+      1.0383399147302677
+     ]
+    },
+    "mergedParsed": 0.59682072749901,
+    "exact": 87.68,
+    "missing": 0,
+    "unparsed": 36,
+    "foreign": 3,
+    "calls": 25,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 56.51228000000002,
+    "secondsTotal": 1412.8070000000005
+   },
+   {
+    "key": "kana.claude",
+    "label": "kana, Claude",
+    "model": "claude-opus-5-5",
+    "strict": {
+     "cer": 2.2634986830553117,
+     "ci": [
+      2.0717327219128725,
+      2.47532940073874
+     ]
+    },
+    "merged": {
+     "cer": 0.35392888498683056,
+     "ci": [
+      0.2196763250097325,
+      0.526884625776817
+     ]
+    },
+    "phoneme": {
+     "cer": 0.2650938808802999,
+     "ci": [
+      0.16248506571087215,
+      0.3872186368644735
+     ]
+    },
+    "mergedParsed": 0.35392888498683056,
+    "exact": 95.84,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 25,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 39.0888,
+    "secondsTotal": 977.2199999999999
+   },
+   {
+    "key": "kana.codex",
+    "label": "kana, Codex",
+    "model": "gpt-6.1-sol",
+    "strict": {
+     "cer": 2.258011413520632,
+     "ci": [
+      2.0949064477793438,
+      2.4286183130948475
+     ]
+    },
+    "merged": {
+     "cer": 0.35118525021949076,
+     "ci": [
+      0.24386939439100394,
+      0.4692114487593497
+     ]
+    },
+    "phoneme": {
+     "cer": 0.2729368951075277,
+     "ci": [
+      0.18925839337118502,
+      0.3647898493259318
+     ]
+    },
+    "mergedParsed": 0.35118525021949076,
+    "exact": 95.52,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 25,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 26.063319999999997,
+    "secondsTotal": 651.583
+   },
+   {
+    "key": "kana.agy",
+    "label": "kana, Antigravity",
+    "model": "gemini-4-argon-medium",
+    "strict": {
+     "cer": 2.3485513608428445,
+     "ci": [
+      2.1636429709557485,
+      2.5520961691174455
+     ]
+    },
+    "merged": {
+     "cer": 0.4664179104477612,
+     "ci": [
+      0.33100708906849086,
+      0.6319763624425476
+     ]
+    },
+    "phoneme": {
+     "cer": 0.3466612288434691,
+     "ci": [
+      0.24528421319154323,
+      0.46287549593803134
+     ]
+    },
+    "mergedParsed": 0.4664179104477612,
+    "exact": 93.12,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 25,
+    "retries": 1,
+    "noJson": 0,
+    "secondsPerCall": 25.46,
+    "secondsTotal": 636.5
+   },
+   {
+    "key": "openjtalk",
+    "label": "pyopenjtalk (plain text)",
+    "model": "",
+    "strict": {
+     "cer": 2.919227392449517,
+     "ci": [
+      2.686318131256952,
+      3.180721555142675
+     ]
+    },
+    "merged": {
+     "cer": 1.056299385425812,
+     "ci": [
+      0.8586890496438235,
+      1.2798587742042258
+     ]
+    },
+    "phoneme": {
+     "cer": 0.890966416213079,
+     "ci": [
+      0.7261874361593462,
+      1.0829593617551734
+     ]
+    },
+    "mergedParsed": 1.056299385425812,
+    "exact": 85.92,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 0,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": null,
+    "secondsTotal": 0
+   }
+  ],
+  "differences": [
+   {
+    "llm": "claude",
+    "diff": 0.4170324846356453,
+    "ci": [
+     0.29676059463057464,
+     0.5427146753354087
+    ]
+   },
+   {
+    "llm": "codex",
+    "diff": 0.529521510096576,
+    "ci": [
+     0.40168324407039024,
+     0.6617586235420629
+    ]
+   },
+   {
+    "llm": "agy",
+    "diff": 0.5048287971905179,
+    "ci": [
+     0.3237977249690281,
+     0.6785411365564038
+    ]
+   }
+  ]
+ },
+ "3000": {
+  "resamples": 2000,
+  "systems": [
+   {
+    "key": "yomiscript.claude",
+    "label": "YomiScript, Claude",
+    "model": "claude-opus-5-5",
+    "strict": {
+     "cer": 0.6288876692279546,
+     "ci": [
+      0.5335088993824918,
+      0.7304268431864871
+     ]
+    },
+    "merged": {
+     "cer": 0.6288876692279546,
+     "ci": [
+      0.5335088993824918,
+      0.7304268431864871
+     ]
+    },
+    "phoneme": {
+     "cer": 0.5578700221709189,
+     "ci": [
+      0.4832345197528676,
+      0.6438008632335014
+     ]
+    },
+    "mergedParsed": 0.49666196955346625,
+    "exact": 90.16666666666667,
+    "missing": 0,
+    "unparsed": 25,
+    "foreign": 10,
+    "calls": 60,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 133.33015000000006,
+    "secondsTotal": 7999.809000000003
+   },
+   {
+    "key": "yomiscript.codex",
+    "label": "YomiScript, Codex",
+    "model": "gpt-6.1-sol",
+    "strict": {
+     "cer": 0.8724387120380535,
+     "ci": [
+      0.7669306795097122,
+      0.9860622788231387
+     ]
+    },
+    "merged": {
+     "cer": 0.8724387120380535,
+     "ci": [
+      0.7669306795097122,
+      0.9860622788231387
+     ]
+    },
+    "phoneme": {
+     "cer": 0.7239884109533495,
+     "ci": [
+      0.6325684629696119,
+      0.8226340172071476
+     ]
+    },
+    "mergedParsed": 0.5665555542468109,
+    "exact": 87.9,
+    "missing": 0,
+    "unparsed": 76,
+    "foreign": 12,
+    "calls": 60,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 79.46784999999998,
+    "secondsTotal": 4768.070999999999
+   },
+   {
+    "key": "kana.claude",
+    "label": "kana, Claude",
+    "model": "claude-opus-5-5",
+    "strict": {
+     "cer": 2.1359312111233075,
+     "ci": [
+      2.028360332247258,
+      2.2475162687293024
+     ]
+    },
+    "merged": {
+     "cer": 0.26870654957921697,
+     "ci": [
+      0.20282581044381037,
+      0.34492998606574227
+     ]
+    },
+    "phoneme": {
+     "cer": 0.20078088722915835,
+     "ci": [
+      0.15048663861057185,
+      0.25801098167344105
+     ]
+    },
+    "mergedParsed": 0.26870654957921697,
+    "exact": 95.96666666666667,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 60,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 39.97713333333333,
+    "secondsTotal": 2398.6279999999997
+   },
+   {
+    "key": "kana.codex",
+    "label": "kana, Codex",
+    "model": "gpt-6.1-sol",
+    "strict": {
+     "cer": 2.1107757043541895,
+     "ci": [
+      2.0173400578001925,
+      2.2039390526968954
+     ]
+    },
+    "merged": {
+     "cer": 0.24812477131357483,
+     "ci": [
+      0.19612761978608406,
+      0.3038376509268182
+     ]
+    },
+    "phoneme": {
+     "cer": 0.2674898465039927,
+     "ci": [
+      0.16040724881683083,
+      0.4468767840620509
+     ]
+    },
+    "mergedParsed": 0.24812477131357483,
+    "exact": 96.2,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 60,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": 25.999466666666667,
+    "secondsTotal": 1559.968
+   },
+   {
+    "key": "openjtalk",
+    "label": "pyopenjtalk (plain text)",
+    "model": "",
+    "strict": {
+     "cer": 2.876875228686425,
+     "ci": [
+      2.7171320171751825,
+      3.0456450334126175
+     ]
+    },
+    "merged": {
+     "cer": 1.0542444200512258,
+     "ci": [
+      0.9172409024913001,
+      1.2128527907110422
+     ]
+    },
+    "phoneme": {
+     "cer": 0.8887987809264697,
+     "ci": [
+      0.7744446330856329,
+      1.014802533011047
+     ]
+    },
+    "mergedParsed": 1.0542444200512258,
+    "exact": 85.83333333333333,
+    "missing": 0,
+    "unparsed": 0,
+    "foreign": 0,
+    "calls": 0,
+    "retries": 0,
+    "noJson": 0,
+    "secondsPerCall": null,
+    "secondsTotal": 0
+   }
+  ],
+  "differences": [
+   {
+    "llm": "claude",
+    "diff": 0.3601811196487376,
+    "ci": [
+     0.28761974606957874,
+     0.4367260370818035
+    ]
+   },
+   {
+    "llm": "codex",
+    "diff": 0.6243139407244787,
+    "ci": [
+     0.5278404341802444,
+     0.7291024851098787
+    ]
+   }
+  ]
+ }
+}

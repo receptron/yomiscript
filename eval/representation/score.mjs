@@ -4,20 +4,22 @@
 // and is compared with the hard set's gold as eval/browser_tts does (reading.mjs `loose`).
 // Target words (eval/tts_readings/targets.tsv): the answer's phonemes are closer to the gold with the word read right
 // than to the gold with the word misread (edit distance; a tie counts as wrong).
+// The scoring is exported for eval/representation_isolated, which scores its answers the same way.
 // usage: node score.mjs   (PYTHON: a python with pyopenjtalk, default ../prosody_ref/.venv/bin/python)
 //   -> results/summary.md, results/items.json
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
+import { fileURLToPath } from "url";
 import { SETS, HERE as BROWSER_TTS } from "../browser_tts/sets.mjs";
 import { lev, loose, ps } from "../browser_tts/reading.mjs";
 import { check, FORMATS, HERE, LLMS } from "./formats.mjs";
 
 const OUT = path.join(HERE, "results");
-const ITEMS = SETS.hard;
+export const ITEMS = SETS.hard;
 const PYTHON = process.env.PYTHON ?? path.join(HERE, "../prosody_ref/.venv/bin/python");
 const REFS = JSON.parse(fs.readFileSync(path.join(BROWSER_TTS, "refs.json"), "utf8")).hard;
-const GOLD = REFS.map((r) => r.gold.map((g) => loose(ps(g))));
+export const GOLD = REFS.map((r) => r.gold.map((g) => loose(ps(g))));
 const lp = (ys) => {
   const p = ys ? ps(ys) : null;
   return p === null ? null : loose(p);
@@ -34,7 +36,7 @@ function targets() {
   }
   return T;
 }
-const TARGETS = targets();
+export const TARGETS = targets();
 // the gold (first reading) with the word read each way, as katakana
 function candidates(item, t) {
   const base = item.gold[0];
@@ -60,7 +62,7 @@ function convert(list, args) {
   return list.map((k, i) => [k, ys[i]]);
 }
 // -> YomiScript in two Python calls: all katakana (kana answers, target candidates) and all sparse texts (pyopenjtalk)
-function kanaTable(recs) {
+export function kanaTable(recs) {
   const K = new Set(),
     T = new Set();
   for (const r of recs.filter((r) => r.format === "kana" || r.format === "sparse"))
@@ -106,7 +108,7 @@ function annotated(spans, text, word) {
 }
 
 // one answer (a format, an LLM, a run): per item, what it reads as and whether that is right
-function evaluate(rec, KY) {
+export function evaluate(rec, KY) {
   return ITEMS.map((x, i) => {
     const c = check(rec.format, rec.output?.[x.name], x.text);
     const got = lp(reading(c, KY));
@@ -119,7 +121,7 @@ function evaluate(rec, KY) {
 }
 
 const mean = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : NaN);
-function stats(rec, E) {
+export function stats(rec, E) {
   const present = E.filter((e) => !e.problems.includes("missing"));
   const words = E.flatMap((e) => e.words);
   return {
@@ -182,14 +184,14 @@ function groups(results) {
   return { G, pooled: pooled.filter((p) => p[2].length) };
 }
 
-function wrongLines(R) {
+export function wrongLines(R) {
   return ITEMS.flatMap((x, i) => {
     const w = R.filter((r) => !r.E[i].right);
     if (!w.length) return [];
     return [`- \`${x.name}\` ${x.text} (${w.length}/${R.length} runs)\n  - gold: \`${GOLD[i][0]}\`\n  - got:  \`${w[0].E[i].got}\``];
   });
 }
-function problemCounts(R) {
+export function problemCounts(R) {
   const P = {};
   for (const p of R.flatMap((r) => r.E.flatMap((e) => e.problems))) {
     const k = p.replace(/:.*/, "");
@@ -254,21 +256,24 @@ ${D.lines.join("\n")}
 `;
 }
 
-const recs = records();
-const KY = kanaTable(recs);
-const results = recs.map((rec) => {
-  const E = evaluate(rec, KY);
-  return { rec, E, stats: stats(rec, E) };
-});
-const plain = { format: "sparse", llm: "pyopenjtalk", output: Object.fromEntries(ITEMS.map((x) => [x.name, x.text])) };
-const baseE = evaluate(plain, KY);
-const md = summary(results, { E: baseE, stats: stats(plain, baseE) });
-fs.writeFileSync(path.join(OUT, "summary.md"), md);
-const items = results.map(({ rec, E }) => ({
-  format: rec.format,
-  llm: rec.llm,
-  run: rec.run,
-  items: E.map(({ name, got, right, words, unannotated, problems }) => ({ name, got, right, words, unannotated, problems })),
-}));
-fs.writeFileSync(path.join(OUT, "items.json"), JSON.stringify(items, null, 1));
-console.log(md.split("## Problems found")[0]);
+function main() {
+  const recs = records();
+  const KY = kanaTable(recs);
+  const results = recs.map((rec) => {
+    const E = evaluate(rec, KY);
+    return { rec, E, stats: stats(rec, E) };
+  });
+  const plain = { format: "sparse", llm: "pyopenjtalk", output: Object.fromEntries(ITEMS.map((x) => [x.name, x.text])) };
+  const baseE = evaluate(plain, KY);
+  const md = summary(results, { E: baseE, stats: stats(plain, baseE) });
+  fs.writeFileSync(path.join(OUT, "summary.md"), md);
+  const items = results.map(({ rec, E }) => ({
+    format: rec.format,
+    llm: rec.llm,
+    run: rec.run,
+    items: E.map(({ name, got, right, words, unannotated, problems }) => ({ name, got, right, words, unannotated, problems })),
+  }));
+  fs.writeFileSync(path.join(OUT, "items.json"), JSON.stringify(items, null, 1));
+  console.log(md.split("## Problems found")[0]);
+}
+if (process.argv[1] === fileURLToPath(import.meta.url)) main();

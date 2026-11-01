@@ -4,7 +4,7 @@
 import fs from "fs";
 import path from "path";
 import { accentMarks } from "@yomiscript/ja-accent";
-import { ACCENT_ITEMS, HERE, LLMS, analyzer, levels, llmFile, locate, morae, nucleus, readJson, writeJson } from "./common.mjs";
+import { ACCENT_ITEMS, HERE, LLMS, analyzer, levels, llmFile, locate, morae, nucleus, readJson, targetKeys, writeJson } from "./common.mjs";
 
 const RUNS = [1, 2, 3];
 const CONDS = ["kokoro", "kana_dict", "dict", ...LLMS];
@@ -12,11 +12,6 @@ const BIG = 1; // semitones: a move at least this large counts as clearly realiz
 const pct = (a, b) => (b ? `${((100 * a) / b).toFixed(0)}%` : "-");
 const mean = (v) => v.reduce((a, b) => a + b, 0) / v.length;
 
-function target(x, base) {
-  const M = morae(base.ys),
-    span = M.find((m) => m.text.replace(/。$/, "") === x.word).span;
-  return M.filter((m) => m.span === span).map((m) => m.key);
-}
 /** the target's accent in a YomiScript: { nucleus, levels (word + next mora) } or { missing } */
 function accentOf(ys, x, keys) {
   if (!ys) return { missing: "no output" };
@@ -61,7 +56,7 @@ function perItem(a) {
     base = readJson("results/base.json"),
     runs = Object.fromEntries(LLMS.map((l) => [l, llmRuns(l)]));
   return ACCENT_ITEMS().map((x) => {
-    const keys = target(x, base[x.name]),
+    const keys = targetKeys(x, base[x.name]),
       gold = accentOf(accentMarks(base[x.name].ys, a), x, keys),
       llm = Object.fromEntries(LLMS.map((l) => [l, runs[l].map((o) => accentOf(o[x.name], x, keys))])),
       cond = {};

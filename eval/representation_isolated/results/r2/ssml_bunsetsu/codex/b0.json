@@ -1,0 +1,40 @@
+{
+ "llm": "codex",
+ "condition": "ssml_bunsetsu",
+ "run": 2,
+ "batch": 0,
+ "items": [
+  "h003",
+  "h007",
+  "h016",
+  "h021",
+  "h032",
+  "h038",
+  "h064",
+  "h067",
+  "h068",
+  "h069"
+ ],
+ "model": "gpt-6.1-sol",
+ "seconds": 19.343,
+ "tries": [
+  {
+   "seconds": 19.343,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:02:34.526Z",
+ "output": {
+  "h003": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='maitsɯki'>毎月</phoneme><phoneme alphabet='ipa' ph='joːka ɲi'>八日に</phoneme><phoneme alphabet='ipa' ph='asaitɕi ɡa'>朝市が</phoneme><phoneme alphabet='ipa' ph='çiɾakaɾeɾɯ'>開かれる</phoneme>。</speak>",
+  "h007": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='itɕiɲitɕidʑɯː'>一日中</phoneme><phoneme alphabet='ipa' ph='dzɯtto'>ずっと</phoneme><phoneme alphabet='ipa' ph='ame datta'>雨だった</phoneme>。</speak>",
+  "h016": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='namamono wa'>生物は</phoneme><phoneme alphabet='ipa' ph='ohajame ɲi'>お早めに</phoneme><phoneme alphabet='ipa' ph='omeɕiaɡaɾi kɯdasai'>お召し上がりください</phoneme>。</speak>",
+  "h021": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='wakaɾe wa'>別れは</phoneme><phoneme alphabet='ipa' ph='itsɯmo'>いつも</phoneme><phoneme alphabet='ipa' ph='tsɯɾai'>辛い</phoneme><phoneme alphabet='ipa' ph='mono da'>ものだ</phoneme>。</speak>",
+  "h032": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɯmakɯ'>上手く</phoneme><phoneme alphabet='ipa' ph='setsɯmeː dekinai'>説明できない</phoneme>。</speak>",
+  "h038": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='enɯ eitɕi keː no'>NHKの</phoneme><phoneme alphabet='ipa' ph='ɲɯːsɯ o'>ニュースを</phoneme><phoneme alphabet='ipa' ph='mita'>見た</phoneme>。</speak>",
+  "h064": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕitɕiɡatsɯ nanoka wa'>7月7日は</phoneme><phoneme alphabet='ipa' ph='tanabata da'>七夕だ</phoneme>。</speak>",
+  "h067": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='itɕiɡatsɯ dʑɯːjokka ɲi'>1月14日に</phoneme><phoneme alphabet='ipa' ph='ɕɯppatsɯ ɕita'>出発した</phoneme>。</speak>",
+  "h068": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɾokɯɡatsɯ hatsɯka ɲi'>6月20日に</phoneme><phoneme alphabet='ipa' ph='tandʑoːbi o'>誕生日を</phoneme><phoneme alphabet='ipa' ph='mɯkaeɾɯ'>迎える</phoneme>。</speak>",
+  "h069": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='heːseː sandʑɯːitɕineɴ ɕiɡatsɯ sandʑɯːɲitɕi ɲi'>平成31年4月30日に</phoneme><phoneme alphabet='ipa' ph='taiː saɾeta'>退位された</phoneme>。</speak>"
+ },
+ "raw": "{\n  \"h003\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='maitsɯki'>毎月</phoneme><phoneme alphabet='ipa' ph='joːka ɲi'>八日に</phoneme><phoneme alphabet='ipa' ph='asaitɕi ɡa'>朝市が</phoneme><phoneme alphabet='ipa' ph='çiɾakaɾeɾɯ'>開かれる</phoneme>。</speak>\",\n  \"h007\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='itɕiɲitɕidʑɯː'>一日中</phoneme><phoneme alphabet='ipa' ph='dzɯtto'>ずっと</phoneme><phoneme alphabet='ipa' ph='ame datta'>雨だった</phoneme>。</speak>\",\n  \"h016\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='namamono wa'>生物は</phoneme><phoneme alphabet='ipa' ph='ohajame ɲi'>お早めに</phoneme><phoneme alphabet='ipa' ph='omeɕiaɡaɾi kɯdasai'>お召し上がりください</phoneme>。</speak>\",\n  \"h021\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='wakaɾe wa'>別れは</phoneme><phoneme alphabet='ipa' ph='itsɯmo'>いつも</phoneme><phoneme alphabet='ipa' ph='tsɯɾai'>辛い</phoneme><phoneme alphabet='ipa' ph='mono da'>ものだ</phoneme>。</speak>\",\n  \"h032\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɯmakɯ'>上手く</phoneme><phoneme alphabet='ipa' ph='setsɯmeː dekinai'>説明できない</phoneme>。</speak>\",\n  \"h038\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='enɯ eitɕi keː no'>NHKの</phoneme><phoneme alphabet='ipa' ph='ɲɯːsɯ o'>ニュースを</phoneme><phoneme alphabet='ipa' ph='mita'>見た</phoneme>。</speak>\",\n  \"h064\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕitɕiɡatsɯ nanoka wa'>7月7日は</phoneme><phoneme alphabet='ipa' ph='tanabata da'>七夕だ</phoneme>。</speak>\",\n  \"h067\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='itɕiɡatsɯ dʑɯːjokka ɲi'>1月14日に</phoneme><phoneme alphabet='ipa' ph='ɕɯppatsɯ ɕita'>出発した</phoneme>。</speak>\",\n  \"h068\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɾokɯɡatsɯ hatsɯka ɲi'>6月20日に</phoneme><phoneme alphabet='ipa' ph='tandʑoːbi o'>誕生日を</phoneme><phoneme alphabet='ipa' ph='mɯkaeɾɯ'>迎える</phoneme>。</speak>\",\n  \"h069\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='heːseː sandʑɯːitɕineɴ ɕiɡatsɯ sandʑɯːɲitɕi ɲi'>平成31年4月30日に</phoneme><phoneme alphabet='ipa' ph='taiː saɾeta'>退位された</phoneme>。</speak>\"\n}"
+}

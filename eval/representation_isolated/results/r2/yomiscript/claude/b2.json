@@ -1,0 +1,41 @@
+{
+ "llm": "claude",
+ "condition": "yomiscript",
+ "run": 2,
+ "batch": 2,
+ "items": [
+  "h002",
+  "h010",
+  "h011",
+  "h020",
+  "h026",
+  "h028",
+  "h039",
+  "h046",
+  "h051",
+  "h052"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 14.586,
+ "outputTokens": 1262,
+ "tries": [
+  {
+   "seconds": 14.586,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:01:27.466Z",
+ "output": {
+  "h002": "ja /ɕijakɯɕo<t:市役所> wa<t:は> eki<t:駅> no<t:の> tɕikakɯ<t:近く> ɲi<t:に> aɾɯ<t:ある。> ↘/",
+  "h010": "ja /iɡo<t:囲碁> de<t:で> wa<t:は> kaɾe<t:彼> no<t:の> hoː<t:方> ɡa<t:が> itɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/",
+  "h011": "ja /kono<t:この> ataɾi<t:辺り> wa<t:は> joɾɯ<t:夜> ɲi<t:に> naɾɯ<t:なる> to<t:と> hitoke<t:人気> ɡa<t:が> nai<t:ない。> ↘/",
+  "h020": "ja /kaɾe<t:彼> wa<t:は> kaɾai<t:辛い> kaɾeː<t:カレー> ɡa<t:が> sɯki<t:好き> da<t:だ。> ↘/",
+  "h026": "ja /samɯke<t:寒気> ɡa<t:が> sɯɾɯ<t:する> node<t:ので> hajakɯ<t:早く> neɾɯ<t:寝る。> ↘/",
+  "h028": "ja /nani<t:何> ɡa<t:が> hoɕiː<t:欲しい> no<t:の？> ↗/",
+  "h039": "ja /eːai<t:AI> no<t:の> keŋkʲɯː<t:研究> ɡa<t:が> sɯsɯnde<t:進んで> iɾɯ<t:いる。> ↘/",
+  "h046": "ja /esɯ enɯ esɯ<t:SNS> de<t:で> wadai<t:話題> ɲi<t:に> natta<t:なった。> ↘/",
+  "h051": "ja /ɾoppoɴ<t:6本> no<t:の> empitsɯ<t:鉛筆> ɡa<t:が> aɾɯ<t:ある。> ↘/",
+  "h052": "ja /sambiki<t:3匹> no<t:の> neko<t:猫> o<t:を> katte<t:飼って> iɾɯ<t:いる。> ↘/"
+ },
+ "raw": "```json\n{\"h002\": \"ja /ɕijakɯɕo<t:市役所> wa<t:は> eki<t:駅> no<t:の> tɕikakɯ<t:近く> ɲi<t:に> aɾɯ<t:ある。> ↘/\", \"h010\": \"ja /iɡo<t:囲碁> de<t:で> wa<t:は> kaɾe<t:彼> no<t:の> hoː<t:方> ɡa<t:が> itɕimai<t:一枚> ɯwate<t:上手> da<t:だ。> ↘/\", \"h011\": \"ja /kono<t:この> ataɾi<t:辺り> wa<t:は> joɾɯ<t:夜> ɲi<t:に> naɾɯ<t:なる> to<t:と> hitoke<t:人気> ɡa<t:が> nai<t:ない。> ↘/\", \"h020\": \"ja /kaɾe<t:彼> wa<t:は> kaɾai<t:辛い> kaɾeː<t:カレー> ɡa<t:が> sɯki<t:好き> da<t:だ。> ↘/\", \"h026\": \"ja /samɯke<t:寒気> ɡa<t:が> sɯɾɯ<t:する> node<t:ので> hajakɯ<t:早く> neɾɯ<t:寝る。> ↘/\", \"h028\": \"ja /nani<t:何> ɡa<t:が> hoɕiː<t:欲しい> no<t:の？> ↗/\", \"h039\": \"ja /eːai<t:AI> no<t:の> keŋkʲɯː<t:研究> ɡa<t:が> sɯsɯnde<t:進んで> iɾɯ<t:いる。> ↘/\", \"h046\": \"ja /esɯ enɯ esɯ<t:SNS> de<t:で> wadai<t:話題> ɲi<t:に> natta<t:なった。> ↘/\", \"h051\": \"ja /ɾoppoɴ<t:6本> no<t:の> empitsɯ<t:鉛筆> ɡa<t:が> aɾɯ<t:ある。> ↘/\", \"h052\": \"ja /sambiki<t:3匹> no<t:の> neko<t:猫> o<t:を> katte<t:飼って> iɾɯ<t:いる。> ↘/\"}\n```"
+}

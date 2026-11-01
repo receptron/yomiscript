@@ -128,6 +128,35 @@ and the marks move Kokoro's pitch the right way on the minimal pairs at 92-95% a
 `en` span, English words reach Kokoro as English phonemes, which kana cannot write. Both are small sets of common words
 and one voice, scored by a pitch tracker and an ASR, not by listeners.
 
+## Listening test (`listen/`)
+
+A blind listening test on the stimuli above, built like eval/tts_readings/listen (its `shuffle.mjs` is imported).
+`listen/build.mjs` writes `listen/set.json` (the key; the page never sees it): 208 clips, about 28 minutes per
+listener (17 for A, 11 for B).
+
+- **A** (176 clips): each of the 44 target words in `kokoro`, `kana_dict`, `dict` and `claude`. The clip is the word
+  plus the mora after it (the stretch `f0.py` measures), cut from the sentence audio at the mora times of the `.json`
+  next to the wav, which are Kokoro's own predicted durations (exact for the generated audio, not an aligner's
+  guess), faded in and out by the server. The whole sentence is not played: its meaning names the word. The listener
+  sees only the words of the minimal set and their kana (雨 / 飴, アメ), picks the one the pitch sounds like or
+  「どちらとも言えない」, and may rate naturalness 1-5.
+- **B** (32 clips): the 16 sentences with English meant as English, as Claude's YomiScript (`ys_claude`) and as
+  Claude's kana (`kana_claude`). The sentence is shown with the English hidden (＿＿＿); the listener rates "the English
+  part sounds like English" and naturalness (1-5) and may type the English heard.
+- Clips have opaque ids; A, then B, each shuffled per listener (seeded by the name). Progress stays in localStorage;
+  the page downloads `listening.<name>.json`.
+- **Score** (`listen/score.mjs`): A is right when the word chosen has the target's gold accent (紙 for 髪 counts; the
+  set 潮 / 塩 has one gold accent and is scored only against the textbook column), with chance, "heard as its marks
+  say", per accent type and per set; B per condition and paired (YomiScript minus kana) by listener and sentence.
+  95% intervals resample the minimal sets (A) or the sentences (B); agreement between listeners is Krippendorff's alpha.
+  A sentence is heard in both B conditions, so what is typed is also reported for the first hearing only.
+
+```bash
+node listen/serve.mjs                              # http://127.0.0.1:8817/ (a free port if taken; needs audio/)
+node listen/score.mjs answers/listening.*.json     # results/listening.md
+node listen/check.mjs                              # the page in headless Chromium (Playwright)
+```
+
 ## Limits
 
 - 44 accent words (21 sets) and 24 code-switching sentences; one voice (jf_alpha); LLM accent 3 runs, the rest once.

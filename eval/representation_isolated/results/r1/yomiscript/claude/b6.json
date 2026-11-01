@@ -1,0 +1,41 @@
+{
+ "llm": "claude",
+ "condition": "yomiscript",
+ "run": 1,
+ "batch": 6,
+ "items": [
+  "h005",
+  "h012",
+  "h019",
+  "h036",
+  "h037",
+  "h053",
+  "h057",
+  "h060",
+  "h061",
+  "h070"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 20.821,
+ "outputTokens": 1826,
+ "tries": [
+  {
+   "seconds": 20.821,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:00:58.677Z",
+ "output": {
+  "h005": "ja /koɲɲitɕi<t:今日> no<t:の> ɲihoŋ keːdzai<t:日本経済> o<t:を> ɾoɲdʑiɾɯ<t:論じる。> ↘/",
+  "h012": "ja /kanodʑo<t:彼女> wa<t:は> ɲiŋki<t:人気> ɡa<t:が> aɾɯ<t:ある> kaɕɯ<t:歌手> da<t:だ。> ↘/",
+  "h019": "ja /saiɕo<t:最初> no<t:の> itɕiɡʲoː<t:一行> o<t:を> jonde<t:読んで> kɯdasai<t:ください。> ↘/",
+  "h036": "ja /esɯ eː piː<t:SAP> no<t:の> doːɲɯː<t:導入> o<t:を> kentoː<t:検討> ɕite<t:して> iɾɯ<t:いる。> ↘/",
+  "h037": "ja /ɕippɯ<t:SIP> de<t:で> deɴwa<t:電話> o<t:を> tsɯnaɡɯ<t:つなぐ。> ↘/",
+  "h053": "ja /kioɴ<t:気温> wa<t:は> ɲidʑɯːɡo<t:25> teŋ<t:.> ɡo<t:5> do<t:度> made<t:まで> aɡatta<t:上がった。> ↘/",
+  "h057": "ja /hitoɾi<t:1人> de<t:で> kite<t:来て> kɯdasai<t:ください。> ↘/",
+  "h060": "ja /ɕiɡatsɯ<t:4月> tsɯitatɕi<t:1日> wa<t:は> ɲɯːɡakɯɕiki<t:入学式> da<t:だ。> ↘/",
+  "h061": "ja /dʑɯːɡatsɯ<t:10月> ɲidʑɯːjokka<t:24日> ɲi<t:に> kaiɡi<t:会議> ɡa<t:が> aɾɯ<t:ある。> ↘/",
+  "h070": "ja /maitsɯki<t:毎月> joːka<t:8日> ɲi<t:に> teŋkeɴ<t:点検> o<t:を> okonaɯ<t:行う。> ↘/"
+ },
+ "raw": "```json\n{\n  \"h005\": \"ja /koɲɲitɕi<t:今日> no<t:の> ɲihoŋ keːdzai<t:日本経済> o<t:を> ɾoɲdʑiɾɯ<t:論じる。> ↘/\",\n  \"h012\": \"ja /kanodʑo<t:彼女> wa<t:は> ɲiŋki<t:人気> ɡa<t:が> aɾɯ<t:ある> kaɕɯ<t:歌手> da<t:だ。> ↘/\",\n  \"h019\": \"ja /saiɕo<t:最初> no<t:の> itɕiɡʲoː<t:一行> o<t:を> jonde<t:読んで> kɯdasai<t:ください。> ↘/\",\n  \"h036\": \"ja /esɯ eː piː<t:SAP> no<t:の> doːɲɯː<t:導入> o<t:を> kentoː<t:検討> ɕite<t:して> iɾɯ<t:いる。> ↘/\",\n  \"h037\": \"ja /ɕippɯ<t:SIP> de<t:で> deɴwa<t:電話> o<t:を> tsɯnaɡɯ<t:つなぐ。> ↘/\",\n  \"h053\": \"ja /kioɴ<t:気温> wa<t:は> ɲidʑɯːɡo<t:25> teŋ<t:.> ɡo<t:5> do<t:度> made<t:まで> aɡatta<t:上がった。> ↘/\",\n  \"h057\": \"ja /hitoɾi<t:1人> de<t:で> kite<t:来て> kɯdasai<t:ください。> ↘/\",\n  \"h060\": \"ja /ɕiɡatsɯ<t:4月> tsɯitatɕi<t:1日> wa<t:は> ɲɯːɡakɯɕiki<t:入学式> da<t:だ。> ↘/\",\n  \"h061\": \"ja /dʑɯːɡatsɯ<t:10月> ɲidʑɯːjokka<t:24日> ɲi<t:に> kaiɡi<t:会議> ɡa<t:が> aɾɯ<t:ある。> ↘/\",\n  \"h070\": \"ja /maitsɯki<t:毎月> joːka<t:8日> ɲi<t:に> teŋkeɴ<t:点検> o<t:を> okonaɯ<t:行う。> ↘/\"\n}\n```"
+}

@@ -1,0 +1,41 @@
+{
+ "llm": "claude",
+ "condition": "ssml_bunsetsu",
+ "run": 1,
+ "batch": 2,
+ "items": [
+  "h002",
+  "h010",
+  "h011",
+  "h020",
+  "h026",
+  "h028",
+  "h039",
+  "h046",
+  "h051",
+  "h052"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 20.529,
+ "outputTokens": 2083,
+ "tries": [
+  {
+   "seconds": 20.529,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T07:59:05.354Z",
+ "output": {
+  "h002": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕijakɯɕo wa'>市役所は</phoneme><phoneme alphabet='ipa' ph='eki no'>駅の</phoneme><phoneme alphabet='ipa' ph='tɕikakɯ ni'>近くに</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>",
+  "h010": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɡo de wa'>囲碁では</phoneme><phoneme alphabet='ipa' ph='kaɾe no'>彼の</phoneme><phoneme alphabet='ipa' ph='hoː ɡa'>方が</phoneme><phoneme alphabet='ipa' ph='itɕimai'>一枚</phoneme><phoneme alphabet='ipa' ph='ɯwate da'>上手だ</phoneme>。</speak>",
+  "h011": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kono'>この</phoneme><phoneme alphabet='ipa' ph='ataɾi wa'>辺りは</phoneme><phoneme alphabet='ipa' ph='joɾɯ ni'>夜に</phoneme><phoneme alphabet='ipa' ph='naɾɯ to'>なると</phoneme><phoneme alphabet='ipa' ph='hitoke ɡa'>人気が</phoneme><phoneme alphabet='ipa' ph='nai'>ない</phoneme>。</speak>",
+  "h020": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kaɾe wa'>彼は</phoneme><phoneme alphabet='ipa' ph='kaɾai'>辛い</phoneme><phoneme alphabet='ipa' ph='kaɾeː ɡa'>カレーが</phoneme><phoneme alphabet='ipa' ph='sɯki da'>好きだ</phoneme>。</speak>",
+  "h026": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='samɯke ɡa'>寒気が</phoneme><phoneme alphabet='ipa' ph='sɯɾɯ node'>するので</phoneme><phoneme alphabet='ipa' ph='hajakɯ'>早く</phoneme><phoneme alphabet='ipa' ph='neɾɯ'>寝る</phoneme>。</speak>",
+  "h028": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='naɲi ɡa'>何が</phoneme><phoneme alphabet='ipa' ph='hoɕiː no'>欲しいの</phoneme>？</speak>",
+  "h039": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='eːai no'>AIの</phoneme><phoneme alphabet='ipa' ph='keŋkʲɯː ɡa'>研究が</phoneme><phoneme alphabet='ipa' ph='sɯsɯnde iɾɯ'>進んでいる</phoneme>。</speak>",
+  "h046": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='esɯ enɯ esɯ de'>SNSで</phoneme><phoneme alphabet='ipa' ph='wadai ni'>話題に</phoneme><phoneme alphabet='ipa' ph='natta'>なった</phoneme>。</speak>",
+  "h051": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='roppoɴ no'>6本の</phoneme><phoneme alphabet='ipa' ph='empitsɯ ɡa'>鉛筆が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>",
+  "h052": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='sambiki no'>3匹の</phoneme><phoneme alphabet='ipa' ph='neko o'>猫を</phoneme><phoneme alphabet='ipa' ph='katte iɾɯ'>飼っている</phoneme>。</speak>"
+ },
+ "raw": "{\"h002\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕijakɯɕo wa'>市役所は</phoneme><phoneme alphabet='ipa' ph='eki no'>駅の</phoneme><phoneme alphabet='ipa' ph='tɕikakɯ ni'>近くに</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>\", \"h010\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɡo de wa'>囲碁では</phoneme><phoneme alphabet='ipa' ph='kaɾe no'>彼の</phoneme><phoneme alphabet='ipa' ph='hoː ɡa'>方が</phoneme><phoneme alphabet='ipa' ph='itɕimai'>一枚</phoneme><phoneme alphabet='ipa' ph='ɯwate da'>上手だ</phoneme>。</speak>\", \"h011\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kono'>この</phoneme><phoneme alphabet='ipa' ph='ataɾi wa'>辺りは</phoneme><phoneme alphabet='ipa' ph='joɾɯ ni'>夜に</phoneme><phoneme alphabet='ipa' ph='naɾɯ to'>なると</phoneme><phoneme alphabet='ipa' ph='hitoke ɡa'>人気が</phoneme><phoneme alphabet='ipa' ph='nai'>ない</phoneme>。</speak>\", \"h020\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kaɾe wa'>彼は</phoneme><phoneme alphabet='ipa' ph='kaɾai'>辛い</phoneme><phoneme alphabet='ipa' ph='kaɾeː ɡa'>カレーが</phoneme><phoneme alphabet='ipa' ph='sɯki da'>好きだ</phoneme>。</speak>\", \"h026\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='samɯke ɡa'>寒気が</phoneme><phoneme alphabet='ipa' ph='sɯɾɯ node'>するので</phoneme><phoneme alphabet='ipa' ph='hajakɯ'>早く</phoneme><phoneme alphabet='ipa' ph='neɾɯ'>寝る</phoneme>。</speak>\", \"h028\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='naɲi ɡa'>何が</phoneme><phoneme alphabet='ipa' ph='hoɕiː no'>欲しいの</phoneme>？</speak>\", \"h039\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='eːai no'>AIの</phoneme><phoneme alphabet='ipa' ph='keŋkʲɯː ɡa'>研究が</phoneme><phoneme alphabet='ipa' ph='sɯsɯnde iɾɯ'>進んでいる</phoneme>。</speak>\", \"h046\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='esɯ enɯ esɯ de'>SNSで</phoneme><phoneme alphabet='ipa' ph='wadai ni'>話題に</phoneme><phoneme alphabet='ipa' ph='natta'>なった</phoneme>。</speak>\", \"h051\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='roppoɴ no'>6本の</phoneme><phoneme alphabet='ipa' ph='empitsɯ ɡa'>鉛筆が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>\", \"h052\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='sambiki no'>3匹の</phoneme><phoneme alphabet='ipa' ph='neko o'>猫を</phoneme><phoneme alphabet='ipa' ph='katte iɾɯ'>飼っている</phoneme>。</speak>\"}"
+}

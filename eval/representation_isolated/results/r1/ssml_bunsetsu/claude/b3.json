@@ -1,0 +1,41 @@
+{
+ "llm": "claude",
+ "condition": "ssml_bunsetsu",
+ "run": 1,
+ "batch": 3,
+ "items": [
+  "h004",
+  "h013",
+  "h030",
+  "h035",
+  "h040",
+  "h041",
+  "h043",
+  "h047",
+  "h049",
+  "h065"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 23.101,
+ "outputTokens": 2307,
+ "tries": [
+  {
+   "seconds": 23.101,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T07:59:28.457Z",
+ "output": {
+  "h004": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kʲoː wa'>今日は</phoneme><phoneme alphabet='ipa' ph='haɾete imasɯ'>晴れています</phoneme>。</speak>",
+  "h013": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='oːja saɲ ɲi'>大家さんに</phoneme><phoneme alphabet='ipa' ph='jatɕiɴ o'>家賃を</phoneme><phoneme alphabet='ipa' ph='haɾaɯ'>払う</phoneme>。</speak>",
+  "h030": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕikiɕi ɲi'>色紙に</phoneme><phoneme alphabet='ipa' ph='saiɴ o'>サインを</phoneme><phoneme alphabet='ipa' ph='moɾatta'>もらった</phoneme>。</speak>",
+  "h035": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='heta na'>下手な</phoneme><phoneme alphabet='ipa' ph='iːwake wa'>言い訳は</phoneme><phoneme alphabet='ipa' ph='jame nasai'>やめなさい</phoneme>。</speak>",
+  "h040": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='jɯːesɯbiː memoɾi o'>USBメモリを</phoneme><phoneme alphabet='ipa' ph='saɕikomɯ'>差し込む</phoneme>。</speak>",
+  "h041": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='nasa ɡa'>NASAが</phoneme><phoneme alphabet='ipa' ph='ataɾaɕiː'>新しい</phoneme><phoneme alphabet='ipa' ph='taɴsaki o'>探査機を</phoneme><phoneme alphabet='ipa' ph='ɯtɕiaɡeta'>打ち上げた</phoneme>。</speak>",
+  "h043": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑiːpiːjɯː o'>GPUを</phoneme><phoneme alphabet='ipa' ph='tsɯkatte'>使って</phoneme><phoneme alphabet='ipa' ph='modeɾɯ o'>モデルを</phoneme><phoneme alphabet='ipa' ph='ɡakɯɕɯː sɯɾɯ'>学習する</phoneme>。</speak>",
+  "h047": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='jɯnesɯko no'>UNESCOの</phoneme><phoneme alphabet='ipa' ph='sekai isaɲ ɲi'>世界遺産に</phoneme><phoneme alphabet='ipa' ph='toːɾokɯ saɾeta'>登録された</phoneme>。</speak>",
+  "h049": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='saŋkaɕa wa'>参加者は</phoneme><phoneme alphabet='ipa' ph='seŋ ɡohʲakɯ ɲin datta'>1500人だった</phoneme>。</speak>",
+  "h065": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kɯdʑi saɲdʑippɯɲ ɲi'>9時30分に</phoneme><phoneme alphabet='ipa' ph='ɕɯːɡoː desɯ'>集合です</phoneme>。</speak>"
+ },
+ "raw": "```json\n{\"h004\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kʲoː wa'>今日は</phoneme><phoneme alphabet='ipa' ph='haɾete imasɯ'>晴れています</phoneme>。</speak>\", \"h013\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='oːja saɲ ɲi'>大家さんに</phoneme><phoneme alphabet='ipa' ph='jatɕiɴ o'>家賃を</phoneme><phoneme alphabet='ipa' ph='haɾaɯ'>払う</phoneme>。</speak>\", \"h030\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕikiɕi ɲi'>色紙に</phoneme><phoneme alphabet='ipa' ph='saiɴ o'>サインを</phoneme><phoneme alphabet='ipa' ph='moɾatta'>もらった</phoneme>。</speak>\", \"h035\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='heta na'>下手な</phoneme><phoneme alphabet='ipa' ph='iːwake wa'>言い訳は</phoneme><phoneme alphabet='ipa' ph='jame nasai'>やめなさい</phoneme>。</speak>\", \"h040\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='jɯːesɯbiː memoɾi o'>USBメモリを</phoneme><phoneme alphabet='ipa' ph='saɕikomɯ'>差し込む</phoneme>。</speak>\", \"h041\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='nasa ɡa'>NASAが</phoneme><phoneme alphabet='ipa' ph='ataɾaɕiː'>新しい</phoneme><phoneme alphabet='ipa' ph='taɴsaki o'>探査機を</phoneme><phoneme alphabet='ipa' ph='ɯtɕiaɡeta'>打ち上げた</phoneme>。</speak>\", \"h043\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑiːpiːjɯː o'>GPUを</phoneme><phoneme alphabet='ipa' ph='tsɯkatte'>使って</phoneme><phoneme alphabet='ipa' ph='modeɾɯ o'>モデルを</phoneme><phoneme alphabet='ipa' ph='ɡakɯɕɯː sɯɾɯ'>学習する</phoneme>。</speak>\", \"h047\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='jɯnesɯko no'>UNESCOの</phoneme><phoneme alphabet='ipa' ph='sekai isaɲ ɲi'>世界遺産に</phoneme><phoneme alphabet='ipa' ph='toːɾokɯ saɾeta'>登録された</phoneme>。</speak>\", \"h049\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='saŋkaɕa wa'>参加者は</phoneme><phoneme alphabet='ipa' ph='seŋ ɡohʲakɯ ɲin datta'>1500人だった</phoneme>。</speak>\", \"h065\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kɯdʑi saɲdʑippɯɲ ɲi'>9時30分に</phoneme><phoneme alphabet='ipa' ph='ɕɯːɡoː desɯ'>集合です</phoneme>。</speak>\"}\n```"
+}

@@ -1,0 +1,40 @@
+{
+ "llm": "codex",
+ "condition": "yomiscript",
+ "run": 3,
+ "batch": 4,
+ "items": [
+  "h008",
+  "h023",
+  "h024",
+  "h033",
+  "h042",
+  "h048",
+  "h050",
+  "h054",
+  "h055",
+  "h062"
+ ],
+ "model": "gpt-6.1-sol",
+ "seconds": 42.199,
+ "tries": [
+  {
+   "seconds": 42.199,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:04:07.330Z",
+ "output": {
+  "h008": "ja /kaɾe<t:彼> wa<t:は> ɾʲoːɾi<t:料理> ɡa<t:が> dʑoːdzɯ<t:上手> da<t:だ。> ↘/",
+  "h023": "ja /meɕita<t:目下> no<t:の> mono<t:者> ɲi<t:に> mo<t:も> teːneː<t:丁寧> ɲi<t:に> sessɯɾɯ<t:接する。> ↘/",
+  "h024": "ja /kado<t:角> o<t:を> maɡaɾɯ<t:曲がる> to<t:と> paɲja<t:パン屋> ɡa<t:が> aɾɯ<t:ある。> ↘/",
+  "h033": "ja /kebʲoː<t:仮病> o<t:を> tsɯkatte<t:使って> jasɯnda<t:休んだ。> ↘/",
+  "h042": "ja /dʑeː aːɾɯ<t:JR> no<t:の> eki<t:駅> de<t:で> matɕiawaseɾɯ<t:待ち合わせる。> ↘/",
+  "h048": "ja /ɾiŋɡo<t:りんご> o<t:を> saŋko<t:3個> katta<t:買った。> ↘/",
+  "h050": "ja /kakakɯ<t:価格> wa<t:は> itɕimaɴ ɲiseɴ eɴ<t:1万2000円> desɯ<t:です。> ↘/",
+  "h054": "ja /happɯŋɡo<t:8分後> ɲi<t:に> ɕɯppatsɯ<t:出発> sɯɾɯ<t:する。> ↘/",
+  "h055": "ja /dʑɯppoɴ<t:10本> no<t:の> baɾa<t:バラ> o<t:を> okɯɾɯ<t:贈る。> ↘/",
+  "h062": "ja /ɲiseɴ ɲidʑɯːɾokɯneɴ<t:2026年> dʑɯːɡatsɯ<t:10月> hatsɯka<t:20日> ɲi<t:に> hatsɯbai<t:発売> sa<t:さ> ɾeta<t:れた。> ↘/"
+ },
+ "raw": "{\n  \"h008\": \"ja /kaɾe<t:彼> wa<t:は> ɾʲoːɾi<t:料理> ɡa<t:が> dʑoːdzɯ<t:上手> da<t:だ。> ↘/\",\n  \"h023\": \"ja /meɕita<t:目下> no<t:の> mono<t:者> ɲi<t:に> mo<t:も> teːneː<t:丁寧> ɲi<t:に> sessɯɾɯ<t:接する。> ↘/\",\n  \"h024\": \"ja /kado<t:角> o<t:を> maɡaɾɯ<t:曲がる> to<t:と> paɲja<t:パン屋> ɡa<t:が> aɾɯ<t:ある。> ↘/\",\n  \"h033\": \"ja /kebʲoː<t:仮病> o<t:を> tsɯkatte<t:使って> jasɯnda<t:休んだ。> ↘/\",\n  \"h042\": \"ja /dʑeː aːɾɯ<t:JR> no<t:の> eki<t:駅> de<t:で> matɕiawaseɾɯ<t:待ち合わせる。> ↘/\",\n  \"h048\": \"ja /ɾiŋɡo<t:りんご> o<t:を> saŋko<t:3個> katta<t:買った。> ↘/\",\n  \"h050\": \"ja /kakakɯ<t:価格> wa<t:は> itɕimaɴ ɲiseɴ eɴ<t:1万2000円> desɯ<t:です。> ↘/\",\n  \"h054\": \"ja /happɯŋɡo<t:8分後> ɲi<t:に> ɕɯppatsɯ<t:出発> sɯɾɯ<t:する。> ↘/\",\n  \"h055\": \"ja /dʑɯppoɴ<t:10本> no<t:の> baɾa<t:バラ> o<t:を> okɯɾɯ<t:贈る。> ↘/\",\n  \"h062\": \"ja /ɲiseɴ ɲidʑɯːɾokɯneɴ<t:2026年> dʑɯːɡatsɯ<t:10月> hatsɯka<t:20日> ɲi<t:に> hatsɯbai<t:発売> sa<t:さ> ɾeta<t:れた。> ↘/\"\n}"
+}

@@ -12,8 +12,8 @@ export const HERE = path.dirname(fileURLToPath(import.meta.url));
 const read = (f) => fs.readFileSync(f, "utf8");
 const YS_TEMPLATE = read(path.join(BROWSER_TTS, "prompt.md"));
 // the pronunciation rules of the YomiScript prompt (Japanese IPA table, English IPA), from its first rule to the pause rule
-const IPA_RULES = YS_TEMPLATE.slice(YS_TEMPLATE.indexOf("- The pronunciation is IPA"), YS_TEMPLATE.indexOf("- ` ‖ `")).trimEnd();
-const EXAMPLES = JSON.parse(read(path.join(HERE, "examples.json")));
+export const IPA_RULES = YS_TEMPLATE.slice(YS_TEMPLATE.indexOf("- The pronunciation is IPA"), YS_TEMPLATE.indexOf("- ` ‖ `")).trimEnd();
+export const EXAMPLES = JSON.parse(read(path.join(HERE, "examples.json")));
 const examples = (key) => EXAMPLES.map((x) => ({ lang: x.lang, text: x.text, ys: x[key] }));
 
 const TEMPLATES = {

@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>アクセントと英語の聞き取り</title>
+    <style>
+      :root {
+        --bg: #fff;
+        --fg: #1d1d1f;
+        --muted: #6e6e73;
+        --line: #d2d2d7;
+        --accent: #0a66c2;
+        --mark: #fff1a8;
+        --panel: #f5f5f7;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #1c1c1e;
+          --fg: #f2f2f7;
+          --muted: #a1a1a6;
+          --line: #3a3a3c;
+          --accent: #64a8ff;
+          --mark: #5a4a00;
+          --panel: #2c2c2e;
+        }
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+        margin: 0 auto;
+        max-width: 760px;
+        padding: 16px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+      h2 {
+        font-size: 17px;
+        margin: 16px 0 4px;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .hidden {
+        display: none;
+      }
+      button {
+        font: inherit;
+        padding: 6px 14px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--fg);
+        cursor: pointer;
+      }
+      button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
+      input[type="text"] {
+        font: inherit;
+        padding: 4px 8px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--bg);
+        color: var(--fg);
+        max-width: 100%;
+      }
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin: 12px 0;
+      }
+      .task {
+        margin: 12px 0;
+        padding: 8px 12px;
+        border-left: 4px solid var(--accent);
+        background: var(--panel);
+        border-radius: 4px;
+      }
+      .sentence {
+        font-size: 22px;
+        margin: 16px 0;
+        padding: 12px;
+        background: var(--panel);
+        border-radius: 8px;
+      }
+      mark {
+        background: var(--mark);
+        color: inherit;
+        padding: 0 2px;
+        border-radius: 3px;
+      }
+      fieldset {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin: 12px 0;
+        padding: 8px 12px;
+      }
+      legend {
+        font-weight: 600;
+      }
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin: 4px 16px 4px 0;
+        cursor: pointer;
+      }
+      #choice label {
+        font-size: 24px;
+      }
+      #choice label.unclear {
+        font-size: 16px;
+      }
+      progress {
+        width: 160px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>アクセントと英語の聞き取り</h1>
+    <section id="start">
+      <p>音声合成の音声を聞いて答えてもらう聞き取りテストです。どの音声合成・どの方式の音声かは伏せてあります。聞こえたとおりに答えてください。</p>
+      <h2>パート1：アクセント</h2>
+      <p>
+        文から切り出した短い音声（単語と、その後ろの助詞など1拍）を聞いて、音の高さ（アクセント）が候補のどの語に聞こえるかを選んでください。
+        候補は同じ読みでアクセントだけが違う語です（例：雨／飴）。共通語（東京式）のアクセントで判断してください。決められないときは「どちらとも言えない」を選んでください。
+      </p>
+      <h2>パート2：英語</h2>
+      <p>
+        英語の部分を含む日本語の文を聞いて、「英語の部分が英語らしく聞こえるか」と「文全体の自然さ」をそれぞれ 1〜5 で選んでください。
+        英語の部分は文字では伏せてあります（＿＿＿）。聞き取れた英語があれば、書いてください（任意）。
+      </p>
+      <ul class="note">
+        <li>
+          音声は何度でも聞き直せます（「もう一度再生」またはスペースキー）。パート1では数字キーで候補を、0 で「どちらとも言えない」を選べます。Enter
+          で次へ進みます。
+        </li>
+        <li>回答はこのブラウザに自動で保存されます。途中でやめて、あとで続きから再開できます。</li>
+        <li>終わったら（途中でも）「回答をダウンロード」でファイルを保存し、担当者に送ってください。</li>
+        <li>ヘッドホンかイヤホンの使用をおすすめします。</li>
+      </ul>
+      <div class="bar">
+        <label>お名前（ニックネーム可） <input id="name" type="text" autocomplete="off" /></label>
+      </div>
+      <div class="bar">
+        <label>アクセントの身についた地域（任意。例：東京、大阪） <input id="region" type="text" autocomplete="off" /></label>
+      </div>
+      <div class="bar">
+        <button id="begin" class="primary">開始</button>
+      </div>
+    </section>
+
+    <section id="main" class="hidden">
+      <div class="bar note">
+        <span id="who"></span>
+        <progress id="progress" value="0" max="1"></progress>
+        <span id="count"></span>
+      </div>
+      <div class="bar note" id="clipno"></div>
+      <div class="task" id="task"></div>
+      <div class="sentence hidden" id="sentence"></div>
+      <div class="bar">
+        <button id="play">もう一度再生</button>
+        <audio id="audio" controls preload="auto"></audio>
+      </div>
+      <fieldset id="choice">
+        <legend>どの語に聞こえますか</legend>
+      </fieldset>
+      <fieldset id="english">
+        <legend>英語の部分は英語らしく聞こえますか</legend>
+      </fieldset>
+      <div class="bar" id="heardBar">
+        <label>聞き取れた英語（任意） <input id="heard" type="text" autocomplete="off" size="36" /></label>
+      </div>
+      <fieldset id="natural">
+        <legend>自然さ</legend>
+      </fieldset>
+      <div class="bar">
+        <button id="prev">前へ</button>
+        <button id="next" class="primary">次へ</button>
+        <button id="skip">未回答へ</button>
+      </div>
+      <div class="bar">
+        <button id="download">回答をダウンロード</button>
+        <button id="switch">名前を変える</button>
+        <span class="note" id="saved"></span>
+      </div>
+    </section>
+
+    <section id="done" class="hidden">
+      <p>すべての音声に回答しました。ありがとうございました。「回答をダウンロード」でファイルを保存し、担当者に送ってください。</p>
+      <div class="bar">
+        <button id="download2" class="primary">回答をダウンロード</button>
+        <button id="back">見直す</button>
+      </div>
+    </section>
+
+    <script type="module">
+      import { shuffled } from "./shuffle.mjs";
+
+      const $ = (id) => document.getElementById(id);
+      const UNCLEAR = "unclear";
+      const TASK = {
+        A: "パート1：音の高さが、どの語に聞こえますか。",
+        B: "パート2：英語の部分は英語らしく聞こえますか。文全体は自然ですか。",
+      };
+      const store = {
+        get(key) {
+          try {
+            return JSON.parse(localStorage.getItem(key) ?? "null");
+          } catch {
+            return null;
+          }
+        },
+        put(key, value) {
+          try {
+            localStorage.setItem(key, JSON.stringify(value));
+            return true;
+          } catch {
+            return false;
+          }
+        },
+      };
+      const set = await (await fetch("set.json")).json();
+      const state = { name: "", region: "", order: [], pos: 0, answers: {}, shownAt: 0 };
+      const key = () => `ipaListen:${set.seed}:${state.name}`;
+
+      function save() {
+        const ok = store.put(key(), { pos: state.pos, region: state.region, answers: state.answers });
+        $("saved").textContent = ok ? "保存しました" : "このブラウザには保存できません。こまめにダウンロードしてください。";
+      }
+
+      function begin(name) {
+        state.name = name.trim();
+        if (!state.name) return;
+        store.put("ipaListen:listener", state.name);
+        const saved = store.get(key()) ?? {};
+        state.answers = saved.answers ?? {};
+        state.region = $("region").value.trim() || saved.region || "";
+        const part = (p) =>
+          shuffled(
+            set.clips.filter((c) => c.part === p),
+            `${set.seed} ${state.name} ${p}`,
+          );
+        state.order = [...part("A"), ...part("B")];
+        state.pos = Math.min(saved.pos ?? 0, state.order.length - 1);
+        $("start").classList.add("hidden");
+        $("main").classList.remove("hidden");
+        $("who").textContent = `回答者: ${state.name}`;
+        show();
+      }
+
+      const clip = () => state.order[state.pos];
+      const fresh = (c) => (c.part === "A" ? { choice: null, naturalness: null } : { english: null, naturalness: null, heard: "" });
+      const answer = () => (state.answers[clip().id] ??= { ...fresh(clip()), plays: 0, ms: 0, first: Date.now() });
+      const complete = (id, part) => {
+        const a = state.answers[id];
+        return part === "A" ? !!a?.choice : !!(a?.english && a?.naturalness);
+      };
+
+      function radio(group, value, text, checked, onPick) {
+        const label = document.createElement("label"),
+          input = document.createElement("input");
+        Object.assign(input, { type: "radio", name: group, value, checked });
+        input.addEventListener("change", onPick);
+        label.append(input, text);
+        return label;
+      }
+
+      function scale(box, field, ends) {
+        const a = answer();
+        box.replaceChildren(box.querySelector("legend"));
+        for (const v of [1, 2, 3, 4, 5]) {
+          const text = { 1: `1 ${ends[0]}`, 5: `5 ${ends[1]}` }[v] ?? String(v);
+          box.append(radio(field, String(v), text, a[field] === v, () => ((a[field] = v), update())));
+        }
+      }
+
+      // the minimal set's words in an order fixed per listener and clip, then "neither"
+      function choiceField(c) {
+        const box = $("choice"),
+          a = answer(),
+          words = shuffled(c.choices, `${set.seed} ${state.name} ${c.id} choices`);
+        box.replaceChildren(box.querySelector("legend"));
+        box.querySelector("legend").textContent = `どの語に聞こえますか（読み：${c.kana}）`;
+        words.forEach((w, k) => box.append(radio("choice", w, `${k + 1}. ${w}`, a.choice === w, () => ((a.choice = w), update()))));
+        const none = radio("choice", UNCLEAR, words.length > 2 ? "0. どれとも言えない" : "0. どちらとも言えない", a.choice === UNCLEAR, () => {
+          a.choice = UNCLEAR;
+          update();
+        });
+        none.classList.add("unclear");
+        box.append(none);
+      }
+
+      function play() {
+        const audio = $("audio");
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        answer().plays += 1;
+      }
+
+      function leave() {
+        if (!state.shownAt) return;
+        answer().ms += Date.now() - state.shownAt;
+        state.shownAt = 0;
+      }
+
+      function show() {
+        const c = clip(),
+          isA = c.part === "A";
+        state.shownAt = Date.now();
+        $("clipno").textContent = `音声 ${state.pos + 1} / ${state.order.length}`;
+        $("task").textContent = TASK[c.part];
+        $("sentence").classList.toggle("hidden", isA);
+        $("choice").classList.toggle("hidden", !isA);
+        $("english").classList.toggle("hidden", isA);
+        $("heardBar").classList.toggle("hidden", isA);
+        $("natural").querySelector("legend").textContent = isA ? "自然さ（任意）" : "文全体の自然さ";
+        if (isA) choiceField(c);
+        else {
+          $("sentence").textContent = c.text;
+          scale($("english"), "english", ["日本語（カタカナ）の発音", "英語の発音"]);
+          $("heard").value = answer().heard;
+        }
+        scale($("natural"), "naturalness", ["不自然", "自然"]);
+        $("audio").src = `clip/${c.id}.wav`;
+        play();
+        update();
+      }
+
+      function update() {
+        const n = state.order.filter((c) => complete(c.id, c.part)).length;
+        Object.assign($("progress"), { value: n, max: state.order.length });
+        $("count").textContent = `回答済み ${n} / ${state.order.length}`;
+        $("prev").disabled = state.pos === 0;
+        $("next").disabled = !complete(clip().id, clip().part);
+        save();
+      }
+
+      function go(pos) {
+        leave();
+        state.pos = pos;
+        if (pos >= state.order.length) {
+          state.pos = state.order.length - 1;
+          save();
+          $("main").classList.add("hidden");
+          $("done").classList.remove("hidden");
+          return;
+        }
+        show();
+      }
+
+      function download() {
+        leave();
+        state.shownAt = Date.now();
+        const body = { listener: state.name, region: state.region, set: set.seed, saved: new Date().toISOString(), answers: state.answers };
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([JSON.stringify(body, null, 1)], { type: "application/json" }));
+        a.download = `listening.${state.name.replace(/[^\p{L}\p{N}_-]+/gu, "_")}.json`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+
+      function pickByKey(e) {
+        const inputs = [...$("choice").querySelectorAll("input")],
+          k = e.key === "0" ? inputs.length - 1 : Number(e.key) - 1;
+        if (!/^[0-9]$/.test(e.key) || !inputs[k]) return;
+        inputs[k].checked = true;
+        inputs[k].dispatchEvent(new Event("change"));
+      }
+
+      $("begin").addEventListener("click", () => begin($("name").value));
+      $("name").addEventListener("keydown", (e) => e.key === "Enter" && begin($("name").value));
+      $("heard").addEventListener("input", () => ((answer().heard = $("heard").value), save()));
+      $("play").addEventListener("click", play);
+      $("prev").addEventListener("click", () => go(state.pos - 1));
+      $("next").addEventListener("click", () => go(state.pos + 1));
+      $("skip").addEventListener("click", () => {
+        const open = (c, i) => i > state.pos && !complete(c.id, c.part);
+        const at = state.order.findIndex(open),
+          first = state.order.findIndex((c) => !complete(c.id, c.part));
+        go(at >= 0 ? at : first >= 0 ? first : state.order.length);
+      });
+      $("download").addEventListener("click", download);
+      $("download2").addEventListener("click", download);
+      $("back").addEventListener("click", () => {
+        $("done").classList.add("hidden");
+        $("main").classList.remove("hidden");
+        show();
+      });
+      $("switch").addEventListener("click", () => {
+        leave();
+        save();
+        $("main").classList.add("hidden");
+        $("done").classList.add("hidden");
+        $("start").classList.remove("hidden");
+      });
+      document.addEventListener("keydown", (e) => {
+        if ($("main").classList.contains("hidden") || e.target.closest("#start")) return;
+        if (e.key === "Enter" && !$("next").disabled) return go(state.pos + 1);
+        if (e.target.tagName === "INPUT" && e.target.type === "text") return;
+        if (e.key === " ") {
+          e.preventDefault();
+          play();
+        } else if (clip().part === "A") pickByKey(e);
+      });
+      $("name").value = store.get("ipaListen:listener") ?? "";
+    </script>
+  </body>
+</html>

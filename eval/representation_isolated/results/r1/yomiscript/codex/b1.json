@@ -1,0 +1,40 @@
+{
+ "llm": "codex",
+ "condition": "yomiscript",
+ "run": 1,
+ "batch": 1,
+ "items": [
+  "h001",
+  "h009",
+  "h017",
+  "h018",
+  "h022",
+  "h027",
+  "h029",
+  "h058",
+  "h063",
+  "h066"
+ ],
+ "model": "gpt-6.1-sol",
+ "seconds": 15.225,
+ "tries": [
+  {
+   "seconds": 15.225,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:00:16.483Z",
+ "output": {
+  "h001": "ja /ɕiatoɾɯ<t:シアトル> no<t:の> itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> sakana<t:魚> ɡa<t:が> ɯɾa<t:売ら> ɾete<t:れて> iɾɯ<t:いる。> ↘/",
+  "h009": "ja /bɯtai<t:舞台> no<t:の> kamite<t:上手> kaɾa<t:から> jakɯɕa<t:役者> ɡa<t:が> toːdʑoː<t:登場> ɕita<t:した。> ↘/",
+  "h017": "ja /aɕita<t:明日> wa<t:は> ame<t:雨> ɡa<t:が> ɸɯɾɯ<t:降る> deɕoː<t:でしょう。> ↘/",
+  "h018": "ja /ikkoː<t:一行> wa<t:は> bɯdʑi<t:無事> ɲi<t:に> santɕoː<t:山頂> ɲi<t:に> tsɯita<t:着いた。> ↘/",
+  "h022": "ja /mokka<t:目下> no<t:の> kadai<t:課題> wa<t:は> ɕikiɴ<t:資金> no<t:の> kakɯho<t:確保> da<t:だ。> ↘/",
+  "h027": "ja /tsɯjoi<t:強い> kaŋki<t:寒気> ɡa<t:が> naŋka<t:南下> ɕite<t:して> iɾɯ<t:いる。> ↘/",
+  "h029": "ja /namboɴ<t:何本> aɾimasɯ<t:あります> ka<t:か。> ↗/",
+  "h058": "ja /dai saɴ ɕoː<t:第3章> o<t:を> jonde<t:読んで> oite<t:おいて> kɯdasai<t:ください。> ↘/",
+  "h063": "ja /ɡoɡatsɯ itsɯka<t:5月5日> wa<t:は> kodomo<t:こども> no<t:の> çi<t:日> desɯ<t:です。> ↘/",
+  "h066": "ja /saŋɡatsɯ mikka<t:3月3日> wa<t:は> çinamatsɯɾi<t:ひな祭り> da<t:だ。> ↘/"
+ },
+ "raw": "{\n  \"h001\": \"ja /ɕiatoɾɯ<t:シアトル> no<t:の> itɕi<t:市> de<t:で> wa<t:は> ‖<t:、> sakana<t:魚> ɡa<t:が> ɯɾa<t:売ら> ɾete<t:れて> iɾɯ<t:いる。> ↘/\",\n  \"h009\": \"ja /bɯtai<t:舞台> no<t:の> kamite<t:上手> kaɾa<t:から> jakɯɕa<t:役者> ɡa<t:が> toːdʑoː<t:登場> ɕita<t:した。> ↘/\",\n  \"h017\": \"ja /aɕita<t:明日> wa<t:は> ame<t:雨> ɡa<t:が> ɸɯɾɯ<t:降る> deɕoː<t:でしょう。> ↘/\",\n  \"h018\": \"ja /ikkoː<t:一行> wa<t:は> bɯdʑi<t:無事> ɲi<t:に> santɕoː<t:山頂> ɲi<t:に> tsɯita<t:着いた。> ↘/\",\n  \"h022\": \"ja /mokka<t:目下> no<t:の> kadai<t:課題> wa<t:は> ɕikiɴ<t:資金> no<t:の> kakɯho<t:確保> da<t:だ。> ↘/\",\n  \"h027\": \"ja /tsɯjoi<t:強い> kaŋki<t:寒気> ɡa<t:が> naŋka<t:南下> ɕite<t:して> iɾɯ<t:いる。> ↘/\",\n  \"h029\": \"ja /namboɴ<t:何本> aɾimasɯ<t:あります> ka<t:か。> ↗/\",\n  \"h058\": \"ja /dai saɴ ɕoː<t:第3章> o<t:を> jonde<t:読んで> oite<t:おいて> kɯdasai<t:ください。> ↘/\",\n  \"h063\": \"ja /ɡoɡatsɯ itsɯka<t:5月5日> wa<t:は> kodomo<t:こども> no<t:の> çi<t:日> desɯ<t:です。> ↘/\",\n  \"h066\": \"ja /saŋɡatsɯ mikka<t:3月3日> wa<t:は> çinamatsɯɾi<t:ひな祭り> da<t:だ。> ↘/\"\n}"
+}

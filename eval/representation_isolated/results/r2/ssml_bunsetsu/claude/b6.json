@@ -1,0 +1,41 @@
+{
+ "llm": "claude",
+ "condition": "ssml_bunsetsu",
+ "run": 2,
+ "batch": 6,
+ "items": [
+  "h005",
+  "h012",
+  "h019",
+  "h036",
+  "h037",
+  "h053",
+  "h057",
+  "h060",
+  "h061",
+  "h070"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 22.928,
+ "outputTokens": 2284,
+ "tries": [
+  {
+   "seconds": 22.928,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:03:16.798Z",
+ "output": {
+  "h005": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='koɲɲitɕi no'>今日の</phoneme><phoneme alphabet='ipa' ph='ɲihoŋ keːzai o'>日本経済を</phoneme><phoneme alphabet='ipa' ph='ɾoɲdʑiɾɯ'>論じる</phoneme>。</speak>",
+  "h012": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kanodʑo wa'>彼女は</phoneme><phoneme alphabet='ipa' ph='ɲiŋki ɡa'>人気が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme><phoneme alphabet='ipa' ph='kaɕɯ da'>歌手だ</phoneme>。</speak>",
+  "h019": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='saiɕo no'>最初の</phoneme><phoneme alphabet='ipa' ph='itɕi ɡʲoː o'>一行を</phoneme><phoneme alphabet='ipa' ph='jonde'>読んで</phoneme><phoneme alphabet='ipa' ph='kɯdasai'>ください</phoneme>。</speak>",
+  "h036": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='sappɯ no'>SAPの</phoneme><phoneme alphabet='ipa' ph='doːɲɯː o'>導入を</phoneme><phoneme alphabet='ipa' ph='keɴtoː ɕite iɾɯ'>検討している</phoneme>。</speak>",
+  "h037": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕippɯ de'>SIPで</phoneme><phoneme alphabet='ipa' ph='deɴwa o'>電話を</phoneme><phoneme alphabet='ipa' ph='tsɯnaɡɯ'>つなぐ</phoneme>。</speak>",
+  "h053": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kioɴ wa'>気温は</phoneme><phoneme alphabet='ipa' ph='ɲidʑɯːɡo teɴ ɡo do made'>25.5度まで</phoneme><phoneme alphabet='ipa' ph='aɡatta'>上がった</phoneme>。</speak>",
+  "h057": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='hitoɾi de'>1人で</phoneme><phoneme alphabet='ipa' ph='kite'>来て</phoneme><phoneme alphabet='ipa' ph='kɯdasai'>ください</phoneme>。</speak>",
+  "h060": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕiɡatsɯ tsɯitatɕi wa'>4月1日は</phoneme><phoneme alphabet='ipa' ph='ɲɯːɡakɯɕiki da'>入学式だ</phoneme>。</speak>",
+  "h061": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑɯːɡatsɯ ɲidʑɯː jokka ni'>10月24日に</phoneme><phoneme alphabet='ipa' ph='kaiɡi ɡa'>会議が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>",
+  "h070": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='maitsɯki'>毎月</phoneme><phoneme alphabet='ipa' ph='joːka ni'>8日に</phoneme><phoneme alphabet='ipa' ph='teŋkeɴ o'>点検を</phoneme><phoneme alphabet='ipa' ph='okonaɯ'>行う</phoneme>。</speak>"
+ },
+ "raw": "```json\n{\"h005\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='koɲɲitɕi no'>今日の</phoneme><phoneme alphabet='ipa' ph='ɲihoŋ keːzai o'>日本経済を</phoneme><phoneme alphabet='ipa' ph='ɾoɲdʑiɾɯ'>論じる</phoneme>。</speak>\", \"h012\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kanodʑo wa'>彼女は</phoneme><phoneme alphabet='ipa' ph='ɲiŋki ɡa'>人気が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme><phoneme alphabet='ipa' ph='kaɕɯ da'>歌手だ</phoneme>。</speak>\", \"h019\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='saiɕo no'>最初の</phoneme><phoneme alphabet='ipa' ph='itɕi ɡʲoː o'>一行を</phoneme><phoneme alphabet='ipa' ph='jonde'>読んで</phoneme><phoneme alphabet='ipa' ph='kɯdasai'>ください</phoneme>。</speak>\", \"h036\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='sappɯ no'>SAPの</phoneme><phoneme alphabet='ipa' ph='doːɲɯː o'>導入を</phoneme><phoneme alphabet='ipa' ph='keɴtoː ɕite iɾɯ'>検討している</phoneme>。</speak>\", \"h037\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕippɯ de'>SIPで</phoneme><phoneme alphabet='ipa' ph='deɴwa o'>電話を</phoneme><phoneme alphabet='ipa' ph='tsɯnaɡɯ'>つなぐ</phoneme>。</speak>\", \"h053\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kioɴ wa'>気温は</phoneme><phoneme alphabet='ipa' ph='ɲidʑɯːɡo teɴ ɡo do made'>25.5度まで</phoneme><phoneme alphabet='ipa' ph='aɡatta'>上がった</phoneme>。</speak>\", \"h057\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='hitoɾi de'>1人で</phoneme><phoneme alphabet='ipa' ph='kite'>来て</phoneme><phoneme alphabet='ipa' ph='kɯdasai'>ください</phoneme>。</speak>\", \"h060\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕiɡatsɯ tsɯitatɕi wa'>4月1日は</phoneme><phoneme alphabet='ipa' ph='ɲɯːɡakɯɕiki da'>入学式だ</phoneme>。</speak>\", \"h061\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑɯːɡatsɯ ɲidʑɯː jokka ni'>10月24日に</phoneme><phoneme alphabet='ipa' ph='kaiɡi ɡa'>会議が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>\", \"h070\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='maitsɯki'>毎月</phoneme><phoneme alphabet='ipa' ph='joːka ni'>8日に</phoneme><phoneme alphabet='ipa' ph='teŋkeɴ o'>点検を</phoneme><phoneme alphabet='ipa' ph='okonaɯ'>行う</phoneme>。</speak>\"}\n```"
+}

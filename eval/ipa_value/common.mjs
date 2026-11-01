@@ -82,3 +82,10 @@ export function levels(M) {
     return here;
   });
 }
+
+/** the target word's morae as compared (morae() keys), from the base reading: the morae of the word whose text it is */
+export function targetKeys(x, base) {
+  const M = morae(base.ys),
+    span = M.find((m) => m.text.replace(/。$/, "") === x.word).span;
+  return M.filter((m) => m.span === span).map((m) => m.key);
+}

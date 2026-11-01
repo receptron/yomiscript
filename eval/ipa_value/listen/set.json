@@ -1,0 +1,6135 @@
+{
+ "seed": "ipa_value listening 1",
+ "made": "2026-11-01",
+ "failed": [],
+ "clips": [
+  {
+   "id": "a001",
+   "part": "A",
+   "item": "ijou_1",
+   "set": "ijou",
+   "word": "以上",
+   "kana": "イジョー",
+   "cond": "kana_dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/ijou_1.wav",
+   "from": 0.33,
+   "to": 0.83,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "de"
+   ]
+  },
+  {
+   "id": "a002",
+   "part": "A",
+   "item": "ijou_2",
+   "set": "ijou",
+   "word": "異常",
+   "kana": "イジョー",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/ijou_2.wav",
+   "from": 0.83,
+   "to": 1.28,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a003",
+   "part": "A",
+   "item": "kami_3",
+   "set": "kami",
+   "word": "髪",
+   "kana": "カミ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/kami_3.wav",
+   "from": 1.055,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "mi",
+    "o"
+   ]
+  },
+  {
+   "id": "a004",
+   "part": "A",
+   "item": "aki_2",
+   "set": "aki",
+   "word": "空き",
+   "kana": "アキ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/aki_2.wav",
+   "from": 1.08,
+   "to": 1.405,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a005",
+   "part": "A",
+   "item": "atsui_1",
+   "set": "atsui",
+   "word": "熱い",
+   "kana": "アツイ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/atsui_1.wav",
+   "from": 0.355,
+   "to": 0.805,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "o"
+   ]
+  },
+  {
+   "id": "a006",
+   "part": "A",
+   "item": "aka_1",
+   "set": "aka",
+   "word": "赤",
+   "kana": "アカ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/aka_1.wav",
+   "from": 0.98,
+   "to": 1.28,
+   "heard": [
+    "a",
+    "ka",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a007",
+   "part": "A",
+   "item": "ima_2",
+   "set": "ima",
+   "word": "居間",
+   "kana": "イマ",
+   "cond": "kana_dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/ima_2.wav",
+   "from": 0.905,
+   "to": 1.255,
+   "heard": [
+    "i",
+    "ma",
+    "de"
+   ]
+  },
+  {
+   "id": "a008",
+   "part": "A",
+   "item": "michi_1",
+   "set": "michi",
+   "word": "道",
+   "kana": "ミチ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/michi_1.wav",
+   "from": 0.53,
+   "to": 0.955,
+   "heard": [
+    "mi",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a009",
+   "part": "A",
+   "item": "ishi_1",
+   "set": "ishi",
+   "word": "石",
+   "kana": "イシ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/ishi_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a010",
+   "part": "A",
+   "item": "asa_2",
+   "set": "asa",
+   "word": "麻",
+   "kana": "アサ",
+   "cond": "kana_dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/asa_2.wav",
+   "from": 1.055,
+   "to": 1.43,
+   "heard": [
+    "a",
+    "sa",
+    "de"
+   ]
+  },
+  {
+   "id": "a011",
+   "part": "A",
+   "item": "ishi_1",
+   "set": "ishi",
+   "word": "石",
+   "kana": "イシ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/ishi_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a012",
+   "part": "A",
+   "item": "ichi_2",
+   "set": "ichi",
+   "word": "位置",
+   "kana": "イチ",
+   "cond": "kana_dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/ichi_2.wav",
+   "from": 0.805,
+   "to": 1.155,
+   "heard": [
+    "i",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a013",
+   "part": "A",
+   "item": "sake_2",
+   "set": "sake",
+   "word": "鮭",
+   "kana": "サケ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/sake_2.wav",
+   "from": 0.73,
+   "to": 1.18,
+   "heard": [
+    "sa",
+    "ke",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a014",
+   "part": "A",
+   "item": "shita_1",
+   "set": "shita",
+   "word": "下",
+   "kana": "シタ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/shita_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "ɕi",
+    "ta",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a015",
+   "part": "A",
+   "item": "atsui_1",
+   "set": "atsui",
+   "word": "熱い",
+   "kana": "アツイ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/atsui_1.wav",
+   "from": 0.355,
+   "to": 0.805,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "o"
+   ]
+  },
+  {
+   "id": "a016",
+   "part": "A",
+   "item": "aki_1",
+   "set": "aki",
+   "word": "秋",
+   "kana": "アキ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/aki_1.wav",
+   "from": 0.33,
+   "to": 0.68,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a017",
+   "part": "A",
+   "item": "atsui_2",
+   "set": "atsui",
+   "word": "厚い",
+   "kana": "アツイ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/atsui_2.wav",
+   "from": 0.355,
+   "to": 0.855,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "ho"
+   ]
+  },
+  {
+   "id": "a018",
+   "part": "A",
+   "item": "ima_1",
+   "set": "ima",
+   "word": "今",
+   "kana": "イマ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/ima_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "ma",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a019",
+   "part": "A",
+   "item": "ki_1",
+   "set": "ki",
+   "word": "木",
+   "kana": "キ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/ki_1.wav",
+   "from": 0.93,
+   "to": 1.18,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a020",
+   "part": "A",
+   "item": "ki_1",
+   "set": "ki",
+   "word": "木",
+   "kana": "キ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/ki_1.wav",
+   "from": 0.93,
+   "to": 1.18,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a021",
+   "part": "A",
+   "item": "ame_1",
+   "set": "ame",
+   "word": "雨",
+   "kana": "アメ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/ame_1.wav",
+   "from": 0.83,
+   "to": 1.155,
+   "heard": [
+    "a",
+    "me",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a022",
+   "part": "A",
+   "item": "kami_3",
+   "set": "kami",
+   "word": "髪",
+   "kana": "カミ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/kami_3.wav",
+   "from": 1.055,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "mi",
+    "o"
+   ]
+  },
+  {
+   "id": "a023",
+   "part": "A",
+   "item": "hashi_3",
+   "set": "hashi",
+   "word": "端",
+   "kana": "ハシ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/hashi_3.wav",
+   "from": 0.755,
+   "to": 1.18,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a024",
+   "part": "A",
+   "item": "hashi_1",
+   "set": "hashi",
+   "word": "橋",
+   "kana": "ハシ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/hashi_1.wav",
+   "from": 1.355,
+   "to": 1.705,
+   "heard": [
+    "ha",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a025",
+   "part": "A",
+   "item": "atsui_2",
+   "set": "atsui",
+   "word": "厚い",
+   "kana": "アツイ",
+   "cond": "kana_dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/atsui_2.wav",
+   "from": 0.355,
+   "to": 0.855,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "ho"
+   ]
+  },
+  {
+   "id": "a026",
+   "part": "A",
+   "item": "ima_1",
+   "set": "ima",
+   "word": "今",
+   "kana": "イマ",
+   "cond": "kana_dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/ima_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "ma",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a027",
+   "part": "A",
+   "item": "asa_1",
+   "set": "asa",
+   "word": "朝",
+   "kana": "アサ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/asa_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "a",
+    "sa",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a028",
+   "part": "A",
+   "item": "ame_2",
+   "set": "ame",
+   "word": "飴",
+   "kana": "アメ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/ame_2.wav",
+   "from": 0.88,
+   "to": 1.205,
+   "heard": [
+    "a",
+    "me",
+    "o"
+   ]
+  },
+  {
+   "id": "a029",
+   "part": "A",
+   "item": "sake_2",
+   "set": "sake",
+   "word": "鮭",
+   "kana": "サケ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/sake_2.wav",
+   "from": 0.73,
+   "to": 1.18,
+   "heard": [
+    "sa",
+    "ke",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a030",
+   "part": "A",
+   "item": "ishi_2",
+   "set": "ishi",
+   "word": "意思",
+   "kana": "イシ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/ishi_2.wav",
+   "from": 0.93,
+   "to": 1.28,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a031",
+   "part": "A",
+   "item": "asa_1",
+   "set": "asa",
+   "word": "朝",
+   "kana": "アサ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/asa_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "a",
+    "sa",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a032",
+   "part": "A",
+   "item": "ishi_2",
+   "set": "ishi",
+   "word": "意思",
+   "kana": "イシ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/ishi_2.wav",
+   "from": 0.905,
+   "to": 1.255,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a033",
+   "part": "A",
+   "item": "aka_2",
+   "set": "aka",
+   "word": "垢",
+   "kana": "アカ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/aka_2.wav",
+   "from": 0.855,
+   "to": 1.205,
+   "heard": [
+    "a",
+    "ka",
+    "o"
+   ]
+  },
+  {
+   "id": "a034",
+   "part": "A",
+   "item": "michi_2",
+   "set": "michi",
+   "word": "未知",
+   "kana": "ミチ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/michi_2.wav",
+   "from": 0.305,
+   "to": 0.755,
+   "heard": [
+    "mi",
+    "tɕi",
+    "no"
+   ]
+  },
+  {
+   "id": "a035",
+   "part": "A",
+   "item": "asa_1",
+   "set": "asa",
+   "word": "朝",
+   "kana": "アサ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/asa_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "a",
+    "sa",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a036",
+   "part": "A",
+   "item": "kata_2",
+   "set": "kata",
+   "word": "型",
+   "kana": "カタ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/kata_2.wav",
+   "from": 0.805,
+   "to": 1.205,
+   "heard": [
+    "ka",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a037",
+   "part": "A",
+   "item": "hi_1",
+   "set": "hi",
+   "word": "火",
+   "kana": "ヒ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/hi_1.wav",
+   "from": 0.73,
+   "to": 0.98,
+   "heard": [
+    "çi",
+    "o"
+   ]
+  },
+  {
+   "id": "a038",
+   "part": "A",
+   "item": "kata_2",
+   "set": "kata",
+   "word": "型",
+   "kana": "カタ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/kata_2.wav",
+   "from": 0.805,
+   "to": 1.205,
+   "heard": [
+    "ka",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a039",
+   "part": "A",
+   "item": "hashi_2",
+   "set": "hashi",
+   "word": "箸",
+   "kana": "ハシ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/hashi_2.wav",
+   "from": 1.305,
+   "to": 1.73,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a040",
+   "part": "A",
+   "item": "michi_2",
+   "set": "michi",
+   "word": "未知",
+   "kana": "ミチ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/michi_2.wav",
+   "from": 0.305,
+   "to": 0.755,
+   "heard": [
+    "mi",
+    "tɕi",
+    "no"
+   ]
+  },
+  {
+   "id": "a041",
+   "part": "A",
+   "item": "shio_2",
+   "set": "shio",
+   "word": "潮",
+   "kana": "シオ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/shio_2.wav",
+   "from": 0.33,
+   "to": 0.73,
+   "heard": [
+    "ɕi",
+    "o",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a042",
+   "part": "A",
+   "item": "ame_2",
+   "set": "ame",
+   "word": "飴",
+   "kana": "アメ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/ame_2.wav",
+   "from": 0.88,
+   "to": 1.205,
+   "heard": [
+    "a",
+    "me",
+    "o"
+   ]
+  },
+  {
+   "id": "a043",
+   "part": "A",
+   "item": "shio_2",
+   "set": "shio",
+   "word": "潮",
+   "kana": "シオ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/shio_2.wav",
+   "from": 0.33,
+   "to": 0.755,
+   "heard": [
+    "ɕi",
+    "o",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a044",
+   "part": "A",
+   "item": "hashi_1",
+   "set": "hashi",
+   "word": "橋",
+   "kana": "ハシ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/hashi_1.wav",
+   "from": 1.355,
+   "to": 1.705,
+   "heard": [
+    "ha",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a045",
+   "part": "A",
+   "item": "kata_1",
+   "set": "kata",
+   "word": "肩",
+   "kana": "カタ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/kata_1.wav",
+   "from": 1.18,
+   "to": 1.555,
+   "heard": [
+    "ka",
+    "ta",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a046",
+   "part": "A",
+   "item": "aki_2",
+   "set": "aki",
+   "word": "空き",
+   "kana": "アキ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/aki_2.wav",
+   "from": 1.105,
+   "to": 1.43,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a047",
+   "part": "A",
+   "item": "michi_1",
+   "set": "michi",
+   "word": "道",
+   "kana": "ミチ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/michi_1.wav",
+   "from": 0.53,
+   "to": 0.955,
+   "heard": [
+    "mi",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a048",
+   "part": "A",
+   "item": "ishi_2",
+   "set": "ishi",
+   "word": "意思",
+   "kana": "イシ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/ishi_2.wav",
+   "from": 0.93,
+   "to": 1.28,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a049",
+   "part": "A",
+   "item": "toshi_1",
+   "set": "toshi",
+   "word": "都市",
+   "kana": "トシ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/toshi_1.wav",
+   "from": 1.38,
+   "to": 2.505,
+   "heard": [
+    "to",
+    "ɕi",
+    "da"
+   ]
+  },
+  {
+   "id": "a050",
+   "part": "A",
+   "item": "asa_2",
+   "set": "asa",
+   "word": "麻",
+   "kana": "アサ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/asa_2.wav",
+   "from": 1.055,
+   "to": 1.43,
+   "heard": [
+    "a",
+    "sa",
+    "de"
+   ]
+  },
+  {
+   "id": "a051",
+   "part": "A",
+   "item": "kami_2",
+   "set": "kami",
+   "word": "紙",
+   "kana": "カミ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/kami_2.wav",
+   "from": 1.03,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "mi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a052",
+   "part": "A",
+   "item": "ichi_2",
+   "set": "ichi",
+   "word": "位置",
+   "kana": "イチ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/ichi_2.wav",
+   "from": 0.805,
+   "to": 1.155,
+   "heard": [
+    "i",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a053",
+   "part": "A",
+   "item": "hi_2",
+   "set": "hi",
+   "word": "日",
+   "kana": "ヒ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/hi_2.wav",
+   "from": 0.305,
+   "to": 0.655,
+   "heard": [
+    "çi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a054",
+   "part": "A",
+   "item": "shio_2",
+   "set": "shio",
+   "word": "潮",
+   "kana": "シオ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/shio_2.wav",
+   "from": 0.33,
+   "to": 0.73,
+   "heard": [
+    "ɕi",
+    "o",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a055",
+   "part": "A",
+   "item": "ki_2",
+   "set": "ki",
+   "word": "気",
+   "kana": "キ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/ki_2.wav",
+   "from": 0.73,
+   "to": 1.005,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a056",
+   "part": "A",
+   "item": "ijou_1",
+   "set": "ijou",
+   "word": "以上",
+   "kana": "イジョー",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/ijou_1.wav",
+   "from": 0.33,
+   "to": 0.83,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "de"
+   ]
+  },
+  {
+   "id": "a057",
+   "part": "A",
+   "item": "aki_2",
+   "set": "aki",
+   "word": "空き",
+   "kana": "アキ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/aki_2.wav",
+   "from": 1.105,
+   "to": 1.43,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a058",
+   "part": "A",
+   "item": "kami_1",
+   "set": "kami",
+   "word": "神",
+   "kana": "カミ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/kami_1.wav",
+   "from": 0.28,
+   "to": 0.755,
+   "heard": [
+    "ka",
+    "mi",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a059",
+   "part": "A",
+   "item": "shio_1",
+   "set": "shio",
+   "word": "塩",
+   "kana": "シオ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/shio_1.wav",
+   "from": 0.855,
+   "to": 1.23,
+   "heard": [
+    "ɕi",
+    "o",
+    "o"
+   ]
+  },
+  {
+   "id": "a060",
+   "part": "A",
+   "item": "michi_1",
+   "set": "michi",
+   "word": "道",
+   "kana": "ミチ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/michi_1.wav",
+   "from": 0.53,
+   "to": 0.955,
+   "heard": [
+    "mi",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a061",
+   "part": "A",
+   "item": "ichi_2",
+   "set": "ichi",
+   "word": "位置",
+   "kana": "イチ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/ichi_2.wav",
+   "from": 0.805,
+   "to": 1.155,
+   "heard": [
+    "i",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a062",
+   "part": "A",
+   "item": "hana_1",
+   "set": "hana",
+   "word": "鼻",
+   "kana": "ハナ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/hana_1.wav",
+   "from": 0.73,
+   "to": 1.105,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a063",
+   "part": "A",
+   "item": "ki_2",
+   "set": "ki",
+   "word": "気",
+   "kana": "キ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/ki_2.wav",
+   "from": 0.73,
+   "to": 1.005,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a064",
+   "part": "A",
+   "item": "kami_2",
+   "set": "kami",
+   "word": "紙",
+   "kana": "カミ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/kami_2.wav",
+   "from": 1.03,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "mi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a065",
+   "part": "A",
+   "item": "hi_1",
+   "set": "hi",
+   "word": "火",
+   "kana": "ヒ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/hi_1.wav",
+   "from": 0.73,
+   "to": 0.98,
+   "heard": [
+    "çi",
+    "o"
+   ]
+  },
+  {
+   "id": "a066",
+   "part": "A",
+   "item": "shita_2",
+   "set": "shita",
+   "word": "舌",
+   "kana": "シタ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/shita_2.wav",
+   "from": 1.205,
+   "to": 1.555,
+   "heard": [
+    "ɕi",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a067",
+   "part": "A",
+   "item": "ki_1",
+   "set": "ki",
+   "word": "木",
+   "kana": "キ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/ki_1.wav",
+   "from": 0.93,
+   "to": 1.18,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a068",
+   "part": "A",
+   "item": "ame_2",
+   "set": "ame",
+   "word": "飴",
+   "kana": "アメ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/ame_2.wav",
+   "from": 0.88,
+   "to": 1.205,
+   "heard": [
+    "a",
+    "me",
+    "o"
+   ]
+  },
+  {
+   "id": "a069",
+   "part": "A",
+   "item": "asa_1",
+   "set": "asa",
+   "word": "朝",
+   "kana": "アサ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/asa_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "a",
+    "sa",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a070",
+   "part": "A",
+   "item": "hashi_3",
+   "set": "hashi",
+   "word": "端",
+   "kana": "ハシ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/hashi_3.wav",
+   "from": 0.755,
+   "to": 1.18,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a071",
+   "part": "A",
+   "item": "ame_1",
+   "set": "ame",
+   "word": "雨",
+   "kana": "アメ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/ame_1.wav",
+   "from": 0.83,
+   "to": 1.155,
+   "heard": [
+    "a",
+    "me",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a072",
+   "part": "A",
+   "item": "ki_2",
+   "set": "ki",
+   "word": "気",
+   "kana": "キ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/ki_2.wav",
+   "from": 0.73,
+   "to": 1.005,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a073",
+   "part": "A",
+   "item": "ijou_2",
+   "set": "ijou",
+   "word": "異常",
+   "kana": "イジョー",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/ijou_2.wav",
+   "from": 0.83,
+   "to": 1.28,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a074",
+   "part": "A",
+   "item": "kaki_2",
+   "set": "kaki",
+   "word": "牡蠣",
+   "kana": "カキ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/kaki_2.wav",
+   "from": 1.005,
+   "to": 1.405,
+   "heard": [
+    "ka",
+    "ki",
+    "o"
+   ]
+  },
+  {
+   "id": "a075",
+   "part": "A",
+   "item": "ki_2",
+   "set": "ki",
+   "word": "気",
+   "kana": "キ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/ki_2.wav",
+   "from": 0.73,
+   "to": 1.005,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a076",
+   "part": "A",
+   "item": "kaki_1",
+   "set": "kaki",
+   "word": "柿",
+   "kana": "カキ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/kaki_1.wav",
+   "from": 1.055,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a077",
+   "part": "A",
+   "item": "ima_1",
+   "set": "ima",
+   "word": "今",
+   "kana": "イマ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/ima_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "ma",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a078",
+   "part": "A",
+   "item": "shita_1",
+   "set": "shita",
+   "word": "下",
+   "kana": "シタ",
+   "cond": "kana_dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/shita_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "ɕi",
+    "ta",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a079",
+   "part": "A",
+   "item": "shita_2",
+   "set": "shita",
+   "word": "舌",
+   "kana": "シタ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/shita_2.wav",
+   "from": 1.205,
+   "to": 1.555,
+   "heard": [
+    "ɕi",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a080",
+   "part": "A",
+   "item": "hi_2",
+   "set": "hi",
+   "word": "日",
+   "kana": "ヒ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/hi_2.wav",
+   "from": 0.305,
+   "to": 0.655,
+   "heard": [
+    "çi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a081",
+   "part": "A",
+   "item": "aka_1",
+   "set": "aka",
+   "word": "赤",
+   "kana": "アカ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/aka_1.wav",
+   "from": 0.98,
+   "to": 1.305,
+   "heard": [
+    "a",
+    "ka",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a082",
+   "part": "A",
+   "item": "hi_1",
+   "set": "hi",
+   "word": "火",
+   "kana": "ヒ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/hi_1.wav",
+   "from": 0.73,
+   "to": 0.98,
+   "heard": [
+    "çi",
+    "o"
+   ]
+  },
+  {
+   "id": "a083",
+   "part": "A",
+   "item": "toshi_2",
+   "set": "toshi",
+   "word": "年",
+   "kana": "トシ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/toshi_2.wav",
+   "from": 0.28,
+   "to": 0.73,
+   "heard": [
+    "to",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a084",
+   "part": "A",
+   "item": "atsui_1",
+   "set": "atsui",
+   "word": "熱い",
+   "kana": "アツイ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/atsui_1.wav",
+   "from": 0.355,
+   "to": 0.805,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "o"
+   ]
+  },
+  {
+   "id": "a085",
+   "part": "A",
+   "item": "michi_2",
+   "set": "michi",
+   "word": "未知",
+   "kana": "ミチ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/michi_2.wav",
+   "from": 0.305,
+   "to": 0.755,
+   "heard": [
+    "mi",
+    "tɕi",
+    "no"
+   ]
+  },
+  {
+   "id": "a086",
+   "part": "A",
+   "item": "sake_1",
+   "set": "sake",
+   "word": "酒",
+   "kana": "サケ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/sake_1.wav",
+   "from": 1.23,
+   "to": 1.63,
+   "heard": [
+    "sa",
+    "ke",
+    "o"
+   ]
+  },
+  {
+   "id": "a087",
+   "part": "A",
+   "item": "hi_2",
+   "set": "hi",
+   "word": "日",
+   "kana": "ヒ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/hi_2.wav",
+   "from": 0.305,
+   "to": 0.655,
+   "heard": [
+    "çi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a088",
+   "part": "A",
+   "item": "ima_1",
+   "set": "ima",
+   "word": "今",
+   "kana": "イマ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/ima_1.wav",
+   "from": 0.33,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "ma",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a089",
+   "part": "A",
+   "item": "hi_1",
+   "set": "hi",
+   "word": "火",
+   "kana": "ヒ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/hi_1.wav",
+   "from": 0.73,
+   "to": 0.98,
+   "heard": [
+    "çi",
+    "o"
+   ]
+  },
+  {
+   "id": "a090",
+   "part": "A",
+   "item": "sake_2",
+   "set": "sake",
+   "word": "鮭",
+   "kana": "サケ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/sake_2.wav",
+   "from": 0.73,
+   "to": 1.18,
+   "heard": [
+    "sa",
+    "ke",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a091",
+   "part": "A",
+   "item": "shita_2",
+   "set": "shita",
+   "word": "舌",
+   "kana": "シタ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/shita_2.wav",
+   "from": 1.205,
+   "to": 1.555,
+   "heard": [
+    "ɕi",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a092",
+   "part": "A",
+   "item": "ishi_1",
+   "set": "ishi",
+   "word": "石",
+   "kana": "イシ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/ishi_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a093",
+   "part": "A",
+   "item": "ki_1",
+   "set": "ki",
+   "word": "木",
+   "kana": "キ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ki_1",
+     "word": "木",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ki_2",
+     "word": "気",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/ki_1.wav",
+   "from": 0.88,
+   "to": 1.13,
+   "heard": [
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a094",
+   "part": "A",
+   "item": "sake_1",
+   "set": "sake",
+   "word": "酒",
+   "kana": "サケ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/sake_1.wav",
+   "from": 1.23,
+   "to": 1.63,
+   "heard": [
+    "sa",
+    "ke",
+    "o"
+   ]
+  },
+  {
+   "id": "a095",
+   "part": "A",
+   "item": "toshi_1",
+   "set": "toshi",
+   "word": "都市",
+   "kana": "トシ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/toshi_1.wav",
+   "from": 1.38,
+   "to": 2.505,
+   "heard": [
+    "to",
+    "ɕi",
+    "da"
+   ]
+  },
+  {
+   "id": "a096",
+   "part": "A",
+   "item": "shio_2",
+   "set": "shio",
+   "word": "潮",
+   "kana": "シオ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/shio_2.wav",
+   "from": 0.33,
+   "to": 0.73,
+   "heard": [
+    "ɕi",
+    "o",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a097",
+   "part": "A",
+   "item": "kata_2",
+   "set": "kata",
+   "word": "型",
+   "kana": "カタ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/kata_2.wav",
+   "from": 0.805,
+   "to": 1.205,
+   "heard": [
+    "ka",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a098",
+   "part": "A",
+   "item": "ima_2",
+   "set": "ima",
+   "word": "居間",
+   "kana": "イマ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/ima_2.wav",
+   "from": 0.905,
+   "to": 1.255,
+   "heard": [
+    "i",
+    "ma",
+    "de"
+   ]
+  },
+  {
+   "id": "a099",
+   "part": "A",
+   "item": "kami_3",
+   "set": "kami",
+   "word": "髪",
+   "kana": "カミ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/kami_3.wav",
+   "from": 1.03,
+   "to": 1.43,
+   "heard": [
+    "ka",
+    "mi",
+    "o"
+   ]
+  },
+  {
+   "id": "a100",
+   "part": "A",
+   "item": "aki_1",
+   "set": "aki",
+   "word": "秋",
+   "kana": "アキ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/aki_1.wav",
+   "from": 0.33,
+   "to": 0.68,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a101",
+   "part": "A",
+   "item": "aki_2",
+   "set": "aki",
+   "word": "空き",
+   "kana": "アキ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/aki_2.wav",
+   "from": 1.105,
+   "to": 1.43,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a102",
+   "part": "A",
+   "item": "hashi_1",
+   "set": "hashi",
+   "word": "橋",
+   "kana": "ハシ",
+   "cond": "kana_dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/hashi_1.wav",
+   "from": 1.355,
+   "to": 1.705,
+   "heard": [
+    "ha",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a103",
+   "part": "A",
+   "item": "kata_1",
+   "set": "kata",
+   "word": "肩",
+   "kana": "カタ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/kata_1.wav",
+   "from": 1.18,
+   "to": 1.555,
+   "heard": [
+    "ka",
+    "ta",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a104",
+   "part": "A",
+   "item": "toshi_1",
+   "set": "toshi",
+   "word": "都市",
+   "kana": "トシ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/toshi_1.wav",
+   "from": 1.38,
+   "to": 2.505,
+   "heard": [
+    "to",
+    "ɕi",
+    "da"
+   ]
+  },
+  {
+   "id": "a105",
+   "part": "A",
+   "item": "atsui_2",
+   "set": "atsui",
+   "word": "厚い",
+   "kana": "アツイ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/atsui_2.wav",
+   "from": 0.355,
+   "to": 0.855,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "ho"
+   ]
+  },
+  {
+   "id": "a106",
+   "part": "A",
+   "item": "ijou_1",
+   "set": "ijou",
+   "word": "以上",
+   "kana": "イジョー",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/ijou_1.wav",
+   "from": 0.33,
+   "to": 0.83,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "de"
+   ]
+  },
+  {
+   "id": "a107",
+   "part": "A",
+   "item": "atsui_1",
+   "set": "atsui",
+   "word": "熱い",
+   "kana": "アツイ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/atsui_1.wav",
+   "from": 0.355,
+   "to": 0.83,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "o"
+   ]
+  },
+  {
+   "id": "a108",
+   "part": "A",
+   "item": "hana_2",
+   "set": "hana",
+   "word": "花",
+   "kana": "ハナ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/hana_2.wav",
+   "from": 0.755,
+   "to": 1.13,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a109",
+   "part": "A",
+   "item": "kami_3",
+   "set": "kami",
+   "word": "髪",
+   "kana": "カミ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/kami_3.wav",
+   "from": 1.055,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "mi",
+    "o"
+   ]
+  },
+  {
+   "id": "a110",
+   "part": "A",
+   "item": "ichi_1",
+   "set": "ichi",
+   "word": "一",
+   "kana": "イチ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/ichi_1.wav",
+   "from": 0.305,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "tɕi",
+    "ka"
+   ]
+  },
+  {
+   "id": "a111",
+   "part": "A",
+   "item": "kami_2",
+   "set": "kami",
+   "word": "紙",
+   "kana": "カミ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/kami_2.wav",
+   "from": 1.03,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "mi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a112",
+   "part": "A",
+   "item": "kami_1",
+   "set": "kami",
+   "word": "神",
+   "kana": "カミ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/kami_1.wav",
+   "from": 0.28,
+   "to": 0.755,
+   "heard": [
+    "ka",
+    "mi",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a113",
+   "part": "A",
+   "item": "hashi_2",
+   "set": "hashi",
+   "word": "箸",
+   "kana": "ハシ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/hashi_2.wav",
+   "from": 1.305,
+   "to": 1.73,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a114",
+   "part": "A",
+   "item": "shio_1",
+   "set": "shio",
+   "word": "塩",
+   "kana": "シオ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/shio_1.wav",
+   "from": 0.855,
+   "to": 1.23,
+   "heard": [
+    "ɕi",
+    "o",
+    "o"
+   ]
+  },
+  {
+   "id": "a115",
+   "part": "A",
+   "item": "hana_2",
+   "set": "hana",
+   "word": "花",
+   "kana": "ハナ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/hana_2.wav",
+   "from": 0.78,
+   "to": 1.155,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a116",
+   "part": "A",
+   "item": "kaki_2",
+   "set": "kaki",
+   "word": "牡蠣",
+   "kana": "カキ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/kaki_2.wav",
+   "from": 0.955,
+   "to": 1.355,
+   "heard": [
+    "ka",
+    "ki",
+    "o"
+   ]
+  },
+  {
+   "id": "a117",
+   "part": "A",
+   "item": "asa_2",
+   "set": "asa",
+   "word": "麻",
+   "kana": "アサ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/asa_2.wav",
+   "from": 1.055,
+   "to": 1.43,
+   "heard": [
+    "a",
+    "sa",
+    "de"
+   ]
+  },
+  {
+   "id": "a118",
+   "part": "A",
+   "item": "ijou_1",
+   "set": "ijou",
+   "word": "以上",
+   "kana": "イジョー",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/ijou_1.wav",
+   "from": 0.33,
+   "to": 0.83,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "de"
+   ]
+  },
+  {
+   "id": "a119",
+   "part": "A",
+   "item": "kami_1",
+   "set": "kami",
+   "word": "神",
+   "kana": "カミ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/kami_1.wav",
+   "from": 0.28,
+   "to": 0.755,
+   "heard": [
+    "ka",
+    "mi",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a120",
+   "part": "A",
+   "item": "ame_2",
+   "set": "ame",
+   "word": "飴",
+   "kana": "アメ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/ame_2.wav",
+   "from": 0.905,
+   "to": 1.23,
+   "heard": [
+    "a",
+    "me",
+    "o"
+   ]
+  },
+  {
+   "id": "a121",
+   "part": "A",
+   "item": "hana_1",
+   "set": "hana",
+   "word": "鼻",
+   "kana": "ハナ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/hana_1.wav",
+   "from": 0.73,
+   "to": 1.105,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a122",
+   "part": "A",
+   "item": "kaki_2",
+   "set": "kaki",
+   "word": "牡蠣",
+   "kana": "カキ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/kaki_2.wav",
+   "from": 1.005,
+   "to": 1.405,
+   "heard": [
+    "ka",
+    "ki",
+    "o"
+   ]
+  },
+  {
+   "id": "a123",
+   "part": "A",
+   "item": "atsui_2",
+   "set": "atsui",
+   "word": "厚い",
+   "kana": "アツイ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "atsui_1",
+     "word": "熱い",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "atsui_2",
+     "word": "厚い",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/atsui_2.wav",
+   "from": 0.355,
+   "to": 0.855,
+   "heard": [
+    "a",
+    "tsɯ",
+    "i",
+    "ho"
+   ]
+  },
+  {
+   "id": "a124",
+   "part": "A",
+   "item": "sake_1",
+   "set": "sake",
+   "word": "酒",
+   "kana": "サケ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/sake_1.wav",
+   "from": 1.23,
+   "to": 1.63,
+   "heard": [
+    "sa",
+    "ke",
+    "o"
+   ]
+  },
+  {
+   "id": "a125",
+   "part": "A",
+   "item": "ichi_1",
+   "set": "ichi",
+   "word": "一",
+   "kana": "イチ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/ichi_1.wav",
+   "from": 0.305,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "tɕi",
+    "ka"
+   ]
+  },
+  {
+   "id": "a126",
+   "part": "A",
+   "item": "ima_2",
+   "set": "ima",
+   "word": "居間",
+   "kana": "イマ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/ima_2.wav",
+   "from": 0.905,
+   "to": 1.255,
+   "heard": [
+    "i",
+    "ma",
+    "de"
+   ]
+  },
+  {
+   "id": "a127",
+   "part": "A",
+   "item": "kaki_1",
+   "set": "kaki",
+   "word": "柿",
+   "kana": "カキ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/kaki_1.wav",
+   "from": 1.105,
+   "to": 1.505,
+   "heard": [
+    "ka",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a128",
+   "part": "A",
+   "item": "hashi_1",
+   "set": "hashi",
+   "word": "橋",
+   "kana": "ハシ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/hashi_1.wav",
+   "from": 1.405,
+   "to": 1.755,
+   "heard": [
+    "ha",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a129",
+   "part": "A",
+   "item": "ishi_1",
+   "set": "ishi",
+   "word": "石",
+   "kana": "イシ",
+   "cond": "kana_dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/ishi_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a130",
+   "part": "A",
+   "item": "kami_2",
+   "set": "kami",
+   "word": "紙",
+   "kana": "カミ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/kami_2.wav",
+   "from": 1.03,
+   "to": 1.455,
+   "heard": [
+    "ka",
+    "mi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a131",
+   "part": "A",
+   "item": "hashi_3",
+   "set": "hashi",
+   "word": "端",
+   "kana": "ハシ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/hashi_3.wav",
+   "from": 0.755,
+   "to": 1.18,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a132",
+   "part": "A",
+   "item": "hana_2",
+   "set": "hana",
+   "word": "花",
+   "kana": "ハナ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/hana_2.wav",
+   "from": 0.78,
+   "to": 1.155,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a133",
+   "part": "A",
+   "item": "ijou_2",
+   "set": "ijou",
+   "word": "異常",
+   "kana": "イジョー",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/ijou_2.wav",
+   "from": 0.83,
+   "to": 1.28,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a134",
+   "part": "A",
+   "item": "aka_2",
+   "set": "aka",
+   "word": "垢",
+   "kana": "アカ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/aka_2.wav",
+   "from": 0.855,
+   "to": 1.205,
+   "heard": [
+    "a",
+    "ka",
+    "o"
+   ]
+  },
+  {
+   "id": "a135",
+   "part": "A",
+   "item": "shita_1",
+   "set": "shita",
+   "word": "下",
+   "kana": "シタ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/shita_1.wav",
+   "from": 0.83,
+   "to": 1.18,
+   "heard": [
+    "ɕi",
+    "ta",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a136",
+   "part": "A",
+   "item": "toshi_2",
+   "set": "toshi",
+   "word": "年",
+   "kana": "トシ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/toshi_2.wav",
+   "from": 0.28,
+   "to": 0.73,
+   "heard": [
+    "to",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a137",
+   "part": "A",
+   "item": "shita_2",
+   "set": "shita",
+   "word": "舌",
+   "kana": "シタ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/shita_2.wav",
+   "from": 1.205,
+   "to": 1.555,
+   "heard": [
+    "ɕi",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a138",
+   "part": "A",
+   "item": "aka_1",
+   "set": "aka",
+   "word": "赤",
+   "kana": "アカ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/aka_1.wav",
+   "from": 0.98,
+   "to": 1.305,
+   "heard": [
+    "a",
+    "ka",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a139",
+   "part": "A",
+   "item": "shio_1",
+   "set": "shio",
+   "word": "塩",
+   "kana": "シオ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/shio_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "ɕi",
+    "o",
+    "o"
+   ]
+  },
+  {
+   "id": "a140",
+   "part": "A",
+   "item": "hashi_2",
+   "set": "hashi",
+   "word": "箸",
+   "kana": "ハシ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/hashi_2.wav",
+   "from": 1.305,
+   "to": 1.73,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a141",
+   "part": "A",
+   "item": "kami_1",
+   "set": "kami",
+   "word": "神",
+   "kana": "カミ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "kami_1",
+     "word": "神",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kami_2",
+     "word": "紙",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "kami_3",
+     "word": "髪",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/kami_1.wav",
+   "from": 0.28,
+   "to": 0.755,
+   "heard": [
+    "ka",
+    "mi",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a142",
+   "part": "A",
+   "item": "ijou_2",
+   "set": "ijou",
+   "word": "異常",
+   "kana": "イジョー",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ijou_1",
+     "word": "以上",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ijou_2",
+     "word": "異常",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/ijou_2.wav",
+   "from": 0.83,
+   "to": 1.28,
+   "heard": [
+    "i",
+    "dʑo",
+    "ː",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a143",
+   "part": "A",
+   "item": "hashi_2",
+   "set": "hashi",
+   "word": "箸",
+   "kana": "ハシ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/hashi_2.wav",
+   "from": 1.305,
+   "to": 1.73,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a144",
+   "part": "A",
+   "item": "kata_1",
+   "set": "kata",
+   "word": "肩",
+   "kana": "カタ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/kata_1.wav",
+   "from": 1.18,
+   "to": 1.555,
+   "heard": [
+    "ka",
+    "ta",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a145",
+   "part": "A",
+   "item": "ishi_2",
+   "set": "ishi",
+   "word": "意思",
+   "kana": "イシ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ishi_1",
+     "word": "石",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ishi_2",
+     "word": "意思",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/ishi_2.wav",
+   "from": 0.93,
+   "to": 1.28,
+   "heard": [
+    "i",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a146",
+   "part": "A",
+   "item": "hi_2",
+   "set": "hi",
+   "word": "日",
+   "kana": "ヒ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hi_1",
+     "word": "火",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hi_2",
+     "word": "日",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/hi_2.wav",
+   "from": 0.305,
+   "to": 0.655,
+   "heard": [
+    "çi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a147",
+   "part": "A",
+   "item": "hana_1",
+   "set": "hana",
+   "word": "鼻",
+   "kana": "ハナ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/hana_1.wav",
+   "from": 0.73,
+   "to": 1.105,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a148",
+   "part": "A",
+   "item": "kata_1",
+   "set": "kata",
+   "word": "肩",
+   "kana": "カタ",
+   "cond": "kana_dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/kata_1.wav",
+   "from": 1.18,
+   "to": 1.555,
+   "heard": [
+    "ka",
+    "ta",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a149",
+   "part": "A",
+   "item": "toshi_1",
+   "set": "toshi",
+   "word": "都市",
+   "kana": "トシ",
+   "cond": "claude",
+   "marked": 1,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/toshi_1.wav",
+   "from": 1.38,
+   "to": 2.505,
+   "heard": [
+    "to",
+    "ɕi",
+    "da"
+   ]
+  },
+  {
+   "id": "a150",
+   "part": "A",
+   "item": "aki_1",
+   "set": "aki",
+   "word": "秋",
+   "kana": "アキ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/aki_1.wav",
+   "from": 0.33,
+   "to": 0.68,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a151",
+   "part": "A",
+   "item": "hashi_3",
+   "set": "hashi",
+   "word": "端",
+   "kana": "ハシ",
+   "cond": "claude",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hashi_1",
+     "word": "橋",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "hashi_2",
+     "word": "箸",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "hashi_3",
+     "word": "端",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/claude/hashi_3.wav",
+   "from": 0.755,
+   "to": 1.18,
+   "heard": [
+    "ha",
+    "ɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a152",
+   "part": "A",
+   "item": "toshi_2",
+   "set": "toshi",
+   "word": "年",
+   "kana": "トシ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/toshi_2.wav",
+   "from": 0.28,
+   "to": 0.73,
+   "heard": [
+    "to",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a153",
+   "part": "A",
+   "item": "ichi_1",
+   "set": "ichi",
+   "word": "一",
+   "kana": "イチ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/ichi_1.wav",
+   "from": 0.305,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "tɕi",
+    "ka"
+   ]
+  },
+  {
+   "id": "a154",
+   "part": "A",
+   "item": "michi_2",
+   "set": "michi",
+   "word": "未知",
+   "kana": "ミチ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/michi_2.wav",
+   "from": 0.305,
+   "to": 0.755,
+   "heard": [
+    "mi",
+    "tɕi",
+    "no"
+   ]
+  },
+  {
+   "id": "a155",
+   "part": "A",
+   "item": "ichi_2",
+   "set": "ichi",
+   "word": "位置",
+   "kana": "イチ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/ichi_2.wav",
+   "from": 0.805,
+   "to": 1.155,
+   "heard": [
+    "i",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a156",
+   "part": "A",
+   "item": "aka_1",
+   "set": "aka",
+   "word": "赤",
+   "kana": "アカ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/aka_1.wav",
+   "from": 0.98,
+   "to": 1.305,
+   "heard": [
+    "a",
+    "ka",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a157",
+   "part": "A",
+   "item": "toshi_2",
+   "set": "toshi",
+   "word": "年",
+   "kana": "トシ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "toshi_1",
+     "word": "都市",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "toshi_2",
+     "word": "年",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/toshi_2.wav",
+   "from": 0.28,
+   "to": 0.73,
+   "heard": [
+    "to",
+    "ɕi",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a158",
+   "part": "A",
+   "item": "aka_2",
+   "set": "aka",
+   "word": "垢",
+   "kana": "アカ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/aka_2.wav",
+   "from": 0.855,
+   "to": 1.205,
+   "heard": [
+    "a",
+    "ka",
+    "o"
+   ]
+  },
+  {
+   "id": "a159",
+   "part": "A",
+   "item": "kata_2",
+   "set": "kata",
+   "word": "型",
+   "kana": "カタ",
+   "cond": "dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "kata_1",
+     "word": "肩",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "kata_2",
+     "word": "型",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/kata_2.wav",
+   "from": 0.805,
+   "to": 1.205,
+   "heard": [
+    "ka",
+    "ta",
+    "o"
+   ]
+  },
+  {
+   "id": "a160",
+   "part": "A",
+   "item": "michi_1",
+   "set": "michi",
+   "word": "道",
+   "kana": "ミチ",
+   "cond": "kana_dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "michi_1",
+     "word": "道",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "michi_2",
+     "word": "未知",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kana_dict/michi_1.wav",
+   "from": 0.53,
+   "to": 0.955,
+   "heard": [
+    "mi",
+    "tɕi",
+    "o"
+   ]
+  },
+  {
+   "id": "a161",
+   "part": "A",
+   "item": "kaki_2",
+   "set": "kaki",
+   "word": "牡蠣",
+   "kana": "カキ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/kaki_2.wav",
+   "from": 1.005,
+   "to": 1.405,
+   "heard": [
+    "ka",
+    "ki",
+    "o"
+   ]
+  },
+  {
+   "id": "a162",
+   "part": "A",
+   "item": "kaki_1",
+   "set": "kaki",
+   "word": "柿",
+   "kana": "カキ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/kaki_1.wav",
+   "from": 1.105,
+   "to": 1.505,
+   "heard": [
+    "ka",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a163",
+   "part": "A",
+   "item": "asa_2",
+   "set": "asa",
+   "word": "麻",
+   "kana": "アサ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "asa_1",
+     "word": "朝",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "asa_2",
+     "word": "麻",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/asa_2.wav",
+   "from": 1.055,
+   "to": 1.43,
+   "heard": [
+    "a",
+    "sa",
+    "de"
+   ]
+  },
+  {
+   "id": "a164",
+   "part": "A",
+   "item": "shita_1",
+   "set": "shita",
+   "word": "下",
+   "kana": "シタ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shita_1",
+     "word": "下",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "shita_2",
+     "word": "舌",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/shita_1.wav",
+   "from": 0.83,
+   "to": 1.205,
+   "heard": [
+    "ɕi",
+    "ta",
+    "ɲi"
+   ]
+  },
+  {
+   "id": "a165",
+   "part": "A",
+   "item": "ame_1",
+   "set": "ame",
+   "word": "雨",
+   "kana": "アメ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/ame_1.wav",
+   "from": 0.83,
+   "to": 1.155,
+   "heard": [
+    "a",
+    "me",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a166",
+   "part": "A",
+   "item": "shio_1",
+   "set": "shio",
+   "word": "塩",
+   "kana": "シオ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "shio_1",
+     "word": "塩",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "shio_2",
+     "word": "潮",
+     "gold": 2,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kokoro/shio_1.wav",
+   "from": 0.855,
+   "to": 1.23,
+   "heard": [
+    "ɕi",
+    "o",
+    "o"
+   ]
+  },
+  {
+   "id": "a167",
+   "part": "A",
+   "item": "sake_2",
+   "set": "sake",
+   "word": "鮭",
+   "kana": "サケ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/sake_2.wav",
+   "from": 0.73,
+   "to": 1.18,
+   "heard": [
+    "sa",
+    "ke",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a168",
+   "part": "A",
+   "item": "hana_2",
+   "set": "hana",
+   "word": "花",
+   "kana": "ハナ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kokoro/hana_2.wav",
+   "from": 0.78,
+   "to": 1.155,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a169",
+   "part": "A",
+   "item": "aka_2",
+   "set": "aka",
+   "word": "垢",
+   "kana": "アカ",
+   "cond": "kana_dict",
+   "marked": 2,
+   "members": [
+    {
+     "name": "aka_1",
+     "word": "赤",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aka_2",
+     "word": "垢",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/kana_dict/aka_2.wav",
+   "from": 0.855,
+   "to": 1.205,
+   "heard": [
+    "a",
+    "ka",
+    "o"
+   ]
+  },
+  {
+   "id": "a170",
+   "part": "A",
+   "item": "ichi_1",
+   "set": "ichi",
+   "word": "一",
+   "kana": "イチ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "ichi_1",
+     "word": "一",
+     "gold": 2,
+     "textbook": 2
+    },
+    {
+     "name": "ichi_2",
+     "word": "位置",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/claude/ichi_1.wav",
+   "from": 0.305,
+   "to": 0.705,
+   "heard": [
+    "i",
+    "tɕi",
+    "ka"
+   ]
+  },
+  {
+   "id": "a171",
+   "part": "A",
+   "item": "aki_1",
+   "set": "aki",
+   "word": "秋",
+   "kana": "アキ",
+   "cond": "kana_dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "aki_1",
+     "word": "秋",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "aki_2",
+     "word": "空き",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/kana_dict/aki_1.wav",
+   "from": 0.33,
+   "to": 0.68,
+   "heard": [
+    "a",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a172",
+   "part": "A",
+   "item": "ame_1",
+   "set": "ame",
+   "word": "雨",
+   "kana": "アメ",
+   "cond": "dict",
+   "marked": 1,
+   "members": [
+    {
+     "name": "ame_1",
+     "word": "雨",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ame_2",
+     "word": "飴",
+     "gold": 0,
+     "textbook": 0
+    }
+   ],
+   "audio": "accent/dict/ame_1.wav",
+   "from": 0.83,
+   "to": 1.155,
+   "heard": [
+    "a",
+    "me",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a173",
+   "part": "A",
+   "item": "kaki_1",
+   "set": "kaki",
+   "word": "柿",
+   "kana": "カキ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "kaki_1",
+     "word": "柿",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "kaki_2",
+     "word": "牡蠣",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/dict/kaki_1.wav",
+   "from": 1.105,
+   "to": 1.505,
+   "heard": [
+    "ka",
+    "ki",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a174",
+   "part": "A",
+   "item": "sake_1",
+   "set": "sake",
+   "word": "酒",
+   "kana": "サケ",
+   "cond": "kokoro",
+   "marked": 0,
+   "members": [
+    {
+     "name": "sake_1",
+     "word": "酒",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "sake_2",
+     "word": "鮭",
+     "gold": 1,
+     "textbook": 1
+    }
+   ],
+   "audio": "accent/kokoro/sake_1.wav",
+   "from": 1.23,
+   "to": 1.63,
+   "heard": [
+    "sa",
+    "ke",
+    "o"
+   ]
+  },
+  {
+   "id": "a175",
+   "part": "A",
+   "item": "hana_1",
+   "set": "hana",
+   "word": "鼻",
+   "kana": "ハナ",
+   "cond": "dict",
+   "marked": 0,
+   "members": [
+    {
+     "name": "hana_1",
+     "word": "鼻",
+     "gold": 0,
+     "textbook": 0
+    },
+    {
+     "name": "hana_2",
+     "word": "花",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/dict/hana_1.wav",
+   "from": 0.73,
+   "to": 1.105,
+   "heard": [
+    "ha",
+    "na",
+    "ɡa"
+   ]
+  },
+  {
+   "id": "a176",
+   "part": "A",
+   "item": "ima_2",
+   "set": "ima",
+   "word": "居間",
+   "kana": "イマ",
+   "cond": "claude",
+   "marked": 2,
+   "members": [
+    {
+     "name": "ima_1",
+     "word": "今",
+     "gold": 1,
+     "textbook": 1
+    },
+    {
+     "name": "ima_2",
+     "word": "居間",
+     "gold": 2,
+     "textbook": 2
+    }
+   ],
+   "audio": "accent/claude/ima_2.wav",
+   "from": 0.905,
+   "to": 1.255,
+   "heard": [
+    "i",
+    "ma",
+    "de"
+   ]
+  },
+  {
+   "id": "b001",
+   "part": "B",
+   "item": "en_10",
+   "cond": "kana_claude",
+   "text": "発音練習では、「through」を英語らしく言ってみましょう。",
+   "shown": "発音練習では、「＿＿＿」を英語らしく言ってみましょう。",
+   "target": "through",
+   "audio": "mixed/kana_claude/en_10.wav",
+   "seconds": 3.98
+  },
+  {
+   "id": "b002",
+   "part": "B",
+   "item": "en_15",
+   "cond": "ys_claude",
+   "text": "シアトルでは、地元の人が言うように「Pike Place Market」と英語で言ってみた。",
+   "shown": "シアトルでは、地元の人が言うように「＿＿＿」と英語で言ってみた。",
+   "target": "Pike Place Market",
+   "audio": "mixed/ys_claude/en_15.wav",
+   "seconds": 5.27
+  },
+  {
+   "id": "b003",
+   "part": "B",
+   "item": "en_05",
+   "cond": "ys_claude",
+   "text": "英語のことわざ「Practice makes perfect」を覚えた。",
+   "shown": "英語のことわざ「＿＿＿」を覚えた。",
+   "target": "Practice makes perfect",
+   "audio": "mixed/ys_claude/en_05.wav",
+   "seconds": 3.76
+  },
+  {
+   "id": "b004",
+   "part": "B",
+   "item": "en_02",
+   "cond": "kana_claude",
+   "text": "彼女は英語で「Nice to meet you」と挨拶した。",
+   "shown": "彼女は英語で「＿＿＿」と挨拶した。",
+   "target": "Nice to meet you",
+   "audio": "mixed/kana_claude/en_02.wav",
+   "seconds": 3.7
+  },
+  {
+   "id": "b005",
+   "part": "B",
+   "item": "en_01",
+   "cond": "kana_claude",
+   "text": "英語の授業で「How are you?」と聞かれました。",
+   "shown": "英語の授業で「＿＿＿」と聞かれました。",
+   "target": "How are you",
+   "audio": "mixed/kana_claude/en_01.wav",
+   "seconds": 3.58
+  },
+  {
+   "id": "b006",
+   "part": "B",
+   "item": "en_06",
+   "cond": "kana_claude",
+   "text": "ロンドンの空港で「Final boarding call」というアナウンスが流れた。",
+   "shown": "ロンドンの空港で「＿＿＿」というアナウンスが流れた。",
+   "target": "Final boarding call",
+   "audio": "mixed/kana_claude/en_06.wav",
+   "seconds": 5.13
+  },
+  {
+   "id": "b007",
+   "part": "B",
+   "item": "en_07",
+   "cond": "ys_claude",
+   "text": "イギリスの取引先のメールは、いつも「Best regards」で終わる。",
+   "shown": "イギリスの取引先のメールは、いつも「＿＿＿」で終わる。",
+   "target": "Best regards",
+   "audio": "mixed/ys_claude/en_07.wav",
+   "seconds": 4.89
+  },
+  {
+   "id": "b008",
+   "part": "B",
+   "item": "en_15",
+   "cond": "kana_claude",
+   "text": "シアトルでは、地元の人が言うように「Pike Place Market」と英語で言ってみた。",
+   "shown": "シアトルでは、地元の人が言うように「＿＿＿」と英語で言ってみた。",
+   "target": "Pike Place Market",
+   "audio": "mixed/kana_claude/en_15.wav",
+   "seconds": 5.9
+  },
+  {
+   "id": "b009",
+   "part": "B",
+   "item": "en_16",
+   "cond": "ys_claude",
+   "text": "朝のホームルームでは、英語で「Good morning」と挨拶します。",
+   "shown": "朝のホームルームでは、英語で「＿＿＿」と挨拶します。",
+   "target": "Good morning",
+   "audio": "mixed/ys_claude/en_16.wav",
+   "seconds": 4.3
+  },
+  {
+   "id": "b010",
+   "part": "B",
+   "item": "en_12",
+   "cond": "kana_claude",
+   "text": "ロンドン出身の Matthew さんに、名前は英語の発音で呼んでほしいと言われた。",
+   "shown": "ロンドン出身の ＿＿＿ さんに、名前は英語の発音で呼んでほしいと言われた。",
+   "target": "Matthew",
+   "audio": "mixed/kana_claude/en_12.wav",
+   "seconds": 5.45
+  },
+  {
+   "id": "b011",
+   "part": "B",
+   "item": "en_04",
+   "cond": "ys_claude",
+   "text": "会議の最後に、アメリカ人の上司が「Any questions?」と聞いた。",
+   "shown": "会議の最後に、アメリカ人の上司が「＿＿＿」と聞いた。",
+   "target": "Any questions",
+   "audio": "mixed/ys_claude/en_04.wav",
+   "seconds": 4.73
+  },
+  {
+   "id": "b012",
+   "part": "B",
+   "item": "en_05",
+   "cond": "kana_claude",
+   "text": "英語のことわざ「Practice makes perfect」を覚えた。",
+   "shown": "英語のことわざ「＿＿＿」を覚えた。",
+   "target": "Practice makes perfect",
+   "audio": "mixed/kana_claude/en_05.wav",
+   "seconds": 4.33
+  },
+  {
+   "id": "b013",
+   "part": "B",
+   "item": "en_01",
+   "cond": "ys_claude",
+   "text": "英語の授業で「How are you?」と聞かれました。",
+   "shown": "英語の授業で「＿＿＿」と聞かれました。",
+   "target": "How are you",
+   "audio": "mixed/ys_claude/en_01.wav",
+   "seconds": 3.44
+  },
+  {
+   "id": "b014",
+   "part": "B",
+   "item": "en_14",
+   "cond": "ys_claude",
+   "text": "歌手は「Somewhere Over the Rainbow」を英語で歌った。",
+   "shown": "歌手は「＿＿＿」を英語で歌った。",
+   "target": "Somewhere Over the Rainbow",
+   "audio": "mixed/ys_claude/en_14.wav",
+   "seconds": 3.29
+  },
+  {
+   "id": "b015",
+   "part": "B",
+   "item": "en_13",
+   "cond": "kana_claude",
+   "text": "英語の授業で、原書の「The Catcher in the Rye」を朗読した。",
+   "shown": "英語の授業で、原書の「＿＿＿」を朗読した。",
+   "target": "The Catcher in the Rye",
+   "audio": "mixed/kana_claude/en_13.wav",
+   "seconds": 4.47
+  },
+  {
+   "id": "b016",
+   "part": "B",
+   "item": "en_10",
+   "cond": "ys_claude",
+   "text": "発音練習では、「through」を英語らしく言ってみましょう。",
+   "shown": "発音練習では、「＿＿＿」を英語らしく言ってみましょう。",
+   "target": "through",
+   "audio": "mixed/ys_claude/en_10.wav",
+   "seconds": 3.87
+  },
+  {
+   "id": "b017",
+   "part": "B",
+   "item": "en_08",
+   "cond": "kana_claude",
+   "text": "英語で聞かれて、「I don't know」と答えるしかなかった。",
+   "shown": "英語で聞かれて、「＿＿＿」と答えるしかなかった。",
+   "target": "I don't know",
+   "audio": "mixed/kana_claude/en_08.wav",
+   "seconds": 4.1
+  },
+  {
+   "id": "b018",
+   "part": "B",
+   "item": "en_14",
+   "cond": "kana_claude",
+   "text": "歌手は「Somewhere Over the Rainbow」を英語で歌った。",
+   "shown": "歌手は「＿＿＿」を英語で歌った。",
+   "target": "Somewhere Over the Rainbow",
+   "audio": "mixed/kana_claude/en_14.wav",
+   "seconds": 4.05
+  },
+  {
+   "id": "b019",
+   "part": "B",
+   "item": "en_11",
+   "cond": "kana_claude",
+   "text": "アメリカ人の同僚、Jennifer Wilson さんを英語の発音で紹介した。",
+   "shown": "アメリカ人の同僚、＿＿＿ さんを英語の発音で紹介した。",
+   "target": "Jennifer Wilson",
+   "audio": "mixed/kana_claude/en_11.wav",
+   "seconds": 5.38
+  },
+  {
+   "id": "b020",
+   "part": "B",
+   "item": "en_08",
+   "cond": "ys_claude",
+   "text": "英語で聞かれて、「I don't know」と答えるしかなかった。",
+   "shown": "英語で聞かれて、「＿＿＿」と答えるしかなかった。",
+   "target": "I don't know",
+   "audio": "mixed/ys_claude/en_08.wav",
+   "seconds": 3.8
+  },
+  {
+   "id": "b021",
+   "part": "B",
+   "item": "en_03",
+   "cond": "kana_claude",
+   "text": "映画の最後の台詞は、英語で「I'll be back」です。",
+   "shown": "映画の最後の台詞は、英語で「＿＿＿」です。",
+   "target": "I'll be back",
+   "audio": "mixed/kana_claude/en_03.wav",
+   "seconds": 4.08
+  },
+  {
+   "id": "b022",
+   "part": "B",
+   "item": "en_12",
+   "cond": "ys_claude",
+   "text": "ロンドン出身の Matthew さんに、名前は英語の発音で呼んでほしいと言われた。",
+   "shown": "ロンドン出身の ＿＿＿ さんに、名前は英語の発音で呼んでほしいと言われた。",
+   "target": "Matthew",
+   "audio": "mixed/ys_claude/en_12.wav",
+   "seconds": 5.71
+  },
+  {
+   "id": "b023",
+   "part": "B",
+   "item": "en_03",
+   "cond": "ys_claude",
+   "text": "映画の最後の台詞は、英語で「I'll be back」です。",
+   "shown": "映画の最後の台詞は、英語で「＿＿＿」です。",
+   "target": "I'll be back",
+   "audio": "mixed/ys_claude/en_03.wav",
+   "seconds": 3.98
+  },
+  {
+   "id": "b024",
+   "part": "B",
+   "item": "en_04",
+   "cond": "kana_claude",
+   "text": "会議の最後に、アメリカ人の上司が「Any questions?」と聞いた。",
+   "shown": "会議の最後に、アメリカ人の上司が「＿＿＿」と聞いた。",
+   "target": "Any questions",
+   "audio": "mixed/kana_claude/en_04.wav",
+   "seconds": 4.9
+  },
+  {
+   "id": "b025",
+   "part": "B",
+   "item": "en_11",
+   "cond": "ys_claude",
+   "text": "アメリカ人の同僚、Jennifer Wilson さんを英語の発音で紹介した。",
+   "shown": "アメリカ人の同僚、＿＿＿ さんを英語の発音で紹介した。",
+   "target": "Jennifer Wilson",
+   "audio": "mixed/ys_claude/en_11.wav",
+   "seconds": 5.16
+  },
+  {
+   "id": "b026",
+   "part": "B",
+   "item": "en_07",
+   "cond": "kana_claude",
+   "text": "イギリスの取引先のメールは、いつも「Best regards」で終わる。",
+   "shown": "イギリスの取引先のメールは、いつも「＿＿＿」で終わる。",
+   "target": "Best regards",
+   "audio": "mixed/kana_claude/en_07.wav",
+   "seconds": 4.75
+  },
+  {
+   "id": "b027",
+   "part": "B",
+   "item": "en_16",
+   "cond": "kana_claude",
+   "text": "朝のホームルームでは、英語で「Good morning」と挨拶します。",
+   "shown": "朝のホームルームでは、英語で「＿＿＿」と挨拶します。",
+   "target": "Good morning",
+   "audio": "mixed/kana_claude/en_16.wav",
+   "seconds": 4.78
+  },
+  {
+   "id": "b028",
+   "part": "B",
+   "item": "en_06",
+   "cond": "ys_claude",
+   "text": "ロンドンの空港で「Final boarding call」というアナウンスが流れた。",
+   "shown": "ロンドンの空港で「＿＿＿」というアナウンスが流れた。",
+   "target": "Final boarding call",
+   "audio": "mixed/ys_claude/en_06.wav",
+   "seconds": 4.5
+  },
+  {
+   "id": "b029",
+   "part": "B",
+   "item": "en_09",
+   "cond": "ys_claude",
+   "text": "英語の先生は「thought」の発音を三回繰り返した。",
+   "shown": "英語の先生は「＿＿＿」の発音を三回繰り返した。",
+   "target": "thought",
+   "audio": "mixed/ys_claude/en_09.wav",
+   "seconds": 4.09
+  },
+  {
+   "id": "b030",
+   "part": "B",
+   "item": "en_02",
+   "cond": "ys_claude",
+   "text": "彼女は英語で「Nice to meet you」と挨拶した。",
+   "shown": "彼女は英語で「＿＿＿」と挨拶した。",
+   "target": "Nice to meet you",
+   "audio": "mixed/ys_claude/en_02.wav",
+   "seconds": 3.55
+  },
+  {
+   "id": "b031",
+   "part": "B",
+   "item": "en_13",
+   "cond": "ys_claude",
+   "text": "英語の授業で、原書の「The Catcher in the Rye」を朗読した。",
+   "shown": "英語の授業で、原書の「＿＿＿」を朗読した。",
+   "target": "The Catcher in the Rye",
+   "audio": "mixed/ys_claude/en_13.wav",
+   "seconds": 4.26
+  },
+  {
+   "id": "b032",
+   "part": "B",
+   "item": "en_09",
+   "cond": "kana_claude",
+   "text": "英語の先生は「thought」の発音を三回繰り返した。",
+   "shown": "英語の先生は「＿＿＿」の発音を三回繰り返した。",
+   "target": "thought",
+   "audio": "mixed/kana_claude/en_09.wav",
+   "seconds": 4.45
+  }
+ ]
+}

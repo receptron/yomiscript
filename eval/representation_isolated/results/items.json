@@ -1,0 +1,11318 @@
+[
+ {
+  "condition": "yomiscript",
+  "llm": "claude",
+  "run": 1,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNbonaɾʲimasɯka",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": null,
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": [
+     "not parsed"
+    ]
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲioNukaeɾɯ",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "yomiscript",
+  "llm": "codex",
+  "run": 1,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "kana",
+  "llm": "claude",
+  "run": 1,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoɕideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥiʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "kana",
+  "llm": "codex",
+  "run": 1,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "ssml_bunsetsu",
+  "llm": "claude",
+  "run": 1,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːzaioɾoNʥiɾɯ",
+    "right": false,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "ɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "keɡʲoːoʦɯkaʔtejasɯNda",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": null,
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": [
+     "ph not parsed"
+    ]
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥiʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥiʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "ssml_bunsetsu",
+  "llm": "codex",
+  "run": 1,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːeːsɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "yomiscript",
+  "llm": "claude",
+  "run": 2,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːzaioɾoNʥiɾɯ",
+    "right": false,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥiʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲioNukaeɾɯ",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "yomiscript",
+  "llm": "codex",
+  "run": 2,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinomomʲiʥiβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkenoːkonaɯ",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "kana",
+  "llm": "claude",
+  "run": 2,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoɕideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥiʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "kana",
+  "llm": "codex",
+  "run": 2,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoːteNɡodomadeaɡaʔta",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥiʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "ssml_bunsetsu",
+  "llm": "claude",
+  "run": 2,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːzaioɾoNʥiɾɯ",
+    "right": false,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNbonaɾʲimasɯka",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "saʔpɯnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯesɯesɯdeβadaiɲinaʔta",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": null,
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": [
+     "ph not parsed"
+    ]
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥiʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "ssml_bunsetsu",
+  "llm": "codex",
+  "run": 2,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": null,
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": [
+     "ph not parsed"
+    ]
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯːpɯNɲiɕɯːɡoːdesɯ",
+    "right": false,
+    "words": [
+     true,
+     false
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkenoːkonaɯ",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "yomiscript",
+  "llm": "claude",
+  "run": 3,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːzaioɾoNʥiɾɯ",
+    "right": false,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiuβateda",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": null,
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": [
+     "not parsed"
+    ]
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲioNukaeɾɯ",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "yomiscript",
+  "llm": "codex",
+  "run": 3,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkenoːkonaɯ",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "kana",
+  "llm": "claude",
+  "run": 3,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "esɯaipʲiːdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "kana",
+  "llm": "codex",
+  "run": 3,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "ssml_bunsetsu",
+  "llm": "claude",
+  "run": 3,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "koNɲiʨinoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNbonaɾʲimasɯka",
+    "right": false,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinokoːjoːβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "eɴeʨikeːnoɲɯːsɯomʲita",
+    "right": false,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": null,
+    "right": false,
+    "words": [
+     false
+    ],
+    "problems": [
+     "ph not parsed"
+    ]
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ },
+ {
+  "condition": "ssml_bunsetsu",
+  "llm": "codex",
+  "run": 3,
+  "items": [
+   {
+    "name": "h001",
+    "got": "ɕiatoɾɯnoiʨideβasakanaɡaɯɾaɾeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h002",
+    "got": "ɕijakɯɕoβaekʲinoʨikakɯɲiaɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h003",
+    "got": "maiʦɯkʲijoːkaɲiasaiʨiɡaçiɾakaɾeɾɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h004",
+    "got": "kʲoːβahaɾeteːmasɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h005",
+    "got": "kʲoːnoɲihoNkeːʣaioɾoNʥiɾɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h006",
+    "got": "ʦɯitaʨikaɾamʲiʔkamadejasɯmʲidesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h007",
+    "got": "iʨiɲiʨiʥɯːzɯʔtoamedaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h008",
+    "got": "kaɾeβaɾʲoːɾʲiɡaʥoːzɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h009",
+    "got": "bɯtainokamʲitekaɾajakɯɕaɡatoːʥoːɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h010",
+    "got": "iɡodeβakaɾenohoːɡaiʨimaiɯβateda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h011",
+    "got": "konoataɾʲiβajoɾɯɲinaɾɯtoçitokeɡanai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h012",
+    "got": "kanoʥoβaɲiNkʲiɡaːɾɯkaɕɯda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h013",
+    "got": "oːjasaNɲijaʨiɴohaɾaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h014",
+    "got": "kaɾeβaɕodoːnotaikatoɕiteɕiɾaɾeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h015",
+    "got": "seːbɯʦɯnoʥɯɡʲoːdesaiboːomanabɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h016",
+    "got": "namamonoβaohajameɲiomeɕiaɡaɾʲikɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h017",
+    "got": "aɕitaβaːmeɡaɸɯɾɯdeɕoː",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h018",
+    "got": "iʔkoːβabɯʥiɲisaNʨoːɲiʦɯita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h019",
+    "got": "saiɕonoiʨiɡʲoːojoNdekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h020",
+    "got": "kaɾeβakaɾaikaɾeːɡasɯkʲida",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h021",
+    "got": "βakaɾeβaiʦɯmoʦɯɾaimonoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h022",
+    "got": "moʔkanokadaiβaɕikʲiNnokakɯhoda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h023",
+    "got": "meɕitanomonoɲimoteːneːɲiseʔsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h024",
+    "got": "kadoːmaɡaɾɯtopaNjaɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h025",
+    "got": "ɯɕinoʦɯnoβaiɡaitokatai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h026",
+    "got": "samɯkeɡasɯɾɯnodehajakɯneɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h027",
+    "got": "ʦɯjoikaNkʲiɡanaNkaɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h028",
+    "got": "naɲiɡahoɕiːno",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h029",
+    "got": "naNboɴaɾʲimasɯka",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h030",
+    "got": "ɕikʲiɕiɲisaiɴomoɾaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h031",
+    "got": "iɾoɡamʲideʦɯɾɯoːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h032",
+    "got": "ɯmakɯseʦɯmeːdekʲinai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h033",
+    "got": "kebʲoːoʦɯkaʔtejasɯNda",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h034",
+    "got": "kotoɕinomomʲiʥiβakʲiɾeːda",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h035",
+    "got": "hetanaiːβakeβajamenasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h036",
+    "got": "esɯeːpʲiːnodoːɲɯːokeNtoːɕiteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h037",
+    "got": "ɕiʔpɯdedeNβaoʦɯnaɡɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h038",
+    "got": "enɯeːʨikeːnoɲɯːsɯomʲita",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h039",
+    "got": "eːainokeNkʲɯːɡasɯsɯNdeːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h040",
+    "got": "jɯːesɯbʲiːmemoɾʲiosaɕikomɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h041",
+    "got": "nasaɡaːtaɾaɕiːtaNsakʲioːʨiaɡeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h042",
+    "got": "ʥeːaːɾɯnoekʲidemaʨiaβaseɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h043",
+    "got": "ʥiːpʲiːjɯːoʦɯkaʔtemodeɾɯoɡakɯɕɯːsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h044",
+    "got": "eːpʲiːainoɕijoːokakɯɲiNsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h045",
+    "got": "aioːtʲiːkʲikʲiɡaɸɯeteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h046",
+    "got": "esɯenɯesɯdeβadaiɲinaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h047",
+    "got": "jɯnesɯkonosekaiːsaNɲitoːɾokɯsaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h048",
+    "got": "ɾʲiNɡoːsaNkokaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h049",
+    "got": "saNkaɕaβaseNɡoçakɯɲiNdaʔta",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h050",
+    "got": "kakakɯβaiʨimaNɲiseɴeNdesɯ",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h051",
+    "got": "ɾoʔpoNnoeNpʲiʦɯɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h052",
+    "got": "saNbʲikʲinonekoːkaʔteːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h053",
+    "got": "kʲioNβaɲiʥɯːɡoteNɡodomadeaɡaʔta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h054",
+    "got": "haʔpɯNɡoɲiɕɯʔpaʦɯsɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h055",
+    "got": "ʥɯʔpoNnobaɾaoːkɯɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h056",
+    "got": "ɸɯtaɾʲideɾʲokoːɲiːkɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h057",
+    "got": "çitoɾʲidekʲitekɯdasai",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h058",
+    "got": "daisaNɕoːojoNdeoitekɯdasai",
+    "right": true,
+    "words": [],
+    "problems": []
+   },
+   {
+    "name": "h059",
+    "got": "taiʥɯːɡasaNbʲakɯɡɯɾamɯɸɯeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h060",
+    "got": "ɕiɡaʦɯʦɯitaʨiβaɲɯːɡakɯɕikʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h061",
+    "got": "ʥɯːɡaʦɯɲiʥɯːjoʔkaɲikaiɡʲiɡaːɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h062",
+    "got": "ɲiseNɲiʥɯːɾokɯneNʥɯːɡaʦɯhaʦɯkaɲihaʦɯbaisaɾeta",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h063",
+    "got": "ɡoɡaʦɯiʦɯkaβakodomonoçidesɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h064",
+    "got": "ɕiʨiɡaʦɯnanokaβatanabatada",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h065",
+    "got": "kɯʥisaNʥɯʔpɯNɲiɕɯːɡoːdesɯ",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h066",
+    "got": "saNɡaʦɯmʲiʔkaβaçinamaʦɯɾʲida",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h067",
+    "got": "iʨiɡaʦɯʥɯːjoʔkaɲiɕɯʔpaʦɯɕita",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h068",
+    "got": "ɾokɯɡaʦɯhaʦɯkaɲitaNʥoːbʲiomɯkaeɾɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h069",
+    "got": "heːseːsaNʥɯːiʨineNɕiɡaʦɯsaNʥɯːɲiʨiɲitaiːsaɾeta",
+    "right": true,
+    "words": [
+     true,
+     true
+    ],
+    "problems": []
+   },
+   {
+    "name": "h070",
+    "got": "maiʦɯkʲijoːkaɲiteNkeɴoːkonaɯ",
+    "right": true,
+    "words": [
+     true
+    ],
+    "problems": []
+   }
+  ]
+ }
+]

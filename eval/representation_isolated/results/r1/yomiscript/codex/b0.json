@@ -1,0 +1,40 @@
+{
+ "llm": "codex",
+ "condition": "yomiscript",
+ "run": 1,
+ "batch": 0,
+ "items": [
+  "h003",
+  "h007",
+  "h016",
+  "h021",
+  "h032",
+  "h038",
+  "h064",
+  "h067",
+  "h068",
+  "h069"
+ ],
+ "model": "gpt-6.1-sol",
+ "seconds": 15.363,
+ "tries": [
+  {
+   "seconds": 15.363,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:00:16.618Z",
+ "output": {
+  "h003": "ja /maitsɯki<t:毎月> joːka<t:八日> ɲi<t:に> asaitɕi<t:朝市> ɡa<t:が> çiɾakaɾeɾɯ<t:開かれる。> ↘/",
+  "h007": "ja /itɕiɲitɕidʑɯː<t:一日中> dzɯtto<t:ずっと> ame<t:雨> datta<t:だった。> ↘/",
+  "h016": "ja /namamono<t:生物> wa<t:は> o<t:お> hajame<t:早め> ɲi<t:に> o<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/",
+  "h021": "ja /wakaɾe<t:別れ> wa<t:は> itsɯmo<t:いつも> tsɯɾai<t:辛い> mono<t:もの> da<t:だ。> ↘/",
+  "h032": "ja /ɯmakɯ<t:上手く> setsɯmeː<t:説明> dekinai<t:できない。> ↘/",
+  "h038": "ja /enɯ eitɕi keː<t:NHK> no<t:の> ɲɯːsɯ<t:ニュース> o<t:を> mita<t:見た。> ↘/",
+  "h064": "ja /ɕitɕiɡatsɯ<t:7月> nanoka<t:7日> wa<t:は> tanabata<t:七夕> da<t:だ。> ↘/",
+  "h067": "ja /itɕiɡatsɯ<t:1月> dʑɯːjokka<t:14日> ɲi<t:に> ɕɯppatsɯ<t:出発> ɕita<t:した。> ↘/",
+  "h068": "ja /ɾokɯɡatsɯ<t:6月> hatsɯka<t:20日> ɲi<t:に> tandʑoːbi<t:誕生日> o<t:を> mɯkaeɾɯ<t:迎える。> ↘/",
+  "h069": "ja /heːseː<t:平成> sandʑɯːitɕineɴ<t:31年> ɕiɡatsɯ<t:4月> sandʑɯːɲitɕi<t:30日> ɲi<t:に> taii<t:退位> saɾeta<t:された。> ↘/"
+ },
+ "raw": "{\n  \"h003\": \"ja /maitsɯki<t:毎月> joːka<t:八日> ɲi<t:に> asaitɕi<t:朝市> ɡa<t:が> çiɾakaɾeɾɯ<t:開かれる。> ↘/\",\n  \"h007\": \"ja /itɕiɲitɕidʑɯː<t:一日中> dzɯtto<t:ずっと> ame<t:雨> datta<t:だった。> ↘/\",\n  \"h016\": \"ja /namamono<t:生物> wa<t:は> o<t:お> hajame<t:早め> ɲi<t:に> o<t:お> meɕiaɡaɾi<t:召し上がり> kɯdasai<t:ください。> ↘/\",\n  \"h021\": \"ja /wakaɾe<t:別れ> wa<t:は> itsɯmo<t:いつも> tsɯɾai<t:辛い> mono<t:もの> da<t:だ。> ↘/\",\n  \"h032\": \"ja /ɯmakɯ<t:上手く> setsɯmeː<t:説明> dekinai<t:できない。> ↘/\",\n  \"h038\": \"ja /enɯ eitɕi keː<t:NHK> no<t:の> ɲɯːsɯ<t:ニュース> o<t:を> mita<t:見た。> ↘/\",\n  \"h064\": \"ja /ɕitɕiɡatsɯ<t:7月> nanoka<t:7日> wa<t:は> tanabata<t:七夕> da<t:だ。> ↘/\",\n  \"h067\": \"ja /itɕiɡatsɯ<t:1月> dʑɯːjokka<t:14日> ɲi<t:に> ɕɯppatsɯ<t:出発> ɕita<t:した。> ↘/\",\n  \"h068\": \"ja /ɾokɯɡatsɯ<t:6月> hatsɯka<t:20日> ɲi<t:に> tandʑoːbi<t:誕生日> o<t:を> mɯkaeɾɯ<t:迎える。> ↘/\",\n  \"h069\": \"ja /heːseː<t:平成> sandʑɯːitɕineɴ<t:31年> ɕiɡatsɯ<t:4月> sandʑɯːɲitɕi<t:30日> ɲi<t:に> taii<t:退位> saɾeta<t:された。> ↘/\"\n}"
+}

@@ -1,0 +1,7 @@
+# Everything that repeats the benchmark's text (CC BY-SA 4.0): the raw answers hold the sentences in <t:...>, the
+# prompts list them, items.json pairs them with the gold. Only the aggregates (results/summary.md, results/scores.json)
+# are committed.
+results/raw/
+results/prompts/
+results/items.json
+results/*.log

@@ -1,0 +1,40 @@
+{
+ "llm": "codex",
+ "condition": "ssml_bunsetsu",
+ "run": 3,
+ "batch": 4,
+ "items": [
+  "h008",
+  "h023",
+  "h024",
+  "h033",
+  "h042",
+  "h048",
+  "h050",
+  "h054",
+  "h055",
+  "h062"
+ ],
+ "model": "gpt-6.1-sol",
+ "seconds": 17.227,
+ "tries": [
+  {
+   "seconds": 17.227,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:04:50.164Z",
+ "output": {
+  "h008": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kaɾe wa'>彼は</phoneme><phoneme alphabet='ipa' ph='ɾʲoːɾi ɡa'>料理が</phoneme><phoneme alphabet='ipa' ph='dʑoːdzɯ da'>上手だ</phoneme>。</speak>",
+  "h023": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='meɕita no'>目下の</phoneme><phoneme alphabet='ipa' ph='mono ɲi mo'>者にも</phoneme><phoneme alphabet='ipa' ph='teːneː ɲi'>丁寧に</phoneme><phoneme alphabet='ipa' ph='sessɯɾɯ'>接する</phoneme>。</speak>",
+  "h024": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kado o'>角を</phoneme><phoneme alphabet='ipa' ph='maɡaɾɯ to'>曲がると</phoneme><phoneme alphabet='ipa' ph='paɴja ɡa'>パン屋が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>",
+  "h033": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kebʲoː o'>仮病を</phoneme><phoneme alphabet='ipa' ph='tsɯkatte'>使って</phoneme><phoneme alphabet='ipa' ph='jasɯnda'>休んだ</phoneme>。</speak>",
+  "h042": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑeː aːɾɯ no'>JRの</phoneme><phoneme alphabet='ipa' ph='eki de'>駅で</phoneme><phoneme alphabet='ipa' ph='matɕiawaseɾɯ'>待ち合わせる</phoneme>。</speak>",
+  "h048": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɾiŋɡo o'>りんごを</phoneme><phoneme alphabet='ipa' ph='saŋko'>3個</phoneme><phoneme alphabet='ipa' ph='katta'>買った</phoneme>。</speak>",
+  "h050": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kakakɯ wa'>価格は</phoneme><phoneme alphabet='ipa' ph='itɕiman ɲiseɴ eɴ desɯ'>1万2000円です</phoneme>。</speak>",
+  "h054": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='happɯŋɡo ɲi'>8分後に</phoneme><phoneme alphabet='ipa' ph='ɕɯppatsɯ sɯɾɯ'>出発する</phoneme>。</speak>",
+  "h055": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑɯppoɴ no'>10本の</phoneme><phoneme alphabet='ipa' ph='baɾa o'>バラを</phoneme><phoneme alphabet='ipa' ph='okɯɾɯ'>贈る</phoneme>。</speak>",
+  "h062": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɲiseɴ ɲidʑɯːɾokɯ nen dʑɯːɡatsɯ hatsɯka ɲi'>2026年10月20日に</phoneme><phoneme alphabet='ipa' ph='hatsɯbai saɾeta'>発売された</phoneme>。</speak>"
+ },
+ "raw": "{\n  \"h008\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kaɾe wa'>彼は</phoneme><phoneme alphabet='ipa' ph='ɾʲoːɾi ɡa'>料理が</phoneme><phoneme alphabet='ipa' ph='dʑoːdzɯ da'>上手だ</phoneme>。</speak>\",\n  \"h023\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='meɕita no'>目下の</phoneme><phoneme alphabet='ipa' ph='mono ɲi mo'>者にも</phoneme><phoneme alphabet='ipa' ph='teːneː ɲi'>丁寧に</phoneme><phoneme alphabet='ipa' ph='sessɯɾɯ'>接する</phoneme>。</speak>\",\n  \"h024\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kado o'>角を</phoneme><phoneme alphabet='ipa' ph='maɡaɾɯ to'>曲がると</phoneme><phoneme alphabet='ipa' ph='paɴja ɡa'>パン屋が</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>。</speak>\",\n  \"h033\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kebʲoː o'>仮病を</phoneme><phoneme alphabet='ipa' ph='tsɯkatte'>使って</phoneme><phoneme alphabet='ipa' ph='jasɯnda'>休んだ</phoneme>。</speak>\",\n  \"h042\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑeː aːɾɯ no'>JRの</phoneme><phoneme alphabet='ipa' ph='eki de'>駅で</phoneme><phoneme alphabet='ipa' ph='matɕiawaseɾɯ'>待ち合わせる</phoneme>。</speak>\",\n  \"h048\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɾiŋɡo o'>りんごを</phoneme><phoneme alphabet='ipa' ph='saŋko'>3個</phoneme><phoneme alphabet='ipa' ph='katta'>買った</phoneme>。</speak>\",\n  \"h050\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kakakɯ wa'>価格は</phoneme><phoneme alphabet='ipa' ph='itɕiman ɲiseɴ eɴ desɯ'>1万2000円です</phoneme>。</speak>\",\n  \"h054\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='happɯŋɡo ɲi'>8分後に</phoneme><phoneme alphabet='ipa' ph='ɕɯppatsɯ sɯɾɯ'>出発する</phoneme>。</speak>\",\n  \"h055\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='dʑɯppoɴ no'>10本の</phoneme><phoneme alphabet='ipa' ph='baɾa o'>バラを</phoneme><phoneme alphabet='ipa' ph='okɯɾɯ'>贈る</phoneme>。</speak>\",\n  \"h062\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɲiseɴ ɲidʑɯːɾokɯ nen dʑɯːɡatsɯ hatsɯka ɲi'>2026年10月20日に</phoneme><phoneme alphabet='ipa' ph='hatsɯbai saɾeta'>発売された</phoneme>。</speak>\"\n}"
+}

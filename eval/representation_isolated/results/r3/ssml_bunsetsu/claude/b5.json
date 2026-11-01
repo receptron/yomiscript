@@ -1,0 +1,41 @@
+{
+ "llm": "claude",
+ "condition": "ssml_bunsetsu",
+ "run": 3,
+ "batch": 5,
+ "items": [
+  "h006",
+  "h014",
+  "h015",
+  "h025",
+  "h031",
+  "h034",
+  "h044",
+  "h045",
+  "h056",
+  "h059"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 20.841,
+ "outputTokens": 2225,
+ "tries": [
+  {
+   "seconds": 20.841,
+   "json": true
+  }
+ ],
+ "date": "2026-11-01T08:04:51.481Z",
+ "output": {
+  "h006": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='tsɯitatɕi kaɾa'>一日から</phoneme><phoneme alphabet='ipa' ph='mikka made'>三日まで</phoneme><phoneme alphabet='ipa' ph='jasɯmi desɯ'>休みです</phoneme>。</speak>",
+  "h014": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kaɾe wa'>彼は</phoneme><phoneme alphabet='ipa' ph='ɕodoː no'>書道の</phoneme><phoneme alphabet='ipa' ph='taika toɕite'>大家として</phoneme><phoneme alphabet='ipa' ph='ɕiɾaɾeɾɯ'>知られる</phoneme>。</speak>",
+  "h015": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='seːbɯtsɯ no'>生物の</phoneme><phoneme alphabet='ipa' ph='dʑɯɡʲoː de'>授業で</phoneme><phoneme alphabet='ipa' ph='saiboː o'>細胞を</phoneme><phoneme alphabet='ipa' ph='manabɯ'>学ぶ</phoneme>。</speak>",
+  "h025": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɯɕi no'>牛の</phoneme><phoneme alphabet='ipa' ph='tsɯno wa'>角は</phoneme><phoneme alphabet='ipa' ph='iɡai to'>意外と</phoneme><phoneme alphabet='ipa' ph='katai'>硬い</phoneme>。</speak>",
+  "h031": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='iɾoɡami de'>色紙で</phoneme><phoneme alphabet='ipa' ph='tsɯɾɯ o'>鶴を</phoneme><phoneme alphabet='ipa' ph='oɾɯ'>折る</phoneme>。</speak>",
+  "h034": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kotoɕi no'>今年の</phoneme><phoneme alphabet='ipa' ph='koːjoː wa'>紅葉は</phoneme><phoneme alphabet='ipa' ph='kiɾeː da'>きれいだ</phoneme>。</speak>",
+  "h044": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='eːpiːai no'>APIの</phoneme><phoneme alphabet='ipa' ph='ɕijoː o'>仕様を</phoneme><phoneme alphabet='ipa' ph='kakɯniɴ sɯɾɯ'>確認する</phoneme>。</speak>",
+  "h045": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='aioːtiː kiki ɡa'>IoT機器が</phoneme><phoneme alphabet='ipa' ph='ɸɯete iɾɯ'>増えている</phoneme>。</speak>",
+  "h056": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɸɯtaɾi de'>2人で</phoneme><phoneme alphabet='ipa' ph='ɾʲokoː ni'>旅行に</phoneme><phoneme alphabet='ipa' ph='ikɯ'>行く</phoneme>。</speak>",
+  "h059": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='taidʑɯː ɡa'>体重が</phoneme><phoneme alphabet='ipa' ph='sambʲakɯ ɡɯɾamɯ'>300グラム</phoneme><phoneme alphabet='ipa' ph='ɸɯeta'>増えた</phoneme>。</speak>"
+ },
+ "raw": "```json\n{\"h006\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='tsɯitatɕi kaɾa'>一日から</phoneme><phoneme alphabet='ipa' ph='mikka made'>三日まで</phoneme><phoneme alphabet='ipa' ph='jasɯmi desɯ'>休みです</phoneme>。</speak>\",\n\"h014\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kaɾe wa'>彼は</phoneme><phoneme alphabet='ipa' ph='ɕodoː no'>書道の</phoneme><phoneme alphabet='ipa' ph='taika toɕite'>大家として</phoneme><phoneme alphabet='ipa' ph='ɕiɾaɾeɾɯ'>知られる</phoneme>。</speak>\",\n\"h015\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='seːbɯtsɯ no'>生物の</phoneme><phoneme alphabet='ipa' ph='dʑɯɡʲoː de'>授業で</phoneme><phoneme alphabet='ipa' ph='saiboː o'>細胞を</phoneme><phoneme alphabet='ipa' ph='manabɯ'>学ぶ</phoneme>。</speak>\",\n\"h025\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɯɕi no'>牛の</phoneme><phoneme alphabet='ipa' ph='tsɯno wa'>角は</phoneme><phoneme alphabet='ipa' ph='iɡai to'>意外と</phoneme><phoneme alphabet='ipa' ph='katai'>硬い</phoneme>。</speak>\",\n\"h031\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='iɾoɡami de'>色紙で</phoneme><phoneme alphabet='ipa' ph='tsɯɾɯ o'>鶴を</phoneme><phoneme alphabet='ipa' ph='oɾɯ'>折る</phoneme>。</speak>\",\n\"h034\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kotoɕi no'>今年の</phoneme><phoneme alphabet='ipa' ph='koːjoː wa'>紅葉は</phoneme><phoneme alphabet='ipa' ph='kiɾeː da'>きれいだ</phoneme>。</speak>\",\n\"h044\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='eːpiːai no'>APIの</phoneme><phoneme alphabet='ipa' ph='ɕijoː o'>仕様を</phoneme><phoneme alphabet='ipa' ph='kakɯniɴ sɯɾɯ'>確認する</phoneme>。</speak>\",\n\"h045\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='aioːtiː kiki ɡa'>IoT機器が</phoneme><phoneme alphabet='ipa' ph='ɸɯete iɾɯ'>増えている</phoneme>。</speak>\",\n\"h056\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɸɯtaɾi de'>2人で</phoneme><phoneme alphabet='ipa' ph='ɾʲokoː ni'>旅行に</phoneme><phoneme alphabet='ipa' ph='ikɯ'>行く</phoneme>。</speak>\",\n\"h059\": \"<speak xml:lang='ja'><phoneme alphabet='ipa' ph='taidʑɯː ɡa'>体重が</phoneme><phoneme alphabet='ipa' ph='sambʲakɯ ɡɯɾamɯ'>300グラム</phoneme><phoneme alphabet='ipa' ph='ɸɯeta'>増えた</phoneme>。</speak>\"}\n```"
+}

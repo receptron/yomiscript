@@ -1,0 +1,2375 @@
+{
+ "subset": {
+  "sentences": 300,
+  "resamples": 2000,
+  "systems": [
+   {
+    "key": "yomiscript.frozen.r1.claude",
+    "label": "YomiScript frozen, run 1, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.4763564540490299,
+     "ci": [
+      0.27720862962516574,
+      0.7254261878853827
+     ]
+    },
+    "asIs": {
+     "cer": 0.4763564540490299,
+     "ci": [
+      0.27720862962516574,
+      0.7254261878853827
+     ]
+    },
+    "deleted": {
+     "cer": 0.6971070059254095,
+     "ci": [
+      0.28470561439471587,
+      1.4181044670290712
+     ]
+    },
+    "mergedParsed": 0.41943376441803565,
+    "exact": 92,
+    "missing": 0,
+    "unparsed": 1,
+    "katarite": 299,
+    "causes": {
+     "not parsed": 5,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 4,
+     "other": 32
+    },
+    "errors": 41,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 128.82516666666666
+   },
+   {
+    "key": "yomiscript.frozen.r2.claude",
+    "label": "YomiScript frozen, run 2, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.5460671546415709,
+     "ci": [
+      0.3250270855904659,
+      0.8077928248990259
+     ]
+    },
+    "asIs": {
+     "cer": 0.5460671546415709,
+     "ci": [
+      0.3250270855904659,
+      0.8077928248990259
+     ]
+    },
+    "deleted": {
+     "cer": 1.0108051585918438,
+     "ci": [
+      0.36547983966045744,
+      1.89601717147627
+     ]
+    },
+    "mergedParsed": 0.4440289787333489,
+    "exact": 91.33333333333333,
+    "missing": 0,
+    "unparsed": 2,
+    "katarite": 298,
+    "causes": {
+     "not parsed": 9,
+     "mora with no kana": 1,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 5,
+     "other": 32
+    },
+    "errors": 47,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 132.97783333333334
+   },
+   {
+    "key": "yomiscript.matched.claude",
+    "label": "YomiScript matched (a+b), Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.6738701057278959,
+     "ci": [
+      0.42845867628819484,
+      0.9811046511627907
+     ]
+    },
+    "asIs": {
+     "cer": 0.6738701057278959,
+     "ci": [
+      0.42845867628819484,
+      0.9811046511627907
+     ]
+    },
+    "deleted": {
+     "cer": 2.997560125479261,
+     "ci": [
+      1.2669891730016125,
+      5.169382252959793
+     ]
+    },
+    "mergedParsed": 0.40558272694739356,
+    "exact": 90.33333333333333,
+    "missing": 0,
+    "unparsed": 7,
+    "katarite": 293,
+    "causes": {
+     "not parsed": 24,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 2,
+     "いう as イウ": 1,
+     "other": 31
+    },
+    "errors": 58,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 128.78716666666665
+   },
+   {
+    "key": "yomiscript.mirror.claude",
+    "label": "YomiScript mirror of kana, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.37179040316021844,
+     "ci": [
+      0.20408163265306123,
+      0.5651105651105651
+     ]
+    },
+    "asIs": {
+     "cer": 0.37179040316021844,
+     "ci": [
+      0.20408163265306123,
+      0.5651105651105651
+     ]
+    },
+    "deleted": {
+     "cer": 0.37179040316021844,
+     "ci": [
+      0.20408163265306123,
+      0.5651105651105651
+     ]
+    },
+    "mergedParsed": 0.37179040316021844,
+    "exact": 93,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": 300,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 32
+    },
+    "errors": 32,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 134.34349999999998
+   },
+   {
+    "key": "kana.frozen.r1.claude",
+    "label": "kana frozen, run 1, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.3369350528639479,
+     "ci": [
+      0.15351913084553614,
+      0.5481688826685328
+     ]
+    },
+    "asIs": {
+     "cer": 2.1145579179737424,
+     "ci": [
+      1.8132056106739651,
+      2.4062609508235018
+     ]
+    },
+    "deleted": {
+     "cer": 0.3369350528639479,
+     "ci": [
+      0.15351913084553614,
+      0.5481688826685328
+     ]
+    },
+    "mergedParsed": 0.3369350528639479,
+    "exact": 95,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 6,
+     "other": 23
+    },
+    "errors": 29,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 38.84683333333333
+   },
+   {
+    "key": "kana.frozen.r2.claude",
+    "label": "kana frozen, run 2, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.25560590217265017,
+     "ci": [
+      0.11676786548341897,
+      0.41912097870412324
+     ]
+    },
+    "asIs": {
+     "cer": 2.0332287672824445,
+     "ci": [
+      1.7473732297852902,
+      2.3221400113830395
+     ]
+    },
+    "deleted": {
+     "cer": 0.25560590217265017,
+     "ci": [
+      0.11676786548341897,
+      0.41912097870412324
+     ]
+    },
+    "mergedParsed": 0.25560590217265017,
+    "exact": 95.33333333333333,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 1,
+     "other": 21
+    },
+    "errors": 22,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 34.58883333333333
+   },
+   {
+    "key": "yomiscript.frozen.r1.codex",
+    "label": "YomiScript frozen, run 1, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.8132915069129778,
+     "ci": [
+      0.5381658429434377,
+      1.1194029850746268
+     ]
+    },
+    "asIs": {
+     "cer": 0.8132915069129778,
+     "ci": [
+      0.5381658429434377,
+      1.1194029850746268
+     ]
+    },
+    "deleted": {
+     "cer": 2.92784942488672,
+     "ci": [
+      1.29024758805068,
+      4.854145047849649
+     ]
+    },
+    "mergedParsed": 0.5830556877677296,
+    "exact": 89,
+    "missing": 0,
+    "unparsed": 7,
+    "katarite": 293,
+    "causes": {
+     "not parsed": 21,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 5,
+     "other": 44
+    },
+    "errors": 70,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 84.53766666666667
+   },
+   {
+    "key": "yomiscript.frozen.r2.codex",
+    "label": "YomiScript frozen, run 2, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 1.1037527593818985,
+     "ci": [
+      0.7403979639055993,
+      1.5097792519730069
+     ]
+    },
+    "asIs": {
+     "cer": 1.1037527593818985,
+     "ci": [
+      0.7403979639055993,
+      1.5097792519730069
+     ]
+    },
+    "deleted": {
+     "cer": 4.3917741373300805,
+     "ci": [
+      2.2743425728500357,
+      6.771561771561772
+     ]
+    },
+    "mergedParsed": 0.6399420429847863,
+    "exact": 87,
+    "missing": 0,
+    "unparsed": 11,
+    "katarite": 289,
+    "causes": {
+     "not parsed": 42,
+     "mora with no kana": 3,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 12,
+     "other": 38
+    },
+    "errors": 95,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 83.29549999999999
+   },
+   {
+    "key": "yomiscript.matched.codex",
+    "label": "YomiScript matched (a+b), Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 1.0108051585918438,
+     "ci": [
+      0.6864161849710982,
+      1.3761998380941367
+     ]
+    },
+    "asIs": {
+     "cer": 1.0108051585918438,
+     "ci": [
+      0.6864161849710982,
+      1.3761998380941367
+     ]
+    },
+    "deleted": {
+     "cer": 4.856512141280353,
+     "ci": [
+      2.045370026031982,
+      8.110992529348986
+     ]
+    },
+    "mergedParsed": 0.6791995148574894,
+    "exact": 87.66666666666667,
+    "missing": 0,
+    "unparsed": 9,
+    "katarite": 291,
+    "causes": {
+     "not parsed": 31,
+     "mora with no kana": 4,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 52
+    },
+    "errors": 87,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 84.128
+   },
+   {
+    "key": "yomiscript.mirror.codex",
+    "label": "YomiScript mirror of kana, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.7668177065179506,
+     "ci": [
+      0.4799107142857143,
+      1.089375658896568
+     ]
+    },
+    "asIs": {
+     "cer": 0.7668177065179506,
+     "ci": [
+      0.4799107142857143,
+      1.089375658896568
+     ]
+    },
+    "deleted": {
+     "cer": 2.5792959219240155,
+     "ci": [
+      1.0714285714285714,
+      4.3119923554706165
+     ]
+    },
+    "mergedParsed": 0.5691924581999288,
+    "exact": 90,
+    "missing": 0,
+    "unparsed": 6,
+    "katarite": 294,
+    "causes": {
+     "not parsed": 18,
+     "mora with no kana": 4,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 44
+    },
+    "errors": 66,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 84.1775
+   },
+   {
+    "key": "kana.frozen.r1.codex",
+    "label": "kana frozen, run 1, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.3601719530614616,
+     "ci": [
+      0.17299042786299157,
+      0.58776074680189
+     ]
+    },
+    "asIs": {
+     "cer": 2.149413268270013,
+     "ci": [
+      1.8499248468030987,
+      2.447248205351316
+     ]
+    },
+    "deleted": {
+     "cer": 0.3601719530614616,
+     "ci": [
+      0.17299042786299157,
+      0.58776074680189
+     ]
+    },
+    "mergedParsed": 0.3601719530614616,
+    "exact": 95,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 31
+    },
+    "errors": 31,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 27.2865
+   },
+   {
+    "key": "kana.frozen.r2.codex",
+    "label": "kana frozen, run 2, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.22075055187637968,
+     "ci": [
+      0.08975653539773365,
+      0.38781795368997374
+     ]
+    },
+    "asIs": {
+     "cer": 1.998373416986174,
+     "ci": [
+      1.7136736879685825,
+      2.2664835164835164
+     ]
+    },
+    "deleted": {
+     "cer": 0.22075055187637968,
+     "ci": [
+      0.08975653539773365,
+      0.38781795368997374
+     ]
+    },
+    "mergedParsed": 0.22075055187637968,
+    "exact": 96.33333333333333,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 19
+    },
+    "errors": 19,
+    "calls": 6,
+    "retries": 0,
+    "secondsPerCall": 26.677500000000006
+   }
+  ],
+  "differences": [
+   {
+    "a": "yomiscript.frozen.r1.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.13942140118508195,
+    "ci": [
+     -0.04676174888940848,
+     0.3584657665192974
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 0.3601719530614616,
+    "ci": [
+     -0.04439018976806125,
+     1.0513084218946407
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.06971070059254098,
+    "ci": [
+     -0.11532695190866105,
+     0.26258705331658866
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 0.3136981526664343,
+    "ci": [
+     -0.1051279056185026,
+     0.9941310336567254
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.20913210177762293,
+    "ci": [
+     -0.011074197120708729,
+     0.4437178888369921
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 0.673870105727896,
+    "ci": [
+     0.035034450543034,
+     1.5724361197826338
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.19751365167886598,
+    "ci": [
+     -0.09489916963226563,
+     0.4816729323308271
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 2.300453119553852,
+    "ci": [
+     0.4536230153993075,
+     4.483159117305458
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.3369350528639479,
+    "ci": [
+     0.044125758411472704,
+     0.6422454804947668
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 2.6606250726153133,
+    "ci": [
+     0.9292351679771267,
+     4.884824632480611
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.10456605088881143,
+    "ci": [
+     -0.2871912693854107,
+     0.04676721618145677
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -0.3253166027651911,
+    "ci": [
+     -0.9918845807033364,
+     0.03606636210627556
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.034855350296270515,
+    "ci": [
+     -0.12718233321771305,
+     0.1650748732460795
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 0.034855350296270515,
+    "ci": [
+     -0.12718233321771305,
+     0.1650748732460795
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.13942140118508195,
+    "ci": [
+     -0.35842293906810035,
+     0.047086521483225396
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -0.3601719530614616,
+    "ci": [
+     -1.0469397146801658,
+     0.0446478401607322
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.2207505518763797,
+    "ci": [
+     -0.4633479862183676,
+     -0.011580775911986141
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -0.44150110375275936,
+    "ci": [
+     -1.143674052894925,
+     -0.023651844843897818
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.08132915069129776,
+    "ci": [
+     -0.23705108450871162,
+     0.0353356890459364
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -0.08132915069129776,
+    "ci": [
+     -0.23705108450871162,
+     0.0353356890459364
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.4531195538515162,
+    "ci": [
+     0.21902017291066284,
+     0.6952491309385864
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 2.5676774718252586,
+    "ci": [
+     0.918284319423457,
+     4.496612940901659
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.29046125246892074,
+    "ci": [
+     0,
+     0.6379234491860977
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 1.4639247124433603,
+    "ci": [
+     -0.24668154587102098,
+     3.426099158091674
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.743580806320437,
+    "ci": [
+     0.4072647220693451,
+     1.120896717373899
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 4.0316021842686185,
+    "ci": [
+     1.9006020540668163,
+     6.4388367092904835
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.19751365167886603,
+    "ci": [
+     -0.04811740647179119,
+     0.4659832246039143
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 1.928662716393633,
+    "ci": [
+     -0.5664085076869725,
+     4.904756473137903
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.6506332055303823,
+    "ci": [
+     0.3458144526591939,
+     0.977160348481281
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 4.496340188218891,
+    "ci": [
+     1.6937107663152908,
+     7.7360901382274365
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.04647380039502724,
+    "ci": [
+     -0.2923292797006548,
+     0.2054091064703868
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -0.3485535029627047,
+    "ci": [
+     -1.6424435779274487,
+     0.9879869765353093
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.40664575345648896,
+    "ci": [
+     0.11439029970258519,
+     0.71453672250205
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 2.219123968862554,
+    "ci": [
+     0.7082989021367017,
+     3.9832047208352246
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.4531195538515162,
+    "ci": [
+     -0.6950989632422244,
+     -0.21886879391775144
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -2.5676774718252586,
+    "ci": [
+     -4.492415402567095,
+     -0.9126466753585397
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.5925409550365981,
+    "ci": [
+     -0.8687803226898341,
+     -0.3331418724870764
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -2.7070988730103407,
+    "ci": [
+     -4.606257996975689,
+     -1.0419078490391294
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.13942140118508192,
+    "ci": [
+     -0.32695002335357315,
+     0.011771630370806307
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -0.13942140118508192,
+    "ci": [
+     -0.32695002335357315,
+     0.011771630370806307
+    ]
+   }
+  ],
+  "gapClosed": [
+   {
+    "cond": "yomiscript.frozen.r2",
+    "llm": "claude",
+    "share": -16.21621621621623,
+    "ci": [
+     -61.764705882352935,
+     37.93103448275861
+    ]
+   },
+   {
+    "cond": "yomiscript.matched",
+    "llm": "claude",
+    "share": -75.67567567567565,
+    "ci": [
+     -477.77777777777817,
+     44.92753623188405
+    ]
+   },
+   {
+    "cond": "yomiscript.mirror",
+    "llm": "claude",
+    "share": 64.86486486486486,
+    "ci": [
+     3.0373553134986923e-14,
+     205.55555555555557
+    ]
+   },
+   {
+    "cond": "yomiscript.frozen.r2",
+    "llm": "codex",
+    "share": -21.739130434782613,
+    "ci": [
+     -44.53125,
+     0.8264462809917344
+    ]
+   },
+   {
+    "cond": "yomiscript.matched",
+    "llm": "codex",
+    "share": -7.826086956521731,
+    "ci": [
+     -61.111111111111114,
+     32.23140495867769
+    ]
+   },
+   {
+    "cond": "yomiscript.mirror",
+    "llm": "codex",
+    "share": 28.69565217391304,
+    "ci": [
+     -15.714285714285719,
+     64.94845360824742
+    ]
+   }
+  ]
+ },
+ "targeted": {
+  "sentences": 100,
+  "resamples": 2000,
+  "systems": [
+   {
+    "key": "yomiscript.frozen.r1.claude",
+    "label": "YomiScript frozen, run 1, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 3.037569944044764,
+     "ci": [
+      2.5736203909923288,
+      3.643284393692224
+     ]
+    },
+    "asIs": {
+     "cer": 3.037569944044764,
+     "ci": [
+      2.5736203909923288,
+      3.643284393692224
+     ]
+    },
+    "deleted": {
+     "cer": 3.623767652544631,
+     "ci": [
+      2.585990459452674,
+      5.49059481443823
+     ]
+    },
+    "mergedParsed": 2.8732545649838883,
+    "exact": 7,
+    "missing": 0,
+    "unparsed": 1,
+    "katarite": 99,
+    "causes": {
+     "not parsed": 7,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 13,
+     "いう as イウ": 94,
+     "other": 0
+    },
+    "errors": 114,
+    "calls": 43,
+    "retries": 0,
+    "secondsPerCall": 134.32590697674422
+   },
+   {
+    "key": "yomiscript.frozen.r2.claude",
+    "label": "YomiScript frozen, run 2, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 3.037569944044764,
+     "ci": [
+      2.6772793053545585,
+      3.4652114597544337
+     ]
+    },
+    "asIs": {
+     "cer": 3.037569944044764,
+     "ci": [
+      2.6772793053545585,
+      3.4652114597544337
+     ]
+    },
+    "deleted": {
+     "cer": 4.18332001065814,
+     "ci": [
+      2.697841726618705,
+      7.220319634703197
+     ]
+    },
+    "mergedParsed": 2.941970310391363,
+    "exact": 0,
+    "missing": 0,
+    "unparsed": 1,
+    "katarite": 99,
+    "causes": {
+     "not parsed": 5,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 13,
+     "いう as イウ": 96,
+     "other": 0
+    },
+    "errors": 114,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 165.212
+   },
+   {
+    "key": "yomiscript.matched.claude",
+    "label": "YomiScript matched (a+b), Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.34638955502264857,
+     "ci": [
+      0.078125,
+      0.6981740064446831
+     ]
+    },
+    "asIs": {
+     "cer": 0.34638955502264857,
+     "ci": [
+      0.078125,
+      0.6981740064446831
+     ]
+    },
+    "deleted": {
+     "cer": 1.518784972022382,
+     "ci": [
+      0.078125,
+      4.400908574673481
+     ]
+    },
+    "mergedParsed": 0.242914979757085,
+    "exact": 94,
+    "missing": 0,
+    "unparsed": 1,
+    "katarite": 99,
+    "causes": {
+     "not parsed": 4,
+     "mora with no kana": 4,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 5
+    },
+    "errors": 13,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 165.246
+   },
+   {
+    "key": "yomiscript.mirror.claude",
+    "label": "YomiScript mirror of kana, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 1.5454303224087396,
+     "ci": [
+      1.2031719989062073,
+      1.9796215429403203
+     ]
+    },
+    "asIs": {
+     "cer": 1.5454303224087396,
+     "ci": [
+      1.2031719989062073,
+      1.9796215429403203
+     ]
+    },
+    "deleted": {
+     "cer": 1.5454303224087396,
+     "ci": [
+      1.2031719989062073,
+      1.9796215429403203
+     ]
+    },
+    "mergedParsed": 1.5454303224087396,
+    "exact": 50,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": 100,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 9,
+     "いう as イウ": 45,
+     "other": 4
+    },
+    "errors": 58,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 168.72449999999998
+   },
+   {
+    "key": "kana.frozen.r1.claude",
+    "label": "kana frozen, run 1, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.37303490540900613,
+     "ci": [
+      0.17084282460136674,
+      0.6030150753768844
+     ]
+    },
+    "asIs": {
+     "cer": 2.4513722355448975,
+     "ci": [
+      1.942890785987636,
+      2.992004126902244
+     ]
+    },
+    "deleted": {
+     "cer": 0.37303490540900613,
+     "ci": [
+      0.17084282460136674,
+      0.6030150753768844
+     ]
+    },
+    "mergedParsed": 0.37303490540900613,
+    "exact": 88,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 11,
+     "other": 3
+    },
+    "errors": 14,
+    "calls": 43,
+    "retries": 0,
+    "secondsPerCall": 40.38827906976744
+   },
+   {
+    "key": "kana.frozen.r2.claude",
+    "label": "kana frozen, run 2, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.10658140154543032,
+     "ci": [
+      0,
+      0.25753283543651817
+     ]
+    },
+    "asIs": {
+     "cer": 2.1849187316813214,
+     "ci": [
+      1.687880464858882,
+      2.717245090126446
+     ]
+    },
+    "deleted": {
+     "cer": 0.10658140154543032,
+     "ci": [
+      0,
+      0.25753283543651817
+     ]
+    },
+    "mergedParsed": 0.10658140154543032,
+    "exact": 97,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 4
+    },
+    "errors": 4,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 53.5895
+   },
+   {
+    "key": "yomiscript.frozen.r1.codex",
+    "label": "YomiScript frozen, run 1, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 2.8244071409539035,
+     "ci": [
+      2.3177955189286634,
+      3.4285714285714284
+     ]
+    },
+    "asIs": {
+     "cer": 2.8244071409539035,
+     "ci": [
+      2.3177955189286634,
+      3.4285714285714284
+     ]
+    },
+    "deleted": {
+     "cer": 7.087663202771116,
+     "ci": [
+      3.3773087071240107,
+      12.054152564436345
+     ]
+    },
+    "mergedParsed": 2.543320290665176,
+    "exact": 18,
+    "missing": 0,
+    "unparsed": 4,
+    "katarite": 96,
+    "causes": {
+     "not parsed": 15,
+     "mora with no kana": 5,
+     "先生 as セエセエ": 13,
+     "いう as イウ": 73,
+     "other": 0
+    },
+    "errors": 106,
+    "calls": 43,
+    "retries": 0,
+    "secondsPerCall": 78.08725581395349
+   },
+   {
+    "key": "yomiscript.frozen.r2.codex",
+    "label": "YomiScript frozen, run 2, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 3.1974420463629096,
+     "ci": [
+      2.802579365079365,
+      3.6896046852122986
+     ]
+    },
+    "asIs": {
+     "cer": 3.1974420463629096,
+     "ci": [
+      2.802579365079365,
+      3.6896046852122986
+     ]
+    },
+    "deleted": {
+     "cer": 5.462296829203304,
+     "ci": [
+      2.9576746557878635,
+      9.204368174726989
+     ]
+    },
+    "mergedParsed": 3.1130529765155655,
+    "exact": 0,
+    "missing": 0,
+    "unparsed": 2,
+    "katarite": 98,
+    "causes": {
+     "not parsed": 6,
+     "mora with no kana": 5,
+     "先生 as セエセエ": 13,
+     "いう as イウ": 96,
+     "other": 0
+    },
+    "errors": 120,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 100.75649999999999
+   },
+   {
+    "key": "yomiscript.matched.codex",
+    "label": "YomiScript matched (a+b), Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.34638955502264857,
+     "ci": [
+      0.0762970498474059,
+      0.7115489874110563
+     ]
+    },
+    "asIs": {
+     "cer": 0.34638955502264857,
+     "ci": [
+      0.0762970498474059,
+      0.7115489874110563
+     ]
+    },
+    "deleted": {
+     "cer": 0.34638955502264857,
+     "ci": [
+      0.0762970498474059,
+      0.7115489874110563
+     ]
+    },
+    "mergedParsed": 0.34638955502264857,
+    "exact": 94,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": 100,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 4,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 9
+    },
+    "errors": 13,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 108.15
+   },
+   {
+    "key": "yomiscript.mirror.codex",
+    "label": "YomiScript mirror of kana, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.7993605115907274,
+     "ci": [
+      0.45883940620782726,
+      1.2151339409003037
+     ]
+    },
+    "asIs": {
+     "cer": 0.7993605115907274,
+     "ci": [
+      0.45883940620782726,
+      1.2151339409003037
+     ]
+    },
+    "deleted": {
+     "cer": 5.382360778044231,
+     "ci": [
+      1.3161743199766014,
+      10.333999429060805
+     ]
+    },
+    "mergedParsed": 0.5600672080649678,
+    "exact": 81,
+    "missing": 0,
+    "unparsed": 4,
+    "katarite": 96,
+    "causes": {
+     "not parsed": 10,
+     "mora with no kana": 4,
+     "先生 as セエセエ": 12,
+     "いう as イウ": 0,
+     "other": 4
+    },
+    "errors": 30,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 109.101
+   },
+   {
+    "key": "kana.frozen.r1.codex",
+    "label": "kana frozen, run 1, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.5329070077271516,
+     "ci": [
+      0.25626423690205014,
+      0.8673754896474538
+     ]
+    },
+    "asIs": {
+     "cer": 2.611244337863043,
+     "ci": [
+      2.0413718018508438,
+      3.2365784741844337
+     ]
+    },
+    "deleted": {
+     "cer": 0.5329070077271516,
+     "ci": [
+      0.25626423690205014,
+      0.8673754896474538
+     ]
+    },
+    "mergedParsed": 0.5329070077271516,
+    "exact": 86,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 11,
+     "いう as イウ": 0,
+     "other": 9
+    },
+    "errors": 20,
+    "calls": 43,
+    "retries": 0,
+    "secondsPerCall": 26.045860465116274
+   },
+   {
+    "key": "kana.frozen.r2.codex",
+    "label": "kana frozen, run 2, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.4529709565680789,
+     "ci": [
+      0.2471169686985173,
+      0.6928406466512702
+     ]
+    },
+    "asIs": {
+     "cer": 2.53130828670397,
+     "ci": [
+      1.9971056439942112,
+      3.0939226519337018
+     ]
+    },
+    "deleted": {
+     "cer": 0.4529709565680789,
+     "ci": [
+      0.2471169686985173,
+      0.6928406466512702
+     ]
+    },
+    "mergedParsed": 0.4529709565680789,
+    "exact": 85,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 13,
+     "いう as イウ": 0,
+     "other": 4
+    },
+    "errors": 17,
+    "calls": 2,
+    "retries": 0,
+    "secondsPerCall": 30.3065
+   }
+  ],
+  "differences": [
+   {
+    "a": "yomiscript.frozen.r1.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 2.664535038635758,
+    "ci": [
+     2.1694214876033056,
+     3.3188248095756254
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 3.250732747135625,
+    "ci": [
+     2.181524373821708,
+     5.1624129930394425
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0,
+    "ci": [
+     -0.4854368932038837,
+     0.4253056884635833
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 0.5595523581135091,
+    "ci": [
+     -2.1584560690705943,
+     3.870967741935484
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 2.664535038635758,
+    "ci": [
+     2.307499372962127,
+     3.1153522312657875
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 3.810285105249134,
+    "ci": [
+     2.320836521295588,
+     6.877853881278539
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -2.6911803890221155,
+    "ci": [
+     -3.282959874934862,
+     -2.1706208985360926
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -2.104982680522249,
+    "ci": [
+     -4.833759590792839,
+     1.2625611955681526
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.02664535038635757,
+    "ci": [
+     -0.3551346552234389,
+     0.354997269251775
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 1.145750066613376,
+    "ci": [
+     -0.3468208092485549,
+     4.094579008073818
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -1.4921396216360245,
+    "ci": [
+     -2.075669994745139,
+     -1.0164835164835164
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -2.0783373301358914,
+    "ci": [
+     -3.924820342730791,
+     -1.0309278350515465
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 1.1723954169997335,
+    "ci": [
+     0.8382642998027614,
+     1.5756587883727247
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 1.1723954169997335,
+    "ci": [
+     0.8382642998027614,
+     1.5756587883727247
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -2.664535038635758,
+    "ci": [
+     -3.3172496984318456,
+     -2.1632758176667526
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -3.250732747135625,
+    "ci": [
+     -5.151768309663046,
+     -2.1794871794871797
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -2.9309885424993336,
+    "ci": [
+     -3.543307086614173,
+     -2.474122696288816
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -3.5171862509992007,
+    "ci": [
+     -5.388917132689374,
+     -2.4780976220275344
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.2664535038635758,
+    "ci": [
+     -0.489795918367347,
+     -0.07808433107756377
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -0.2664535038635758,
+    "ci": [
+     -0.489795918367347,
+     -0.07808433107756377
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 2.291500133226752,
+    "ci": [
+     1.7399950285856327,
+     2.937853107344633
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 6.554756195043964,
+    "ci": [
+     2.7636363636363637,
+     11.50741994272325
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.3730349054090061,
+    "ci": [
+     -0.05219206680584554,
+     0.7776049766718507
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -1.6253663735678128,
+    "ci": [
+     -6.557838446383339,
+     2.8920137967630666
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 2.664535038635758,
+    "ci": [
+     2.2170057381324986,
+     3.1914893617021276
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 4.929389821476152,
+    "ci": [
+     2.3887973640856672,
+     8.701619544331594
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -2.478017585931255,
+    "ci": [
+     -3.0303030303030303,
+     -1.96078431372549
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -6.741273647748468,
+    "ci": [
+     -11.611309360417238,
+     -3.024293505205751
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.18651745270450304,
+    "ci": [
+     -0.5063965884861407,
+     0.1857256566728575
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -0.18651745270450304,
+    "ci": [
+     -0.5063965884861407,
+     0.1857256566728575
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -2.0250466293631764,
+    "ci": [
+     -2.577752871952928,
+     -1.5147558109166883
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -1.7053024247268853,
+    "ci": [
+     -7.733910221741482,
+     4.233870967741935
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.2664535038635758,
+    "ci": [
+     -0.08539709649871907,
+     0.6603275224511358
+    ]
+   },
+   {
+    "a": "yomiscript.mirror.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 4.84945377031708,
+    "ci": [
+     0.7865473284513155,
+     9.750812567713975
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -2.291500133226752,
+    "ci": [
+     -2.937720329024677,
+     -1.738710456411495
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -6.554756195043964,
+    "ci": [
+     -11.498257839721255,
+     -2.7589796980739196
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -2.3714361843858245,
+    "ci": [
+     -2.960024412572475,
+     -1.8542700443980151
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -6.634692246203038,
+    "ci": [
+     -11.533454829471491,
+     -2.875557759048091
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.07993605115907271,
+    "ci": [
+     -0.31267765776009104,
+     0.08690614136732328
+    ]
+   },
+   {
+    "a": "kana.frozen.r2.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -0.07993605115907271,
+    "ci": [
+     -0.31267765776009104,
+     0.08690614136732328
+    ]
+   }
+  ],
+  "gapClosed": [
+   {
+    "cond": "yomiscript.frozen.r2",
+    "llm": "claude",
+    "share": 0,
+    "ci": [
+     -7.77202072538861,
+     8.108108108108102
+    ]
+   },
+   {
+    "cond": "yomiscript.matched",
+    "llm": "claude",
+    "share": 96.19047619047618,
+    "ci": [
+     85.25345622119815,
+     105.75916230366492
+    ]
+   },
+   {
+    "cond": "yomiscript.mirror",
+    "llm": "claude",
+    "share": 53.33333333333333,
+    "ci": [
+     40.72164948453609,
+     64.60176991150443
+    ]
+   },
+   {
+    "cond": "yomiscript.frozen.r2",
+    "llm": "codex",
+    "share": -7.407407407407407,
+    "ci": [
+     -16.47058823529412,
+     0.9478672985782026
+    ]
+   },
+   {
+    "cond": "yomiscript.matched",
+    "llm": "codex",
+    "share": 105.82010582010582,
+    "ci": [
+     92.71844660194175,
+     119.88304093567251
+    ]
+   },
+   {
+    "cond": "yomiscript.mirror",
+    "llm": "codex",
+    "share": 87.83068783068784,
+    "ci": [
+     75.40106951871658,
+     100
+    ]
+   }
+  ]
+ },
+ "all": {
+  "sentences": 3000,
+  "resamples": 2000,
+  "systems": [
+   {
+    "key": "yomiscript.frozen.r1.claude",
+    "label": "YomiScript frozen, run 1, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.6288876692279546,
+     "ci": [
+      0.5351874299567734,
+      0.7265916757866708
+     ]
+    },
+    "asIs": {
+     "cer": 0.6288876692279546,
+     "ci": [
+      0.5351874299567734,
+      0.7265916757866708
+     ]
+    },
+    "deleted": {
+     "cer": 1.495609220636663,
+     "ci": [
+      1.092877453835349,
+      1.963677639046538
+     ]
+    },
+    "mergedParsed": 0.49666196955346625,
+    "exact": 90.16666666666667,
+    "missing": 0,
+    "unparsed": 25,
+    "katarite": 2975,
+    "causes": {
+     "not parsed": 120,
+     "mora with no kana": 22,
+     "先生 as セエセエ": 13,
+     "いう as イウ": 98,
+     "other": 297
+    },
+    "errors": 550,
+    "calls": 60,
+    "retries": 0,
+    "secondsPerCall": 133.33015000000006
+   },
+   {
+    "key": "yomiscript.matched.claude",
+    "label": "YomiScript matched (a+b), Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.54198682766191,
+     "ci": [
+      0.4592213697073032,
+      0.6258900271027608
+     ]
+    },
+    "asIs": {
+     "cer": 0.54198682766191,
+     "ci": [
+      0.4592213697073032,
+      0.6258900271027608
+     ]
+    },
+    "deleted": {
+     "cer": 1.7311562385656787,
+     "ci": [
+      1.259736403298385,
+      2.262827273144115
+     ]
+    },
+    "mergedParsed": 0.3674978842787419,
+    "exact": 92.16666666666667,
+    "missing": 0,
+    "unparsed": 34,
+    "katarite": 2966,
+    "causes": {
+     "not parsed": 157,
+     "mora with no kana": 22,
+     "先生 as セエセエ": 2,
+     "いう as イウ": 17,
+     "other": 276
+    },
+    "errors": 474,
+    "calls": 60,
+    "retries": 0,
+    "secondsPerCall": 132.67953333333332
+   },
+   {
+    "key": "kana.frozen.r1.claude",
+    "label": "kana frozen, run 1, Claude",
+    "model": "claude-opus-5-5",
+    "merged": {
+     "cer": 0.26870654957921697,
+     "ci": [
+      0.20272293763965998,
+      0.3457066033453225
+     ]
+    },
+    "asIs": {
+     "cer": 2.1359312111233075,
+     "ci": [
+      2.033158611771769,
+      2.241709871010925
+     ]
+    },
+    "deleted": {
+     "cer": 0.26870654957921697,
+     "ci": [
+      0.20272293763965998,
+      0.3457066033453225
+     ]
+    },
+    "mergedParsed": 0.26870654957921697,
+    "exact": 95.96666666666667,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 17,
+     "other": 218
+    },
+    "errors": 235,
+    "calls": 60,
+    "retries": 0,
+    "secondsPerCall": 39.97713333333333
+   },
+   {
+    "key": "yomiscript.frozen.r1.codex",
+    "label": "YomiScript frozen, run 1, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.8724387120380535,
+     "ci": [
+      0.7671043538355218,
+      0.9824222344929137
+     ]
+    },
+    "asIs": {
+     "cer": 0.8724387120380535,
+     "ci": [
+      0.7671043538355218,
+      0.9824222344929137
+     ]
+    },
+    "deleted": {
+     "cer": 3.4737467983900476,
+     "ci": [
+      2.7677823794328646,
+      4.224772999828679
+     ]
+    },
+    "mergedParsed": 0.5665555542468109,
+    "exact": 87.9,
+    "missing": 0,
+    "unparsed": 76,
+    "katarite": 2924,
+    "causes": {
+     "not parsed": 282,
+     "mora with no kana": 25,
+     "先生 as セエセエ": 13,
+     "いう as イウ": 78,
+     "other": 365
+    },
+    "errors": 763,
+    "calls": 60,
+    "retries": 0,
+    "secondsPerCall": 79.46784999999998
+   },
+   {
+    "key": "yomiscript.matched.codex",
+    "label": "YomiScript matched (a+b), Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.8198408342480791,
+     "ci": [
+      0.717208456467379,
+      0.9304592229928828
+     ]
+    },
+    "asIs": {
+     "cer": 0.8198408342480791,
+     "ci": [
+      0.717208456467379,
+      0.9304592229928828
+     ]
+    },
+    "deleted": {
+     "cer": 3.8716611781924626,
+     "ci": [
+      3.1238611516034984,
+      4.726165162921671
+     ]
+    },
+    "mergedParsed": 0.48296597930822227,
+    "exact": 89.96666666666667,
+    "missing": 0,
+    "unparsed": 81,
+    "katarite": 2919,
+    "causes": {
+     "not parsed": 309,
+     "mora with no kana": 31,
+     "先生 as セエセエ": 0,
+     "いう as イウ": 0,
+     "other": 377
+    },
+    "errors": 717,
+    "calls": 60,
+    "retries": 0,
+    "secondsPerCall": 87.19828333333338
+   },
+   {
+    "key": "kana.frozen.r1.codex",
+    "label": "kana frozen, run 1, Codex",
+    "model": "gpt-6.1-sol",
+    "merged": {
+     "cer": 0.24812477131357483,
+     "ci": [
+      0.19434322401526982,
+      0.3033677225832841
+     ]
+    },
+    "asIs": {
+     "cer": 2.1107757043541895,
+     "ci": [
+      2.0155921015193763,
+      2.203670878838127
+     ]
+    },
+    "deleted": {
+     "cer": 0.24812477131357483,
+     "ci": [
+      0.19434322401526982,
+      0.3033677225832841
+     ]
+    },
+    "mergedParsed": 0.24812477131357483,
+    "exact": 96.2,
+    "missing": 0,
+    "unparsed": 0,
+    "katarite": null,
+    "causes": {
+     "not parsed": 0,
+     "mora with no kana": 0,
+     "先生 as セエセエ": 11,
+     "いう as イウ": 0,
+     "other": 206
+    },
+    "errors": 217,
+    "calls": 60,
+    "retries": 0,
+    "secondsPerCall": 25.999466666666667
+   }
+  ],
+  "differences": [
+   {
+    "a": "yomiscript.frozen.r1.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.3601811196487376,
+    "ci": [
+     0.2880579716667979,
+     0.4373546946573671
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 1.226902671057446,
+    "ci": [
+     0.8177490262180815,
+     1.6851426021896558
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.0869008415660446,
+    "ci": [
+     -0.17114166222756177,
+     -0.004529139350294975
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 0.23554701792901578,
+    "ci": [
+     -0.2148384774588321,
+     0.6736861401679635
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "merged",
+    "diff": 0.273280278082693,
+    "ci": [
+     0.18752286864251738,
+     0.35757259291211657
+    ]
+   },
+   {
+    "a": "yomiscript.matched.claude",
+    "b": "kana.frozen.r1.claude",
+    "metric": "strict",
+    "diff": 1.4624496889864618,
+    "ci": [
+     0.9956690116638787,
+     2.0064468698750213
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "merged",
+    "diff": -0.3601811196487376,
+    "ci": [
+     -0.43690155380998796,
+     -0.286769597834316
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.claude",
+    "b": "yomiscript.frozen.r1.claude",
+    "metric": "strict",
+    "diff": -1.226902671057446,
+    "ci": [
+     -1.6833082464868838,
+     -0.8156700557183065
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.6243139407244787,
+    "ci": [
+     0.5283725662489016,
+     0.7272307514717765
+    ]
+   },
+   {
+    "a": "yomiscript.frozen.r1.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 3.2256220270764726,
+    "ci": [
+     2.519813279198064,
+     3.978895452199346
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.05259787778997438,
+    "ci": [
+     -0.1461470833380908,
+     0.04074149521287429
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 0.39791437980241495,
+    "ci": [
+     -0.35720478585052895,
+     1.2039212143115292
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "merged",
+    "diff": 0.5717160629345043,
+    "ci": [
+     0.4767811017170947,
+     0.673005750725958
+    ]
+   },
+   {
+    "a": "yomiscript.matched.codex",
+    "b": "kana.frozen.r1.codex",
+    "metric": "strict",
+    "diff": 3.6235364068788876,
+    "ci": [
+     2.879843399159422,
+     4.474611492591254
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "merged",
+    "diff": -0.6243139407244787,
+    "ci": [
+     -0.7264497878359264,
+     -0.5278991882840438
+    ]
+   },
+   {
+    "a": "kana.frozen.r1.codex",
+    "b": "yomiscript.frozen.r1.codex",
+    "metric": "strict",
+    "diff": -3.2256220270764726,
+    "ci": [
+     -3.9778675041124574,
+     -2.5191650767174307
+    ]
+   }
+  ],
+  "gapClosed": []
+ },
+ "reachShare": [
+  {
+   "llm": "claude",
+   "sentences": 105,
+   "gap": 315,
+   "inReach": 98,
+   "share": 31.11111111111111
+  },
+  {
+   "llm": "codex",
+   "sentences": 105,
+   "gap": 546,
+   "inReach": 88,
+   "share": 16.117216117216117
+  }
+ ]
+}

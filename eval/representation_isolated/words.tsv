@@ -1,0 +1,51 @@
+# The words that two sentences of the hard set (eval/data/hard_set.tsv) must not share within one call (README.md).
+# From the target words of eval/tts_readings/targets.tsv and the hard set's notes, with the same word in another
+# spelling given one name (1日 = 一日, 3日 = 三日, 8日 = 八日, 20日 = 二十日, 4月 = 四月), and, where in doubt, a wider
+# group: 上手く and 下手 with 上手 (the same 手 compounds), the counters 本, 分 and 人 (their sound changes), 何本 with 何.
+# Sentences not listed share no such word with another sentence.
+# Columns: sentence<TAB>words (,)
+h001	市
+h002	市
+h003	市,八日
+h004	今日
+h005	今日
+h006	一日,三日
+h007	一日
+h008	上手
+h009	上手
+h010	上手
+h011	人気
+h012	人気
+h013	大家
+h014	大家
+h015	生物
+h016	生物
+h018	一行
+h019	一行
+h020	辛い
+h021	辛い
+h022	目下
+h023	目下
+h024	角
+h025	角
+h026	寒気
+h027	寒気
+h028	何
+h029	何,本
+h030	色紙
+h031	色紙
+h032	上手
+h035	上手
+h049	人
+h051	本
+h054	分
+h055	本
+h056	人
+h057	人
+h060	一日,四月
+h062	二十日
+h065	分
+h066	三日
+h068	二十日
+h069	四月
+h070	八日
