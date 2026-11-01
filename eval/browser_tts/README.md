@@ -2,7 +2,7 @@
 
 Question: in a chat plugin that lets an LLM speak, can the LLM itself be the Yomite (text → YomiScript), so that the
 browser only needs the Katarite (Kokoro, ONNX)? Kokoro's original Japanese front end (misaki Cutlet + UniDic 3.1.0) does
-not fit in a browser (the UniDic connection table alone is 413 MB gzip), so this is what makes Kokoro-in-the-browser
+not fit in a browser (UniDic 3.1.0 as the `unidic` package installs it: `matrix.bin`, the connection table, 481 MB, 413 MB with gzip; `sys.dic` 243 MB), so this is what makes Kokoro-in-the-browser
 possible for Japanese.
 
 The LLM writes YomiScript **without pitch values or accent marks**; Kokoro's own predictor makes the prosody, as in the

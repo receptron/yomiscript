@@ -1,12 +1,13 @@
 # Paper draft
 
-"The Author Knows the Reading: LLM-Written Pronunciation for Small Browser Text-to-Speech, with Japanese Homographs".
+"The LLM as the Front End: Context-Aware Pronunciation for Small Browser Text-to-Speech, with Japanese Homographs".
 First draft, 2026-10-29. Every number comes from files in the repository:
 
 - `eval/browser_tts/results/summary.md`, `asr_summary.md`, `README.md` (readings, text layer, cost, intelligibility)
 - `eval/kokoro_parity/README.md` (the Kokoro Katarite reproduces the original)
 - `eval/tts_readings/results/summary.md`, `README.md` (commercial TTS on the hard set, and the judge's check)
 - `eval/author_reading/results/r1/summary.md`, `README.md` (the author against readers with and without the conversation)
+- `eval/context_reading/results/r1/summary.md`, `README.md` (external text and chat answers with and without the context; 65 homographs)
 - `eval/representation/results/summary.md`, `README.md` (YomiScript, kana and SSML written by LLMs)
 - `eval/browser_bench/results/summary.md`, `README.md` (the Kokoro Katarite in the browser: loading, speed, memory)
 - `eval/llm_yomite/results/summary.md` (LLM pitch values)
