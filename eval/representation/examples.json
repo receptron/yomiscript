@@ -1,0 +1,37 @@
+[
+ {
+  "lang": "ja",
+  "text": "新しいスマートフォンを買いました。",
+  "kana": "アタラシースマートフォンヲカイマシタ。",
+  "ssml": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ataɾaɕiː'>新しい</phoneme><phoneme alphabet='ipa' ph='sɯmaːto ɸoɴ'>スマートフォン</phoneme><phoneme alphabet='ipa' ph='o'>を</phoneme><phoneme alphabet='ipa' ph='kai'>買い</phoneme><phoneme alphabet='ipa' ph='maɕita'>ました</phoneme>。</speak>",
+  "sparse": "新しいスマートフォンを買いました。"
+ },
+ {
+  "lang": "ja",
+  "text": "週末は、友達と京都へ行く予定です。",
+  "kana": "シューマツワ、トモダチトキョートエイクヨテーデス。",
+  "ssml": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='ɕɯːmatsɯ'>週末</phoneme><phoneme alphabet='ipa' ph='wa'>は</phoneme>、<phoneme alphabet='ipa' ph='tomodatɕi'>友達</phoneme><phoneme alphabet='ipa' ph='to'>と</phoneme><phoneme alphabet='ipa' ph='kʲoːto'>京都</phoneme><phoneme alphabet='ipa' ph='e'>へ</phoneme><phoneme alphabet='ipa' ph='ikɯ'>行く</phoneme><phoneme alphabet='ipa' ph='joteː'>予定</phoneme><phoneme alphabet='ipa' ph='desɯ'>です</phoneme>。</speak>",
+  "sparse": "週末は、友達と京都へ行[い]く予定です。"
+ },
+ {
+  "lang": "ja",
+  "text": "この本、読んだことある？",
+  "kana": "コノホン、ヨンダコトアル？",
+  "ssml": "<speak xml:lang='ja'><phoneme alphabet='ipa' ph='kono'>この</phoneme><phoneme alphabet='ipa' ph='hoɴ'>本</phoneme>、<phoneme alphabet='ipa' ph='jonda'>読んだ</phoneme><phoneme alphabet='ipa' ph='koto'>こと</phoneme><phoneme alphabet='ipa' ph='aɾɯ'>ある</phoneme>？</speak>",
+  "sparse": "この本、読んだことある？"
+ },
+ {
+  "lang": "en-US",
+  "text": "I read the letter twice, but it still made no sense.",
+  "kana": "アイレッドザレタートワイス、バットイットスティルメイドノーセンス。",
+  "ssml": "<speak xml:lang='en-US'><phoneme alphabet='ipa' ph='ˌaɪ'>I</phoneme> <phoneme alphabet='ipa' ph='ˈɹɛd'>read</phoneme> <phoneme alphabet='ipa' ph='ðə'>the</phoneme> <phoneme alphabet='ipa' ph='ˈlɛ.ɾəɹ'>letter</phoneme> <phoneme alphabet='ipa' ph='ˈtwaɪs'>twice</phoneme>, <phoneme alphabet='ipa' ph='ˌbʌt'>but</phoneme> <phoneme alphabet='ipa' ph='ɪt'>it</phoneme> <phoneme alphabet='ipa' ph='ˈstɪl'>still</phoneme> <phoneme alphabet='ipa' ph='ˌmeɪd'>made</phoneme> <phoneme alphabet='ipa' ph='ˈnoʊ'>no</phoneme> <phoneme alphabet='ipa' ph='ˈsɛns'>sense</phoneme>.</speak>",
+  "sparse": "I read the letter twice, but it still made no sense."
+ },
+ {
+  "lang": "en-US",
+  "text": "Could you close the window, please?",
+  "kana": "クッドユークローズザウィンドウ、プリーズ？",
+  "ssml": "<speak xml:lang='en-US'><phoneme alphabet='ipa' ph='ˌkʊd'>Could</phoneme> <phoneme alphabet='ipa' ph='ju'>you</phoneme> <phoneme alphabet='ipa' ph='ˈkloʊz'>close</phoneme> <phoneme alphabet='ipa' ph='ðə'>the</phoneme> <phoneme alphabet='ipa' ph='ˈwɪn.doʊ'>window</phoneme>, <phoneme alphabet='ipa' ph='ˈpliz'>please</phoneme>?</speak>",
+  "sparse": "Could you close the window, please?"
+ }
+]
