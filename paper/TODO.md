@@ -18,9 +18,10 @@ Each item says what it would show. In rough order of importance.
 6. **Context-aware baselines.** A Japanese G2P that uses context (a neural reading model) next to pyopenjtalk. The
    LLM reading someone else's text is done (`eval/author_reading`, one run): repeat it, review its readings, and try
    terser answers and free conversation.
-7. **Latency and token cost in the browser.** Time to first audio with the YomiScript streamed per sentence, on
-   WebGPU and WASM, and output tokens per character of speech with and without the text layer. Quantifies the cost of
-   letting the LLM write the pronunciation.
+7. **Latency and token cost in the browser.** The synthesizer's side is measured on one laptop
+   (`eval/browser_bench`: loading, real-time factor on WASM and WebGPU, memory). Left: the time to first audio with
+   the YomiScript streamed per sentence from the LLM, output tokens per character of speech with and without the text
+   layer, a phone and other browsers, and why the encoder's durations go wrong on WebGPU.
 8. **Long-utterance splitting.** The Kokoro Katarite must split an utterance at its inner sentence ends to fit Kokoro's
    510 phonemes; then the long passage can be included. Removes the one failure in the sets.
 9. **English evaluation.** An English heteronym set (read/lead/live, numbers, abbreviations) and listening, since
@@ -32,3 +33,17 @@ Each item says what it would show. In rough order of importance.
 12. **Confirm the commercial misreadings by ear.** Listen to every word the judge marked misread or close
     (`eval/tts_readings/results/review.md`) and correct Table `tab:commercial`; check the judge on commercial speech, not
     only on Kokoro's. Add more voices per service.
+13. **A 4-6 page version (issue #20).** The draft is 11-point single-column with six tables. Keep the main line
+    (same-call pronunciation in YomiScript; context is what matters) and move the rest:
+    - Keep in the body: Introduction (two paragraphs and three contributions), YomiScript (roles, notation, one
+      example with the text layer), Setup (sets, Yomites, scoring, a short paragraph on the judge), Table `tab:hard`,
+      Table `tab:author`, Table `tab:commercial` (drop the per-category columns or the every/any columns), Limitations
+      as one compact paragraph, Conclusion.
+    - Move to an appendix: Table `tab:parity` and the parity section (one sentence stays in the body), the Supertonic
+      Katarite and Table `tab:asr` (one sentence stays), the judge's validation and the two rejected judges, the
+      55-sentence re-scoring of the commercial systems, the prompt rounds, the second YomiScript example.
+    - Cut: Table `tab:paritysets` and its paragraph (agreement with Kokoro's front end is not a quality measure),
+      "Context: other Yomites we tried" (LLM pitch values and Yomi-0), the text-layer and cost subsection (its numbers
+      go into the Discussion's cost paragraph), the Delivery paragraph.
+    - Related work: one paragraph each for front ends, LLM front ends, SSML and browser TTS, keeping the three
+      differences (who reads, what is handed over, what the TTS keeps).

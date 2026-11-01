@@ -1,5 +1,6 @@
-% Entries marked "TODO verify" were not checked against the publication during drafting:
-% check authors, venue, year and title before submission.
+% The entries that were left unchecked during drafting (openjtalk, den2008unidic, park2022marine, zenz,
+% zhu2022byt5g2p, nicolis2021homograph) were checked against the publication or project page on 2026-10-31
+% (ISCA Archive, ACL Anthology, the ANLP proceedings, SourceForge, GitHub, Hugging Face).
 
 @misc{kokoro82m,
   author       = {hexgrad},
@@ -51,8 +52,9 @@
 @misc{openjtalk,
   author       = {{HTS Working Group}},
   title        = {Open {JTalk}: {Japanese} text-to-speech system},
+  year         = {2018},
   howpublished = {\url{https://open-jtalk.sourceforge.net/}},
-  note         = {TODO verify: year of the release used by pyopenjtalk}
+  note         = {Version 1.11, the version bundled with pyopenjtalk 0.4.1}
 }
 
 @misc{pyopenjtalk,
@@ -69,12 +71,14 @@
   year      = {2004}
 }
 
-% TODO verify
 @inproceedings{den2008unidic,
   author    = {Den, Yasuharu and Nakamura, Junpei and Ogiso, Toshinobu and Ogura, Hideki},
   title     = {A Proper Approach to {Japanese} Morphological Analysis: Dictionary, Model, and Evaluation},
-  booktitle = {Proc. LREC},
-  year      = {2008}
+  booktitle = {Proc. Sixth International Conference on Language Resources and Evaluation (LREC'08)},
+  publisher = {European Language Resources Association (ELRA)},
+  address   = {Marrakech, Morocco},
+  year      = {2008},
+  url       = {https://aclanthology.org/L08-1535/}
 }
 
 @misc{ipadic,
@@ -84,20 +88,26 @@
   note         = {Dictionary for MeCab}
 }
 
-% TODO verify
 @inproceedings{park2022marine,
   author    = {Park, Byeongseon and Yamamoto, Ryuichi and Tachibana, Kentaro},
   title     = {A Unified Accent Estimation Method Based on Multi-Task Learning for {Japanese} Text-to-Speech},
   booktitle = {Proc. Interspeech},
-  year      = {2022}
+  pages     = {1931--1935},
+  year      = {2022},
+  doi       = {10.21437/Interspeech.2022-334}
 }
 
-% TODO verify: authorship and the exact model name and version
-@misc{zenz,
-  author       = {Miwa, Keita},
-  title        = {zenz: a {GPT-2} based kana-kanji conversion model},
-  howpublished = {\url{https://huggingface.co/Miwa-Keita}},
-  year         = {2024}
+% The paper describing the zenz models (GPT-2 kana-kanji conversion models used by the Zenzai converter). The paper
+% is in Japanese (original title: ニューラルかな漢字変換システム Zenzai); the title below is a translation. The models
+% themselves (zenz-v1, May 2024, through zenz-v3.2) are released by Keita Miwa on Hugging Face under CC BY-SA 4.0.
+@inproceedings{zenz,
+  author    = {Miwa, Keita and Takahashi, Naoki},
+  title     = {Neural Kana-Kanji Conversion System {Zenzai}},
+  booktitle = {Proc. 31st Annual Meeting of the Association for Natural Language Processing (NLP2025)},
+  year      = {2025},
+  month     = mar,
+  url       = {https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/P1-19.pdf},
+  note      = {Paper P1-19, in Japanese. Models: \url{https://huggingface.co/Miwa-Keita}}
 }
 
 @misc{sonobe2017jsut,
@@ -121,12 +131,13 @@
   year      = {2023}
 }
 
-% TODO verify
 @inproceedings{zhu2022byt5g2p,
   author    = {Zhu, Jian and Zhang, Cong and Jurgens, David},
   title     = {{ByT5} model for massively multilingual grapheme-to-phoneme conversion},
   booktitle = {Proc. Interspeech},
-  year      = {2022}
+  pages     = {446--450},
+  year      = {2022},
+  doi       = {10.21437/Interspeech.2022-538}
 }
 
 @misc{sproat2016normalization,
@@ -137,12 +148,13 @@
   archivePrefix = {arXiv}
 }
 
-% TODO verify
 @inproceedings{nicolis2021homograph,
   author    = {Nicolis, Marco and Klimkov, Viacheslav},
   title     = {Homograph disambiguation with contextual word embeddings for {TTS} systems},
   booktitle = {Proc. 11th ISCA Speech Synthesis Workshop (SSW 11)},
-  year      = {2021}
+  pages     = {222--226},
+  year      = {2021},
+  doi       = {10.21437/SSW.2021-39}
 }
 
 @inproceedings{kim2021vits,
