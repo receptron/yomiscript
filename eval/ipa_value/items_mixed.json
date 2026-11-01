@@ -1,0 +1,149 @@
+{
+ "note": "Code-switching. intent en: the target is meant to be said in English (the sentence says so or it is a quoted English phrase, title or name); intent ja: a loanword or a Latin-script word that Japanese speakers say the Japanese way (controls).",
+ "items": [
+  {
+   "name": "en_01",
+   "intent": "en",
+   "target": "How are you",
+   "text": "英語の授業で「How are you?」と聞かれました。"
+  },
+  {
+   "name": "en_02",
+   "intent": "en",
+   "target": "Nice to meet you",
+   "text": "彼女は英語で「Nice to meet you」と挨拶した。"
+  },
+  {
+   "name": "en_03",
+   "intent": "en",
+   "target": "I'll be back",
+   "text": "映画の最後の台詞は、英語で「I'll be back」です。"
+  },
+  {
+   "name": "en_04",
+   "intent": "en",
+   "target": "Any questions",
+   "text": "会議の最後に、アメリカ人の上司が「Any questions?」と聞いた。"
+  },
+  {
+   "name": "en_05",
+   "intent": "en",
+   "target": "Practice makes perfect",
+   "text": "英語のことわざ「Practice makes perfect」を覚えた。"
+  },
+  {
+   "name": "en_06",
+   "intent": "en",
+   "target": "Final boarding call",
+   "text": "ロンドンの空港で「Final boarding call」というアナウンスが流れた。"
+  },
+  {
+   "name": "en_07",
+   "intent": "en",
+   "target": "Best regards",
+   "text": "イギリスの取引先のメールは、いつも「Best regards」で終わる。"
+  },
+  {
+   "name": "en_08",
+   "intent": "en",
+   "target": "I don't know",
+   "text": "英語で聞かれて、「I don't know」と答えるしかなかった。"
+  },
+  {
+   "name": "en_09",
+   "intent": "en",
+   "target": "thought",
+   "text": "英語の先生は「thought」の発音を三回繰り返した。"
+  },
+  {
+   "name": "en_10",
+   "intent": "en",
+   "target": "through",
+   "text": "発音練習では、「through」を英語らしく言ってみましょう。"
+  },
+  {
+   "name": "en_11",
+   "intent": "en",
+   "target": "Jennifer Wilson",
+   "text": "アメリカ人の同僚、Jennifer Wilson さんを英語の発音で紹介した。"
+  },
+  {
+   "name": "en_12",
+   "intent": "en",
+   "target": "Matthew",
+   "text": "ロンドン出身の Matthew さんに、名前は英語の発音で呼んでほしいと言われた。"
+  },
+  {
+   "name": "en_13",
+   "intent": "en",
+   "target": "The Catcher in the Rye",
+   "text": "英語の授業で、原書の「The Catcher in the Rye」を朗読した。"
+  },
+  {
+   "name": "en_14",
+   "intent": "en",
+   "target": "Somewhere Over the Rainbow",
+   "text": "歌手は「Somewhere Over the Rainbow」を英語で歌った。"
+  },
+  {
+   "name": "en_15",
+   "intent": "en",
+   "target": "Pike Place Market",
+   "text": "シアトルでは、地元の人が言うように「Pike Place Market」と英語で言ってみた。"
+  },
+  {
+   "name": "en_16",
+   "intent": "en",
+   "target": "Good morning",
+   "text": "朝のホームルームでは、英語で「Good morning」と挨拶します。"
+  },
+  {
+   "name": "ja_01",
+   "intent": "ja",
+   "target": "テーブル",
+   "text": "テーブルの上にコンピューターがあります。"
+  },
+  {
+   "name": "ja_02",
+   "intent": "ja",
+   "target": "コーヒー",
+   "text": "毎朝コーヒーを飲みます。"
+  },
+  {
+   "name": "ja_03",
+   "intent": "ja",
+   "target": "スマートフォン",
+   "text": "スマートフォンでメールを送った。"
+  },
+  {
+   "name": "ja_04",
+   "intent": "ja",
+   "target": "ホテル",
+   "text": "駅前のホテルに泊まった。"
+  },
+  {
+   "name": "ja_05",
+   "intent": "ja",
+   "target": "iPhone",
+   "text": "iPhone を買い替えました。"
+  },
+  {
+   "name": "ja_06",
+   "intent": "ja",
+   "target": "OK",
+   "text": "OK、じゃあ明日ね。"
+  },
+  {
+   "name": "ja_07",
+   "intent": "ja",
+   "target": "Wi-Fi",
+   "text": "カフェの Wi-Fi のパスワードを教えてください。"
+  },
+  {
+   "name": "ja_08",
+   "intent": "ja",
+   "target": "サンキュー",
+   "text": "友達に軽くサンキューと言った。"
+  }
+ ]
+}

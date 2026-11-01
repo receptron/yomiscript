@@ -1,0 +1,1816 @@
+{
+ "used": {
+  "ys_claude": {
+   "en_01": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> dʑɯɡʲoː<t:授業> de<t:で> {en-US ˈhaʊ<t:「How> ɑɹ<t: are> ˈju<t: you?」>} to<t:と> kikaɾemaɕita<t:聞かれました。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de"
+     ],
+     [
+      "en-US",
+      "hˈW ɑɹ jˈu."
+     ],
+     [
+      "ja",
+      "to kʲikaɾemaɕita"
+     ]
+    ]
+   },
+   "en_02": {
+    "ys": "ja /kanodʑo<t:彼女> wa<t:は> eːɡo<t:英語> de<t:で> {en-US ˈnaɪs<t:「Nice> tə<t: to> ˈmit<t: meet> ju<t: you」>} to<t:と> aisatsɯ<t:挨拶> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kanoʥo βa eːɡo de"
+     ],
+     [
+      "en-US",
+      "nˈIs tə mˈit ju."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕita"
+     ]
+    ]
+   },
+   "en_03": {
+    "ys": "ja /eːɡa<t:映画> no<t:の> saiɡo<t:最後> no<t:の> seɾiɸɯ<t:台詞> wa<t:は、> ‖ eːɡo<t:英語> de<t:で> {en-US ˌaɪl<t:「I'll> bi<t: be> ˈbæk<t: back」>} desɯ<t:です。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡa no saiɡo no seɾʲiɸɯ βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ˌIl bi bˈæk."
+     ],
+     [
+      "ja",
+      "desɨ"
+     ]
+    ]
+   },
+   "en_04": {
+    "ys": "ja /kaiɡi<t:会議> no<t:の> saiɡo<t:最後> ni<t:に、> ‖ ameɾikadʑin<t:アメリカ人> no<t:の> dʑoːɕi<t:上司> ga<t:が> {en-US ˈɛ.ni<t:「Any> ˈkwɛs.tʃənz<t: questions?」>} to<t:と> kiita<t:聞いた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲi no saiɡo ni, ameɾʲikaʥin no ʥoːɕi ɡa"
+     ],
+     [
+      "en-US",
+      "ˈɛni kwˈɛsʧənz."
+     ],
+     [
+      "ja",
+      "to kʲiita"
+     ]
+    ]
+   },
+   "en_05": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> kotowaza<t:ことわざ> {en-US ˈpɹæk.tɪs<t:「Practice> ˈmeɪks<t: makes> ˈpɝ.fɪkt<t: perfect」>} o<t:を> oboeta<t:覚えた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no kotoβaza"
+     ],
+     [
+      "en-US",
+      "pɹˈæktɪs mˈAks pˈɜɹfɪkt."
+     ],
+     [
+      "ja",
+      "o oboeta"
+     ]
+    ]
+   },
+   "en_06": {
+    "ys": "ja /ɾondon<t:ロンドン> no<t:の> kɯːkoː<t:空港> de<t:で> {en-US ˈfaɪ.nəl<t:「Final> ˈbɔɹ.dɪŋ<t: boarding> ˈkɔl<t: call」>} to<t:と> iɯ<t:いう> anaɯɴsɯ<t:アナウンス> ga<t:が> naɡaɾeta<t:流れた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondon no kɯːkoː de"
+     ],
+     [
+      "en-US",
+      "fˈInəl bˈɔɹdɪŋ kˈɔl."
+     ],
+     [
+      "ja",
+      "to iɯ anaɯɴsɨ ɡa naɡaɾeta"
+     ]
+    ]
+   },
+   "en_07": {
+    "ys": "ja /iɡiɾisɯ<t:イギリス> no<t:の> toɾihikisaki<t:取引先> no<t:の> meːɾɯ<t:メール> wa<t:は、> ‖ itsɯmo<t:いつも> {en-US ˈbɛst<t:「Best> ɹɪ.ˈɡɑɹdz<t: regards」>} de<t:で> owaɾɯ<t:終わる。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨ no toɾʲihikʲisakʲi no meːɾɯ βa, iʦɨmo"
+     ],
+     [
+      "en-US",
+      "bˈɛst ɹɪɡˈɑɹdz."
+     ],
+     [
+      "ja",
+      "de oβaɾɯ"
+     ]
+    ]
+   },
+   "en_08": {
+    "ys": "ja /eːɡo<t:英語> de<t:で> kikaɾete<t:聞かれて、> ‖ {en-US ˌaɪ<t:「I> ˈdoʊnt<t: don't> ˈnoʊ<t: know」>} to<t:と> kotaeɾɯ<t:答える> ɕika<t:しか> nakatta<t:なかった。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo de kʲikaɾete"
+     ],
+     [
+      "en-US",
+      "ˌI dˈOnt nˈO."
+     ],
+     [
+      "ja",
+      "to kotaeɾɯ ɕika nakaʔta"
+     ]
+    ]
+   },
+   "en_09": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> seːseː<t:先生> wa<t:は> {en-US ˈθɔt<t:「thought」>} no<t:の> hatsɯoɴ<t:発音> o<t:を> saŋkai<t:三回> kɯɾikaeɕita<t:繰り返した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no seːseː βa"
+     ],
+     [
+      "en-US",
+      "θˈɔt."
+     ],
+     [
+      "ja",
+      "no haʦɨoɴ o saŋkai kɯɾʲikaeɕita"
+     ]
+    ]
+   },
+   "en_10": {
+    "ys": "ja /hatsɯon<t:発音> ɾeɴɕɯː<t:練習> de<t:で> wa<t:は、> ‖ {en-US ˈθɹu<t:「through」>} o<t:を> eːɡo<t:英語> ɾaɕikɯ<t:らしく> itte<t:言って> mimaɕoː<t:みましょう。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "haʦɨon ɾeɴɕɨː de βa"
+     ],
+     [
+      "en-US",
+      "θɹˈu."
+     ],
+     [
+      "ja",
+      "o eːɡo ɾaɕikɯ iʔte mʲimaɕoː"
+     ]
+    ]
+   },
+   "en_11": {
+    "ys": "ja /ameɾikadʑin<t:アメリカ人> no<t:の> doːɾʲoː<t:同僚、> ‖ {en-US ˈdʒɛ.nə.fɚ<t:Jennifer> ˈwɪl.sən<t: Wilson>} saɴ<t: さん> o<t:を> eːɡo<t:英語> no<t:の> hatsɯon<t:発音> de<t:で> ɕoːkai<t:紹介> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥin no doːɾʲoː"
+     ],
+     [
+      "en-US",
+      "ʤˈɛnəfəɹ wˈɪlsən."
+     ],
+     [
+      "ja",
+      "saɴ o eːɡo no haʦɨon de ɕoːkai ɕita"
+     ]
+    ]
+   },
+   "en_12": {
+    "ys": "ja /ɾondoɴ<t:ロンドン> ɕɯɕɕin<t:出身> no<t:の> {en-US ˈmæ.θju<t: Matthew>} san<t: さん> ni<t:に、> ‖ namae<t:名前> wa<t:は> eːɡo<t:英語> no<t:の> hatsɯon<t:発音> de<t:で> jonde<t:呼んで> hoɕiː<t:ほしい> to<t:と> iwaɾeta<t:言われた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ ɕɨʔɕin no"
+     ],
+     [
+      "en-US",
+      "mˈæθju."
+     ],
+     [
+      "ja",
+      "san ni, namae βa eːɡo no haʦɨon de jonde hoɕiː to iβaɾeta"
+     ]
+    ]
+   },
+   "en_13": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> dʑɯɡʲoː<t:授業> de<t:で、> ‖ ɡeɴɕo<t:原書> no<t:の> {en-US ðə<t:「The> ˈkæ.tʃɚ<t: Catcher> ɪn<t: in> ðə<t: the> ˈɹaɪ<t: Rye」>} o<t:を> ɾoːdokɯ<t:朗読> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de, ɡeɴɕo no"
+     ],
+     [
+      "en-US",
+      "ðə kˈæʧəɹ ɪn ðə ɹˈI."
+     ],
+     [
+      "ja",
+      "o ɾoːdokɯ ɕita"
+     ]
+    ]
+   },
+   "en_14": {
+    "ys": "ja /kaɕɯ<t:歌手> wa<t:は> {en-US ˈsʌm.wɛɹ<t:「Somewhere> ˈoʊ.vɚ<t: Over> ðə<t: the> ˈɹeɪn.boʊ<t: Rainbow」>} o<t:を> eːɡo<t:英語> de<t:で> ɯtatta<t:歌った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɕɨ βa"
+     ],
+     [
+      "en-US",
+      "sˈʌmwɛɹ ˈOvəɹ ðə ɹˈAnbO."
+     ],
+     [
+      "ja",
+      "o eːɡo de ɯtaʔta"
+     ]
+    ]
+   },
+   "en_15": {
+    "ys": "ja /ɕiatoɾɯ<t:シアトル> de<t:で> wa<t:は、> ‖ dʑimoto<t:地元> no<t:の> hito<t:人> ga<t:が> iɯ<t:言う> joːni<t:ように> {en-US ˈpaɪk<t:「Pike> ˈpleɪs<t: Place> ˈmɑɹ.kɪt<t: Market」>} to<t:と> eːɡo<t:英語> de<t:で> itte<t:言って> mita<t:みた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯ de βa, ʥimoto no hito ɡa iɯ joːni"
+     ],
+     [
+      "en-US",
+      "pˈIk plˈAs mˈɑɹkɪt."
+     ],
+     [
+      "ja",
+      "to eːɡo de iʔte mʲita"
+     ]
+    ]
+   },
+   "en_16": {
+    "ys": "ja /asa<t:朝> no<t:の> hoːmɯɾɯːmɯ<t:ホームルーム> de<t:で> wa<t:は、> ‖ eːɡo<t:英語> de<t:で> {en-US ˈɡʊd<t:「Good> ˈmɔɹ.nɪŋ<t: morning」>} to<t:と> aisatsɯ<t:挨拶> ɕimasɯ<t:します。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "asa no hoːmɯɾɯːmɯ de βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ɡˈʊd mˈɔɹnɪŋ."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕimasɨ"
+     ]
+    ]
+   },
+   "ja_01": {
+    "ys": "ja /teːbɯɾɯ<t:テーブル> no<t:の> ɯe<t:上> ni<t:に> kompʲɯːtaː<t:コンピューター> ga<t:が> aɾimasɯ<t:あります。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯ no ɯe ni kompʲɨːtaː ɡa aɾʲimasɨ"
+     ]
+    ]
+   },
+   "ja_02": {
+    "ys": "ja /maiasa<t:毎朝> koːçiː<t:コーヒー> o<t:を> nomimasɯ<t:飲みます。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "maiasa koːçiː o nomʲimasɨ"
+     ]
+    ]
+   },
+   "ja_03": {
+    "ys": "ja /sɯmaːtoɸon<t:スマートフォン> de<t:で> meːɾɯ<t:メール> o<t:を> okɯtta<t:送った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸon de meːɾɯ o okɯʔta"
+     ]
+    ]
+   },
+   "ja_04": {
+    "ys": "ja /ekimae<t:駅前> no<t:の> hoteɾɯ<t:ホテル> ni<t:に> tomatta<t:泊まった。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ekʲimae no hoteɾɯ ni tomaʔta"
+     ]
+    ]
+   },
+   "ja_05": {
+    "ys": "ja /aiɸoɴ<t:iPhone> o<t: を> kaikaemaɕita<t:買い替えました。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴ o kaikaemaɕita"
+     ]
+    ]
+   },
+   "ja_06": {
+    "ys": "ja /oːkeː<t:OK、> ‖ dʑaː<t:じゃあ> aɕita<t:明日> ne<t:ね。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "oːkeː, ʥaː aɕita ne"
+     ]
+    ]
+   },
+   "ja_08": {
+    "ys": "ja /tomodatɕi<t:友達> ni<t:に> kaɾɯkɯ<t:軽く> saŋkʲɯː<t:サンキュー> to<t:と> itta<t:言った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "tomodaʨi ni kaɾɯkɯ saŋkʲɨː to iʔta"
+     ]
+    ]
+   }
+  },
+  "kana_claude": {
+   "en_01": {
+    "ys": "ja /eːɡonodʑɯɡʲoːdehaɯaːjɯːtokikaɾemaɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdehaɯaːjɯːtokʲikaɾemaɕita"
+     ]
+    ]
+   },
+   "en_02": {
+    "ys": "ja /kanodʑowaeːɡodenaisɯtɯmiːtɕɯːtoaisatsɯɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kanoʥoβaeːɡodenaisɨtɯmʲiːʨɨːtoaisaʦɨɕita"
+     ]
+    ]
+   },
+   "en_03": {
+    "ys": "ja /eːɡanosaiɡonoseɾiɸɯwaeːɡodeaiɾɯbiːbakkɯdesɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡanosaiɡonoseɾʲiɸɯβaeːɡodeaiɾɯbʲiːbaʔkɯdesɨ"
+     ]
+    ]
+   },
+   "en_04": {
+    "ys": "ja /kaiɡinosaiɡoɲiameɾikadʑinnodʑoːɕiɡaeɲiːkɯesɯtɕondzɯtokiːta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲinosaiɡoɲiameɾʲikaʥinnoʥoːɕiɡaeɲiːkɯesɨʨonzɨtokʲiːta"
+     ]
+    ]
+   },
+   "en_05": {
+    "ys": "ja /eːɡonokotowadzapɯɾakɯtisɯmeikɯsɯpaːɸekɯtoooboeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonokotoβaʣapɯɾakɯtʲisɨmeikɯsɨpaːɸekɯtoooboeta"
+     ]
+    ]
+   },
+   "en_06": {
+    "ys": "ja /ɾondonnokɯːkoːdeɸainaɾɯboːdiŋɡɯkoːɾɯtojɯːanaɯɴsɯɡanaɡaɾeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondonnokɯːkoːdeɸainaɾɯboːdʲiŋɡɯkoːɾɯtojɯːanaɯɴsɨɡanaɡaɾeta"
+     ]
+    ]
+   },
+   "en_07": {
+    "ys": "ja /iɡiɾisɯnotoɾiçikisakinomeːɾɯwaitsɯmobesɯtoɾiɡaːdzɯdeowaɾɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨnotoɾʲiçikʲisakʲinomeːɾɯβaiʦɨmobesɨtoɾʲiɡaːzɨdeoβaɾɯ"
+     ]
+    ]
+   },
+   "en_08": {
+    "ys": "ja /eːɡodekikaɾeteaidontonoːtokotaeɾɯɕikanakatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡodekʲikaɾeteaidontonoːtokotaeɾɯɕikanakaʔta"
+     ]
+    ]
+   },
+   "en_09": {
+    "ys": "ja /eːɡonoseɴseːwasoːtonohatsɯoɴosaŋkaikɯɾikaeɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoseɴseːβasoːtonohaʦɨoɴosaŋkaikɯɾʲikaeɕita"
+     ]
+    ]
+   },
+   "en_10": {
+    "ys": "ja /hatsɯonɾeɴɕɯːdewasɯɾɯːoeːɡoɾaɕikɯittemimaɕoː ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "haʦɨonɾeɴɕɨːdeβasɨɾɯːoeːɡoɾaɕikɯiʔtemʲimaɕoː"
+     ]
+    ]
+   },
+   "en_11": {
+    "ys": "ja /ameɾikadʑinnodoːɾʲoːdʑeɲiɸaːwiɾɯsoɴsaɴoeːɡonohatsɯondeɕoːkaiɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥinnodoːɾʲoːʥeɲiɸaːβiɾɯsoɴsaɴoeːɡonohaʦɨondeɕoːkaiɕita"
+     ]
+    ]
+   },
+   "en_12": {
+    "ys": "ja /ɾondoɴɕɯɕɕinnomaɕɯːsaɲɲinamaewaeːɡonohatsɯondejondehoɕiːtoiwaɾeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴɕɨʔɕinnomaɕɨːsaɲɲinamaeβaeːɡonohaʦɨondejondehoɕiːtoiβaɾeta"
+     ]
+    ]
+   },
+   "en_13": {
+    "ys": "ja /eːɡonodʑɯɡʲoːdeɡeɴɕonodzakʲattɕaːindzaɾaioɾoːdokɯɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdeɡeɴɕonoʣakʲaʔʨaːinʣaɾaioɾoːdokɯɕita"
+     ]
+    ]
+   },
+   "en_14": {
+    "ys": "ja /kaɕɯwasamɯweaoːbaːdzaɾeimboːoeːɡodeɯtatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɕɨβasamɯβeaoːbaːʣaɾeimboːoeːɡodeɯtaʔta"
+     ]
+    ]
+   },
+   "en_15": {
+    "ys": "ja /ɕiatoɾɯdewadʑimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɯmaːkettotoeːɡodeittemita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯdeβaʥimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɨmaːkeʔtotoeːɡodeiʔtemʲita"
+     ]
+    ]
+   },
+   "en_16": {
+    "ys": "ja /asanohoːmɯɾɯːmɯdewaeːɡodeɡɯddomoːɲiŋɡɯtoaisatsɯɕimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "asanohoːmɯɾɯːmɯdeβaeːɡodeɡɯʔdomoːɲiŋɡɯtoaisaʦɨɕimasɨ"
+     ]
+    ]
+   },
+   "ja_01": {
+    "ys": "ja /teːbɯɾɯnoɯeɲikompʲɯːtaːɡaaɾimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯnoɯeɲikompʲɨːtaːɡaaɾʲimasɨ"
+     ]
+    ]
+   },
+   "ja_02": {
+    "ys": "ja /maiasakoːçiːonomimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "maiasakoːçiːonomʲimasɨ"
+     ]
+    ]
+   },
+   "ja_03": {
+    "ys": "ja /sɯmaːtoɸondemeːɾɯookɯtta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸondemeːɾɯookɯʔta"
+     ]
+    ]
+   },
+   "ja_04": {
+    "ys": "ja /ekimaenohoteɾɯɲitomatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ekʲimaenohoteɾɯɲitomaʔta"
+     ]
+    ]
+   },
+   "ja_05": {
+    "ys": "ja /aiɸoɴokaikaemaɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴokaikaemaɕita"
+     ]
+    ]
+   },
+   "ja_06": {
+    "ys": "ja /oːkeːdʑaːaɕitane ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "oːkeːʥaːaɕitane"
+     ]
+    ]
+   },
+   "ja_07": {
+    "ys": "ja /kaɸenowaiɸainopasɯwaːdoooɕietekɯdasai ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɸenoβaiɸainopasɨβaːdoooɕietekɯdasai"
+     ]
+    ]
+   },
+   "ja_08": {
+    "ys": "ja /tomodatɕiɲikaɾɯkɯsaŋkʲɯːtoitta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "tomodaʨiɲikaɾɯkɯsaŋkʲɨːtoiʔta"
+     ]
+    ]
+   }
+  },
+  "ys_codex": {
+   "en_01": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> dʑɯɡʲoː<t:授業> de<t:で> {en-US ˈhaʊ<t:「How> ɑɹ<t: are> ju<t: you?」>} to<t:と> kikaɾemaɕita<t:聞かれました。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de"
+     ],
+     [
+      "en-US",
+      "hˈW ɑɹ ju."
+     ],
+     [
+      "ja",
+      "to kʲikaɾemaɕita"
+     ]
+    ]
+   },
+   "en_02": {
+    "ys": "ja /kanodʑo<t:彼女> wa<t:は> eːɡo<t:英語> de<t:で> {en-US ˈnaɪs<t:「Nice> tə<t: to> ˈmit<t: meet> ju<t: you」>} to<t:と> aisatsɯ<t:挨拶> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kanoʥo βa eːɡo de"
+     ],
+     [
+      "en-US",
+      "nˈIs tə mˈit ju."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕita"
+     ]
+    ]
+   },
+   "en_03": {
+    "ys": "ja /eːɡa<t:映画> no<t:の> saiɡo<t:最後> no<t:の> seɾiɸɯ<t:台詞> wa<t:は> ‖<t:、> eːɡo<t:英語> de<t:で> {en-US aɪl<t:「I'll> bi<t: be> ˈbæk<t: back」>} desɯ<t:です。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡa no saiɡo no seɾʲiɸɯ βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "Il bi bˈæk."
+     ],
+     [
+      "ja",
+      "desɨ"
+     ]
+    ]
+   },
+   "en_04": {
+    "ys": "ja /kaiɡi<t:会議> no<t:の> saiɡo<t:最後> ɲi<t:に> ‖<t:、> ameɾikadʑiɴ<t:アメリカ人> no<t:の> dʑoːɕi<t:上司> ɡa<t:が> {en-US ˈɛ.ni<t:「Any> ˈkwɛs.tʃənz<t: questions?」>} to<t:と> kiːta<t:聞いた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲi no saiɡo ɲi, ameɾʲikaʥiɴ no ʥoːɕi ɡa"
+     ],
+     [
+      "en-US",
+      "ˈɛni kwˈɛsʧənz."
+     ],
+     [
+      "ja",
+      "to kʲiːta"
+     ]
+    ]
+   },
+   "en_05": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> kotowadza<t:ことわざ> {en-US ˈpɹæk.tɪs<t:「Practice> ˈmeɪks<t: makes> ˈpɝ.fɪkt<t: perfect」>} o<t:を> oboeta<t:覚えた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no kotoβaʣa"
+     ],
+     [
+      "en-US",
+      "pɹˈæktɪs mˈAks pˈɜɹfɪkt."
+     ],
+     [
+      "ja",
+      "o oboeta"
+     ]
+    ]
+   },
+   "en_06": {
+    "ys": "ja /ɾondoɴ<t:ロンドン> no<t:の> kɯːkoː<t:空港> de<t:で> {en-GB ˈfaɪ.nəl<t:「Final> ˈbɔː.dɪŋ<t: boarding> ˈkɔːl<t: call」>} to<t:と> iɯ<t:いう> anaɯnsɯ<t:アナウンス> ɡa<t:が> naɡaɾeta<t:流れた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ no kɯːkoː de"
+     ],
+     [
+      "en-GB",
+      "fˈInəl bˈɔːdɪŋ kˈɔːl."
+     ],
+     [
+      "ja",
+      "to iɯ anaɯnsɨ ɡa naɡaɾeta"
+     ]
+    ]
+   },
+   "en_07": {
+    "ys": "ja /iɡiɾisɯ<t:イギリス> no<t:の> toɾiçikisaki<t:取引先> no<t:の> meːɾɯ<t:メール> wa<t:は> ‖<t:、> itsɯmo<t:いつも> {en-GB ˈbɛst<t:「Best> ɹɪˈɡɑːdz<t: regards」>} de<t:で> owaɾɯ<t:終わる。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨ no toɾʲiçikʲisakʲi no meːɾɯ βa, iʦɨmo"
+     ],
+     [
+      "en-GB",
+      "bˈɛst ɹɪˈɡɑːdz."
+     ],
+     [
+      "ja",
+      "de oβaɾɯ"
+     ]
+    ]
+   },
+   "en_08": {
+    "ys": "ja /eːɡo<t:英語> de<t:で> kikaɾete<t:聞かれて、> ‖ {en-US aɪ<t:「I> ˈdoʊnt<t: don't> ˈnoʊ<t: know」>} to<t:と> kotaeɾɯ<t:答える> ɕika<t:しか> nakatta<t:なかった。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo de kʲikaɾete"
+     ],
+     [
+      "en-US",
+      "I dˈOnt nˈO."
+     ],
+     [
+      "ja",
+      "to kotaeɾɯ ɕika nakaʔta"
+     ]
+    ]
+   },
+   "en_09": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> seːseː<t:先生> wa<t:は> {en-US ˈθɔt<t:「thought」>} no<t:の> hatsɯoɴ<t:発音> o<t:を> saŋkai<t:三回> kɯɾikaeɕita<t:繰り返した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no seːseː βa"
+     ],
+     [
+      "en-US",
+      "θˈɔt."
+     ],
+     [
+      "ja",
+      "no haʦɨoɴ o saŋkai kɯɾʲikaeɕita"
+     ]
+    ]
+   },
+   "en_10": {
+    "ys": "ja /hatsɯoɴ<t:発音> ɾeɴɕɯː<t:練習> de<t:で> wa<t:は> ‖<t:、> {en-US ˈθɹu<t:「through」>} o<t:を> eːɡoɾaɕikɯ<t:英語らしく> itte<t:言って> mimaɕoː<t:みましょう。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "haʦɨoɴ ɾeɴɕɨː de βa"
+     ],
+     [
+      "en-US",
+      "θɹˈu."
+     ],
+     [
+      "ja",
+      "o eːɡoɾaɕikɯ iʔte mʲimaɕoː"
+     ]
+    ]
+   },
+   "en_11": {
+    "ys": "ja /ameɾikadʑiɴ<t:アメリカ人> no<t:の> doːɾʲoː<t:同僚> ‖<t:、> {en-US ˈdʒɛ.nə.fɚ<t:Jennifer> ˈwɪl.sən<t: Wilson>} saɴ<t: さん> o<t:を> eːɡo<t:英語> no<t:の> hatsɯoɴ<t:発音> de<t:で> ɕoːkai<t:紹介> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥiɴ no doːɾʲoː"
+     ],
+     [
+      "en-US",
+      "ʤˈɛnəfəɹ wˈɪlsən."
+     ],
+     [
+      "ja",
+      "saɴ o eːɡo no haʦɨoɴ de ɕoːkai ɕita"
+     ]
+    ]
+   },
+   "en_12": {
+    "ys": "ja /ɾondoɴ<t:ロンドン> ɕɯɕɕiɴ<t:出身> no<t:の> {en-GB ˈmæθ.juː<t: Matthew>} saɴ<t: さん> ɲi<t:に> ‖<t:、> namae<t:名前> wa<t:は> eːɡo<t:英語> no<t:の> hatsɯoɴ<t:発音> de<t:で> jonde<t:呼んで> hoɕiː<t:ほしい> to<t:と> iwaɾeta<t:言われた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ ɕɨʔɕiɴ no"
+     ],
+     [
+      "en-GB",
+      "mˈæθjuː."
+     ],
+     [
+      "ja",
+      "saɴ ɲi, namae βa eːɡo no haʦɨoɴ de jonde hoɕiː to iβaɾeta"
+     ]
+    ]
+   },
+   "en_13": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> dʑɯɡʲoː<t:授業> de<t:で> ‖<t:、> ɡeɴɕo<t:原書> no<t:の> {en-US ðə<t:「The> ˈkæ.tʃɚ<t: Catcher> ɪn<t: in> ðə<t: the> ˈɹaɪ<t: Rye」>} o<t:を> ɾoːdokɯ<t:朗読> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de, ɡeɴɕo no"
+     ],
+     [
+      "en-US",
+      "ðə kˈæʧəɹ ɪn ðə ɹˈI."
+     ],
+     [
+      "ja",
+      "o ɾoːdokɯ ɕita"
+     ]
+    ]
+   },
+   "en_14": {
+    "ys": "ja /kaɕɯ<t:歌手> wa<t:は> {en-US ˈsʌm.wɛɹ<t:「Somewhere> ˈoʊ.vɚ<t: Over> ðə<t: the> ˈɹeɪn.boʊ<t: Rainbow」>} o<t:を> eːɡo<t:英語> de<t:で> ɯtatta<t:歌った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɕɨ βa"
+     ],
+     [
+      "en-US",
+      "sˈʌmwɛɹ ˈOvəɹ ðə ɹˈAnbO."
+     ],
+     [
+      "ja",
+      "o eːɡo de ɯtaʔta"
+     ]
+    ]
+   },
+   "en_15": {
+    "ys": "ja /ɕiatoɾɯ<t:シアトル> de<t:で> wa<t:は> ‖<t:、> dʑimoto<t:地元> no<t:の> çito<t:人> ɡa<t:が> iɯ<t:言う> joːɲi<t:ように> {en-US ˈpaɪk<t:「Pike> ˈpleɪs<t: Place> ˈmɑɹ.kɪt<t: Market」>} to<t:と> eːɡo<t:英語> de<t:で> itte<t:言って> mita<t:みた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯ de βa, ʥimoto no çito ɡa iɯ joːɲi"
+     ],
+     [
+      "en-US",
+      "pˈIk plˈAs mˈɑɹkɪt."
+     ],
+     [
+      "ja",
+      "to eːɡo de iʔte mʲita"
+     ]
+    ]
+   },
+   "en_16": {
+    "ys": "ja /asa<t:朝> no<t:の> hoːmɯɾɯːmɯ<t:ホームルーム> de<t:で> wa<t:は> ‖<t:、> eːɡo<t:英語> de<t:で> {en-US ɡʊd<t:「Good> ˈmɔɹ.nɪŋ<t: morning」>} to<t:と> aisatsɯ<t:挨拶> ɕimasɯ<t:します。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "asa no hoːmɯɾɯːmɯ de βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ɡʊd mˈɔɹnɪŋ."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕimasɨ"
+     ]
+    ]
+   },
+   "ja_01": {
+    "ys": "ja /teːbɯɾɯ<t:テーブル> no<t:の> ɯe<t:上> ɲi<t:に> kompʲɯːtaː<t:コンピューター> ɡa<t:が> aɾimasɯ<t:あります。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯ no ɯe ɲi kompʲɨːtaː ɡa aɾʲimasɨ"
+     ]
+    ]
+   },
+   "ja_02": {
+    "ys": "ja /maiasa<t:毎朝> koːçiː<t:コーヒー> o<t:を> nomimasɯ<t:飲みます。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "maiasa koːçiː o nomʲimasɨ"
+     ]
+    ]
+   },
+   "ja_03": {
+    "ys": "ja /sɯmaːtoɸoɴ<t:スマートフォン> de<t:で> meːɾɯ<t:メール> o<t:を> okɯtta<t:送った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸoɴ de meːɾɯ o okɯʔta"
+     ]
+    ]
+   },
+   "ja_04": {
+    "ys": "ja /ekimae<t:駅前> no<t:の> hoteɾɯ<t:ホテル> ɲi<t:に> tomatta<t:泊まった。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ekʲimae no hoteɾɯ ɲi tomaʔta"
+     ]
+    ]
+   },
+   "ja_05": {
+    "ys": "ja /aiɸoɴ<t:iPhone> o<t: を> kaikaemaɕita<t:買い替えました。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴ o kaikaemaɕita"
+     ]
+    ]
+   },
+   "ja_06": {
+    "ys": "ja /oːkeː<t:OK、> ‖ dʑaː<t:じゃあ> aɕita<t:明日> ne<t:ね。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "oːkeː, ʥaː aɕita ne"
+     ]
+    ]
+   },
+   "ja_07": {
+    "ys": "ja /kaɸe<t:カフェ> no<t:の> waiɸai<t: Wi-Fi> no<t: の> pasɯwaːdo<t:パスワード> o<t:を> oɕiete<t:教えて> kɯdasai<t:ください。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɸe no βaiɸai no pasɨβaːdo o oɕiete kɯdasai"
+     ]
+    ]
+   },
+   "ja_08": {
+    "ys": "ja /tomodatɕi<t:友達> ɲi<t:に> kaɾɯkɯ<t:軽く> saŋkʲɯː<t:サンキュー> to<t:と> itta<t:言った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "tomodaʨi ɲi kaɾɯkɯ saŋkʲɨː to iʔta"
+     ]
+    ]
+   }
+  },
+  "kana_codex": {
+   "en_01": {
+    "ys": "ja /eːɡonodʑɯɡʲoːdehaɯaːjɯːtokikaɾemaɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdehaɯaːjɯːtokʲikaɾemaɕita"
+     ]
+    ]
+   },
+   "en_02": {
+    "ys": "ja /kanodʑowaeːɡodenaisɯtɯmiːtɕɯːtoaisatsɯɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kanoʥoβaeːɡodenaisɨtɯmʲiːʨɨːtoaisaʦɨɕita"
+     ]
+    ]
+   },
+   "en_03": {
+    "ys": "ja /eːɡanosaiɡonoseɾiɸɯwaeːɡodeaiɾɯbiːbakkɯdesɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡanosaiɡonoseɾʲiɸɯβaeːɡodeaiɾɯbʲiːbaʔkɯdesɨ"
+     ]
+    ]
+   },
+   "en_04": {
+    "ys": "ja /kaiɡinosaiɡoɲiameɾikadʑinnodʑoːɕiɡaeɲiːkɯesɯtɕondzɯtokiita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲinosaiɡoɲiameɾʲikaʥinnoʥoːɕiɡaeɲiːkɯesɨʨonzɨtokʲiita"
+     ]
+    ]
+   },
+   "en_05": {
+    "ys": "ja /eːɡonokotowadzapɯɾakɯtisɯmeikɯsɯpaːɸekɯtoooboeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonokotoβaʣapɯɾakɯtʲisɨmeikɯsɨpaːɸekɯtoooboeta"
+     ]
+    ]
+   },
+   "en_06": {
+    "ys": "ja /ɾondonnokɯːkoːdeɸainaɾɯboːdiŋɡɯkoːɾɯtojɯːanaɯɴsɯɡanaɡaɾeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondonnokɯːkoːdeɸainaɾɯboːdʲiŋɡɯkoːɾɯtojɯːanaɯɴsɨɡanaɡaɾeta"
+     ]
+    ]
+   },
+   "en_07": {
+    "ys": "ja /iɡiɾisɯnotoɾiçikisakinomeːɾɯwaitsɯmobesɯtoɾiɡaːdzɯdeowaɾɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨnotoɾʲiçikʲisakʲinomeːɾɯβaiʦɨmobesɨtoɾʲiɡaːzɨdeoβaɾɯ"
+     ]
+    ]
+   },
+   "en_08": {
+    "ys": "ja /eːɡodekikaɾeteaidontonoːtokotaeɾɯɕikanakatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡodekʲikaɾeteaidontonoːtokotaeɾɯɕikanakaʔta"
+     ]
+    ]
+   },
+   "en_09": {
+    "ys": "ja /eːɡonoseɴseːwasoːtonohatsɯoɴosaŋkaikɯɾikaeɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoseɴseːβasoːtonohaʦɨoɴosaŋkaikɯɾʲikaeɕita"
+     ]
+    ]
+   },
+   "en_10": {
+    "ys": "ja /hatsɯonɾeɴɕɯːdewasɯɾɯːoeːɡoɾaɕikɯittemimaɕoː ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "haʦɨonɾeɴɕɨːdeβasɨɾɯːoeːɡoɾaɕikɯiʔtemʲimaɕoː"
+     ]
+    ]
+   },
+   "en_11": {
+    "ys": "ja /ameɾikadʑinnodoːɾʲoːdʑeɲiɸaːwiɾɯsoɴsaɴoeːɡonohatsɯondeɕoːkaiɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥinnodoːɾʲoːʥeɲiɸaːβiɾɯsoɴsaɴoeːɡonohaʦɨondeɕoːkaiɕita"
+     ]
+    ]
+   },
+   "en_12": {
+    "ys": "ja /ɾondoɴɕɯɕɕinnomaɕɯːsaɲɲinamaewaeːɡonohatsɯondejondehoɕiːtoiwaɾeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴɕɨʔɕinnomaɕɨːsaɲɲinamaeβaeːɡonohaʦɨondejondehoɕiːtoiβaɾeta"
+     ]
+    ]
+   },
+   "en_13": {
+    "ys": "ja /eːɡonodʑɯɡʲoːdeɡeɴɕonodzakʲattɕaːindzaɾaioɾoːdokɯɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdeɡeɴɕonoʣakʲaʔʨaːinʣaɾaioɾoːdokɯɕita"
+     ]
+    ]
+   },
+   "en_14": {
+    "ys": "ja /kaɕɯwasamɯweaoːvaːdzaɾeimboːoeːɡodeɯtatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɕɨβasamɯβeaoːvaːʣaɾeimboːoeːɡodeɯtaʔta"
+     ]
+    ]
+   },
+   "en_15": {
+    "ys": "ja /ɕiatoɾɯdewadʑimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɯmaːkettotoeːɡodeittemita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯdeβaʥimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɨmaːkeʔtotoeːɡodeiʔtemʲita"
+     ]
+    ]
+   },
+   "en_16": {
+    "ys": "ja /asanohoːmɯɾɯːmɯdewaeːɡodeɡɯddomoːɲiŋɡɯtoaisatsɯɕimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "asanohoːmɯɾɯːmɯdeβaeːɡodeɡɯʔdomoːɲiŋɡɯtoaisaʦɨɕimasɨ"
+     ]
+    ]
+   },
+   "ja_01": {
+    "ys": "ja /teːbɯɾɯnoɯeɲikompʲɯːtaːɡaaɾimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯnoɯeɲikompʲɨːtaːɡaaɾʲimasɨ"
+     ]
+    ]
+   },
+   "ja_02": {
+    "ys": "ja /maiasakoːçiːonomimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "maiasakoːçiːonomʲimasɨ"
+     ]
+    ]
+   },
+   "ja_03": {
+    "ys": "ja /sɯmaːtoɸondemeːɾɯookɯtta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸondemeːɾɯookɯʔta"
+     ]
+    ]
+   },
+   "ja_04": {
+    "ys": "ja /ekimaenohoteɾɯɲitomatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ekʲimaenohoteɾɯɲitomaʔta"
+     ]
+    ]
+   },
+   "ja_05": {
+    "ys": "ja /aiɸoɴokaikaemaɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴokaikaemaɕita"
+     ]
+    ]
+   },
+   "ja_06": {
+    "ys": "ja /oːkeːdʑaːaɕitane ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "oːkeːʥaːaɕitane"
+     ]
+    ]
+   },
+   "ja_07": {
+    "ys": "ja /kaɸenowaiɸainopasɯwaːdoooɕietekɯdasai ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɸenoβaiɸainopasɨβaːdoooɕietekɯdasai"
+     ]
+    ]
+   },
+   "ja_08": {
+    "ys": "ja /tomodatɕiɲikaɾɯkɯsaŋkʲɯːtoitta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "tomodaʨiɲikaɾɯkɯsaŋkʲɨːtoiʔta"
+     ]
+    ]
+   }
+  },
+  "ys_agy": {
+   "en_02": {
+    "ys": "ja /kanodʑo<t:彼女> wa<t:は> eːɡo<t:英語> de<t:で> {en-US ˈnaɪs<t:「Nice> tə<t: to> ˈmiːt<t: meet> ˈjuː<t: you」>} to<t:と> aisatsɯ<t:挨拶> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kanoʥo βa eːɡo de"
+     ],
+     [
+      "en-US",
+      "nˈIs tə mˈiːt jˈuː."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕita"
+     ]
+    ]
+   },
+   "en_03": {
+    "ys": "ja /eːɡa<t:映画> no<t:の> saiɡo<t:最後> no<t:の> seɾiɸɯ<t:台詞> wa<t:は> ‖<t:、> eːɡo<t:英語> de<t:で> {en-US ˈaɪl<t:「I'll> ˈbiː<t: be> ˈbæk<t: back」>} desɯ<t:です。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡa no saiɡo no seɾʲiɸɯ βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ˈIl bˈiː bˈæk."
+     ],
+     [
+      "ja",
+      "desɨ"
+     ]
+    ]
+   },
+   "en_04": {
+    "ys": "ja /kaiɡi<t:会議> no<t:の> saiɡo<t:最後> ɲi<t:に> ‖<t:、> ameɾikadʑiɴ<t:アメリカ人> no<t:の> dʑoːɕi<t:上司> ɡa<t:が> {en-US ˈɛ.ni<t:「Any> ˈkwɛs.tʃənz<t: questions?」>} to<t:と> kiːta<t:聞いた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲi no saiɡo ɲi, ameɾʲikaʥiɴ no ʥoːɕi ɡa"
+     ],
+     [
+      "en-US",
+      "ˈɛni kwˈɛsʧənz."
+     ],
+     [
+      "ja",
+      "to kʲiːta"
+     ]
+    ]
+   },
+   "en_05": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> kotowadza<t:ことわざ> {en-US ˈpɹæk.tɪs<t:「Practice> ˈmeɪks<t: makes> ˈpɝ.fɪkt<t: perfect」>} o<t:を> oboeta<t:覚えた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no kotoβaʣa"
+     ],
+     [
+      "en-US",
+      "pɹˈæktɪs mˈAks pˈɜɹfɪkt."
+     ],
+     [
+      "ja",
+      "o oboeta"
+     ]
+    ]
+   },
+   "en_06": {
+    "ys": "ja /ɾondoɴ<t:ロンドン> no<t:の> kɯːkoː<t:空港> de<t:で> {en-US ˈfaɪ.nəl<t:「Final> ˈbɔɹ.dɪŋ<t: boarding> ˈkɔːl<t: call」>} to<t:と> iɯ<t:いう> anaɯɴsɯ<t:アナウンス> ɡa<t:が> naɡaɾeta<t:流れた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ no kɯːkoː de"
+     ],
+     [
+      "en-US",
+      "fˈInəl bˈɔɹdɪŋ kˈɔːl."
+     ],
+     [
+      "ja",
+      "to iɯ anaɯɴsɨ ɡa naɡaɾeta"
+     ]
+    ]
+   },
+   "en_07": {
+    "ys": "ja /iɡiɾisɯ<t:イギリス> no<t:の> toɾiçikisaki<t:取引先> no<t:の> meːɾɯ<t:メール> wa<t:は> ‖<t:、> itsɯmo<t:いつも> {en-US ˈbɛst<t:「Best> ɹɪ.ˈɡɑɹdz<t: regards」>} de<t:で> owaɾɯ<t:終わる。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨ no toɾʲiçikʲisakʲi no meːɾɯ βa, iʦɨmo"
+     ],
+     [
+      "en-US",
+      "bˈɛst ɹɪɡˈɑɹdz."
+     ],
+     [
+      "ja",
+      "de oβaɾɯ"
+     ]
+    ]
+   },
+   "en_08": {
+    "ys": "ja /eːɡo<t:英語> de<t:で> kikaɾete<t:聞かれて> ‖<t:、> {en-US ˈaɪ<t:「I> ˈdoʊnt<t: don't> ˈnoʊ<t: know」>} to<t:と> kotaeɾɯ<t:答える> ɕika<t:しか> nakatta<t:なかった。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo de kʲikaɾete"
+     ],
+     [
+      "en-US",
+      "ˈI dˈOnt nˈO."
+     ],
+     [
+      "ja",
+      "to kotaeɾɯ ɕika nakaʔta"
+     ]
+    ]
+   },
+   "en_09": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> seːseː<t:先生> wa<t:は> {en-US ˈθɔːt<t:「thought」>} no<t:の> hatsɯoɴ<t:発音> o<t:を> saŋkai<t:三回> kɯɾikaeɕita<t:繰り返した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no seːseː βa"
+     ],
+     [
+      "en-US",
+      "θˈɔːt."
+     ],
+     [
+      "ja",
+      "no haʦɨoɴ o saŋkai kɯɾʲikaeɕita"
+     ]
+    ]
+   },
+   "en_10": {
+    "ys": "ja /hatsɯoɴ<t:発音> ɾeɴɕɯː<t:練習> de<t:で> wa<t:は> ‖<t:、> {en-US ˈθɹuː<t:「through」>} o<t:を> eːɡoɾaɕikɯ<t:英語らしく> itte<t:言って> mimaɕoː<t:みましょう。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "haʦɨoɴ ɾeɴɕɨː de βa"
+     ],
+     [
+      "en-US",
+      "θɹˈuː."
+     ],
+     [
+      "ja",
+      "o eːɡoɾaɕikɯ iʔte mʲimaɕoː"
+     ]
+    ]
+   },
+   "en_11": {
+    "ys": "ja /ameɾikadʑiɴ<t:アメリカ人> no<t:の> doːɾʲoː<t:同僚> ‖<t:、> {en-US ˈdʒɛ.nə.fəɹ<t:Jennifer> ˈwɪl.sən<t: Wilson>} saɴ<t: さん> o<t:を> eːɡo<t:英語> no<t:の> hatsɯoɴ<t:発音> de<t:で> ɕoːkai<t:紹介> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥiɴ no doːɾʲoː"
+     ],
+     [
+      "en-US",
+      "ʤˈɛnəfəɹ wˈɪlsən."
+     ],
+     [
+      "ja",
+      "saɴ o eːɡo no haʦɨoɴ de ɕoːkai ɕita"
+     ]
+    ]
+   },
+   "en_12": {
+    "ys": "ja /ɾondoɴ<t:ロンドン> ɕɯɕɕiɴ<t:出身> no<t:の> {en-US ˈmæ.θjuː<t: Matthew>} saɴ<t: さん> ɲi<t:に> ‖<t:、> namae<t:名前> wa<t:は> eːɡo<t:英語> no<t:の> hatsɯoɴ<t:発音> de<t:で> jonde<t:呼んで> hoɕiː<t:ほしい> to<t:と> iwaɾeta<t:言われた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ ɕɨʔɕiɴ no"
+     ],
+     [
+      "en-US",
+      "mˈæθjuː."
+     ],
+     [
+      "ja",
+      "saɴ ɲi, namae βa eːɡo no haʦɨoɴ de jonde hoɕiː to iβaɾeta"
+     ]
+    ]
+   },
+   "en_13": {
+    "ys": "ja /eːɡo<t:英語> no<t:の> dʑɯɡʲoː<t:授業> de<t:で> ‖<t:、> ɡeɴɕo<t:原書> no<t:の> {en-US ðə<t:「The> ˈkæ.tʃəɹ<t: Catcher> ɪn<t: in> ðə<t: the> ˈɹaɪ<t: Rye」>} o<t:を> ɾoːdokɯ<t:朗読> ɕita<t:した。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de, ɡeɴɕo no"
+     ],
+     [
+      "en-US",
+      "ðə kˈæʧəɹ ɪn ðə ɹˈI."
+     ],
+     [
+      "ja",
+      "o ɾoːdokɯ ɕita"
+     ]
+    ]
+   },
+   "en_14": {
+    "ys": "ja /kaɕɯ<t:歌手> wa<t:は> {en-US ˈsʌm.wɛɹ<t:「Somewhere> ˈoʊ.vəɹ<t: Over> ðə<t: the> ˈɹeɪn.ˌboʊ<t: Rainbow」>} o<t:を> eːɡo<t:英語> de<t:で> ɯtatta<t:歌った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɕɨ βa"
+     ],
+     [
+      "en-US",
+      "sˈʌmwɛɹ ˈOvəɹ ðə ɹˈAnbˌO."
+     ],
+     [
+      "ja",
+      "o eːɡo de ɯtaʔta"
+     ]
+    ]
+   },
+   "en_15": {
+    "ys": "ja /ɕiatoɾɯ<t:シアトル> de<t:で> wa<t:は> ‖<t:、> dʑimoto<t:地元> no<t:の> çito<t:人> ɡa<t:が> iɯ<t:言う> joː<t:よう> ɲi<t:に> {en-US ˈpaɪk<t:「Pike> ˈpleɪs<t: Place> ˈmɑɹ.kɪt<t: Market」>} to<t:と> eːɡo<t:英語> de<t:で> itte<t:言って> mita<t:みた。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯ de βa, ʥimoto no çito ɡa iɯ joː ɲi"
+     ],
+     [
+      "en-US",
+      "pˈIk plˈAs mˈɑɹkɪt."
+     ],
+     [
+      "ja",
+      "to eːɡo de iʔte mʲita"
+     ]
+    ]
+   },
+   "en_16": {
+    "ys": "ja /asa<t:朝> no<t:の> hoːmɯɾɯːmɯ<t:ホームルーム> de<t:で> wa<t:は> ‖<t:、> eːɡo<t:英語> de<t:で> {en-US ˈɡʊd<t:「Good> ˈmɔɹ.nɪŋ<t: morning」>} to<t:と> aisatsɯ<t:挨拶> ɕimasɯ<t:します。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "asa no hoːmɯɾɯːmɯ de βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ɡˈʊd mˈɔɹnɪŋ."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕimasɨ"
+     ]
+    ]
+   },
+   "ja_01": {
+    "ys": "ja /teːbɯɾɯ<t:テーブル> no<t:の> ɯe<t:上> ɲi<t:に> kompʲɯːtaː<t:コンピューター> ɡa<t:が> aɾimasɯ<t:あります。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯ no ɯe ɲi kompʲɨːtaː ɡa aɾʲimasɨ"
+     ]
+    ]
+   },
+   "ja_02": {
+    "ys": "ja /maiasa<t:毎朝> koːçiː<t:コーヒー> o<t:を> nomimasɯ<t:飲みます。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "maiasa koːçiː o nomʲimasɨ"
+     ]
+    ]
+   },
+   "ja_03": {
+    "ys": "ja /sɯmaːtoɸoɴ<t:スマートフォン> de<t:で> meːɾɯ<t:メール> o<t:を> okɯtta<t:送った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸoɴ de meːɾɯ o okɯʔta"
+     ]
+    ]
+   },
+   "ja_04": {
+    "ys": "ja /ekimae<t:駅前> no<t:の> hoteɾɯ<t:ホテル> ɲi<t:に> tomatta<t:泊まった。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ekʲimae no hoteɾɯ ɲi tomaʔta"
+     ]
+    ]
+   },
+   "ja_05": {
+    "ys": "ja /aiɸoɴ<t:iPhone > o<t:を> kaikaemaɕita<t:買い替えました。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴ o kaikaemaɕita"
+     ]
+    ]
+   },
+   "ja_06": {
+    "ys": "ja /oːkeː<t:OK> ‖<t:、> dʑaː<t:じゃあ> aɕita<t:明日> ne<t:ね。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "oːkeː, ʥaː aɕita ne"
+     ]
+    ]
+   },
+   "ja_07": {
+    "ys": "ja /kaɸe<t:カフェ> no<t:の> waiɸai<t: Wi-Fi > no<t:の> pasɯwaːdo<t:パスワード> o<t:を> oɕiete<t:教えて> kɯdasai<t:ください。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɸe no βaiɸai no pasɨβaːdo o oɕiete kɯdasai"
+     ]
+    ]
+   },
+   "ja_08": {
+    "ys": "ja /tomodatɕi<t:友達> ɲi<t:に> kaɾɯkɯ<t:軽く> saŋkʲɯː<t:サンキュー> to<t:と> itta<t:言った。> ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "tomodaʨi ɲi kaɾɯkɯ saŋkʲɨː to iʔta"
+     ]
+    ]
+   }
+  },
+  "kana_agy": {
+   "en_01": {
+    "ys": "ja /eːɡonodʑɯɡʲoːdehaɯaːjɯːtokikaɾemaɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdehaɯaːjɯːtokʲikaɾemaɕita"
+     ]
+    ]
+   },
+   "en_02": {
+    "ys": "ja /kanodʑowaeːɡodenaisɯtɯːmiːtojɯːtoaisatsɯɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kanoʥoβaeːɡodenaisɨtɯːmʲiːtojɯːtoaisaʦɨɕita"
+     ]
+    ]
+   },
+   "en_03": {
+    "ys": "ja /eːɡanosaiɡonoseɾiɸɯwaeːɡodeaiɾɯbiːbakkɯdesɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡanosaiɡonoseɾʲiɸɯβaeːɡodeaiɾɯbʲiːbaʔkɯdesɨ"
+     ]
+    ]
+   },
+   "en_04": {
+    "ys": "ja /kaiɡinosaiɡoɲiameɾikadʑinnodʑoːɕiɡaeɲiːkɯesɯtɕondzɯtokiːta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲinosaiɡoɲiameɾʲikaʥinnoʥoːɕiɡaeɲiːkɯesɨʨonzɨtokʲiːta"
+     ]
+    ]
+   },
+   "en_05": {
+    "ys": "ja /eːɡonokotowadzapɯɾakɯtisɯmeikɯsɯpaːɸekɯtoooboeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonokotoβaʣapɯɾakɯtʲisɨmeikɯsɨpaːɸekɯtoooboeta"
+     ]
+    ]
+   },
+   "en_06": {
+    "ys": "ja /ɾondonnokɯːkoːdeɸainaɾɯboːdiŋɡɯkoːɾɯtojɯːanaɯɴsɯɡanaɡaɾeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondonnokɯːkoːdeɸainaɾɯboːdʲiŋɡɯkoːɾɯtojɯːanaɯɴsɨɡanaɡaɾeta"
+     ]
+    ]
+   },
+   "en_07": {
+    "ys": "ja /iɡiɾisɯnotoɾiçikisakinomeːɾɯwaitsɯmobesɯtoɾiɡaːdzɯdeowaɾɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨnotoɾʲiçikʲisakʲinomeːɾɯβaiʦɨmobesɨtoɾʲiɡaːzɨdeoβaɾɯ"
+     ]
+    ]
+   },
+   "en_08": {
+    "ys": "ja /eːɡodekikaɾeteaidontonoːtokotaeɾɯɕikanakatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡodekʲikaɾeteaidontonoːtokotaeɾɯɕikanakaʔta"
+     ]
+    ]
+   },
+   "en_09": {
+    "ys": "ja /eːɡonoseːseːwasoːtonohatsɯoɴosaŋkaikɯɾikaeɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoseːseːβasoːtonohaʦɨoɴosaŋkaikɯɾʲikaeɕita"
+     ]
+    ]
+   },
+   "en_10": {
+    "ys": "ja /hatsɯonɾeɴɕɯːdewasɯɾɯːoeːɡoɾaɕikɯittemimaɕoː ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "haʦɨonɾeɴɕɨːdeβasɨɾɯːoeːɡoɾaɕikɯiʔtemʲimaɕoː"
+     ]
+    ]
+   },
+   "en_11": {
+    "ys": "ja /ameɾikadʑinnodoːɾʲoːdʑeɲiɸaːwiɾɯsoɴsaɴoeːɡonohatsɯondeɕoːkaiɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥinnodoːɾʲoːʥeɲiɸaːβiɾɯsoɴsaɴoeːɡonohaʦɨondeɕoːkaiɕita"
+     ]
+    ]
+   },
+   "en_12": {
+    "ys": "ja /ɾondoɴɕɯɕɕinnomaɕɯːsaɲɲinamaewaeːɡonohatsɯondejondehoɕiːtoiwaɾeta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴɕɨʔɕinnomaɕɨːsaɲɲinamaeβaeːɡonohaʦɨondejondehoɕiːtoiβaɾeta"
+     ]
+    ]
+   },
+   "en_13": {
+    "ys": "ja /eːɡonodʑɯɡʲoːdeɡeɴɕonodzakʲattɕaːindzaɾaioɾoːdokɯɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdeɡeɴɕonoʣakʲaʔʨaːinʣaɾaioɾoːdokɯɕita"
+     ]
+    ]
+   },
+   "en_14": {
+    "ys": "ja /kaɕɯwasamɯweaoːbaːdzaɾeimboːoeːɡodeɯtatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɕɨβasamɯβeaoːbaːʣaɾeimboːoeːɡodeɯtaʔta"
+     ]
+    ]
+   },
+   "en_15": {
+    "ys": "ja /ɕiatoɾɯdewadʑimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɯmaːkettotoeːɡodeittemita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯdeβaʥimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɨmaːkeʔtotoeːɡodeiʔtemʲita"
+     ]
+    ]
+   },
+   "en_16": {
+    "ys": "ja /asanohoːmɯɾɯːmɯdewaeːɡodeɡɯddomoːɲiŋɡɯtoaisatsɯɕimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "asanohoːmɯɾɯːmɯdeβaeːɡodeɡɯʔdomoːɲiŋɡɯtoaisaʦɨɕimasɨ"
+     ]
+    ]
+   },
+   "ja_01": {
+    "ys": "ja /teːbɯɾɯnoɯeɲikompʲɯːtaːɡaaɾimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯnoɯeɲikompʲɨːtaːɡaaɾʲimasɨ"
+     ]
+    ]
+   },
+   "ja_02": {
+    "ys": "ja /maiasakoːçiːonomimasɯ ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "maiasakoːçiːonomʲimasɨ"
+     ]
+    ]
+   },
+   "ja_03": {
+    "ys": "ja /sɯmaːtoɸondemeːɾɯookɯtta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸondemeːɾɯookɯʔta"
+     ]
+    ]
+   },
+   "ja_04": {
+    "ys": "ja /ekimaenohoteɾɯɲitomatta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "ekʲimaenohoteɾɯɲitomaʔta"
+     ]
+    ]
+   },
+   "ja_05": {
+    "ys": "ja /aiɸoɴokaikaemaɕita ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴokaikaemaɕita"
+     ]
+    ]
+   },
+   "ja_06": {
+    "ys": "ja /oːkeːdʑaːaɕitane ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "oːkeːʥaːaɕitane"
+     ]
+    ]
+   },
+   "ja_07": {
+    "ys": "ja /kaɸenowaiɸainopasɯwaːdoooɕietekɯdasai ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "kaɸenoβaiɸainopasɨβaːdoooɕietekɯdasai"
+     ]
+    ]
+   },
+   "ja_08": {
+    "ys": "ja /tomodatɕiɲikaɾɯkɯsaŋkʲɯːtoitta ↘/",
+    "mode": "engine",
+    "ps": [
+     [
+      "ja",
+      "tomodaʨiɲikaɾɯkɯsaŋkʲɨːtoiʔta"
+     ]
+    ]
+   }
+  }
+ },
+ "failed": [
+  "ys_claude ja_07: not Japanese YomiScript IPA: \"f\" in \"waifai\"",
+  "ys_agy en_01: not Japanese YomiScript IPA: \"r\" in \"kikaremaɕita\""
+ ]
+}

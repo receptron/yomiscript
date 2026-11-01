@@ -1,0 +1,357 @@
+{
+ "note": "Pitch-accent minimal sets. textbook: the Tokyo accent as standard references (NHK accent dictionary) give it, written by hand from memory and not checked against the dictionary itself: the mora after which the pitch falls, 0 for flat (heiban). The gold of the experiment is OpenJTalk's (results/gold.json).",
+ "items": [
+  {
+   "name": "ame_1",
+   "set": "ame",
+   "word": "雨",
+   "kana": "アメ",
+   "textbook": 1,
+   "text": "朝から雨が降っています。"
+  },
+  {
+   "name": "ame_2",
+   "set": "ame",
+   "word": "飴",
+   "kana": "アメ",
+   "textbook": 0,
+   "text": "子供が飴をなめています。"
+  },
+  {
+   "name": "hashi_1",
+   "set": "hashi",
+   "word": "橋",
+   "kana": "ハシ",
+   "textbook": 2,
+   "text": "川に新しい橋がかかった。"
+  },
+  {
+   "name": "hashi_2",
+   "set": "hashi",
+   "word": "箸",
+   "kana": "ハシ",
+   "textbook": 1,
+   "text": "食事のときは箸を使います。"
+  },
+  {
+   "name": "hashi_3",
+   "set": "hashi",
+   "word": "端",
+   "kana": "ハシ",
+   "textbook": 0,
+   "text": "道の端を歩いてください。"
+  },
+  {
+   "name": "kaki_1",
+   "set": "kaki",
+   "word": "柿",
+   "kana": "カキ",
+   "textbook": 0,
+   "text": "秋になると柿が甘くなる。"
+  },
+  {
+   "name": "kaki_2",
+   "set": "kaki",
+   "word": "牡蠣",
+   "kana": "カキ",
+   "textbook": 1,
+   "text": "広島で牡蠣を食べました。"
+  },
+  {
+   "name": "sake_1",
+   "set": "sake",
+   "word": "酒",
+   "kana": "サケ",
+   "textbook": 0,
+   "text": "父は毎晩酒を飲む。"
+  },
+  {
+   "name": "sake_2",
+   "set": "sake",
+   "word": "鮭",
+   "kana": "サケ",
+   "textbook": 1,
+   "text": "川を鮭がのぼってきた。"
+  },
+  {
+   "name": "kami_1",
+   "set": "kami",
+   "word": "神",
+   "kana": "カミ",
+   "textbook": 1,
+   "text": "神に祈りを捧げた。"
+  },
+  {
+   "name": "kami_2",
+   "set": "kami",
+   "word": "紙",
+   "kana": "カミ",
+   "textbook": 2,
+   "text": "コピー機の紙が切れた。"
+  },
+  {
+   "name": "kami_3",
+   "set": "kami",
+   "word": "髪",
+   "kana": "カミ",
+   "textbook": 2,
+   "text": "美容院で髪を切った。"
+  },
+  {
+   "name": "hana_1",
+   "set": "hana",
+   "word": "鼻",
+   "kana": "ハナ",
+   "textbook": 0,
+   "text": "風邪で鼻がつまっている。"
+  },
+  {
+   "name": "hana_2",
+   "set": "hana",
+   "word": "花",
+   "kana": "ハナ",
+   "textbook": 2,
+   "text": "庭に花が咲いた。"
+  },
+  {
+   "name": "aki_1",
+   "set": "aki",
+   "word": "秋",
+   "kana": "アキ",
+   "textbook": 1,
+   "text": "秋が来て涼しくなった。"
+  },
+  {
+   "name": "aki_2",
+   "set": "aki",
+   "word": "空き",
+   "kana": "アキ",
+   "textbook": 0,
+   "text": "駐車場に空きがない。"
+  },
+  {
+   "name": "asa_1",
+   "set": "asa",
+   "word": "朝",
+   "kana": "アサ",
+   "textbook": 1,
+   "text": "朝が早いので眠い。"
+  },
+  {
+   "name": "asa_2",
+   "set": "asa",
+   "word": "麻",
+   "kana": "アサ",
+   "textbook": 2,
+   "text": "このシャツは麻でできている。"
+  },
+  {
+   "name": "kata_1",
+   "set": "kata",
+   "word": "肩",
+   "kana": "カタ",
+   "textbook": 1,
+   "text": "重い荷物で肩が痛い。"
+  },
+  {
+   "name": "kata_2",
+   "set": "kata",
+   "word": "型",
+   "kana": "カタ",
+   "textbook": 2,
+   "text": "ケーキの型を買った。"
+  },
+  {
+   "name": "michi_1",
+   "set": "michi",
+   "word": "道",
+   "kana": "ミチ",
+   "textbook": 0,
+   "text": "この道をまっすぐ行ってください。"
+  },
+  {
+   "name": "michi_2",
+   "set": "michi",
+   "word": "未知",
+   "kana": "ミチ",
+   "textbook": 1,
+   "text": "未知の世界を探検する。"
+  },
+  {
+   "name": "ishi_1",
+   "set": "ishi",
+   "word": "石",
+   "kana": "イシ",
+   "textbook": 2,
+   "text": "川原で石を拾った。"
+  },
+  {
+   "name": "ishi_2",
+   "set": "ishi",
+   "word": "意思",
+   "kana": "イシ",
+   "textbook": 1,
+   "text": "本人の意思を尊重する。"
+  },
+  {
+   "name": "shio_1",
+   "set": "shio",
+   "word": "塩",
+   "kana": "シオ",
+   "textbook": 2,
+   "text": "スープに塩を入れた。"
+  },
+  {
+   "name": "shio_2",
+   "set": "shio",
+   "word": "潮",
+   "kana": "シオ",
+   "textbook": 0,
+   "text": "潮が満ちてきた。"
+  },
+  {
+   "name": "ima_1",
+   "set": "ima",
+   "word": "今",
+   "kana": "イマ",
+   "textbook": 1,
+   "text": "今が一番楽しい。"
+  },
+  {
+   "name": "ima_2",
+   "set": "ima",
+   "word": "居間",
+   "kana": "イマ",
+   "textbook": 2,
+   "text": "家族は居間でテレビを見ている。"
+  },
+  {
+   "name": "atsui_1",
+   "set": "atsui",
+   "word": "熱い",
+   "kana": "アツイ",
+   "textbook": 2,
+   "text": "熱いお茶を飲んだ。"
+  },
+  {
+   "name": "atsui_2",
+   "set": "atsui",
+   "word": "厚い",
+   "kana": "アツイ",
+   "textbook": 0,
+   "text": "厚い本を読んだ。"
+  },
+  {
+   "name": "hi_1",
+   "set": "hi",
+   "word": "火",
+   "kana": "ヒ",
+   "textbook": 1,
+   "text": "ガスの火を消した。"
+  },
+  {
+   "name": "hi_2",
+   "set": "hi",
+   "word": "日",
+   "kana": "ヒ",
+   "textbook": 0,
+   "text": "日が暮れてきた。"
+  },
+  {
+   "name": "ki_1",
+   "set": "ki",
+   "word": "木",
+   "kana": "キ",
+   "textbook": 1,
+   "text": "公園の木が倒れた。"
+  },
+  {
+   "name": "ki_2",
+   "set": "ki",
+   "word": "気",
+   "kana": "キ",
+   "textbook": 0,
+   "text": "彼は気が短い。"
+  },
+  {
+   "name": "ijou_1",
+   "set": "ijou",
+   "word": "以上",
+   "kana": "イジョー",
+   "textbook": 1,
+   "text": "以上で説明を終わります。"
+  },
+  {
+   "name": "ijou_2",
+   "set": "ijou",
+   "word": "異常",
+   "kana": "イジョー",
+   "textbook": 0,
+   "text": "検査で異常が見つかった。"
+  },
+  {
+   "name": "ichi_1",
+   "set": "ichi",
+   "word": "一",
+   "kana": "イチ",
+   "textbook": 2,
+   "text": "一から勉強し直す。"
+  },
+  {
+   "name": "ichi_2",
+   "set": "ichi",
+   "word": "位置",
+   "kana": "イチ",
+   "textbook": 1,
+   "text": "机の位置を変えた。"
+  },
+  {
+   "name": "shita_1",
+   "set": "shita",
+   "word": "下",
+   "kana": "シタ",
+   "textbook": 0,
+   "text": "机の下に猫がいる。"
+  },
+  {
+   "name": "shita_2",
+   "set": "shita",
+   "word": "舌",
+   "kana": "シタ",
+   "textbook": 2,
+   "text": "熱いスープで舌をやけどした。"
+  },
+  {
+   "name": "aka_1",
+   "set": "aka",
+   "word": "赤",
+   "kana": "アカ",
+   "textbook": 1,
+   "text": "信号が赤に変わった。"
+  },
+  {
+   "name": "aka_2",
+   "set": "aka",
+   "word": "垢",
+   "kana": "アカ",
+   "textbook": 2,
+   "text": "お風呂で垢を落とした。"
+  },
+  {
+   "name": "toshi_1",
+   "set": "toshi",
+   "word": "都市",
+   "kana": "トシ",
+   "textbook": 1,
+   "text": "東京は大きな都市だ。"
+  },
+  {
+   "name": "toshi_2",
+   "set": "toshi",
+   "word": "年",
+   "kana": "トシ",
+   "textbook": 2,
+   "text": "年が明けた。"
+  }
+ ]
+}

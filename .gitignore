@@ -38,3 +38,6 @@ eval/prosody_ref/results/*.pkl
 
 # eval/tts_readings audio (speak.mjs)
 eval/tts_readings/audio/
+
+# eval/ipa_value audio (synth.mjs)
+eval/ipa_value/audio/

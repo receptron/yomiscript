@@ -1,0 +1,2416 @@
+[
+ {
+  "name": "en_01",
+  "intent": "en",
+  "target": "How are you",
+  "text": "英語の授業で「How are you?」と聞かれました。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de"
+     ],
+     [
+      "en-US",
+      "hˈW ɑɹ jˈu."
+     ],
+     [
+      "ja",
+      "to kʲikaɾemaɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の授業でHow are you?と聞かれました。",
+    "latin": true,
+    "segText": "How are you?",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de"
+     ],
+     [
+      "en-US",
+      "hˈW ɑɹ ju."
+     ],
+     [
+      "ja",
+      "to kʲikaɾemaɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の授業でHow are you?と聞かれました。",
+    "latin": true,
+    "segText": "How are you?",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdehaɯaːjɯːtokʲikaɾemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の授業でHow are you?と聞かれました。",
+    "latin": true,
+    "segText": "How are you?",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdehaɯaːjɯːtokʲikaɾemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の授業でHow are you?と聞かれました。",
+    "latin": true,
+    "segText": "How are you?",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdehaɯaːjɯːtokʲikaɾemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の授業でHow are you?と聞かれました。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "en_02",
+  "intent": "en",
+  "target": "Nice to meet you",
+  "text": "彼女は英語で「Nice to meet you」と挨拶した。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "kanoʥo βa eːɡo de"
+     ],
+     [
+      "en-US",
+      "nˈIs tə mˈit ju."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "彼女は英語で、ナイスタミチューと挨拶した。",
+    "latin": false,
+    "segText": "Nice to meet you.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "kanoʥo βa eːɡo de"
+     ],
+     [
+      "en-US",
+      "nˈIs tə mˈit ju."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "彼女は英語で、ナイスとミチよ、と挨拶した。",
+    "latin": false,
+    "segText": "Nice to meet you.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "kanoʥo βa eːɡo de"
+     ],
+     [
+      "en-US",
+      "nˈIs tə mˈiːt jˈuː."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "彼女は英語で、Nice to meet youと挨拶した。",
+    "latin": true,
+    "segText": "Nice to meet you.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "kanoʥoβaeːɡodenaisɨtɯmʲiːʨɨːtoaisaʦɨɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "彼女は英語でナイスツミーチューと挨拶した。",
+    "latin": false,
+    "segText": "Nice to meet you.",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "kanoʥoβaeːɡodenaisɨtɯmʲiːʨɨːtoaisaʦɨɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "彼女は英語でナイスツミーチューと挨拶した。",
+    "latin": false,
+    "segText": "Nice to meet you.",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "kanoʥoβaeːɡodenaisɨtɯːmʲiːtojɯːtoaisaʦɨɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "彼女は英語でナイスとミーというと挨拶した。",
+    "latin": false,
+    "segText": "nice to meet you",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "en_03",
+  "intent": "en",
+  "target": "I'll be back",
+  "text": "映画の最後の台詞は、英語で「I'll be back」です。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡa no saiɡo no seɾʲiɸɯ βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ˌIl bi bˈæk."
+     ],
+     [
+      "ja",
+      "desɨ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "映画の最後のセリフは英語でI'll be backです",
+    "latin": true,
+    "segText": "I'll be back.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡa no saiɡo no seɾʲiɸɯ βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "Il bi bˈæk."
+     ],
+     [
+      "ja",
+      "desɨ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "映画の最後のセリフは英語でI'll be backです",
+    "latin": true,
+    "segText": "I'll be back.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡa no saiɡo no seɾʲiɸɯ βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ˈIl bˈiː bˈæk."
+     ],
+     [
+      "ja",
+      "desɨ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "映画の最後のセリフは英語でI'll be backです",
+    "latin": true,
+    "segText": "I'll be back.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡanosaiɡonoseɾʲiɸɯβaeːɡodeaiɾɯbʲiːbaʔkɯdesɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "映画の最後のセリフは英語でI'll be backです",
+    "latin": true,
+    "segText": "I'll be back",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡanosaiɡonoseɾʲiɸɯβaeːɡodeaiɾɯbʲiːbaʔkɯdesɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "映画の最後のセリフは英語でI'll be backです",
+    "latin": true,
+    "segText": "hello being back",
+    "segAcc": 0.3333333333333333
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡanosaiɡonoseɾʲiɸɯβaeːɡodeaiɾɯbʲiːbaʔkɯdesɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "映画の最後のセリフは英語でI'll be backです",
+    "latin": true,
+    "segText": "I'll be back",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "en_04",
+  "intent": "en",
+  "target": "Any questions",
+  "text": "会議の最後に、アメリカ人の上司が「Any questions?」と聞いた。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲi no saiɡo ni, ameɾʲikaʥin no ʥoːɕi ɡa"
+     ],
+     [
+      "en-US",
+      "ˈɛni kwˈɛsʧənz."
+     ],
+     [
+      "ja",
+      "to kʲiita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "会議の最後にアメリカ人の上司がAny Questions?どう聞いた?",
+    "latin": true,
+    "segText": "Any questions?",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲi no saiɡo ɲi, ameɾʲikaʥiɴ no ʥoːɕi ɡa"
+     ],
+     [
+      "en-US",
+      "ˈɛni kwˈɛsʧənz."
+     ],
+     [
+      "ja",
+      "to kʲiːta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "会議の最後にアメリカ人の上司がAny Questions?どう聞いた?",
+    "latin": true,
+    "segText": "Any questions?",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲi no saiɡo ɲi, ameɾʲikaʥiɴ no ʥoːɕi ɡa"
+     ],
+     [
+      "en-US",
+      "ˈɛni kwˈɛsʧənz."
+     ],
+     [
+      "ja",
+      "to kʲiːta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "会議の最後にアメリカ人の上司がAny Questions?どう聞いた?",
+    "latin": true,
+    "segText": "Any questions?",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲinosaiɡoɲiameɾʲikaʥinnoʥoːɕiɡaeɲiːkɯesɨʨonzɨtokʲiːta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "会議の最後にアメリカ人の上司替えにクエスチョンスと聞いた",
+    "latin": false,
+    "segText": "Any questions?",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲinosaiɡoɲiameɾʲikaʥinnoʥoːɕiɡaeɲiːkɯesɨʨonzɨtokʲiita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "会議の最後にアメリカ人の上司外にクエスチョンスと聞いた",
+    "latin": false,
+    "segText": "hey ¿qué carsú",
+    "segAcc": 0
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "kaiɡʲinosaiɡoɲiameɾʲikaʥinnoʥoːɕiɡaeɲiːkɯesɨʨonzɨtokʲiːta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "会議の最後にアメリカ人の上司替えにクエスチョンスと聞いた",
+    "latin": false,
+    "segText": "Desiri pi estaagtawa bi ini pierta mentor kerja dok",
+    "segAcc": 0
+   }
+  }
+ },
+ {
+  "name": "en_05",
+  "intent": "en",
+  "target": "Practice makes perfect",
+  "text": "英語のことわざ「Practice makes perfect」を覚えた。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no kotoβaza"
+     ],
+     [
+      "en-US",
+      "pɹˈæktɪs mˈAks pˈɜɹfɪkt."
+     ],
+     [
+      "ja",
+      "o oboeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語のことわざ Practice makes perfectを覚えた?",
+    "latin": true,
+    "segText": "Practice makes perfect.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no kotoβaʣa"
+     ],
+     [
+      "en-US",
+      "pɹˈæktɪs mˈAks pˈɜɹfɪkt."
+     ],
+     [
+      "ja",
+      "o oboeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語のことわざ Practice makes perfectを覚えた?",
+    "latin": true,
+    "segText": "Practice makes perfect.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no kotoβaʣa"
+     ],
+     [
+      "en-US",
+      "pɹˈæktɪs mˈAks pˈɜɹfɪkt."
+     ],
+     [
+      "ja",
+      "o oboeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語のことわざ Practice makes perfectを覚えた?",
+    "latin": true,
+    "segText": "Practice makes perfect.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonokotoβaʣapɯɾakɯtʲisɨmeikɯsɨpaːɸekɯtoooboeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語のことはThe Practice Makes Perfectを覚えた",
+    "latin": true,
+    "segText": "Practice Makes Perfect",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonokotoβaʣapɯɾakɯtʲisɨmeikɯsɨpaːɸekɯtoooboeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語のことはThe Practice Makes Perfectを覚えた",
+    "latin": true,
+    "segText": "Practice makes perfect",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonokotoβaʣapɯɾakɯtʲisɨmeikɯsɨpaːɸekɯtoooboeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語のことはThe Practice Makes Perfectを覚えた",
+    "latin": true,
+    "segText": "Practice Makes Perfect",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "en_06",
+  "intent": "en",
+  "target": "Final boarding call",
+  "text": "ロンドンの空港で「Final boarding call」というアナウンスが流れた。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "ɾondon no kɯːkoː de"
+     ],
+     [
+      "en-US",
+      "fˈInəl bˈɔɹdɪŋ kˈɔl."
+     ],
+     [
+      "ja",
+      "to iɯ anaɯɴsɨ ɡa naɡaɾeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "ロンドンの空港でファイナルボーリングカルというアナウンスが流れた。",
+    "latin": false,
+    "segText": "Final boarding call.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ no kɯːkoː de"
+     ],
+     [
+      "en-GB",
+      "fˈInəl bˈɔːdɪŋ kˈɔːl."
+     ],
+     [
+      "ja",
+      "to iɯ anaɯnsɨ ɡa naɡaɾeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "ロンドンの空港でファイナルボーディングコールというアナウンスが流れた。",
+    "latin": false,
+    "segText": "Final boarding call.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ no kɯːkoː de"
+     ],
+     [
+      "en-US",
+      "fˈInəl bˈɔɹdɪŋ kˈɔːl."
+     ],
+     [
+      "ja",
+      "to iɯ anaɯɴsɨ ɡa naɡaɾeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "ロンドンの空港でファイナルボーリングコールというアナウンスが流れた。",
+    "latin": false,
+    "segText": "Final boarding call.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "ɾondonnokɯːkoːdeɸainaɾɯboːdʲiŋɡɯkoːɾɯtojɯːanaɯɴsɨɡanaɡaɾeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "ロンドンの空港でファイナルボーディングコールというアナウンスが流れた。",
+    "latin": false,
+    "segText": "Final boarding call to",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "ɾondonnokɯːkoːdeɸainaɾɯboːdʲiŋɡɯkoːɾɯtojɯːanaɯɴsɨɡanaɡaɾeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "ロンドンの空港でファイナルボーディングコールというアナウンスが流れた。",
+    "latin": false,
+    "segText": "Final boarding call to",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "ɾondonnokɯːkoːdeɸainaɾɯboːdʲiŋɡɯkoːɾɯtojɯːanaɯɴsɨɡanaɡaɾeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "ロンドンの空港でファイナルボーディングコールというアナウンスが流れた。",
+    "latin": false,
+    "segText": "Final boarding call to",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "en_07",
+  "intent": "en",
+  "target": "Best regards",
+  "text": "イギリスの取引先のメールは、いつも「Best regards」で終わる。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨ no toɾʲihikʲisakʲi no meːɾɯ βa, iʦɨmo"
+     ],
+     [
+      "en-US",
+      "bˈɛst ɹɪɡˈɑɹdz."
+     ],
+     [
+      "ja",
+      "de oβaɾɯ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "イギリスの取引先のメールはいつもBest Regardsで終わる",
+    "latin": true,
+    "segText": "Best regards.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨ no toɾʲiçikʲisakʲi no meːɾɯ βa, iʦɨmo"
+     ],
+     [
+      "en-GB",
+      "bˈɛst ɹɪˈɡɑːdz."
+     ],
+     [
+      "ja",
+      "de oβaɾɯ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "イギリスの取引先のメールはいつもベストリアガーズで終わる",
+    "latin": false,
+    "segText": "Best Rear Girls",
+    "segAcc": 0.5
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨ no toɾʲiçikʲisakʲi no meːɾɯ βa, iʦɨmo"
+     ],
+     [
+      "en-US",
+      "bˈɛst ɹɪɡˈɑɹdz."
+     ],
+     [
+      "ja",
+      "de oβaɾɯ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "イギリスの取引先のメールはいつもベストリガーズで終わる",
+    "latin": false,
+    "segText": "Best regards.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨnotoɾʲiçikʲisakʲinomeːɾɯβaiʦɨmobesɨtoɾʲiɡaːzɨdeoβaɾɯ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "イギリスの取引先のメールはいつもベストリガーズで終わる",
+    "latin": false,
+    "segText": "Best Triggers",
+    "segAcc": 0.5
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨnotoɾʲiçikʲisakʲinomeːɾɯβaiʦɨmobesɨtoɾʲiɡaːzɨdeoβaɾɯ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "イギリスの取引先のメールはいつもベストリガーズで終わる",
+    "latin": false,
+    "segText": "Best Triggers",
+    "segAcc": 0.5
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "iɡʲiɾʲisɨnotoɾʲiçikʲisakʲinomeːɾɯβaiʦɨmobesɨtoɾʲiɡaːzɨdeoβaɾɯ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "イギリスの取引先のメールはいつもベストリガーズで終わる",
+    "latin": false,
+    "segText": "Best Triggers",
+    "segAcc": 0.5
+   }
+  }
+ },
+ {
+  "name": "en_08",
+  "intent": "en",
+  "target": "I don't know",
+  "text": "英語で聞かれて、「I don't know」と答えるしかなかった。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo de kʲikaɾete"
+     ],
+     [
+      "en-US",
+      "ˌI dˈOnt nˈO."
+     ],
+     [
+      "ja",
+      "to kotaeɾɯ ɕika nakaʔta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語で聞かれてI don't knowと答えるしかなかった",
+    "latin": true,
+    "segText": "I don't know.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo de kʲikaɾete"
+     ],
+     [
+      "en-US",
+      "I dˈOnt nˈO."
+     ],
+     [
+      "ja",
+      "to kotaeɾɯ ɕika nakaʔta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語で聞かれて、I don't knowと答えるしかなかった。",
+    "latin": true,
+    "segText": "I don't know.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo de kʲikaɾete"
+     ],
+     [
+      "en-US",
+      "ˈI dˈOnt nˈO."
+     ],
+     [
+      "ja",
+      "to kotaeɾɯ ɕika nakaʔta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語で聞かれてI don't knowと答えるしかなかった",
+    "latin": true,
+    "segText": "I don't know.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡodekʲikaɾeteaidontonoːtokotaeɾɯɕikanakaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語で聞かれてアイドンとの音を耐えるしかなかった。",
+    "latin": false,
+    "segText": "I don't know.",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡodekʲikaɾeteaidontonoːtokotaeɾɯɕikanakaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語で聞かれてアイドンとの音を耐えるしかなかった。",
+    "latin": false,
+    "segText": "I don't know.",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡodekʲikaɾeteaidontonoːtokotaeɾɯɕikanakaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語で聞かれてアイドンとの音を耐えるしかなかった。",
+    "latin": false,
+    "segText": "I don't know.",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "en_09",
+  "intent": "en",
+  "target": "thought",
+  "text": "英語の先生は「thought」の発音を三回繰り返した。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no seːseː βa"
+     ],
+     [
+      "en-US",
+      "θˈɔt."
+     ],
+     [
+      "ja",
+      "no haʦɨoɴ o saŋkai kɯɾʲikaeɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の生成は、の発音を3回繰り返した。",
+    "latin": false,
+    "segText": "thought",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no seːseː βa"
+     ],
+     [
+      "en-US",
+      "θˈɔt."
+     ],
+     [
+      "ja",
+      "no haʦɨoɴ o saŋkai kɯɾʲikaeɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の生成は、の発音を3回繰り返した。",
+    "latin": false,
+    "segText": "thought",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no seːseː βa"
+     ],
+     [
+      "en-US",
+      "θˈɔːt."
+     ],
+     [
+      "ja",
+      "no haʦɨoɴ o saŋkai kɯɾʲikaeɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の生成は、の発音を3回繰り返した。",
+    "latin": false,
+    "segText": "thought",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoseɴseːβasoːtonohaʦɨoɴosaŋkaikɯɾʲikaeɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の先生は相当の発音を3回繰り返した。",
+    "latin": false,
+    "segText": "Those two leads very clearly check some equipment before letting take access is shown by calm gas consumption only once ... Beat because there are certain quantity still services ...",
+    "segAcc": 0
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoseɴseːβasoːtonohaʦɨoɴosaŋkaikɯɾʲikaeɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の先生は相当の発音を3回繰り返した。",
+    "latin": false,
+    "segText": "ah ah ah",
+    "segAcc": 0
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoseːseːβasoːtonohaʦɨoɴosaŋkaikɯɾʲikaeɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の生成は相当の発音を3回繰り返した",
+    "latin": false,
+    "segText": "Those two factors may matter if they stand when they leave their 있습니다. Would not fire only after feeling quickly if they leave theirこと or success with extra walks of rotting time and empty situations that break down any components that aren't yours?",
+    "segAcc": 0
+   }
+  }
+ },
+ {
+  "name": "en_10",
+  "intent": "en",
+  "target": "through",
+  "text": "発音練習では、「through」を英語らしく言ってみましょう。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "haʦɨon ɾeɴɕɨː de βa"
+     ],
+     [
+      "en-US",
+      "θɹˈu."
+     ],
+     [
+      "ja",
+      "o eːɡo ɾaɕikɯ iʔte mʲimaɕoː"
+     ]
+    ],
+    "tagged": true,
+    "heard": "発音練習ではお英語らしく言ってみましょう",
+    "latin": false,
+    "segText": "through",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "haʦɨoɴ ɾeɴɕɨː de βa"
+     ],
+     [
+      "en-US",
+      "θɹˈu."
+     ],
+     [
+      "ja",
+      "o eːɡoɾaɕikɯ iʔte mʲimaɕoː"
+     ]
+    ],
+    "tagged": true,
+    "heard": "発音練習ではお英語らしく言ってみましょう",
+    "latin": false,
+    "segText": "through",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "haʦɨoɴ ɾeɴɕɨː de βa"
+     ],
+     [
+      "en-US",
+      "θɹˈuː."
+     ],
+     [
+      "ja",
+      "o eːɡoɾaɕikɯ iʔte mʲimaɕoː"
+     ]
+    ],
+    "tagged": true,
+    "heard": "発音練習ではお英語らしく言ってみましょう",
+    "latin": false,
+    "segText": "through",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "haʦɨonɾeɴɕɨːdeβasɨɾɯːoeːɡoɾaɕikɯiʔtemʲimaɕoː"
+     ]
+    ],
+    "tagged": false,
+    "heard": "発音練習ではスルー英語らしく言ってみましょう",
+    "latin": false,
+    "segText": "Loading Password",
+    "segAcc": 0
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "haʦɨonɾeɴɕɨːdeβasɨɾɯːoeːɡoɾaɕikɯiʔtemʲimaɕoː"
+     ]
+    ],
+    "tagged": false,
+    "heard": "発音練習ではスルー英語らしく言ってみましょう",
+    "latin": false,
+    "segText": "Slough Oil",
+    "segAcc": 0
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "haʦɨonɾeɴɕɨːdeβasɨɾɯːoeːɡoɾaɕikɯiʔtemʲimaɕoː"
+     ]
+    ],
+    "tagged": false,
+    "heard": "発音練習ではスルー英語らしく言ってみましょう",
+    "latin": false,
+    "segText": "Slough cuidosis�� 아이� foul remotely מש�� � tokens tak Tsari anders als ud esprage",
+    "segAcc": 0
+   }
+  }
+ },
+ {
+  "name": "en_11",
+  "intent": "en",
+  "target": "Jennifer Wilson",
+  "text": "アメリカ人の同僚、Jennifer Wilson さんを英語の発音で紹介した。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥin no doːɾʲoː"
+     ],
+     [
+      "en-US",
+      "ʤˈɛnəfəɹ wˈɪlsən."
+     ],
+     [
+      "ja",
+      "saɴ o eːɡo no haʦɨon de ɕoːkai ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "アメリカ人の同僚ジェナファー・ウィルソンさんを英語の発音で紹介した",
+    "latin": false,
+    "segText": "Jennifer Wilson",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥiɴ no doːɾʲoː"
+     ],
+     [
+      "en-US",
+      "ʤˈɛnəfəɹ wˈɪlsən."
+     ],
+     [
+      "ja",
+      "saɴ o eːɡo no haʦɨoɴ de ɕoːkai ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "アメリカ人の同僚ジェナファー・ウィルソンさんを英語の発音で紹介した",
+    "latin": false,
+    "segText": "Jennifer Wilson",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥiɴ no doːɾʲoː"
+     ],
+     [
+      "en-US",
+      "ʤˈɛnəfəɹ wˈɪlsən."
+     ],
+     [
+      "ja",
+      "saɴ o eːɡo no haʦɨoɴ de ɕoːkai ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "アメリカ人の同僚ジェナファー・ウィルソンさんを英語の発音で紹介した",
+    "latin": false,
+    "segText": "Jennifer Wilson",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥinnodoːɾʲoːʥeɲiɸaːβiɾɯsoɴsaɴoeːɡonohaʦɨondeɕoːkaiɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "アメリカ人の同僚ジェニファービルソンさんを英語の発音で紹介した",
+    "latin": false,
+    "segText": "Jennifer Wilson",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥinnodoːɾʲoːʥeɲiɸaːβiɾɯsoɴsaɴoeːɡonohaʦɨondeɕoːkaiɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "アメリカ人の同僚ジェニファービルソンさんを英語の発音で紹介した",
+    "latin": false,
+    "segText": "Jennifer Wilson",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "ameɾʲikaʥinnodoːɾʲoːʥeɲiɸaːβiɾɯsoɴsaɴoeːɡonohaʦɨondeɕoːkaiɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "アメリカ人の同僚ジェニファービルソンさんを英語の発音で紹介した",
+    "latin": false,
+    "segText": "Jennifer Wilson",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "en_12",
+  "intent": "en",
+  "target": "Matthew",
+  "text": "ロンドン出身の Matthew さんに、名前は英語の発音で呼んでほしいと言われた。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ ɕɨʔɕin no"
+     ],
+     [
+      "en-US",
+      "mˈæθju."
+     ],
+     [
+      "ja",
+      "san ni, namae βa eːɡo no haʦɨon de jonde hoɕiː to iβaɾeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "ロンドン出身のマティウさんに名前は英語の発音で読んでほしいと言われた",
+    "latin": false,
+    "segText": "Matthew",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ ɕɨʔɕiɴ no"
+     ],
+     [
+      "en-GB",
+      "mˈæθjuː."
+     ],
+     [
+      "ja",
+      "saɴ ɲi, namae βa eːɡo no haʦɨoɴ de jonde hoɕiː to iβaɾeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "ロンドン出身のマテューさんに名前は英語の発音で読んでほしいと言われた",
+    "latin": false,
+    "segText": "Matthew.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴ ɕɨʔɕiɴ no"
+     ],
+     [
+      "en-US",
+      "mˈæθjuː."
+     ],
+     [
+      "ja",
+      "saɴ ɲi, namae βa eːɡo no haʦɨoɴ de jonde hoɕiː to iβaɾeta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "ロンドン出身のマテューさんに名前は英語の発音で読んでほしいと言われた",
+    "latin": false,
+    "segText": "Matthew",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴɕɨʔɕinnomaɕɨːsaɲɲinamaeβaeːɡonohaʦɨondejondehoɕiːtoiβaɾeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "ロンドン主人のマッシュさんに名前は英語の発音で呼んでほしいと言われた。",
+    "latin": false,
+    "segText": "Masiu sana por dont wy miejscakan Watแบ cual kita mau Emmaều Application",
+    "segAcc": 0
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴɕɨʔɕinnomaɕɨːsaɲɲinamaeβaeːɡonohaʦɨondejondehoɕiːtoiβaɾeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "ロンドン主人のマッシュさんに名前は英語の発音で呼んでほしいと言われた。",
+    "latin": false,
+    "segText": "Nice want me to share my opinion as well. Have a great week. Bye coming l basically. Follow me now?",
+    "segAcc": 0
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "ɾondoɴɕɨʔɕinnomaɕɨːsaɲɲinamaeβaeːɡonohaʦɨondejondehoɕiːtoiβaɾeta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "ロンドン主人のマッシュさんに名前は英語の発音で呼んでほしいと言われた。",
+    "latin": false,
+    "segText": "Everything came down from Chinese Energy International者 who developed schools as such as houses within digital restrictions of 근데 apareние premium ingredients are limited by trading trading insight options where foreignugs come from private entertainment interests or corporate instances they buy rent cultural inequality problem sales external Apple manufacturers",
+    "segAcc": 0
+   }
+  }
+ },
+ {
+  "name": "en_13",
+  "intent": "en",
+  "target": "The Catcher in the Rye",
+  "text": "英語の授業で、原書の「The Catcher in the Rye」を朗読した。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de, ɡeɴɕo no"
+     ],
+     [
+      "en-US",
+      "ðə kˈæʧəɹ ɪn ðə ɹˈI."
+     ],
+     [
+      "ja",
+      "o ɾoːdokɯ ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の授業で原書のThe Catcher in the Ryeを朗読した。",
+    "latin": true,
+    "segText": "The catcher in the ride.",
+    "segAcc": 0.8
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de, ɡeɴɕo no"
+     ],
+     [
+      "en-US",
+      "ðə kˈæʧəɹ ɪn ðə ɹˈI."
+     ],
+     [
+      "ja",
+      "o ɾoːdokɯ ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の授業で原書のThe Catcher in the Ryeを朗読した。",
+    "latin": true,
+    "segText": "The catcher in the ride.",
+    "segAcc": 0.8
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡo no ʥɨɡʲoː de, ɡeɴɕo no"
+     ],
+     [
+      "en-US",
+      "ðə kˈæʧəɹ ɪn ðə ɹˈI."
+     ],
+     [
+      "ja",
+      "o ɾoːdokɯ ɕita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "英語の授業で原書のThe Catcher in the Ryeを朗読した",
+    "latin": true,
+    "segText": "The catcher in the ride.",
+    "segAcc": 0.8
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdeɡeɴɕonoʣakʲaʔʨaːinʣaɾaioɾoːdokɯɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の授業で原書のThe Catch in the Laiを朗読した",
+    "latin": false,
+    "segText": "the catcher in the light",
+    "segAcc": 0.8
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdeɡeɴɕonoʣakʲaʔʨaːinʣaɾaioɾoːdokɯɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の授業で原書のThe Catch in the Laiを朗読した",
+    "latin": false,
+    "segText": "the catcher in the light",
+    "segAcc": 0.8
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "eːɡonoʥɨɡʲoːdeɡeɴɕonoʣakʲaʔʨaːinʣaɾaioɾoːdokɯɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "英語の授業で原書のThe Catch in the Laiを朗読した",
+    "latin": false,
+    "segText": "the catcher in the light",
+    "segAcc": 0.8
+   }
+  }
+ },
+ {
+  "name": "en_14",
+  "intent": "en",
+  "target": "Somewhere Over the Rainbow",
+  "text": "歌手は「Somewhere Over the Rainbow」を英語で歌った。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "kaɕɨ βa"
+     ],
+     [
+      "en-US",
+      "sˈʌmwɛɹ ˈOvəɹ ðə ɹˈAnbO."
+     ],
+     [
+      "ja",
+      "o eːɡo de ɯtaʔta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "歌詞はSomewhere Over the Rainbowを英語で歌った",
+    "latin": true,
+    "segText": "Somewhere over the rainbow.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "kaɕɨ βa"
+     ],
+     [
+      "en-US",
+      "sˈʌmwɛɹ ˈOvəɹ ðə ɹˈAnbO."
+     ],
+     [
+      "ja",
+      "o eːɡo de ɯtaʔta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "歌詞はSomewhere Over the Rainbowお英語で歌った",
+    "latin": true,
+    "segText": "Somewhere over the rainbow.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "kaɕɨ βa"
+     ],
+     [
+      "en-US",
+      "sˈʌmwɛɹ ˈOvəɹ ðə ɹˈAnbˌO."
+     ],
+     [
+      "ja",
+      "o eːɡo de ɯtaʔta"
+     ]
+    ],
+    "tagged": true,
+    "heard": "歌詞はSomewhere Over the Rainbowを英語で歌った。",
+    "latin": true,
+    "segText": "Somewhere over the rainbow.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "kaɕɨβasamɯβeaoːbaːʣaɾeimboːoeːɡodeɯtaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "歌詞はサムウェアオーバーザレインボー英語で歌った",
+    "latin": false,
+    "segText": "Some way over the rainbow.",
+    "segAcc": 0.75
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "kaɕɨβasamɯβeaoːvaːʣaɾeimboːoeːɡodeɯtaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "カシュワサムウェアオーバーザレインボーを英語で歌った",
+    "latin": false,
+    "segText": "Some way over the rainbow.",
+    "segAcc": 0.75
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "kaɕɨβasamɯβeaoːbaːʣaɾeimboːoeːɡodeɯtaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "カシワサムウェアオーバーザレインボー英語で歌った",
+    "latin": false,
+    "segText": "Some way over the rainbow.",
+    "segAcc": 0.75
+   }
+  }
+ },
+ {
+  "name": "en_15",
+  "intent": "en",
+  "target": "Pike Place Market",
+  "text": "シアトルでは、地元の人が言うように「Pike Place Market」と英語で言ってみた。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯ de βa, ʥimoto no hito ɡa iɯ joːni"
+     ],
+     [
+      "en-US",
+      "pˈIk plˈAs mˈɑɹkɪt."
+     ],
+     [
+      "ja",
+      "to eːɡo de iʔte mʲita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "シアトルでは地元の人が言うようにパイクプレイスマーケットと英語で言ってみた",
+    "latin": false,
+    "segText": "Pike Place Market",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯ de βa, ʥimoto no çito ɡa iɯ joːɲi"
+     ],
+     [
+      "en-US",
+      "pˈIk plˈAs mˈɑɹkɪt."
+     ],
+     [
+      "ja",
+      "to eːɡo de iʔte mʲita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "シアトルでは地元の人が言うようにパイプレイスマーケットと英語で言ってみた",
+    "latin": false,
+    "segText": "Pike Place Market",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯ de βa, ʥimoto no çito ɡa iɯ joː ɲi"
+     ],
+     [
+      "en-US",
+      "pˈIk plˈAs mˈɑɹkɪt."
+     ],
+     [
+      "ja",
+      "to eːɡo de iʔte mʲita"
+     ]
+    ],
+    "tagged": true,
+    "heard": "シアトルでは地元の人が言うようにパイプレイスマーケットと英語で言ってみた",
+    "latin": false,
+    "segText": "Pike Place Market",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯdeβaʥimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɨmaːkeʔtotoeːɡodeiʔtemʲita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "シアトルでは地元の都が言うようにパイクプレイスマーケットと英語で行ってみた",
+    "latin": false,
+    "segText": "Pike Place Market",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯdeβaʥimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɨmaːkeʔtotoeːɡodeiʔtemʲita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "シアトルでは地元の都が言うようにパイクプレイスマーケットと英語で行ってみた",
+    "latin": false,
+    "segText": "Pike Place Market",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "ɕiatoɾɯdeβaʥimotonoçitoɡajɯːjoːɲipaikɯpɯɾeisɨmaːkeʔtotoeːɡodeiʔtemʲita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "シアトルでは地元の都が言うようにパイクプレイスマーケットと英語で行ってみた",
+    "latin": false,
+    "segText": "Pike Place Market",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "en_16",
+  "intent": "en",
+  "target": "Good morning",
+  "text": "朝のホームルームでは、英語で「Good morning」と挨拶します。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "asa no hoːmɯɾɯːmɯ de βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ɡˈʊd mˈɔɹnɪŋ."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕimasɨ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "朝のホームルームでは英語でグッドモーネンと挨拶します。",
+    "latin": false,
+    "segText": "Good morning.",
+    "segAcc": 1
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "asa no hoːmɯɾɯːmɯ de βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ɡʊd mˈɔɹnɪŋ."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕimasɨ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "朝のホームルームでは英語でグッドモーネンと挨拶します",
+    "latin": false,
+    "segText": "Good morning.",
+    "segAcc": 1
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "asa no hoːmɯɾɯːmɯ de βa, eːɡo de"
+     ],
+     [
+      "en-US",
+      "ɡˈʊd mˈɔɹnɪŋ."
+     ],
+     [
+      "ja",
+      "to aisaʦɨ ɕimasɨ"
+     ]
+    ],
+    "tagged": true,
+    "heard": "朝のホームルームでは英語でグッドモーネンと挨拶します。",
+    "latin": false,
+    "segText": "Good morning.",
+    "segAcc": 1
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "asanohoːmɯɾɯːmɯdeβaeːɡodeɡɯʔdomoːɲiŋɡɯtoaisaʦɨɕimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "朝のホームルームでは英語でグッドモーニングと挨拶します",
+    "latin": false,
+    "segText": "Good morning.",
+    "segAcc": 1
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "asanohoːmɯɾɯːmɯdeβaeːɡodeɡɯʔdomoːɲiŋɡɯtoaisaʦɨɕimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "朝のホームルームでは英語でグッドモーニングと挨拶します",
+    "latin": false,
+    "segText": "Good morning.",
+    "segAcc": 1
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "asanohoːmɯɾɯːmɯdeβaeːɡodeɡɯʔdomoːɲiŋɡɯtoaisaʦɨɕimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "朝のホームルームではA5でグッドモーニングと挨拶します",
+    "latin": false,
+    "segText": "Good morning.",
+    "segAcc": 1
+   }
+  }
+ },
+ {
+  "name": "ja_01",
+  "intent": "ja",
+  "target": "テーブル",
+  "text": "テーブルの上にコンピューターがあります。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯ no ɯe ni kompʲɨːtaː ɡa aɾʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "テーブルの上にコンピューターがあります。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯ no ɯe ɲi kompʲɨːtaː ɡa aɾʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "テーブルの上にコンピューターがあります。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯ no ɯe ɲi kompʲɨːtaː ɡa aɾʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "テーブルの上にコンピューターがあります。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯnoɯeɲikompʲɨːtaːɡaaɾʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "テーブルの上にコンピューターがあります。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯnoɯeɲikompʲɨːtaːɡaaɾʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "テーブルの上にコンピューターがあります。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "teːbɯɾɯnoɯeɲikompʲɨːtaːɡaaɾʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "テーブルの上にコンピューターがあります。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "ja_02",
+  "intent": "ja",
+  "target": "コーヒー",
+  "text": "毎朝コーヒーを飲みます。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "maiasa koːçiː o nomʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "毎朝コーヒーを飲みます",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "maiasa koːçiː o nomʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "毎朝コーヒーを飲みます",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "maiasa koːçiː o nomʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "毎朝コーヒーを飲みます",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "maiasakoːçiːonomʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "毎朝コーヒーを飲みます。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "maiasakoːçiːonomʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "毎朝コーヒーを飲みます。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "maiasakoːçiːonomʲimasɨ"
+     ]
+    ],
+    "tagged": false,
+    "heard": "毎朝コーヒーを飲みます。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "ja_03",
+  "intent": "ja",
+  "target": "スマートフォン",
+  "text": "スマートフォンでメールを送った。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸon de meːɾɯ o okɯʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "スマートフォンでメールを送った",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸoɴ de meːɾɯ o okɯʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "スマートフォンでメールを送った",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸoɴ de meːɾɯ o okɯʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "スマートフォンでメールを送った",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸondemeːɾɯookɯʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "スマートフォンでメールを送った",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸondemeːɾɯookɯʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "スマートフォンでメールを送った",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "sɨmaːtoɸondemeːɾɯookɯʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "スマートフォンでメールを送った",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "ja_04",
+  "intent": "ja",
+  "target": "ホテル",
+  "text": "駅前のホテルに泊まった。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "ekʲimae no hoteɾɯ ni tomaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "駅前のホテルに泊まった。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "ekʲimae no hoteɾɯ ɲi tomaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "駅前のホテルに泊まった",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "ekʲimae no hoteɾɯ ɲi tomaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "駅前のホテルに泊まった",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "ekʲimaenohoteɾɯɲitomaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "駅前のホテルに泊まった",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "ekʲimaenohoteɾɯɲitomaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "駅前のホテルに泊まった",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "ekʲimaenohoteɾɯɲitomaʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "駅前のホテルに泊まった",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "ja_05",
+  "intent": "ja",
+  "target": "iPhone",
+  "text": "iPhone を買い替えました。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴ o kaikaemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "iPhoneを買い替えました。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴ o kaikaemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "iPhoneを買い替えました。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴ o kaikaemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "iPhoneを買い替えました。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴokaikaemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "iPhoneを買い替えました。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴokaikaemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "iPhoneを買い替えました。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "aiɸoɴokaikaemaɕita"
+     ]
+    ],
+    "tagged": false,
+    "heard": "iPhoneを買い替えました。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "ja_06",
+  "intent": "ja",
+  "target": "OK",
+  "text": "OK、じゃあ明日ね。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "oːkeː, ʥaː aɕita ne"
+     ]
+    ],
+    "tagged": false,
+    "heard": "OKじゃあ明日ね",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "oːkeː, ʥaː aɕita ne"
+     ]
+    ],
+    "tagged": false,
+    "heard": "OKじゃあ明日ね",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "oːkeː, ʥaː aɕita ne"
+     ]
+    ],
+    "tagged": false,
+    "heard": "OKじゃあ明日ね",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "oːkeːʥaːaɕitane"
+     ]
+    ],
+    "tagged": false,
+    "heard": "OKじゃあ明日ね",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "oːkeːʥaːaɕitane"
+     ]
+    ],
+    "tagged": false,
+    "heard": "OKじゃあ明日ね",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "oːkeːʥaːaɕitane"
+     ]
+    ],
+    "tagged": false,
+    "heard": "OKじゃあ明日ね",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "ja_07",
+  "intent": "ja",
+  "target": "Wi-Fi",
+  "text": "カフェの Wi-Fi のパスワードを教えてください。",
+  "c": {
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "kaɸe no βaiɸai no pasɨβaːdo o oɕiete kɯdasai"
+     ]
+    ],
+    "tagged": false,
+    "heard": "カフェのWi-Fiのパスワードを教えてください。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "kaɸe no βaiɸai no pasɨβaːdo o oɕiete kɯdasai"
+     ]
+    ],
+    "tagged": false,
+    "heard": "カフェのWi-Fiのパスワードを教えてください。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "kaɸenoβaiɸainopasɨβaːdoooɕietekɯdasai"
+     ]
+    ],
+    "tagged": false,
+    "heard": "カフェのWi-Fiのパスワードを教えてください。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "kaɸenoβaiɸainopasɨβaːdoooɕietekɯdasai"
+     ]
+    ],
+    "tagged": false,
+    "heard": "カフェのWi-Fiのパスワードを教えてください。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "kaɸenoβaiɸainopasɨβaːdoooɕietekɯdasai"
+     ]
+    ],
+    "tagged": false,
+    "heard": "カフェのWi-Fiのパスワードを教えてください。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ },
+ {
+  "name": "ja_08",
+  "intent": "ja",
+  "target": "サンキュー",
+  "text": "友達に軽くサンキューと言った。",
+  "c": {
+   "ys_claude": {
+    "ps": [
+     [
+      "ja",
+      "tomodaʨi ni kaɾɯkɯ saŋkʲɨː to iʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "友達に軽くサンキューと言った。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_codex": {
+    "ps": [
+     [
+      "ja",
+      "tomodaʨi ɲi kaɾɯkɯ saŋkʲɨː to iʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "友達に軽くサンキューと言った。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "ys_agy": {
+    "ps": [
+     [
+      "ja",
+      "tomodaʨi ɲi kaɾɯkɯ saŋkʲɨː to iʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "友達に軽くサンキューと言った。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_claude": {
+    "ps": [
+     [
+      "ja",
+      "tomodaʨiɲikaɾɯkɯsaŋkʲɨːtoiʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "友達に軽くサンキューと言った",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_codex": {
+    "ps": [
+     [
+      "ja",
+      "tomodaʨiɲikaɾɯkɯsaŋkʲɨːtoiʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "友達に軽くサンキューと言った。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   },
+   "kana_agy": {
+    "ps": [
+     [
+      "ja",
+      "tomodaʨiɲikaɾɯkɯsaŋkʲɨːtoiʔta"
+     ]
+    ],
+    "tagged": false,
+    "heard": "友達に軽くサンキューと言った。",
+    "latin": true,
+    "segText": null,
+    "segAcc": null
+   }
+  }
+ }
+]

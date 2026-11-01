@@ -16,6 +16,7 @@ import { nodeAnalyzer } from "@yomiscript/ja-accent/node";
 import * as K from "@yomiscript/kokoro";
 import { nodeEngine } from "@yomiscript/kokoro/node";
 import { sentences } from "../browser_tts/trials/accent_marks/variants.mjs";
+import { unitSpans } from "./morae.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RUNS = path.join(HERE, "../browser_tts/trials/accent_marks/runs/claude");
@@ -26,21 +27,10 @@ async function render(ys, mode) {
   const P = K.plan(ys);
   if (P.length !== 1) return { audio: (await E.synth(ys, mode)).audio, morae: null };
   const sec = P[0],
-    r = await E.synthSection(sec, mode),
-    step = K.SAMPLES_PER_STEP / K.SR;
+    r = await E.synthSection(sec, mode);
   const morae = [];
-  let t = 0,
-    sent = 0;
-  const at = new Map();
-  sec.uid.forEach((k, i) => {
-    const d = r.dur[i] * step;
-    if (k >= 0) {
-      const x = at.get(k);
-      if (x) x.end = t + d;
-      else at.set(k, { start: t, end: t + d });
-    }
-    t += d;
-  });
+  let sent = 0;
+  const at = unitSpans(sec, r.dur);
   sec.toks.forEach((tok, k) => {
     if (tok.kind === "punct" && tok.sent) sent++;
     const s = at.get(k);

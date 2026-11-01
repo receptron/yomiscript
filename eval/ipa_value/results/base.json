@@ -1,0 +1,266 @@
+{
+ "ame_1": {
+  "ys": "ja /asa<t:朝> kaɾa<t:から> ame<t:雨> ɡa<t:が> ɸɯtte<t:降って> i<t:い> masɯ<t:ます。> ↘/",
+  "ys_kana": "ja /asa<t:アサ> kaɾa<t:カラ> ame<t:アメ> ɡa<t:ガ> ɸɯtte<t:フッテ> i<t:イ> masɯ<t:マス> ↘/",
+  "target_read": "アメ",
+  "target_ok": true
+ },
+ "ame_2": {
+  "ys": "ja /kodomo<t:子供> ɡa<t:が> ame<t:飴> o<t:を> name<t:なめ> te<t:て> i<t:い> masɯ<t:ます。> ↘/",
+  "ys_kana": "ja /kodomo<t:コドモ> ɡa<t:ガ> ame<t:アメ> o<t:ヲ> name<t:ナメ> te<t:テ> i<t:イ> masɯ<t:マス> ↘/",
+  "target_read": "アメ",
+  "target_ok": true
+ },
+ "hashi_1": {
+  "ys": "ja /kawa<t:川> ɲi<t:に> ataɾaɕii<t:新しい> haɕi<t:橋> ɡa<t:が> kakatta<t:かかった。> ↘/",
+  "ys_kana": "ja /kawa<t:カワ> ɲi<t:ニ> ataɾaɕii<t:アタラシイ> haɕi<t:ハシ> ɡa<t:ガ> kakatta<t:カカッタ> ↘/",
+  "target_read": "ハシ",
+  "target_ok": true
+ },
+ "hashi_2": {
+  "ys": "ja /ɕokɯdʑi<t:食事> no<t:の> toki<t:とき> wa<t:は> haɕi<t:箸> o<t:を> tsɯkai<t:使い> masɯ<t:ます。> ↘/",
+  "ys_kana": "ja /ɕokɯdʑi<t:ショクジ> no<t:ノ> toki<t:トキ> wa<t:ワ> haɕi<t:ハシ> o<t:ヲ> tsɯkai<t:ツカイ> masɯ<t:マス> ↘/",
+  "target_read": "ハシ",
+  "target_ok": true
+ },
+ "hashi_3": {
+  "ys": "ja /mitɕi<t:道> no<t:の> haɕi<t:端> o<t:を> aɾɯi<t:歩い> te<t:て> kɯdasai<t:ください。> ↘/",
+  "ys_kana": "ja /mitɕi<t:ミチ> no<t:ノ> haɕi<t:ハシ> o<t:ヲ> aɾɯi<t:アルイ> te<t:テ> kɯdasai<t:クダサイ> ↘/",
+  "target_read": "ハシ",
+  "target_ok": true
+ },
+ "kaki_1": {
+  "ys": "ja /aki<t:秋> ɲi<t:に> naɾɯ<t:なる> to<t:と> kaki<t:柿> ɡa<t:が> amakɯ<t:甘く> naɾɯ<t:なる。> ↘/",
+  "ys_kana": "ja /aki<t:アキ> ɲi<t:ニ> naɾɯ<t:ナル> to<t:ト> kaki<t:カキ> ɡa<t:ガ> amakɯ<t:アマク> naɾɯ<t:ナル> ↘/",
+  "target_read": "カキ",
+  "target_ok": true
+ },
+ "kaki_2": {
+  "ys": "ja /çiɾoɕima<t:広島> de<t:で> kaki<t:牡蠣> o<t:を> tabe<t:食べ> maɕi<t:まし> ta<t:た。> ↘/",
+  "ys_kana": "ja /çiɾoɕima<t:ヒロシマ> de<t:デ> kaki<t:カキ> o<t:ヲ> tabe<t:タベ> maɕi<t:マシ> ta<t:タ> ↘/",
+  "target_read": "カキ",
+  "target_ok": true
+ },
+ "sake_1": {
+  "ys": "ja /tɕitɕi<t:父> wa<t:は> maibaɴ<t:毎晩> sake<t:酒> o<t:を> nomɯ<t:飲む。> ↘/",
+  "ys_kana": "ja /tɕitɕi<t:チチ> wa<t:ワ> maibaɴ<t:マイバン> sake<t:サケ> o<t:ヲ> nomɯ<t:ノム> ↘/",
+  "target_read": "サケ",
+  "target_ok": true
+ },
+ "sake_2": {
+  "ys": "ja /kawa<t:川> o<t:を> sake<t:鮭> ɡa<t:が> nobotte<t:のぼって> ki<t:き> ta<t:た。> ↘/",
+  "ys_kana": "ja /kawa<t:カワ> o<t:ヲ> sake<t:サケ> ɡa<t:ガ> nobotte<t:ノボッテ> ki<t:キ> ta<t:タ> ↘/",
+  "target_read": "サケ",
+  "target_ok": true
+ },
+ "kami_1": {
+  "ys": "ja /kami<t:神> ɲi<t:に> inoɾi<t:祈り> o<t:を> sasaɡe<t:捧げ> ta<t:た。> ↘/",
+  "ys_kana": "ja /kami<t:カミ> ɲi<t:ニ> inoɾi<t:イノリ> o<t:ヲ> sasaɡe<t:ササゲ> ta<t:タ> ↘/",
+  "target_read": "カミ",
+  "target_ok": true
+ },
+ "kami_2": {
+  "ys": "ja /kopiː<t:コピー> ki<t:機> no<t:の> kami<t:紙> ɡa<t:が> kiɾe<t:切れ> ta<t:た。> ↘/",
+  "ys_kana": "ja /kopiː<t:コピー> ki<t:キ> no<t:ノ> kami<t:カミ> ɡa<t:ガ> kiɾe<t:キレ> ta<t:タ> ↘/",
+  "target_read": "カミ",
+  "target_ok": true
+ },
+ "kami_3": {
+  "ys": "ja /bijoː<t:美容> iɴ<t:院> de<t:で> kami<t:髪> o<t:を> kitta<t:切った。> ↘/",
+  "ys_kana": "ja /bijoː<t:ビヨー> iɴ<t:イン> de<t:デ> kami<t:カミ> o<t:ヲ> kitta<t:キッタ> ↘/",
+  "target_read": "カミ",
+  "target_ok": true
+ },
+ "hana_1": {
+  "ys": "ja /kadze<t:風邪> de<t:で> hana<t:鼻> ɡa<t:が> tsɯmatte<t:つまって> iɾɯ<t:いる。> ↘/",
+  "ys_kana": "ja /kadze<t:カゼ> de<t:デ> hana<t:ハナ> ɡa<t:ガ> tsɯmatte<t:ツマッテ> iɾɯ<t:イル> ↘/",
+  "target_read": "ハナ",
+  "target_ok": true
+ },
+ "hana_2": {
+  "ys": "ja /ɲiwa<t:庭> ɲi<t:に> hana<t:花> ɡa<t:が> sai<t:咲い> ta<t:た。> ↘/",
+  "ys_kana": "ja /ɲiwa<t:ニワ> ɲi<t:ニ> hana<t:ハナ> ɡa<t:ガ> sai<t:サイ> ta<t:タ> ↘/",
+  "target_read": "ハナ",
+  "target_ok": true
+ },
+ "aki_1": {
+  "ys": "ja /aki<t:秋> ɡa<t:が> ki<t:来> te<t:て> sɯdzɯɕikɯ<t:涼しく> natta<t:なった。> ↘/",
+  "ys_kana": "ja /aki<t:アキ> ɡa<t:ガ> ki<t:キ> te<t:テ> sɯdzɯɕikɯ<t:スズシク> natta<t:ナッタ> ↘/",
+  "target_read": "アキ",
+  "target_ok": true
+ },
+ "aki_2": {
+  "ys": "ja /tɕɯːɕa<t:駐車> dʑoː<t:場> ɲi<t:に> aki<t:空き> ɡa<t:が> nai<t:ない。> ↘/",
+  "ys_kana": "ja /tɕɯːɕa<t:チューシャ> dʑoː<t:ジョー> ɲi<t:ニ> aki<t:アキ> ɡa<t:ガ> nai<t:ナイ> ↘/",
+  "target_read": "アキ",
+  "target_ok": true
+ },
+ "asa_1": {
+  "ys": "ja /asa<t:朝> ɡa<t:が> hajai<t:早い> node<t:ので> nemɯi<t:眠い。> ↘/",
+  "ys_kana": "ja /asa<t:アサ> ɡa<t:ガ> hajai<t:ハヤイ> node<t:ノデ> nemɯi<t:ネムイ> ↘/",
+  "target_read": "アサ",
+  "target_ok": true
+ },
+ "asa_2": {
+  "ys": "ja /kono<t:この> ɕatsɯ<t:シャツ> wa<t:は> asa<t:麻> de<t:で> deki<t:でき> te<t:て> iɾɯ<t:いる。> ↘/",
+  "ys_kana": "ja /kono<t:コノ> ɕatsɯ<t:シャツ> wa<t:ワ> asa<t:アサ> de<t:デ> deki<t:デキ> te<t:テ> iɾɯ<t:イル> ↘/",
+  "target_read": "アサ",
+  "target_ok": true
+ },
+ "kata_1": {
+  "ys": "ja /omoi<t:重い> ɲimotsɯ<t:荷物> de<t:で> kata<t:肩> ɡa<t:が> itai<t:痛い。> ↘/",
+  "ys_kana": "ja /omoi<t:オモイ> ɲimotsɯ<t:ニモツ> de<t:デ> kata<t:カタ> ɡa<t:ガ> itai<t:イタイ> ↘/",
+  "target_read": "カタ",
+  "target_ok": true
+ },
+ "kata_2": {
+  "ys": "ja /keːki<t:ケーキ> no<t:の> kata<t:型> o<t:を> katta<t:買った。> ↘/",
+  "ys_kana": "ja /keːki<t:ケーキ> no<t:ノ> kata<t:カタ> o<t:ヲ> katta<t:カッタ> ↘/",
+  "target_read": "カタ",
+  "target_ok": true
+ },
+ "michi_1": {
+  "ys": "ja /kono<t:この> mitɕi<t:道> o<t:を> massɯɡɯ<t:まっすぐ> itte<t:行って> kɯdasai<t:ください。> ↘/",
+  "ys_kana": "ja /kono<t:コノ> mitɕi<t:ミチ> o<t:ヲ> massɯɡɯ<t:マッスグ> itte<t:イッテ> kɯdasai<t:クダサイ> ↘/",
+  "target_read": "ミチ",
+  "target_ok": true
+ },
+ "michi_2": {
+  "ys": "ja /mitɕi<t:未知> no<t:の> sekai<t:世界> o<t:を> taŋkeɴ<t:探検> sɯɾɯ<t:する。> ↘/",
+  "ys_kana": "ja /mitɕi<t:ミチ> no<t:ノ> sekai<t:セカイ> o<t:ヲ> taŋkeɴ<t:タンケン> sɯɾɯ<t:スル> ↘/",
+  "target_read": "ミチ",
+  "target_ok": true
+ },
+ "ishi_1": {
+  "ys": "ja /kawaɾa<t:川原> de<t:で> iɕi<t:石> o<t:を> çiɾotta<t:拾った。> ↘/",
+  "ys_kana": "ja /kawaɾa<t:カワラ> de<t:デ> iɕi<t:イシ> o<t:ヲ> çiɾotta<t:ヒロッタ> ↘/",
+  "target_read": "イシ",
+  "target_ok": true
+ },
+ "ishi_2": {
+  "ys": "ja /hoɲɲiɴ<t:本人> no<t:の> iɕi<t:意思> o<t:を> soɲtɕoː<t:尊重> sɯɾɯ<t:する。> ↘/",
+  "ys_kana": "ja /hoɲɲiɴ<t:ホンニン> no<t:ノ> iɕi<t:イシ> o<t:ヲ> soɲtɕoː<t:ソンチョー> sɯɾɯ<t:スル> ↘/",
+  "target_read": "イシ",
+  "target_ok": true
+ },
+ "shio_1": {
+  "ys": "ja /sɯːpɯ<t:スープ> ɲi<t:に> ɕio<t:塩> o<t:を> iɾe<t:入れ> ta<t:た。> ↘/",
+  "ys_kana": "ja /sɯːpɯ<t:スープ> ɲi<t:ニ> ɕio<t:シオ> o<t:ヲ> iɾe<t:イレ> ta<t:タ> ↘/",
+  "target_read": "シオ",
+  "target_ok": true
+ },
+ "shio_2": {
+  "ys": "ja /ɕio<t:潮> ɡa<t:が> mitɕi<t:満ち> te<t:て> ki<t:き> ta<t:た。> ↘/",
+  "ys_kana": "ja /ɕio<t:シオ> ɡa<t:ガ> mitɕi<t:ミチ> te<t:テ> ki<t:キ> ta<t:タ> ↘/",
+  "target_read": "シオ",
+  "target_ok": true
+ },
+ "ima_1": {
+  "ys": "ja /ima<t:今> ɡa<t:が> itɕibaɴ<t:一番> tanoɕii<t:楽しい。> ↘/",
+  "ys_kana": "ja /ima<t:イマ> ɡa<t:ガ> itɕibaɴ<t:イチバン> tanoɕii<t:タノシイ> ↘/",
+  "target_read": "イマ",
+  "target_ok": true
+ },
+ "ima_2": {
+  "ys": "ja /kadzokɯ<t:家族> wa<t:は> ima<t:居間> de<t:で> teɾebi<t:テレビ> o<t:を> mi<t:見> te<t:て> iɾɯ<t:いる。> ↘/",
+  "ys_kana": "ja /kadzokɯ<t:カゾク> wa<t:ワ> ima<t:イマ> de<t:デ> teɾebi<t:テレビ> o<t:ヲ> mi<t:ミ> te<t:テ> iɾɯ<t:イル> ↘/",
+  "target_read": "イマ",
+  "target_ok": true
+ },
+ "atsui_1": {
+  "ys": "ja /atsɯi<t:熱い> otɕa<t:お茶> o<t:を> noɴ<t:飲ん> da<t:だ。> ↘/",
+  "ys_kana": "ja /atsɯi<t:アツイ> otɕa<t:オチャ> o<t:ヲ> noɴ<t:ノン> da<t:ダ> ↘/",
+  "target_read": "アツイ",
+  "target_ok": true
+ },
+ "atsui_2": {
+  "ys": "ja /atsɯi<t:厚い> hoɴ<t:本> o<t:を> joɴ<t:読ん> da<t:だ。> ↘/",
+  "ys_kana": "ja /atsɯi<t:アツイ> hoɴ<t:ホン> o<t:ヲ> joɴ<t:ヨン> da<t:ダ> ↘/",
+  "target_read": "アツイ",
+  "target_ok": true
+ },
+ "hi_1": {
+  "ys": "ja /ɡasɯ<t:ガス> no<t:の> çi<t:火> o<t:を> keɕi<t:消し> ta<t:た。> ↘/",
+  "ys_kana": "ja /ɡasɯ<t:ガス> no<t:ノ> çi<t:ヒ> o<t:ヲ> keɕi<t:ケシ> ta<t:タ> ↘/",
+  "target_read": "ヒ",
+  "target_ok": true
+ },
+ "hi_2": {
+  "ys": "ja /çi<t:日> ɡa<t:が> kɯɾe<t:暮れ> te<t:て> ki<t:き> ta<t:た。> ↘/",
+  "ys_kana": "ja /çi<t:ヒ> ɡa<t:ガ> kɯɾe<t:クレ> te<t:テ> ki<t:キ> ta<t:タ> ↘/",
+  "target_read": "ヒ",
+  "target_ok": true
+ },
+ "ki_1": {
+  "ys": "ja /koːeɴ<t:公園> no<t:の> ki<t:木> ɡa<t:が> taoɾe<t:倒れ> ta<t:た。> ↘/",
+  "ys_kana": "ja /koːeɴ<t:コーエン> no<t:ノ> ki<t:キ> ɡa<t:ガ> taoɾe<t:タオレ> ta<t:タ> ↘/",
+  "target_read": "キ",
+  "target_ok": true
+ },
+ "ki_2": {
+  "ys": "ja /kaɾe<t:彼> wa<t:は> ki<t:気> ɡa<t:が> midʑikai<t:短い。> ↘/",
+  "ys_kana": "ja /kaɾe<t:カレ> wa<t:ワ> ki<t:キ> ɡa<t:ガ> midʑikai<t:ミジカイ> ↘/",
+  "target_read": "キ",
+  "target_ok": true
+ },
+ "ijou_1": {
+  "ys": "ja /idʑoː<t:以上> de<t:で> setsɯmeː<t:説明> o<t:を> owaɾi<t:終わり> masɯ<t:ます。> ↘/",
+  "ys_kana": "ja /idʑoː<t:イジョー> de<t:デ> setsɯmeː<t:セツメー> o<t:ヲ> owaɾi<t:オワリ> masɯ<t:マス> ↘/",
+  "target_read": "イジョー",
+  "target_ok": true
+ },
+ "ijou_2": {
+  "ys": "ja /keɴsa<t:検査> de<t:で> idʑoː<t:異常> ɡa<t:が> mitsɯkatta<t:見つかった。> ↘/",
+  "ys_kana": "ja /keɴsa<t:ケンサ> de<t:デ> idʑoː<t:イジョー> ɡa<t:ガ> mitsɯkatta<t:ミツカッタ> ↘/",
+  "target_read": "イジョー",
+  "target_ok": true
+ },
+ "ichi_1": {
+  "ys": "ja /itɕi<t:一> kaɾa<t:から> beŋkʲoː<t:勉強> ɕi<t:し> naosɯ<t:直す。> ↘/",
+  "ys_kana": "ja /itɕi<t:イチ> kaɾa<t:カラ> beŋkʲoː<t:ベンキョー> ɕi<t:シ> naosɯ<t:ナオス> ↘/",
+  "target_read": "イチ",
+  "target_ok": true
+ },
+ "ichi_2": {
+  "ys": "ja /tsɯkɯe<t:机> no<t:の> itɕi<t:位置> o<t:を> kae<t:変え> ta<t:た。> ↘/",
+  "ys_kana": "ja /tsɯkɯe<t:ツクエ> no<t:ノ> itɕi<t:イチ> o<t:ヲ> kae<t:カエ> ta<t:タ> ↘/",
+  "target_read": "イチ",
+  "target_ok": true
+ },
+ "shita_1": {
+  "ys": "ja /tsɯkɯe<t:机> no<t:の> ɕita<t:下> ɲi<t:に> neko<t:猫> ɡa<t:が> iɾɯ<t:いる。> ↘/",
+  "ys_kana": "ja /tsɯkɯe<t:ツクエ> no<t:ノ> ɕita<t:シタ> ɲi<t:ニ> neko<t:ネコ> ɡa<t:ガ> iɾɯ<t:イル> ↘/",
+  "target_read": "シタ",
+  "target_ok": true
+ },
+ "shita_2": {
+  "ys": "ja /atsɯi<t:熱い> sɯːpɯ<t:スープ> de<t:で> ɕita<t:舌> o<t:を> jakedo<t:やけど> ɕi<t:し> ta<t:た。> ↘/",
+  "ys_kana": "ja /atsɯi<t:アツイ> sɯːpɯ<t:スープ> de<t:デ> ɕita<t:シタ> o<t:ヲ> jakedo<t:ヤケド> ɕi<t:シ> ta<t:タ> ↘/",
+  "target_read": "シタ",
+  "target_ok": true
+ },
+ "aka_1": {
+  "ys": "ja /ɕiŋɡoː<t:信号> ɡa<t:が> aka<t:赤> ɲi<t:に> kawatta<t:変わった。> ↘/",
+  "ys_kana": "ja /ɕiŋɡoː<t:シンゴー> ɡa<t:ガ> aka<t:アカ> ɲi<t:ニ> kawatta<t:カワッタ> ↘/",
+  "target_read": "アカ",
+  "target_ok": true
+ },
+ "aka_2": {
+  "ys": "ja /o<t:お> ɸɯɾo<t:風呂> de<t:で> aka<t:垢> o<t:を> otoɕi<t:落とし> ta<t:た。> ↘/",
+  "ys_kana": "ja /o<t:オ> ɸɯɾo<t:フロ> de<t:デ> aka<t:アカ> o<t:ヲ> otoɕi<t:オトシ> ta<t:タ> ↘/",
+  "target_read": "アカ",
+  "target_ok": true
+ },
+ "toshi_1": {
+  "ys": "ja /toːkʲoː<t:東京> wa<t:は> oːkina<t:大きな> toɕi<t:都市> da<t:だ。> ↘/",
+  "ys_kana": "ja /toːkʲoː<t:トーキョー> wa<t:ワ> oːkina<t:オーキナ> toɕi<t:トシ> da<t:ダ> ↘/",
+  "target_read": "トシ",
+  "target_ok": true
+ },
+ "toshi_2": {
+  "ys": "ja /toɕi<t:年> ɡa<t:が> ake<t:明け> ta<t:た。> ↘/",
+  "ys_kana": "ja /toɕi<t:トシ> ɡa<t:ガ> ake<t:アケ> ta<t:タ> ↘/",
+  "target_read": "トシ",
+  "target_ok": true
+ }
+}
