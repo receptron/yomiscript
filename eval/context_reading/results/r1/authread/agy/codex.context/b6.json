@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 14.529,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /kado<t:角> ɡa<t:が> tsɯbɯɾemaɕita<t:潰れました。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çitoa dʑi<t:一味> taɾinai<t:足りない> soː<t:そう> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɡinnan<t:銀杏> no<t:の> kɯɕi<t:串> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kʲoneɴ<t:去年> itta<t:行った> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /iɾoɡami<t:色紙> o<t:を> kaimaɕita<t:買いました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /hatsɯçi<t:初日> o<t:を> oɡami<t:拝み> ɲi<t:に。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑidʑɯː<t:自重> o<t:を> tsɯkaimasɯ<t:使います。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /dʑidoː<t:自動> de<t:で> tsɯidʑɯː<t:追従> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /kazaɡɯɾɯma<t:風車> ɡa<t:が> mawatte<t:回って> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /akoɡaɾe<t:憧れ> no<t:の> seːtɕi<t:生地> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

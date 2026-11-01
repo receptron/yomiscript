@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 15.865,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɸɯmbetsɯ<t:分別> o<t:を> motsɯ<t:持つ> koto<t:こと> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /sadzo<t:さぞ> tsɯɾakatta<t:辛かった> deɕoː<t:でしょう。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kanaɕiː<t:悲しい> ɕiɲdʑɯːmonoɡataɾi<t:心中物語> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /dzoːsa<t:造作> mo<t:も> nai<t:ない> koto<t:こと> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /idai<t:偉大> na<t:な> sokɯseki<t:足跡> o<t:を> nokoɕimaɕita<t:残しました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /jakɯɕokɯ<t:役職> kaɾa<t:から> ɕiɾidzoite<t:退いて> hoɕiː<t:ほしい> to<t:と。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /jokɯ<t:よく> sɯː<t:吸う> hoː<t:方> ɲi<t:に> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /amai<t:甘い> monaka<t:最中> o<t:を> itadakimaɕita<t:いただきました。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ojoso<t:およそ> dʑɯppɯŋɡo<t:十分後> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /patto<t:パッと> çiɾakemaɕita<t:開けました。> ↘/"
+   }
+  ]
+ }
+}

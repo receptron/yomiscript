@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 11.405,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "そこを退いてね。",
+    "ys": "ja /soko<t:そこ> o<t:を> doite<t:退いて> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "あの方です。",
+    "ys": "ja /ano<t:あの> kata<t:方> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "まさに最中でした。",
+    "ys": "ja /masaɲi<t:まさに> saitɕɯː<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "もう十分です。",
+    "ys": "ja /moː<t:もう> dʑɯːbɯɴ<t:十分> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "いきなり開けました。",
+    "ys": "ja /ikinaɾi<t:いきなり> akemaɕita<t:開けました。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "底まで潜って。",
+    "ys": "ja /soko<t:底> made<t:まで> moɡɯtte<t:潜って。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "強い寒気です。",
+    "ys": "ja /tsɯjoi<t:強い> kaŋki<t:寒気> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "ゆっくり解いて。",
+    "ys": "ja /jɯkkɯɾi<t:ゆっくり> hodoite<t:解いて。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "はい、上手です。",
+    "ys": "ja /hai<t:はい> ‖<t:、> kamite<t:上手> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "差は一分です。",
+    "ys": "ja /sa<t:差> wa<t:は> itɕibɯ<t:一分> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

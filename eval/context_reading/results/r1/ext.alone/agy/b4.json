@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 9.921,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɕɯ<t:主> ɲi<t:に> kaɴɕa<t:感謝> ɕite<t:して> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /eɴ<t:縁> ɡa<t:が> nai<t:ない> ɴ<t:ん> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɲiŋki<t:人気> ɡa<t:が> aɾimaseɴ<t:ありません> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /oːja<t:大家> ɲi<t:に> soːdaɴ<t:相談> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /tomete<t:止めて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /saɴiɴ<t:山陰> ɲi<t:に> haiɾimaɕita<t:入りました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /naɲɲiɴ<t:何人> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɲidʑɯː<t:二重> ɲi<t:に> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /aida<t:間> o<t:を> toɾimaɕoː<t:取りましょう。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /matsɯɡo<t:末期> no<t:の> kotoba<t:言葉> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

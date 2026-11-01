@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 12.089,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "日向にいます。",
+    "ys": "ja /çɯːɡa<t:日向> ɲi<t:に> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "人事じゃないよ。",
+    "ys": "ja /çitoɡoto<t:人事> dʑa<t:じゃ> nai<t:ない> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "今日が締切だよ。",
+    "ys": "ja /kʲoː<t:今日> ɡa<t:が> ɕimekiɾi<t:締切> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "下手に動くな。",
+    "ys": "ja /heta<t:下手> ɲi<t:に> ɯɡokɯ<t:動く> na<t:な。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "床を上げたよ。",
+    "ys": "ja /toko<t:床> o<t:を> aɡeta<t:上げた> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "角が折れたよ。",
+    "ys": "ja /tsɯno<t:角> ɡa<t:が> oɾeta<t:折れた> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "一味が空だよ。",
+    "ys": "ja /itɕimi<t:一味> ɡa<t:が> kaɾa<t:空> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "銀杏ですね。",
+    "ys": "ja /itɕoː<t:銀杏> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "昨日行ったよ。",
+    "ys": "ja /kinoː<t:昨日> okonatta<t:行った> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "色紙を買ったよ。",
+    "ys": "ja /ɕikiɕi<t:色紙> o<t:を> katta<t:買った> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

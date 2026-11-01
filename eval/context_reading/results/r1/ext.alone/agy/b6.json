@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 10.346,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /tsɯno<t:角> ɡa<t:が> oɾemaɕita<t:折れました。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çitoaadʑi<t:一味> taɾinai<t:足りない> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɡinnɑɴ<t:銀杏> ɡa<t:が> sɯki<t:好き> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /seɴɕɯː<t:先週> itta<t:行った> bakaɾi<t:ばかり> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ɕikiɕi<t:色紙> o<t:を> katte<t:買って> kimaɕita<t:きました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ɕoɲitɕi<t:初日> o<t:を> mi<t:見> ɲi<t:に> ikimaɕita<t:行きました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑitɕoː<t:自重> ɡa<t:が> taisetsɯ<t:大切> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /tsɯidʑɯː<t:追従> ɕite<t:して> iɾɯ<t:いる> dake<t:だけ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /kadzaɡɯɾɯma<t:風車> ɡa<t:が> mawatte<t:回って> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /kidʑi<t:生地> o<t:を> mi<t:見> ɲi<t:に> ikimaɕita<t:行きました。> ↘/"
+   }
+  ]
+ }
+}

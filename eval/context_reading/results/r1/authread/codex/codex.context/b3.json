@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 12.93,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /doite<t:退いて！> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /kono<t:この> kata<t:方> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /saitɕɯː<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /dʑɯːbɯɴ<t:十分> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ikinaɾi<t:いきなり> aketa<t:開けた。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /moɡɯtte<t:潜って> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /kaŋki<t:寒気> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /hodoite<t:解いて> mijoː<t:みよう。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /kamite<t:上手> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /itɕibɯ<t:一分> sa<t:差> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

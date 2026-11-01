@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 14.237,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /çɯːga<t:日向> ni<t:に> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /hitogoto<t:人事> dewa<t:では> aɾimaseɴ<t:ありません。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kʲoː<t:今日> no<t:の> kadai<t:課題> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /heta<t:下手> ni<t:に> ɯgokanaide<t:動かないで> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /toko<t:床> o<t:を> agemaɕita<t:上げました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /tsɯno<t:角> ga<t:が> oɾemaɕita<t:折れました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /itɕimi<t:一味> taɾinai<t:足りない> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /itɕoː<t:銀杏> ga<t:が> sɯki<t:好き> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /seɴɕɯː<t:先週> okonatta<t:行った> bakaɾi<t:ばかり> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕikiɕi<t:色紙> o<t:を> katte<t:買って> kimaɕita<t:きました。> ↘/"
+   }
+  ]
+ }
+}

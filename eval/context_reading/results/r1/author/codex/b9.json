@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 23.949,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "分別が肝心。",
+    "ys": "ja /ɸɯmbetsɯ<t:分別> ɡa<t:が> kaɲdʑiɴ<t:肝心。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "辛かったでしょう。",
+    "ys": "ja /tsɯɾakatta<t:辛かった> deɕoː<t:でしょう。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "心中を描く悲劇。",
+    "ys": "ja /ɕiɲdʑɯː<t:心中> o<t:を> eɡakɯ<t:描く> çiɡeki<t:悲劇。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "造作もなかった。",
+    "ys": "ja /dzoːsa<t:造作> mo<t:も> nakatta<t:なかった。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "偉大な足跡を残した。",
+    "ys": "ja /idai<t:偉大> na<t:な> sokɯseki<t:足跡> o<t:を> nokoɕita<t:残した。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "退いてほしいと迫った。",
+    "ys": "ja /ɕiɾizoite<t:退いて> hoɕiː<t:ほしい> to<t:と> sematta<t:迫った。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "軽量な方。",
+    "ys": "ja /keːɾʲoː<t:軽量> na<t:な> hoː<t:方。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "栗入り最中でした。",
+    "ys": "ja /kɯɾiiɾi<t:栗入り> monaka<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "十分ほどです。",
+    "ys": "ja /dʑɯppɯɴ<t:十分> hodo<t:ほど> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "遠景まで開けた。",
+    "ys": "ja /eŋkeː<t:遠景> made<t:まで> çiɾaketa<t:開けた。> ↘/"
+   }
+  ]
+ }
+}

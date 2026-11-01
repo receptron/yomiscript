@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 15.04,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /saɴiɴ<t:山陰> ni<t:に> haiɾimaɕita<t:入りました。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /nanniɴ<t:何人> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɸɯtae<t:二重> ni<t:に> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /aida<t:間> o<t:を> toɾimaɕoː<t:取りましょう。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /matsɯgo<t:末期> no<t:の> kotoba<t:言葉> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /soɾe<t:それ> wa<t:は> seːka<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /itɕibɯɴ<t:一文> mo<t:も> aɾimaseɴ<t:ありません。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kompoɴ<t:根本> ga<t:が> kɯsatte<t:腐って> imaɕita<t:いました。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /kɯɸɯː<t:工夫> o<t:を> atsɯmemaɕita<t:集めました。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /hokɯɾo<t:黒子> ga<t:が> ki<t:気> ni<t:に> naɾimasɯ<t:なります。> ↘/"
+   }
+  ]
+ }
+}

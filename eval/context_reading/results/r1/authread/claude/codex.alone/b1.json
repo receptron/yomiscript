@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 21.372,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɡaimeɴ<t:外面> wa<t:は> iɡai<t:意外> to<t:と> kiɾeː<t:きれい> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /soɾe<t:それ> wa<t:は> mimono<t:見物> desɯ<t:です> ne<t:ね！> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /hai<t:はい、> ‖ oːmodʑi<t:大文字> ɡa<t:が> battɕiɾi<t:ばっちり> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɕitsɯɾeː<t:失礼> desɯ<t:です> ɡa<t:が、> ‖ donata<t:何方> desɯ<t:です> ka<t:か？> ↗/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /noɾito<t:祝詞> no<t:の> soːdʑoː<t:奏上> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /otsɯkaɾesama<t:お疲れ様、> ‖ biɴ<t:便> wa<t:は> daidʑoːbɯ<t:大丈夫> datta<t:だった？> ↗/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /ɕɯːbɯɴ<t:秋分> no<t:の> çi<t:日> ɡa<t:が> tɕɯːɲitɕi<t:中日> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /dzembɯ<t:全部> kana<t:仮名> de<t:で> daidʑoːbɯ<t:大丈夫> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /tatta<t:たった> hantsɯki<t:半月> deɕita<t:でした！> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯbi<t:指> de<t:で> hadʑiite<t:弾いて> mite<t:みて。> ↘/"
+   }
+  ]
+ }
+}

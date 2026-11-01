@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 11.582,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /sotodzɯɾa<t:外面> wa<t:は> iː<t:いい> n<t:ん> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /aɕita<t:明日> wa<t:は> mimoso<t:見物> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /daimondʑi<t:大文字> ɡa<t:が> miemasɯ<t:見えます。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /donata<t:何方> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /noɾito<t:祝詞> o<t:を> oneɡai<t:お願い> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /beɴ<t:便> wa<t:は> doː<t:どう> deɕita<t:でした> ka<t:か。> ↗/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /nakabi<t:中日> o<t:を> sɯɡimaɕita<t:過ぎました。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kana<t:仮名> de<t:で> kaite<t:書いて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /hantsɯki<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯbi<t:指> de<t:で> hadʑiːte<t:弾いて> mite<t:みて> kɯdasai<t:ください。> ↘/"
+   }
+  ]
+ }
+}

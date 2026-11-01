@@ -1,0 +1,8 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 4.981,
+ "output": null,
+ "raw": "",
+ "stderr": "error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 165h36m8s.\nAGY_ERROR: {\"short_error\":\"RESOURCE_EXHAUSTED (code 429): Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 165h36m8s.\",\"status\":\"RESOURCE_EXHAUSTED\",\"error_code\":429,\"code_kind\":\"http\",\"retryable\":true,\"error_id\":\"d8a68728-e08f-4118-97db-35def39340b1-1\"}\n"
+}

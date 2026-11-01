@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 20.627,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /bɯmbetsɯ<t:分別> ɡa<t:が> daidʑi<t:大事> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /hontoː<t:本当> ɲi<t:に> tsɯɾakatta<t:辛かった> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɕiɲdʑɯː<t:心中> o<t:を> eɡaita<t:描いた> sakɯçiɴ<t:作品> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /dzoːsa<t:造作> mo<t:も> aɾimaseɴ<t:ありません> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /oːkina<t:大きな> sokɯseki<t:足跡> o<t:を> nok oɕimaɕita<t:残しました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /doite<t:退いて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /kono<t:この> hoː<t:方> ɡa<t:が> iː<t:いい> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /saitɕɯː<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dʑɯːbɯɴ<t:十分> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /kʲɯː<t:急> ɲi<t:に> çiɾakemaɕita<t:開けました。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 10.538,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /soɾe<t:それ> wa<t:は> ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕimoɴ<t:一文> mo<t:も> aɾimaseɴ<t:ありません。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /nemoto<t:根本> ɡa<t:が> kɯsatte<t:腐って> imaɕita<t:いました。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /koːɸɯ<t:工夫> o<t:を> atsɯmemaɕita<t:集めました。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kɯɾoko<t:黒子> ɡa<t:が> ki<t:気> ɲi<t:に> naɾimasɯ<t:なります。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /çinata<t:日向> ɲi<t:に> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑiɲdʑi<t:人事> de<t:で> wa<t:は> aɾimaseɴ<t:ありません。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /koɲɲitɕi<t:今日> no<t:の> kadai<t:課題> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ɕimote<t:下手> ɲi<t:に> ɯɡokanaide<t:動かないで> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯka<t:床> o<t:を> aɡemaɕita<t:上げました。> ↘/"
+   }
+  ]
+ }
+}

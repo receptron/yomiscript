@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 12.684,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /biɴ<t:便> wa<t:は> doː<t:どう> deɕita<t:でしたか。> ↗/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /nakabi<t:中日> o<t:を> sɯɡimaɕita<t:過ぎました。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kana<t:仮名> de<t:で> kaite<t:書いて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /haŋɡetsɯ<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /jɯbi<t:指> de<t:で> hadʑiite<t:弾いて> mite<t:みて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ohako<t:十八番> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /itɕiɡʲoː<t:一行> ɡa<t:が> mada<t:まだ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kaɕi<t:河岸> o<t:を> kaemaɕoː<t:変えましょう。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /itɕiba<t:市場> ɡa<t:が> akɯ<t:開く> made<t:まで> matɕimaɕoː<t:待ちましょう。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɸɯtsɯɡo<t:仏語> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

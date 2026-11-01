@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 15.9,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "便の様子を尋ねられた。",
+    "ys": "ja /beɴ<t:便> no<t:の> joːsɯ<t:様子> o<t:を> tadzɯneɾaɾeta<t:尋ねられた。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "ちょうど中日です。",
+    "ys": "ja /tɕoːdo<t:ちょうど> nakaび<t:中日> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "仮名を使おう。",
+    "ys": "ja /kameː<t:仮名> o<t:を> tsɯkaoː<t:使おう。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "綺麗な半月でした。",
+    "ys": "ja /kiɾeːna<t:綺麗な> haŋɡetsɯ<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "指で弾いて音を聞く。",
+    "ys": "ja /jɯbi<t:指> de<t:で> hadʑiːte<t:弾いて> oto<t:音> o<t:を> kikɯ<t:聞く。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "自慢の十八番です。",
+    "ys": "ja /dʑimaɴ<t:自慢> no<t:の> ohako<t:十八番> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "あと一行残ってる。",
+    "ys": "ja /ato<t:あと> itɕiɡʲoː<t:一行> nokotteɾɯ<t:残ってる。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "あちらの河岸へ移ろう。",
+    "ys": "ja /atɕiɾa<t:あちら> no<t:の> kaɡaɴ<t:河岸> e<t:へ> ɯtsɯɾoː<t:移ろう。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "市場が開くまで待とう。",
+    "ys": "ja /itɕiba<t:市場> ɡa<t:が> akɯ<t:開く> made<t:まで> matoː<t:待とう。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "どちらも仏語です。",
+    "ys": "ja /dotɕiɾa<t:どちら> mo<t:も> bɯtsɯɡo<t:仏語> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

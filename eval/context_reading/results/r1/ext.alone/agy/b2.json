@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 10.039,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ohako<t:十八番> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /ikkoː<t:一行> ɡa<t:が> mada<t:まだ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kaɕi<t:河岸> o<t:を> kaemaɕoː<t:変えましょう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɕidʑoː<t:市場> ɡa<t:が> akɯ<t:開く> made<t:まで> matɕimaɕoː<t:待ちましょう。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ɸɯtsɯɡo<t:仏語> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ɸɯmbetɯ<t:分別> ɡa<t:が> daidʑi<t:大事> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /hontoː<t:本当> ɲi<t:に> tsɯɾakatta<t:辛かった> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɕintɕɯː<t:心中> o<t:を> eɡaita<t:描いた> sakɯçiɴ<t:作品> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dzoːsa<t:造作> mo<t:も> aɾimaseɴ<t:ありません> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /oːkina<t:大きな> sokɯseki<t:足跡> o<t:を> nokoɕimaɕita<t:残しました。> ↘/"
+   }
+  ]
+ }
+}

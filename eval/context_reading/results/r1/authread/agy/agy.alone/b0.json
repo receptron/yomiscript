@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 11.438,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɕoɲitɕi<t:初日> ɲi<t:に> tanoɕinda<t:楽しんだ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /dʑitɕoː<t:自重> o<t:を> motomemaɕita<t:求めました。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /tada<t:ただ> no<t:の> tsɯidʑɯː<t:追従> desɯ<t:です> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kadzaɡɯɾɯma<t:風車> wa<t:は> mawatteɾɯ<t:回ってる> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kidʑi<t:生地> o<t:を> katta<t:買った> no<t:の。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /daidʑi<t:大事> ɲi<t:に> ɕimatteta<t:しまってた。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /miɡoto<t:見事> na<t:な> kimboɕi<t:金星> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /daite<t:抱いて> naite<t:泣いて> ta<t:た> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /mokɯme<t:木目> ɡa<t:が> kiɾeː<t:きれい> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ikimono<t:生物> mo<t:も> daisɯki<t:大好き> da<t:だ> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 11.885,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /oːɡoto<t:大事> e<t:へ> hatten<t:発展。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /kiɴseː<t:金星。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /idaite<t:抱いて> idzomi<t:挑み> tsɯdzɯkemaɕita<t:続けました。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kime<t:木目> ɾʲoːkoː<t:良好。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /seːbɯtsɯ<t:生物> mo<t:も> sɯki<t:好き。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /sotodzɯɾa<t:外面> batsɯɡɯɴ<t:抜群。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /meːɕo<t:名所> kembɯtsɯ<t:見物。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /oːmodʑi<t:大文字> koɲɲɯː<t:混入。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dotɕiɾa<t:何方？> ↗/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕɯkɯɕi<t:祝詞> ɾoːdokɯ<t:朗読。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 13.922,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /çinata<t:日向> ɲi<t:に> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çitoɡoto<t:人事> dʑa<t:じゃ> nai<t:ない> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kʲoː<t:今日> ɡa<t:が> ɕimekiɾi<t:締切> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /heta<t:下手> ɲi<t:に> ɯɡokɯ<t:動く> na<t:な。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /jɯka<t:床> o<t:を> aɡeta<t:上げた> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /tsɯno<t:角> ɡa<t:が> oɾeta<t:折れた> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /itɕimi<t:一味> ɡa<t:が> kaɾa<t:空> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɡinnan<t:銀杏> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /kinoː<t:昨日> itta<t:行った> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕikiɕi<t:色紙> o<t:を> katta<t:買った> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

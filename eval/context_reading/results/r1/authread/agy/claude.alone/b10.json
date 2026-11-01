@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 15.233,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /atama<t:頭> o<t:を> sagete<t:下げて> kɯgɯtte<t:潜って> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /tsɯjoi<t:強い> samɯke<t:寒気> ga<t:が> aɾimasɯ<t:あります。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /koːɕiki<t:公式> de<t:で> toite<t:解いて> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /totemo<t:とても> dʑoːzɯ<t:上手> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /wazɯka<t:わずか> ippɯɴ<t:一分> no<t:の> sa<t:差> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ɕɯ<t:主> ni<t:に> kaɴɕa<t:感謝> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /eɴ<t:縁> ga<t:が> nai<t:ない> taipɯ<t:タイプ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /totemo<t:とても> niŋki<t:人気> desɯ<t:です> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /taika<t:大家> ni<t:に> osowaɾimaɕita<t:教わりました。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /sɯgɯ<t:すぐ> jamete<t:止めて> to<t:と> itte<t:言って。> ↘/"
+   }
+  ]
+ }
+}

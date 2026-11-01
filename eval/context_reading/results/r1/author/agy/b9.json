@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 12.053,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "分別を持つことです。",
+    "ys": "ja /ɸɯmbetɯ<t:分別> o<t:を> motsɯ<t:持つ> koto<t:こと> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "さぞ辛かったでしょう。",
+    "ys": "ja /sadzo<t:さぞ> tsɯɾakatta<t:辛かった> deɕoː<t:でしょう。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "悲しい心中物語です。",
+    "ys": "ja /kanaɕiː<t:悲しい> ɕiɲdʑɯː<t:心中> monoɡataɾi<t:物語> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "造作もないことでした。",
+    "ys": "ja /dzoːsa<t:造作> mo<t:も> nai<t:ない> koto<t:こと> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "偉大な足跡を残しました。",
+    "ys": "ja /idai<t:偉大> na<t:な> sokɯseki<t:足跡> o<t:を> nokoɕimaɕita<t:残しました。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "役職から退いてほしいと。",
+    "ys": "ja /jakɯɕokɯ<t:役職> kaɾa<t:から> ɕiɾidzoite<t:退いて> hoɕiː<t:ほしい> to<t:と。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "よく吸う方にします。",
+    "ys": "ja /jokɯ<t:よく> sɯː<t:吸う> hoː<t:方> ɲi<t:に> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "甘い最中をいただきました。",
+    "ys": "ja /amai<t:甘い> monaka<t:最中> o<t:を> itadakimaɕita<t:いただきました。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "およそ十分後です。",
+    "ys": "ja /ojoso<t:およそ> dʑippɯŋ<t:十分> ɡo<t:後> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "パッと開けました。",
+    "ys": "ja /patto<t:パッと> çiɾakemaɕita<t:開けました。> ↘/"
+   }
+  ]
+ }
+}

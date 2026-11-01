@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 18.6,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /omo<t:主> ni<t:に> mandzokɯ<t:満足。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /ɸɯtɕi<t:縁> naɕi<t:なし。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɲiŋki<t:人気> dzeɾo<t:ゼロ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /oːja<t:大家> e<t:へ> ɾeɴɾakɯ<t:連絡。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /tomete<t:止めて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /saɲiɴ<t:山陰> jɯe<t:ゆえ。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /naɲin<t:何人> daɾoː<t:だろう？> ↗/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɲidʑɯː<t:二重> ɾokkɯ<t:ロック> dzɯmi<t:済み。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ma<t:間> ɡa<t:が> kaɲdʑiɴ<t:肝心。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /makki<t:末期> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

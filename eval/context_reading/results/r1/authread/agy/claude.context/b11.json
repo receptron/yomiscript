@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 13.057,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /saɴiɴ<t:山陰> ni<t:に> haiɾimaɕita<t:入りました。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /naɲin<t:何人> de<t:で> kɯɾɯ<t:来る？> ↗/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɸɯtae<t:二重> ni<t:に> sɯɾɯ<t:する> no<t:の。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /aida<t:間> o<t:を> toɾoː<t:取ろう。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /matsɯgo<t:末期> no<t:の> negai<t:願い> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /kiɾeː<t:きれい> na<t:な> seːka<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /mada<t:まだ> itɕibɯɴ<t:一文> dake<t:だけ。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kompoɴ<t:根本> kaɾa<t:から> naose<t:直せ> to<t:と。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /tedʑɯɴ<t:手順> o<t:を> kɯɸɯː<t:工夫> ɕita<t:した。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /hokɯɾo<t:黒子> o<t:を> toɾɯ<t:取る> nda<t:んだ。> ↘/"
+   }
+  ]
+ }
+}

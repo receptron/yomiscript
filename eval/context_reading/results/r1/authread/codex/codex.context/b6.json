@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 16.127,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /kado<t:角> mo<t:も> mɯkidzɯ<t:無傷。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çito a dʑi<t:一味> tɕigaɯ<t:違う！> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ginnaɴ<t:銀杏> itt akɯ<t:一択。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /itta<t:行った> keːkeɴ<t:経験> aɾi<t:あり。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /iɾogami<t:色紙> ɸɯsokɯ<t:不足。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /hatsɯçi<t:初日> meate<t:目当て。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑidʑɯː<t:自重> katsɯjoː<t:活用。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /tsɯidʑɯː<t:追従> kinoː<t:機能。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /kazagɯɾɯma<t:風車> kɯɾɯkɯɾɯ<t:くるくる。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /seːtɕi<t:生地> dʑɯnɾeː<t:巡礼。> ↘/"
+   }
+  ]
+ }
+}

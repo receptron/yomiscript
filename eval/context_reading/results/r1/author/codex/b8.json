@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 31.115,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "便について尋ねました。",
+    "ys": "ja /beɴ<t:便> ɲitsɯite<t:について> tazɯnemaɕita<t:尋ねました。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "中日頃です。",
+    "ys": "ja /nakabi<t:中日> ɡoɾo<t:頃> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "仮名表記。",
+    "ys": "ja /kameː<t:仮名> çoːki<t:表記。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "半月でした。",
+    "ys": "ja /haŋɡetsɯ<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "弾いて音色で判断。",
+    "ys": "ja /hadʑiite<t:弾いて> neːɾo<t:音色> de<t:で> handan<t:判断。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "十八番、曲名不明。",
+    "ys": "ja /ohako<t:十八番、> ‖ kʲokɯmeː<t:曲名> ɸɯmeː<t:不明。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "一行だけ未訳です。",
+    "ys": "ja /itɕiɡʲoː<t:一行> dake<t:だけ> mijakɯ<t:未訳> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "河岸も増水注意。",
+    "ys": "ja /kaɡaɕi<t:河岸> mo<t:も> dzoːsɯi<t:増水> tɕɯːi<t:注意。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "市場開場まで待機。",
+    "ys": "ja /itɕiba<t:市場> kaidʑoː<t:開場> made<t:まで> taiki<t:待機。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "仏語由来です。",
+    "ys": "ja /bɯtsɯɡo<t:仏語> jɯɾai<t:由来> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

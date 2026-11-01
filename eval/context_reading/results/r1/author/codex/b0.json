@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 19.155,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "初日だよ。",
+    "ys": "ja /ɕoɲitɕi<t:初日> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "自重せよ。",
+    "ys": "ja /dʑitɕoː<t:自重> sejo<t:せよ。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "追従にすぎない。",
+    "ys": "ja /tsɯiɕoː<t:追従> ɲi<t:に> sɯɡinai<t:すぎない。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "風車は回転中。",
+    "ys": "ja /ɸɯːɕa<t:風車> wa<t:は> kaitentɕɯː<t:回転中。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "生地の購入。",
+    "ys": "ja /kidʑi<t:生地> no<t:の> koːɲɯː<t:購入。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "大事に保管した。",
+    "ys": "ja /daidʑi<t:大事> ɲi<t:に> hokaɴ<t:保管> ɕita<t:した。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "金星だね。",
+    "ys": "ja /kimboɕi<t:金星> da<t:だ> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "抱いて微笑んだ。",
+    "ys": "ja /daite<t:抱いて> hohoenda<t:微笑んだ。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "木目が美しかった。",
+    "ys": "ja /mokɯme<t:木目> ɡa<t:が> ɯtsɯkɯɕikatta<t:美しかった。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "生物も大好き。",
+    "ys": "ja /namamono<t:生物> mo<t:も> daisɯki<t:大好き。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 22.501,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "退いて！",
+    "ys": "ja /doite<t:退いて！> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "この方です。",
+    "ys": "ja /kono<t:この> kata<t:方> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "最中でした。",
+    "ys": "ja /saitɕɯː<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "十分です。",
+    "ys": "ja /dʑɯːbɯn<t:十分> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "いきなり開けた。",
+    "ys": "ja /ikinaɾi<t:いきなり> aketa<t:開けた。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "潜ってください。",
+    "ys": "ja /moɡɯtte<t:潜って> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "寒気です。",
+    "ys": "ja /kaŋki<t:寒気> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "解いてみよう。",
+    "ys": "ja /hodoite<t:解いて> mijoː<t:みよう。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "上手です。",
+    "ys": "ja /kamite<t:上手> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "一分差です。",
+    "ys": "ja /itɕibɯ<t:一分> sa<t:差> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 15.377,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕimon<t:一文> naɕi<t:無し> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /nemoto<t:根本> ɸɯhai<t:腐敗。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /koːɸɯ<t:工夫> boɕɯː<t:募集。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kɯɾoko<t:黒子> ɡa<t:が> katsɯjakɯ<t:活躍。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /çinata<t:日向> bokko<t:ぼっこ> tɕɯː<t:中。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑindʑi<t:人事> ɕidai<t:次第。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /koɲɲitɕi<t:今日> tokɯjɯː<t:特有> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ɕimote<t:下手> tɕɯːi<t:注意！> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯkaaɡe<t:床上げ> dzɯmi<t:済み。> ↘/"
+   }
+  ]
+ }
+}

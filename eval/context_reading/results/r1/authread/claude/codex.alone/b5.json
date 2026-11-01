@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 21.038,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /seːka<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕimonnaɕi<t:一文無し> ɾaɕiː<t:らしい> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /nemoto<t:根本> ɡa<t:が> kɯsatte<t:腐って> ta<t:た> n<t:ん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kɯɸɯː<t:工夫> o<t:を> atsɯmeta<t:集めた> n<t:ん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /saikoː<t:最高！> ↘ aɾe<t:あれ> wa<t:は> kɯɾoko<t:黒子> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /çinata<t:日向> de<t:で> neteɾɯ<t:寝てる> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /hai<t:はい> ‖<t:、> dʑindʑibɯ<t:人事部> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /omoɲi<t:主に> kʲoː<t:今日> no<t:の> kadai<t:課題> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ɕimote<t:下手> ɲi<t:に> ki<t:気> o<t:を> tsɯkete<t:つけて。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯka<t:床> o<t:を> aɡeta<t:上げた> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 17.962,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɡaimeɴ<t:外面> ɾʲoːkoː<t:良好。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /mimono<t:見物> çiɕɕi<t:必至。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /oːmodʑi<t:大文字> naɾa<t:なら> nozomemasɯ<t:望めます。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /donata<t:何方> sama<t:様> deɕoː<t:でしょう> ka<t:か？> ↗/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /noɾito<t:祝詞> soːdʑoː<t:奏上> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /biɴ<t:便> ‖<t:、> jɯɾemaɕita<t:揺れました> ka<t:か？> ↗/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /nakabi<t:中日> ‖<t:、> jokkame<t:四日目。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kana<t:仮名> de<t:で> dʑijɯː<t:自由> ni<t:に。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /haŋɡetsɯ<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯbisaki<t:指先> de<t:で> hadʑiite<t:弾いて。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 17.92,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕimonnaɕi<t:一文無し> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kompoɴ<t:根本> ɸɯhai<t:腐敗。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /koːɸɯ<t:工夫> boɕɯː<t:募集。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kɯɾoko<t:黒子> ɡa<t:が> katsɯjakɯ<t:活躍。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /çinatabokko<t:日向ぼっこ> tɕɯː<t:中。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑiɲdʑi<t:人事> ɕidai<t:次第。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kʲoː<t:今日> tokɯjɯː<t:特有> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /heta<t:下手> tɕɯːi<t:注意！> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /tokoaɡe<t:床上げ> dzɯmi<t:済み。> ↘/"
+   }
+  ]
+ }
+}

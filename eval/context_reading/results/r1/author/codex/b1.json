@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 26.17,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "外面良好。",
+    "ys": "ja /ɡaimeɴ<t:外面> ɾʲoːkoː<t:良好。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "見物必至。",
+    "ys": "ja /mimono<t:見物> çiɕɕi<t:必至。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "大文字なら望めます。",
+    "ys": "ja /daimoɲdʑi<t:大文字> naɾa<t:なら> nozomemasɯ<t:望めます。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "何方様でしょうか？",
+    "ys": "ja /donata<t:何方> sama<t:様> deɕoː<t:でしょう> ka<t:か？> ↗/"
+   },
+   {
+    "n": 5,
+    "text": "祝詞奏上です。",
+    "ys": "ja /noɾito<t:祝詞> soːdʑoː<t:奏上> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "便、揺れましたか？",
+    "ys": "ja /biɴ<t:便、> ‖ jɯɾemaɕita<t:揺れました> ka<t:か？> ↗/"
+   },
+   {
+    "n": 7,
+    "text": "中日、四日目。",
+    "ys": "ja /tɕɯːɲitɕi<t:中日、> ‖ jokkame<t:四日目。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "仮名で自由に。",
+    "ys": "ja /kana<t:仮名> de<t:で> dʑijɯː<t:自由> ɲi<t:に。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "半月でした。",
+    "ys": "ja /hantsɯki<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "指先で弾いて。",
+    "ys": "ja /jɯbisaki<t:指先> de<t:で> çiːte<t:弾いて。> ↘/"
+   }
+  ]
+ }
+}

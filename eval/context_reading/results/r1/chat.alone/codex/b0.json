@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 18.869,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /hatsɯçi<t:初日> o<t:を> mi<t:見> ɲi<t:に> iki<t:行き> maɕita<t:ました。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /dʑitɕoː<t:自重> ɡa<t:が> taisetsɯ<t:大切> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /tsɯidʑɯː<t:追従> ɕite<t:して> iɾɯ<t:いる> dake<t:だけ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɸɯːɕa<t:風車> ɡa<t:が> mawatte<t:回って> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kidʑi<t:生地> o<t:を> mi<t:見> ɲi<t:に> iki<t:行き> maɕita<t:ました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /daidʑi<t:大事> ɲi<t:に> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /koɾe<t:これ> wa<t:は> kiɴseː<t:金星> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /dzɯtto<t:ずっと> daite<t:抱いて> imaɕita<t:いました。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /mokɯme<t:木目> ɡa<t:が> komakai<t:細かい> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /namamono<t:生物> wa<t:は> dame<t:だめ> na<t:な> n<t:ん> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

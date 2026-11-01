@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 16.504,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "潜って進んで。",
+    "ys": "ja /kɯɡɯtte<t:潜って> sɯsɯnde<t:進んで。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "寒気でガタガタ。",
+    "ys": "ja /samɯke<t:寒気> de<t:で> ɡataɡata<t:ガタガタ。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "解いてみよう。",
+    "ys": "ja /toite<t:解いて> mijoː<t:みよう。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "上手でした。",
+    "ys": "ja /dʑoːdzɯ<t:上手> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "一分差でした。",
+    "ys": "ja /ippɯɴ<t:一分> sa<t:差> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "主に感謝します。",
+    "ys": "ja /ɕɯ<t:主> ɲi<t:に> kanɕa<t:感謝> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "縁なしです。",
+    "ys": "ja /ɸɯtɕi<t:縁> naɕi<t:なし> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "人気でした。",
+    "ys": "ja /ɲiŋki<t:人気> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "大家を訪ねました。",
+    "ys": "ja /taika<t:大家> o<t:を> tadzɯnemaɕita<t:訪ねました。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "止めて、返して。",
+    "ys": "ja /jamete<t:止めて、> ‖ kaeɕite<t:返して。> ↘/"
+   }
+  ]
+ }
+}

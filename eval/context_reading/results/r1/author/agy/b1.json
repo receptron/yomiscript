@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 11.473,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "外面は綺麗でした。",
+    "ys": "ja /ɡaimeɴ<t:外面> wa<t:は> kiɾeː<t:綺麗> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "とても見物ですね。",
+    "ys": "ja /totemo<t:とても> mimono<t:見物> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "大文字が拝めます。",
+    "ys": "ja /daimoɲdʑi<t:大文字> ɡa<t:が> oɡamemasɯ<t:拝めます。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "何方様ですか。",
+    "ys": "ja /donatasama<t:何方様> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 5,
+    "text": "祝詞を奏上します。",
+    "ys": "ja /noɾito<t:祝詞> o<t:を> soːdʑoː<t:奏上> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "どの便で着いた？",
+    "ys": "ja /dono<t:どの> biɴ<t:便> de<t:で> tsɯita<t:着いた？> ↗/"
+   },
+   {
+    "n": 7,
+    "text": "中日ですね。",
+    "ys": "ja /tɕɯːɲitɕi<t:中日> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "仮名を使いましょう。",
+    "ys": "ja /kana<t:仮名> o<t:を> tsɯkaimaɕoː<t:使いましょう。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "半月ほどです。",
+    "ys": "ja /hantsɯki<t:半月> hodo<t:ほど> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "指で弾いてみて。",
+    "ys": "ja /jɯbi<t:指> de<t:で> çiːte<t:弾いて> mite<t:みて。> ↘/"
+   }
+  ]
+ }
+}

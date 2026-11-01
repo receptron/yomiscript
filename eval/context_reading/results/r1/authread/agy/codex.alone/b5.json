@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 15.709,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /seːka<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕimonnaɕi<t:一文なし> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /nemoto<t:根本> ɡa<t:が> kɯsatte<t:腐って> ita<t:いた。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /koːɸɯ<t:工夫> o<t:を> jatotta<t:雇った。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kɯɾoko<t:黒子> ɡa<t:が> sasaete<t:支えて> ita<t:いた。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /çinata<t:日向> de<t:で> nete<t:寝て> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑiɲdʑi<t:人事> ɡa<t:が> kimemasɯ<t:決めます。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kʲoː<t:今日> no<t:の> kadai<t:課題> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /heta<t:下手> ɲi<t:に> tɕɯːi<t:注意> ɕite<t:して。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯka<t:床> o<t:を> takakɯ<t:高く> ɕita<t:した。> ↘/"
+   }
+  ]
+ }
+}

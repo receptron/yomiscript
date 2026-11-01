@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 20.733,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "生花です。",
+    "ys": "ja /ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "一文無しです。",
+    "ys": "ja /itɕimon<t:一文> naɕi<t:無し> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "根本腐敗。",
+    "ys": "ja /nemoto<t:根本> ɸɯhai<t:腐敗。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "工夫募集。",
+    "ys": "ja /koːɸɯ<t:工夫> boɕɯː<t:募集。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "黒子が活躍。",
+    "ys": "ja /kɯɾoɡo<t:黒子> ɡa<t:が> katsɯjakɯ<t:活躍。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "日向ぼっこ中。",
+    "ys": "ja /çinata<t:日向> bokko<t:ぼっこ> tɕɯː<t:中。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "人事次第。",
+    "ys": "ja /dʑindʑi<t:人事> ɕidai<t:次第。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "今日特有です。",
+    "ys": "ja /koɲɲitɕi<t:今日> tokɯjɯː<t:特有> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "下手注意！",
+    "ys": "ja /ɕimote<t:下手> tɕɯːi<t:注意！> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "床上げ済み。",
+    "ys": "ja /jɯka<t:床> aɡe<t:上げ> dzɯmi<t:済み。> ↘/"
+   }
+  ]
+ }
+}

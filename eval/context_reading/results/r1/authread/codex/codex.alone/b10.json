@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 12.204,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /moɡɯtte<t:潜って> sɯsɯnde<t:進んで。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /samɯke<t:寒気> de<t:で> ɡataɡata<t:ガタガタ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /toite<t:解いて> mijoː<t:みよう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /dʑoːdzɯ<t:上手> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ippɯn<t:一分> sa<t:差> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ɕɯ<t:主> ni<t:に> kanɕa<t:感謝> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /ɸɯtɕi<t:縁> naɕi<t:なし> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɲiŋki<t:人気> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /oːja<t:大家> o<t:を> tazɯɲemaɕita<t:訪ねました。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /tomete<t:止めて、> ‖ kaeɕite<t:返して。> ↘/"
+   }
+  ]
+ }
+}

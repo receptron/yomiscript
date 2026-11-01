@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 15.131,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /oːgoto<t:大事> ɲi<t:に> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /koɾe<t:これ> wa<t:は> kiɲseː<t:金星> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /dzɯtto<t:ずっと> idaite<t:抱いて> imaɕita<t:いました。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kime<t:木目> ɡa<t:が> komakai<t:細かい> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /seːbɯtsɯ<t:生物> wa<t:は> dame<t:だめ> na<t:な> ɴ<t:ん> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /sotodzɯɾa<t:外面> wa<t:は> iː<t:いい> ɴ<t:ん> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /aɕita<t:明日> wa<t:は> kembɯtsɯ<t:見物> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /oːmodʑi<t:大文字> ɡa<t:が> miemasɯ<t:見えます。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dotɕiɾa<t:何方> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕɯkɯɕi<t:祝詞> o<t:を> oneɡai<t:お願い> ɕimasɯ<t:します。> ↘/"
+   }
+  ]
+ }
+}

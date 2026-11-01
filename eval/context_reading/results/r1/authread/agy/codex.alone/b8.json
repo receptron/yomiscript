@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 16.887,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /beɴ<t:便> no<t:の> joːsɯ<t:様子> o<t:を> tazɯneɾaɾeta<t:尋ねられた。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /tɕoːdo<t:ちょうど> nakabi<t:中日> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kana<t:仮名> o<t:を> tsɯkaoː<t:使おう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kiɾeː<t:綺麗> na<t:な> haŋɡetsɯ<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /jɯbi<t:指> de<t:で> hadʑiːte<t:弾いて> oto<t:音> o<t:を> kikɯ<t:聞く。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /dʑimaɴ<t:自慢> no<t:の> ohako<t:十八番> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /ato<t:あと> itɕiɡʲoː<t:一行> nokotteɾɯ<t:残ってる。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /atɕiɾa<t:あちら> no<t:の> kaɕi<t:河岸> e<t:へ> ɯtsɯɾoː<t:移ろう。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /itɕiba<t:市場> ɡa<t:が> a kɯ<t:開く> made<t:まで> matoː<t:待とう。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /dotɕiɾa<t:どちら> mo<t:も> ɸɯtsɯɡo<t:仏語> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

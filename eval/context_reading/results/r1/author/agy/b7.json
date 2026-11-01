@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 13.026,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "大事にしました。",
+    "ys": "ja /oːɡoto<t:大事> ɲi<t:に> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "それは金星です。",
+    "ys": "ja /soɾe<t:それ> wa<t:は> kiɴseː<t:金星> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "希望を抱いていました。",
+    "ys": "ja /kiboː<t:希望> o<t:を> idaite<t:抱いて> imaɕita<t:いました。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "木目が細かいそうです。",
+    "ys": "ja /kime<t:木目> ɡa<t:が> komakai<t:細かい> soː<t:そう> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "生物は苦手です。",
+    "ys": "ja /seːbɯtsɯ<t:生物> wa<t:は> ɲiɡate<t:苦手> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "外面ばかり良くて。",
+    "ys": "ja /sotodzɯɾa<t:外面> bakaɾi<t:ばかり> jokɯte<t:良くて。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "名所を見物します。",
+    "ys": "ja /meːɕo<t:名所> o<t:を> kembɯtsɯ<t:見物> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "全部大文字になっています。",
+    "ys": "ja /dzembɯ<t:全部> oːmodʑi<t:大文字> ɲi<t:に> natte<t:なって> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "何方にしましたか？",
+    "ys": "ja /dotɕiɾa<t:何方> ɲi<t:に> ɕimaɕita<t:しました> ka<t:か？> ↗/"
+   },
+   {
+    "n": 10,
+    "text": "祝詞をお願いします。",
+    "ys": "ja /ɕɯkɯdʑi<t:祝詞> o<t:を> oneɡai<t:お願い> ɕimasɯ<t:します。> ↘/"
+   }
+  ]
+ }
+}

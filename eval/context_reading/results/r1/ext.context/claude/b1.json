@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 15.517,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /gaimeɴ<t:外面> wa<t:は> iː<t:いい> ndesɯ<t:んです。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /aɕita<t:明日> wa<t:は> mimono<t:見物> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /daimoɴdʑi<t:大文字> ga<t:が> miemasɯ<t:見えます。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /donata<t:何方> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /noɾito<t:祝詞> o<t:を> oneɡai<t:お願い> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /biɴ<t:便> wa<t:は> doː<t:どう> deɕita<t:でした> ka<t:か。> ↗/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /tɕɯːnitɕi<t:中日> o<t:を> sɯɡimaɕita<t:過ぎました。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kana<t:仮名> de<t:で> kaite<t:書いて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /haɴtsɯki<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯbi<t:指> de<t:で> hiite<t:弾いて> mite<t:みて> kɯdasai<t:ください。> ↘/"
+   }
+  ]
+ }
+}

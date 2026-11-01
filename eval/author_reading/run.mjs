@@ -3,7 +3,8 @@
 // is used); then each LLM writes YomiScript for that answer in a call of its own, given only the answer (reader,
 // text) or the user's message too (reader, context). All get the instructions the tools give (YOMISCRIPT_INSTRUCTIONS).
 // usage: node run.mjs [run]   -> results/r<run>/author/<llm>/<id>.json, results/r<run>/reader/<author>/<reader>.<text|context>/<id>.json
-// A result already there is kept, so a run that stopped continues where it was.
+// A result already there is kept, so a run that stopped continues where it was. ask() and pool() are shared with
+// eval/context_reading.
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -47,13 +48,14 @@ ${YOMISCRIPT_INSTRUCTIONS}
 
 Return only a JSON object: {"ys": "<the answer as YomiScript>"}`;
 
-async function ask(llm, prompt, file) {
-  // one call, saved with the model and the answer; a missing JSON is tried once more
+export async function ask(llm, prompt, file, ok = (o) => o, tries = 2) {
+  // one call, saved with the model and the answer; an answer without the JSON (or that ok() rejects) is tried again
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, "utf8"));
   let r, out;
-  for (let i = 0; i < 2 && !out; i++) {
+  for (let i = 0; i < tries && !out; i++) {
     r = await callAsync(llm, prompt);
     out = json(r.text);
+    if (out && !ok(out)) out = null;
   }
   const rec = { llm, model: r.model, seconds: r.seconds, output: out, ...(out ? {} : { raw: r.text, stderr: r.stderr }) };
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -61,7 +63,7 @@ async function ask(llm, prompt, file) {
   return rec;
 }
 
-async function pool(jobs) {
+export async function pool(jobs) {
   // jobs: [llm, () => Promise]; PARALLEL at a time for each LLM
   const queues = Object.groupBy(jobs, ([llm]) => llm);
   await Promise.all(
@@ -73,20 +75,25 @@ async function pool(jobs) {
   );
 }
 
-const S = scenarios();
-let done = 0;
-const tick = () => ++done % 25 || console.log(`${done} calls`);
-// the authors
-await pool(LLMS.flatMap((a) => S.map((s) => [a, () => ask(a, author(s), path.join(RUN, "author", a, `${s.id}.json`)).then(tick)])));
-// the readers, of every author's answer
-const jobs = [];
-for (const a of LLMS)
-  for (const s of S) {
-    const text = JSON.parse(fs.readFileSync(path.join(RUN, "author", a, `${s.id}.json`), "utf8")).output?.text;
-    if (!text) continue;
-    for (const r of LLMS)
-      for (const ctx of [false, true])
-        jobs.push([r, () => ask(r, reader(s, text, ctx), path.join(RUN, "reader", a, `${r}.${ctx ? "context" : "text"}`, `${s.id}.json`)).then(tick)]);
-  }
-await pool(jobs);
-console.log(`done: ${done} calls`);
+async function main() {
+  const S = scenarios();
+  let done = 0;
+  const tick = () => ++done % 25 || console.log(`${done} calls`);
+  // the authors
+  await pool(LLMS.flatMap((a) => S.map((s) => [a, () => ask(a, author(s), path.join(RUN, "author", a, `${s.id}.json`)).then(tick)])));
+  // the readers, of every author's answer
+  const jobs = [];
+  for (const a of LLMS)
+    for (const s of S) {
+      const text = JSON.parse(fs.readFileSync(path.join(RUN, "author", a, `${s.id}.json`), "utf8")).output?.text;
+      if (!text) continue;
+      for (const r of LLMS)
+        for (const ctx of [false, true])
+          jobs.push([r, () => ask(r, reader(s, text, ctx), path.join(RUN, "reader", a, `${r}.${ctx ? "context" : "text"}`, `${s.id}.json`)).then(tick)]);
+    }
+  await pool(jobs);
+  console.log(`done: ${done} calls`);
+}
+
+// run only as a script: context_reading imports ask() and pool()
+if (process.argv[1] === fileURLToPath(import.meta.url)) await main();

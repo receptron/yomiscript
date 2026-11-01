@@ -1,0 +1,59 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 23.555,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "日向です。",
+    "ys": "ja /çɯːɡa<t:日向> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "人事扱い厳禁。",
+    "ys": "ja /çitoɡoto<t:人事> atsɯkai<t:扱い> ɡeŋkiɴ<t:厳禁。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "今日締切です。",
+    "ys": "ja /kʲoː<t:今日> ɕimekiɾi<t:締切> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "下手な行動厳禁。",
+    "ys": "ja /heta<t:下手> na<t:な> koːdoː<t:行動> ɡeŋkiɴ<t:厳禁。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "床上げです。",
+    "ys": "ja /toko<t:床> aɡe<t:上げ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "角のみ損傷。",
+    "ys": "ja /tsɯno<t:角> nomi<t:のみ> sonɕoː<t:損傷。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "一味詰まりですね。",
+    "ys": "ja /itɕimi<t:一味> dzɯmaɾi<t:詰まり> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "銀杏です。",
+    "ys": "ja /itɕoː<t:銀杏> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "行ったばかりです。",
+    "ys": "ja /okonatta<t:行った> bakaɾi<t:ばかり> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "色紙準備済みです。",
+    "ys": "ja /ɕikiɕi<t:色紙> dʑɯmbi<t:準備> dzɯmi<t:済み> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

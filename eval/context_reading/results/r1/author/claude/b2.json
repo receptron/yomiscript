@@ -1,0 +1,59 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 20.531,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "十八番でした。",
+    "ys": "ja /jɯːhatɕibaɴ<t:十八番> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "一行は到着済みです。",
+    "ys": "ja /ikkoː<t:一行> wa<t:は> toːtɕakɯzɯmi<t:到着済み> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "河岸を変えましょう。",
+    "ys": "ja /kaɕi<t:河岸> o<t:を> kaemaɕoː<t:変えましょう。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "市場が開くまで待とう。",
+    "ys": "ja /ɕidʑoː<t:市場> ga<t:が> hiɾakɯ<t:開く> made<t:まで> matoː<t:待とう。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "仏語ですよ。",
+    "ys": "ja /ɸɯtsɯgo<t:仏語> desɯ<t:です> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "分別ルールの確認です。",
+    "ys": "ja /bɯmbetsɯ<t:分別> ɾɯːɾɯ<t:ルール> no<t:の> kakɯnin<t:確認> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "すごく辛かったです。",
+    "ys": "ja /sɯgokɯ<t:すごく> kaɾakatta<t:辛かった> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "孤独な心中の吐露です。",
+    "ys": "ja /kodokɯ<t:孤独> na<t:な> ɕiɲtɕɯː<t:心中> no<t:の> toɾo<t:吐露> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "造作はそのままでした。",
+    "ys": "ja /dzoːsakɯ<t:造作> wa<t:は> sono<t:その> mama<t:まま> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "狐の足跡でしたよ。",
+    "ys": "ja /kitsɯne<t:狐> no<t:の> aɕiato<t:足跡> deɕita<t:でした> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

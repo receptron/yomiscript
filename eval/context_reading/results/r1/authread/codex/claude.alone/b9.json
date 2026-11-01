@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 14.262,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɸɯmbetsɯ<t:分別> ga<t:が> kaɲdʑiɴ<t:肝心。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /tsɯɾakatta<t:辛かった> deɕoː<t:でしょう。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɕiɲdʑɯː<t:心中> o<t:を> egakɯ<t:描く> çigeki<t:悲劇。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /dzoːsa<t:造作> mo<t:も> nakatta<t:なかった。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /idai<t:偉大> na<t:な> sokɯseki<t:足跡> o<t:を> nokoɕita<t:残した。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ɕiɾizoite<t:退いて> hoɕiː<t:ほしい> to<t:と> sematta<t:迫った。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /keːɾʲoː<t:軽量> na<t:な> hoː<t:方。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kɯɾiiɾi<t:栗入り> monaka<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dʑɯppɯɴ<t:十分> hodo<t:ほど> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /eŋkeː<t:遠景> made<t:まで> çiɾaketa<t:開けた。> ↘/"
+   }
+  ]
+ }
+}

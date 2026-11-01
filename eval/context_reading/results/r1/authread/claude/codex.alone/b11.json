@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 19.901,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /eː<t:ええ、> ‖ saɴiɴ<t:山陰> o<t:を> haɕitte<t:走って> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /naɲɲimbɯɴ<t:何人分> os aemasɯ<t:押さえます> ka<t:か？> ↗/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɯɴ<t:うん、> ‖ ɸɯtae<t:二重> ɲi<t:に> akoɡaɾete<t:憧れて。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /aida<t:間> o<t:を> totte<t:取って> san<t:三> teɴ<t:・> ɡo<t:五> de<t:で。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /matsɯɡo<t:末期> no<t:の> neɡai<t:願い> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /sɯbete<t:すべて> seːka<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /mada<t:まだ> itɕibɯɴ<t:一文> mo<t:も> sɯsɯndenai<t:進んでない> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /komponteki<t:根本的> na<t:な> taiɕitsɯ<t:体質> kaizeɴ<t:改善> ɡa<t:が> çitsɯjoː<t:必要> da<t:だ> to<t:と。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /sɯɡɯɾeta<t:優れた> kɯɸɯː<t:工夫> o<t:を> zeɴiɴ<t:全員> de<t:で> kʲoːjɯː<t:共有。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /hokɯɾo<t:黒子> o<t:を> toɾitakɯte<t:取りたくて。> ↘/"
+   }
+  ]
+ }
+}

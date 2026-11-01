@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 14.364,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /dʑɯːhatɕiban<t:十八番> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /ikkoː<t:一行> wa<t:は> toːtɕakɯdzɯmi<t:到着済み> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kaɕi<t:河岸> o<t:を> kaemaɕoː<t:変えましょう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɕidʑoː<t:市場> ɡa<t:が> akɯ<t:開く> made<t:まで> matoː<t:待とう。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ɸɯtsɯɡo<t:仏語> desɯ<t:です> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /bɯmbetsɯ<t:分別> ɾɯːɾɯ<t:ルール> no<t:の> kakɯɲin<t:確認> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /sɯɡokɯ<t:すごく> kaɾakatta<t:辛かった> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kodokɯ<t:孤独> na<t:な> ɕiɲtɕɯː<t:心中> no<t:の> toɾo<t:吐露> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dzoːsakɯ<t:造作> wa<t:は> sonomama<t:そのまま> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /kitsɯne<t:狐> no<t:の> aɕiato<t:足跡> deɕita<t:でした> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

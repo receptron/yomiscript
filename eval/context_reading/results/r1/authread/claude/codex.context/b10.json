@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 12.851,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /kaɡande<t:かがんで> kɯɡɯtte<t:潜って> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /dzokɯdzokɯ<t:ぞくぞく> samɯke<t:寒気> ɡa<t:が> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /koːɕiki<t:公式> ɲi<t:に> atehamete<t:当てはめて> toite<t:解いて。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /sɯɡokɯ<t:すごく> dʑoːdzɯ<t:上手> datta<t:だった> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /tatta<t:たった> ippɯn<t:一分> sa<t:差> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ɕɯ<t:主> ɲi<t:に> kanɕa<t:感謝> o<t:を> sasaɡemaɕita<t:捧げました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /ɸɯtɕi<t:縁> naɕi<t:なし> taipɯ<t:タイプ> nan<t:なん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /sɯɡoi<t:すごい> ɲiŋki<t:人気> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /taika<t:大家> ɲi<t:に> tɕokɯsetsɯ<t:直接> osowaɾimaɕita<t:教わりました。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /moː<t:もう> jamete<t:止めて> jo<t:よ！> ↘/"
+   }
+  ]
+ }
+}

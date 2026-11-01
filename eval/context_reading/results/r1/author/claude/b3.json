@@ -1,0 +1,59 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 22.542,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "ちょっと退いてね！",
+    "ys": "ja /tɕotto<t:ちょっと> doite<t:退いて> ne<t:ね！> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "経験豊富な方です。",
+    "ys": "ja /keːkeɴ<t:経験> hoːɸɯ<t:豊富> na<t:な> kata<t:方> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "はい、話し合いの最中でした。",
+    "ys": "ja /hai<t:はい、> ‖ hanaɕiai<t:話し合い> no<t:の> saitɕɯː<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "いえ、十分いただきました。",
+    "ys": "ja /ie<t:いえ、> ‖ dʑɯːbɯɴ<t:十分> itadakimaɕita<t:いただきました。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "いいえ、いきなり開けました。",
+    "ys": "ja /iːe<t:いいえ、> ‖ ikinaɾi<t:いきなり> akemaɕita<t:開けました。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "海底まで潜って回収して！",
+    "ys": "ja /kaiteː<t:海底> made<t:まで> mogɯtte<t:潜って> kaiɕɯː<t:回収> ɕite<t:して！> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "強い寒気が南下します。",
+    "ys": "ja /tsɯjoi<t:強い> kaŋki<t:寒気> ga<t:が> naŋka<t:南下> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "爪でそっと解いてみて。",
+    "ys": "ja /tsɯme<t:爪> de<t:で> sotto<t:そっと> hodoite<t:解いて> mite<t:みて。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "そうです、上手です。",
+    "ys": "ja /soː<t:そう> desɯ<t:です、> ‖ kamite<t:上手> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "はい、一分差でした。",
+    "ys": "ja /hai<t:はい、> ‖ itɕibɯ<t:一分> sa<t:差> deɕita<t:でした。> ↘/"
+   }
+  ]
+ }
+}

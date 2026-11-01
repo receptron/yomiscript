@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 13.107,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "山陰に入りました。",
+    "ys": "ja /saɴiɴ<t:山陰> ɲi<t:に> haiɾimaɕita<t:入りました。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "何人で来る？",
+    "ys": "ja /naɲɲiɴ<t:何人> de<t:で> kɯɾɯ<t:来る？> ↗/"
+   },
+   {
+    "n": 3,
+    "text": "二重にするの。",
+    "ys": "ja /ɸɯtae<t:二重> ɲi<t:に> sɯɾɯ<t:する> no<t:の。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "間を取ろう。",
+    "ys": "ja /aida<t:間> o<t:を> toɾoː<t:取ろう。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "末期の願いです。",
+    "ys": "ja /matsɯɡo<t:末期> no<t:の> neɡai<t:願い> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "きれいな生花です。",
+    "ys": "ja /kiɾeːna<t:きれいな> seːka<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "まだ一文だけ。",
+    "ys": "ja /mada<t:まだ> itɕibɯɴ<t:一文> dake<t:だけ。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "根本から直せと。",
+    "ys": "ja /kompoɴ<t:根本> kaɾa<t:から> naose<t:直せ> to<t:と。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "手順を工夫した。",
+    "ys": "ja /tedʑɯɴ<t:手順> o<t:を> kɯɸɯː<t:工夫> ɕita<t:した。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "黒子を取るんだ。",
+    "ys": "ja /hokɯɾo<t:黒子> o<t:を> toɾɯ<t:取る> nda<t:んだ。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 16.526,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /omo<t:主> ni<t:に> wa<t:は> kanɕa<t:感謝> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /eɴ<t:縁> ɡa<t:が> nakatta<t:無かった> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɲiŋki<t:人気> wa<t:は> nakatta<t:無かった。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /oːja<t:大家> ni<t:に> tanonda<t:頼んだ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /asoko<t:あそこ> de<t:で> tomete<t:止めて。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /saɲiɴ<t:山陰> ni<t:に> haitta<t:入った> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /nanɲiɴ<t:何人> daɾoː<t:だろう> ne<t:ね。> ↗/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɲidʑɯː<t:二重> ni<t:に> ɕita<t:した> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ma<t:間> o<t:を> akete<t:空けて> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /makki<t:末期> no<t:の> çoːɡeɴ<t:表現> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

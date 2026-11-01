@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 15.296,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɸɯmbetsɯ<t:分別> o<t:を> motsɯ<t:持つ> koto<t:こと> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /hontoː<t:本当> ni<t:に> tsɯɾakatta<t:辛かった> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /ɕiɲdʑɯːmono<t:心中物> no<t:の> meisakɯ<t:名作> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /dzoːsa<t:造作> mo<t:も> nakatta<t:なかった> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /idaina<t:偉大な> sokɯseki<t:足跡> o<t:を> nokoɕita<t:残した> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /sokkokɯ<t:即刻> ɕiɾizoite<t:退いて> hoɕiː<t:ほしい> to<t:と。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /pawaː<t:パワー> dʑɯːɕi<t:重視> no<t:の> hoː<t:方> ka<t:か> na<t:な。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /soː<t:そう> ‖<t:、> monaka<t:最中> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dʑippɯɴ<t:十分> hodo<t:ほど> de<t:で> tsɯkɯ<t:着く> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /keɕiki<t:景色> ga<t:が> paʔto<t:ぱっと> hiɾaketa<t:開けた> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

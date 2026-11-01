@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 16.387,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /omoni<t:主に> manzokɯ<t:満足> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /eɴ<t:縁> ɡa<t:が> nakatta<t:なかった> joː<t:よう> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /çitoke<t:人気> wa<t:は> mattakɯ<t:全く> nakatta<t:なかった> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /oːja<t:大家> san<t:さん> ni<t:に> tɕokɯsetsɯ<t:直接> ɾeɴɾakɯ<t:連絡> ɕita<t:した> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /asoko<t:あそこ> de<t:で> tomete<t:止めて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /jamakaɡe<t:山陰> ni<t:に> çi<t:日> ɡa<t:が> kakɯɾeta<t:隠れた> n<t:ん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /naɲidʑin<t:何人> datta<t:だった> n<t:ん> daɾoː<t:だろう> ne<t:ね。> ↗/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɲidʑɯː<t:二重> ɾokkɯ<t:ロック> ni<t:に> ɕita<t:した> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ma<t:間> o<t:を> tappɯɾi<t:たっぷり> toɾɯ<t:取る> koto<t:こと。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /makki<t:末期> no<t:の> mono<t:もの> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

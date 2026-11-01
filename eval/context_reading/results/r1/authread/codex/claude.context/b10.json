@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 12.541,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /kɯɡɯtte<t:潜って> sɯsɯnde<t:進んで。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /samɯke<t:寒気> de<t:で> ɡataɡata<t:ガタガタ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /toite<t:解いて> mijoː<t:みよう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /dʑoːzɯ<t:上手> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ippɯn<t:一分> sa<t:差> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ɕɯ<t:主> ni<t:に> kaɴɕa<t:感謝> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /ɸɯtɕi<t:縁> naɕi<t:なし> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /niŋki<t:人気> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /taika<t:大家> o<t:を> tazɯnemaɕita<t:訪ねました。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jamete<t:止めて> ‖<t:、> kaeɕite<t:返して。> ↘/"
+   }
+  ]
+ }
+}

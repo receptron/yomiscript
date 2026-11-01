@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 10.3,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɡaimeɴ<t:外面> wa<t:は> kiɾeː<t:綺麗> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /totemo<t:とても> mimono<t:見物> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /daimoɲdʑi<t:大文字> ɡa<t:が> oɡamemasɯ<t:拝めます。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /donatasama<t:何方様> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /noɾito<t:祝詞> o<t:を> soːdʑoː<t:奏上> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /dono<t:どの> biɴ<t:便> de<t:で> tsɯita<t:着いた？> ↗/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /nakabi<t:中日> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kamei<t:仮名> o<t:を> tsɯkaimaɕoː<t:使いましょう。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /haɲtsɯki<t:半月> hodo<t:ほど> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯbi<t:指> de<t:で> hadʑiːte<t:弾いて> mite<t:みて。> ↘/"
+   }
+  ]
+ }
+}

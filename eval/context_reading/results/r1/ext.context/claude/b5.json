@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 12.209,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /soɾe<t:それ> wa<t:は> ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕimoɴ<t:一文> mo<t:も> aɾimaseɴ<t:ありません。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /nemoto<t:根本> ga<t:が> kɯsatte<t:腐って> imaɕita<t:いました。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /koːɸɯ<t:工夫> o<t:を> atsɯmemaɕita<t:集めました。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kɯɾoko<t:黒子> ga<t:が> ki<t:気> ni<t:に> naɾimasɯ<t:なります。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /hinata<t:日向> ni<t:に> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑiɲdʑi<t:人事> de<t:では> wa aɾimaseɴ<t:ありません。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /koɲnitɕi<t:今日> no<t:の> kadai<t:課題> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ɕimote<t:下手> ni<t:に> ɯgokanaide<t:動かないで> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯka<t:床> o<t:を> agemaɕita<t:上げました。> ↘/"
+   }
+  ]
+ }
+}

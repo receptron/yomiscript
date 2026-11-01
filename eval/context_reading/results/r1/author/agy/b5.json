@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 11.409,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "生花です。",
+    "ys": "ja /ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "一文なしです。",
+    "ys": "ja /itɕimon<t:一文> naɕi<t:なし> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "根本が腐っていた。",
+    "ys": "ja /nemoto<t:根本> ɡa<t:が> kɯsatte<t:腐って> ita<t:いた。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "工夫を雇った。",
+    "ys": "ja /koːɸɯ<t:工夫> o<t:を> jatotta<t:雇った。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "黒子が支えていた。",
+    "ys": "ja /kɯɾoɡo<t:黒子> ɡa<t:が> sasaete<t:支えて> ita<t:いた。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "日向で寝ています。",
+    "ys": "ja /çinata<t:日向> de<t:で> nete<t:寝て> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "人事が決めます。",
+    "ys": "ja /dʑiɲdʑi<t:人事> ɡa<t:が> kimemasɯ<t:決めます。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "今日の課題です。",
+    "ys": "ja /konɲitɕi<t:今日> no<t:の> kadai<t:課題> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "下手に注意して。",
+    "ys": "ja /ɕimote<t:下手> ɲi<t:に> tɕɯːi<t:注意> ɕite<t:して。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "床を高くした。",
+    "ys": "ja /jɯka<t:床> o<t:を> takakɯ<t:高く> ɕita<t:した。> ↘/"
+   }
+  ]
+ }
+}

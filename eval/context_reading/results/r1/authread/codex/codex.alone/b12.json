@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 39.13,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /çinata<t:日向> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çitoɡoto<t:人事> atsɯkai<t:扱い> ɡeŋkin<t:厳禁。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kʲoː<t:今日> ɕimekiɾi<t:締切> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /heta<t:下手> na<t:な> koːdoː<t:行動> ɡeŋkin<t:厳禁。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /tokoaɡe<t:床上げ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /kado<t:角> nomi<t:のみ> sonɕoː<t:損傷。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /itɕimi<t:一味> dzɯmaɾi<t:詰まり> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɡinnaɴ<t:銀杏> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /itta<t:行った> bakaɾi<t:ばかり> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕikiɕi<t:色紙> dʑɯmbi<t:準備> dzɯmi<t:済み> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

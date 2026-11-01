@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 28.83,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "私の札は十八番。",
+    "ys": "ja /wataɕi<t:私> no<t:の> ɸɯda<t:札> wa<t:は> dʑɯːhatɕibaɴ<t:十八番。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "一行は到着済です。",
+    "ys": "ja /ikkoː<t:一行> wa<t:は> toːtɕakɯdzɯmi<t:到着済> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "河岸を変えよう。",
+    "ys": "ja /kaɕi<t:河岸> o<t:を> kaejoː<t:変えよう。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "市場の再開を待て。",
+    "ys": "ja /ɕidʑoː<t:市場> no<t:の> saikai<t:再開> o<t:を> mate<t:待て。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "それは仏語です。",
+    "ys": "ja /soɾe<t:それ> wa<t:は> ɸɯtsɯɡo<t:仏語> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "分別を徹底しよう。",
+    "ys": "ja /bɯmbetsɯ<t:分別> o<t:を> tetteː<t:徹底> ɕijoː<t:しよう。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "すごく辛かったよ。",
+    "ys": "ja /sɯɡokɯ<t:すごく> kaɾakatta<t:辛かった> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "孤独な心中です。",
+    "ys": "ja /kodokɯ<t:孤独> na<t:な> ɕiɲtɕɯː<t:心中> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "造作は撤去済です。",
+    "ys": "ja /dzoːsakɯ<t:造作> wa<t:は> tekkʲodzɯmi<t:撤去済> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "猫の足跡でした。",
+    "ys": "ja /neko<t:猫> no<t:の> aɕiato<t:足跡> deɕita<t:でした。> ↘/"
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 16.357,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /kado<t:角> ɡa<t:が> sɯkoɕi<t:少し> tsɯbɯɾeta<t:潰れた。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çitoa dʑi<t:一味> taɾinai<t:足りない> tte<t:って。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /dandzeɴ<t:断然> ‖<t:、> ɡinnaɴ<t:銀杏> da<t:だ> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɯɴ<t:うん> ‖<t:、> kʲoneɴ<t:去年> itta<t:行った> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ɕikiɕi<t:色紙> o<t:を> tsɯika<t:追加> de<t:で> kaɯ<t:買う> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /hatsɯçinode<t:初日の出> o<t:を> oɡami<t:拝み> ɲi<t:に。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /dʑɯː<t:自重> o<t:を> tsɯkaeba<t:使えば> dʑɯːbɯɴ<t:十分。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /dʑidoː<t:自動> tsɯidʑɯː<t:追従> kinoː<t:機能> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /kazaɡɯɾɯma<t:風車> ‖<t:、> jokɯ<t:よく> mawatteɾɯ<t:回ってる。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /seːtɕi<t:生地> no<t:の> kinenkan<t:記念館> ɲi<t:に> jotta<t:寄った。> ↘/"
+   }
+  ]
+ }
+}

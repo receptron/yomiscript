@@ -1,0 +1,59 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 18.356,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "生花です。",
+    "ys": "ja /ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "一文無しらしいよ。",
+    "ys": "ja /itɕimon<t:一文> naɕi<t:無し> ɾaɕiː<t:らしい> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "根本が腐ってたんだ。",
+    "ys": "ja /nemoto<t:根本> ɡa<t:が> kɯsatteta<t:腐ってた> n<t:ん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "工夫を集めたんだ。",
+    "ys": "ja /koːɸɯ<t:工夫> o<t:を> atsɯmeta<t:集めた> n<t:ん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "最高！あれは黒子だよ。",
+    "ys": "ja /saikoː<t:最高！> ↘ aɾe<t:あれ> wa<t:は> kɯɾoɡo<t:黒子> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "日向で寝てるよ。",
+    "ys": "ja /hinata<t:日向> de<t:で> nete<t:寝て> ɾɯ<t:る> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "はい、人事部です。",
+    "ys": "ja /hai<t:はい> ‖<t:、> dʑindʑibɯ<t:人事部> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "主に今日の課題だよ。",
+    "ys": "ja /omo<t:主> ni<t:に> koɲɲitɕi<t:今日> no<t:の> kadai<t:課題> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "下手に気をつけて。",
+    "ys": "ja /ɕimote<t:下手> ni<t:に> ki<t:気> o<t:を> tsɯkete<t:つけて。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "床を上げたよ。",
+    "ys": "ja /jɯka<t:床> o<t:を> aɡeta<t:上げた> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

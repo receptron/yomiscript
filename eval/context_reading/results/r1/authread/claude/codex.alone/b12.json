@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 15.869,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /çɯːɡa<t:日向> ɲi<t:に> taidzai<t:滞在> tɕɯː<t:中> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çitoɡoto<t:人事> to<t:と> wa<t:は> omოemasეɴ<t:思えません。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kʲoː<t:今日> ɡa<t:が> ɕimekiɾi<t:締め切り> no<t:の> kadai<t:課題> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /heta<t:下手> ɲi<t:に> ɯɡokɯ<t:動く> to<t:と> kikeɴ<t:危険> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /jɯka<t:床> o<t:を> aɡete<t:上げて> kɯɾeta<t:くれた> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /tsɯno<t:角> ɡa<t:が> oɾeta<t:折れた> kedo<t:けど> bɯdʑi<t:無事> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /itɕimi<t:一味> ɡa<t:が> ɕikete<t:湿気て> katamatteɾɯ<t:固まってる> kamo<t:かも。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /aki<t:秋> no<t:の> ɡinnan<t:銀杏> ɡa<t:が> itɕibaɴ<t:一番> da<t:だ> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /seŋɡetsɯ<t:先月> itta<t:行った> kaɾa<t:から> ‖<t:、> hantoɕiɡo<t:半年後> kana<t:かな。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕikiɕi<t:色紙> o<t:を> katte<t:買って> oita<t:おいた> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

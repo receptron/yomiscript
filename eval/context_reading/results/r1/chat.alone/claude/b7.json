@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 17.953,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /daidʑi<t:大事> ni<t:に> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /koɾe<t:これ> wa<t:は> kiɴseː<t:金星> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /zɯtto<t:ずっと> daite<t:抱いて> imaɕita<t:いました。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /mokɯme<t:木目> ga<t:が> komakai<t:細かい> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /namamono<t:生物> wa<t:は> dame<t:だめ> nan<t:なん> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /sotozɯɾa<t:外面> wa<t:は> iːn<t:いいん> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /aɕita<t:明日> wa<t:は> mimono<t:見物> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /daimoɲdʑi<t:大文字> ga<t:が> miemasɯ<t:見えます。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /donata<t:何方> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕɯkɯɕi<t:祝詞> o<t:を> onegai<t:お願い> ɕimasɯ<t:します。> ↘/"
+   }
+  ]
+ }
+}

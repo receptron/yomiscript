@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 13.961,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /dʑɯːhatɕibaɴ<t:十八番> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕikoː<t:一行> ‖<t:、> toːtɕakɯdzɯmi<t:到着済み。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kaɕi<t:河岸> ‖<t:、> kaejoː<t:変えよう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɕidʑoː<t:市場> ‖<t:、> mazɯ<t:まず> joːsɯmi<t:様子見。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ɸɯtsɯɡo<t:仏語> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /bɯmbetsɯ<t:分別> ɾɯːɾɯ<t:ルール> ɡenɕɯ<t:厳守。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /kaɾakatta<t:辛かった> ‖<t:、> mondzetsɯ<t:悶絶。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɕintɕɯː<t:心中> ‖<t:、> kɯnoː<t:苦悩。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dzoːsakɯ<t:造作> ‖<t:、> ɡendzoɴ<t:現存。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /aɕiato<t:足跡> ‖<t:、> hakkeɴ<t:発見。> ↘/"
+   }
+  ]
+ }
+}

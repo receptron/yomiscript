@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 19.888,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɕonitɕi<t:初日> no<t:の> makɯake<t:幕開け> o<t:を> mita<t:見た> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /ɕibaɾakɯ<t:しばらく> dʑitɕoː<t:自重> sejo<t:せよ> ‖<t:、> to<t:と> sa<t:さ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /aɾe<t:あれ> wa<t:は> tada<t:ただ> no<t:の> tsɯiɕoː<t:追従> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɯɴ<t:うん、> ‖ ɸɯːɕa<t:風車> wa<t:は> mawatte<t:回って> ɾɯ<t:る> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kidʑi<t:生地> o<t:を> kaini<t:買いに> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /zɯtto<t:ずっと> daidʑi<t:大事> ni<t:に> hokaɴ<t:保管> ɕite<t:して> ɾɯ<t:る> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /soː<t:そう、> ‖ migoto<t:見事> na<t:な> kimboɕi<t:金星> da<t:だ> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /sotto<t:そっと> daite<t:抱いて> naite<t:泣いて> ta<t:た> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /mokɯme<t:木目> ga<t:が> dʑitsɯni<t:実に> ɯtsɯkɯɕikatta<t:美しかった。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɯɴ<t:うん、> ‖ namamono<t:生物> mo<t:も> daisɯki<t:大好き> da<t:だ> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

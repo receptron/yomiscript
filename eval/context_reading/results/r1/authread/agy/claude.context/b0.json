@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 12.591,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɕonitɕi<t:初日> ni<t:に> tanoɕinda<t:楽しんだ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /dʑitɕoː<t:自重> o<t:を> motomemaɕita<t:求めました。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /tada<t:ただ> no<t:の> tsɯiɕoː<t:追従> desɯ<t:です> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɸɯːɕa<t:風車> wa<t:は> mawatteɾɯ<t:回ってる> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kidʑi<t:生地> o<t:を> katta<t:買った> no<t:の。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /daidʑi<t:大事> ni<t:に> ɕimatteta<t:しまってた。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /migoto<t:見事> na<t:な> kimboɕi<t:金星> desɯ<t:です> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /daite<t:抱いて> naiteta<t:泣いてた> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /mokɯme<t:木目> ga<t:が> kiɾeː<t:きれい> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /namamono<t:生物> mo<t:も> daisɯki<t:大好き> da<t:だ> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

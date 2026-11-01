@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 10.5,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ɕoɲitɕi<t:初日> dajo<t:だよ。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /dʑitɕoː<t:自重> sejo<t:せよ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /tsɯiɕoː<t:追従> ɲi<t:に> sɯɡinai<t:すぎない。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɸɯːɕa<t:風車> wa<t:は> kaiteɲtɕɯː<t:回転中。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kidʑi<t:生地> no<t:の> koːɲɯː<t:購入。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /daidʑi<t:大事> ɲi<t:に> hokaɴ<t:保管> ɕita<t:した。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /kimboɕi<t:金星> dane<t:だね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /daite<t:抱いて> hohoenda<t:微笑んだ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /mokɯme<t:木目> ɡa<t:が> ɯtsɯkɯɕikatta<t:美しかった。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /namamono<t:生物> mo<t:も> daisɯki<t:大好き。> ↘/"
+   }
+  ]
+ }
+}

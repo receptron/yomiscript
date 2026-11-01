@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 15.664,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /tɕotto<t:ちょっと> doite<t:退いて> ne<t:ね！> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /keːkeɴ<t:経験> hoːɸɯ<t:豊富> na<t:な> kata<t:方> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /hai<t:はい、> ‖ hanaɕiai<t:話し合い> no<t:の> saitɕɯː<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ie<t:いえ、> ‖ dʑɯːbɯɴ<t:十分> itadakimaɕita<t:いただきました。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /iːe<t:いいえ、> ‖ ikinaɾi<t:いきなり> akemaɕita<t:開けました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /kaiteː<t:海底> made<t:まで> moɡɯtte<t:潜って> kaiɕɯː<t:回収> ɕite<t:して！> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /tsɯjoi<t:強い> kaŋki<t:寒気> ɡa<t:が> naŋka<t:南下> ɕimasɯ<t:します。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /tsɯme<t:爪> de<t:で> sotto<t:そっと> hodoite<t:解いて> mite<t:みて。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /soː<t:そう> desɯ<t:です、> ‖ dʑoːdzɯ<t:上手> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /hai<t:はい、> ‖ ippɯɴsa<t:一分差> deɕita<t:でした。> ↘/"
+   }
+  ]
+ }
+}

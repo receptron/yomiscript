@@ -1,0 +1,59 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 21.672,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "角が少し潰れた。",
+    "ys": "ja /kado<t:角> ga<t:が> sɯkoɕi<t:少し> tsɯbɯɾeta<t:潰れた。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "一味足りないって。",
+    "ys": "ja /hitoadʑi<t:一味> taɾinai<t:足りない> tte<t:って。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "断然、銀杏だね。",
+    "ys": "ja /dandzeɴ<t:断然> ‖<t:、> ginnan<t:銀杏> da<t:だ> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "うん、去年行ったよ。",
+    "ys": "ja /ɯɴ<t:うん> ‖<t:、> kʲoneɴ<t:去年> itta<t:行った> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "色紙を追加で買うよ。",
+    "ys": "ja /iɾogami<t:色紙> o<t:を> tsɯika<t:追加> de<t:で> kaɯ<t:買う> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "初日の出を拝みに。",
+    "ys": "ja /hatsɯhi<t:初日> no<t:の> de<t:出> o<t:を> oɡami<t:拝み> ni<t:に。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "自重を使えば十分。",
+    "ys": "ja /dʑidʑɯː<t:自重> o<t:を> tsɯkaeba<t:使えば> dʑɯːbɯɴ<t:十分。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "自動追従機能だよ。",
+    "ys": "ja /dʑidoː<t:自動> tsɯidʑɯː<t:追従> kinoː<t:機能> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "風車、よく回ってる。",
+    "ys": "ja /kazagɯɾɯma<t:風車> ‖<t:、> jokɯ<t:よく> mawatteɾɯ<t:回ってる。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "生地の記念館に寄った。",
+    "ys": "ja /seːtɕi<t:生地> no<t:の> kineŋkan<t:記念館> ni<t:に> jotta<t:寄った。> ↘/"
+   }
+  ]
+ }
+}

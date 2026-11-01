@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 9.296,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /soko<t:そこ> o<t:を> doite<t:退いて> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /ano<t:あの> kata<t:方> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /masaɲi<t:まさに> saitɕɯː<t:最中> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /moː<t:もう> dʑɯːbɯɴ<t:十分> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /ikiɲaɾi<t:いきなり> akemaɕita<t:開けました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /soko<t:底> made<t:まで> moɡɯtte<t:潜って。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /tsɯjoi<t:強い> kaŋki<t:寒気> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /jɯkkɯɾi<t:ゆっくり> toite<t:解いて。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /hai<t:はい> ‖<t:、> dʑoːdzɯ<t:上手> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /sa<t:差> wa<t:は> ippɯɴ<t:一分> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

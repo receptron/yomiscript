@@ -1,0 +1,49 @@
+{
+ "llm": "claude",
+ "model": "claude-opus-5-5",
+ "seconds": 15.647,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /ikebana<t:生花> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /itɕimoɴnaɕi<t:一文無し> ɾaɕiː<t:らしい> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /nemoto<t:根本> ga<t:が> kɯsatteta<t:腐ってた> n<t:ん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /koːɸɯ<t:工夫> o<t:を> atsɯmeta<t:集めた> n<t:ん> da<t:だ。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /saikoː<t:最高！> ↘ aɾe<t:あれ> wa<t:は> kɯɾoko<t:黒子> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /hinata<t:日向> de<t:で> nete<t:寝て> ɾɯ<t:る> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /hai<t:はい、> ‖ dʑiɲdʑibɯ<t:人事部> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /omo<t:主> ni<t:に> kʲoː<t:今日> no<t:の> kadai<t:課題> da<t:だ> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ɕimote<t:下手> ni<t:に> ki<t:気> o<t:を> tsɯkete<t:つけて。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /jɯka<t:床> o<t:を> ageta<t:上げた> jo<t:よ。> ↘/"
+   }
+  ]
+ }
+}

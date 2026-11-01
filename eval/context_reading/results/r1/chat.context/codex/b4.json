@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 16.185,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /omo<t:主> ni<t:に> kaɴɕa<t:感謝> ɕite<t:して> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /eŋ<t:縁> ga<t:が> nai<t:ない> n<t:ん> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /çitoke<t:人気> ga<t:が> aɾimasen<t:ありません> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /oːja<t:大家> ni<t:に> soːdaɴ<t:相談> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /tomete<t:止めて> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /jamakaɡe<t:山陰> ni<t:に> haiɾimaɕita<t:入りました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /naɲidʑiɴ<t:何人> desɯ<t:です> ka<t:か。> ↗/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /ɲidʑɯː<t:二重> ni<t:に> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /ma<t:間> o<t:を> toɾimaɕoː<t:取りましょう。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /makki<t:末期> no<t:の> kotoba<t:言葉> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

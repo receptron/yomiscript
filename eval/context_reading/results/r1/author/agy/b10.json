@@ -1,0 +1,59 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 12.2,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "text": "頭を下げて潜ってね。",
+    "ys": "ja /atama<t:頭> o<t:を> saɡete<t:下げて> kɯɡɯtte<t:潜って> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 2,
+    "text": "強い寒気があります。",
+    "ys": "ja /tsɯjoi<t:強い> samɯke<t:寒気> ɡa<t:が> aɾimasɯ<t:あります。> ↘/"
+   },
+   {
+    "n": 3,
+    "text": "公式で解いてね。",
+    "ys": "ja /koːɕiki<t:公式> de<t:で> toite<t:解いて> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 4,
+    "text": "とても上手でした。",
+    "ys": "ja /totemo<t:とても> dʑoːdzɯ<t:上手> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "text": "わずか一分の差です。",
+    "ys": "ja /wadzɯka<t:わずか> ippɯn<t:一分> no<t:の> sa<t:差> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "text": "主に感謝しました。",
+    "ys": "ja /ɕɯ<t:主> ɲi<t:に> kaɴɕa<t:感謝> ɕimaɕita<t:しました。> ↘/"
+   },
+   {
+    "n": 7,
+    "text": "縁がないタイプです。",
+    "ys": "ja /ɸɯtɕi<t:縁> ɡa<t:が> nai<t:ない> taipɯ<t:タイプ> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 8,
+    "text": "とても人気ですよ。",
+    "ys": "ja /totemo<t:とても> ɲiŋki<t:人気> desɯ<t:です> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 9,
+    "text": "大家に教わりました。",
+    "ys": "ja /taika<t:大家> ɲi<t:に> osowaɾimaɕita<t:教わりました。> ↘/"
+   },
+   {
+    "n": 10,
+    "text": "すぐ止めてと言って。",
+    "ys": "ja /sɯɡɯ<t:すぐ> jamete<t:止めて> to<t:と> itte<t:言って。> ↘/"
+   }
+  ]
+ }
+}

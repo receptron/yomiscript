@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 10.601,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /masaka<t:まさか> no<t:の> oːɡotoatsɯkai<t:大事扱い。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /kitto<t:きっと> kiɴseː<t:金星> da<t:だ> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /mɯne<t:胸> ɲi<t:に> idaite<t:抱いて> kimaɕita<t:きました。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kime<t:木目> ɡa<t:が> komakai<t:細かい> tte<t:って。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /namamono<t:生物> dake<t:だけ> ɲiɡate<t:苦手。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /sotodzɯɾa<t:外面> dake<t:だけ> ɾippa<t:立派> na<t:な> no<t:の。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /meːɕo<t:名所> o<t:を> kembɯtsɯ<t:見物> sɯɾɯ<t:する> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /oːmodʑi<t:大文字> ɡa<t:が> madzatteta<t:混ざってた。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dotɕiɾa<t:何方> ɲi<t:に> ɕita<t:した> no<t:の？> ↗/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /noɾito<t:祝詞> o<t:を> oneɡai<t:お願い> ɕimasɯ<t:します。> ↘/"
+   }
+  ]
+ }
+}

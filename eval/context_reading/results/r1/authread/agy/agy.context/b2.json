@@ -1,0 +1,49 @@
+{
+ "llm": "agy",
+ "model": "gemini-4-argon-medium",
+ "seconds": 14.701,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /wataɕi<t:私> no<t:の> ɸɯda<t:札> wa<t:は> dʑɯːhatɕibaɴ<t:十八番。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /ikkoː<t:一行> wa<t:は> toːtɕakɯdzɯmi<t:到着済> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kaɕi<t:河岸> o<t:を> kaejoː<t:変えよう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /ɕidʑoː<t:市場> no<t:の> saikai<t:再開> o<t:を> mate<t:待て。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /soɾe<t:それ> wa<t:は> ɸɯtsɯɡo<t:仏語> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /bɯmbetsɯ<t:分別> o<t:を> tetteː<t:徹底> ɕijoː<t:しよう。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /sɯɡokɯ<t:すごく> kaɾakatta<t:辛かった> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kodokɯ<t:孤独> na<t:な> ɕiɲtɕɯː<t:心中> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /dzoːsakɯ<t:造作> wa<t:は> tekkʲodzɯmi<t:撤去済> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /neko<t:猫> no<t:の> aɕiato<t:足跡> deɕita<t:でした。> ↘/"
+   }
+  ]
+ }
+}

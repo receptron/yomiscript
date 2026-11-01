@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 19.59,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /beɴ<t:便> no<t:の> dʑoːtai<t:状態> o<t:を> kakɯɲiɴ<t:確認> ɕiteta<t:してた> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /nakabi<t:中日> dokoɾoka<t:どころか、> ‖ moː<t:もう> owatta<t:終わった> jo<t:よ。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kameː<t:仮名> ɲi<t:に> ɕimaɕoː<t:しましょう。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /kiɾeː<t:きれい> na<t:な> haŋɡetsɯ<t:半月> deɕita<t:でした。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /kaɾɯkɯ<t:軽く> hadʑiːte<t:弾いて> oto<t:音> de<t:で> handaɴ<t:判断。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /ohako<t:十八番> desɯ<t:です> ne<t:ね、> ‖ kʲokɯmeː<t:曲名> wa<t:は> ɸɯmeː<t:不明> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /ato<t:あと> itɕiɡʲoː<t:一行> nokottemasɯ<t:残ってます。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /kaɡaɴ<t:河岸> demo<t:でも> dzoːsɯi<t:増水> ɲi<t:に> wa<t:は> tɕɯːi<t:注意> ɕite<t:して。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /itɕiba<t:市場> ɡa<t:が> akɯ<t:開く> made<t:まで> matoː<t:待とう。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /dotɕiɾa<t:どちら> mo<t:も> bɯtsɯɡo<t:仏語> jɯɾai<t:由来> desɯ<t:です。> ↘/"
+   }
+  ]
+ }
+}

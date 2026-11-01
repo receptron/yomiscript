@@ -1,0 +1,49 @@
+{
+ "llm": "codex",
+ "model": "gpt-6.1-sol",
+ "seconds": 12.354,
+ "output": {
+  "items": [
+   {
+    "n": 1,
+    "ys": "ja /çɯːɡa<t:日向> ɲi<t:に> imasɯ<t:います。> ↘/"
+   },
+   {
+    "n": 2,
+    "ys": "ja /çitoɡoto<t:人事> de<t:で> wa<t:は> aɾimas eɴ<t:ありません。> ↘/"
+   },
+   {
+    "n": 3,
+    "ys": "ja /kʲoː<t:今日> no<t:の> kadai<t:課題> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 4,
+    "ys": "ja /heta<t:下手> ɲi<t:に> ɯɡokanaide<t:動かないで> kɯdasai<t:ください。> ↘/"
+   },
+   {
+    "n": 5,
+    "ys": "ja /toko<t:床> o<t:を> aɡemaɕita<t:上げました。> ↘/"
+   },
+   {
+    "n": 6,
+    "ys": "ja /tsɯno<t:角> ɡa<t:が> oɾemaɕita<t:折れました。> ↘/"
+   },
+   {
+    "n": 7,
+    "ys": "ja /itɕimi<t:一味> taɾinai<t:足りない> ne<t:ね。> ↘/"
+   },
+   {
+    "n": 8,
+    "ys": "ja /itɕoː<t:銀杏> ɡa<t:が> sɯki<t:好き> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 9,
+    "ys": "ja /senɕɯː<t:先週> okonatta<t:行った> bakaɾi<t:ばかり> desɯ<t:です。> ↘/"
+   },
+   {
+    "n": 10,
+    "ys": "ja /ɕikiɕi<t:色紙> o<t:を> katte<t:買って> kimaɕita<t:きました。> ↘/"
+   }
+  ]
+ }
+}
