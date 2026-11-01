@@ -32,9 +32,12 @@ sentence alone. We let an LLM, given the text and the context that comes with it
 YomiScript, a notation built on IPA and BCP~47 that separates deciding the reading (the \emph{Yomite}) from turning it
 into sound (the \emph{Katarite}). A Katarite for Kokoro-82M then needs no text analysis and runs in a browser. On a
 70-sentence Japanese development set, YomiScript from three LLMs was read correctly in 98.1\% of sentences, against
-78.6\% for pyopenjtalk and 32.9\% for Kokoro's front end. On 130 sentences ambiguous alone, the LLMs read 48.5\% right
-without context and 97.7\% given the preceding paragraph; an LLM that wrote a chat answer read it as well as a reader
-given the conversation, without a second call. Kana is as accurate for Japanese readings at a fifth of the size, but
+78.6\% for pyopenjtalk and 32.9\% for Kokoro's front end; on an independent benchmark of 3{,}000 annotated sentences
+with frozen prompts, Claude's and Codex's kana error rate was 0.63--0.87\% as YomiScript and 0.25--0.27\% as kana,
+against 1.05\% for pyopenjtalk. On 130 sentences ambiguous alone, the LLMs read 48.5\% right
+without context and 97.7\% given the preceding paragraph; an LLM that wrote a chat answer and a reader
+given the conversation read it equally often right (no difference detected). Kana is the more accurate and a fifth
+the size for Japanese readings, but
 cannot carry accent or English: with accent marks, Kokoro's pitch separated Tokyo minimal pairs at 92--95\% of points,
 against 42\% with its own pitch. The results are preliminary: small sets, gold reviewed by one annotator.
 \end{abstract}
@@ -332,7 +335,7 @@ Kokoro's original front end (misaki) & 32.9\% & 51.4\% & 0.0\% & 41.7\% & 0.0\%\
 
 Table~\ref{tab:hard} shows the main result. Both LLMs read the homographs from context; pyopenjtalk reads 21 of 35 and
 Kokoro's front end 18 of 35. Kokoro's front end also leaves Latin-script acronyms (NHK, SAP) as they are and misreads
-dates (24日 as \emph{nijūyon-nichi} rather than \emph{nijūyokka}). Claude's one miss (今日の日本経済を論じる) is a
+dates (24日 as \emph{nijūyon-ka} rather than \emph{nijūyokka}). Claude's one miss (今日の日本経済を論じる) is a
 notation slip rather than a misreading: it wrote \ys{keːzai} where the specification writes ザ as \ys{dza}; the reading
 of the homograph 今日 (\emph{konnichi}) is correct. Scored on the 69 target words of Section~\ref{sec:setup} rather
 than whole sentences, both LLMs read every target word right, pyopenjtalk 56 (81.2\%) and Kokoro's front end 22
@@ -474,7 +477,12 @@ YomiScript's characters and less than half its time, and sparse kana was close b
 YomiScript's and SSML's misses were mostly slips in writing IPA (Latin \ys{u} for \ys{ɯ}, a lost \ys{ʲ} or long
 vowel), not other readings. SSML's one element per word split geminates across elements (\ys{moɾat} + た), which is
 not well-formed Japanese IPA; it cost four times YomiScript's output, was the slowest, and had the most malformed
-items among the answers that came back (kana's 7.8 per call is the one call that returned nothing).
+items among the answers that came back (kana's 7.8 per call is the one call that returned nothing). With one element per
+bunsetsu instead (\texttt{eval/representation\_isolated}; Claude and Codex, three runs), no element ended in a split
+geminate, accuracy was 96.2\% and the size 197 characters, 2.6 times YomiScript's. Since all 70 sentences went in one
+call, the two sentences of a homograph could inform each other; rerun in calls of 10 with no shared word, the scores
+moved by under a point (YomiScript 97.4\%, kana 99.3\%; paired differences $-$0.5 [$-$2.9, +1.7] and $-$0.7
+[$-$1.9, 0.0]), and the only reading that changed was h001 市, read \emph{shi} by Claude's kana in two runs.
 Sparse kana is only as good as the front end on what it leaves unannotated (pyopenjtalk read 日本 as \emph{nippon}
 in every run), and it needs that front end in the synthesizer. The scoring is not equally strict: kana goes through
 the converter the gold itself was written with, while YomiScript and SSML are judged on the LLM's own IPA.
@@ -492,6 +500,91 @@ with English meant as English (quoted phrases, titles, names), the LLMs put ever
 section and none of 8 loanword controls; Whisper recognised 96--99\% of the English words from those sections against
 65--75\% from the same stretch of the kana version (a capability check, not a listening test). YomiScript is also
 already the phonemes a synthesizer such as Kokoro takes, and keeps the original Kokoro's audio.
+
+\subsection{Commercial TTS on the same sentences}\label{sec:commercial}
+
+\begin{table}[t]
+\centering\small
+\caption{Sentences of the hard set read right, judged from the audio (Section~\ref{sec:setup}); 62 sentences with 69
+judged words. Mean over runs, with a 95\% interval from resampling the sentences (10{,}000 times).
+The last two columns count the sentences misread in every run and in at least one.}
+\label{tab:commercial}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccccc}
+\toprule
+System (runs) & all (62) & homograph (33) & acronym (10) & number (8) & date (11) & every & any\\
+\midrule
+Claude YomiScript $\to$ Kokoro (1) & 93.5\% [87.1, 98.4] & 93.9\% & 100\% & 100\% & 81.8\% & 4 & 4\\
+Codex YomiScript $\to$ Kokoro (1) & 90.3\% [82.3, 96.8] & 93.9\% & 100\% & 75.0\% & 81.8\% & 6 & 6\\
+Gemini 3.8 Flash TTS (3) & 85.5\% [76.9, 93.0] & 87.9\% & 100\% & 75.0\% & 72.7\% & 6 & 12\\
+ElevenLabs v3 (3) & 75.3\% [65.1, 84.9] & 65.7\% & 93.3\% & 66.7\% & 93.9\% & 11 & 19\\
+OpenAI gpt-4o-mini-tts (3) & 72.6\% [62.9, 81.7] & 69.7\% & 100\% & 70.8\% & 57.6\% & 8 & 25\\
+ElevenLabs multilingual v2 (3) & 60.2\% [48.9, 71.0] & 49.5\% & 96.7\% & 58.3\% & 60.6\% & 20 & 30\\
+Kokoro, original front end (1) & 30.6\% [19.4, 41.9] & 51.5\% & 0\% & 25.0\% & 0\% & 43 & 43\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+By the automatic judge, commercial TTS, which reads the text with its own model, misread the same kind of words
+(Table~\ref{tab:commercial}). Gemini was the most accurate of the three services, and ElevenLabs' newest model scored
+clearly above its previous one; none scored as high as the LLMs' YomiScript, though not every margin is clear (below). The judge was validated on Kokoro's audio only
+(Section~\ref{sec:setup}), and the misreadings it found in commercial audio have not been confirmed by listening, so
+these are estimates on 62 selected sentences. The words misread most often
+were homographs whose rarer reading the context requires: 上手 as \emph{kamite} or \emph{uwate}, 人気 as \emph{hitoke},
+一日 as \emph{tsuitachi}, 目下 as \emph{mokka}, 色紙 as \emph{irogami}, 生物 as \emph{namamono},
+and dates (二十日 \emph{hatsuka}, 八日 \emph{yōka}). Acronyms, which Kokoro's original front end drops, were read right
+by nearly all of them. The services also varied between runs: OpenAI misread 8 sentences in every run but 25 in at
+least one, so a reading that is right once may not be right the next time the same text is spoken. Paired by
+sentence (resampling sentences, runs averaged), Claude's YomiScript with Kokoro is ahead of Gemini by 8.1 points
+[+2.2, +15.6], while Codex's margin over Gemini, 4.8 points [0.0, +10.8], is not distinguishable from none; Gemini is
+ahead of OpenAI by 12.9 points [+3.8, +22.0] and of ElevenLabs~v3 by 10.2 [+0.5, +20.4].
+
+Leaving out the eight words the judge misjudged on known readings (Section~\ref{sec:setup}), which leaves 55 sentences,
+the services score 93.3\% (Gemini), 78.8\% (ElevenLabs v3), 77.0\% (OpenAI) and 63.6\% (ElevenLabs v2). The LLMs'
+YomiScript scores 100\% there, but only by construction: every sentence the judge marked wrong for the two LLMs
+contains one of those words, since the words left out are those the judge misheard in
+Kokoro's audio; for the LLMs, the reading they wrote (Table~\ref{tab:hard}) is the better measure.
+
+\subsection{An independent benchmark}\label{sec:koriyama}
+
+\begin{table}[t]
+\centering\small
+\caption{JVS-nonpara-kana~\citep{koriyama2026g2p} (3{,}000 sentences, hand-annotated kana), the YomiScript and kana
+prompts of Section~\ref{sec:representation} unchanged, one run: kana CER in \%, Koriyama's normalisation with ヲ/オ,
+ヂ/ジ and ヅ/ズ merged (unmerged, the kana rows are 2.11--2.14 and pyopenjtalk 2.88; YomiScript, converted with オ,
+does not change), with 95\% intervals from resampling sentences. Gemini ran out of quota after 1{,}250 sentences.}
+\label{tab:koriyama}
+\begin{tabular}{lcc}
+\toprule
+System & 3{,}000 sentences & first 1{,}250\\
+\midrule
+Kana, Claude & 0.27 [0.20, 0.34] & 0.35\\
+Kana, Codex & 0.25 [0.20, 0.30] & 0.35\\
+Kana, Gemini & -- & 0.47\\
+YomiScript, Claude & 0.63 [0.53, 0.73] & 0.77\\
+YomiScript, Codex & 0.87 [0.77, 0.99] & 0.88\\
+YomiScript, Gemini & -- & 0.97\\
+pyopenjtalk & 1.05 [0.92, 1.21] & 1.06\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To test outside our own sets, we ran the frozen YomiScript and kana prompts on Koriyama's benchmark, 3{,}000 sentences
+of the JVS corpus~\citep{takamichi2020jvs} with hand-annotated kana, 50 sentences per call
+(\texttt{eval/koriyama\_g2p}; the data stay outside the repository under their CC BY-SA licence). YomiScript was
+turned into kana by inverting the specification's mora table. Our pyopenjtalk scores 1.05\%, as Koriyama's OpenJTalk
+does (1.03\%), so the scoring matches his (Table~\ref{tab:koriyama}). Written as kana, the LLMs' readings had about a
+quarter of pyopenjtalk's errors (0.25--0.27\%, below the 0.52\% Koriyama reports for the best LLMs of his study, with
+newer models); written as YomiScript, 0.36 (Claude) and 0.62 (Codex) points more than as kana. Of the extra
+error characters (315 for Claude, 546 for Codex), about three quarters are IPA the Katarite rejects (a Latin \ys{r},
+a geminate split by a word space: 120 and 282; on well-formed answers YomiScript scores 0.50 and 0.57), いう written
+as \emph{iu} where the gold has \emph{yū} (81 and 78 more than as kana; the kana prompt has an example for it, the
+YomiScript prompt none), morae with no kana (22, 25) and 先生, which both prompts' examples spell
+\ys{seːseː} / セーセー (13 and 2 more than as kana); the rest are other slips and readings. Part of this looks like prompt guidance. A post-hoc matched YomiScript prompt (the いう rule and a corrected 先生 example), run on all 3{,}000 sentences, nearly
+removed those errors but scored 0.54\% and 0.82\%, closing 25\% and 8\% of the gap to kana, because more of its
+utterances were rejected. Counting a rejected utterance as wholly deleted, as the Katarite would speak it, frozen
+YomiScript scores 1.50\% and 3.47\% (1--3\% of utterances rejected), against 0.25--0.27\% for kana. On independent text the LLMs read better than the dictionary front end, and with these prompts
+kana was the more accurate container for Japanese readings.
 
 \subsection{Text layer and cost}
 
@@ -593,8 +686,8 @@ The following weaken the claims above, and Section~\ref{sec:results} should be r
   シアトルの市では (\emph{ichi}, the market; \emph{shi}, the city, is also possible), which counts against the
   commercial systems that read \emph{shi}.
   \item \textbf{Small sets (weakens all tables).} 35 homograph sentences and 70 hard sentences; one wrong answer moves
-  the homograph score by 2.9 points. Only Tables~\ref{tab:author} and~\ref{tab:commercial} report confidence
-  intervals, and they are wide.
+  the homograph score by 2.9 points. Table~\ref{tab:hard} has no confidence interval; those of the
+  other tables are wide.
   \item \textbf{The judge of Table~\ref{tab:commercial}.} It was checked on Kokoro's audio only, where it erred against
   the right reading on 14 of 207 words; its errors on natural commercial speech are not measured, and the misreadings it
   found have not yet been confirmed by listening. The target words and their misreadings were listed by the project,
@@ -625,11 +718,12 @@ The following weaken the claims above, and Section~\ref{sec:results} should be r
 
 An LLM given the context can decide how text is read, and a notation built on IPA and BCP~47 can carry that decision
 to a small synthesizer with no front end of its own. On our development set this let a browser TTS speak Japanese
-homographs, numbers, dates and acronyms that dictionary front ends misread. What makes the reading right is the
-context, not who wrote the text: given the preceding paragraph or the user's message, LLMs read sentences that are
-ambiguous alone almost always right (97.7--98.2\%, against 48.5\% without), and as well as the author of a terse
-answer; the author has the conversation without a second call. By an automatic judge not yet
-checked by listening, commercial TTS models that read the text themselves misread a number of the same sentences.
+homographs that pyopenjtalk misread and the numbers, dates and acronyms that Kokoro's own front end misread, and on an
+independent benchmark the LLMs' readings had fewer errors than pyopenjtalk's. In our experiments the context
+explained the gain, and no effect of authorship was detected once a reader had it: given the preceding paragraph or the user's message, LLMs read sentences that are
+ambiguous alone almost always right (97.7--98.2\%, against 48.5\% without), with no difference detected from the author of a terse
+answer, who has the conversation without a second call. By an automatic judge not yet checked by listening, the
+newest commercial TTS models, which read the text themselves, were right on 72.6--85.5\% of the judged hard sentences.
 These results are preliminary and small; the next step is an independent, larger evaluation with frozen prompts and
 human listening tests.
 
