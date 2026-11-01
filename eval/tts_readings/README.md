@@ -102,6 +102,35 @@ nearly all of them (ElevenLabs: SAP and AI in some runs). `results/review.md` li
   not measured. The words judged misread should be confirmed by ear before the numbers are published.
 - One voice per service; the readings may differ by voice.
 
+## Listening check (`listen/`)
+
+The judge is validated on Kokoro's audio only, so its verdicts on the commercial audio are to be checked by native
+listeners. `listen/build.mjs` makes the listening set `listen/set.json`: every recording (system, run, sentence) in
+which the judge heard a target word misread (251), and as many recordings it heard read right, sampled at random with
+a fixed seed (the control), across all seven systems: 502 clips, 22.7 minutes of audio, about 2 hours per listener
+(each clip played twice, about 4 seconds to read the sentence and 4 per word); the page saves the progress in the
+browser, so it can be done in several sittings. `set.json` is the key (system, run and verdict of each clip id); the
+page is served only the sentence, the words and the readings, and the clips by opaque id, in an order shuffled per
+listener. The voices still differ between services, so a listener may recognise one; the names are what is hidden.
+
+The page (Japanese) shows the sentence with the target words marked and asks, per word, which reading was heard: the
+readings of `targets.tsv` (right and misread, shuffled), その他（自由記述）, or 聞き取れない; naturalness 1-5 is
+optional. It downloads the answers as `listening.<name>.json`.
+
+```bash
+node listen/serve.mjs          # http://127.0.0.1:8793/ (needs audio/; builds listen/set.json when it is missing)
+node listen/score.mjs answers/listening.*.json   # results/listening.md
+node listen/check.mjs          # the page in headless Chromium (Playwright): loads, answers 3 clips, downloads
+```
+
+`score.mjs` labels a word right when the reading chosen is a right one, misread when it is a misreading or その他
+(the right readings were offered), and leaves out 聞き取れない; with several listeners the majority counts. It writes
+the judge's agreement with the listeners (overall, per stratum, per system, per word), each system's accuracy as heard
+(the recordings outside the set, and unlabelled ones, take their system's rate in the same stratum; 95% interval
+resampling the sentences), Cohen's kappa per pair of listeners and Fleiss' kappa, the naturalness means, and every
+word where the listeners and the judge differ. A report made from answers of a listener named `FAKE...` (as
+`check.mjs` makes) or marked `"fake": true` is headed as fake.
+
 ## Run
 
 ```bash
