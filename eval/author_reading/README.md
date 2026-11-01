@@ -40,15 +40,36 @@ All 150 answers contain the word. Homograph read right, [95% interval from resam
 | another LLM, with the user's message | 97.0% [94.7, 99.0] | 98.0% | 98.0% | 95.0% |
 | pyopenjtalk | 56.0% [48.0, 64.0] | | | |
 
-On the same answers (exact McNemar): the author against the same LLM reading the answer only, 10 answers the author
-read right and the reader not, 1 the other way (p = 0.012); the author against the same LLM given the user's message,
-1 and 1 (p = 1). No reader LLM differs from another significantly.
+On the same answers (exact McNemar, treating the 150 answers as independent): the author against the same LLM reading
+the answer only, 10 answers the author read right and the reader not, 1 the other way (p = 0.012); the author against
+the same LLM given the user's message, 1 and 1 (p = 1). No reader LLM differs from another significantly.
 
-What matters is the context, not the authorship as such. A reader given only the answer misreads where the answer
-is too short to fix the reading: 「それは生花です。」 (いけばな; misread in all 9 reader calls), 「風車ですね。」
+The answers are not independent: the three authors answer the same 50 scenarios, and the two scenarios of a word share
+the word. Resampling whole scenarios or whole words instead of answers (paired differences on the same answers, in
+percentage points, [95% interval]). The accuracies' intervals widen only a little (the author 98.0% [94.7, 100], the
+same LLM reading the answer only 92.0% [86.0, 96.7], with words resampled; `results/r1/summary.md` has all of them).
+
+| A − B | difference | answers A / B better | words A / B better (sign test) | resampling scenarios | resampling words |
+|---|---|---|---|---|---|
+| author − same LLM, answer only | +6.0 | 10 / 1 | 6 / 1 (p = 0.13) | [+1.3, +12.0] | [+0.7, +12.0] |
+| author − same LLM, with the user's message | 0.0 | 1 / 1 | 0 / 0 | [0, 0] | [0, 0] |
+| (with the message) − (answer only), same LLM | +6.0 | 10 / 1 | 6 / 1 (p = 0.13) | [+1.3, +12.0] | [+0.7, +12.0] |
+| author − another LLM, answer only | +6.3 | 16 / 2 | 7 / 1 (p = 0.07) | [+1.7, +12.0] | [+1.3, +12.7] |
+| author − another LLM, with the user's message | +1.0 | 7 / 2 | 5 / 2 (p = 0.45) | [-1.3, +3.3] | [-1.3, +3.3] |
+
+The advantage of the context (the author, or a reader given the user's message, over a reader of the answer alone)
+stays above 0 when scenarios or words are resampled, but it rests on few words: 7 of the 25 words differ at all, and
+counting one vote per word (6 to 1) it is not significant (p = 0.13). It is a consistent direction on a small set,
+not an established effect. The author and a reader given the user's message differ on two answers, in opposite
+directions and in the same scenario (大事 おおごと), so the clustered interval collapses to [0, 0]: that is no
+difference detected on very little evidence, not a shown equivalence. The same holds for the other intervals that
+include 0.
+
+What matters, as far as these data show, is the context, not the authorship as such. A reader given only the answer
+misreads where the answer is too short to fix the reading: 「それは生花です。」 (いけばな; misread in all 9 reader calls), 「風車ですね。」
 (かざぐるま), 「角です。」 (つの), 「辛いです。」 (つらい), 「大事には至らずに済みました。」 (おおごと). Given the user's message,
-a reader is as good as the author. The author has that context by construction, in the same call and at no extra
-cost; a separate Yomite has it only if the conversation is passed to it as well.
+a reader did as well as the author here (no difference detected). The author has that context by construction, in
+the same call and at no extra cost; a separate Yomite has it only if the conversation is passed to it as well.
 
 The answers were often less terse than asked: the authors tended to repeat the context in the answer (「客席から見て
 右側の上手から登場します。」), which lets a reader of the answer alone get it right. With terser answers the gap would be
@@ -56,7 +77,8 @@ larger.
 
 ## Limits
 
-- One run per condition; 50 scenarios written by the project, whose right readings have not been reviewed.
+- One run per condition; 50 scenarios written by the project, whose right readings have not been reviewed. With 25
+  words and 7 of them differing between conditions, the differences are not established beyond their direction.
 - The scenarios ask for the word and a short answer, which makes the situation where the context matters more common
   than in free conversation.
 - The LLMs' own misreadings (末期 as まつき) and notation errors count against them in every condition alike.

@@ -31,9 +31,14 @@ other 8 are not judged because every plausible reading of them counts as right (
 others).
 
 Checked on the recordings whose spoken phonemes are known (the original Kokoro, and Claude's and Codex's YomiScript
-through Kokoro): the judge agrees with the known reading on 193 of 207 words (93.2%). All 14 errors go one way, a
-right reading judged misread, all on Kokoro's audio (角, 何本, 9時, 30分, 3匹, 10本, 24日, 辛い). The judge can
-therefore understate a system's accuracy but not overstate it, and it understates Kokoro's most.
+through Kokoro): the judge agrees with the known reading on 193 of 207 words (93.2%). 13 of the 14 errors are a
+right reading judged misread (角, 何本, 9時, 30分, 3匹, 10本, 24日); one is the other way: the original Kokoro's 8分
+read はちぷん, judged はちふん (a right reading). All are on Kokoro's audio. The judge mostly understates a system's
+accuracy, and it understates Kokoro's most.
+
+The known readings are taken from the phoneme strings romanized. Until 2026-10-31 the romanization dropped ʦ ʨ ʣ ʥ
+and ŋ (they lie outside the character range it kept); with them kept, the original Kokoro's 辛い in h020 (つらい, a
+misreading) is no longer counted as a judge error, and its 8分 (はちぷん) is. The agreement stays at 193 of 207.
 
 Two earlier judges were dropped for that reason: Whisper's transcripts compared with the gold (it counted the
 original Kokoro's misread dates as right), and the multilingual forced aligner of `eval/prosody_ref` (MMS, romanized
@@ -53,10 +58,38 @@ Sentences with every judged word read right, mean over runs, [95% interval from 
 | ElevenLabs multilingual v2 | 60.2% [48.9, 71.0] | 49.5% | 96.7% | 58.3% | 60.6% | 20 | 30 |
 | original Kokoro | 30.6% [19.4, 41.9] | 51.5% | 0% | 25.0% | 0% | 43 | 43 |
 
-Without the 8 words the judge misjudged on known readings (55 sentences): Gemini 93.3%, ElevenLabs v3 80.6%, OpenAI
-77.0%, ElevenLabs v2 64.8%, the original Kokoro 34.5%. Claude and Codex come out at 100% there, but only because the
+Without the 8 words the judge misjudged on known readings (55 sentences): Gemini 93.3%, ElevenLabs v3 78.8%, OpenAI
+77.0%, ElevenLabs v2 63.6%, the original Kokoro 32.7%. Claude and Codex come out at 100% there, but only because the
 words left out are where the judge erred on their audio; for them, what the LLM wrote is the better measure: the
-reading is right on 69 and 70 of the 70 sentences at the phoneme level (`eval/browser_tts`).
+reading is right on 69 and 70 of the 70 sentences at the phoneme level, and on all 69 judged words for both
+(`eval/browser_tts`, `results/targets.md`).
+
+Paired differences on the same sentences (each system's runs averaged within a sentence, the difference taken per
+sentence, the sentences resampled), in percentage points, [95% interval]:
+
+| A − B | all 62 sentences | sentences A / B better | without the 8 words (55) | A / B better |
+|---|---|---|---|---|
+| Claude + Kokoro − Gemini | +8.1 [+2.2, +15.6] | 8 / 2 | +6.7 [+1.8, +12.7] | 6 / 0 |
+| Claude + Kokoro − OpenAI | +21.0 [+11.3, +31.2] | 22 / 3 | +23.0 [+14.5, +32.1] | 20 / 0 |
+| Claude + Kokoro − ElevenLabs v3 | +18.3 [+7.5, +29.0] | 16 / 3 | +21.2 [+11.5, +31.5] | 14 / 0 |
+| Claude + Kokoro − ElevenLabs v2 | +33.3 [+21.5, +45.7] | 27 / 2 | +36.4 [+24.8, +48.5] | 24 / 0 |
+| Codex + Kokoro − Gemini | +4.8 [0.0, +10.8] | 6 / 2 | +6.7 [+1.8, +12.7] | 6 / 0 |
+| Codex + Kokoro − OpenAI | +17.7 [+8.6, +27.4] | 20 / 3 | +23.0 [+14.5, +32.1] | 20 / 0 |
+| Codex + Kokoro − ElevenLabs v3 | +15.1 [+4.8, +25.3] | 14 / 4 | +21.2 [+11.5, +31.5] | 14 / 0 |
+| Codex + Kokoro − ElevenLabs v2 | +30.1 [+18.3, +41.9] | 25 / 2 | +36.4 [+24.8, +48.5] | 24 / 0 |
+| Gemini − OpenAI | +12.9 [+3.8, +22.0] | 18 / 5 | +16.4 [+7.3, +25.5] | 17 / 3 |
+| Gemini − ElevenLabs v3 | +10.2 [+0.5, +20.4] | 13 / 8 | +14.5 [+4.8, +24.8] | 12 / 4 |
+| Claude + Kokoro − Codex + Kokoro | +3.2 [0.0, +8.1] | 2 / 0 | 0.0 [0, 0] | 0 / 0 |
+| ElevenLabs v3 − OpenAI | +2.7 [-7.5, +12.9] | 14 / 11 | +1.8 [-9.1, +12.7] | 12 / 10 |
+
+The LLMs' YomiScript through Kokoro reads more of the hard set right than every commercial system, and Gemini more
+than OpenAI and ElevenLabs v3. The margins over Gemini are the smallest: Codex + Kokoro against Gemini on all 62
+sentences has an interval that reaches 0 (no difference detected there), and the Gemini − ElevenLabs v3 interval
+nearly does. Without the 8 words the judge misjudged on Kokoro's audio, every LLM-with-Kokoro difference excludes 0.
+Intervals that include 0 (ElevenLabs v3 against OpenAI; Claude against Codex) mean no difference was detected, not
+that the systems are equivalent. The judge's errors on Claude's and Codex's audio all go against them, so on all 62
+sentences the differences in favour of Claude and Codex are understated, if anything. The LLMs ran once each, so their own run-to-run variation
+is not in these intervals.
 
 What the commercial systems misread most: 上手 (かみて, うわて), 人気 (ひとけ), 一日 (ついたち), 市 (いち), 目下
 (もっか), 色紙 (いろがみ), 生物 (なまもの), 大家 (おおや), and dates (二十日, 一日, 八日). Acronyms are read right by
@@ -75,6 +108,7 @@ nearly all of them (ElevenLabs: SAP and AI in some runs). `results/review.md` li
 node speak.mjs 3            # audio/<system>/r<k>/hard.<name>.wav (API keys: the environment or the repository's .env)
 ../prosody_ref/.venv/bin/pip install -r requirements.txt
 ../prosody_ref/.venv/bin/python score.py   # results/summary.md, items.json, review.md
+../prosody_ref/.venv/bin/python score.py --stored   # results/summary.md again from the verdicts in items.json (no audio)
 ```
 
 `audio/` is not kept in the repository. The services are called through `../prosody_ref/services.mjs`.

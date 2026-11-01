@@ -11,8 +11,8 @@ Sentences with every judged word read right, mean over runs [95% interval]
 | openai.gpt-4o-mini-tts-2025-12-15 | 3 | 72.6% [62.9%, 81.7%] | 69.7% [55.6%, 82.8%] | 100.0% [100.0%, 100.0%] | 70.8% [37.5%, 95.8%] | 57.6% [42.4%, 75.8%] | 8 | 25 |
 
 The judge on 207 words with known readings: agrees on 193 (93.2%)
-- kokoro.original h020 辛い: known right, judged misread (カレワツライカレエガスキダ, -13.0)
 - kokoro.original h024 角: known right, judged misread (カクオマガルトパンヤガアル, -1.9)
+- kokoro.original h054 8分: known misread, judged right (ハチフンゴニシュッパツスル, 2.6)
 - claude+kokoro h024 角: known right, judged misread (カクオマガルトパンヤガアル, -5.6)
 - claude+kokoro h029 何本: known right, judged misread (ナニホンアリマスカ, -7.9)
 - claude+kokoro h061 24日: known right, judged misread (ジュウガツニジュウヨンカニカイギガアル, -0.4)
@@ -26,14 +26,50 @@ The judge on 207 words with known readings: agrees on 193 (93.2%)
 - codex+kokoro h065 9時: known right, judged misread (キュウジサンジュップンニシュウゴオデス, -49.3)
 - codex+kokoro h065 30分: known right, judged misread (クジサンジュウフンニシュウゴオデス, -8.8)
 
-Without the words the judge misjudged on known readings (10本, 24日, 30分, 3匹, 9時, 何本, 角, 辛い):
+Without the words the judge misjudged on known readings (10本, 24日, 30分, 3匹, 8分, 9時, 何本, 角):
 
-| system | runs | all (55) | homographs (30) | acronyms (10) | numbers (6) | dates and times (9) | misread in every run | in at least one |
+| system | runs | all (55) | homographs (31) | acronyms (10) | numbers (5) | dates and times (9) | misread in every run | in at least one |
 |---|---|---|---|---|---|---|---|---|---|
 | claude+kokoro | 1 | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 0 | 0 |
 | codex+kokoro | 1 | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 0 | 0 |
-| elevenlabs.eleven_multilingual_v2 | 3 | 64.8% [52.7%, 76.4%] | 54.4% [37.8%, 71.1%] | 96.7% [90.0%, 100.0%] | 77.8% [44.4%, 100.0%] | 55.6% [29.6%, 81.5%] | 15 | 24 |
-| elevenlabs.eleven_v3 | 3 | 80.6% [70.3%, 89.7%] | 70.0% [53.3%, 84.4%] | 93.3% [80.0%, 100.0%] | 83.3% [50.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 8 | 13 |
-| gemini.gemini-3.8-flash-tts | 3 | 93.3% [86.7%, 98.2%] | 91.1% [81.1%, 98.9%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 88.9% [74.1%, 100.0%] | 2 | 6 |
-| kokoro.original | 1 | 34.5% [21.8%, 47.3%] | 56.7% [40.0%, 73.3%] | 0.0% [0.0%, 0.0%] | 33.3% [0.0%, 66.7%] | 0.0% [0.0%, 0.0%] | 36 | 36 |
-| openai.gpt-4o-mini-tts-2025-12-15 | 3 | 77.0% [67.9%, 85.5%] | 72.2% [57.8%, 85.6%] | 100.0% [100.0%, 100.0%] | 94.4% [83.3%, 100.0%] | 55.6% [40.7%, 74.1%] | 5 | 20 |
+| elevenlabs.eleven_multilingual_v2 | 3 | 63.6% [51.5%, 75.2%] | 52.7% [36.6%, 68.8%] | 96.7% [90.0%, 100.0%] | 80.0% [40.0%, 100.0%] | 55.6% [29.6%, 81.5%] | 16 | 24 |
+| elevenlabs.eleven_v3 | 3 | 78.8% [67.9%, 88.5%] | 67.7% [51.6%, 81.7%] | 93.3% [80.0%, 100.0%] | 80.0% [40.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 9 | 14 |
+| gemini.gemini-3.8-flash-tts | 3 | 93.3% [87.3%, 98.2%] | 91.4% [81.7%, 98.9%] | 100.0% [100.0%, 100.0%] | 100.0% [100.0%, 100.0%] | 88.9% [74.1%, 100.0%] | 2 | 6 |
+| kokoro.original | 1 | 32.7% [20.0%, 45.5%] | 54.8% [38.7%, 71.0%] | 0.0% [0.0%, 0.0%] | 20.0% [0.0%, 60.0%] | 0.0% [0.0%, 0.0%] | 37 | 37 |
+| openai.gpt-4o-mini-tts-2025-12-15 | 3 | 77.0% [67.3%, 85.5%] | 73.1% [59.1%, 86.0%] | 100.0% [100.0%, 100.0%] | 93.3% [80.0%, 100.0%] | 55.6% [40.7%, 74.1%] | 5 | 20 |
+
+Paired differences on the same sentences (runs averaged within a sentence; 95% interval resampling the sentences). An interval that includes 0 means no difference was detected, not that the two are equivalent.
+
+All 62 sentences:
+
+| A | B | A − B (points) | sentences A / B better | 95% interval |
+|---|---|---|---|---|
+| claude+kokoro | gemini.gemini-3.8-flash-tts | +8.1 | 8 / 2 | [+2.2, +15.6] |
+| claude+kokoro | openai.gpt-4o-mini-tts-2025-12-15 | +21.0 | 22 / 3 | [+11.3, +31.2] |
+| claude+kokoro | elevenlabs.eleven_v3 | +18.3 | 16 / 3 | [+7.5, +29.0] |
+| claude+kokoro | elevenlabs.eleven_multilingual_v2 | +33.3 | 27 / 2 | [+21.5, +45.7] |
+| codex+kokoro | gemini.gemini-3.8-flash-tts | +4.8 | 6 / 2 | [+0.0, +10.8] |
+| codex+kokoro | openai.gpt-4o-mini-tts-2025-12-15 | +17.7 | 20 / 3 | [+8.6, +27.4] |
+| codex+kokoro | elevenlabs.eleven_v3 | +15.1 | 14 / 4 | [+4.8, +25.3] |
+| codex+kokoro | elevenlabs.eleven_multilingual_v2 | +30.1 | 25 / 2 | [+18.3, +41.9] |
+| gemini.gemini-3.8-flash-tts | openai.gpt-4o-mini-tts-2025-12-15 | +12.9 | 18 / 5 | [+3.8, +22.0] |
+| gemini.gemini-3.8-flash-tts | elevenlabs.eleven_v3 | +10.2 | 13 / 8 | [+0.5, +20.4] |
+| claude+kokoro | codex+kokoro | +3.2 | 2 / 0 | [+0.0, +8.1] |
+| elevenlabs.eleven_v3 | openai.gpt-4o-mini-tts-2025-12-15 | +2.7 | 14 / 11 | [-7.5, +12.9] |
+
+Without the words the judge misjudged (55 sentences):
+
+| A | B | A − B (points) | sentences A / B better | 95% interval |
+|---|---|---|---|---|
+| claude+kokoro | gemini.gemini-3.8-flash-tts | +6.7 | 6 / 0 | [+1.8, +12.7] |
+| claude+kokoro | openai.gpt-4o-mini-tts-2025-12-15 | +23.0 | 20 / 0 | [+14.5, +32.1] |
+| claude+kokoro | elevenlabs.eleven_v3 | +21.2 | 14 / 0 | [+11.5, +31.5] |
+| claude+kokoro | elevenlabs.eleven_multilingual_v2 | +36.4 | 24 / 0 | [+24.8, +48.5] |
+| codex+kokoro | gemini.gemini-3.8-flash-tts | +6.7 | 6 / 0 | [+1.8, +12.7] |
+| codex+kokoro | openai.gpt-4o-mini-tts-2025-12-15 | +23.0 | 20 / 0 | [+14.5, +32.1] |
+| codex+kokoro | elevenlabs.eleven_v3 | +21.2 | 14 / 0 | [+11.5, +31.5] |
+| codex+kokoro | elevenlabs.eleven_multilingual_v2 | +36.4 | 24 / 0 | [+24.8, +48.5] |
+| gemini.gemini-3.8-flash-tts | openai.gpt-4o-mini-tts-2025-12-15 | +16.4 | 17 / 3 | [+7.3, +25.5] |
+| gemini.gemini-3.8-flash-tts | elevenlabs.eleven_v3 | +14.5 | 12 / 4 | [+4.8, +24.8] |
+| claude+kokoro | codex+kokoro | +0.0 | 0 / 0 | [+0.0, +0.0] |
+| elevenlabs.eleven_v3 | openai.gpt-4o-mini-tts-2025-12-15 | +1.8 | 12 / 10 | [-9.1, +12.7] |

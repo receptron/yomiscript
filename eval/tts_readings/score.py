@@ -17,7 +17,12 @@ Per system: the share of sentences read right in each run and on average, with a
 sentences (10,000 times), per category; the sentences misread in every run and in at least one. A second table
 leaves out the words the judge misjudged on the known readings: on those it cannot tell the readings apart.
 
-usage: ../prosody_ref/.venv/bin/python score.py   -> results/summary.md, results/items.json, results/review.md
+Paired differences between systems, on the same sentences: each system's runs are averaged within a sentence, the
+difference is taken per sentence, and the sentences are resampled (10,000 times) for a 95% interval. An interval that
+includes 0 means no difference was detected, not that the two are equivalent.
+
+usage: ../prosody_ref/.venv/bin/python score.py            -> results/summary.md, results/items.json, results/review.md
+       ../prosody_ref/.venv/bin/python score.py --stored   -> results/summary.md from the verdicts in results/items.json
 """
 
 import json
@@ -121,19 +126,25 @@ def judge(em, pairs):
 
 def romanized(ps):
     # Kokoro's phoneme string as letters: the IPA above, IPA j as y, a long vowel doubled, ʔ as the next consonant
-    s = re.sub(r"[^a-zɐ-ʒβçθ̥ʲːʔ]", "", ps.replace("j", "y"))
+    # ŋ and ʣ ʤ ʧ ʦ ʨ ʥ (U+02A3-U+02A8) lie outside ɐ-ʒ and were dropped here before 2026-10-31
+    s = re.sub(r"[^a-zŋɐ-ʒʣ-ʨβçθ̥ʲːʔ]", "", ps.replace("j", "y"))
     for a, b in IPA:
         s = s.replace(a, b)
     s = re.sub(r"(.)ː", r"\1\1", s)
     return re.sub(r"ʔ(.)", r"\1\1", s).replace("ʔ", "")
 
 
-def truth(pairs, ps):
-    # per word: whether the known phonemes are closest to a right reading
+def nearest(pairs, ps):
+    # per word: its candidate sentences as (edit distance to the known phonemes, misread?, candidate), closest first
     _, d, _ = model()
     inv = {v: k for k, v in d.items()}
     spoken = romanized(ps)
-    return [min((lev(spoken, "".join(inv[i] for i in spelt(c))), not ok) for c, ok in cands)[1] is False for cands in pairs]
+    return [sorted((lev(spoken, "".join(inv[i] for i in spelt(c))), not ok, c) for c, ok in cands) for cands in pairs]
+
+
+def truth(pairs, ps):
+    # per word: whether the known phonemes are closest to a right reading
+    return [D[0][1] is False for D in nearest(pairs, ps)]
 
 
 def interval(M, rng, n=10000):
@@ -156,6 +167,35 @@ def summary(H, R):
         every, once = int((M.max(1) == 0).sum()), int((M.min(1) == 0).sum())
         rows.append(f"| {s} | {M.shape[1]} | {cell(M, rng)} | " + " | ".join(cats) + f" | {every} | {once} |")
     return "\n".join(rows)
+
+
+PAIRS = [(a, b) for a in ("claude+kokoro", "codex+kokoro") for b in ("gemini", "openai", "elevenlabs.eleven_v3", "elevenlabs.eleven_multilingual_v2")]
+PAIRS += [("gemini", "openai"), ("gemini", "elevenlabs.eleven_v3"), ("claude+kokoro", "codex+kokoro"), ("elevenlabs.eleven_v3", "openai")]
+
+
+def system(R, prefix):
+    # the system whose name starts with prefix
+    return next(s for s in R if s.startswith(prefix))
+
+
+def paired(H, R):
+    # A - B on the same sentences: per sentence, the share of runs read right; a 95% interval resampling the sentences
+    rng = np.random.default_rng(1)
+    S = {s: np.array([np.mean([all(ok for ok, _, _ in words) for words in items[n]]) for n in H]) for s, items in R.items()}
+    rows = ["| A | B | A − B (points) | sentences A / B better | 95% interval |", "|---|---|---|---|---|"]
+    for a, b in PAIRS:
+        a, b = system(R, a), system(R, b)
+        d = S[a] - S[b]
+        m = d[rng.integers(0, len(d), (10000, len(d)))].mean(1)
+        lo, hi = np.percentile(m, [2.5, 97.5])
+        rows.append(f"| {a} | {b} | {100 * d.mean():+.1f} | {(d > 0).sum()} / {(d < 0).sum()} | [{100 * lo:+.1f}, {100 * hi:+.1f}] |")
+    return "\n".join(rows)
+
+
+def stored(H):
+    # the verdicts of a previous run (results/items.json), in the form judge() gives them
+    items = json.loads((HERE / "results/items.json").read_text())
+    return {s: {n: [[tuple(w) for w in run] for run in items[n]["systems"][s]] for n in H} for s in items[next(iter(H))]["systems"]}
 
 
 def validation(H, R, P):
@@ -197,9 +237,8 @@ def review(H, R):
     return "\n".join(out)
 
 
-def main():
-    H = hard_set()
-    P = {n: minimal_pairs(x) for n, x in H.items()}
+def judged(H, P):
+    # every recording of audio/<system>/r<k>/ judged; the verdicts are kept in results/items.json
     systems = {d.name: sorted(r for r in d.iterdir() if r.is_dir()) for d in sorted((HERE / "audio").iterdir())}
     R = {}
     for s, runs in systems.items():
@@ -207,13 +246,24 @@ def main():
         print(s, flush=True)
     per = {n: {**x, "systems": {s: [[[ok, round(m, 2), b] for ok, m, b in w] for w in R[s][n]] for s in R}} for n, x in H.items()}
     (HERE / "results/items.json").write_text(json.dumps(per, ensure_ascii=False, indent=1))
+    return R
+
+
+def main():
+    H = hard_set()
+    P = {n: minimal_pairs(x) for n, x in H.items()}
+    R = stored(H) if "--stored" in sys.argv else judged(H, P)
     check, bad = validation(H, R, P)
     H2, R2 = without(H, R, bad)
     text = "Sentences with every judged word read right, mean over runs [95% interval]\n\n" + summary(H, R) + "\n\n" + check + "\n\n"
     words = ", ".join(sorted({H[n]["targets"][k][0] for n, k in bad}))
-    text += f"Without the words the judge misjudged on known readings ({words}):\n\n" + summary(H2, R2) + "\n"
+    text += f"Without the words the judge misjudged on known readings ({words}):\n\n" + summary(H2, R2) + "\n\n"
+    text += "Paired differences on the same sentences (runs averaged within a sentence; 95% interval resampling the sentences)."
+    text += " An interval that includes 0 means no difference was detected, not that the two are equivalent.\n\n"
+    text += f"All {len(H)} sentences:\n\n" + paired(H, R) + f"\n\nWithout the words the judge misjudged ({len(H2)} sentences):\n\n" + paired(H2, R2) + "\n"
     (HERE / "results/summary.md").write_text(text)
-    (HERE / "results/review.md").write_text(review(H, R) + "\n")
+    if "--stored" not in sys.argv:  # the stored margins are rounded; review.md keeps the ones of the judging run
+        (HERE / "results/review.md").write_text(review(H, R) + "\n")
     print(text)
 
 

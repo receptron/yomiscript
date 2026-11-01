@@ -27,6 +27,7 @@ only, Supertonic 3 (raw text in), Audio8 TTS 0.1B (raw text and the LLM's YomiSc
 python refs.py                    # references: original Kokoro, pyopenjtalk, gold   (python with kokoro, misaki[ja], pyopenjtalk)
 node run.mjs                      # Claude and Codex, all sets -> results/<llm>.<set>.json   (uses the claude and codex CLIs)
 node score.mjs                    # -> results/summary.md, results/items.json
+../prosody_ref/.venv/bin/python target_score.py   # the hard set's target words -> results/targets.md
 node audio_kokoro.mjs             # Kokoro audio for the original front end and both LLMs (demo models, w16)
 python audio_supertonic.py        # Supertonic 3 audio from the plain text (pip install supertonic; downloads 385 MB once)
 python audio_supertonic.py --ys codex ambiguous   # the Supertonic Katarite from the LLM's YomiScript (rule: ambiguous or kanji)
@@ -65,6 +66,42 @@ item); the second added the spec's mora table and the one-utterance rule; the th
 - The hint rule leaves 3 of the 35 homographs as written, all in words that fix the reading (市役所, 朝市, 何本).
 - A long text (the `long` item) cannot be spoken by Kokoro from a single LLM utterance: the Katarite does not split
   it into pieces of 510 phonemes yet (`docs/plan.md`).
+
+## Target words of the hard set (`target_score.py`, `results/targets.md`)
+
+The hard-set score above is per sentence, so a notation slip anywhere in the sentence counts against the word the
+sentence is about (h005: Claude wrote 経済 as `keːzai`). `target_score.py` scores only the words whose reading is in
+question, the 69 words in 62 sentences of `eval/tts_readings/targets.tsv` (the other 8 sentences, h005 among them,
+have no such word), from the phoneme strings in `results/items.json`.
+
+Method: the sentence's first gold reading is written once with each reading of the word (the right ones and the
+listed misreadings, everything else the same), as the TTS judge's minimal pairs. The phoneme string and the
+candidates are romanized (`romanized` and `spelt` of `eval/tts_readings/score.py`), and the word takes the reading of
+the candidate at the smallest edit distance; a slip elsewhere adds the same distance to every candidate. A word is
+listed for checking when the right and the misread candidates are equally far (none are), or when the chosen
+reading, romanized, does not occur in the phoneme string.
+
+| system | target words right (69) | sentences, all targets right (62) | sentence-level, same 62 | sentence-level, all 70 |
+|---|---|---|---|---|
+| Claude | 100% (69) | 100% | 100% | 98.6% (69) |
+| Codex | 100% (69) | 100% | 100% | 100% (70) |
+| pyopenjtalk | 81.2% (56) | 79.0% (49) | 77.4% (48) | 78.6% (55) |
+| original Kokoro front end | 31.9% (22) | 30.6% (19) | 29.0% (18) | 32.9% (23) |
+
+Claude's one sentence-level miss (h005) is not a target-word miss; the LLMs read every target word right. By
+category (words): pyopenjtalk 62.9% of the 35 homographs and all acronyms, numbers and dates; the original front end
+57.1% of homographs, 0 of 10 acronyms, 1 of 8 numbers, 1 of 16 dates and times.
+
+The words listed for checking, resolved by hand:
+
+- Romanization only (counted right, rightly): JR (pyopenjtalk `ʥeiaːɾɯ`, エイ for エー), IoT (`spelt` writes ティー
+  differently from Kokoro's `tʲiː`), 20日 (`spelt` gives ハツカ a geminate).
+- 25.5度, pyopenjtalk: `ɲiʥɨːɡoːteŋɡodo`, ゴー with a long vowel. Counted right here; the sentence-level score counts
+  it wrong (the gold has ゴ).
+- 一日中, the original front end: `iʨiɲiʨi ʨɨː`, いちにちちゅう (no voicing of 中), neither listed reading. The method
+  counts it right (一日 is read いちにち); counted as not right, the original front end is at 21 of 69 (30.4%).
+- 2人 (`ɲi çito`, にひと) and 4月 in h069 (`joɴ ʦɨkʲi`, よんつき), the original front end: neither listed reading;
+  counted misread, which they are.
 
 ## Trials
 

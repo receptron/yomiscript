@@ -10,6 +10,13 @@ Conditions: the author (the YomiScript it wrote with its answer); a reader given
 user's message too (context), the same LLM as the author or another one. Pairs are compared on the same scenarios
 and answers: the McNemar test (exact, two-sided) on the scenarios where one is right and the other not.
 
+The answers are not independent: the three answers to a scenario share its message, and the two scenarios of a word
+share the word. The clustered intervals resample whole clusters (10,000 times): the scenarios (3 answers each) and the
+words (6 answers each), for each condition's accuracy and for the paired differences on the same answers. With 25
+words, a percentile interval can be a little too narrow, so the words are also counted one word one vote: the sign of
+each word's summed difference, with an exact sign test. An interval
+of a difference that includes 0 means no difference was detected, not that the two are equivalent.
+
 usage: ../prosody_ref/.venv/bin/python score.py [run]   -> results/r<run>/summary.md, other.md
 """
 
@@ -129,6 +136,65 @@ def pooled(R, cond_of):
     return [np.mean([R[k][c] == "right" for c in cond_of(k[0])]) for k in sorted(R)]
 
 
+def clustered_mean(x, groups, rng, n=10000):
+    # the mean of x and a 95% interval from resampling whole clusters (the answers with the same group key together)
+    keys = sorted(set(groups))
+    sums = np.array([sum(v for v, g in zip(x, groups, strict=True) if g == k) for k in keys], float)
+    sizes = np.array([sum(g == k for g in groups) for k in keys], float)
+    idx = rng.integers(0, len(keys), (n, len(keys)))
+    m = sums[idx].sum(1) / sizes[idx].sum(1)
+    return float(np.mean(x)), *np.percentile(m, [2.5, 97.5])
+
+
+CLUSTERED = {
+    "author": lambda a: ["author"],
+    "same LLM, answer only": lambda a: [f"{a}.text"],
+    "same LLM, with the user's message": lambda a: [f"{a}.context"],
+    "another LLM, answer only": lambda a: [f"{r}.text" for r in LLMS if r != a],
+    "another LLM, with the user's message": lambda a: [f"{r}.context" for r in LLMS if r != a],
+}
+DIFFS = [("author", "same LLM, answer only"), ("author", "same LLM, with the user's message"), ("same LLM, with the user's message", "same LLM, answer only")]
+DIFFS += [("author", "another LLM, answer only"), ("author", "another LLM, with the user's message")]
+
+
+def discordant(x, keys, scen):
+    # answers where the difference is positive / negative; per word, the sign of the summed difference and an exact
+    # two-sided sign test on the words that differ (the same test as mcnemar, one word one vote)
+    pos = sum(v > 0 for v in x)
+    neg = sum(v < 0 for v in x)
+    words = sorted({s["word"] for s in scen.values()})
+    per = [sum(v for v, k in zip(x, keys, strict=True) if scen[k[1]]["word"] == w) for w in words]
+    wp, wn, p = mcnemar([d > 0 for d in per], [d < 0 for d in per])
+    return f"{pos} / {neg} | {wp} / {wn} (p = {p:.3g})"
+
+
+def clustered(R, scen):
+    # per condition and per paired difference: the mean and its interval resampling answers, scenarios and words
+    rng = np.random.default_rng(1)
+    keys = sorted(R)
+    units = [list(range(len(keys))), [k[1] for k in keys], [scen[k[1]]["word"] for k in keys]]
+    P = {c: pooled(R, f) for c, f in CLUSTERED.items()}
+    head = f"Clustered 95% intervals ({len(keys)} answers, {len(set(units[1]))} scenarios, {len(set(units[2]))} words; 10,000 resamples)"
+    out = [head, "", "| condition | right | resampling answers | resampling scenarios | resampling words |", "|---|---|---|---|---|"]
+    for c, x in P.items():
+        cells = [clustered_mean(x, g, rng) for g in units]
+        out.append(f"| {c} | {cells[0][0]:.1%} | " + " | ".join(f"[{lo:.1%}, {hi:.1%}]" for _, lo, hi in cells) + " |")
+    out += ["", "Paired differences on the same answers, in percentage points (a reader of another LLM counts as the mean of the two):", ""]
+    out += ["| A − B | difference | A better / B better: answers | words (sign test) | resampling answers | resampling scenarios | resampling words |"]
+    out += ["|---" * 7 + "|"]
+    for a, b in DIFFS:
+        x = np.subtract(P[a], P[b])
+        cells = [clustered_mean(x, g, rng) for g in units]
+        out.append(
+            f"| {a} − {b} | {100 * cells[0][0]:+.1f} | {discordant(x, keys, scen)} | "
+            + " | ".join(f"[{100 * lo:+.1f}, {100 * hi:+.1f}]" for _, lo, hi in cells)
+            + " |"
+        )
+    out += ["", "An interval that includes 0 means no difference was detected, not that the two are equivalent. An interval of [+0.0, +0.0]"]
+    out += ["comes from discordant answers that cancel within one cluster: the data say nothing about a difference there."]
+    return "\n".join(out)
+
+
 def summary(R):
     rng = np.random.default_rng(0)
     groups = {
@@ -173,7 +239,7 @@ def summary(R):
 def main():
     run = HERE / "results" / f"r{sys.argv[1] if len(sys.argv) > 1 else 1}"
     R, other = load(run)
-    text = summary(R)
+    text = summary(R) + "\n\n" + clustered(R, {s["id"]: s for s in scenarios()})
     (run / "summary.md").write_text(text + "\n")
     head = "| scenario | word | right | author | condition | answer | IPA of the word |\n|---|---|---|---|---|---|---|\n"
     (run / "other.md").write_text(head + "\n".join(other) + "\n")
