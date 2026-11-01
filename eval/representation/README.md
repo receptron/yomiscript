@@ -13,7 +13,7 @@ Measured with the same LLMs on the same texts: reading correctness (whole senten
 ## Design
 
 - **Texts**: the Japanese hard set (`eval/data/hard_set.tsv`, 70 sentences: homographs, acronyms, numbers, dates),
-  read by `eval/browser_tts/sets.mjs`. Its gold is provisional (see the file header).
+  read by `eval/browser_tts/sets.mjs`. Its gold was reviewed by one native speaker of the project (see the file header).
 - **LLMs**: Claude Code (`claude`), Codex (`codex`) and Antigravity (`agy`, Gemini), through
   `eval/llm_yomite/llm.mjs`, no tools. One call per format, LLM and run, the whole set in one JSON answer, as in
   eval/browser_tts; 3 runs: 4 formats x 3 LLMs x 3 runs = 36 calls. An answer without JSON is asked once more.
@@ -145,7 +145,7 @@ What the misses are (`results/summary.md`, "Sentences read wrong"):
 
 ## Limits
 
-- One set (70 short sentences, provisional gold), Japanese only; the comparison of what YomiScript can express beyond
+- One set (70 short sentences, gold reviewed by one person), Japanese only; the comparison of what YomiScript can express beyond
   kana (other languages, prosody) is a design note, not measured.
 - The same scorer for all four formats, but the kana and sparse paths go through the converter and front end the
   gold also went through (kana2ipa, pyopenjtalk), while YomiScript and SSML are written in IPA by the LLM and judged

@@ -1,8 +1,8 @@
 # Items for the context-reading experiment (README.md). 65 Japanese homographs, two readings each: 130 items.
 # Both items of a word share the same short target sentence, which is ambiguous on its own; what differs is the
 # preceding paragraph (external text: a web page, news, a document) and the user's message (chat). Neither contains
-# the homograph or its reading in kana. Drafted 2026-11-01 by the project; the right readings are PROVISIONAL, to be
-# reviewed. 一日 is left out: the YomiScript instructions use it as an example (ついたち).
+# the homograph or its reading in kana. Drafted 2026-11-01 by the project; the right readings were reviewed the same
+# day by one native speaker of the project (all accepted), not by independent annotators. 一日 is left out: the YomiScript instructions use it as an example (ついたち).
 # A reading is katakana by pronunciation; several are separated by |. `word` is the string looked up in the target.
 # Added after the run (README.md): シュクジ for 祝詞 and クロゴ for 黒子, readings dictionaries list too.
 # Columns: id<TAB>word<TAB>right<TAB>misreadings<TAB>target sentence<TAB>preceding paragraph<TAB>user's message

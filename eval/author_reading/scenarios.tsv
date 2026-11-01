@@ -1,6 +1,6 @@
 # Chat scenarios for the author-vs-reader experiment: a user's question whose context fixes the reading of a homograph,
 # and asks for a one-line answer that uses it. 25 homographs, two readings each. Drafted 2026-11-01 by the project;
-# the readings are to be reviewed. 一日 is left out: the YomiScript instructions use it as an example (ついたち).
+# the readings were reviewed on 2026-11-01 by one native speaker of the project. 一日 is left out: the YomiScript instructions use it as an example (ついたち).
 # A reading is katakana by pronunciation; several right readings are separated by |.
 # Columns: id<TAB>word<TAB>right readings<TAB>misreadings<TAB>the user's message (the instruction to use the word is added by run.mjs)
 jozu	上手	ジョーズ	カミテ|ウワテ	新しく入った部下、仕事ぶりはどう？

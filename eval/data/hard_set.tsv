@@ -1,11 +1,12 @@
-# Hand-made hard set v0 — the gold readings are PROVISIONAL and need human review.
+# Hand-made hard set v0. The gold readings were reviewed on 2026-11-01 by one native speaker of the project (all
+# accepted, h001 市 as いち); they have not been checked by independent annotators.
 # Columns: id<TAB>category<TAB>text<TAB>gold (katakana by pronunciation: は→ワ, を→ヲ, long vowel→ー; several correct readings separated by |)<TAB>note
 # License: CC BY 4.0 (created by the yomiscript project)
-h001	homograph	シアトルの市では、魚が売られている。	シアトルノイチデワサカナガウラレテイル	市=いち(市場)。ユーザー例文。「し」とも読める文脈あり、要レビュー
+h001	homograph	シアトルの市では、魚が売られている。	シアトルノイチデワサカナガウラレテイル	市=いち(市場)。ユーザー例文。「し」とも読める文脈あり、いちで確認済み
 h002	homograph	市役所は駅の近くにある。	シヤクショワエキノチカクニアル	市=し
 h003	homograph	毎月八日に朝市が開かれる。	マイツキヨーカニアサイチガヒラカレル	市=いち、八日=ようか
 h004	homograph	今日は晴れています。	キョーワハレテイマス	今日=きょう
-h005	homograph	今日の日本経済を論じる。	コンニチノニホンケーザイヲロンジル|キョーノニホンケーザイヲロンジル	今日=こんにち優先、要レビュー
+h005	homograph	今日の日本経済を論じる。	コンニチノニホンケーザイヲロンジル|キョーノニホンケーザイヲロンジル	今日=こんにち優先、確認済み
 h006	homograph	一日から三日まで休みです。	ツイタチカラミッカマデヤスミデス	一日=ついたち
 h007	homograph	一日中ずっと雨だった。	イチニチジューズットアメダッタ	一日=いちにち
 h008	homograph	彼は料理が上手だ。	カレワリョーリガジョーズダ	上手=じょうず
@@ -37,7 +38,7 @@ h033	homograph	仮病を使って休んだ。	ケビョーヲツカッテヤス�
 h034	homograph	今年の紅葉はきれいだ。	コトシノコーヨーワキレーダ|コトシノモミジワキレーダ	紅葉 両方可
 h035	homograph	下手な言い訳はやめなさい。	ヘタナイイワケワヤメナサイ	下手=へた
 h036	acronym	SAPの導入を検討している。	エスエーピーノドーニューヲケントーシテイル	ユーザー例
-h037	acronym	SIPで電話をつなぐ。	シップデデンワヲツナグ|エスアイピーデデンワヲツナグ	ユーザー例はシップ。要レビュー
+h037	acronym	SIPで電話をつなぐ。	シップデデンワヲツナグ|エスアイピーデデンワヲツナグ	ユーザー例はシップ。確認済み
 h038	acronym	NHKのニュースを見た。	エヌエイチケーノニュースヲミタ|エヌエッチケーノニュースヲミタ	
 h039	acronym	AIの研究が進んでいる。	エーアイノケンキューガススンデイル	
 h040	acronym	USBメモリを差し込む。	ユーエスビーメモリヲサシコム	

@@ -17,7 +17,7 @@ differ only in the context that fixes the reading:
 - a **user's message** in a chat, to which the target sentence is the assistant's answer.
 
 Neither contains the homograph or its reading in kana. 一日 is left out (the YomiScript instructions use it as an
-example). The right readings were set by the project and are **provisional, to be reviewed**; items where both
+example). The right readings were set by the project and were **reviewed on 2026-11-01 by one native speaker of the project** (all accepted); items where both
 readings stayed plausible with the context were dropped while drafting (大分, 背筋, 空いて, 汚れて, 礼拝, 火口, …).
 Because the two items of a word have the same sentence, a reader without context can be right on at most one of them
 per call: about 50% is the expected accuracy without context, by construction.
@@ -130,7 +130,7 @@ message.
 
 ## Limits
 
-- The items, and their right readings, were written by the project; the readings are provisional and not reviewed.
+- The items, and their right readings, were written by the project; the readings were reviewed by one native speaker of the project, not by independent annotators.
   The target sentences were chosen to be ambiguous, so the 50% without context is by design, not an estimate of how
   often real text is ambiguous: the experiment measures whether the context is used, not how often it is needed.
 - One run. Ten items per call: the items of a batch are unrelated and none share a word, but a reader saw them side

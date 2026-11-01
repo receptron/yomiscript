@@ -97,7 +97,7 @@ nearly all of them (ElevenLabs: SAP and AI in some runs). `results/review.md` li
 
 ## Limits
 
-- The hard set is small and its gold readings are provisional (its header): the intervals are wide.
+- The hard set is small and its gold readings were reviewed by one person of the project only (its header): the intervals are wide.
 - The judge is checked on Kokoro's audio only; on the commercial systems' natural speech it may err less, but this is
   not measured. The words judged misread should be confirmed by ear before the numbers are published.
 - One voice per service; the readings may differ by voice.

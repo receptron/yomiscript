@@ -1,6 +1,6 @@
 # The words of the hard set (eval/data/hard_set.tsv) whose reading is judged, with the readings that count as right
 # and the misreadings they are told apart from. Drafted 2026-11-01 from the hard set's notes and the misreadings the
-# systems produced (the original Kokoro front end, OpenJTalk, the commercial TTS); to be reviewed with the hard set.
+# systems produced (the original Kokoro front end, OpenJTalk, the commercial TTS); reviewed with the hard set on 2026-11-01.
 # A reading is katakana by pronunciation as in the hard set's gold, and the first right reading appears in the
 # sentence's first gold reading; "-" is the word left out (the original Kokoro drops Latin letters).
 # Sentences without a row here are not judged: every plausible reading of them counts as right (h005 今日, h034 紅葉,

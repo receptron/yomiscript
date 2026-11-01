@@ -9,7 +9,7 @@ afterwards (issue #18). This experiment separates the two.
 `scenarios.tsv`: 50 chat scenarios, 25 homographs with two readings each (上手 じょうず / かみて, 人気 にんき / ひとけ,
 生花 せいか / いけばな, …). Each is a user's message whose context fixes the reading, ending with 「「X」という言葉を使って、
 一言で答えて。」 so that the answer contains the word and is short. 一日 is left out because the YomiScript
-instructions use it as an example. The right readings were set by the project and are to be reviewed.
+instructions use it as an example. The right readings were set by the project and reviewed on 2026-11-01 by one native speaker of the project.
 
 Three LLMs, through their CLIs with no tools (2026-11-01): Claude Code (`claude-opus-5-5`), Codex (`gpt-6.1-sol`)
 and Antigravity (`gemini-4-argon-medium`). All get the YomiScript instructions the tools give

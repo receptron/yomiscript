@@ -14,7 +14,7 @@ original. Everything is compared at the phoneme string Kokoro is given (the Kata
 |---|---|---|
 | `ja` | `eval/kokoro_parity/texts_ja.json` (24) | the original Kokoro front end |
 | `en` | `eval/kokoro_parity/texts.json` (22) | the original Kokoro front end |
-| `hard` | `eval/data/hard_set.tsv` (70: homographs, acronyms, numbers, dates) | the gold readings (provisional) |
+| `hard` | `eval/data/hard_set.tsv` (70: homographs, acronyms, numbers, dates) | the gold readings (reviewed by one native speaker of the project) |
 
 Systems: Claude and Codex as the Yomite (`prompt.md`, `examples.json`), the original Kokoro front end, pyopenjtalk
 (OpenJTalk + NAIST-JDIC, the front end piper-plus runs as WASM; used as its stand-in for readings), and, for listening
@@ -45,7 +45,7 @@ node page.mjs                     # -> audio/listen.json; then serve this direct
   devoiced ɯ, which allophone a moraic nasal is written with, and h / n before i written without the palatal allophone
   (hi = çi, ni = ɲi). For English: stress marks, Kokoro's reduced vowels (ɐ ᵊ ᵻ → ə) and flap (T → t).
   The allophone and stress differences still change what Kokoro is given, so they can be heard; they are not a different reading.
-- The hard set's gold is provisional (see the file header).
+- The hard set's gold was reviewed by one native speaker of the project, not by independent annotators (see the file header).
 
 ## Results (2026-10-29, one run per LLM; `results/summary.md`, `results/asr_summary.md`)
 
