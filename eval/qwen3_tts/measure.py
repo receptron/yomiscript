@@ -29,7 +29,7 @@ from score import HOP, OCTAVE, features  # noqa: E402
 
 # IPA onsets of YomiScript's Japanese morae -> OpenJTalk's phonemes (align.py's input); before i, the palatal onsets
 # are OpenJTalk's plain row (ɕi = sh i, ɲi = n i, çi = h i)
-ONSET = {"ɕ": "sh", "tɕ": "ch", "dʑ": "j", "dz": "z", "ɲ": "ny", "ç": "hy", "ɸ": "f", "ɾ": "r", "ɡ": "g", "j": "y"}
+ONSET = {"ɕ": "sh", "tɕ": "ch", "dʑ": "j", "ʑ": "j", "dz": "z", "ɲ": "ny", "ç": "hy", "ɸ": "f", "ɾ": "r", "ɡ": "g", "j": "y"}
 BEFORE_I = {"ny": "n", "hy": "h"}
 VOWEL = {"ɯ": "u", "ɨ": "u"}
 FINAL_TAIL = 0.3
