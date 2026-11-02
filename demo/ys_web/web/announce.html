@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Station Announcement</title>
+    <script type="importmap">
+      { "imports": { "@yomiscript/core": "./pkg/core/dist/index.js", "@yomiscript/kokoro": "./pkg/kokoro/dist/index.js" } }
+    </script>
+    <style>
+      :root {
+        --bg: #f4f6f8;
+        --fg: #1b1f23;
+        --muted: #5f6b76;
+        --line: #d5dbe1;
+        --card: #fff;
+        --hi: #0b6e4f;
+        --board: #101418;
+        --amber: #ffb000;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121518;
+          --fg: #e7ebef;
+          --muted: #93a0ab;
+          --line: #2c333a;
+          --card: #1a1f24;
+          --hi: #2fbf8f;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      .board {
+        background: var(--board);
+        color: var(--amber);
+        border-radius: 10px;
+        padding: 16px 18px;
+        font:
+          600 20px/1.5 ui-monospace,
+          "Hiragino Sans",
+          monospace;
+        letter-spacing: 0.04em;
+        margin: 12px 0 16px;
+      }
+      .board .sub {
+        color: #8fa3b5;
+        font-size: 13px;
+        font-weight: 400;
+      }
+      .form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px 14px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 14px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+        color: var(--muted);
+        gap: 4px;
+      }
+      input,
+      select,
+      button {
+        font: inherit;
+        color: var(--fg);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 6px 8px;
+      }
+      button.play {
+        background: var(--hi);
+        border-color: var(--hi);
+        color: #fff;
+        padding: 10px 22px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .err {
+        color: #c0392b;
+      }
+      details code {
+        display: block;
+        white-space: pre-wrap;
+        word-break: break-all;
+        font:
+          13px ui-monospace,
+          monospace;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 8px;
+        margin-top: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>駅のアナウンス</h1>
+      <p class="muted">
+        列車と行き先を選び、番線と時刻を入れて「アナウンスを再生」を押すと、このブラウザーで音声を生成します。数字の読み（8号 はちごう、15番線
+        じゅうごばんせん、8:35 はちじ さんじゅうごふん、6:10 ろくじ じゅっぷん）とアクセントは、文型の規則で YomiScript に書いています。
+      </p>
+      <div class="board" id="board"></div>
+      <div class="form">
+        <label
+          >列車
+          <select id="train"></select
+        ></label>
+        <label>号 <input id="no" type="number" min="1" max="999" value="8" /></label>
+        <label
+          >行き先
+          <select id="place"></select
+        ></label>
+        <label>番線 <input id="track" type="number" min="1" max="99" value="15" /></label>
+        <label>発車時刻 <input id="time" value="8:35" placeholder="8:35" /></label>
+      </div>
+      <div class="row">
+        <button class="play" id="play" disabled>アナウンスを再生</button>
+        <span class="muted" id="st">音声モデルを読み込んでいます…</span>
+      </div>
+      <details>
+        <summary class="muted">YomiScript</summary>
+        <code id="ys"></code>
+      </details>
+    </main>
+    <script type="module">
+      import { realize } from "@yomiscript/core";
+      import * as K from "@yomiscript/kokoro";
+      import { announce, parseTime, PLACES, TRAINS } from "./announce.js";
+
+      const $ = (id) => document.getElementById(id);
+      for (const t of Object.keys(TRAINS)) $("train").add(new Option(t, t));
+      for (const p of Object.keys(PLACES)) $("place").add(new Option(p, p));
+      $("place").value = "新大阪";
+
+      /** the announcement of the form, or why not */
+      function current() {
+        const no = Number($("no").value),
+          track = Number($("track").value),
+          time = parseTime($("time").value);
+        if (!(no >= 1 && no <= 999 && Number.isInteger(no))) return { error: "号は 1〜999 で入れてください" };
+        if (!(track >= 1 && track <= 99 && Number.isInteger(track))) return { error: "番線は 1〜99 で入れてください" };
+        if (!time) return { error: "発車時刻は 8:35 のように入れてください" };
+        return announce({ train: $("train").value, no, place: $("place").value, track, time });
+      }
+      function show() {
+        const a = current();
+        $("board").innerHTML = "";
+        if (a.error) {
+          $("board").textContent = a.error;
+          $("ys").textContent = "";
+          return a;
+        }
+        const time = parseTime($("time").value);
+        $("board").append(
+          `${$("train").value} ${$("no").value}号　${$("place").value}行　${time[0]}:${String(time[1]).padStart(2, "0")}発　${$("track").value}番線`,
+        );
+        const sub = document.createElement("div");
+        sub.className = "sub";
+        sub.textContent = a.text;
+        $("board").append(sub);
+        $("ys").textContent = a.ys;
+        return a;
+      }
+      for (const id of ["train", "no", "place", "track", "time"]) $(id).addEventListener("input", show);
+      show();
+
+      let E = null;
+      const player = new Audio();
+      $("play").onclick = async () => {
+        const a = show();
+        if (a.error || !E) return;
+        $("play").disabled = true;
+        $("st").textContent = "生成しています…";
+        try {
+          const t0 = performance.now();
+          const { audio } = await E.synth(realize(a.ys), "values");
+          player.src = URL.createObjectURL(new Blob([K.wav(audio)], { type: "audio/wav" }));
+          await player.play();
+          $("st").textContent = `生成 ${((performance.now() - t0) / 1000).toFixed(1)} 秒 ／ 音声 ${(audio.length / K.SR).toFixed(1)} 秒`;
+        } catch (e) {
+          $("st").textContent = `生成できませんでした：${e}`;
+          $("st").className = "err";
+        }
+        $("play").disabled = false;
+      };
+
+      try {
+        const ort = await import("./ort/ort.min.mjs");
+        ort.env.wasm.wasmPaths = new URL("ort/", location.href).href;
+        ort.env.wasm.numThreads = crossOriginIsolated ? Math.min(4, navigator.hardwareConcurrency || 1) : 1;
+        const e = new K.Engine(ort, async (p) => {
+          const b = await (await fetch(p)).arrayBuffer();
+          return p.endsWith(".bin") ? b : new Uint8Array(b);
+        });
+        await e.init({ suffix: K.W16, executionProviders: ["wasm"] });
+        await e.synth("ja /a ↘/");
+        E = e;
+        $("play").disabled = false;
+        $("st").textContent = "準備ができました";
+      } catch (e) {
+        $("st").textContent = `音声モデルを読み込めませんでした：${e}`;
+        $("st").className = "err";
+      }
+    </script>
+  </body>
+</html>
