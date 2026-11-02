@@ -276,6 +276,7 @@
       import * as K from "@yomiscript/kokoro";
       import { accentMarks, ACCENT_SCALE, DICT_URL, DICT_VERSION, loadFrontend } from "@yomiscript/ja-accent";
       import { marksOf, moraFrames, referenceVoice, startRecording, trim, voiceValues } from "./accent_voice.js";
+      import { painted } from "./paint.js";
 
       const $ = (id) => document.getElementById(id);
       const el = (tag, cls, text) => Object.assign(document.createElement(tag), cls ? { className: cls } : {}, text != null ? { textContent: text } : {});
@@ -543,6 +544,7 @@
       async function speak(ys, button) {
         button.disabled = true;
         $("ps").textContent = "生成しています…";
+        await painted();
         try {
           const { audio } = await E.synth(realize(ys, RENDER), "values");
           player.src = URL.createObjectURL(new Blob([K.wav(audio)], { type: "audio/wav" }));

@@ -36,6 +36,7 @@ pitch:
 <script type="module">
   import * as Y from "@yomiscript/kokoro";
   import { realize } from "@yomiscript/core";
+  import { painted } from "./paint.js";
   const { KokoroProsody } = Y;
   ort.env.wasm.wasmPaths = new URL("ort/", location.href).href;
   ort.env.wasm.numThreads = crossOriginIsolated ? +new URLSearchParams(location.search).get("t") || Math.min(4, navigator.hardwareConcurrency || 1) : 1;
@@ -77,6 +78,7 @@ pitch:
   go.onclick = async () => {
     go.disabled = true;
     st.textContent = "synthesizing…";
+    await painted();
     const t0 = performance.now();
     try {
       const ys = pm.value === "asis" ? t.value : pm.value === "kokoro" ? await KP.realize(t.value) : realize(t.value, { dialect: { ja: dl.value } });

@@ -11,7 +11,7 @@ OUT=${1:-out/misread}
 rm -rf "$OUT"
 mkdir -p "$OUT"
 cp web/misread.html "$OUT/index.html"
-cp web/announce.html web/announce.js "$OUT/"
+cp web/announce.html web/announce.js web/paint.js "$OUT/"
 cp web/misread.json "$OUT/"
 cp -R web/misread "$OUT/misread"
 cat >"$OUT/_headers" <<'H'

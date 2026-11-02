@@ -174,6 +174,7 @@
       import { realize } from "@yomiscript/core";
       import * as K from "@yomiscript/kokoro";
       import { announce, parseTime, PLACES, TRAINS } from "./announce.js";
+      import { painted } from "./paint.js";
 
       const $ = (id) => document.getElementById(id);
       for (const t of Object.keys(TRAINS)) $("train").add(new Option(t, t));
@@ -219,6 +220,7 @@
         if (a.error || !E) return;
         $("play").disabled = true;
         $("st").textContent = "生成しています…";
+        await painted();
         try {
           const t0 = performance.now();
           const { audio } = await E.synth(realize(a.ys), "values");
