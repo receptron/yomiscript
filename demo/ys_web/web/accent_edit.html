@@ -541,24 +541,39 @@
       let E = null,
         A = null;
       const player = new Audio();
-      let speaking = false;
+      // The engine's sessions take one run at a time: every use of it (hearing a version, reading a voice in) waits
+      // for the one before, and while any is running or waiting both play buttons are disabled, so no click is
+      // dropped without a sign.
+      const PLAY = ["playDict", "playEdit"];
+      let busy = 0,
+        engineTurn = Promise.resolve();
+      const showBusy = () => {
+        for (const id of PLAY) $(id).disabled = busy > 0 || !base;
+      };
+      function onEngine(job) {
+        busy++;
+        showBusy();
+        const run = engineTurn.then(job).finally(() => {
+          busy--;
+          showBusy();
+        });
+        engineTurn = run.catch(() => {});
+        return run;
+      }
       /** read: the YomiScript to hear, read once the busy state is painted so an edit made meanwhile is the one heard */
-      async function speak(read, button) {
-        if (speaking) return;
-        speaking = true;
-        button.disabled = true;
+      function speak(read) {
         $("ps").textContent = "生成しています…";
-        await painted();
-        try {
-          const { audio } = await E.synth(realize(read(), RENDER), "values");
-          player.src = URL.createObjectURL(new Blob([K.wav(audio)], { type: "audio/wav" }));
-          await player.play();
-          $("ps").textContent = "";
-        } catch (e) {
-          $("ps").textContent = `生成できませんでした：${e}`;
-        }
-        button.disabled = false;
-        speaking = false;
+        return onEngine(async () => {
+          await painted();
+          try {
+            const { audio } = await E.synth(realize(read(), RENDER), "values");
+            player.src = URL.createObjectURL(new Blob([K.wav(audio)], { type: "audio/wav" }));
+            await player.play();
+            $("ps").textContent = "";
+          } catch (e) {
+            $("ps").textContent = `生成できませんでした：${e}`;
+          }
+        });
       }
       function markIt() {
         try {
@@ -569,7 +584,8 @@
           voiceState = null;
           $("backVoice").disabled = true;
           render();
-          for (const id of ["playDict", "playEdit", "reset", "save", "rec"]) $(id).disabled = false;
+          for (const id of ["reset", "save", "rec"]) $(id).disabled = false;
+          showBusy(); // the play buttons: enabled unless the engine is busy
         } catch (e) {
           $("sentence").textContent = `${e}`;
           $("sentence").className = "sentence err";
@@ -595,8 +611,8 @@
         } catch {}
       };
       $("mark").onclick = markIt;
-      $("playDict").onclick = () => speak(() => write(base), $("playDict"));
-      $("playEdit").onclick = () => speak(() => write(cur), $("playEdit"));
+      $("playDict").onclick = () => speak(() => write(base));
+      $("playEdit").onclick = () => speak(() => write(cur));
       $("reset").onclick = () => {
         cur = clone(base);
         fromVoice = false;
@@ -633,8 +649,10 @@
           if (recUrl) URL.revokeObjectURL(recUrl);
           recUrl = URL.createObjectURL(new Blob([K.wav(reading)], { type: "audio/wav" }));
           $("playRec").disabled = false;
-          await painted();
-          $("vs").textContent = await applyVoice(reading);
+          $("vs").textContent = await onEngine(async () => {
+            await painted();
+            return applyVoice(reading);
+          });
         } catch (e) {
           $("vs").textContent = `声の高さを拾えませんでした：${e.message ?? e}`;
         }
