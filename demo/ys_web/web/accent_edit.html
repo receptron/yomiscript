@@ -257,6 +257,7 @@
       <div class="voice">
         <button id="rec" disabled>声で直す（録音を始める）</button>
         <button id="playRec" disabled>録音を聞く</button>
+        <button id="backVoice" disabled>声から作ったものに戻す</button>
         <span class="muted" id="vs">文を読み上げると、その声の高さを各拍に入れ、上がる・下がるも推定します。</span>
       </div>
       <div class="sentence" id="sentence"></div>
@@ -558,6 +559,8 @@
           base = model(ys);
           cur = clone(base);
           fromVoice = false;
+          voiceState = null;
+          $("backVoice").disabled = true;
           render();
           for (const id of ["playDict", "playEdit", "reset", "save", "rec"]) $(id).disabled = false;
         } catch (e) {
@@ -597,7 +600,8 @@
       // gives every mora its values and every phrase its marks
       let recording = null,
         recUrl = null,
-        fromVoice = false;
+        fromVoice = false,
+        voiceState = null; // the version the last reading made, to go back to after editing it by hand
       $("rec").onclick = async () => {
         if (!recording) {
           try {
@@ -628,6 +632,11 @@
         }
         $("rec").disabled = false;
       };
+      $("backVoice").onclick = () => {
+        cur = clone(voiceState);
+        fromVoice = true;
+        render();
+      };
       $("playRec").onclick = () => {
         player.src = recUrl;
         player.play().catch(() => {});
@@ -657,6 +666,8 @@
           });
         }
         fromVoice = true;
+        voiceState = clone(cur);
+        $("backVoice").disabled = false;
         render();
         const missed = V.length - heard;
         return `声の高さを ${heard} 拍に入れました${missed ? `（${missed} 拍は声が拾えず規則のまま）` : ""}。上がる・下がるは推定です。聞いて確かめてください。`;
