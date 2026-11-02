@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accent Editor</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "@yomiscript/core": "./pkg/core/dist/index.js",
+          "@yomiscript/kokoro": "./pkg/kokoro/dist/index.js",
+          "@yomiscript/ja-accent": "./pkg/ja-accent/dist/index.js"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --bg: #fafaf8;
+        --fg: #1d1d1b;
+        --muted: #6b6b66;
+        --line: #d9d8d2;
+        --card: #fff;
+        --hi: #1f6feb;
+        --changed: #fff4d6;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #161615;
+          --fg: #e9e8e3;
+          --muted: #9a9993;
+          --line: #3a3936;
+          --card: #1f1f1d;
+          --hi: #6aa5ff;
+          --changed: #3b3420;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          15px/1.6 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      input:not([type]) {
+        font: inherit;
+        background: var(--card);
+        color: var(--fg);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 2px 6px;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        font:
+          13px ui-monospace,
+          monospace;
+        background: var(--card);
+        color: var(--fg);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 8px;
+      }
+      button,
+      select {
+        font: inherit;
+        padding: 4px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--fg);
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin: 8px 0;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .sentence {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 4px 0;
+        margin: 16px 0;
+      }
+      .phrase {
+        display: flex;
+        align-items: flex-end;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 4px 6px;
+        background: var(--card);
+      }
+      .phrase.changed {
+        background: var(--changed);
+      }
+      .word {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .word .t {
+        text-align: center;
+        font-size: 13px;
+        color: var(--muted);
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 2px;
+        white-space: nowrap;
+      }
+      .morae {
+        display: flex;
+      }
+      .mora {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 30px;
+        padding: 0 1px;
+      }
+      .pitch {
+        height: 64px;
+        width: 100%;
+        cursor: ns-resize;
+        touch-action: none;
+      }
+      .pitch polyline {
+        fill: none;
+        stroke-width: 2.5;
+        vector-effect: non-scaling-stroke;
+      }
+      .pitch .now {
+        stroke: var(--hi);
+      }
+      .pitch .now.set {
+        stroke: #d9822b;
+      }
+      .pitch .dict {
+        stroke: var(--line);
+      }
+      .pitch .zero {
+        stroke: var(--line);
+        stroke-dasharray: 2 2;
+        vector-effect: non-scaling-stroke;
+      }
+      .ipa {
+        font:
+          14px ui-monospace,
+          monospace;
+      }
+      .mora input {
+        margin: 2px 0 0;
+      }
+      .mora .none {
+        height: 17px;
+      }
+      .mora input.up {
+        accent-color: #2e9d57;
+      }
+      .legend {
+        height: 17px;
+        line-height: 17px;
+        margin-top: 2px;
+      }
+      .sep {
+        align-self: center;
+        width: 18px;
+        height: 40px;
+        border: none;
+        background: none;
+        padding: 0;
+        color: var(--line);
+        font-weight: bold;
+      }
+      .sep.bound {
+        color: var(--fg);
+      }
+      .pause {
+        align-self: center;
+        padding: 0 6px;
+        color: var(--muted);
+      }
+      .legends {
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 4px;
+      }
+      code {
+        display: block;
+        white-space: pre-wrap;
+        word-break: break-all;
+        font:
+          13px ui-monospace,
+          monospace;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 8px;
+      }
+      .voice {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin: 16px 0 0;
+        padding: 8px;
+        border: 1px dashed var(--line);
+        border-radius: 8px;
+      }
+      #rec.on {
+        background: #c0392b;
+        color: #fff;
+      }
+      .err {
+        color: #c0392b;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>アクセントの編集</h1>
+      <p class="muted">
+        辞書（D31）が付けたアクセントを聞いて、気に入らなければ直して聞き直します。各拍の上の青い線が、実際に鳴る音の高さです（灰色は辞書のまま、点線は文の中央の高さ）。線を上下にドラッグすると、その拍の高さを直接決められます（橙色になります。ダブルクリックで規則に戻ります）。「下がる」は「この拍の後で音が下がる」（アクセント核）、「上がる」は「この拍の後で上がる」で、どちらも
+        1 つのアクセント句に 1 つまでです。下がるがなければ平板、上がるがなければ高く始まります。Kokoro
+        自身の抑揚は使わず、どの句も印のとおりに読みます。語の間の縦線を押すと、アクセント句を分けたりつないだりできます。
+      </p>
+      <div class="row">
+        <select id="preset"></select>
+        <span class="muted" id="st">読み込んでいます…</span>
+      </div>
+      <textarea id="src" rows="3" spellcheck="false"></textarea>
+      <div class="row">
+        <label>聞いた人 <input id="listener" size="10" /></label>
+        <label>文の出典 <input id="source" size="40" /></label>
+      </div>
+      <div class="row">
+        <button id="mark" disabled>辞書でアクセントを付ける</button>
+      </div>
+      <div class="voice">
+        <button id="rec" disabled>声で直す（録音を始める）</button>
+        <button id="playRec" disabled>録音を聞く</button>
+        <span class="muted" id="vs">文を読み上げると、その声の高さを各拍に入れ、上がる・下がるも推定します。</span>
+      </div>
+      <div class="sentence" id="sentence"></div>
+      <div class="row">
+        <button id="playDict" disabled>辞書のまま聞く</button>
+        <button id="playEdit" disabled>直したものを聞く</button>
+        <button id="reset" disabled>辞書のアクセントに戻す</button>
+        <button id="save" disabled>保存（教師データに追加）</button>
+        <span class="muted" id="ps"></span>
+      </div>
+      <p class="muted">直した YomiScript</p>
+      <code id="out"></code>
+    </main>
+    <script type="module">
+      import { parse, realize } from "@yomiscript/core";
+      import * as K from "@yomiscript/kokoro";
+      import { accentMarks, ACCENT_SCALE, DICT_URL, DICT_VERSION, loadFrontend } from "@yomiscript/ja-accent";
+      import { marksOf, moraFrames, startRecording, trim, voiceValues } from "./accent_voice.js";
+
+      const $ = (id) => document.getElementById(id);
+      const el = (tag, cls, text) => Object.assign(document.createElement(tag), cls ? { className: cls } : {}, text != null ? { textContent: text } : {});
+      // the three sentences the D31 listening test (eval/accent_lookup) found unnatural either way
+      const PRESETS = [
+        "ja /ɕikiɕi<t:色紙> ɲi<t:に> | saiɴ<t:サイン> o<t:を> | moɾatta<t:もらった。> ↘/",
+        "ja /aioːtiː<t:IoT> | kiki<t:機器> ɡa<t:が> | ɸɯete<t:増えて> | iɾɯ<t:いる。> ↘/",
+        "ja /eːɡʲoː<t:営業> | dʑikaɴ<t:時間> wa<t:は> | kɯdʑi<t:9時> | kaɾa<t:〜> dʑɯːɕitɕidʑi<t:17時> desɯ<t:です。> ↘/",
+      ];
+      const strip = (s) => s.replace(/[ꜛꜜ]/g, "");
+      const textOf = (ys) => [...ys.matchAll(/<t:([^>]*)>/g)].map((m) => m[1]).join("");
+
+      // a YomiScript as words and separators: an item is a word (its IPA and the annotations after it), ' | ', or a pause
+      function items(ys) {
+        const m = ys.trim().match(/^(\S+)\s*\/(.*?)\s*([↘↗])\s*\/$/s);
+        if (!m || m[1] !== "ja") throw new Error("one ja /…/ utterance is expected");
+        const out = [];
+        for (const w of m[2].split(/\s+/).filter(Boolean)) {
+          if (w === "|") out.push({ kind: "bound" });
+          else if (w.startsWith("‖")) out.push({ kind: "pause", raw: w });
+          else {
+            const at = w.indexOf("<t:"),
+              ipa = at < 0 ? w : w.slice(0, at);
+            out.push({ kind: "word", ipa, tail: at < 0 ? "" : w.slice(at), text: (w.match(/<t:([^>]*)>/) ?? [])[1] ?? "" });
+          }
+        }
+        return { lang: m[1], end: m[3], items: out };
+      }
+      // the morae of a word: their IPA, kind, where each ends in the unmarked IPA, and whether ꜜ follows it
+      function morae(ipa) {
+        const plain = strip(ipa),
+          U = parse(`ja /${plain} ↘/`).sections[0].toks.filter((t) => t.kind === "unit"),
+          M = parse(`ja /${ipa} ↘/`).sections[0].toks.filter((t) => t.kind === "unit"),
+          off = 4; // "ja /"
+        return U.map((u, k) => ({ ipa: u.ipa, mk: u.mk, end: (u.end ?? 0) - off, fall: !!M[k]?.fall, rise: !!M[k]?.rise }));
+      }
+
+      // the editable state: words (with their morae) and the separators between them; the rise and the nucleus are flags
+      // on a mora
+      let base = null, // the dictionary's version, to compare and to reset
+        cur = null;
+      function model(ys) {
+        const { lang, end, items: I } = items(ys),
+          words = [],
+          seps = []; // seps[i]: between words[i] and words[i + 1]: "space" | "bound" | the pause as written
+        let next = "space";
+        for (const x of I) {
+          if (x.kind === "word") {
+            if (words.length) seps.push(next);
+            next = "space";
+            words.push({ ipa: strip(x.ipa), tail: x.tail, text: x.text, morae: morae(x.ipa) });
+          } else next = x.kind === "bound" ? "bound" : x.raw;
+        }
+        const m = { lang, end, words, seps };
+        return m;
+      }
+      const clone = (m) => JSON.parse(JSON.stringify(m));
+      /** the accent phrases: runs of words with no ' | ' or pause between them */
+      function phrases(m) {
+        const P = [];
+        m.words.forEach((_, i) => {
+          if (i === 0 || m.seps[i - 1] !== "space") P.push({ words: [] });
+          P[P.length - 1].words.push(i);
+        });
+        for (const p of P) p.morae = p.words.flatMap((w) => m.words[w].morae.map((x, k) => ({ w, k, x })));
+        return P;
+      }
+      const nucleus = (p) => p.morae.findIndex((r) => r.x.fall);
+      const riseAt = (p) => p.morae.findIndex((r) => r.x.rise);
+      /** one rise per phrase, before the nucleus; Tokyo's (after the first mora) when the nucleus moves past it */
+      function fixRise(p) {
+        const n = nucleus(p),
+          r = riseAt(p);
+        if (n === 0 || (r >= 0 && n >= 0 && r >= n)) for (const q of p.morae) q.x.rise = false;
+        if (n > 0 && r >= n && p.morae.length > 1) p.morae[0].x.rise = true;
+      }
+
+      const fmt = (v) => String(Math.round(v * 100) / 100);
+      /** the YomiScript of the state: ꜛ after the rise, ꜜ after the nucleus, and the values the listener set (<f0:…>,
+       * right after the mora, before its mark) */
+      function write(m) {
+        const ins = m.words.map(() => []); // per word: [offset, text, order at the offset]
+        for (const p of phrases(m)) {
+          if (!p.morae.length) continue;
+          const n = nucleus(p),
+            r = riseAt(p);
+          if (r >= 0) ins[p.morae[r].w].push([p.morae[r].x.end, "ꜛ", 1]);
+          if (n >= 0) ins[p.morae[n].w].push([p.morae[n].x.end, "ꜜ", 1]);
+          for (const q of p.morae) if (q.x.f0) ins[q.w].push([q.x.end, `<f0:${q.x.f0.map(fmt).join(",")}>`, 0]);
+        }
+        const W = m.words.map((w, i) => {
+          let s = w.ipa;
+          // the last inserted at an offset comes first: the mark, then the value before it
+          for (const [at, c] of ins[i].sort((a, b) => b[0] - a[0] || b[2] - a[2])) s = s.slice(0, at) + c + s.slice(at);
+          return s + w.tail;
+        });
+        let body = W[0];
+        for (let i = 1; i < W.length; i++) body += (m.seps[i - 1] === "space" ? " " : m.seps[i - 1] === "bound" ? " | " : ` ${m.seps[i - 1]} `) + W[i];
+        return `${m.lang} /${body} ${m.end}/`;
+      }
+
+      // the pitch as it will sound: the values realize writes (the rules' from the marks, or the listener's), three per
+      // mora, drawn as a line; the dictionary's in grey behind. Drag a mora up or down to set its values; double-click
+      // gives it back to the rules
+      const values = (ys) => [...realize(ys, RENDER).matchAll(/<f0:([^>]*)>/g)].map((m) => m[1].split(",").map(Number));
+      const TOP = 8,
+        PX = 4, // px per semitone; the cell is 2 * TOP * PX high
+        HEIGHT = 2 * TOP * PX;
+      const yOf = (v) => (TOP - Math.max(-TOP, Math.min(TOP, v))) * PX;
+      const NS = "http://www.w3.org/2000/svg";
+      function line(v, cls) {
+        const l = document.createElementNS(NS, "polyline");
+        l.setAttribute("class", cls);
+        l.setAttribute("points", (v ?? []).map((y, k) => `${5 + 10 * k},${yOf(y)}`).join(" "));
+        return l;
+      }
+      function pitchCell(x, v, d) {
+        const svg = document.createElementNS(NS, "svg");
+        svg.setAttribute("viewBox", `0 0 30 ${HEIGHT}`);
+        svg.setAttribute("preserveAspectRatio", "none");
+        svg.setAttribute("class", "pitch");
+        const zero = document.createElementNS(NS, "line");
+        for (const [a, val] of [
+          ["x1", 0],
+          ["x2", 30],
+          ["y1", yOf(0)],
+          ["y2", yOf(0)],
+        ])
+          zero.setAttribute(a, val);
+        zero.setAttribute("class", "zero");
+        const now = line(v, x.f0 ? "now set" : "now");
+        svg.append(zero, line(d, "dict"), now);
+        const tip = document.createElementNS(NS, "title");
+        tip.textContent = "上下にドラッグで高さを変える（ダブルクリックで規則に戻す）";
+        svg.append(tip);
+        svg.onpointerdown = (e) => {
+          svg.setPointerCapture(e.pointerId);
+          const y0 = e.clientY,
+            start = [...(v ?? [0, 0, 0])];
+          let moved = start;
+          svg.onpointermove = (ev) => {
+            const dy = (y0 - ev.clientY) / PX;
+            moved = start.map((y) => Math.round((y + dy) * 10) / 10);
+            now.setAttribute("points", moved.map((y, k) => `${5 + 10 * k},${yOf(y)}`).join(" "));
+          };
+          svg.onpointerup = () => {
+            svg.onpointermove = svg.onpointerup = null;
+            if (moved !== start) {
+              x.f0 = moved;
+              update();
+            }
+          };
+        };
+        svg.ondblclick = () => {
+          x.f0 = null;
+          update();
+        };
+        return svg;
+      }
+      function render() {
+        const S = $("sentence");
+        S.innerHTML = "";
+        const baseYs = write(base),
+          dv = values(baseYs),
+          ev = values(write(cur));
+        let g = 0; // the mora's index in the sentence
+        for (const p of phrases(cur)) {
+          const div = el("div", "phrase"),
+            n = nucleus(p);
+          const kk = el("div", "legends");
+          kk.append(el("span", "legend", "上がる"), el("span", "legend", "下がる"));
+          div.append(kk);
+          let r = 0;
+          for (const w of p.words) {
+            const wd = el("div", "word"),
+              mm = el("div", "morae");
+            wd.append(el("div", "t", cur.words[w].text || " "));
+            cur.words[w].morae.forEach((x) => {
+              const i = r++,
+                c = el("div", "mora");
+              c.append(pitchCell(x, ev[g], dv[g]), el("span", "ipa", x.ipa));
+              g++;
+              // the rise: after any mora but the phrase's last
+              if (i < p.morae.length - 1) {
+                const u = el("input");
+                u.type = "checkbox";
+                u.className = "up";
+                u.checked = x.rise;
+                u.title = "この拍の後で上がる";
+                u.onchange = () => {
+                  for (const q of p.morae) [q.x.rise, q.x.f0] = [false, null];
+                  x.rise = u.checked;
+                  if (x.rise && nucleus(p) >= 0 && nucleus(p) <= i) for (const q of p.morae) q.x.fall = false;
+                  update();
+                };
+                c.append(u);
+              } else c.append(el("div", "none"));
+              if (x.mk === "mora") {
+                const b = el("input");
+                b.type = "checkbox";
+                b.checked = x.fall;
+                b.title = "この拍の後で下がる";
+                b.onchange = () => {
+                  for (const q of p.morae) [q.x.fall, q.x.f0] = [false, null];
+                  x.fall = b.checked;
+                  fixRise(p);
+                  update();
+                };
+                c.append(b);
+              } else c.append(el("div", "none"));
+              mm.append(c);
+            });
+            wd.append(mm);
+            div.append(wd);
+            const last = w === p.words[p.words.length - 1];
+            if (!last) div.append(sep(w));
+          }
+          // a phrase whose marks differ from the dictionary's
+          const piece = (m) => phrases(m).find((q) => q.words[0] === p.words[0]);
+          const bp = piece(base);
+          const same = bp && bp.words.length === p.words.length && nucleus(bp) === n && riseAt(bp) === riseAt(p) && !p.morae.some((q) => q.x.f0);
+          if (!same) div.classList.add("changed");
+          S.append(div);
+          const lastW = p.words[p.words.length - 1];
+          if (lastW < cur.words.length - 1) S.append(cur.seps[lastW] === "bound" ? sep(lastW) : el("span", "pause", cur.seps[lastW]));
+        }
+        const ys = write(cur);
+        $("out").textContent = ys;
+        $("ps").textContent = ys === baseYs ? "辞書のままです" : "辞書から変えています";
+      }
+      /** the separator after word w: a button that joins or splits the phrases there */
+      function sep(w) {
+        const b = el("button", "sep" + (cur.seps[w] === "bound" ? " bound" : ""), "|");
+        b.title = cur.seps[w] === "bound" ? "アクセント句をつなぐ" : "ここでアクセント句を分ける";
+        b.onclick = () => {
+          const joining = cur.seps[w] === "bound";
+          cur.seps[w] = joining ? "space" : "bound";
+          if (joining) {
+            // one nucleus per phrase: keep the first
+            // the phrase after the joint loses its rise, and its nucleus when the one before has one
+            const p = phrases(cur).find((q) => q.words.includes(w)),
+              before = p.morae.filter((r) => r.w <= w);
+            const fell = before.some((r) => r.x.fall);
+            for (const r of p.morae) {
+              if (r.w <= w) continue;
+              r.x.rise = false;
+              if (fell) r.x.fall = false;
+            }
+          } else {
+            const p = phrases(cur).find((q) => q.words[0] === w + 1);
+            if (riseAt(p) < 0 && nucleus(p) !== 0 && p.morae.length > 1) p.morae[0].x.rise = true;
+          }
+          update();
+        };
+        return b;
+      }
+      const update = () => render();
+
+      // every phrase by the rules (no Kokoro pitch, no devoicing), a high-onset phrase level (flatOnset)
+      const RENDER = { devoice: false, flatOnset: true, jaScale: ACCENT_SCALE };
+      // the engine and the dictionary
+      let E = null,
+        A = null;
+      const player = new Audio();
+      async function speak(ys, button) {
+        button.disabled = true;
+        $("ps").textContent = "生成しています…";
+        try {
+          const { audio } = await E.synth(realize(ys, RENDER), "values");
+          player.src = URL.createObjectURL(new Blob([K.wav(audio)], { type: "audio/wav" }));
+          await player.play();
+          $("ps").textContent = "";
+        } catch (e) {
+          $("ps").textContent = `生成できませんでした：${e}`;
+        }
+        button.disabled = false;
+      }
+      function markIt() {
+        try {
+          const ys = accentMarks(strip($("src").value), A);
+          base = model(ys);
+          cur = clone(base);
+          fromVoice = false;
+          render();
+          for (const id of ["playDict", "playEdit", "reset", "save", "rec"]) $(id).disabled = false;
+        } catch (e) {
+          $("sentence").textContent = `${e}`;
+          $("sentence").className = "sentence err";
+        }
+      }
+      const PRESET_SOURCE = "eval/accent_lookup (Claude's YomiScript)";
+      PRESETS.forEach((p, i) => $("preset").add(new Option(textOf(p), i)));
+      const pick = () => {
+        $("src").value = PRESETS[+$("preset").value];
+        $("source").value = PRESET_SOURCE;
+      };
+      $("preset").onchange = () => {
+        pick();
+        if (A) markIt();
+      };
+      pick();
+      try {
+        $("listener").value = localStorage.getItem("accent_edit.listener") ?? "";
+      } catch {}
+      $("listener").onchange = () => {
+        try {
+          localStorage.setItem("accent_edit.listener", $("listener").value.trim());
+        } catch {}
+      };
+      $("mark").onclick = markIt;
+      $("playDict").onclick = () => speak(write(base), $("playDict"));
+      $("playEdit").onclick = () => speak(write(cur), $("playEdit"));
+      $("reset").onclick = () => {
+        cur = clone(base);
+        fromVoice = false;
+        render();
+      };
+
+      // the voice input (accent_voice.js): the listener's reading, aligned with Kokoro's audio of the current version,
+      // gives every mora its values and every phrase its marks
+      let recording = null,
+        recUrl = null,
+        fromVoice = false;
+      $("rec").onclick = async () => {
+        if (!recording) {
+          try {
+            recording = await startRecording();
+          } catch (e) {
+            $("vs").textContent = `マイクを使えませんでした：${e}`;
+            return;
+          }
+          $("rec").textContent = "録音を止める";
+          $("rec").classList.add("on");
+          $("vs").textContent = "録音しています。文を読み上げてから止めてください。";
+          return;
+        }
+        const r = recording;
+        recording = null;
+        $("rec").textContent = "声で直す（録音を始める）";
+        $("rec").classList.remove("on");
+        $("rec").disabled = true;
+        $("vs").textContent = "声の高さを拾っています…";
+        try {
+          const reading = trim(await r.stop());
+          if (recUrl) URL.revokeObjectURL(recUrl);
+          recUrl = URL.createObjectURL(new Blob([K.wav(reading)], { type: "audio/wav" }));
+          $("playRec").disabled = false;
+          $("vs").textContent = await applyVoice(reading);
+        } catch (e) {
+          $("vs").textContent = `声の高さを拾えませんでした：${e.message ?? e}`;
+        }
+        $("rec").disabled = false;
+      };
+      $("playRec").onclick = () => {
+        player.src = recUrl;
+        player.play().catch(() => {});
+      };
+      async function applyVoice(reading) {
+        // Kokoro's audio of the current version, without hand-set values (its timing is what matters)
+        const plain = clone(cur);
+        for (const w of plain.words) for (const x of w.morae) x.f0 = null;
+        const P = K.plan(realize(write(plain), RENDER));
+        if (P.length !== 1) throw new Error("only a sentence in Japanese alone can be read in");
+        const k = await E.synthSection(P[0], "values"),
+          frames = moraFrames(P[0], k.dur);
+        const V = voiceValues({ kokoro: k.audio, frames, reading });
+        let g = 0,
+          heard = 0;
+        for (const p of phrases(cur)) {
+          const vals = p.morae.map(() => V[g++]),
+            { nucleus: n, rise } = marksOf(
+              vals,
+              p.morae.map((q) => q.x.mk),
+            );
+          p.morae.forEach((q, i) => {
+            q.x.fall = i === n;
+            q.x.rise = i === rise;
+            q.x.f0 = vals[i];
+            if (vals[i]) heard++;
+          });
+        }
+        fromVoice = true;
+        render();
+        const missed = V.length - heard;
+        return `声の高さを ${heard} 拍に入れました${missed ? `（${missed} 拍は声が拾えず規則のまま）` : ""}。上がる・下がるは推定です。聞いて確かめてください。`;
+      }
+      // the accent phrases the listener changed, each with how far its change alone moves the rendered pitch: the
+      // dictionary's version with only that phrase (its marks and its boundaries) as edited, against the dictionary's,
+      // the largest difference of the values over the sentence (semitones), so a change too small to be heard can be
+      // told apart
+      const wordIpa = (ys) =>
+        items(ys)
+          .items.filter((x) => x.kind === "word")
+          .map((x) => x.ipa);
+      function maxDiff(a, b) {
+        let d = 0;
+        a.forEach((c, k) => c.forEach((v, i) => (d = Math.max(d, Math.abs(v - (b[k]?.[i] ?? v))))));
+        return Math.round(d * 100) / 100;
+      }
+      /** the dictionary's version with phrase p of the edited one */
+      function only(p) {
+        const m = clone(base),
+          first = p.words[0],
+          last = p.words[p.words.length - 1];
+        for (const w of p.words) m.words[w] = clone(cur.words[w]);
+        for (let i = Math.max(first - 1, 0); i <= Math.min(last, m.seps.length - 1); i++) m.seps[i] = cur.seps[i];
+        return m;
+      }
+      function changedPhrases() {
+        const [dw, ew] = [wordIpa(write(base)), wordIpa(write(cur))],
+          dv = values(write(base));
+        const out = [];
+        for (const p of phrases(cur)) {
+          const dict = p.words.map((w) => dw[w]).join(" "),
+            edited = p.words.map((w) => ew[w]).join(" "),
+            bp = phrases(base).find((q) => q.words[0] === p.words[0]);
+          if (dict === edited && bp && bp.words.length === p.words.length) continue;
+          out.push({ text: p.words.map((w) => cur.words[w].text).join(""), dictionary: dict, edited, diff: maxDiff(dv, values(write(only(p)))) });
+        }
+        return out;
+      }
+      // a record of the training data (dict/accent_edits): serve.py appends it to the repository's file; a page served
+      // without it downloads the record instead
+      let saved = 0;
+      $("save").onclick = async () => {
+        const dictionary = write(base),
+          edited = write(cur);
+        const r = {
+          text: textOf(edited),
+          input: strip($("src").value.trim()),
+          dictionary,
+          edited,
+          changed: edited !== dictionary,
+          voice: fromVoice,
+          phrases: changedPhrases(),
+          method: "D31",
+          render: RENDER,
+          dict: DICT_VERSION,
+          listener: $("listener").value.trim(),
+          source: $("source").value.trim(),
+          saved: new Date().toISOString(),
+        };
+        if (!r.listener) {
+          $("ps").textContent = "「聞いた人」を書いてください";
+          return;
+        }
+        try {
+          const res = await fetch("accent_edit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(r) });
+          if (!res.ok) throw new Error(`${res.status}`);
+          $("ps").textContent = `保存しました（${(await res.json()).count} 件目）`;
+        } catch {
+          const a = el("a");
+          a.href = URL.createObjectURL(new Blob([JSON.stringify(r, null, 1)], { type: "application/json" }));
+          a.download = `accent_edit.${++saved}.json`;
+          a.click();
+          $("ps").textContent = "このサーバーには保存できないので、ファイルに書き出しました";
+        }
+      };
+
+      try {
+        const ort = await import("./ort/ort.min.mjs");
+        ort.env.wasm.wasmPaths = new URL("ort/", location.href).href;
+        ort.env.wasm.numThreads = crossOriginIsolated ? Math.min(4, navigator.hardwareConcurrency || 1) : 1;
+        const fetchBytes = async (p) => {
+          const b = await (await fetch(p)).arrayBuffer();
+          return p.endsWith(".bin") ? b : new Uint8Array(b);
+        };
+        const [engine, analyzer] = await Promise.all([
+          (async () => {
+            const e = new K.Engine(ort, fetchBytes);
+            await e.init({ suffix: K.W16, executionProviders: ["wasm"] });
+            await e.synth("ja /a ↘/");
+            return e;
+          })(),
+          loadFrontend(async (f) => new Uint8Array(await (await fetch(DICT_URL + f)).arrayBuffer())),
+        ]);
+        E = engine;
+        A = analyzer;
+        $("st").textContent = "準備ができました";
+        $("mark").disabled = false;
+        markIt();
+      } catch (e) {
+        $("st").textContent = `読み込めませんでした：${e}`;
+        $("st").className = "err";
+      }
+    </script>
+  </body>
+</html>

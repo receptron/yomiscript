@@ -38,3 +38,26 @@ describe("realize with jaScale", () => {
     expect(realize("ja /kʲo<f0:3>ꜜː<t:今日> ↘/", { jaScale: 0.5 })).toBe("ja /kʲo<f0:3>ꜜː<f0:1.03,0.32,-0.23><t:今日> ↘/");
   });
 });
+
+describe("realize with devoice and flatOnset", () => {
+  const vals = (ys: string, k: number) => [...ys.matchAll(/<f0:([^>]*)>/g)].map((m) => m[1].split(",").map(Number))[k];
+  it("writes no devoicing when asked not to, and the same values", () => {
+    const ys = "ja /kiꜛkɯ<t:聞く> ↘/";
+    expect(realize(ys)).toContain("̥");
+    expect(realize(ys, { devoice: false })).not.toContain("̥");
+    expect(realize(ys, { devoice: false }).replace(/<f0:[^>]*>/g, "")).toBe(ys);
+  });
+  it("keeps a high-onset phrase level up to its highest value", () => {
+    const ys = "ja /eːɡʲoː<t:営業> | dʑiꜛkaɴ<t:時間> ↘/",
+      flat = realize(ys, { devoice: false, flatOnset: true });
+    const first = vals(flat, 0),
+      third = vals(flat, 2);
+    expect(Math.min(...first)).toBe(Math.max(...third.slice(0, 1)));
+    expect(vals(realize(ys, { devoice: false }), 0)[0]).toBeLessThan(first[0]);
+    // the low-onset phrase after it is not touched
+    expect(flat.split(" | ")[1]).toBe(realize(ys, { devoice: false }).split(" | ")[1]);
+  });
+  it("leaves low-onset and head-high phrases as they are", () => {
+    for (const ys of ["ja /aꜛme<t:飴> ɡa<t:が> ↘/", "ja /kʲoꜜː<t:今日> wa<t:は> ↘/"]) expect(realize(ys, { flatOnset: true })).toBe(realize(ys));
+  });
+});
