@@ -4,9 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Station Announcement</title>
-    <script type="importmap">
-      { "imports": { "@yomiscript/core": "./pkg/core/dist/index.js", "@yomiscript/kokoro": "./pkg/kokoro/dist/index.js" } }
-    </script>
     <style>
       :root {
         --bg: #f4f6f8;
@@ -130,6 +127,7 @@
   </head>
   <body>
     <main>
+      <nav class="muted"><a href="./">YomiScript のトップへ</a></nav>
       <h1>駅のアナウンス</h1>
       <p class="muted">
         列車と行き先を選び、番線と時刻を入れて「アナウンスを再生」を押すと、このブラウザーで音声を生成します。数字の読み（8号 はちごう、15番線
@@ -151,13 +149,27 @@
       </div>
       <div class="row">
         <button class="play" id="play" disabled>アナウンスを再生</button>
-        <span class="muted" id="st">音声モデルを読み込んでいます…</span>
+        <span class="muted" id="st">音声モデルを読み込んでいます…（初回は約 160 MB）</span>
       </div>
       <details>
         <summary class="muted">YomiScript</summary>
         <code id="ys"></code>
       </details>
     </main>
+    <script>
+      // ?local: the packages, models and onnxruntime of this repository (serve.py); otherwise the published ones
+      const LOCAL = new URLSearchParams(location.search).has("local");
+      const PKG = LOCAL
+        ? { core: "./pkg/core/dist/index.js", kokoro: "./pkg/kokoro/dist/index.js" }
+        : {
+            core: "https://cdn.jsdelivr.net/npm/@yomiscript/core@0.1.3/dist/index.js",
+            kokoro: "https://cdn.jsdelivr.net/npm/@yomiscript/kokoro@0.1.2/dist/index.js",
+          };
+      const map = document.createElement("script");
+      map.type = "importmap";
+      map.textContent = JSON.stringify({ imports: { "@yomiscript/core": PKG.core, "@yomiscript/kokoro": PKG.kokoro } });
+      document.head.append(map);
+    </script>
     <script type="module">
       import { realize } from "@yomiscript/core";
       import * as K from "@yomiscript/kokoro";
@@ -221,11 +233,14 @@
       };
 
       try {
-        const ort = await import("./ort/ort.min.mjs");
-        ort.env.wasm.wasmPaths = new URL("ort/", location.href).href;
+        const LOCAL = new URLSearchParams(location.search).has("local"),
+          ORT = LOCAL ? new URL("ort/", location.href).href : "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/",
+          MODELS = LOCAL ? "./" : K.KOKORO_MODELS_URL;
+        const ort = await import(ORT + "ort.min.mjs");
+        ort.env.wasm.wasmPaths = ORT;
         ort.env.wasm.numThreads = crossOriginIsolated ? Math.min(4, navigator.hardwareConcurrency || 1) : 1;
         const e = new K.Engine(ort, async (p) => {
-          const b = await (await fetch(p)).arrayBuffer();
+          const b = await (await fetch(MODELS + p)).arrayBuffer();
           return p.endsWith(".bin") ? b : new Uint8Array(b);
         });
         await e.init({ suffix: K.W16, executionProviders: ["wasm"] });
