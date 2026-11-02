@@ -26,6 +26,17 @@ export interface Cand {
   cost: number;
   l: number;
   r: number;
+  /** the pronunciation (katakana) and the part of speech of each word of the entry, joined by +, and the accent type
+   * of its first word */
+  pron: string;
+  pos: string;
+  acc: number;
+}
+/** an accent from another source for an entry: the mora the pitch falls after (0: none), and a combination rule in
+ * NAIST-JDIC's notation (名詞%F1/動詞%F2@0) */
+export interface EntryAccent {
+  a: number;
+  chain?: string;
 }
 /** every dictionary entry of a sentence given as its words (D31) */
 export interface Sentence {
@@ -44,8 +55,9 @@ export interface Analyzer {
   candidates(words: string[]): Sentence;
   /** the connection cost from right id r to left id l (0: the start or end of the sentence) */
   conn(r: number, l: number): number;
-  /** OpenJTalk's rules on a path of candidates(words).cands */
-  label(words: string[], path: number[]): Analysis;
+  /** OpenJTalk's rules on a path of candidates(words).cands, with another accent for some of its entries, and some
+   * of them joined to the accent phrase before (true) or starting one (false) */
+  label(words: string[], path: number[], accents?: (EntryAccent | null)[], chain?: (boolean | null)[]): Analysis;
 }
 
 async function gunzip(b: Uint8Array | ArrayBuffer): Promise<Uint8Array> {
@@ -73,6 +85,6 @@ export async function loadFrontend(load: LoadBytes, wasm?: BufferSource): Promis
     analyze: (text) => analysis(fe.analyze(text)),
     candidates: (words) => JSON.parse(fe.candidates(JSON.stringify(words))) as Sentence,
     conn: (r, l) => fe.conn(r, l),
-    label: (words, path) => analysis(fe.label(JSON.stringify({ words, path }))),
+    label: (words, path, accents, chain) => analysis(fe.label(JSON.stringify({ words, path, accents, chain }))),
   };
 }

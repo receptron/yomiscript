@@ -1,15 +1,19 @@
 // The answers of the listening page (listening.<name>.json, downloaded from it) against the key in set.json: per
 // item, which method each listener preferred, and the totals.
-// usage: node score.mjs <answers.json> [...]   -> results/listen.json and a summary
+// usage: node score.mjs [--dir D] <answers.json> [...]   -> D/../results/listen.json and a summary (D: the set's
+//        directory, default this one)
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { SET } from "./build.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const set = JSON.parse(fs.readFileSync(SET, "utf8")),
-  files = process.argv.slice(2);
-if (!files.length) throw new Error("usage: node score.mjs <answers.json> [...]");
+const args = process.argv.slice(2),
+  at = args.indexOf("--dir"),
+  dir = at >= 0 ? path.resolve(args.splice(at, 2)[1]) : HERE,
+  set = JSON.parse(fs.readFileSync(path.join(dir, "set.json"), "utf8")),
+  methods = set.methods ?? ["analysis", "lookup"],
+  files = args;
+if (!files.length) throw new Error("usage: node score.mjs [--dir D] <answers.json> [...]");
 
 /** an answer as a verdict on the methods: the preferred one, same, or both unnatural */
 function verdict(it, choice) {
@@ -17,7 +21,7 @@ function verdict(it, choice) {
   if (choice === "y") return it.y.method;
   return choice; // "same", "bad"
 }
-const KINDS = ["lookup", "analysis", "same", "bad"],
+const KINDS = [methods[1], methods[0], "same", "bad"],
   total = Object.fromEntries(KINDS.map((k) => [k, 0])),
   rows = [];
 for (const f of files) {
@@ -31,16 +35,16 @@ for (const f of files) {
     rows.push({
       listener: a.listener,
       item: it.item,
-      changed: it.words.filter((w) => w.changed).map((w) => `${w.t} ${w.analysis} -> ${w.lookup}`),
+      changed: it.words.filter((w) => w.changed).map((w) => `${w.t} ${w[methods[0]]} -> ${w[methods[1]]}`),
       verdict: v,
       note: ans.note ?? "",
     });
   }
 }
-fs.mkdirSync(path.join(HERE, "../results"), { recursive: true });
-fs.writeFileSync(path.join(HERE, "../results/listen.json"), JSON.stringify({ seed: set.seed, total, rows }, null, 1));
+fs.mkdirSync(path.join(dir, "../results"), { recursive: true });
+fs.writeFileSync(path.join(dir, "../results/listen.json"), JSON.stringify({ seed: set.seed, total, rows }, null, 1));
 for (const r of rows) {
   const note = r.note ? `  (${r.note})` : "";
   console.log(`${r.listener} ${r.item} ${r.verdict.padEnd(8)} ${r.changed.join(", ")}${note}`);
 }
-console.log("preferred: prototype", total.lookup, "| ja-accent", total.analysis, "| same", total.same, "| both unnatural", total.bad);
+console.log(`preferred: ${methods[1]} ${total[methods[1]]} | ${methods[0]} ${total[methods[0]]} | same ${total.same} | both unnatural ${total.bad}`);

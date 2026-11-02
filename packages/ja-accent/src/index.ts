@@ -4,12 +4,12 @@
 // (lookup.ts, D31); `{ analysis: true }` lets OpenJTalk analyse the text again instead (D25, D27), the earlier way.
 import { isJa, parse, realize, type Katarite } from "@yomiscript/core";
 import type { Analyzer } from "./frontend.ts";
-import { lookupAnalysis } from "./lookup.ts";
+import { lookupAnalysis, type AccentSource, type JoinRule } from "./lookup.ts";
 import { dictPhrases } from "./phrases.ts";
 import { writeMarks } from "./marks.ts";
 
-export { DICT_FILES, DICT_URL, DICT_VERSION, loadFrontend, type Analysis, type Analyzer, type Cand, type Sentence } from "./frontend.ts";
-export { bestPath, lookupAnalysis, wordsOf } from "./lookup.ts";
+export { DICT_FILES, DICT_URL, DICT_VERSION, loadFrontend, type Analysis, type Analyzer, type Cand, type EntryAccent, type Sentence } from "./frontend.ts";
+export { bestPath, lookupAnalysis, wordsOf, type AccentSource, type JoinRule } from "./lookup.ts";
 export { labelMorae, type HL, type LabelMora } from "./labels.ts";
 export { dictPhrases, type DictPhrase } from "./phrases.ts";
 export { sameMorae, writeMarks, type MarkStats } from "./marks.ts";
@@ -31,13 +31,17 @@ export interface AccentOptions {
   /** let OpenJTalk analyse the text again and mark only the phrases it reads the same way (D25, D27), instead of
    * looking the YomiScript's own words and readings up (D31) */
   analysis?: boolean;
+  /** accents from another source for the entries of the path (D31 only) */
+  source?: AccentSource;
+  /** a phrase rule in place of OpenJTalk's for some entries of the path (D31 only) */
+  join?: JoinRule;
 }
 /** the YomiScript with the dictionary's accent marks; unchanged when it does not need them (needsAccent) */
 export function accentMarks(ys: string, a: Analyzer, opts: AccentOptions = {}): string {
   if (!needsAccent(ys)) return ys;
   const u = parse(ys),
     text = u.texts.join(""),
-    { njd, labels } = opts.analysis ? a.analyze(text) : lookupAnalysis(u, a),
+    { njd, labels } = opts.analysis ? a.analyze(text) : lookupAnalysis(u, a, opts.source, opts.join),
     P = dictPhrases(text, njd, labels);
   return P ? writeMarks(ys, P).ys : ys;
 }

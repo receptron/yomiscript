@@ -1,0 +1,237 @@
+{
+ "sentences": 4530,
+ "scored": 3762,
+ "notScored": {
+  "read another way": 646,
+  "not parsed": 122
+ },
+ "ways": {
+  "all": {
+   "d31": {
+    "morae": 121269,
+    "covered": 120038,
+    "hlRight": 104246,
+    "bounds": 116097,
+    "boundsGold": 20929,
+    "boundsOurs": 24680,
+    "boundsBoth": 19995,
+    "phrases": 25092,
+    "phrasesSpan": 18981,
+    "phrasesRight": 15224
+   },
+   "d25": {
+    "morae": 121269,
+    "covered": 117081,
+    "hlRight": 101871,
+    "bounds": 112756,
+    "boundsGold": 20017,
+    "boundsOurs": 23735,
+    "boundsBoth": 19146,
+    "phrases": 25092,
+    "phrasesSpan": 18573,
+    "phrasesRight": 14971
+   },
+   "unidic": {
+    "morae": 121269,
+    "covered": 120038,
+    "hlRight": 103630,
+    "bounds": 116097,
+    "boundsGold": 20929,
+    "boundsOurs": 24680,
+    "boundsBoth": 19995,
+    "phrases": 25092,
+    "phrasesSpan": 18981,
+    "phrasesRight": 14965
+   },
+   "unidicContent": {
+    "morae": 121269,
+    "covered": 120038,
+    "hlRight": 103893,
+    "bounds": 116097,
+    "boundsGold": 20929,
+    "boundsOurs": 24680,
+    "boundsBoth": 19995,
+    "phrases": 25092,
+    "phrasesSpan": 18981,
+    "phrasesRight": 15099
+   },
+   "rules": {
+    "morae": 121269,
+    "covered": 120081,
+    "hlRight": 104965,
+    "bounds": 116196,
+    "boundsGold": 20982,
+    "boundsOurs": 22029,
+    "boundsBoth": 19689,
+    "phrases": 25092,
+    "phrasesSpan": 20260,
+    "phrasesRight": 15927
+   },
+   "corrections": {
+    "morae": 121269,
+    "covered": 120038,
+    "hlRight": 104917,
+    "bounds": 116097,
+    "boundsGold": 20929,
+    "boundsOurs": 24680,
+    "boundsBoth": 19995,
+    "phrases": 25092,
+    "phrasesSpan": 18981,
+    "phrasesRight": 15448
+   },
+   "nounCorrections": {
+    "morae": 121269,
+    "covered": 120038,
+    "hlRight": 104430,
+    "bounds": 116097,
+    "boundsGold": 20929,
+    "boundsOurs": 24680,
+    "boundsBoth": 19995,
+    "phrases": 25092,
+    "phrasesSpan": 18981,
+    "phrasesRight": 15288
+   },
+   "both": {
+    "morae": 121269,
+    "covered": 120081,
+    "hlRight": 105141,
+    "bounds": 116196,
+    "boundsGold": 20982,
+    "boundsOurs": 22029,
+    "boundsBoth": 19689,
+    "phrases": 25092,
+    "phrasesSpan": 20260,
+    "phrasesRight": 15988
+   },
+   "bothAll": {
+    "morae": 121269,
+    "covered": 120081,
+    "hlRight": 105596,
+    "bounds": 116196,
+    "boundsGold": 20982,
+    "boundsOurs": 22029,
+    "boundsBoth": 19689,
+    "phrases": 25092,
+    "phrasesSpan": 20260,
+    "phrasesRight": 16172
+   }
+  },
+  "test": {
+   "d31": {
+    "morae": 60913,
+    "covered": 60342,
+    "hlRight": 52466,
+    "bounds": 58388,
+    "boundsGold": 10603,
+    "boundsOurs": 12471,
+    "boundsBoth": 10144,
+    "phrases": 12653,
+    "phrasesSpan": 9651,
+    "phrasesRight": 7779
+   },
+   "d25": {
+    "morae": 60913,
+    "covered": 58788,
+    "hlRight": 51198,
+    "bounds": 56635,
+    "boundsGold": 10120,
+    "boundsOurs": 11968,
+    "boundsBoth": 9687,
+    "phrases": 12653,
+    "phrasesSpan": 9420,
+    "phrasesRight": 7631
+   },
+   "unidic": {
+    "morae": 60913,
+    "covered": 60342,
+    "hlRight": 52168,
+    "bounds": 58388,
+    "boundsGold": 10603,
+    "boundsOurs": 12471,
+    "boundsBoth": 10144,
+    "phrases": 12653,
+    "phrasesSpan": 9651,
+    "phrasesRight": 7644
+   },
+   "unidicContent": {
+    "morae": 60913,
+    "covered": 60342,
+    "hlRight": 52286,
+    "bounds": 58388,
+    "boundsGold": 10603,
+    "boundsOurs": 12471,
+    "boundsBoth": 10144,
+    "phrases": 12653,
+    "phrasesSpan": 9651,
+    "phrasesRight": 7713
+   },
+   "rules": {
+    "morae": 60913,
+    "covered": 60365,
+    "hlRight": 52816,
+    "bounds": 58439,
+    "boundsGold": 10630,
+    "boundsOurs": 11174,
+    "boundsBoth": 9993,
+    "phrases": 12653,
+    "phrasesSpan": 10250,
+    "phrasesRight": 8115
+   },
+   "corrections": {
+    "morae": 60913,
+    "covered": 60342,
+    "hlRight": 52640,
+    "bounds": 58388,
+    "boundsGold": 10603,
+    "boundsOurs": 12471,
+    "boundsBoth": 10144,
+    "phrases": 12653,
+    "phrasesSpan": 9651,
+    "phrasesRight": 7841
+   },
+   "nounCorrections": {
+    "morae": 60913,
+    "covered": 60342,
+    "hlRight": 52465,
+    "bounds": 58388,
+    "boundsGold": 10603,
+    "boundsOurs": 12471,
+    "boundsBoth": 10144,
+    "phrases": 12653,
+    "phrasesSpan": 9651,
+    "phrasesRight": 7780
+   },
+   "both": {
+    "morae": 60913,
+    "covered": 60365,
+    "hlRight": 52807,
+    "bounds": 58439,
+    "boundsGold": 10630,
+    "boundsOurs": 11174,
+    "boundsBoth": 9993,
+    "phrases": 12653,
+    "phrasesSpan": 10250,
+    "phrasesRight": 8113
+   },
+   "bothAll": {
+    "morae": 60913,
+    "covered": 60365,
+    "hlRight": 52966,
+    "bounds": 58439,
+    "boundsGold": 10630,
+    "boundsOurs": 11174,
+    "boundsBoth": 9993,
+    "phrases": 12653,
+    "phrasesSpan": 10250,
+    "phrasesRight": 8177
+   }
+  }
+ },
+ "causes": {
+  "accent": 3706,
+  "boundary": 5791,
+  "numbers": 170,
+  "unmarked": 118,
+  "no entry": 83
+ }
+}

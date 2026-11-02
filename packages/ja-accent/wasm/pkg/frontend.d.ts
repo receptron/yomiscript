@@ -19,8 +19,8 @@ export class Frontend {
      */
     conn(r: number, l: number): number;
     /**
-     * `request`: `{ words, path }`, the words as given to `candidates` and the chosen entries in order (indices into
-     * its cands) -> `[njd, labels]` as `analyze` returns them. An entry that starts inside a word of the YomiScript
+     * `request`: `{ words, path, accents? }`, the words as given to `candidates`, the chosen entries in order (indices
+     * into its cands) and, optionally, an accent for each in place of the dictionary's -> `[njd, labels]` as `analyze` returns them. An entry that starts inside a word of the YomiScript
      * (and each later part of a compound entry) joins the accent phrase before, so a word is never split between
      * two phrases; marks keep OpenJTalk's rule.
      */

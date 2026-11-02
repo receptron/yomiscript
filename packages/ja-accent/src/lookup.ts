@@ -7,7 +7,7 @@
 // cost, so it is used only where nothing else fits (that phrase stays unmarked, as the readings differ). OpenJTalk's
 // rules then run on the path (`label`).
 import { isJa, type Token, type Utterance } from "@yomiscript/core";
-import type { Analysis, Analyzer, Sentence } from "./frontend.ts";
+import type { Analysis, Analyzer, Cand, EntryAccent, Sentence } from "./frontend.ts";
 import type { LabelMora } from "./labels.ts";
 import { sameMorae } from "./marks.ts";
 
@@ -171,12 +171,23 @@ export function bestPath(S: Sentence, W: Word[], a: Analyzer): { path: number[];
     }
   return backtrack(X, X.at[n], Y.U.length);
 }
+/** another source of accents: for an entry of the path (its surface in the normalized text), an accent in place of
+ * the dictionary's, or undefined to keep it */
+export type AccentSource = (entry: Cand & { surface: string }) => EntryAccent | undefined;
+/** a phrase rule in place of OpenJTalk's for an entry of the path and the one before it: join it to the phrase before
+ * (true), start a phrase (false), or leave it to OpenJTalk (undefined) */
+export type JoinRule = (prev: Cand & { surface: string }, cur: Cand & { surface: string }) => boolean | undefined;
 /** OpenJTalk's rules on the cheapest path that reads as the YomiScript does, the words on it taken as OpenJTalk reads
  * them, and whether there was one (when not, OpenJTalk's own analysis of the text) */
-export function lookupAnalysis(u: Utterance, a: Analyzer): Analysis & { fell: string[]; found: boolean } {
+export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource, join?: JoinRule): Analysis & { fell: string[]; found: boolean } {
   const W = wordsOf(u),
     words = W.map((w) => w.text),
     S = a.candidates(words),
-    best = bestPath(S, W, a);
-  return { ...a.label(words, best ? best.path : S.alone), fell: best ? best.fell.map((i) => W[i].text) : [], found: !!best };
+    best = bestPath(S, W, a),
+    path = best ? best.path : S.alone,
+    chars = [...S.norm],
+    E = path.map((i) => ({ ...S.cands[i], surface: chars.slice(S.cands[i].s, S.cands[i].e).join("") })),
+    accents = source && E.map((e) => source(e) ?? null),
+    chain = join && E.map((e, k) => (k ? (join(E[k - 1], e) ?? null) : null));
+  return { ...a.label(words, path, accents, chain), fell: best ? best.fell.map((i) => W[i].text) : [], found: !!best };
 }

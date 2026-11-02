@@ -2,12 +2,12 @@
 // free one when that is taken). It serves the page, shuffle.mjs (eval/tts_readings/listen's), the set without its key
 // (which clip is which method: /set.json) and each clip by its opaque id (/clip/<id>.wav). Builds the set first when
 // set.json or its audio is missing.
-// usage: node serve.mjs [port]
+// usage: node serve.mjs [port] [--dir D]   (D: another set made by renderSet of build.mjs; default this directory)
 import fs from "fs";
 import http from "http";
 import path from "path";
 import { fileURLToPath } from "url";
-import { AUDIO, SET, build } from "./build.mjs";
+import { build } from "./build.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const PORT = 8829;
@@ -32,11 +32,14 @@ function listen(server, port) {
     server.listen(port, "127.0.0.1", () => resolve(server));
   });
 }
-const complete = (set) => set.items.every((it) => [it.x, it.y].every((c) => fs.existsSync(path.join(AUDIO, `${c.id}.wav`))));
+const complete = (set, audio) => set.items.every((it) => [it.x, it.y].every((c) => fs.existsSync(path.join(audio, `${c.id}.wav`))));
 
-export async function serve(port = PORT) {
-  let set = fs.existsSync(SET) ? JSON.parse(fs.readFileSync(SET, "utf8")) : null;
-  if (!set || !complete(set)) set = await build(set?.seed);
+export async function serve(port = PORT, dir = HERE) {
+  const file = path.join(dir, "set.json"),
+    AUDIO = path.join(dir, "audio");
+  let set = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
+  if (dir !== HERE && (!set || !complete(set, AUDIO))) throw new Error(`${dir}: no complete set (build it first)`);
+  if (!set || !complete(set, AUDIO)) set = await build(set?.seed);
   const ids = new Set(set.items.flatMap((it) => [it.x.id, it.y.id])),
     body = JSON.stringify(publicSet(set));
   const server = http.createServer((req, res) => {
@@ -51,6 +54,9 @@ export async function serve(port = PORT) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const server = await serve(Number(process.argv[2] ?? PORT));
+  const args = process.argv.slice(2),
+    at = args.indexOf("--dir"),
+    dir = at >= 0 ? path.resolve(args.splice(at, 2)[1]) : HERE;
+  const server = await serve(Number(args[0] ?? PORT), dir);
   console.log(`listening page: http://127.0.0.1:${server.address().port}/  (Ctrl+C to stop)`);
 }

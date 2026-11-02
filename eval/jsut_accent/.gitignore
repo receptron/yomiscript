@@ -1,0 +1,10 @@
+# JSUT's texts and labels (CC BY-SA, prepare.py) and everything that repeats them (the LLM's answers hold the text
+# in <t:...>): kept outside the repository. Only aggregate scores are committed.
+data/
+results/raw/
+results/items.json
+results/*.log
+listen/
+results/corrections.json
+results/details.md
+results/listen.json

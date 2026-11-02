@@ -6,7 +6,9 @@
 //! YomiScript does (`conn` gives the connection costs); `label` runs the rules on that path. The dictionary is given
 //! as bytes, so it runs where there is no file system (the browser).
 use jpreprocess::normalize_text_for_naist_jdic;
-use jpreprocess_core::{pos::POS, token::Token as _, word_entry::WordEntry as JEntry};
+use jpreprocess_core::{
+    accent_rule::ChainRules, pos::POS, token::Token as _, word_entry::WordEntry as JEntry,
+};
 use jpreprocess_dictionary::{
     dictionary::{
         to_dict::JPreprocessDictionaryBuilder, word_encoding::JPreprocessDictionaryWordEncoding,
@@ -45,6 +47,11 @@ struct Cand {
     cost: i32,
     l: i32,
     r: i32,
+    /// the pronunciation (katakana) and the part of speech of each word of the entry, joined by `+`, and the accent
+    /// type of its first word
+    pron: String,
+    pos: String,
+    acc: usize,
 }
 #[derive(Serialize)]
 struct Sentence {
@@ -60,6 +67,33 @@ struct Sentence {
 struct LabelRequest {
     words: Vec<String>,
     path: Vec<usize>,
+    /// for each entry of the path, an accent from another source to use in place of the dictionary's (null: keep it)
+    #[serde(default)]
+    accents: Vec<Option<EntryAccent>>,
+    /// for each entry of the path, whether it joins the accent phrase before (true), starts one (false), or is left
+    /// to OpenJTalk's rules (null)
+    #[serde(default)]
+    chain: Vec<Option<bool>>,
+}
+/// an accent type (the mora the pitch falls after, 0 for none) and a combination rule in NAIST-JDIC's notation
+#[derive(Deserialize)]
+struct EntryAccent {
+    a: usize,
+    chain: Option<String>,
+}
+/// the entry with another accent (a single-word entry only; a compound keeps its own)
+fn with_accent(j: &JEntry, acc: Option<&EntryAccent>) -> JEntry {
+    match (j, acc) {
+        (JEntry::Single(d), Some(x)) => {
+            let mut d = d.clone();
+            d.pron.set_accent(x.a);
+            if let Some(c) = &x.chain {
+                d.chain_rule = ChainRules::new(c);
+            }
+            JEntry::Single(d)
+        }
+        _ => j.clone(),
+    }
 }
 
 struct Entry {
@@ -291,6 +325,25 @@ impl Frontend {
                 cost: x.lentry.map_or(0, |l| l.word_cost as i32),
                 l: x.lentry.map_or(-1, |l| l.left_id() as i32),
                 r: x.lentry.map_or(-1, |l| l.right_id() as i32),
+                pron: x
+                    .jentry
+                    .get_with_string(&x.surface)
+                    .iter()
+                    .map(|(_, d)| d.pron.to_string())
+                    .collect::<Vec<_>>()
+                    .join("+"),
+                pos: x
+                    .jentry
+                    .get_with_string(&x.surface)
+                    .iter()
+                    .map(|(_, d)| d.pos.to_string())
+                    .collect::<Vec<_>>()
+                    .join("+"),
+                acc: x
+                    .jentry
+                    .get_with_string(&x.surface)
+                    .first()
+                    .map_or(0, |(_, d)| d.pron.accent()),
             })
             .collect();
         serde_json::to_string(&Sentence {
@@ -315,23 +368,27 @@ impl Frontend {
             .cost(r as u32, l as u32)
     }
 
-    /// `request`: `{ words, path }`, the words as given to `candidates` and the chosen entries in order (indices into
-    /// its cands) -> `[njd, labels]` as `analyze` returns them. An entry that starts inside a word of the YomiScript
+    /// `request`: `{ words, path, accents? }`, the words as given to `candidates`, the chosen entries in order (indices
+    /// into its cands) and, optionally, an accent for each in place of the dictionary's -> `[njd, labels]` as `analyze` returns them. An entry that starts inside a word of the YomiScript
     /// (and each later part of a compound entry) joins the accent phrase before, so a word is never split between
     /// two phrases; marks keep OpenJTalk's rule.
     pub fn label(&self, request: &str) -> Result<String, JsError> {
         let req: LabelRequest = serde_json::from_str(request).map_err(err)?;
         let (_, starts, entries, _) = self.sentence(&req.words)?;
         let mut nodes = Vec::new();
-        for &i in &req.path {
+        for (k, &i) in req.path.iter().enumerate() {
             let x = entries
                 .get(i)
                 .ok_or_else(|| JsError::new("label: no such entry"))?;
             let first = nodes.len();
-            nodes.extend(NJDNode::load(&x.surface, &x.jentry));
+            let acc = req.accents.get(k).and_then(|a| a.as_ref());
+            nodes.extend(NJDNode::load(&x.surface, &with_accent(&x.jentry, acc)));
             let inside = !starts.contains(&x.s);
-            for (k, n) in nodes.iter_mut().enumerate().skip(first) {
-                if (inside || k > first) && !matches!(n.get_pos(), POS::Kigou(_)) {
+            if let (Some(Some(c)), Some(n)) = (req.chain.get(k), nodes.get_mut(first)) {
+                n.set_chain_flag(*c);
+            }
+            for (m, n) in nodes.iter_mut().enumerate().skip(first) {
+                if (inside || m > first) && !matches!(n.get_pos(), POS::Kigou(_)) {
                     n.set_chain_flag(true);
                 }
             }
