@@ -47,6 +47,10 @@ kana). Mono, 24 kHz.
 | `pauses`, `gaps` | `{unit index: seconds}`: a pause after that unit, where the YomiScript has one (`pauses`) or not (`gaps`) |
 | `align` | the alignment's mean probability |
 
+The clips given in kana (`given: "kana"`) read right but speak a worse accent: read from the pitch, their accent
+nucleus is JSUT's gold one in 45.8% of the phrases, against 70.5% for the clips given the text (without the kanji
+Qwen does not know the words). Use them for the timing or the reading, not as an accent reference.
+
 A clip with `read_right` false has a reading other than the gold's somewhere (Qwen reads text, and misreads
 some kanji); its prosody is not given, and it should not be used where the reading matters.
 

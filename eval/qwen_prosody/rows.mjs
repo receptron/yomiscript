@@ -2,7 +2,8 @@
 // tools' accent marks (the D31 dictionary accent, as `yomiscript speak` adds them), the model's feature rows
 // (jaContourRows), Qwen's three values per mora (the target), and the shipped model's values (D29), for comparison.
 // Only the morae of accent phrases the dictionary marks are targets: those are the ones the tools give values to
-// (realize markedOnly); the others keep Kokoro's own pitch.
+// (realize markedOnly); the others keep Kokoro's own pitch. Only the sentences Qwen read from the text: from kana its
+// accent is much further from JSUT's gold (README.md), so the kana pass is not a pitch target.
 // usage: node rows.mjs   -> work/rows.json
 import fs from "fs";
 import path from "path";
@@ -38,7 +39,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     out = [];
   let skipped = 0;
   for (const l of lines) {
-    const d = sentenceData(JSON.parse(l));
+    const r = JSON.parse(l);
+    if (r.given !== "text") continue;
+    const d = sentenceData(r);
     if (d) out.push(d);
     else skipped++;
   }

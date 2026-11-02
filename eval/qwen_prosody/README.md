@@ -82,6 +82,11 @@ hf upload receptron/yomiscript-ja-qwen-speech work/hf . --repo-type dataset   # 
 - The kana pass: 1,251 sentences, 7,166 s of audio in 2,726 s; 708 read right.
 - **Kept: 3,211 sentences** (2,503 from the text, 708 from kana; 85.4% of 3,762), 97,528 units; 551 misread in
   every pass. The Hugging Face package (`dataset.py`): 5,013 clips, 7.08 h, 626 MB of FLAC.
+- **The kana pass reads right but speaks a worse accent.** Read from Qwen's pitch (below), the accent nucleus of
+  JSUT's gold phrases is Qwen's in 70.5% of the phrases it read from the text (15,265) and in 45.8% of those it read
+  from kana (5,062): without the kanji Qwen does not know the words. So `rows.mjs` and `accent_qwen.py` learn from
+  the 2,503 sentences read from the text only; the kana ones stay in the data (`given: "kana"`) for their timing
+  and for other uses, not as pitch targets.
 
 ### The pitch model fitted to Qwen (2,503 sentences; `results/fit_report_2503.json`)
 
@@ -112,9 +117,28 @@ why the listener heard them as unnatural):
 - sentence ends: Qwen stays low through できました, 始まります; D29 follows the marks up.
 
 With all 3,211 sentences (`results/fit_report_3211.json`; λ 1; 1,569 test sentences): flat 3.02, D29 2.23, refit
-2.01 semitones; the same picture.
+2.01 semitones; from the text only, as now fitted (`results/fit_report_text.json`): 3.02, 2.10, 1.91.
 
 All three are set by the model's input, the D31 marks (where a phrase falls, where phrases and pauses are), which
 the refit does not change. Fitting more freely on the same input does not reach Qwen either: on the test half, a
 gradient-boosted model of the same features gets to 1.79 semitones (train 1.60), the linear 1.92 (train 1.91).
+
+### Word accents learned from Qwen (`accent_qwen.py`, `corrections.mjs`; `data/qwen_word_accents.json`)
+
+Qwen's accent nucleus in each of JSUT's gold accent phrases, read from its pitch by eval/prosody_ref/accent.py's
+classifier (learnt on the JSUT speaker's recordings), in place of the gold, through eval/jsut_accent/corrections.mjs's
+learner (a word seen at least twice, the same type in 80%, not NAIST-JDIC's; the training half). Scored against the
+gold by eval/jsut_accent/score.mjs (its `qwen` row, `results/summary.md` there).
+
+- The reading of accent from pitch is itself uncertain: on 194 sentences the classifier was not trained on, it
+  hears the gold's nucleus in 83.4% of the phrases in the JSUT speaker's own recordings and in 70.9% in Qwen's.
+- On the gold phrases, D31's marks have the gold's nucleus in 71.5%, Qwen 71.2% (2,503 sentences read from the
+  text: 70.5%); the two agree in only 58.6%, and one of them is right in 88.5%.
+- The word accents: 68 corrections (2,503 sentences). Against the gold on the test half they make D31 worse: gold
+  phrases right 61.5% -> 61.2%, H / L 86.9% -> 86.8%; better on 61 phrases, worse on 132 (the gold-learned
+  corrections of jsut_accent: better 249, worse 25). **Not used.**
+
+A word accent read through the classifier is not what made Qwen's pitch better by ear; and it is scored here against
+one speaker's labels, not by ear. The listening tests above point at the marks (nucleus, phrasing, pauses) as what
+the model lacks; reading them from Qwen with the pitch model itself (analysis by synthesis) is the next thing to try.
 
