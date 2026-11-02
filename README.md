@@ -1,9 +1,10 @@
 # yomiscript
 
-Text-to-speech with few misreadings: the LLM that writes a sentence also writes how it is read, and a small TTS
-engine speaks exactly that. The notation between the two is **YomiScript**, a language-neutral DSL for pronunciation
-and prosody (IPA with prosody marks). It is offered as a replacement for the OpenAI and Gemini speech APIs, above all
-for Japanese, where one written form often has several readings (一日: ついたち or いちにち, 上手: じょうず or うわて).
+Speech from the pronunciation an LLM writes: the LLM that writes a sentence also writes how it is read, as
+**YomiScript**, a language-neutral DSL for pronunciation and prosody (IPA with prosody marks), and a small speech
+engine speaks exactly that. It is not text-to-speech: how the text is read is decided by the LLM, not guessed by the
+engine, which matters above all for Japanese, where one written form often has several readings (一日: ついたち or
+いちにち, 上手: じょうず or うわて).
 
 Status: early. The YomiScript spec is a v0.2 draft; the packages are on npm (`@yomiscript/*`, the CLI as `yomiscript`).
 

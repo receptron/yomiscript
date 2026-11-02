@@ -7,8 +7,9 @@ notation or who decides what still go to `decisions.md` (D24 records this plan).
 
 The LLM that writes a sentence also writes how it is read, as YomiScript; a Katarite turns that into sound. The TTS
 itself has no front end and no LLM of its own: in an MCP server or a gui-chat-protocol plugin, the calling LLM writes
-the YomiScript as the tool's argument. It is offered as a replacement for the OpenAI and Gemini speech APIs, with
-fewer misreadings, above all in Japanese, where a written form often has several readings (homographs: 一日, 上手, 人気).
+the YomiScript as the tool's argument. It is speech from a pronunciation the LLM has decided, not text-to-speech: the
+reading is the LLM's, so there are fewer misreadings, above all in Japanese, where a written form often has several
+readings (homographs: 一日, 上手, 人気).
 
 Evidence so far (`eval/browser_tts`, one run each, provisional gold):
 
