@@ -735,7 +735,8 @@
         try {
           const res = await fetch("accent_edit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(r) });
           if (!res.ok) throw new Error(`${res.status}`);
-          $("ps").textContent = `保存しました（${(await res.json()).count} 件目）`;
+          const { count, replaced } = await res.json();
+          $("ps").textContent = replaced ? `前の保存を上書きしました（全 ${count} 件）` : `保存しました（全 ${count} 件）`;
         } catch {
           const a = el("a");
           a.href = URL.createObjectURL(new Blob([JSON.stringify(r, null, 1)], { type: "application/json" }));

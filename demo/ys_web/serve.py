@@ -3,10 +3,29 @@ import http.server
 import json
 import pathlib
 import sys
+import threading
 
 # the accent editor's records (web/accent_edit.html), one JSON object per line
 EDITS = pathlib.Path(__file__).resolve().parents[2] / "dict/accent_edits/edits.jsonl"
 FIELDS = ("text", "input", "dictionary", "edited", "listener")
+LOCK = threading.Lock()
+
+
+def save(r):
+    """the record in EDITS, in place of the listener's earlier record of the same sentence (the same input), or
+    appended; returns the number of records and whether one was replaced"""
+    with LOCK:
+        rows = [json.loads(x) for x in EDITS.read_text(encoding="utf-8").splitlines() if x.strip()] if EDITS.exists() else []
+        at = next((i for i, x in enumerate(rows) if (x["listener"], x["input"]) == (r["listener"], r["input"])), None)
+        if at is None:
+            rows.append(r)
+        else:
+            rows[at] = r
+        EDITS.parent.mkdir(parents=True, exist_ok=True)
+        tmp = EDITS.with_suffix(".tmp")
+        tmp.write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in rows), encoding="utf-8")
+        tmp.replace(EDITS)
+        return len(rows), at is not None
 
 
 class H(http.server.SimpleHTTPRequestHandler):
@@ -29,11 +48,8 @@ class H(http.server.SimpleHTTPRequestHandler):
         except ValueError as e:
             self.send_error(400, str(e))
             return
-        EDITS.parent.mkdir(parents=True, exist_ok=True)
-        with EDITS.open("a", encoding="utf-8") as f:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
-        with EDITS.open(encoding="utf-8") as f:
-            body = json.dumps({"count": sum(1 for _ in f)}).encode()
+        count, replaced = save(r)
+        body = json.dumps({"count": count, "replaced": replaced}).encode()
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(body)))

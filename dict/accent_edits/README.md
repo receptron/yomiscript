@@ -5,7 +5,7 @@ improving the Japanese dictionary accent (`@yomiscript/ja-accent`) and are kept 
 each record pairs what the dictionary wrote with what a person, listening, preferred.
 
 Records are made in the accent editor of the browser demo (`demo/ys_web/web/accent_edit.html`, served by
-`demo/ys_web/serve.py`, which appends each saved record to `edits.jsonl`):
+`demo/ys_web/serve.py`, which writes each saved record to `edits.jsonl`):
 
 ```
 cd demo/ys_web && python serve.py 8840 web   # open http://127.0.0.1:8840/accent_edit.html
@@ -13,8 +13,8 @@ cd demo/ys_web && python serve.py 8840 web   # open http://127.0.0.1:8840/accent
 
 ## Format
 
-`edits.jsonl`: one JSON object per line, in the order saved. A sentence saved again gets a new line; the latest line
-of a sentence and listener is their current judgment, the earlier ones its history.
+`edits.jsonl`: one JSON object per line. One record per listener and sentence (the same `input`): saving the sentence
+again replaces the listener's earlier record in place, so each record is that listener's current judgment.
 
 | field | meaning |
 |---|---|
