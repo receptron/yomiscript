@@ -70,15 +70,17 @@ export class Engine {
     this.V[name] = v;
     return v;
   }
-  // Kokoro's own prosody prediction (durations, F0, energy) for one planned section; also used by the Yomite (prosody.ts)
-  async predict(sec: PlannedSection): Promise<Prediction> {
+  // Kokoro's own prosody prediction (durations, F0, energy) for one planned section; also used by the Yomite (prosody.ts).
+  // durations: one per id, in steps, instead of the predicted ones (an experiment's input; YomiScript has none)
+  async predict(sec: PlannedSection, durations?: number[]): Promise<Prediction> {
     const T = this.ort.Tensor;
     const L = sec.ids.length;
     const V = await this.voice(sec.voice);
     const k = (sec.ps ?? "x".repeat(L - 1)).length - 1; // voice-pack entry as in KPipeline: pack[len(ps)-1]
     const ref = new T("float32", V.slice(k * 256, (k + 1) * 256), [1, 256]);
     const r1 = await this.enc.run({ ids: new T("int64", BigInt64Array.from(sec.ids.map(BigInt)), [1, L]), ref });
-    const dur = Array.from(r1.dur.data as ArrayLike<number | bigint>, Number).map((d, i) => Math.round(d * (sec.lengthen[sec.uid[i]] ?? 1)));
+    if (durations && durations.length !== L) throw new Error(`durations: ${durations.length} for ${L} ids`);
+    const dur = durations ?? Array.from(r1.dur.data as ArrayLike<number | bigint>, Number).map((d, i) => Math.round(d * (sec.lengthen[sec.uid[i]] ?? 1)));
     const Tn = dur.reduce((a, b) => a + b, 0);
     const expand = (t: Tensor): Tensor => {
       const C = t.dims[1],
@@ -96,9 +98,13 @@ export class Engine {
     const r2 = await this.f0n.run({ en: expand(r1.d), ref });
     return { ref, dur, t_en: expand(r1.t_en), f0: r2.F0.data as Float32Array, N: r2.N };
   }
-  async synthSection(sec: PlannedSection, pitch: PitchMode = "values"): Promise<{ audio: Float32Array; f0: Float32Array; f0new: Float32Array; dur: number[] }> {
+  async synthSection(
+    sec: PlannedSection,
+    pitch: PitchMode = "values",
+    durations?: number[],
+  ): Promise<{ audio: Float32Array; f0: Float32Array; f0new: Float32Array; dur: number[] }> {
     const T = this.ort.Tensor;
-    const { ref, dur, t_en, f0, N } = await this.predict(sec);
+    const { ref, dur, t_en, f0, N } = await this.predict(sec, durations);
     const F = pitch === "engine" ? Float32Array.from(f0) : this.pitch(sec, f0, dur);
     const r3 = await this.dec.run({ asr: t_en, F0: new T("float32", F, [1, F.length]), N, ref });
     return { audio: Float32Array.from(r3.audio.data as Float32Array), f0: Float32Array.from(f0), f0new: F, dur };
