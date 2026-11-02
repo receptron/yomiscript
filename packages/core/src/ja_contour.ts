@@ -56,6 +56,13 @@ const W: Record<string, number[]> = {
   vl: [-0.0228, -0.0625, -0.0547, 0.1263, 0.0789, 0.0544, 1.1619, 0.4086, 0.311, -0.0161, 0.1576, 0.1844, 0.0384, 0.0778, 0.1331],
 };
 const POINT = [1.0902, 1.4534, 1.0078];
+/** the model: an intercept per point (start, middle, end of the mora) and, per feature, its 15 weights (the mora two
+ * before … two after, three points each) */
+export interface JaContourModel {
+  POINT: number[];
+  W: Record<string, number[]>;
+}
+export const JA_CONTOUR: JaContourModel = { POINT, W };
 const CTX = 2;
 const VOICELESS = new Set(["k", "kʲ", "s", "ɕ", "t", "tɕ", "ts", "h", "ç", "ɸ", "p", "pʲ"]);
 const VOWEL: Record<string, string> = { a: "a", i: "i", ɯ: "u", e: "e", o: "o" };
@@ -191,14 +198,14 @@ function sentenceRows(s: Sentence): Row[] {
   const what = moraRows(s.phrases.flatMap((p) => p.morae));
   return rows.map((r, i) => ({ ...r, ...what[i] }));
 }
-function values(rows: Row[]): number[][] {
+function values(rows: Row[], model: JaContourModel): number[][] {
   // each mora's three values from its own row and its neighbours' (none past the sentence's ends)
   return rows.map((_, i) => {
-    const v = [...POINT];
+    const v = [...model.POINT];
     for (let d = -CTX; d <= CTX; d++) {
       const r = rows[i + d];
       if (!r) continue;
-      for (const [f, x] of Object.entries(r)) for (let p = 0; p < 3; p++) v[p] += x * W[f][(d + CTX) * 3 + p];
+      for (const [f, x] of Object.entries(r)) for (let p = 0; p < 3; p++) v[p] += x * model.W[f][(d + CTX) * 3 + p];
     }
     return v;
   });
@@ -208,11 +215,16 @@ function median(a: number[]): number {
     h = s.length >> 1;
   return s.length % 2 ? s[h] : (s[h - 1] + s[h]) / 2;
 }
+/** the model's input: for each sentence of the section, its morae and one row of features per mora (for fitting a
+ * model; the context of CTX morae on each side is taken from the neighbouring rows) */
+export function jaContourRows(sec: Section): { morae: Token[]; rows: Record<string, number>[] }[] {
+  return sentences(sec).map((s) => ({ morae: s.phrases.flatMap((p) => p.morae), rows: sentenceRows(s) }));
+}
 /** the three pitch values of every Japanese mora of the section, from its accent marks */
-export function jaContour(sec: Section): Map<Token, number[]> {
+export function jaContour(sec: Section, model: JaContourModel = JA_CONTOUR): Map<Token, number[]> {
   const out = new Map<Token, number[]>();
   for (const s of sentences(sec)) {
-    const V = values(sentenceRows(s));
+    const V = values(sentenceRows(s), model);
     const mid = median(V.flat());
     s.phrases
       .flatMap((p) => p.morae)

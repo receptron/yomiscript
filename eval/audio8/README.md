@@ -125,7 +125,7 @@ a8 --ys claude kanji --voice kokoro                  # the Kokoro voice    -> au
 a8 --ys claude kanji --sets ja --voice default       # the bundled voice
 cd eval/browser_tts && python asr.py && python asr_score.py && node page.mjs   # serve it, open listen.html
 #   listen.html?systems=claude,audio8_ys_claude_kanji shows only those rows
-node eval/audio8/blind.mjs                            # the blind test: serve eval/audio8, open blind.html
+node eval/audio8/blind.mjs                            # the blind test: serve eval/, open blind.html?test=audio8
 ```
 
 Audio goes to `eval/browser_tts/audio/` and `eval/audio8/audio/` (not checked in); the transcripts are in

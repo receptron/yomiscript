@@ -1,0 +1,4 @@
+# Qwen3-TTS on Apple silicon (MLX); the versions the comparison was made with
+mlx-audio==0.6.4
+mlx==0.32.4
+soundfile==0.14.0

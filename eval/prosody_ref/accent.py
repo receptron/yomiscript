@@ -60,6 +60,11 @@ def mora_features(wav, morae):
     # per mora: pitch of the whole, first half, second half and the half mora after it; length; voiced share
     y, sr = librosa.load(str(wav), sr=16000)
     times, _ = align.mora_times(y, sr, morae)
+    return features_at(wav, times)
+
+
+def features_at(wav, times):
+    # mora_features with the mora times given ([(start, end)] seconds)
     st, t0, _ = features(str(wav))
     score._cache.clear()
     F = []

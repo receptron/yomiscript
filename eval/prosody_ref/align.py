@@ -3,7 +3,7 @@
 Morae are given as OpenJTalk phonemes (`ky`, `o`; `N`; `cl`; a long vowel is its vowel again). Each phoneme is spelt
 in the model's letters (`ky` -> k y, `N` -> n, `cl` -> the next consonant's first letter, devoiced `I` `U` -> i u),
 the letters are aligned, and a mora runs from its first letter's start to the next mora's first letter's start (the
-last one to its last letter's end).
+last one to its last letter's end); `letter_spans` gives each mora's own letters only, so a pause after it is not in it.
 """
 
 import numpy as np
@@ -40,8 +40,9 @@ def letters(morae):
     return ids, owner
 
 
-def mora_times(y, sr, morae):
-    """[(start, end)] in seconds for each mora, and the mean log-probability of the alignment (a confidence)"""
+def letter_spans(y, sr, morae):
+    """[(start of its first letter, end of its last letter)] in seconds for each mora, and the mean log-probability of
+    the alignment (a confidence)"""
     m, _, msr = model()
     w = torch.tensor(y, dtype=torch.float32)[None]
     if sr != msr:
@@ -57,6 +58,11 @@ def mora_times(y, sr, morae):
     for s, o in zip(spans, owner, strict=False):
         first.setdefault(o, s.start * sec)
         last[o] = s.end * sec
+    return [(first[i], last[i]) for i in range(len(morae))], float(np.mean([s.score for s in spans]))
+
+
+def mora_times(y, sr, morae):
+    """[(start, end)] in seconds for each mora, and the mean log-probability of the alignment (a confidence)"""
+    sp, score = letter_spans(y, sr, morae)
     n = len(morae)
-    out = [(first[i], first[i + 1] if i + 1 < n else last[i]) for i in range(n)]
-    return out, float(np.mean([s.score for s in spans]))
+    return [(sp[i][0], sp[i + 1][0] if i + 1 < n else sp[i][1]) for i in range(n)], score

@@ -19,3 +19,12 @@
   Yomi-0's training, with readings and prosody from pyopenjtalk (`models/yomi/mlx/tools/build_general_eval.py`).
 - The text is from Wikipedia: **CC BY-SA 4.0** (and GFDL). Attribution: the authors of each Japanese Wikipedia
   article. The repository's Apache-2.0 license does not apply.
+
+## qwen_prosody/data/jsut_qwen_clone.jsonl
+- Qwen3-TTS's prosody (pitch per mora, durations, pauses) measured on the JSUT BASIC5000 sentences it read right,
+  with their text and YomiScript (`eval/qwen_prosody/README.md`).
+- The text is JSUT's (see `data/jsut_basic5000_subset.jsonl` above for its sources), so this file is under
+  **CC BY-SA 4.0** (credit: Saruwatari Lab, The University of Tokyo, JSUT / jsut-label; Wikipedia contributors;
+  Tanaka Corpus). The repository's Apache-2.0 license does not apply.
+- The measurements are of speech made by Qwen3-TTS (Alibaba Cloud, Apache-2.0) in a voice cloned from Kokoro-82M
+  (Apache-2.0). Audio is not included.
