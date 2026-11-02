@@ -142,3 +142,26 @@ A word accent read through the classifier is not what made Qwen's pitch better b
 one speaker's labels, not by ear. The listening tests above point at the marks (nucleus, phrasing, pauses) as what
 the model lacks; reading them from Qwen with the pitch model itself (analysis by synthesis) is the next thing to try.
 
+### The accent read from Qwen by analysis by synthesis (`abs.mjs`, `abs_listen.mjs`)
+
+For each accent phrase of the tools' YomiScript (D31's phrasing), the nucleus (0 flat, 1, …, n-1) whose pitch, as
+the model fitted to Qwen renders it, brings the sentence closest to Qwen's; each phrase in turn, the others held, two
+passes; phrases of one mora keep D31's marks. On the 2,503 sentences read from the text, 6,803 of 17,612 phrases
+(39%) take another nucleus than D31's, and the rmse to Qwen goes from 1.86 to 1.52 semitones (on the sentences the
+marks were read from, so a lower bound, not a test).
+
+On the 12 sentences of eval/qwen3_tts (`results/abs_marks_12.json`), among the changes: 読み終わって flat (D31 1),
+始まります flat (5), パン屋が 1 (0). Blind, three ways (`results/listening_abs.json`, the project owner):
+
+| | more natural |
+|---|---|
+| `qwen_pitch` (Qwen's own pitch) | 3 (meeting, sunset, phone) |
+| `abs` (the marks read from Qwen, the fitted model's values) | 2 (bakery, library) |
+| `d29` (shipped) | 2 (window, cat) |
+| no difference, both natural | 5 |
+
+The two `abs` won are two of the seven heard as both unnatural with D29 and the refit, and the places its marks
+change are where their contours were furthest from Qwen's (パン屋, 読み終わって). Of the three Qwen's own pitch
+won, meeting is where Qwen pauses after 会議は and resets its level, and phone a question's end: neither is a
+nucleus, which is all `abs` reads. Few sentences, one listener: a direction, not a result.
+

@@ -1,0 +1,250 @@
+{
+ "bakery": {
+  "d31": [
+   1,
+   1,
+   4,
+   0,
+   3
+  ],
+  "abs": [
+   1,
+   1,
+   4,
+   1,
+   4
+  ],
+  "marks": "ja /eꜜki no | tɕiꜜkakɯ ɲi | aꜛtaɾaɕiꜜː | paꜜɴja ɡa | deꜛkimaɕiꜜta ↘/",
+  "before": 2.3554883508530873,
+  "after": 1.514122820931886
+ },
+ "meeting": {
+  "d31": [
+   0,
+   1,
+   1,
+   2,
+   5
+  ],
+  "abs": [
+   0,
+   1,
+   1,
+   1,
+   0
+  ],
+  "marks": "ja /ɾaꜛiɕɯː no | kaꜜiɡi wa | ɡoꜜɡo | saꜜɲdʑi kaɾa | haꜛdʑimaɾi masɯ ↘/",
+  "before": 2.2659840001991984,
+  "after": 1.9337381863451804
+ },
+ "park": {
+  "d31": [
+   0,
+   0,
+   3,
+   0,
+   1,
+   0,
+   3
+  ],
+  "abs": [
+   0,
+   2,
+   3,
+   0,
+   1,
+   0,
+   0
+  ],
+  "marks": "ja /koꜛno | miꜛtɕiꜜ o | maꜛssɯꜜɡɯ | sɯꜛsɯmɯ to ‖ oꜜːkina | koꜛːeŋ ɡa | aꜛɾi masɯ ↘/",
+  "before": 0.979406655110764,
+  "after": 0.9196593629503352
+ },
+ "window": {
+  "d31": [
+   1,
+   0,
+   3,
+   0,
+   2,
+   1,
+   1
+  ],
+  "abs": [
+   1,
+   0,
+   3,
+   1,
+   2,
+   1,
+   0
+  ],
+  "marks": "ja /maꜜdo o | aꜛkeɾɯ to ‖ sɯꜛzɯɕiꜜː | kaꜜze ɡa | heꜛjaꜜ ɲi | haꜜitte | kiꜛta ↘/",
+  "before": 1.7824500615263152,
+  "after": 1.5665519910503043
+ },
+ "library": {
+  "d31": [
+   2,
+   0,
+   1,
+   1,
+   1,
+   3
+  ],
+  "abs": [
+   2,
+   2,
+   1,
+   1,
+   0,
+   3
+  ],
+  "marks": "ja /toꜛɕoꜜkan de | kaꜛɾiꜜta | hoꜜɴ o ‖ maꜜda | joꜛmiowatte | iꜛmaseꜜɴ ↘/",
+  "before": 2.5495901617502645,
+  "after": 1.6506218744801817
+ },
+ "summer": {
+  "d31": [
+   3,
+   1,
+   0,
+   1,
+   0,
+   4
+  ],
+  "abs": [
+   2,
+   1,
+   0,
+   1,
+   0,
+   0
+  ],
+  "marks": "ja /naꜛtsɯꜜjasɯmi wa | kaꜜzokɯ to | iꜛɕɕo ɲi | ɯꜜmi e | iꜛkɯ | joꜛteː desɯ ↘/",
+  "before": 1.4805404936545001,
+  "after": 1.3712762046821052
+ },
+ "fridge": {
+  "d31": [
+   3,
+   0,
+   2,
+   2,
+   0,
+   0,
+   4
+  ],
+  "abs": [
+   3,
+   0,
+   3,
+   2,
+   0,
+   0,
+   4
+  ],
+  "marks": "ja /ɾeꜛːzoꜜːko ɲi | ɡʲɯꜛːɲɯː ɡa | noꜛkotꜜte | iꜛɾɯꜜ ka ‖ kaꜛkɯniɴ | ɕiꜛte | moꜛɾae maꜜsɯ ka ↗/",
+  "before": 1.2340267469353543,
+  "after": 1.2305376893711495
+ },
+ "cat": {
+  "d31": [
+   1,
+   0,
+   5,
+   0,
+   0
+  ],
+  "abs": [
+   1,
+   1,
+   7,
+   0,
+   0
+  ],
+  "marks": "ja /neꜜko ɡa | çiꜜnata de | kiꜛmotɕi josa soːꜜ ɲi | neꜛmɯtte | iꜛɾɯ ↘/",
+  "before": 1.9799495011801806,
+  "after": 1.1399742080439703
+ },
+ "cooking": {
+  "d31": [
+   2,
+   1,
+   0,
+   0,
+   3,
+   4
+  ],
+  "abs": [
+   3,
+   1,
+   1,
+   0,
+   6,
+   0
+  ],
+  "marks": "ja /haꜛdʑimeꜜte no | ɾʲoꜜːɾi ɲi | ɕiꜜte wa ‖ toꜛtemo | oꜛiɕikɯ dekiꜜta to | oꜛmoi masɯ ↘/",
+  "before": 1.9637412120590663,
+  "after": 1.3430329237048997
+ },
+ "sunset": {
+  "d31": [
+   3,
+   1,
+   0,
+   0,
+   1
+  ],
+  "abs": [
+   5,
+   1,
+   0,
+   0,
+   1
+  ],
+  "marks": "ja /jaꜛma no ɯeꜜ kaɾa | miꜜɾɯ | jɯꜛːjake wa ‖ hoꜛntoː ɲi | kiꜜɾeː deɕita ↘/",
+  "before": 2.164037306565434,
+  "after": 1.8251550971453232
+ },
+ "phone": {
+  "d31": [
+   1,
+   0,
+   5
+  ],
+  "abs": [
+   1,
+   0,
+   1
+  ],
+  "marks": "ja /doꜜːɕite | deꜛɴwa ɲi | deꜜ nakatta no ↗/",
+  "before": 2.4790321814866867,
+  "after": 1.3483187890272594
+ },
+ "date": {
+  "d31": [
+   2,
+   3,
+   0,
+   5,
+   0,
+   1,
+   3,
+   2
+  ],
+  "abs": [
+   1,
+   3,
+   0,
+   5,
+   1,
+   1,
+   1,
+   1
+  ],
+  "marks": "ja /boꜜkɯtatɕi wa | eꜛkimaꜜe no | kiꜛssaten de | maꜛtɕiawaseꜜte ‖ eꜜːɡa o | miꜜte kaɾa | baꜜŋɡohaɴ o | taꜜbeta ↘/",
+  "before": 2.1265720516896205,
+  "after": 1.2555850741645522
+ }
+}
