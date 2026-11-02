@@ -274,6 +274,7 @@
     </script>
     <script type="module">
       import * as K from "@yomiscript/kokoro";
+      import { painted } from "./paint.js";
       const LOCAL = new URLSearchParams(location.search).has("local");
       const ORT = LOCAL ? new URL("ort/", location.href).href : "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/";
       const MODELS = LOCAL ? "./" : K.KOKORO_MODELS_URL;
@@ -339,6 +340,7 @@
         busy = true;
         button.disabled = true;
         speed.textContent = "このブラウザーで生成しています…";
+        await painted();
         try {
           const t0 = performance.now();
           const { audio } = await engine.synth(x.spoken);

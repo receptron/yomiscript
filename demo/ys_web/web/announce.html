@@ -174,6 +174,7 @@
       import { realize } from "@yomiscript/core";
       import * as K from "@yomiscript/kokoro";
       import { announce, parseTime, PLACES, TRAINS } from "./announce.js";
+      import { painted } from "./paint.js";
 
       const $ = (id) => document.getElementById(id);
       for (const t of Object.keys(TRAINS)) $("train").add(new Option(t, t));
@@ -214,23 +215,41 @@
 
       let E = null;
       const player = new Audio();
+      let busy = false; // one announcement at a time, whatever calls the button
+      const status = (text, err = false) => {
+        $("st").textContent = text;
+        $("st").className = err ? "err" : "muted";
+      };
       $("play").onclick = async () => {
-        const a = show();
-        if (a.error || !E) return;
+        if (busy || current().error || !E) return; // the board already shows the error (show() runs on input)
+        busy = true;
         $("play").disabled = true;
-        $("st").textContent = "生成しています…";
+        status("生成しています…");
+        try {
+          await painted();
+          await speak(show());
+        } finally {
+          busy = false;
+          $("play").disabled = false;
+        }
+      };
+      /** the announcement synthesized and played: the form as it is once the busy state is painted, so an edit made
+       * meanwhile is the one heard */
+      async function speak(a) {
+        if (a.error) {
+          status(a.error, true); // the form became invalid while the busy state was painted
+          return;
+        }
         try {
           const t0 = performance.now();
           const { audio } = await E.synth(realize(a.ys), "values");
           player.src = URL.createObjectURL(new Blob([K.wav(audio)], { type: "audio/wav" }));
           await player.play();
-          $("st").textContent = `生成 ${((performance.now() - t0) / 1000).toFixed(1)} 秒 ／ 音声 ${(audio.length / K.SR).toFixed(1)} 秒`;
+          status(`生成 ${((performance.now() - t0) / 1000).toFixed(1)} 秒 ／ 音声 ${(audio.length / K.SR).toFixed(1)} 秒`);
         } catch (e) {
-          $("st").textContent = `生成できませんでした：${e}`;
-          $("st").className = "err";
+          status(`生成できませんでした：${e}`, true);
         }
-        $("play").disabled = false;
-      };
+      }
 
       try {
         const LOCAL = new URLSearchParams(location.search).has("local"),
