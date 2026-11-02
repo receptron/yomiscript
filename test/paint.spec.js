@@ -1,9 +1,8 @@
-// The demos' wait for the busy state to be painted (demo/ys_web/web/paint.js): after two animation frames however
-// long they take on a visible page, and not held back on a hidden page, which gets no animation frames.
+// The demos' wait for the busy state to be painted (demo/ys_web/web/paint.js): after two animation frames, at once
+// on a hidden page, and never longer than its bound, whatever happens to the frames.
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { painted } from "../demo/ys_web/web/paint.js";
+import { painted, PAINT_WAIT_MAX_MS } from "../demo/ys_web/web/paint.js";
 
-const SLOW_FRAMES_MS = 5000;
 let frames, page;
 const settled = (p) => {
   let done = false;
@@ -38,13 +37,18 @@ describe("painted", () => {
     await vi.advanceTimersByTimeAsync(0);
     expect(done()).toBe(true);
   });
-  it("waits for the frames on a visible page however late they come", async () => {
+  it("waits for slow frames on a visible page up to its bound", async () => {
     const done = settled(painted());
-    await vi.advanceTimersByTimeAsync(SLOW_FRAMES_MS);
+    await vi.advanceTimersByTimeAsync(PAINT_WAIT_MAX_MS - 1);
     expect(done()).toBe(false);
     nextFrame();
     nextFrame();
     await vi.advanceTimersByTimeAsync(0);
+    expect(done()).toBe(true);
+  });
+  it("resolves at its bound when frames never come on a visible page (the busy state may then go undrawn)", async () => {
+    const done = settled(painted());
+    await vi.advanceTimersByTimeAsync(PAINT_WAIT_MAX_MS);
     expect(done()).toBe(true);
   });
   it("resolves at once on a hidden page", async () => {
@@ -59,7 +63,7 @@ describe("painted", () => {
     await vi.advanceTimersByTimeAsync(0);
     expect(done()).toBe(true);
   });
-  it("stops listening for visibility once resolved", async () => {
+  it("leaves no listener or timer behind once resolved", async () => {
     const remove = vi.spyOn(page, "removeEventListener");
     const done = settled(painted());
     nextFrame();
@@ -67,5 +71,6 @@ describe("painted", () => {
     await vi.advanceTimersByTimeAsync(0);
     expect(done()).toBe(true);
     expect(remove).toHaveBeenCalledWith("visibilitychange", expect.any(Function));
+    expect(vi.getTimerCount()).toBe(0);
   });
 });
