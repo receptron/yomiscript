@@ -1,0 +1,14 @@
+[
+  { "name": "bakery", "ys": "ja /eki<t:駅> no<t:の> tɕikakɯ<t:近く> ɲi<t:に> ataɾaɕiː<t:新しい> paɴja<t:パン屋> ɡa<t:が> dekimaɕita<t:できました。> ↘/" },
+  { "name": "meeting", "ys": "ja /ɾaiɕɯː<t:来週> no<t:の> kaiɡi<t:会議> wa<t:は> ɡoɡo<t:午後> saɲdʑi<t:三時> kaɾa<t:から> hadʑimaɾi<t:始まり> masɯ<t:ます。> ↘/" },
+  { "name": "park", "ys": "ja /kono<t:この> mitɕi<t:道> o<t:を> massɯɡɯ<t:まっすぐ> sɯsɯmɯ<t:進む> to<t:と> ‖<t:、> oːkina<t:大きな> koːeŋ<t:公園> ɡa<t:が> aɾi<t:あり> masɯ<t:ます。> ↘/" },
+  { "name": "window", "ys": "ja /mado<t:窓> o<t:を> akeɾɯ<t:開ける> to<t:と> ‖<t:、> sɯzɯɕiː<t:涼しい> kaze<t:風> ɡa<t:が> heja<t:部屋> ɲi<t:に> haitte<t:入って> kita<t:きた。> ↘/" },
+  { "name": "library", "ys": "ja /toɕokan<t:図書館> de<t:で> kaɾita<t:借りた> hoɴ<t:本> o<t:を> ‖<t:、> mada<t:まだ> jomiowatte<t:読み終わって> imaseɴ<t:いません。> ↘/" },
+  { "name": "summer", "ys": "ja /natsɯjasɯmi<t:夏休み> wa<t:は> kazokɯ<t:家族> to<t:と> iɕɕo<t:一緒> ɲi<t:に> ɯmi<t:海> e<t:へ> ikɯ<t:行く> joteː<t:予定> desɯ<t:です。> ↘/" },
+  { "name": "fridge", "ys": "ja /ɾeːzoːko<t:冷蔵庫> ɲi<t:に> ɡʲɯːɲɯː<t:牛乳> ɡa<t:が> nokotte<t:残って> iɾɯ<t:いる> ka<t:か> ‖<t:、> kakɯniɴ<t:確認> ɕite<t:して> moɾae<t:もらえ> masɯ<t:ます> ka<t:か？> ↗/" },
+  { "name": "cat", "ys": "ja /neko<t:猫> ɡa<t:が> çinata<t:日なた> de<t:で> kimotɕi<t:気持ち> josa<t:よさ> soː<t:そう> ɲi<t:に> nemɯtte<t:眠って> iɾɯ<t:いる。> ↘/" },
+  { "name": "cooking", "ys": "ja /hadʑimete<t:初めて> no<t:の> ɾʲoːɾi<t:料理> ɲi<t:に> ɕite<t:して> wa<t:は> ‖<t:、> totemo<t:とても> oiɕikɯ<t:おいしく> dekita<t:できた> to<t:と> omoi<t:思い> masɯ<t:ます。> ↘/" },
+  { "name": "sunset", "ys": "ja /jama<t:山> no<t:の> ɯe<t:上> kaɾa<t:から> miɾɯ<t:見る> jɯːjake<t:夕焼け> wa<t:は> ‖<t:、> hontoː<t:本当> ɲi<t:に> kiɾeː<t:きれい> deɕita<t:でした。> ↘/" },
+  { "name": "phone", "ys": "ja /doːɕite<t:どうして> deɴwa<t:電話> ɲi<t:に> de<t:出> nakatta<t:なかった> no<t:の？> ↗/" },
+  { "name": "date", "ys": "ja /bokɯtatɕi<t:僕たち> wa<t:は> ekimae<t:駅前> no<t:の> kissaten<t:喫茶店> de<t:で> matɕiawasete<t:待ち合わせて> ‖<t:、> eːɡa<t:映画> o<t:を> mite<t:見て> kaɾa<t:から> baŋɡohaɴ<t:晩ご飯> o<t:を> tabeta<t:食べた。> ↘/" }
+]

@@ -19,6 +19,7 @@ demo/ys_web/voices
 demo/ys_web/web/models
 demo/ys_web/web/voices
 models/yomi/mlx/.venv
+**/.venv
 models/yomi/mlx/ckpt
 models/yomi/mlx/data
 models/yomi/mlx/eval_out

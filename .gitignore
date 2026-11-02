@@ -9,6 +9,11 @@ node_modules/
 eval/browser_tts/audio/
 # eval/audio8 blind test audio (blind.mjs)
 eval/audio8/audio/
+# eval/qwen3_tts audio (qwen3_tts.py, blind.mjs)
+eval/qwen3_tts/audio/
+# eval/qwen_prosody work files and audio (the extracted prosody is in data/)
+eval/qwen_prosody/work/
+eval/qwen_prosody/audio/
 
 # built TypeScript packages (yarn build)
 packages/*/dist/

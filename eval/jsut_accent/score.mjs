@@ -13,6 +13,7 @@ import { accentMarks, lookupAnalysis } from "@yomiscript/ja-accent";
 import { nodeAnalyzer } from "@yomiscript/ja-accent/node";
 import { ourMorae } from "./morae.mjs";
 import { correctionSource, CORRECTIONS } from "./corrections.mjs";
+import { QWEN_CORRECTIONS } from "../qwen_prosody/corrections.mjs";
 import { half, joinRule, RULES } from "./rules.mjs";
 import { items } from "./run.mjs";
 import { scoredSentences } from "./sentences.mjs";
@@ -100,6 +101,7 @@ const NAMES = {
   nounCorrections: "D31, the same for words that do not conjugate",
   both: "D31, the phrase rules and the word accents for words that do not conjugate",
   bothAll: "D31, the phrase rules and the word accents",
+  qwen: "D31, word accents learned from Qwen3-TTS's speech of the training half (eval/qwen_prosody)",
 };
 // UniDic's accent on the D31 path, when UniDic is in ~/.cache/unidic (unidic.mjs)
 const U = fs.existsSync(UNIDIC) ? loadUnidic() : null,
@@ -119,6 +121,12 @@ if (fs.existsSync(CORRECTIONS)) {
   WAYS.nounCorrections = (ys) => accentMarks(ys, A, { source: correctionSource(nouns) });
   if (join) WAYS.both = (ys) => accentMarks(ys, A, { join, source: correctionSource(nouns) });
   if (join) WAYS.bothAll = (ys) => accentMarks(ys, A, { join, source: correctionSource(C) });
+}
+
+// the word accents learned from Qwen's speech (eval/qwen_prosody/corrections.mjs), when they have been
+if (fs.existsSync(QWEN_CORRECTIONS)) {
+  const Q = JSON.parse(fs.readFileSync(QWEN_CORRECTIONS, "utf8")).corrections;
+  WAYS.qwen = (ys) => accentMarks(ys, A, { source: correctionSource(Q) });
 }
 
 const S = scoredSentences(),

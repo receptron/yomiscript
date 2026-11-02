@@ -114,6 +114,18 @@
     "phrases": 25092,
     "phrasesSpan": 20260,
     "phrasesRight": 16172
+   },
+   "qwen": {
+    "morae": 121269,
+    "covered": 120038,
+    "hlRight": 104118,
+    "bounds": 116097,
+    "boundsGold": 20929,
+    "boundsOurs": 24680,
+    "boundsBoth": 19995,
+    "phrases": 25092,
+    "phrasesSpan": 18981,
+    "phrasesRight": 15153
    }
   },
   "test": {
@@ -224,6 +236,18 @@
     "phrases": 12653,
     "phrasesSpan": 10250,
     "phrasesRight": 8177
+   },
+   "qwen": {
+    "morae": 60913,
+    "covered": 60342,
+    "hlRight": 52401,
+    "bounds": 58388,
+    "boundsGold": 10603,
+    "boundsOurs": 12471,
+    "boundsBoth": 10144,
+    "phrases": 12653,
+    "phrasesSpan": 9651,
+    "phrasesRight": 7743
    }
   }
  },

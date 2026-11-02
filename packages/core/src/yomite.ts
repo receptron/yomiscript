@@ -4,7 +4,7 @@
 // Units that already carry <f0:…> are left as written. The Katarite renders only the values.
 // Dialect is a Yomite setting, not part of YomiScript: realize(ys, {dialect:{ja:'osaka'}}).
 import { parse, isJa, VOWELS, type Section, type Token } from "./yomiscript.ts";
-import { jaContour } from "./ja_contour.ts";
+import { jaContour, type JaContourModel } from "./ja_contour.ts";
 
 export interface Edit {
   at: number;
@@ -23,6 +23,8 @@ export interface RealizeOptions {
   /** Tokyo: a phrase that starts high (no ꜛ, its nucleus not on the first mora) stays level up to its highest value
    * instead of rising at the start, as an unmarked phrase is read when nobody leaves it to the Katarite */
   flatOnset?: boolean;
+  /** Tokyo: the pitch model's coefficients (ja_contour.ts), instead of the shipped ones; for comparing a refit */
+  jaModel?: JaContourModel;
 }
 const inStr = (ch: string, s: string): boolean => s.includes(ch);
 const fmt = (v: number): string => String(Math.round(v * 100) / 100);
@@ -98,7 +100,7 @@ function jaRules(sec: Section, E: Edit[], opt: RealizeOptions): void {
     devoice: opt.devoice ?? !opt.markedOnly,
     scale: opt.jaScale ?? 1,
     flatOnset: !!opt.flatOnset,
-    contour: opt.dialect?.ja === "osaka" ? null : jaContour(sec),
+    contour: opt.dialect?.ja === "osaka" ? null : jaContour(sec, opt.jaModel),
   };
   for (const M of C) if (!opt.markedOnly || marked(M)) jaPhrase(M, sec.end, E, o);
 }
