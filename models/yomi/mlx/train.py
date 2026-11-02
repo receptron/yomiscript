@@ -293,7 +293,7 @@ def build_model(a, cfg, sv, tv):
         model.freeze()
         for m in mold.memories(model, None if a.train_mem == "all" else a.train_mem):
             m.unfreeze()
-        print(f"memory-only: trainable {sum(v.size for _, v in __import__('mlx.utils', fromlist=['x']).tree_flatten(model.trainable_parameters()))/1e6:.2f}M")
+        print(f"memory-only: trainable {sum(v.size for _, v in __import__('mlx.utils', fromlist=['x']).tree_flatten(model.trainable_parameters())) / 1e6:.2f}M")
     model.set_dtype(DT[a.dtype])
     return model, start
 
@@ -382,7 +382,7 @@ def main():
     sv, tv = Vocab(voc["src"]), Vocab(voc["tgt"])
     train, dev = load_data(a, tc, rng)
     model, start = build_model(a, cfg, sv, tv)
-    print(f"params: {yomi.n_params(model)/1e6:.2f}M  train {len(train)} dev {len(dev)}  dtype {a.dtype}")
+    print(f"params: {yomi.n_params(model) / 1e6:.2f}M  train {len(train)} dev {len(dev)}  dtype {a.dtype}")
     total = tc["steps"]
     opt = make_optimizer(a, cfg, tc, model)
     train_step = make_step(a, tc, model, opt)
@@ -396,8 +396,8 @@ def main():
         if step % 50 == 0:
             now = time.time()
             print(
-                f"step {step}/{total} loss {sum(run)/len(run):.4f} lr {opt.learning_rate.item():.2e} {(now-tw)/50:.3f}s/step "
-                f" mem {mx.get_active_memory()/2**30:.2f}GB cache {mx.get_cache_memory()/2**30:.2f}GB",
+                f"step {step}/{total} loss {sum(run) / len(run):.4f} lr {opt.learning_rate.item():.2e} {(now - tw) / 50:.3f}s/step "
+                f" mem {mx.get_active_memory() / 2**30:.2f}GB cache {mx.get_cache_memory() / 2**30:.2f}GB",
                 flush=True,
             )
             run = []
@@ -411,7 +411,7 @@ def main():
     if a.save_memory:
         mold.save_memory(model, a.save_memory, {"from": str(a.out), "step": total}, None if a.train_mem == "all" else a.train_mem)
         print(f"memory -> {a.save_memory}")
-    print(f"done {total} steps in {time.time()-t0:.1f}s -> {a.out}")
+    print(f"done {total} steps in {time.time() - t0:.1f}s -> {a.out}")
 
 
 if __name__ == "__main__":

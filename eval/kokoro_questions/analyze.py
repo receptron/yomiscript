@@ -30,8 +30,8 @@ def summary(sel, key="pred"):
     up = np.mean([(a >= 2 and b > 0) for a, b in zip(rise, end, strict=False)])
     sl = [x["slope2"] for x in m if x.get("slope2") is not None]
     return (
-        f"n={len(m):4d}  rising {100*up:5.1f}%   rise {rise.mean():+5.2f}   end {end.mean():+5.2f}   "
-        f"paper-style rising (slope>0) {100*np.mean(np.array(sl)>0):5.1f}%"
+        f"n={len(m):4d}  rising {100 * up:5.1f}%   rise {rise.mean():+5.2f}   end {end.mean():+5.2f}   "
+        f"paper-style rising (slope>0) {100 * np.mean(np.array(sl) > 0):5.1f}%"
     )
 
 
@@ -54,26 +54,26 @@ for name, qk, sk in [("same words  ? vs .", "punct_pair", "punct_pair"), ("yes/n
     d_rise = np.array([v["q"]["end_vs_lastword_min"] - v["s"]["end_vs_lastword_min"] for v in by.values() if len(v) == 2])
     print(
         f"  {name:24s} n={len(d_end):4d}  Δend {d_end.mean():+5.2f} (± {d_end.std():.2f})   Δrise {d_rise.mean():+5.2f}   "
-        f"'?' higher at the end in {100*np.mean(d_end > 1):.0f}% of pairs (by > 1 st)"
+        f"'?' higher at the end in {100 * np.mean(d_end > 1):.0f}% of pairs (by > 1 st)"
     )
 
 print("\nPer voice: yes/no questions rising vs statements rising (model prediction)")
 for v in R["voices"]:
     q = [r for r in rows if r["voice"] == v and r["kind"] in ("yn_question",) or (r["voice"] == v and r["kind"] == "punct_pair" and r["text"][-1] in "?？")]
     s = [r for r in rows if r["voice"] == v and (r["kind"] == "yn_statement" or (r["kind"] == "punct_pair" and r["text"][-1] in ".。"))]
-    print(f"  {v:12s} questions {100*np.mean([rising(r['pred']) for r in q]):5.1f}%   statements {100*np.mean([rising(r['pred']) for r in s]):5.1f}%")
+    print(f"  {v:12s} questions {100 * np.mean([rising(r['pred']) for r in q]):5.1f}%   statements {100 * np.mean([rising(r['pred']) for r in s]):5.1f}%")
 
 av = [r for r in R["rows"] if r.get("audio") and r["pred"]]
 if av:
     p = np.array([r["pred"]["end_vs_median"] for r in av])
     a = np.array([r["audio"]["end_vs_median"] for r in av])
     print(f"\nAudio check ({', '.join(R['audio_voices'])}; librosa.pyin on the synthesized sound)")
-    print(f"  end vs median: prediction vs audio  correlation {np.corrcoef(p, a)[0,1]:.2f}, mean {p.mean():+.2f} vs {a.mean():+.2f}")
+    print(f"  end vs median: prediction vs audio  correlation {np.corrcoef(p, a)[0, 1]:.2f}, mean {p.mean():+.2f} vs {a.mean():+.2f}")
     for k in kinds:
         sel = [r for r in av if r["kind"] == k]
         if k == "punct_pair":
             for e in ".?":
                 ss = [r for r in sel if r["text"][-1] in {".": ".。", "?": "?？"}[e]]
-                print(f"  {'same words, ending '+e:24s} audio: {summary(ss,'audio')}")
+                print(f"  {'same words, ending ' + e:24s} audio: {summary(ss, 'audio')}")
         else:
-            print(f"  {k:24s} audio: {summary(sel,'audio')}")
+            print(f"  {k:24s} audio: {summary(sel, 'audio')}")

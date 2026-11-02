@@ -38,8 +38,8 @@ def cmp(tag, a, b):
     fa, fb = lf0(a), lf0(b)
     ok = ~np.isnan(fa) & ~np.isnan(fb)
     print(
-        f"  {tag:14s} len {len(a)}/{len(b)} wavecorr {np.corrcoef(a,b)[0,1]:.3f} F0corr "
-        f"{np.corrcoef(fa[ok],fb[ok])[0,1]:.4f} melL1 {np.abs(mel(a)-mel(b)).mean():.3f}",
+        f"  {tag:14s} len {len(a)}/{len(b)} wavecorr {np.corrcoef(a, b)[0, 1]:.3f} F0corr "
+        f"{np.corrcoef(fa[ok], fb[ok])[0, 1]:.4f} melL1 {np.abs(mel(a) - mel(b)).mean():.3f}",
         flush=True,
     )
 

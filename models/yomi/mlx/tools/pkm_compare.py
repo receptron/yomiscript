@@ -65,7 +65,7 @@ def run(cmd, log):
 
 
 def fmt(v, pct=True):
-    return "-" if v is None else (f"{v*100:.1f}" if pct else f"{v:.3f}")
+    return "-" if v is None else (f"{v * 100:.1f}" if pct else f"{v:.3f}")
 
 
 def main():
@@ -149,9 +149,9 @@ def main():
             return f"{fmt(x):>5}"
 
         print(
-            f"{r['memory'][:10]:10} {f(pick(j,'jsut','kana_cer'))} {f(pick(j,'jsut','sent_acc'))} {f(pick(j,'jsut','sent_acc_loose'))} "
-            f"{f(pick(j,'hard','sent_acc'))} {f(pick(j,'jsut','phrase_boundary_p_r_f1'))} "
-            f"{f(pick(j,'jsut','accent_nucleus_p_r_f1'))} {f(pick(j,'general','sent_acc'))} {f(pick(j,'general','kana_cer'))} | "
+            f"{r['memory'][:10]:10} {f(pick(j, 'jsut', 'kana_cer'))} {f(pick(j, 'jsut', 'sent_acc'))} {f(pick(j, 'jsut', 'sent_acc_loose'))} "
+            f"{f(pick(j, 'hard', 'sent_acc'))} {f(pick(j, 'jsut', 'phrase_boundary_p_r_f1'))} "
+            f"{f(pick(j, 'jsut', 'accent_nucleus_p_r_f1'))} {f(pick(j, 'general', 'sent_acc'))} {f(pick(j, 'general', 'kana_cer'))} | "
             f"{f(sm.get('name_reading_acc'))} {f(sm.get('name_prosody_exact'))} {f(um.get('name_reading_acc'))} "
             f"{f(um.get('name_prosody_exact'))} | {f(ps.get('name_reading_acc'))} {f(pu.get('name_reading_acc'))}"
         )

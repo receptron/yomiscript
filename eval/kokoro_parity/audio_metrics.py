@@ -34,9 +34,9 @@ for it in R["items"]:
             if os.path.exists(f):
                 rows[m].append(cmp(sf.read(f)[0].astype(np.float32), a))
 voices = ", ".join(sorted({it["voice"] for it in R["items"]}))
-print(f"{'vs original ('+voices+')':28s} {'n':>3s} {'corr mean / min':>18s} {'SNR dB mean':>12s} {'mel L1 dB mean / max':>22s}")
+print(f"{'vs original (' + voices + ')':28s} {'n':>3s} {'corr mean / min':>18s} {'SNR dB mean':>12s} {'mel L1 dB mean / max':>22s}")
 for k, v in rows.items():
     if not v:
         continue
     v = np.array(v)
-    print(f"{k:28s} {len(v):3d} {v[:,0].mean():8.4f} / {v[:,0].min():.4f} {v[:,1].mean():12.1f} {v[:,2].mean():12.2f} / {v[:,2].max():.2f}")
+    print(f"{k:28s} {len(v):3d} {v[:, 0].mean():8.4f} / {v[:, 0].min():.4f} {v[:, 1].mean():12.1f} {v[:, 2].mean():12.2f} / {v[:, 2].max():.2f}")
