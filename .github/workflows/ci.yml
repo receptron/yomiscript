@@ -34,6 +34,9 @@ jobs:
           version: 0.15.20
           args: --version
       - run: yarn install --frozen-lockfile
+        env:
+          # onnxruntime-node 1.22.0 fetches the CUDA EP on linux x64 and looks for it under win-x64 in the NuGet package; CI runs on CPU
+          ONNXRUNTIME_NODE_INSTALL: skip
       - run: yarn format:check
       - run: yarn lint
       - run: yarn typecheck
