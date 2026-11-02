@@ -80,7 +80,8 @@
     <h1 id="title">Blind listening</h1>
     <p class="note">
       Each sentence is spoken by each system. Which one is A, B, … changes from sentence to sentence. Pick the one that sounds more natural (accent, rhythm,
-      voice), or "no difference", and tick any that sounds misread (a word heard as another word). Then press "Reveal" and copy the result.
+      voice), or one of the two "no difference" answers (both natural, or both unnatural), and tick any that sounds misread (a word heard as another word). Then
+      press "Reveal" and copy the result.
     </p>
     <div id="items"></div>
     <p><button id="reveal">Reveal</button></p>
@@ -151,7 +152,11 @@
               "  ",
             ),
           );
-          pick.append(radio(id, "no difference", () => (state[id].better = "same")));
+          pick.append(
+            radio(id, "no difference, both natural", () => (state[id].better = "same")),
+            "  ",
+          );
+          pick.append(radio(id, "no difference, both unnatural", () => (state[id].better = "neither")));
           d.append(el("div", `${k + 1}. ${it.text}`), opts, pick);
           d.firstChild.className = "text";
           root.append(d);

@@ -98,3 +98,18 @@ By ear (`listen.mjs`; the project owner, 2026-11-02, `results/listening_refit.js
 is closer to Qwen by the numbers but not audibly; it does not carry over what made Qwen's own pitch (eval/qwen3_tts,
 `kokoro_f0`: 9 of 11 against D29) better. Not shipped.
 
+Listened again with "no difference" split into both natural and both unnatural (`results/listening_refit2.json`):
+both natural 12, **both unnatural 7** (bakery, meeting, library, phone; BASIC5000_0357, 0965, 4509), the refit 3,
+D29 2. The four of eval/qwen3_tts among the seven are ones where Qwen's own pitch won (`kokoro_f0`). On them, D29's
+and the refit's contours are close to each other and both far from Qwen's in the same places (where they differ, not
+why the listener heard them as unnatural):
+
+- the accent nucleus: 読み終わって (D31 marks よꜜみ; Qwen low よ, rising to おわ), パン屋が (Qwen high from ん);
+- a level reset after a pause: meeting, where Qwen pauses 0.41 s after 会議は (no ‖ in the YomiScript) and starts
+  午後三時 high (+3.7 semitones; D29 -0.5); library's いません;
+- sentence ends: Qwen stays low through できました, 始まります; D29 follows the marks up.
+
+All three are set by the model's input, the D31 marks (where a phrase falls, where phrases and pauses are), which
+the refit does not change. Fitting more freely on the same input does not reach Qwen either: on the test half, a
+gradient-boosted model of the same features gets to 1.79 semitones (train 1.60), the linear 1.92 (train 1.91).
+
