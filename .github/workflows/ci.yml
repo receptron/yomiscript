@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  # run_id gives every push to main its own group, so a main run is never cancelled
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: yarn
+      # ruff is not an npm dependency; pinned so a new release cannot change the formatting check by itself
+      - uses: astral-sh/ruff-action@278981a28ce3188b1e39527901f38254bf3aac89 # v4.1.0
+        with:
+          version: 0.15.20
+          args: --version
+      - run: yarn install --frozen-lockfile
+        env:
+          # onnxruntime-node 1.22.0 fetches the CUDA EP on linux x64 and looks for it under win-x64 in the NuGet package; CI runs on CPU
+          ONNXRUNTIME_NODE_INSTALL: skip
+      - run: yarn format:check
+      - run: yarn lint
+      - run: yarn typecheck
+      - run: yarn build
+      - run: yarn test

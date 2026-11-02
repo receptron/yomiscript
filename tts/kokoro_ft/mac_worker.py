@@ -77,7 +77,7 @@ if not os.path.exists(DP):
             if err < 3:
                 print("prep err", k, traceback.format_exc()[-300:], flush=True)
         if i % 500 == 0:
-            print(f"prep ja {i}/{len(keys)} {time.time()-t:.0f}s", flush=True)
+            print(f"prep ja {i}/{len(keys)} {time.time() - t:.0f}s", flush=True)
     S["ja_n"] = len(D)
     S["ja_err"] = err
     # ---- distill: fr/zh (box-built misaki phonemes) + en from gen_v1 YomiScript

@@ -73,7 +73,7 @@ def main(data, out, steps, dev, every=1000, accum=8, lr=1e-4, ja_frac=0.7, log=p
         opt.step()
         sch.step()
         if s % max(1, min(100, steps // 10)) == 0:
-            log(f"step {s} {({k:round(v/run['_n'],4) for k,v in run.items() if k!='_n'})} {time.time()-t0:.0f}s")
+            log(f"step {s} { ({k: round(v / run['_n'], 4) for k, v in run.items() if k != '_n'}) } {time.time() - t0:.0f}s")
             run = {}
         if s % every == 0 or s == steps:
             vv = evaluate()

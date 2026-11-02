@@ -62,7 +62,7 @@ for name, (ys, v) in P.items():
         f = lf0(a)
         ok = ~np.isnan(f) & ~np.isnan(f0)
         print(
-            f"{name:5s} {k:10s} F0corr {np.corrcoef(f[ok],f0[ok])[0,1]:.4f} med|st| "
-            f"{np.median(np.abs(12*np.log2(f[ok]/f0[ok]))):.3f} melL1 {np.abs(mel(a)-m0).mean():.3f}",
+            f"{name:5s} {k:10s} F0corr {np.corrcoef(f[ok], f0[ok])[0, 1]:.4f} med|st| "
+            f"{np.median(np.abs(12 * np.log2(f[ok] / f0[ok]))):.3f} melL1 {np.abs(mel(a) - m0).mean():.3f}",
             flush=True,
         )

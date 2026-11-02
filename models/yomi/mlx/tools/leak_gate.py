@@ -53,6 +53,6 @@ def fr(G, t):
 
 
 print(
-    f"leak_gate: leaked {len(leak)} sentences mean maxgate {mx_(gl):.2f} (>=0.5 {fr(gl,.5):.0%} >=0.8 {fr(gl,.8):.0%}) "
-    f"| correct sentences {len(go)} mean maxgate {mx_(go):.2f} (>=0.5 {fr(go,.5):.0%} >=0.8 {fr(go,.8):.0%})"
+    f"leak_gate: leaked {len(leak)} sentences mean maxgate {mx_(gl):.2f} (>=0.5 {fr(gl, 0.5):.0%} >=0.8 {fr(gl, 0.8):.0%}) "
+    f"| correct sentences {len(go)} mean maxgate {mx_(go):.2f} (>=0.5 {fr(go, 0.5):.0%} >=0.8 {fr(go, 0.8):.0%})"
 )

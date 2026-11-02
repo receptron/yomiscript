@@ -111,7 +111,7 @@ def audit_preds(fn, n_ex=3):
             c[k] += 1
             ex.setdefault(k, []).append(f"{surf} gold{gold} ojt{o}")
     n = sum(c.values())
-    print(f"{fn} spans in failed sentences {n}: " + "  ".join(f"{k} {v/n*100:.0f}%" for k, v in c.most_common(10)))
+    print(f"{fn} spans in failed sentences {n}: " + "  ".join(f"{k} {v / n * 100:.0f}%" for k, v in c.most_common(10)))
     g = Counter()
     for k, v in c.items():
         g[
@@ -152,11 +152,11 @@ def main():
         n = sum(c.values())
         rc = [{x[3] for x in audit_row(r)} for r in rows]
         print(
-            f"{fn}: sentence-level pyopenjtalk match {sum(x <= OK for x in rc)/len(rc)*100:.1f}%  "
-            f"spelling differences only {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音'} for x in rc)/len(rc)*100:.1f}%  "
-            f"up to 町/村 differences {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音', '町 チョウ/マチ', '村 ソン/ムラ', 'ケ/ガ'} for x in rc)/len(rc)*100:.1f}%"
+            f"{fn}: sentence-level pyopenjtalk match {sum(x <= OK for x in rc) / len(rc) * 100:.1f}%  "
+            f"spelling differences only {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音'} for x in rc) / len(rc) * 100:.1f}%  "
+            f"up to 町/村 differences {sum(x <= OK | {'表記 (ヅ/オオ等)', '長音', '町 チョウ/マチ', '村 ソン/ムラ', 'ケ/ガ'} for x in rc) / len(rc) * 100:.1f}%"
         )
-        print(f"{fn} ({n} spans): " + "  ".join(f"{k} {v/n*100:.1f}%" for k, v in c.most_common()))
+        print(f"{fn} ({n} spans): " + "  ".join(f"{k} {v / n * 100:.1f}%" for k, v in c.most_common()))
         for k, _ in c.most_common():
             if k not in ("一致", "一致(分割のみ)"):
                 print(f"   {k}: " + " ".join(ex[k][: a.examples]))
