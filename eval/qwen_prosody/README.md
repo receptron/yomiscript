@@ -80,3 +80,21 @@ hf upload receptron/yomiscript-ja-qwen-speech work/hf . --repo-type dataset   # 
   check is there for (何の なにの, 日本 にっぽん, 木曽川 きくもがわ, 目眩 めむぶ); the kana pass reads 1,251 of them
   again (8 cannot be written in kana: a palatalised ç or ɲ before a back vowel, which the kana table does not have).
 - Kept so far: 2,503 sentences (the kana pass to come).
+
+### The pitch model fitted to Qwen (2,503 sentences; `results/fit_report_2503.json`)
+
+D29's model (45 features of the D31 marks, the two morae on each side), refitted by ridge regression (λ 3, by 5-fold
+cross-validation) on the even ids, tested on the odd ids (1,250 sentences), against Qwen's three values per mora,
+each sentence centred:
+
+| | rmse to Qwen (semitones) |
+|---|---|
+| no pitch (flat) | 3.02 |
+| D29 (shipped) | 2.10 |
+| refit | 1.91 |
+
+By ear (`listen.mjs`; the project owner, 2026-11-02, `results/listening_refit.json`): D29 against the refit on the
+12 sentences of eval/qwen3_tts and 12 of the test half: **no difference in 20 of 24**, the refit 3, D29 1. The refit
+is closer to Qwen by the numbers but not audibly; it does not carry over what made Qwen's own pitch (eval/qwen3_tts,
+`kokoro_f0`: 9 of 11 against D29) better. Not shipped.
+
