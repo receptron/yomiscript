@@ -541,12 +541,16 @@
       let E = null,
         A = null;
       const player = new Audio();
-      async function speak(ys, button) {
+      let speaking = false;
+      /** read: the YomiScript to hear, read once the busy state is painted so an edit made meanwhile is the one heard */
+      async function speak(read, button) {
+        if (speaking) return;
+        speaking = true;
         button.disabled = true;
         $("ps").textContent = "生成しています…";
         await painted();
         try {
-          const { audio } = await E.synth(realize(ys, RENDER), "values");
+          const { audio } = await E.synth(realize(read(), RENDER), "values");
           player.src = URL.createObjectURL(new Blob([K.wav(audio)], { type: "audio/wav" }));
           await player.play();
           $("ps").textContent = "";
@@ -554,6 +558,7 @@
           $("ps").textContent = `生成できませんでした：${e}`;
         }
         button.disabled = false;
+        speaking = false;
       }
       function markIt() {
         try {
@@ -590,8 +595,8 @@
         } catch {}
       };
       $("mark").onclick = markIt;
-      $("playDict").onclick = () => speak(write(base), $("playDict"));
-      $("playEdit").onclick = () => speak(write(cur), $("playEdit"));
+      $("playDict").onclick = () => speak(() => write(base), $("playDict"));
+      $("playEdit").onclick = () => speak(() => write(cur), $("playEdit"));
       $("reset").onclick = () => {
         cur = clone(base);
         fromVoice = false;
@@ -628,6 +633,7 @@
           if (recUrl) URL.revokeObjectURL(recUrl);
           recUrl = URL.createObjectURL(new Blob([K.wav(reading)], { type: "audio/wav" }));
           $("playRec").disabled = false;
+          await painted();
           $("vs").textContent = await applyVoice(reading);
         } catch (e) {
           $("vs").textContent = `声の高さを拾えませんでした：${e.message ?? e}`;

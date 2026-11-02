@@ -216,11 +216,20 @@
       let E = null;
       const player = new Audio();
       $("play").onclick = async () => {
-        const a = show();
-        if (a.error || !E) return;
+        if (show().error || !E) return;
         $("play").disabled = true;
         $("st").textContent = "生成しています…";
         await painted();
+        await speak(show());
+        $("play").disabled = false;
+      };
+      /** the announcement synthesized and played: the form as it is once the busy state is painted, so an edit made
+       * meanwhile is the one heard */
+      async function speak(a) {
+        if (a.error) {
+          $("st").textContent = "";
+          return;
+        }
         try {
           const t0 = performance.now();
           const { audio } = await E.synth(realize(a.ys), "values");
@@ -231,8 +240,7 @@
           $("st").textContent = `生成できませんでした：${e}`;
           $("st").className = "err";
         }
-        $("play").disabled = false;
-      };
+      }
 
       try {
         const LOCAL = new URLSearchParams(location.search).has("local"),
