@@ -79,7 +79,9 @@ hf upload receptron/yomiscript-ja-qwen-speech work/hf . --repo-type dataset   # 
 - Read right from the plain text: 2,503 (66.5%); misread: 1,259. Most are real misreadings by Qwen, the kind the
   check is there for (何の なにの, 日本 にっぽん, 木曽川 きくもがわ, 目眩 めむぶ); the kana pass reads 1,251 of them
   again (8 cannot be written in kana: a palatalised ç or ɲ before a back vowel, which the kana table does not have).
-- Kept so far: 2,503 sentences (the kana pass to come).
+- The kana pass: 1,251 sentences, 7,166 s of audio in 2,726 s; 708 read right.
+- **Kept: 3,211 sentences** (2,503 from the text, 708 from kana; 85.4% of 3,762), 97,528 units; 551 misread in
+  every pass. The Hugging Face package (`dataset.py`): 5,013 clips, 7.08 h, 626 MB of FLAC.
 
 ### The pitch model fitted to Qwen (2,503 sentences; `results/fit_report_2503.json`)
 
@@ -108,6 +110,9 @@ why the listener heard them as unnatural):
 - a level reset after a pause: meeting, where Qwen pauses 0.41 s after 会議は (no ‖ in the YomiScript) and starts
   午後三時 high (+3.7 semitones; D29 -0.5); library's いません;
 - sentence ends: Qwen stays low through できました, 始まります; D29 follows the marks up.
+
+With all 3,211 sentences (`results/fit_report_3211.json`; λ 1; 1,569 test sentences): flat 3.02, D29 2.23, refit
+2.01 semitones; the same picture.
 
 All three are set by the model's input, the D31 marks (where a phrase falls, where phrases and pauses are), which
 the refit does not change. Fitting more freely on the same input does not reach Qwen either: on the test half, a
