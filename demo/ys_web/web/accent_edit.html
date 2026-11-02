@@ -275,7 +275,7 @@
       import { parse, realize } from "@yomiscript/core";
       import * as K from "@yomiscript/kokoro";
       import { accentMarks, ACCENT_SCALE, DICT_URL, DICT_VERSION, loadFrontend } from "@yomiscript/ja-accent";
-      import { marksOf, moraFrames, startRecording, trim, voiceValues } from "./accent_voice.js";
+      import { marksOf, moraFrames, referenceVoice, startRecording, trim, voiceValues } from "./accent_voice.js";
 
       const $ = (id) => document.getElementById(id);
       const el = (tag, cls, text) => Object.assign(document.createElement(tag), cls ? { className: cls } : {}, text != null ? { textContent: text } : {});
@@ -642,35 +642,36 @@
         player.play().catch(() => {});
       };
       async function applyVoice(reading) {
-        // Kokoro's audio of the current version, without hand-set values (its timing is what matters)
+        // Kokoro's audio of the current version, without hand-set values (its timing is what matters), in the voice
+        // nearer the reader's pitch (it aligns better)
         const plain = clone(cur);
         for (const w of plain.words) for (const x of w.morae) x.f0 = null;
         const P = K.plan(realize(write(plain), RENDER));
         if (P.length !== 1) throw new Error("only a sentence in Japanese alone can be read in");
+        P[0].voice = referenceVoice(reading);
         const k = await E.synthSection(P[0], "values"),
           frames = moraFrames(P[0], k.dur);
-        const V = voiceValues({ kokoro: k.audio, frames, reading });
-        let g = 0,
-          heard = 0;
+        const { values, heard } = voiceValues({ kokoro: k.audio, frames, reading });
+        let g = 0;
         for (const p of phrases(cur)) {
-          const vals = p.morae.map(() => V[g++]),
+          const at = p.morae.map(() => g++),
+            // the marks from the morae heard; the values of every mora (the others filled in from their neighbours)
             { nucleus: n, rise } = marksOf(
-              vals,
+              at.map((i) => (heard[i] ? values[i] : null)),
               p.morae.map((q) => q.x.mk),
             );
           p.morae.forEach((q, i) => {
             q.x.fall = i === n;
             q.x.rise = i === rise;
-            q.x.f0 = vals[i];
-            if (vals[i]) heard++;
+            q.x.f0 = values[at[i]];
           });
         }
         fromVoice = true;
         voiceState = clone(cur);
         $("backVoice").disabled = false;
         render();
-        const missed = V.length - heard;
-        return `声の高さを ${heard} 拍に入れました${missed ? `（${missed} 拍は声が拾えず規則のまま）` : ""}。上がる・下がるは推定です。聞いて確かめてください。`;
+        const filled = heard.filter((h) => !h).length;
+        return `声の高さを ${values.length} 拍に入れました${filled ? `（うち ${filled} 拍は声が短く、前後の拍から補いました）` : ""}。上がる・下がるは推定です。聞いて確かめてください。`;
       }
       // the accent phrases the listener changed, each with how far its change alone moves the rendered pitch: the
       // dictionary's version with only that phrase (its marks and its boundaries) as edited, against the dictionary's,

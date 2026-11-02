@@ -1,13 +1,14 @@
 // The accent editor's voice input (accent_edit.html): the listener reads the sentence, and the pitch of their reading
 // becomes the values of each mora. Their recording is aligned with Kokoro's audio of the same YomiScript by DTW on
 // MFCCs (as eval/prosody_ref aligns a reference with ours); Kokoro's durations say where each mora is in its audio, the
-// path says where that is in the recording, and the recording's pitch there (YIN) gives the mora three values (the
-// start, middle and end of its voiced part), in semitones from the median of the reading. All in the browser; the
-// recording is not kept.
+// path says where that is in the recording, and the recording's pitch there (Praat's autocorrelation method) gives the mora three values (the
+// medians of the thirds of its voiced part), in semitones from the median of the reading. Kokoro reads in the voice
+// nearer the reader's pitch, which aligns better; a mora the reading has too little voice in takes its values from its
+// neighbours. Measured on readings whose mora positions are known, against Praat at those positions. All in the
+// browser; the recording is not kept.
 
 export const SR = 24000;
 const HOP = 300, // one F0 frame of Kokoro (2 per duration step of 600 samples)
-  WIN = 1024,
   FMIN = 70,
   FMAX = 500;
 
@@ -135,45 +136,87 @@ export function dtw(A, B) {
   return span;
 }
 
-/** the F0 (Hz, 0 unvoiced) of each HOP frame by YIN */
-export function yin(x, threshold = 0.15) {
-  const tauMin = Math.floor(SR / FMAX),
-    tauMax = Math.ceil(SR / FMIN),
-    out = [];
-  for (let t = 0; t * HOP < x.length; t++) {
-    const at = t * HOP - WIN / 2 + HOP / 2,
-      d = new Float64Array(tauMax + 1);
-    for (let tau = 1; tau <= tauMax; tau++)
-      for (let i = 0; i < WIN - tauMax; i++) {
-        const v = (x[at + i] ?? 0) - (x[at + i + tau] ?? 0);
-        d[tau] += v * v;
-      }
-    out.push(yinPick(d, tauMin, tauMax, threshold));
-  }
-  return median3(out);
+const median = (a) => [...a].sort((p, q) => p - q)[a.length >> 1];
+const semi = (hz) => 12 * Math.log2(hz);
+
+/** the autocorrelation of seg, zero-padded to n (a power of two) */
+function autocorr(seg, n) {
+  const re = new Float64Array(n),
+    im = new Float64Array(n);
+  re.set(seg);
+  fft(re, im);
+  for (let i = 0; i < n; i++) [re[i], im[i]] = [re[i] * re[i] + im[i] * im[i], 0];
+  fft(re, im); // the power spectrum is real and even: the forward transform gives the inverse, scaled
+  return re;
 }
-function yinPick(d, tauMin, tauMax, threshold) {
-  // the cumulative mean normalised difference's first dip under the threshold, refined by a parabola
-  let sum = 0;
-  const c = new Float64Array(tauMax + 1).fill(1);
-  for (let tau = 1; tau <= tauMax; tau++) {
-    sum += d[tau];
-    c[tau] = sum > 0 ? (d[tau] * tau) / sum : 1;
+// Praat's autocorrelation method (Boersma 1993) with its default costs
+const PITCH = { candidates: 15, silence: 0.03, voicing: 0.45, octave: 0.01, jump: 0.35, voicedUnvoiced: 0.14 };
+const WINDOW = Math.round((3 * SR) / FMIN), // three periods of the lowest pitch
+  NAC = 1 << Math.ceil(Math.log2(WINDOW * 1.5)),
+  HANN = Float64Array.from({ length: WINDOW }, (_, i) => 0.5 - 0.5 * Math.cos((2 * Math.PI * (i + 0.5)) / WINDOW)),
+  RW = autocorr(HANN, NAC);
+/** the frame's pitch candidates: unvoiced (f 0) and the autocorrelation peaks, each with its strength */
+function candidates(x, t, peakAll) {
+  const c = t * HOP + HOP / 2 - (WINDOW >> 1),
+    seg = new Float64Array(WINDOW);
+  let mean = 0,
+    local = 0;
+  for (let i = 0; i < WINDOW; i++) mean += (x[c + i] ?? 0) / WINDOW;
+  for (let i = 0; i < WINDOW; i++) {
+    const v = (x[c + i] ?? 0) - mean;
+    local = Math.max(local, Math.abs(v));
+    seg[i] = v * HANN[i];
   }
-  for (let tau = tauMin; tau < tauMax; tau++) {
-    if (c[tau] >= threshold) continue;
-    while (tau + 1 < tauMax && c[tau + 1] < c[tau]) tau++;
-    const [a, b, e] = [c[tau - 1], c[tau], c[tau + 1]],
-      shift = (a - e) / (2 * (a - 2 * b + e) || 1);
-    return SR / (tau + shift);
+  const { voicing, silence, octave, candidates: max } = PITCH,
+    out = [{ f: 0, s: voicing + Math.max(0, 2 - local / peakAll / (silence / (1 + voicing))) }],
+    r = autocorr(seg, NAC);
+  if (r[0] <= 0) return out;
+  // the signal's normalised autocorrelation, divided by the window's
+  const R = (k) => r[k] / r[0] / (RW[k] / RW[0]);
+  for (let k = Math.max(2, Math.floor(SR / FMAX)); k <= Math.ceil(SR / FMIN); k++) {
+    const [a, b, e] = [R(k - 1), R(k), R(k + 1)];
+    if (!(b > a && b >= e) || b < 0.5 * voicing) continue;
+    const d = Math.max(-1, Math.min(1, (0.5 * (a - e)) / (a - 2 * b + e || 1))),
+      f = SR / (k + d);
+    out.push({ f, s: Math.min(1, b - 0.25 * (a - e) * d) - octave * Math.log2(FMIN / f) });
   }
-  return 0;
+  return [out[0], ...out.slice(1).sort((p, q) => q.s - p.s)].slice(0, max);
 }
-function median3(f) {
-  return f.map((v, i) => {
-    const w = [f[i - 1], v, f[i + 1]].filter((u) => u > 0);
-    return v > 0 && w.length ? w.sort((p, q) => p - q)[w.length >> 1] : 0;
-  });
+/** the path through the candidates with the most strength less the costs of octave jumps and voicing changes */
+function viterbi(F) {
+  const scale = 0.01 / (HOP / SR),
+    cost = (a, b) => {
+      if (!a.f && !b.f) return 0;
+      if (!a.f || !b.f) return PITCH.voicedUnvoiced * scale;
+      return PITCH.jump * scale * Math.abs(Math.log2(a.f / b.f));
+    };
+  let D = F[0].map((c) => c.s);
+  const back = [];
+  for (let t = 1; t < F.length; t++) {
+    const prev = D,
+      from = F[t].map((c) => {
+        const v = F[t - 1].map((p, i) => prev[i] - cost(p, c)),
+          i = v.indexOf(Math.max(...v));
+        return [i, v[i] + c.s];
+      });
+    back.push(from.map(([i]) => i));
+    D = from.map(([, v]) => v);
+  }
+  const out = new Array(F.length);
+  for (let t = F.length - 1, i = D.indexOf(Math.max(...D)); t >= 0; t--) {
+    out[t] = F[t][i].f;
+    if (t > 0) i = back[t - 1][i];
+  }
+  return out;
+}
+/** the F0 (Hz, 0 unvoiced) of each HOP frame, as Praat's autocorrelation method finds it (within 0.1 semitone of
+ * Praat's on most frames of a test set of read sentences) */
+export function pitch(x) {
+  let peakAll = 1e-9;
+  for (const v of x) peakAll = Math.max(peakAll, Math.abs(v));
+  const F = [];
+  for (let t = 0; t * HOP < x.length; t++) F.push(candidates(x, t, peakAll));
+  return F.length ? viterbi(F) : [];
 }
 
 /** the frames (of HOP) each mora of Kokoro's plan spans: [first, end) per unit that is a mora, in order */
@@ -193,29 +236,51 @@ export function moraFrames(sec, dur) {
   return out;
 }
 
-/** three values per mora (semitones from the reading's median; null where the reading is unvoiced there) */
-export function voiceValues({ kokoro, frames, reading }) {
-  const path = dtw(mfcc(kokoro), mfcc(reading)),
-    f0 = yin(reading),
-    voiced = f0.filter((v) => v > 0).sort((p, q) => p - q);
-  if (!voiced.length) throw new Error("no voice was heard in the recording");
-  const ref = voiced[voiced.length >> 1],
-    st = (hz) => 12 * Math.log2(hz / ref);
-  return frames.map((fr) => {
-    if (!fr) return null;
-    const [a, b] = [Math.min(fr[0], path.length - 1), Math.min(fr[1], path.length) - 1];
-    const ua = path[a][0],
-      ub = path[Math.max(a, b)][1];
-    const V = [];
-    for (let j = ua; j <= ub; j++) if (f0[j] > 0) V.push(st(f0[j]));
-    if (!V.length) return null;
-    // the start, middle and end of the voiced part, each the median of the frames around it
-    return [1 / 6, 1 / 2, 5 / 6].map((q) => {
-      const c = Math.floor(q * V.length),
-        w = V.slice(Math.max(0, c - 1), c + 2).sort((p, r) => p - r);
-      return Math.round(w[w.length >> 1] * 10) / 10;
-    });
+/** the Kokoro voice to align a reading with: the one nearer its pitch (a low voice with jm_kumo, else jf_alpha) */
+export function referenceVoice(reading) {
+  const f = pitch(reading).filter((v) => v > 0);
+  return f.length && median(f) < 165 ? "jm_kumo" : "jf_alpha";
+}
+
+/** fewer voiced frames than this in a mora, and its values come from its neighbours */
+const MIN_FRAMES = 3;
+/** a mora's three values: the median of each third of its voiced frames (semitones from ref), or null */
+function thirds(f0, ua, ub, ref) {
+  const S = [];
+  for (let j = ua; j <= ub; j++) if (f0[j] > 0) S.push(semi(f0[j]) - semi(ref));
+  if (S.length < MIN_FRAMES) return null;
+  return [0, 1, 2].map((t) => Math.round(median(S.slice(Math.floor((t * S.length) / 3), Math.floor(((t + 1) * S.length) / 3))) * 10) / 10);
+}
+/** the morae not heard, filled in on straight lines between the heard ones (the end ones held) */
+function fill(V) {
+  const heard = V.flatMap((v, k) => (v ? [k] : []));
+  return V.map((v, k) => {
+    if (v) return v;
+    const a = heard.findLast((h) => h < k),
+      b = heard.find((h) => h > k);
+    if (a === undefined || b === undefined) return [...V[a ?? b]];
+    const w = (k - a) / (b - a);
+    return V[a].map((x, i) => Math.round((x + (V[b][i] - x) * w) * 10) / 10);
   });
+}
+/** three values per mora (semitones from the reading's median) and which morae the reading was heard in; the others
+ * are filled in from their neighbours, so every value is the reading's. f0: the reading's pitch from elsewhere (a
+ * check against another tracker) */
+export function voiceValues({ kokoro, frames, reading, f0: track = null }) {
+  const path = dtw(mfcc(kokoro), mfcc(reading)),
+    f0 = track ?? pitch(reading),
+    voiced = f0.filter((v) => v > 0);
+  if (!voiced.length) throw new Error("no voice was heard in the recording");
+  const ref = median(voiced);
+  const V = frames.map((fr) => {
+    if (!fr) return null;
+    const a = Math.min(fr[0], path.length - 1),
+      b = Math.max(a, Math.min(fr[1], path.length) - 1);
+    return thirds(f0, path[a][0], path[b][1], ref);
+  });
+  const heard = V.map((v) => !!v);
+  if (!heard.some(Boolean)) throw new Error("no mora was heard in the recording");
+  return { values: fill(V), heard };
 }
 
 /** marks of a phrase from its values: the nucleus where the pitch falls most from one mora to the next (by at least

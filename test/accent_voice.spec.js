@@ -1,18 +1,29 @@
 // The accent editor's voice input (demo/ys_web/web/accent_voice.js): the pitch tracker, the alignment and the marks
 // read from a reading's values, on made-up signals (no microphone, no model).
 import { describe, expect, it } from "vitest";
-import { SR, dtw, marksOf, mfcc, trim, yin } from "../demo/ys_web/web/accent_voice.js";
+import { SR, dtw, marksOf, mfcc, pitch, referenceVoice, trim } from "../demo/ys_web/web/accent_voice.js";
 
 const tone = (hz, sec) => Float32Array.from({ length: Math.round(SR * sec) }, (_, i) => 0.5 * Math.sin((2 * Math.PI * hz * i) / SR));
 const join = (...parts) => Float32Array.from(parts.flatMap((p) => [...p]));
 
-describe("yin", () => {
+describe("pitch", () => {
   it("hears the pitch of a tone, and nothing in silence", () => {
-    const f0 = yin(join(new Float32Array(SR * 0.2), tone(150, 0.4), tone(240, 0.4)));
+    const f0 = pitch(join(new Float32Array(SR * 0.2), tone(150, 0.4), tone(200, 0.4)));
     const at = (sec) => f0[Math.round((sec * SR) / 300)];
     expect(at(0.05)).toBe(0);
     expect(at(0.4)).toBeCloseTo(150, 0);
-    expect(at(0.8)).toBeCloseTo(240, 0);
+    expect(at(0.8)).toBeCloseTo(200, 0);
+  });
+  it("does not jump an octave: a frame an octave off the speaker's range is not heard there", () => {
+    const f0 = pitch(join(tone(150, 0.8), tone(300, 0.05), tone(150, 0.8)));
+    expect(f0.filter((v) => v > 250)).toEqual([]);
+  });
+});
+
+describe("referenceVoice", () => {
+  it("aligns a low voice with the male Kokoro voice, a higher one with the female", () => {
+    expect(referenceVoice(tone(120, 0.5))).toBe("jm_kumo");
+    expect(referenceVoice(tone(230, 0.5))).toBe("jf_alpha");
   });
 });
 
