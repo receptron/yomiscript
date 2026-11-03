@@ -192,3 +192,22 @@ the phrase before, and a fall read inside D31's phrasing is then credited to the
 as well (which phrases join), and learning phrase rules from it (as jsut_accent's rules.mjs does from the gold: the
 phrasing is also D31's largest error against the gold there), is the next step.
 
+### Open comparison: Qwen, the tools now, and the accent read from Qwen (`compare.mjs`; `results/listening_compare.json`)
+
+Not blind (`blind.html?…&open`: the systems named, the accent marks shown, an "unnatural" tick and a note per clip),
+the 24 sentences of the listening tests, the project owner:
+
+| | heard as unnatural (of 24) |
+|---|---|
+| `now` (D31 marks, D29 values) | 13 |
+| `abs` (the marks read from Qwen's pitch of that sentence, the fitted model's values) | 3 |
+| `qwen` (Qwen itself) | 2 |
+
+Of the 13 unnatural with `now`, 11 are not with `abs`. The three with `abs` are ones where Qwen or `now` was
+unnatural too, and the notes say where: Qwen speaks 日なた (cat) and ひざ (BASIC5000_2917) with a fall after the first
+mora (ひꜜなた, ひꜜざ; both are flat), and `abs` copies it. Where `now` was noted, お酒 (BASIC5000_4509), D31 has
+おꜜさけ and `abs` reads it flat from Qwen. Being open, this is a pointer to what is wrong, not a blind result.
+
+So the marks read from Qwen's own speech of a sentence carry nearly all of what makes Qwen better, and Qwen's own
+accent errors with it; what failed (`abs_dict.mjs`) is turning them into word accents for other sentences.
+

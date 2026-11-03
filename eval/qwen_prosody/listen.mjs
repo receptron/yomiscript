@@ -19,39 +19,43 @@ const OUT = path.join(HERE, "audio/listen");
 const CACHE = path.join(process.env.HOME, ".cache/yomiscript");
 const JSUT_PICK = 12;
 
-const A = await nodeAnalyzer({ dir: path.join(CACHE, "ja-dict", fs.readdirSync(path.join(CACHE, "ja-dict"))[0]) }),
-  E = await nodeEngine({ dir: path.join(CACHE, "kokoro") }),
-  model = JSON.parse(fs.readFileSync(path.join(HERE, "work/fit.json"), "utf8"));
-const shipped = accentYomite(A),
-  refit = (ys) => {
-    const marked = accentMarks(ys, A);
-    return marked === ys ? ys : realize(marked, { markedOnly: true, jaScale: ACCENT_SCALE, jaModel: model });
-  };
-
-function sentences() {
-  const ours = JSON.parse(fs.readFileSync(path.join(HERE, "../qwen3_tts/texts.json"), "utf8")).map((x) => ({ set: "ja", ...x }));
+/** the 12 sentences of the test half the listening tests use: evenly spaced through the odd ids that Qwen read from
+ * the text (the data the tests were made with, before the kana pass) */
+export function jsutPick() {
   const test = fs
     .readFileSync(path.join(HERE, "data/jsut_qwen_clone.jsonl"), "utf8")
     .trim()
     .split("\n")
     .map((l) => JSON.parse(l))
-    .filter((r) => Number(r.name.split("_")[1]) % 2 === 1);
-  const step = Math.floor(test.length / JSUT_PICK); // evenly spaced through the test half
-  return [...ours, ...Array.from({ length: JSUT_PICK }, (_, i) => ({ set: "jsut", name: test[i * step].name, ys: test[i * step].ys }))];
+    .filter((r) => r.given === "text" && Number(r.name.split("_")[1]) % 2 === 1);
+  const step = Math.floor(test.length / JSUT_PICK);
+  return Array.from({ length: JSUT_PICK }, (_, i) => ({ name: test[i * step].name, ys: test[i * step].ys }));
 }
 
-const items = [];
-for (const { set, name, ys } of sentences()) {
-  const id = `${set}.${name}`;
-  for (const [variant, step] of [
-    ["d29", shipped],
-    ["refit", refit],
-  ])
-    writeLevelled(OUT, variant, id, { samples: (await E.synth(step(ys))).audio, sampleRate: K.SR });
-  items.push({ set, name, text: originalText(ys) });
-  console.log(id);
+async function main() {
+  const A = await nodeAnalyzer({ dir: path.join(CACHE, "ja-dict", fs.readdirSync(path.join(CACHE, "ja-dict"))[0]) }),
+    E = await nodeEngine({ dir: path.join(CACHE, "kokoro") }),
+    model = JSON.parse(fs.readFileSync(path.join(HERE, "work/fit.json"), "utf8"));
+  const shipped = accentYomite(A),
+    refit = (ys) => {
+      const marked = accentMarks(ys, A);
+      return marked === ys ? ys : realize(marked, { markedOnly: true, jaScale: ACCENT_SCALE, jaModel: model });
+    };
+  const ours = JSON.parse(fs.readFileSync(path.join(HERE, "../qwen3_tts/texts.json"), "utf8")).map((x) => ({ set: "ja", ...x })),
+    items = [];
+  for (const { set, name, ys } of [...ours, ...jsutPick().map((x) => ({ set: "jsut", ...x }))]) {
+    const id = `${set}.${name}`;
+    for (const [variant, step] of [
+      ["d29", shipped],
+      ["refit", refit],
+    ])
+      writeLevelled(OUT, variant, id, { samples: (await E.synth(step(ys))).audio, sampleRate: K.SR });
+    items.push({ set, name, text: originalText(ys) });
+    console.log(id);
+  }
+  fs.writeFileSync(
+    path.join(OUT, "listen.json"),
+    JSON.stringify({ test: "qwen_prosody_refit", title: "Pitch model fitted to Qwen", variants: ["d29", "refit"], items }, null, 1),
+  );
 }
-fs.writeFileSync(
-  path.join(OUT, "listen.json"),
-  JSON.stringify({ test: "qwen_prosody_refit", title: "Pitch model fitted to Qwen", variants: ["d29", "refit"], items }, null, 1),
-);
+if (process.argv[1] === fileURLToPath(import.meta.url)) await main();
