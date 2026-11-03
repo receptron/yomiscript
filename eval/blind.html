@@ -66,6 +66,18 @@
       .pick {
         margin-top: 6px;
       }
+      .detail {
+        color: var(--muted);
+        font:
+          12px ui-monospace,
+          monospace;
+        overflow-wrap: anywhere;
+      }
+      .opt input[type="text"] {
+        box-sizing: border-box;
+        margin-top: 4px;
+        width: 100%;
+      }
       textarea {
         box-sizing: border-box;
         font:
@@ -97,7 +109,11 @@
       const permutations = (xs) => (xs.length < 2 ? [xs] : xs.flatMap((x, i) => permutations([...xs.slice(0, i), ...xs.slice(i + 1)]).map((p) => [x, ...p])));
       // a fixed order per sentence that goes through every order of the systems in turn (with two systems: each
       // first in half of the sentences), not in a pattern that is easy to follow
+      // &open: not blind, to point at what is wrong: the systems named and in the listed order, each with the
+      // sentence's detail for it (listen.json items' detail[system], e.g. its accent marks) and a note
+      const OPEN = Q.has("open");
       const order = (k, variants) => {
+        if (OPEN) return variants;
         const all = permutations(variants);
         return all[(k * 5 + Math.floor(k / all.length)) % all.length];
       };
@@ -111,13 +127,20 @@
         l.append(r, " " + label);
         return l;
       }
-      function option(id, v, letter) {
+      function option(id, v, letter, detail) {
         const o = el("div");
         o.className = "opt";
         const who = el("span", v);
         who.className = "who";
         const a = Object.assign(el("audio"), { controls: true, preload: "none", src: `${BASE}${v}/${id}.wav` });
-        o.append(el("strong", letter), " ", who, el("br"), a, el("br"), tick(id, v, "unnatural"), "  ", tick(id, v, "misread"));
+        o.append(el("strong", letter), " ", who, el("br"));
+        if (OPEN && detail) o.append(Object.assign(el("div", detail), { className: "detail" }));
+        o.append(a, el("br"), tick(id, v, "unnatural"), "  ", tick(id, v, "misread"));
+        if (OPEN) {
+          const note = Object.assign(el("input"), { type: "text", placeholder: "what sounds wrong (optional)" });
+          note.oninput = () => (state[id].notes[v] = note.value.trim());
+          o.append(note);
+        }
         return o;
       }
       // a box per system for what is wrong with it: state[id][key] lists the systems ticked
@@ -141,12 +164,12 @@
         items.forEach((it, k) => {
           const id = `${it.set}.${it.name}`,
             ord = order(k, variants);
-          state[id] = { order: ord, better: null, unnatural: [], misread: [] };
+          state[id] = { order: ord, better: null, unnatural: [], misread: [], notes: {} };
           const d = el("div");
           d.className = "item";
           const opts = el("div");
           opts.className = "opts";
-          ord.forEach((v, i) => opts.append(option(id, v, LETTERS[i])));
+          ord.forEach((v, i) => opts.append(option(id, v, LETTERS[i], it.detail?.[v])));
           const pick = el("div");
           pick.className = "pick";
           pick.append("Most natural (optional): ");
@@ -174,9 +197,17 @@
         }
         document.getElementById("summary").textContent =
           `most natural: ${JSON.stringify(better)}  unnatural: ${JSON.stringify(unnatural)}  misread: ${JSON.stringify(misread)}`;
-        const answers = Object.fromEntries(Object.entries(state).map(([k, s]) => [k, { better: s.better, unnatural: s.unnatural, misread: s.misread }]));
+        const notes = (s) => Object.fromEntries(Object.entries(s.notes).filter(([, n]) => n));
+        const answers = Object.fromEntries(
+          Object.entries(state).map(([k, s]) => [k, { better: s.better, unnatural: s.unnatural, misread: s.misread, notes: notes(s) }]),
+        );
         document.getElementById("out").value = JSON.stringify({ test: testName, better, unnatural, misread, answers });
       };
+      if (OPEN) {
+        document.body.classList.add("revealed");
+        document.querySelector(".note").textContent =
+          'Not blind: each system is named, in the same order for every sentence. Tick every one that sounds unnatural, write what sounds wrong if you can, then press "Reveal" and copy the result.';
+      }
       fetch(`${BASE}listen.json`)
         .then((r) => r.json())
         .then(render);
