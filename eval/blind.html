@@ -79,9 +79,9 @@
   <body>
     <h1 id="title">Blind listening</h1>
     <p class="note">
-      Each sentence is spoken by each system. Which one is A, B, … changes from sentence to sentence. Pick the one that sounds more natural (accent, rhythm,
-      voice), or one of the two "no difference" answers (both natural, or both unnatural), and tick any that sounds misread (a word heard as another word). Then
-      press "Reveal" and copy the result.
+      Each sentence is spoken by each system. Which one is A, B, … changes from sentence to sentence. Tick every one that sounds unnatural (accent, rhythm,
+      voice) and any that sounds misread (a word heard as another word); if one sounds the most natural, pick it, or "no difference". Then press "Reveal" and
+      copy the result.
     </p>
     <div id="items"></div>
     <p><button id="reveal">Reveal</button></p>
@@ -117,15 +117,19 @@
         const who = el("span", v);
         who.className = "who";
         const a = Object.assign(el("audio"), { controls: true, preload: "none", src: `${BASE}${v}/${id}.wav` });
-        const mis = el("label"),
+        o.append(el("strong", letter), " ", who, el("br"), a, el("br"), tick(id, v, "unnatural"), "  ", tick(id, v, "misread"));
+        return o;
+      }
+      // a box per system for what is wrong with it: state[id][key] lists the systems ticked
+      function tick(id, v, key) {
+        const l = el("label"),
           box = Object.assign(el("input"), { type: "checkbox" });
         box.onchange = () => {
-          const m = state[id].misread.filter((x) => x !== v);
-          state[id].misread = box.checked ? [...m, v] : m;
+          const m = state[id][key].filter((x) => x !== v);
+          state[id][key] = box.checked ? [...m, v] : m;
         };
-        mis.append(box, " misread");
-        o.append(el("strong", letter), " ", who, el("br"), a, el("br"), mis);
-        return o;
+        l.append(box, " " + key);
+        return l;
       }
       function render({ test, title, variants, items }) {
         testName = test ?? TEST;
@@ -137,7 +141,7 @@
         items.forEach((it, k) => {
           const id = `${it.set}.${it.name}`,
             ord = order(k, variants);
-          state[id] = { order: ord, better: null, misread: [] };
+          state[id] = { order: ord, better: null, unnatural: [], misread: [] };
           const d = el("div");
           d.className = "item";
           const opts = el("div");
@@ -145,18 +149,14 @@
           ord.forEach((v, i) => opts.append(option(id, v, LETTERS[i])));
           const pick = el("div");
           pick.className = "pick";
-          pick.append("More natural: ");
+          pick.append("Most natural (optional): ");
           ord.forEach((v, i) =>
             pick.append(
               radio(id, LETTERS[i], () => (state[id].better = v)),
               "  ",
             ),
           );
-          pick.append(
-            radio(id, "no difference, both natural", () => (state[id].better = "same")),
-            "  ",
-          );
-          pick.append(radio(id, "no difference, both unnatural", () => (state[id].better = "neither")));
+          pick.append(radio(id, "no difference", () => (state[id].better = "same")));
           d.append(el("div", `${k + 1}. ${it.text}`), opts, pick);
           d.firstChild.className = "text";
           root.append(d);
@@ -165,14 +165,17 @@
       document.getElementById("reveal").onclick = () => {
         document.body.classList.add("revealed");
         const better = {},
+          unnatural = {},
           misread = {};
         for (const s of Object.values(state)) {
           if (s.better) better[s.better] = (better[s.better] ?? 0) + 1;
+          for (const v of s.unnatural) unnatural[v] = (unnatural[v] ?? 0) + 1;
           for (const v of s.misread) misread[v] = (misread[v] ?? 0) + 1;
         }
-        document.getElementById("summary").textContent = `more natural: ${JSON.stringify(better)}  misread: ${JSON.stringify(misread)}`;
-        const answers = Object.fromEntries(Object.entries(state).map(([k, s]) => [k, { better: s.better, misread: s.misread }]));
-        document.getElementById("out").value = JSON.stringify({ test: testName, better, misread, answers });
+        document.getElementById("summary").textContent =
+          `most natural: ${JSON.stringify(better)}  unnatural: ${JSON.stringify(unnatural)}  misread: ${JSON.stringify(misread)}`;
+        const answers = Object.fromEntries(Object.entries(state).map(([k, s]) => [k, { better: s.better, unnatural: s.unnatural, misread: s.misread }]));
+        document.getElementById("out").value = JSON.stringify({ test: testName, better, unnatural, misread, answers });
       };
       fetch(`${BASE}listen.json`)
         .then((r) => r.json())

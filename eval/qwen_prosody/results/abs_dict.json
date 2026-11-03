@@ -1,0 +1,23 @@
+{
+ "entries": 63,
+ "words": 3442,
+ "test": {
+  "sentences": 1215,
+  "changed": 250,
+  "closer": 38,
+  "farther": 137,
+  "d31": 1.8507122329592922,
+  "dict": 1.8665713311215386
+ },
+ "nouns": {
+  "entries": 36,
+  "test": {
+   "sentences": 1215,
+   "changed": 103,
+   "closer": 6,
+   "farther": 82,
+   "d31": 1.8507122329592922,
+   "dict": 1.8654303236512944
+  }
+ }
+}
