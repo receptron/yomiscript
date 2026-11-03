@@ -8,11 +8,6 @@ task_categories:
 pretty_name: JSUT sentences read by Qwen3-TTS in a Kokoro voice
 size_categories:
   - 1K<n<10K
-configs:
-  - config_name: default
-    data_files:
-      - split: train
-        path: "metadata.jsonl"
 ---
 
 # JSUT sentences read by Qwen3-TTS in a Kokoro voice
