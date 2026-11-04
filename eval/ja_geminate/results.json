@@ -1,0 +1,97 @@
+{
+ "summary": {
+  "sentences": 300,
+  "with_geminate": 147,
+  "geminates": 199,
+  "changed_sentences": 19,
+  "raised_ids": 26,
+  "mean_added_ms_when_changed": 34
+ },
+ "detail": {
+  "page.h007": {
+   "raised": [
+    "ʔ50"
+   ],
+   "added_ms": 25
+  },
+  "page.h054": {
+   "raised": [
+    "ɨ50",
+    "ʔ50"
+   ],
+   "added_ms": 50
+  },
+  "page.h061": {
+   "raised": [
+    "ʔ50"
+   ],
+   "added_ms": 25
+  },
+  "page.h066": {
+   "raised": [
+    "i50"
+   ],
+   "added_ms": 25
+  },
+  "page.h067": {
+   "raised": [
+    "o50",
+    "ʔ50",
+    "ɨ50",
+    "ʔ50"
+   ],
+   "added_ms": 100
+  },
+  "jsut.BASIC5000_0067": {
+   "raised": [
+    "ʔ50"
+   ],
+   "added_ms": 25
+  },
+  "jsut.BASIC5000_0251": {
+   "raised": [
+    "i50"
+   ],
+   "added_ms": 25
+  },
+  "jsut.BASIC5000_0343": {
+   "raised": [
+    "i50"
+   ],
+   "added_ms": 25
+  },
+  "jsut.BASIC5000_0531": {
+   "raised": [
+    "ʔ50"
+   ],
+   "added_ms": 25
+  },
+  "jsut.BASIC5000_0609": {
+   "raised": [
+    "ʔ50"
+   ],
+   "added_ms": 25
+  },
+  "count.hon20": {
+   "raised": [
+    "ɨ50",
+    "ʔ50"
+   ],
+   "added_ms": 50
+  },
+  "count.kai20": {
+   "raised": [
+    "ɨ50",
+    "ʔ50"
+   ],
+   "added_ms": 50
+  },
+  "count.fun70": {
+   "raised": [
+    "ɨ50",
+    "ʔ50"
+   ],
+   "added_ms": 50
+  }
+ }
+}

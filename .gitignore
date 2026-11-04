@@ -46,3 +46,7 @@ eval/tts_readings/audio/
 
 # eval/ipa_value audio (synth.mjs)
 eval/ipa_value/audio/
+# eval/announce_minutes blind test audio (listen.mjs)
+eval/announce_minutes/audio/
+# eval/ja_geminate blind test audio (listen.mjs)
+eval/ja_geminate/audio/
