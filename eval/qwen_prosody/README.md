@@ -211,3 +211,168 @@ mora (ひꜜなた, ひꜜざ; both are flat), and `abs` copies it. Where `now` 
 So the marks read from Qwen's own speech of a sentence carry nearly all of what makes Qwen better, and Qwen's own
 accent errors with it; what failed (`abs_dict.mjs`) is turning them into word accents for other sentences.
 
+
+### Can the accent read from Qwen be predicted from the sentence? (`nucleus_rows.mjs`, `nucleus.py`, `nucleus_eval.mjs`; `results/nucleus.json`, `results/nucleus_eval.json`)
+
+A small neural model (a two-layer bidirectional LSTM over the morae: the mora, its word and the word's first and last
+characters, its place in the word and the phrase, the boundary before it, D31's nucleus) is trained on the training
+half's abs.mjs nuclei (1,288 sentences, a tenth held out to stop on) to choose the nucleus of each D31 phrase of two or
+more morae. On the test half (1,215 sentences, 8,532 phrases):
+
+| | the same nucleus as abs | whole sentence as abs | mean distance to Qwen's pitch (semitones) |
+|---|---|---|---|
+| D31 | 61.5% | 4.9% | 1.856 |
+| the model | 64.1% | 6.0% | 1.841 |
+| the phrase's majority nucleus in the training half (the same words, seen twice or more; else D31) | 62.9% | | 1.847 |
+| abs (read from Qwen's pitch of that sentence) | 100% | 100% | 1.518 |
+
+The model closes 4.5% of the distance from D31 to abs (255 sentences closer to Qwen than D31, 173 farther); on its
+own training sentences it agrees with abs in 66.5%. **abs is not reproduced, so its result was not listened to.**
+
+The labels are why: the same phrase does not get the same nucleus. Of the phrases whose words occur three times or
+more, the majority nucleus covers 76%; する alone is flat 109 times and falls after its first mora 66 times, いる 49
+and 50. These are mostly words D31 puts at the start of a phrase that Qwen seems to join to the one before (not
+checked), so with D31's phrasing kept fixed the nucleus abs reads there fits that sentence's pitch, not a property of
+the phrase. What abs gains is mostly specific to the sentence as Qwen spoke it.
+
+### The same in the LLM's accent phrases (`phrase_corpus.mjs`, `abs.mjs --phrased`; `results/nucleus_phrased.json`, `results/nucleus_eval_phrased.json`)
+
+Claude put ` | ` into the corpus's YomiScripts, changing nothing else (2,501 of 2,503 kept; the line of
+eval/llm_phrasing), and abs.mjs read the nuclei again in those phrases (D32: the dictionary's accent in the LLM's
+phrases as the start). 6,309 of 16,074 phrases take another nucleus than the start; distance to Qwen 1.861 -> 1.505.
+The phrases repeat a little more consistently (majority nucleus 79.6% of the phrases whose words occur three times or
+more, against 76.4%; する, して and いる are joined to the phrase before now), but not enough: ある。 is flat 53 times and
+falls after its first mora 67 times. The same model, on the test half (1,214 sentences, 7,816 phrases):
+
+| | the same nucleus as abs | mean distance to Qwen's pitch |
+|---|---|---|
+| D31 as shipped | | 1.857 |
+| D32, the start | 61.1% | 1.863 |
+| the model | 62.8% (on its training sentences 76.2%) | 1.874 |
+| abs in the LLM's phrases | 100% | 1.507 |
+
+The model learns its training sentences and not the test half, and comes no closer to Qwen than the start. **In the
+LLM's phrases too, the nuclei abs reads are not predictable from the sentence**: what abs gains is specific to the
+sentence as Qwen spoke it, at least with this much data.
+
+The model's test agreement against the size of its training half (the same model, sentences drawn at random; the
+start is 61.1%): 321 sentences 60.7%, 643 60.5%, all 1,287 62.8%. Only with all of them does it beat the start, so
+more data was tried next.
+
+### More sentences, from Wikipedia (`wiki_sentences.mjs`, `wiki_items.mjs`, `extract.py --wiki`, `abs.mjs --wiki`; `results/nucleus_phrased+_wiki.json`, `results/nucleus_eval_phrased+_wiki.json`)
+
+5,000 sentences of Japanese Wikipedia (wikimedia/wikipedia 20231101.ja, CC BY-SA 4.0; at most two plain sentences
+from each of 2,912 articles, 12 to 50 characters of kanji and kana only), written as YomiScript by Claude in the
+tools' instructions with the line asking for accent phrases (D32): 4,880 kept (99 did not parse, 21 changed the
+text). Qwen read them as the JSUT ones (`generate.py --items work/wiki/items.json --out work/wiki/audio`, 2.2 s a
+sentence). There is no hand-checked reading, so Whisper's transcript is checked against the YomiScript's own
+reading: 2,393 kept (49%; JSUT's 66.5% was of YomiScripts already checked against the gold, here a YomiScript that
+reads the sentence wrong drops it too). abs.mjs read the nuclei: 6,031 of 13,463 phrases take another nucleus than
+the start, distance 1.918 -> 1.581, as on JSUT. All of them are added to the training half; the test half is the
+same JSUT one (1,214 sentences, 7,816 phrases):
+
+| | the same nucleus as abs | mean distance to Qwen's pitch |
+|---|---|---|
+| D32, the start | 61.1% | 1.863 |
+| the model, JSUT only (1,287 sentences) | 62.8% (training 76.2%) | 1.874 |
+| **the model, JSUT and Wikipedia (3,680)** | **64.6%** (training 67.9%) | **1.836** |
+| abs in the LLM's phrases | 100% | 1.507 |
+
+With the Wikipedia sentences the model comes closer to Qwen than the start for the first time (397 sentences closer,
+274 farther; 7.5% of the gap from the start to abs closed), and it no longer just learns its training sentences. The
+gain is about one point of agreement for each doubling of the data (60.5, 62.8, 64.6 at 643, 1,287, 3,680), slow
+against the 39 points to abs.
+
+Found on the way: a pause written with no text (`‖<t:>`, the LLM's pause where the sentence has no comma) made
+`accentMarks` start the phrase after it at the pause, which put a ` | ` after the final `↘` and broke the YomiScript
+(packages/ja-accent `cover`, fixed). The JSUT scores do not change (Codex's answers have no such pause); in
+eval/llm_phrasing the dictionary's accent on the base answers goes up by 0.1 point.
+
+### Three fixes to the measurement (found by Codex in an experiment worktree)
+
+- `fit.py` wrote `work/fit.json` refitted on the training and the test half together, so every distance above was
+  measured with a pitch model that had seen the test sentences. It now writes the model fitted on the training half
+  (its features also taken from the training half only; they are the same 45). Its test rmse, which was always of
+  the training-half model, does not change (1.91).
+- abs.mjs did not try a fall after a phrase's last mora (it is not heard inside the phrase, but the next phrase
+  starts lower: `jaContour` counts it for downstep), and stopped after two passes. It now tries it (nucleus n), goes
+  on until no phrase changes (at most 5 passes were needed), and keeps the held nucleus on a tie. The start keeps
+  D31's own final falls.
+- nucleus.py ran the LSTM over padded batches, so the backward direction of a short sentence started in the padding.
+  The batches are now packed; the model has a second output per mora for flat, so that flat and a final fall are
+  two choices.
+
+Everything was run again (fit.py; abs.mjs, --phrased, --wiki; nucleus_rows.mjs, nucleus.py, nucleus_eval.mjs). The
+test half (the odd JSUT ids):
+
+| | before | after |
+|---|---|---|
+| D31's phrases: start / abs (1,215 sentences) | 1.856 / 1.518 | 1.866 / 1.502 |
+| the LLM's phrases: start / abs (1,214) | 1.863 / 1.507 | 1.871 / 1.494 |
+| the model in D31's phrases: agreement / distance / gap closed | 64.1% / 1.841 / 4.5% | 58.3% / 1.848 / 5.0% |
+| the model, JSUT (LLM's phrases) | 62.8% / 1.874 / -3.1% | 56.9% / 1.874 / -0.8% |
+| the model, JSUT and Wikipedia | 64.6% / 1.836 / 7.5% | 58.7% / 1.846 / 6.8% |
+
+The agreement is lower because a phrase now has one more choice and abs's labels changed (the start agrees with them
+in 54.7% of the phrases, was 61.1%); the distances, which do not depend on the labels, barely move, and what was
+said above holds: the model from the text features closes a few percent of the gap. The listening tests above were
+made with the old pitch model and stay as they were heard.
+
+### With Qwen's own representation of the words (`qwen_hidden.py`, `nucleus.py --qwen <layer>`; `results/nucleus_phrased+_wiki+qwen<layer>.json`, `results/nucleus_eval_phrased+_wiki+qwen<layer>.json`)
+
+Qwen3-TTS has no G2P and no accent module: its talker (28 layers, width 2,048) reads the sentence as BPE text tokens
+and writes codec codes, so whatever decides its accent is in the talker's hidden states. `qwen_hidden.py` builds the
+clone's input exactly as generation does (mlx-audio's ICL prompt), runs the talker over it once, and keeps the output
+of layers 7, 14, 21 and 28 at the sentence's text tokens, as the mean over the tokens of each YomiScript word
+(4,894 sentences, 978 MB in `work/qwen_hidden/`, not kept). The talker is causal, so a word has seen the sentence up
+to itself and nothing it has said. The tagger takes the word's vector (layer norm, dropout 0.3, a projection to 128)
+next to its other inputs; everything else is as above (JSUT and Wikipedia, the same test half):
+
+| | dev agreement | test: the same nucleus as abs | distance to Qwen | gap closed | sentences closer / farther than the start |
+|---|---|---|---|---|---|
+| D32, the start | | 54.7% | 1.871 | 0 | |
+| the model, no Qwen | 57.2% | 58.7% | 1.846 | 6.8% | 435 / 318 |
+| + layer 7 | 59.6% | 61.2% | 1.776 | 25.3% | 613 / 298 |
+| **+ layer 14** | **60.2%** | **62.4%** | **1.767** | **27.7%** | 621 / 285 |
+| + layer 21 | 59.8% | 61.7% | 1.777 | 25.1% | 583 / 269 |
+| + layer 28 (the last) | 57.2% | 58.9% | 1.832 | 10.4% | 437 / 261 |
+| + all four | 59.5% | 59.8% | 1.787 | 22.3% | 573 / 342 |
+| abs in the LLM's phrases | | 100% | 1.494 | 100% | |
+
+(Measured after the fixes above.) Qwen's middle layers carry what the text-side features lack: about three to four
+points of agreement, and four times the gap closed, more than the tenfold data would give at one point a doubling.
+Layer 14 is the best on the dev half and on the test half; layers 7 and 21 are close to it. The last layer, which is
+already turned to the next codec code, helps little, and all four together overfit (training 66.5%, test 59.8%). This is an upper look,
+not a tool: Qwen is not shipped, so the shipped tools would need a student that predicts such vectors (or the
+nucleus) from the text alone.
+
+### Predicting the values instead of the nucleus (`pitch_rows.mjs`, `pitch.py`, `pitch_eval.mjs`, `pitch_listen.mjs`; `results/pitch.json`, `results/pitch_eval.json`, `results/listening_direct.json`, `results/listening_direct_ts.json`; D33)
+
+The nucleus is a detour: what is compared with Qwen is the values. The same LSTM over the same inputs (no Qwen
+vectors), with three outputs per mora added to the values the dictionary's nuclei give (`work/fit.json`, frozen), and
+trained on the distance itself: 40 epochs, the epoch chosen on 368 held-out training sentences (25). Idea and first run
+by Codex; `pitch.py` gives the same result from the rows of the main scripts. On the test half:
+
+| | distance to Qwen | gap closed | sentences closer / farther than the start |
+|---|---|---|---|
+| the start (the dictionary's nuclei, LLM's phrases) | 1.871 | 0 | |
+| the best nucleus model from the text | 1.846 | 6.8% | 435 / 318 |
+| + Qwen's layer 14 (not possible in the tools) | 1.767 | 27.7% | 621 / 285 |
+| **the values predicted from the text** | **1.592** | **74.0%** | **903 / 202** |
+| abs (nuclei read from Qwen's pitch of that sentence) | 1.494 | 100% | |
+
+The spread of the values within a sentence is 2.63 semitones against the start's 2.32 and Qwen's 2.99: the model does
+not win by flattening.
+
+By ear (`pitch_listen.mjs`, blind; the project owner, 2026-11-03, on Codex's run of the same model,
+`results/listening_direct.json`): unnatural in 12 sentences: the start 6, abs 3, the values 3, Qwen 2; most natural: Qwen
+5, the values 1, no difference 1, none chosen 5.
+
+The numbers above are from the tools' own path: `pitch_eval.mjs` runs `pitchYomite` (TypeScript, `packages/ja-accent/src/pitch.ts`) from
+the LLM's YomiScript. Its values are within 0.005 of PyTorch's (the two decimals `f0Mark` writes), 30 ms a sentence,
+the dictionary included. The model was trained on single sentences; six joined into one section differ from the same
+six alone by 0.6 semitones (rms), in the same range. Whether that matters has not been listened to.
+
+**The same 12 sentences through the TypeScript path, blind again** (`results/listening_direct_ts.json`, one listener, a second hearing of the same sentences): unnatural the dictionary's nuclei 5, the nuclei read from Qwen 3, the predicted values 2, Qwen 2; most natural Qwen 6, same 2, none 4.
+
+**Several sentences as one utterance** (`pitch_listen_long.mjs`, `results/pitch_long.json`). The model was trained on single sentences, but YomiScript keeps several sentences in one section. Six passages of four unseen sentences: the values read as one section differ from those of each sentence read alone by 0.21-0.44 semitones rms, and they stay within -7.2 to 6.6. Blind page: `blind.html?test=qwen_prosody&run=long` (the dictionary accent as it ships, the passage read whole, each sentence read alone). Not listened to yet.

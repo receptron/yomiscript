@@ -3,7 +3,7 @@
 // accent dictionary are served from is set with configureSpeaker().
 import * as ort from "onnxruntime-web";
 import type { Katarite, Speech } from "@yomiscript/core";
-import { accentYomite, DICT_URL, loadFrontend, withAccent } from "@yomiscript/ja-accent";
+import { accentYomite, DICT_URL, loadFrontend, loadPitchModel, PITCH_URL, pitchOrAccentYomite, withAccent } from "@yomiscript/ja-accent";
 import { Engine, KokoroKatarite, W16, type Ort } from "@yomiscript/kokoro";
 
 export interface SpeakerOptions {
@@ -16,8 +16,11 @@ export interface SpeakerOptions {
   /** URL of the Japanese accent dictionary (<file>.gz; Hugging Face by default, about 28 MB the first time Japanese
    * is spoken); null: no dictionary accent, Kokoro's own pitch everywhere */
   accentBase?: string | null;
+  /** URL of the Japanese pitch model (D33, <file>.gz; Hugging Face by default, about 7 MB the first time Japanese is
+   * spoken); null: the dictionary accent's values. Needs accentBase; if it cannot be loaded, the dictionary accent is used */
+  pitchBase?: string | null;
 }
-let options: SpeakerOptions = { modelBase: "/kokoro/", accentBase: DICT_URL };
+let options: SpeakerOptions = { modelBase: "/kokoro/", accentBase: DICT_URL, pitchBase: PITCH_URL };
 let katarite: Promise<Katarite> | null = null;
 const cache = new Map<string, Promise<Speech>>();
 
@@ -48,7 +51,16 @@ export function loadKatarite(): Promise<Katarite> {
     const k = new KokoroKatarite(engine),
       dict = options.accentBase;
     if (!dict) return k;
-    const step = async () => accentYomite(await loadFrontend(fetcher(absolute(dict))));
+    const pitch = options.pitchBase;
+    const step = async () => {
+      const a = await loadFrontend(fetcher(absolute(dict)));
+      if (!pitch) return accentYomite(a);
+      return pitchOrAccentYomite(
+        a,
+        () => loadPitchModel(fetcher(absolute(pitch))),
+        (e) => console.warn("yomiscript: no pitch model, the dictionary accent is used:", e),
+      );
+    };
     return withAccent(k, step, (e) => console.warn("yomiscript: no Japanese dictionary accent, Kokoro's own pitch is used:", e));
   })();
   katarite.catch(() => (katarite = null)); // a failed load can be retried

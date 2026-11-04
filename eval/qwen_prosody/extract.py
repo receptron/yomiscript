@@ -13,10 +13,17 @@ Transcripts are cached (work/asr.json), so a rerun after more audio only does th
 
 A record's `given` is "text" (the plain text was read) or "kana" (the kana pass).
 
-usage: ../prosody_ref/.venv/bin/python extract.py   -> data/jsut_qwen_clone.jsonl, work/rejected.json (misread
-       from the plain text: kana_items.mjs's input), work/misread.json (misread in every pass)
+With --wiki, the Wikipedia sentences (wiki_items.mjs): there is no hand-checked reading, so the transcript is checked
+against the reading of the item's own YomiScript (its `kana`): a sentence is kept when Qwen read it as the YomiScript
+says, so the pitch lies under the right morae (whether the YomiScript reads the sentence right is not checked). Only
+the plain text is read (the kana pass is not a pitch target).
+
+usage: ../prosody_ref/.venv/bin/python extract.py [--wiki]   -> data/jsut_qwen_clone.jsonl, work/rejected.json
+       (misread from the plain text: kana_items.mjs's input), work/misread.json (misread in every pass); with --wiki
+       work/wiki/qwen_clone.jsonl, work/wiki/misread.json
 """
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -26,6 +33,8 @@ import mlx_whisper
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "prosody_ref"))
 sys.path.insert(0, str(HERE.parent / "qwen3_tts"))
+sys.path.insert(0, str(HERE.parent / "browser_tts"))
+from asr_score import norm  # noqa: E402
 from measure import measure  # noqa: E402
 from refcheck import KANA_PROMPT, MODEL, expected, heard  # noqa: E402
 
@@ -76,17 +85,18 @@ def record(x, m, got, given):
 # the two passes: the plain text (generate.py), then, for the sentences misread from it, the text with every word
 # that has a kanji in kana (kana_items.mjs, generate.py --items work/items_kana.json --out work/audio_kana)
 PASSES = [("text", "work/audio", ""), ("kana", "work/audio_kana", "kana/")]
+WIKI_PASSES = [("text", "work/wiki/audio", "")]
 
 
-def check(asr, gold, x):
+def check(asr, gold, x, passes=PASSES):
     """(the record, or None) and, per pass, what Whisper heard in a pass that misread"""
     misread = {}
-    for given, folder, key in PASSES:
+    for given, folder, key in passes:
         wav = HERE / folder / f"{x['name']}.wav"
         if not wav.exists():
             continue
         got = [heard(t) for t in transcribe(asr, key + x["name"], wav)]
-        right = [g for g in got if canon(g) in {canon(k) for k in gold[f"jsut.{x['name']}"]}]
+        right = [g for g in got if canon(g) in {canon(k) for k in gold[x["name"]]}]
         if right:
             try:
                 return record(x, measure(x, wav), right[0], given), misread
@@ -97,14 +107,26 @@ def check(asr, gold, x):
     return None, misread
 
 
+def corpus(wiki):
+    """the items, the readings they are checked against ({name: {kana}}), the passes and the output files"""
+    if wiki:
+        items = json.loads((HERE / "work/wiki/items.json").read_text())
+        gold = {x["name"]: {norm(x["kana"])} for x in items}
+        return items, gold, WIKI_PASSES, HERE / "work/wiki/qwen_clone.jsonl", None, HERE / "work/wiki/misread.json"
+    gold = {k.removeprefix("jsut."): v for k, v in expected().items() if k.startswith("jsut.")}
+    items = json.loads((HERE / "work/items.json").read_text())
+    return items, gold, PASSES, OUT, HERE / "work/rejected.json", HERE / "work/misread.json"
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--wiki", action="store_true")
+    items, gold, passes, out, rejected_file, misread_file = corpus(ap.parse_args().wiki)
     cache = HERE / "work/asr.json"
     asr = json.loads(cache.read_text()) if cache.exists() else {}
-    gold = expected()
     kept, rejected, final = [], {}, {}
-    items = json.loads((HERE / "work/items.json").read_text())
     for n, x in enumerate(items):
-        r, misread = check(asr, gold, x)
+        r, misread = check(asr, gold, x, passes)
         if r:
             kept.append(r)
         if "text" in misread:
@@ -115,12 +137,13 @@ def main():
             cache.write_text(json.dumps(asr, ensure_ascii=False))
             print(f"{n}/{len(items)}: {len(kept)} kept, {len(final)} misread", flush=True)
     cache.write_text(json.dumps(asr, ensure_ascii=False))
-    OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in kept))
-    (HERE / "work/rejected.json").write_text(json.dumps(rejected, ensure_ascii=False, indent=0))
-    (HERE / "work/misread.json").write_text(json.dumps(final, ensure_ascii=False, indent=0))
+    out.parent.mkdir(exist_ok=True)
+    out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in kept))
+    if rejected_file:
+        rejected_file.write_text(json.dumps(rejected, ensure_ascii=False, indent=0))
+    misread_file.write_text(json.dumps(final, ensure_ascii=False, indent=0))
     by = {g: sum(r["given"] == g for r in kept) for g in ("kana",)}
-    print(f"{len(kept)} kept ({by['kana']} from the kana pass), {len(final)} misread -> {OUT.relative_to(HERE)}")
+    print(f"{len(kept)} kept ({by['kana']} from the kana pass), {len(final)} misread -> {out.relative_to(HERE)}")
 
 
 if __name__ == "__main__":

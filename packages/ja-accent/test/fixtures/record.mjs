@@ -16,12 +16,20 @@ const recording = {
   analyze: (text) => real.analyze(text),
   candidates: (words) => (rec.candidates[JSON.stringify(words)] = real.candidates(words)),
   conn: (r, l) => (rec.conn[`${r},${l}`] = real.conn(r, l)),
-  label: (words, p) => (rec.label[JSON.stringify([words, p])] = real.label(words, p)),
+  // a path with phrases of the YomiScript's own (D32) is recorded with them
+  label: (words, p, accents, chain) => (rec.label[JSON.stringify(chain ? [words, p, chain] : [words, p])] = real.label(words, p, accents, chain)),
 };
+// YomiScripts with accent phrases of their own (D32), as the tests try them
+export const OWN = [
+  "ja /kʲoː<t:今日> wa<t:は> haɾete<t:晴れて> | imasɯ<t:います。> ↘/",
+  "ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> imasɯ<t:います。> ↘/",
+  "ja /kʲoː<t:今日> wa<t:は> ‖<t:> haɾete<t:晴れて> imasɯ<t:います。> ↘/", // a pause of no text
+];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {
   accentMarks(ys, recording);
   accentMarks(ys.replace("kʲoː", "kjoː"), recording); // the spelling the tests also try
 }
+for (const ys of OWN) accentMarks(ys, recording);
 fs.writeFileSync(path.join(HERE, "lookup.json"), JSON.stringify(rec));
 console.log(Object.keys(rec.candidates).length, "sentences,", Object.keys(rec.conn).length, "costs,", Object.keys(rec.label).length, "paths");

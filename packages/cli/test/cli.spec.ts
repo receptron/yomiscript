@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import type { Katarite } from "@yomiscript/core";
 import { parseCommand, UsageError } from "../src/args.ts";
 import { EXIT, main, type Io } from "../src/main.ts";
-import { jaDictSource, kokoroSource, modelsDir, openKatarite, player, supertonicSource } from "../src/runtime.ts";
+import { jaDictSource, jaPitchSource, kokoroSource, modelsDir, openKatarite, player, supertonicSource } from "../src/runtime.ts";
 
 const JA = "ja /kʲoː<t:今日> wa<t:は> ‖<t:、> ame<t:雨> desɯ<t:です。> ↘/";
 const fake = (seconds = 0.5): Katarite => ({
@@ -41,11 +41,13 @@ describe("command line", () => {
       model: "w16",
       models: undefined,
       accent: true,
+      pitch: true,
     });
     expect(parseCommand(["speak", JA])).toMatchObject({ play: true, model: "fp32", katarite: "kokoro" });
     expect(parseCommand(["speak", "--out", "a.wav", "--play"])).toMatchObject({ play: true });
     expect(parseCommand(["speak", JA, "--voice", "jm_kumo"])).toMatchObject({ voice: "jm_kumo" });
     expect(parseCommand(["speak", JA, "--no-accent"])).toMatchObject({ accent: false });
+    expect(parseCommand(["speak", JA, "--no-pitch"])).toMatchObject({ pitch: false });
     expect(parseCommand([])).toEqual({ cmd: "help" });
     expect(parseCommand(["instructions"])).toEqual({ cmd: "instructions" });
   });
@@ -121,6 +123,8 @@ describe("runtime", () => {
     fs.mkdirSync(path.join(home, ".cache/supertonic3/onnx"), { recursive: true }); // the Python SDK's cache is used as it is
     expect(await supertonicSource({}, home)).toEqual({ dir: path.join(home, ".cache/supertonic3") });
     expect(jaDictSource({ YOMISCRIPT_JA_DICT: "/j" }, home)).toEqual({ dir: "/j" });
+    expect(jaPitchSource({ YOMISCRIPT_JA_PITCH: "/p" }, home)).toEqual({ dir: "/p" });
+    expect(jaPitchSource({}, home, "https://example.com/p/").download).toBe("https://example.com/p/");
     expect(jaDictSource({}, home, "https://example.com/j/")).toEqual({
       dir: path.join(home, ".cache/yomiscript/ja-dict/jpreprocess-0.15.0"),
       download: "https://example.com/j/",

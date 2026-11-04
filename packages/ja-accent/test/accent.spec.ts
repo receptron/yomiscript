@@ -1,48 +1,12 @@
 // The dictionary accent without the dictionary: the front end's output for four sentences is recorded in
 // fixtures/analysis.json (its analysis of the text) and fixtures/lookup.json (what the lookup of D31 asks it:
 // fixtures/record.mjs), from the WebAssembly with the NAIST-JDIC dictionary, and replayed by a fake analyzer.
-import fs from "node:fs";
 import { parse } from "@yomiscript/core";
 import { describe, expect, it, vi } from "vitest";
 import type { Katarite, Speech } from "@yomiscript/core";
-import {
-  accentMarks,
-  accentYomite,
-  bestPath,
-  labelMorae,
-  needsAccent,
-  USER_DICT,
-  withAccent,
-  wordsOf,
-  type Analysis,
-  type Analyzer,
-  type Sentence,
-} from "../src/index.ts";
+import { accentMarks, accentYomite, bestPath, labelMorae, needsAccent, USER_DICT, withAccent, wordsOf } from "../src/index.ts";
+import { fake, REC } from "./fake_analyzer.ts";
 
-interface Recorded {
-  ys: string;
-  text: string;
-  njd: string[];
-  labels: string[];
-}
-const REC: Recorded[] = JSON.parse(fs.readFileSync(new URL("./fixtures/analysis.json", import.meta.url), "utf8"));
-const LOOKUP: { candidates: Record<string, Sentence>; conn: Record<string, number>; label: Record<string, Analysis> } = JSON.parse(
-  fs.readFileSync(new URL("./fixtures/lookup.json", import.meta.url), "utf8"),
-);
-function recorded<T>(table: Record<string, T>, key: string): T {
-  if (!(key in table)) throw new Error(`not recorded: ${key}`);
-  return table[key];
-}
-const fake: Analyzer = {
-  analyze: (text) => {
-    const r = REC.find((x) => x.text === text);
-    if (!r) throw new Error(`not recorded: ${text}`);
-    return { njd: r.njd, labels: r.labels };
-  },
-  candidates: (words) => recorded(LOOKUP.candidates, JSON.stringify(words)),
-  conn: (r, l) => recorded(LOOKUP.conn, `${r},${l}`),
-  label: (words, path) => recorded(LOOKUP.label, JSON.stringify([words, path])),
-};
 const [shiatoru, kyou, eeto, shigatsu] = REC.map((r) => r.ys);
 const bare = (ys: string) => ys.replace(/<t:[^>]*>/g, "");
 
@@ -75,6 +39,14 @@ describe("accentMarks", () => {
   });
   it("places the numbers the dictionary writes as kanji numerals", () => {
     expect(bare(accentMarks(shigatsu, fake))).toBe("ja /ɕiꜛɡatsɯ | tsɯꜛitatɕiꜜ wa | ɲɯꜛːɡakɯꜜɕiki da ↘/");
+  });
+  it("keeps the accent phrases the YomiScript writes itself, and puts the dictionary's accent in them (D32)", () => {
+    const own = (ys: string) => bare(accentMarks(ys, fake));
+    expect(own("ja /kʲoː<t:今日> wa<t:は> haɾete<t:晴れて> | imasɯ<t:います。> ↘/")).toBe("ja /kʲoꜜː wa haɾete | iꜛmaꜜsɯ ↘/");
+    expect(own("ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> imasɯ<t:います。> ↘/")).toBe("ja /kʲoꜜː wa | haꜛɾete imaꜜsɯ ↘/");
+  });
+  it("starts no phrase at a pause of no text (‖<t:>)", () => {
+    expect(bare(accentMarks("ja /kʲoː<t:今日> wa<t:は> ‖<t:> haɾete<t:晴れて> imasɯ<t:います。> ↘/", fake))).toBe("ja /kʲoꜜː wa ‖ haꜛɾeꜜte | iꜛmaꜜsɯ ↘/");
   });
   it("never changes the reading or the original text", () => {
     for (const ys of [shiatoru, kyou, eeto, shigatsu]) {

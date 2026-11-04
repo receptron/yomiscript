@@ -60,7 +60,7 @@ export interface Analyzer {
   label(words: string[], path: number[], accents?: (EntryAccent | null)[], chain?: (boolean | null)[]): Analysis;
 }
 
-async function gunzip(b: Uint8Array | ArrayBuffer): Promise<Uint8Array> {
+export async function gunzip(b: Uint8Array | ArrayBuffer): Promise<Uint8Array> {
   const s = new Blob([b as BlobPart]).stream().pipeThrough(new DecompressionStream("gzip"));
   return new Uint8Array(await new Response(s).arrayBuffer());
 }

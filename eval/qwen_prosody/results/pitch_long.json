@@ -1,0 +1,44 @@
+[
+ {
+  "name": "passage1",
+  "values": 297,
+  "rms_together_vs_apart": 0.423,
+  "lowest": -6.45,
+  "highest": 6.5
+ },
+ {
+  "name": "passage2",
+  "values": 294,
+  "rms_together_vs_apart": 0.444,
+  "lowest": -6.5,
+  "highest": 4.81
+ },
+ {
+  "name": "passage3",
+  "values": 288,
+  "rms_together_vs_apart": 0.31,
+  "lowest": -6.45,
+  "highest": 6.55
+ },
+ {
+  "name": "passage4",
+  "values": 297,
+  "rms_together_vs_apart": 0.437,
+  "lowest": -6.79,
+  "highest": 5.66
+ },
+ {
+  "name": "passage5",
+  "values": 357,
+  "rms_together_vs_apart": 0.3,
+  "lowest": -6.72,
+  "highest": 6.18
+ },
+ {
+  "name": "passage6",
+  "values": 624,
+  "rms_together_vs_apart": 0.214,
+  "lowest": -7.18,
+  "highest": 6.04
+ }
+]

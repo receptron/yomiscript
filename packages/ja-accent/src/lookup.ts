@@ -177,8 +177,33 @@ export type AccentSource = (entry: Cand & { surface: string }) => EntryAccent | 
 /** a phrase rule in place of OpenJTalk's for an entry of the path and the one before it: join it to the phrase before
  * (true), start a phrase (false), or leave it to OpenJTalk (undefined) */
 export type JoinRule = (prev: Cand & { surface: string }, cur: Cand & { surface: string }) => boolean | undefined;
+/** the YomiScript's own accent phrases (D32): when it has a ` | `, the words that start one (after ` | `, ` ‖ ` or at
+ * the start), as a rule for the entries starting a word: a word that starts a phrase starts one, any other joins the
+ * phrase before. An entry inside a word, a word with no Japanese morae and the one after it are left to OpenJTalk.
+ * null when the YomiScript has no ` | ` (the phrases are OpenJTalk's). */
+function ownPhrases(u: Utterance, W: Word[], S: Sentence): JoinRule | null {
+  const ja = u.sections.filter((sec) => isJa(sec.lang));
+  if (!ja.some((sec) => sec.toks.some((t) => t.kind === "bound" && t.sym === "#"))) return null;
+  const starts = new Set<number>();
+  for (const sec of ja) {
+    let ph = -1;
+    for (const t of sec.toks)
+      if (t.kind === "unit" && t.span !== undefined) {
+        if (t.ph !== ph && W[t.span].units[0] === t) starts.add(t.span);
+        ph = t.ph ?? ph;
+      }
+  }
+  const word = new Map(S.starts.slice(0, -1).map((c, i) => [c, i]));
+  return (prev, cur) => {
+    const i = word.get(cur.s),
+      p = word.get(prev.s);
+    if (i === undefined || !W[i].units.length || (p !== undefined && !W[p].units.length)) return undefined;
+    return !starts.has(i);
+  };
+}
 /** OpenJTalk's rules on the cheapest path that reads as the YomiScript does, the words on it taken as OpenJTalk reads
- * them, and whether there was one (when not, OpenJTalk's own analysis of the text) */
+ * them, and whether there was one (when not, OpenJTalk's own analysis of the text). The YomiScript's own phrases,
+ * when it writes them (ownPhrases), come before the join rule. */
 export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource, join?: JoinRule): Analysis & { fell: string[]; found: boolean } {
   const W = wordsOf(u),
     words = W.map((w) => w.text),
@@ -188,6 +213,8 @@ export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource,
     chars = [...S.norm],
     E = path.map((i) => ({ ...S.cands[i], surface: chars.slice(S.cands[i].s, S.cands[i].e).join("") })),
     accents = source && E.map((e) => source(e) ?? null),
-    chain = join && E.map((e, k) => (k ? (join(E[k - 1], e) ?? null) : null));
+    own = ownPhrases(u, W, S),
+    rule = (p: (typeof E)[number], e: (typeof E)[number]) => own?.(p, e) ?? join?.(p, e) ?? null,
+    chain = (own || join) && E.map((e, k) => (k ? rule(E[k - 1], e) : null));
   return { ...a.label(words, path, accents, chain), fell: best ? best.fell.map((i) => W[i].text) : [], found: !!best };
 }

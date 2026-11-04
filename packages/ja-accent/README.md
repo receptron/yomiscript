@@ -21,6 +21,8 @@ YomiScript (reading, <t:…>) ─► every NAIST-JDIC entry of the sentence (jpr
   starting inside a word joins the accent phrase before, so a word is never split between two phrases. OpenJTalk's
   rules then run on the path (`label`), and each accent phrase is matched with the YomiScript words covering the
   same characters (by `<t:…>`) and gets the dictionary's marks.
+- A YomiScript that writes its own accent phrases (` | `) keeps them (D32): each word after a ` | ` or ` ‖ ` starts a
+  phrase and every other word joins the one before, and OpenJTalk's accent combination runs on those phrases.
 - A word that no entry reads the YomiScript's way (捕えて つかまえて; numbers with a counter, 9時, whose readings
   OpenJTalk's digit rules make after the dictionary) is taken as OpenJTalk's analysis reads it, at a large cost, so
   only where nothing else fits; its phrase is then read another way and stays unmarked. Spellings that do not change
@@ -67,6 +69,25 @@ lookup of D31 takes the YomiScript's reading of a word from any entry that has i
 (D27 in `docs/decisions.md`): take it from NAIST-JDIC (the source is
 [jpreprocess/naist-jdic](https://github.com/jpreprocess/naist-jdic) v0.1.3) rather than writing an accent by hand,
 and measure it with `eval/prosody_ref` (`node mismatch.mjs` lists the phrases read another way).
+
+## The pitch model
+
+`pitchYomite(analyzer, model)` is `accentYomite` with predicted values (D33): the dictionary's marks stay, and each mora's
+three values come from a small LSTM trained on Qwen3-TTS's pitch (`eval/qwen_prosody`), in plain TypeScript, with no
+other dependency. It is not on by default.
+
+```ts
+import { PITCH_URL, PITCH_VERSION, pitchYomite } from "@yomiscript/ja-accent";
+import { nodeAnalyzer, nodePitchModel } from "@yomiscript/ja-accent/node";
+
+const model = await nodePitchModel({ dir: `${cache}/ja-pitch/${PITCH_VERSION}`, download: PITCH_URL });
+const step = pitchYomite(await nodeAnalyzer({ dir }), model);
+```
+
+`pitchOrAccentYomite(a, loadModel, onError)` falls back to the dictionary accent when the model cannot be loaded; the CLI, the MCP server and the plugin use it by default (off with `--no-pitch`, `YOMISCRIPT_PITCH=0`, `pitchBase: null`).
+
+In the browser, `loadPitchModel(load)` takes any `LoadBytes`. The model (6.7 MB, CC BY-SA 4.0) is not part of this
+package; it is downloaded from Hugging Face ([receptron/yomiscript-ja-pitch](https://huggingface.co/receptron/yomiscript-ja-pitch), `PITCH_URL`).
 
 ## The WebAssembly
 
