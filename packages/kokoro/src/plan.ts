@@ -198,6 +198,8 @@ export interface PlannedSection {
   toks: Token[];
   /** how much longer each unit is spoken than Kokoro predicts (1: as predicted; D30) */
   lengthen: number[];
+  /** the fewest steps each id is spoken for (0: no minimum; D34) */
+  minSteps: number[];
 }
 export type Plan = PlannedSection[] & { src: string };
 
@@ -219,6 +221,27 @@ function lengthening(toks: Token[], ja: boolean): number[] {
     out[k + 1] = VOWEL_AFTER_N;
   });
   return out;
+}
+/** a geminate (っ) and the vowel before it: Kokoro sometimes gives them two steps (50 ms) where three sound right (二十本,
+ * and 二十分 in some sentences but not in others) */
+const GEMINATE_MIN_STEPS = 3;
+function minimumSteps(toks: Token[], uid: number[], ja: boolean): number[] {
+  // per id (D34); none outside Japanese or for the original
+  const out = uid.map(() => 0);
+  if (!ja) return out;
+  toks.forEach((t, k) => {
+    if (t.kind !== "unit" || t.mk !== "Q") return;
+    uid.forEach((u, i) => {
+      if (u === k) out[i] = GEMINATE_MIN_STEPS;
+    });
+    const before = toks[k - 1];
+    if (before?.kind === "unit" && before.mk === "mora") out[uid.lastIndexOf(k - 1)] = GEMINATE_MIN_STEPS;
+  });
+  return out;
+}
+/** the steps each id is spoken for, from the ones Kokoro predicts: lengthened (D30), then at least the minimum (D34) */
+export function spokenSteps(predicted: ArrayLike<number | bigint>, sec: Pick<PlannedSection, "uid" | "lengthen" | "minSteps">): number[] {
+  return Array.from(predicted, Number).map((d, i) => Math.max(Math.round(d * (sec.lengthen[sec.uid[i]] ?? 1)), sec.minSteps[i]));
 }
 // plan: sections with Kokoro ids + units (no ONNX); used for parity tests and synthesis
 export function plan(ys: string, opts: PlanOptions = {}): Plan {
@@ -244,8 +267,10 @@ export function plan(ys: string, opts: PlanOptions = {}): Plan {
     ids.push(0);
     uid.push(-1);
     const ps = U.map((u) => u[0]).join("");
-    const lengthen = lengthening(toks, isJa(sec.lang) && !opts.original);
-    return { lang: sec.lang, text: sec.text, voice: voiceFor(Y.top, sec.lang, sec.text), ps, ids, uid, U, toks, lengthen };
+    const adjusted = isJa(sec.lang) && !opts.original,
+      lengthen = lengthening(toks, adjusted),
+      minSteps = minimumSteps(toks, uid, adjusted);
+    return { lang: sec.lang, text: sec.text, voice: voiceFor(Y.top, sec.lang, sec.text), ps, ids, uid, U, toks, lengthen, minSteps };
   });
   return Object.assign(P, { src: Y.ys });
 }

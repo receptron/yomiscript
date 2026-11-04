@@ -4,7 +4,7 @@
 import fs from "fs";
 import { describe, expect, it } from "vitest";
 import { realize } from "@yomiscript/core";
-import { plan } from "@yomiscript/kokoro";
+import { plan, spokenSteps, VOCAB } from "@yomiscript/kokoro";
 
 const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url)));
 const ORIGINAL = read("./fixtures/kokoro_original.json");
@@ -18,6 +18,7 @@ describe("YomiScript -> Kokoro input, as the original Kokoro gets it", () => {
     expect(P[0].ps).toBe(c.ps);
     expect(P[0].ids).toEqual(c.ids);
     expect(P[0].lengthen.every((x) => x === 1)).toBe(true); // the predicted durations as they are (D30)
+    expect(P[0].minSteps.every((x) => x === 0)).toBe(true); // no minimum either (D34)
   });
 });
 
@@ -41,6 +42,31 @@ describe("a moraic ɴ before a mora without an onset, spoken longer (D30)", () =
   it("leaves the durations as predicted with original, and outside Japanese", () => {
     expect(plan(ys, { original: true })[0].lengthen.every((x) => x === 1)).toBe(true);
     expect(plan("en-US /ˈhɛ.loʊ ↘/")[0].lengthen.every((x) => x === 1)).toBe(true);
+  });
+});
+
+describe("a geminate and the vowel before it, at least three steps (D34)", () => {
+  const ys = "ja /ɲidʑɯppɯɴ ‖ kitte ↘/";
+  const chars = (S) => S.ids.map((id) => Object.keys(VOCAB).find((c) => VOCAB[c] === id) ?? "");
+  const minimumOf = (S) => chars(S).filter((_, i) => S.minSteps[i]);
+  it("sets a minimum on っ and the vowel before it, and on nothing else", () => {
+    const S = plan(ys)[0];
+    expect(S.ps).toContain("ʔ");
+    expect(S.ids).toHaveLength(S.minSteps.length);
+    expect(minimumOf(S).join("")).toBe("ɨʔiʔ");
+    expect(new Set(S.minSteps.filter(Boolean))).toEqual(new Set([3]));
+  });
+  it("raises what is below the minimum and leaves what is above", () => {
+    const sec = { uid: [-1, 0, 1, 2], lengthen: [1, 1, 1], minSteps: [0, 0, 3, 3] };
+    expect(spokenSteps([1, 2, 2, 5], sec)).toEqual([1, 2, 3, 5]);
+    expect(spokenSteps(Float64Array.of(1, 2, 2, 5), sec)).toEqual([1, 2, 3, 5]);
+  });
+  it("applies the minimum after the lengthening of D30", () => {
+    expect(spokenSteps([2, 2], { uid: [0, 1], lengthen: [2, 1], minSteps: [3, 3] })).toEqual([4, 3]);
+  });
+  it("sets none with original, and outside Japanese", () => {
+    expect(plan(ys, { original: true })[0].minSteps.every((x) => x === 0)).toBe(true);
+    expect(plan("en-US /ˈhɛ.loʊ ↘/")[0].minSteps.every((x) => x === 0)).toBe(true);
   });
 });
 
