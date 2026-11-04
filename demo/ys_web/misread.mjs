@@ -1,12 +1,12 @@
 // Data for web/misread.html: the hard-set sentences (eval/data/hard_set.tsv) that the original Kokoro front end
 // misreads and the LLM Yomite reads right (eval/browser_tts results). For each, the original Kokoro's audio
 // (web/misread/<name>.wav: its own front end's phonemes, original punctuation, its own pitch, fp32) and the LLM's
-// YomiScript with the dictionary accent added as the tools add it (@yomiscript/ja-accent), which the page speaks.
+// YomiScript with the predicted pitch added as the tools add it (@yomiscript/ja-accent, D33), which the page speaks.
 // usage: node misread.mjs [llm]   (llm: codex (default) or claude; after eval/browser_tts refs.py, run.mjs, score.mjs)
 import fs from "fs";
 import path from "path";
-import { accentYomite } from "@yomiscript/ja-accent";
-import { nodeAnalyzer } from "@yomiscript/ja-accent/node";
+import { PITCH_URL, PITCH_VERSION, pitchYomite } from "@yomiscript/ja-accent";
+import { nodeAnalyzer, nodePitchModel } from "@yomiscript/ja-accent/node";
 import { engine, K, originalAudio, WEB } from "./node.mjs";
 import { HERE as BT, SETS } from "../../eval/browser_tts/sets.mjs";
 
@@ -34,8 +34,12 @@ const NOTES = Object.fromEntries(
     ]),
 );
 
-const base = path.join(process.env.HOME, ".cache/yomiscript/ja-dict");
-const accent = accentYomite(await nodeAnalyzer({ dir: path.join(base, fs.readdirSync(base)[0]) }));
+const cache = path.join(process.env.HOME, ".cache/yomiscript"),
+  base = path.join(cache, "ja-dict");
+const accent = pitchYomite(
+  await nodeAnalyzer({ dir: path.join(base, fs.readdirSync(base)[0]) }),
+  await nodePitchModel({ dir: path.join(cache, "ja-pitch", PITCH_VERSION), download: PITCH_URL }),
+);
 const E = await engine("fp32");
 const dir = path.join(WEB, "misread");
 fs.mkdirSync(dir, { recursive: true });
