@@ -7,6 +7,7 @@ import type { Analyzer } from "./frontend.ts";
 import { lookupAnalysis, type AccentSource, type JoinRule } from "./lookup.ts";
 import { dictPhrases } from "./phrases.ts";
 import { writeMarks } from "./marks.ts";
+import { pitchYomite, type PitchModel } from "./pitch.ts";
 
 export { DICT_FILES, DICT_URL, DICT_VERSION, loadFrontend, type Analysis, type Analyzer, type Cand, type EntryAccent, type Sentence } from "./frontend.ts";
 export { bestPath, lookupAnalysis, wordsOf, type AccentSource, type JoinRule } from "./lookup.ts";
@@ -14,6 +15,8 @@ export { labelMorae, type HL, type LabelMora } from "./labels.ts";
 export { dictPhrases, type DictPhrase } from "./phrases.ts";
 export { sameMorae, writeMarks, type MarkStats } from "./marks.ts";
 export { USER_DICT } from "./userdict.ts";
+export { marksFor, nucleusOf, phraseEdits, phraseUnits, startPhrases, type StartSection } from "./nuclei.ts";
+export { loadPitchModel, PITCH_FILES, PITCH_URL, PITCH_VERSION, pitchResidual, pitchRows, pitchYomite, type PitchModel, type PitchRow } from "./pitch.ts";
 
 /** Japanese, with <t:…>, and no accent marks or pitch values of its own (those are the writer's, left as written);
  * false when it does not parse */
@@ -54,6 +57,17 @@ export function accentYomite(a: Analyzer, opts: AccentOptions = {}): (ys: string
     const marked = accentMarks(ys, a, opts);
     return marked === ys ? ys : realize(marked, { markedOnly: true, jaScale: ACCENT_SCALE });
   };
+}
+
+/** the predicted pitch (D33) as the accent step; when its model cannot be loaded, onError is told and the dictionary
+ * accent is used instead */
+export async function pitchOrAccentYomite(a: Analyzer, loadModel: () => Promise<PitchModel>, onError?: (e: unknown) => void): Promise<(ys: string) => string> {
+  try {
+    return pitchYomite(a, await loadModel());
+  } catch (e) {
+    onError?.(e);
+    return accentYomite(a);
+  }
 }
 
 /** a Katarite that runs the accent step before speaking a YomiScript that needs it. The step (the dictionary) is

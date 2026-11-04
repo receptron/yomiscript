@@ -1,0 +1,19 @@
+{
+ "dev_agrees_with_abs": 0.5953,
+ "test": {
+  "phrases": 7816,
+  "model_agrees_with_abs": 0.5979,
+  "d31_agrees_with_abs": 0.5471,
+  "sentences": 1214,
+  "model_whole_sentence_as_abs": 0.061,
+  "d31_whole_sentence_as_abs": 0.0404
+ },
+ "train": {
+  "phrases": 19569,
+  "model_agrees_with_abs": 0.6651,
+  "d31_agrees_with_abs": 0.518,
+  "sentences": 3312,
+  "model_whole_sentence_as_abs": 0.1144,
+  "d31_whole_sentence_as_abs": 0.0426
+ }
+}

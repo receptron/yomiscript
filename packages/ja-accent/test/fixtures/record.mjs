@@ -16,12 +16,28 @@ const recording = {
   analyze: (text) => real.analyze(text),
   candidates: (words) => (rec.candidates[JSON.stringify(words)] = real.candidates(words)),
   conn: (r, l) => (rec.conn[`${r},${l}`] = real.conn(r, l)),
-  label: (words, p) => (rec.label[JSON.stringify([words, p])] = real.label(words, p)),
+  // a path with phrases of the YomiScript's own (D32) is recorded with them
+  label: (words, p, accents, chain) => (rec.label[JSON.stringify(chain ? [words, p, chain] : [words, p])] = real.label(words, p, accents, chain)),
 };
+// YomiScripts with accent phrases of their own (D32), as the tests try them
+export const OWN = [
+  "ja /kʲoː<t:今日> wa<t:は> haɾete<t:晴れて> | imasɯ<t:います。> ↘/",
+  "ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> imasɯ<t:います。> ↘/",
+  "ja /kʲoː<t:今日> wa<t:は> ‖<t:> haɾete<t:晴れて> imasɯ<t:います。> ↘/", // a pause of no text
+  // a word named like a property of every JavaScript object; a phrase the dictionary does not read the same way
+  "ja /kʲoː<t:今日> wa<t:は> | koɴsɯtoɾakɯta<t:constructor> | desɯ<t:です。> ↘/",
+  "ja /kʲoː<t:今日> wa<t:は> | mamima<t:晴れて> | imasɯ<t:います。> ↘/",
+  // another language's marks in the utterance
+  "ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> {en həꜛloʊ<t:hello>} imasɯ<t:います。> ↘/",
+  // a Japanese section with no phrases of its own, beside one with them and alone
+  "ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> {en ˈhɛloʊ<t:hello>} aɕita<t:明日> wa<t:は> ame<t:雨> desɯ<t:です。> ↘/",
+  "ja /kʲoː<t:今日> wa<t:は> haɾete<t:晴れて> {en ˈhɛloʊ<t:hello>} aɕita<t:明日> wa<t:は> ame<t:雨> desɯ<t:です。> ↘/",
+];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {
   accentMarks(ys, recording);
   accentMarks(ys.replace("kʲoː", "kjoː"), recording); // the spelling the tests also try
 }
+for (const ys of OWN) accentMarks(ys, recording);
 fs.writeFileSync(path.join(HERE, "lookup.json"), JSON.stringify(rec));
 console.log(Object.keys(rec.candidates).length, "sentences,", Object.keys(rec.conn).length, "costs,", Object.keys(rec.label).length, "paths");

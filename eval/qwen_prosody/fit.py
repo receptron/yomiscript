@@ -83,10 +83,10 @@ def coefficients(B, feats):
 
 def main():
     data = json.loads((HERE / "work/rows.json").read_text())
-    feats = sorted({f for d in data for rows in d["sentences"] for r in rows for f in r})
     odd = [int(d["name"].split("_")[1]) % 2 == 1 for d in data]
     train = [d for d, o in zip(data, odd, strict=True) if not o]
     test = [d for d, o in zip(data, odd, strict=True) if o]
+    feats = sorted({f for d in train for rows in d["sentences"] for r in rows for f in r})
     Xtr, Ytr, Str, _ = design(train, feats)
     Xte, Yte, Ste, Dte = design(test, feats)
     lam, cv = choose(Xtr, Ytr, Str)
@@ -99,7 +99,7 @@ def main():
         "cv": cv,
         "rmse_test": {"d29": score(Dte, Yte, Ste), "refit": score(predict(Xte, B), Yte, Ste), "flat": score(np.zeros_like(Yte), Yte, Ste)},
     }
-    (HERE / "work/fit.json").write_text(json.dumps(coefficients(ridge(np.vstack([Xtr, Xte]), np.vstack([Ytr, Yte]), lam), feats)))
+    (HERE / "work/fit.json").write_text(json.dumps(coefficients(B, feats)))
     (HERE / "work/fit_report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps(report, indent=1))
 

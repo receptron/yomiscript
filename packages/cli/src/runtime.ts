@@ -5,7 +5,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { parse, type Katarite, type Speech } from "@yomiscript/core";
-import { DICT_URL, DICT_VERSION, withAccent } from "@yomiscript/ja-accent";
+import { DICT_URL, DICT_VERSION, PITCH_URL, PITCH_VERSION, withAccent } from "@yomiscript/ja-accent";
 import { KOKORO_MODELS_URL, wav } from "@yomiscript/kokoro";
 import { SUPERTONIC_MODELS_URL } from "@yomiscript/supertonic";
 
@@ -19,6 +19,8 @@ export interface KatariteOptions {
   voice?: string;
   /** Kokoro: the Japanese dictionary accent (D25); true by default */
   accent?: boolean;
+  /** Kokoro: the predicted pitch (D33) in place of the dictionary accent's values; true by default, no effect without accent */
+  pitch?: boolean;
 }
 export type KatariteFactory = (opts: KatariteOptions) => Promise<Katarite>;
 
@@ -49,10 +51,21 @@ export function jaDictSource(env: NodeJS.ProcessEnv = process.env, home = os.hom
   if (env.YOMISCRIPT_JA_DICT) return { dir: env.YOMISCRIPT_JA_DICT };
   return { dir: path.join(home, ".cache", "yomiscript", "ja-dict", DICT_VERSION), download: url };
 }
-async function accentStep(): Promise<(ys: string) => string> {
-  const { nodeAnalyzer } = await import("@yomiscript/ja-accent/node");
-  const { accentYomite } = await import("@yomiscript/ja-accent");
-  return accentYomite(await nodeAnalyzer({ ...jaDictSource(), onDownload: tell }));
+/** the Japanese pitch model: $YOMISCRIPT_JA_PITCH as it is, else the yomiscript cache, which downloads it */
+export function jaPitchSource(env: NodeJS.ProcessEnv = process.env, home = os.homedir(), url = PITCH_URL): ModelSource {
+  if (env.YOMISCRIPT_JA_PITCH) return { dir: env.YOMISCRIPT_JA_PITCH };
+  return { dir: path.join(home, ".cache", "yomiscript", "ja-pitch", PITCH_VERSION), download: url };
+}
+async function accentStep(pitch: boolean): Promise<(ys: string) => string> {
+  const { nodeAnalyzer, nodePitchModel } = await import("@yomiscript/ja-accent/node");
+  const { accentYomite, pitchOrAccentYomite } = await import("@yomiscript/ja-accent");
+  const a = await nodeAnalyzer({ ...jaDictSource(), onDownload: tell });
+  if (!pitch) return accentYomite(a);
+  return pitchOrAccentYomite(
+    a,
+    () => nodePitchModel({ ...jaPitchSource(), onDownload: tell }),
+    (e) => process.stderr.write(`yomiscript: no pitch model (${(e as Error).message}); the dictionary accent is used\n`),
+  );
 }
 const accentFailed = (e: unknown) => process.stderr.write(`yomiscript: no Japanese dictionary accent (${(e as Error).message}); Kokoro's own pitch is used\n`);
 
@@ -74,7 +87,7 @@ async function kokoro(opts: KatariteOptions): Promise<Katarite> {
     throw new Error(`no Kokoro models in ${dir} (expected models/ and voices/; unset YOMISCRIPT_MODELS and --models to download them)`);
   }
   const k = new KokoroKatarite(await nodeEngine({ dir, model: opts.model ?? "fp32", download, onDownload: tell }), { voice: opts.voice });
-  return opts.accent === false ? k : withAccent(k, accentStep, accentFailed);
+  return opts.accent === false ? k : withAccent(k, () => accentStep(opts.pitch !== false), accentFailed);
 }
 
 async function supertonic(): Promise<Katarite> {
@@ -100,7 +113,7 @@ const cache = new Map<string, Promise<Katarite>>();
 export function openKatarite(name: string, opts: KatariteOptions = {}, factories = KATARITES): Promise<Katarite> {
   const make = factories[name];
   if (!make) throw new Error(`unknown Katarite "${name}" (available: ${Object.keys(factories).join(", ")})`);
-  const key = JSON.stringify([name, modelsDir(opts.models), opts.model ?? "fp32", opts.accent !== false]);
+  const key = JSON.stringify([name, modelsDir(opts.models), opts.model ?? "fp32", opts.accent !== false, opts.pitch !== false]);
   let k = cache.get(key);
   if (!k) {
     k = make(opts);

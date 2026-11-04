@@ -106,9 +106,10 @@ function words(u: Utterance, ys: string): Word[] {
   return W;
 }
 const TRAILING = /^[\s、。，．,.!?！？「」『』()（）・…〜~]*$/;
-/** the words reading exactly the phrase's characters (trailing punctuation allowed), or null */
+/** the words reading exactly the phrase's characters (trailing punctuation allowed), or null; a word of no text (a
+ * pause written ‖<t:>) is never the first, as it has no place of its own to start the phrase at */
 function cover(W: Word[], p: DictPhrase, text: string): Word[] | null {
-  const a = W.findIndex((w) => w.start === p.start);
+  const a = W.findIndex((w) => w.start === p.start && w.end > w.start);
   if (a < 0) return null;
   let z = a;
   while (z < W.length && W[z].end < p.end) z++;
@@ -144,6 +145,12 @@ function dictKeys(M: LabelMora[]): string[] {
     return k;
   });
 }
+/** one ` | ` where the YomiScript's own and a phrase's edit meet (D32) */
+function onePipe(ys: string): string {
+  let out = ys;
+  while (out.includes("| |")) out = out.replaceAll("| |", "|");
+  return out;
+}
 /** writes the dictionary's marks onto ys; text is the utterance's original text (its <t:…> joined) */
 export function writeMarks(ys: string, P: DictPhrase[]): { ys: string; stats: MarkStats } {
   const u = parse(ys),
@@ -169,5 +176,5 @@ export function writeMarks(ys: string, P: DictPhrase[]): { ys: string; stats: Ma
     .replace(/([‖↘↗]) \| /g, "$1 ")
     .replace(/([‖↘↗]<t:[^>]*>) \| /g, "$1 ")
     .replace(/ {2,}/g, " ");
-  return { ys: out, stats };
+  return { ys: onePipe(out), stats };
 }

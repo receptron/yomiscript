@@ -22,7 +22,7 @@ export function answers() {
   return out;
 }
 
-const goldKana = (sym) => sym.replace(/[\^$?[\]#_]/g, "");
+export const goldKana = (sym) => sym.replace(/[\^$?[\]#_]/g, "");
 /** a sentence ready to score: its gold morae and its YomiScript, or why not */
 function scorable(x, ans) {
   if (!ans) return { why: "no answer" };

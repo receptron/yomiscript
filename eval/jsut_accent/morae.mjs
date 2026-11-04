@@ -54,3 +54,58 @@ export function ourMorae(ys) {
   }
   return U;
 }
+
+/** the counts of one way of marking against the gold (score.mjs, eval/llm_phrasing) */
+export const tally = () => ({
+  morae: 0,
+  covered: 0,
+  hlRight: 0,
+  bounds: 0,
+  boundsGold: 0,
+  boundsOurs: 0,
+  boundsBoth: 0,
+  phrases: 0,
+  phrasesSpan: 0,
+  phrasesRight: 0,
+});
+/** the morae covered (in a phrase with marks) and those with the gold's H / L */
+function countMorae(T, G, O) {
+  T.morae += G.length;
+  O.forEach((o, i) => {
+    if (!o.marked) return;
+    T.covered++;
+    if (o.hl === G[i].hl) T.hlRight++;
+  });
+}
+/** the phrase boundaries between two covered morae: the gold's, ours, and both */
+function countBounds(T, G, O) {
+  for (let i = 0; i + 1 < G.length; i++) {
+    if (!O[i].marked || !O[i + 1].marked) continue;
+    const g = G[i].phrase !== G[i + 1].phrase,
+      o = O[i].phrase !== O[i + 1].phrase;
+    T.bounds++;
+    T.boundsGold += g ? 1 : 0;
+    T.boundsOurs += o ? 1 : 0;
+    T.boundsBoth += g && o ? 1 : 0;
+  }
+}
+/** whole gold phrases: covered by one marked phrase of ours with the same span, and with the same H / L */
+function countPhrases(T, G, O) {
+  const sizes = Map.groupBy(O, (o) => o.phrase);
+  for (const P of Map.groupBy(
+    G.map((g, i) => ({ g, o: O[i] })),
+    (x) => x.g.phrase,
+  ).values()) {
+    T.phrases++;
+    const first = P[0].o.phrase;
+    if (!P.every((x) => x.o.marked && x.o.phrase === first) || sizes.get(first).length !== P.length) continue;
+    T.phrasesSpan++;
+    if (P.every((x) => x.g.hl === x.o.hl)) T.phrasesRight++;
+  }
+}
+/** one sentence's counts for one way of marking */
+export function count(T, G, O) {
+  countMorae(T, G, O);
+  countBounds(T, G, O);
+  countPhrases(T, G, O);
+}

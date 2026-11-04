@@ -1,0 +1,9 @@
+{
+ "train_sentences": 3312,
+ "dev_sentences": 368,
+ "test_sentences": 1214,
+ "parameters": 1776467,
+ "epoch": 25,
+ "dev_distance": 1.5777,
+ "test_distance": 1.5918
+}

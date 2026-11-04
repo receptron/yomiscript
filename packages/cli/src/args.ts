@@ -11,6 +11,7 @@ export const USAGE = `usage:
       --models DIR                  directory with models/ and voices/ (default: $YOMISCRIPT_MODELS)
       --voice NAME                  a voice for everything (Kokoro: jf_alpha, jm_kumo, af_heart, …)
       --no-accent                   Kokoro: no Japanese dictionary accent (Kokoro's own pitch everywhere)
+      --no-pitch                    Kokoro: the dictionary accent's Japanese values instead of the predicted pitch (D33)
       --file FILE                   read the YomiScript from a file ("-" = stdin)
   yomiscript instructions           print how to write YomiScript (for an LLM's prompt)
   yomiscript --help`;
@@ -26,6 +27,7 @@ export interface SpeakCommand {
   models?: string;
   voice?: string;
   accent: boolean;
+  pitch: boolean;
 }
 export type Command = SpeakCommand | { cmd: "instructions" } | { cmd: "help" };
 
@@ -43,6 +45,7 @@ function speak(rest: string[]): SpeakCommand {
       models: { type: "string" },
       voice: { type: "string" },
       "no-accent": { type: "boolean" },
+      "no-pitch": { type: "boolean" },
       file: { type: "string", short: "f" },
     },
   });
@@ -60,6 +63,7 @@ function speak(rest: string[]): SpeakCommand {
     models: values.models,
     voice: values.voice,
     accent: !values["no-accent"],
+    pitch: !values["no-pitch"],
   };
 }
 

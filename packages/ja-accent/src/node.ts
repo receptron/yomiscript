@@ -3,6 +3,7 @@
 import fs from "node:fs/promises";
 import { cachedLoader } from "@yomiscript/core/node";
 import { loadFrontend, type Analyzer } from "./frontend.ts";
+import { loadPitchModel, type PitchModel } from "./pitch.ts";
 
 export interface NodeAnalyzerOptions {
   /** directory with the dictionary files (<file>.gz) */
@@ -14,4 +15,8 @@ export interface NodeAnalyzerOptions {
 export async function nodeAnalyzer({ dir, download, onDownload }: NodeAnalyzerOptions): Promise<Analyzer> {
   const wasm = await fs.readFile(new URL("../wasm/pkg/frontend_bg.wasm", import.meta.url));
   return loadFrontend(cachedLoader({ dir, baseUrl: download, onDownload }), wasm);
+}
+/** the pitch model (D33) from a directory, downloaded into it once when a download URL (PITCH_URL) is given */
+export function nodePitchModel({ dir, download, onDownload }: NodeAnalyzerOptions): Promise<PitchModel> {
+  return loadPitchModel(cachedLoader({ dir, baseUrl: download, onDownload }));
 }

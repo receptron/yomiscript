@@ -1,0 +1,13 @@
+{
+ "sentences": 1215,
+ "mean_rmse_to_qwen": {
+  "d31": 1.8662,
+  "d31Abs": 1.502,
+  "start": 1.8662,
+  "abs": 1.502,
+  "model": 1.8479
+ },
+ "gap_closed": 0.05,
+ "closer_than_start": 333,
+ "farther_than_start": 234
+}

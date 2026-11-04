@@ -1,0 +1,92 @@
+{
+ "llm": "claude",
+ "sentences": 500,
+ "readings": {
+  "base": {
+   "answered": 500,
+   "readRight": 426
+  },
+  "base2": {
+   "answered": 500,
+   "readRight": 428
+  },
+  "phrase": {
+   "answered": 500,
+   "readRight": 428
+  }
+ },
+ "between": {
+  "base_base2": {
+   "base only": 13,
+   "base2 only": 15
+  },
+  "base_phrase": {
+   "base only": 12,
+   "phrase only": 14
+  },
+  "base2_phrase": {
+   "base2 only": 14,
+   "phrase only": 14
+  }
+ },
+ "boundaries": {
+  "sentences": 414,
+  "llm": {
+   "precision": 93.2,
+   "recall": 91.8,
+   "f1": 92.5,
+   "gaps": 12830,
+   "gold": 2316,
+   "ours": 2282,
+   "both": 2126
+  },
+  "d31": {
+   "precision": 81.1,
+   "recall": 95.4,
+   "f1": 87.7,
+   "gaps": 12830,
+   "gold": 2316,
+   "ours": 2724,
+   "both": 2209
+  },
+  "d31Rules": {
+   "precision": 89.1,
+   "recall": 93.7,
+   "f1": 91.3,
+   "gaps": 12830,
+   "gold": 2316,
+   "ours": 2434,
+   "both": 2169
+  },
+  "pausesOnly": {
+   "precision": 100,
+   "recall": 24.8,
+   "f1": 39.7,
+   "gaps": 12830,
+   "gold": 2316,
+   "ours": 574,
+   "both": 574
+  }
+ },
+ "accent": {
+  "sentences": 414,
+  "d31": {
+   "covered": 99.1,
+   "hlRight": 85.5,
+   "phrasesSpan": 76.1,
+   "phrasesRight": 60.7
+  },
+  "d31Rules": {
+   "covered": 99.2,
+   "hlRight": 86,
+   "phrasesSpan": 80.5,
+   "phrasesRight": 63.4
+  },
+  "d32": {
+   "covered": 99.2,
+   "hlRight": 86,
+   "phrasesSpan": 81.2,
+   "phrasesRight": 63.3
+  }
+ }
+}
