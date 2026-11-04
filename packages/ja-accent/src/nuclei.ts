@@ -28,9 +28,32 @@ export interface StartSection {
   start: (number | null)[];
   kept: Edit[][];
 }
+/** the YomiScript without the marks of its Japanese morae: another language's marks and the annotations (<t:…>) stay */
+function withoutJaMarks(ys: string): string {
+  const top = parse(ys).top;
+  let lang = top,
+    out = "",
+    at = 0;
+  const outsideAnnotations = (text: string) => {
+    for (const p of text.split(/(\{\S+|\})/)) {
+      if (p === "}") lang = top;
+      else if (p.startsWith("{")) lang = p.slice(1);
+      out += isJa(lang) ? p.replace(/[ꜛꜜ]/g, "") : p;
+    }
+  };
+  while (at < ys.length) {
+    const open = ys.indexOf("<", at),
+      close = open < 0 ? -1 : ys.indexOf(">", open),
+      end = close < 0 ? ys.length : close + 1;
+    outsideAnnotations(ys.slice(at, close < 0 ? end : open));
+    if (close >= 0) out += ys.slice(open, end);
+    at = end;
+  }
+  return out;
+}
 /** a marked YomiScript's marks taken apart: the string without them, and each Japanese section's phrases */
 export function startPhrases(marked: string): { bare: string; sections: StartSection[] } {
-  const bare = marked.replace(/[ꜛꜜ]/g, ""),
+  const bare = withoutJaMarks(marked),
     ja = (ys: string) => parse(ys).sections.filter((s) => isJa(s.lang)),
     M = ja(marked);
   const sections = ja(bare).map((sec, s) => {

@@ -177,18 +177,20 @@ export type AccentSource = (entry: Cand & { surface: string }) => EntryAccent | 
 /** a phrase rule in place of OpenJTalk's for an entry of the path and the one before it: join it to the phrase before
  * (true), start a phrase (false), or leave it to OpenJTalk (undefined) */
 export type JoinRule = (prev: Cand & { surface: string }, cur: Cand & { surface: string }) => boolean | undefined;
-/** the YomiScript's own accent phrases (D32): when it has a ` | `, the words that start one (after ` | `, ` ‖ ` or at
- * the start), as a rule for the entries starting a word: a word that starts a phrase starts one, any other joins the
- * phrase before. An entry inside a word, a word with no Japanese morae and the one after it are left to OpenJTalk.
- * null when the YomiScript has no ` | ` (the phrases are OpenJTalk's). */
+/** the YomiScript's own accent phrases (D32): in a section with a ` | `, the words that start one (after ` | `, ` ‖ ` or
+ * at the start), as a rule for the entries starting a word: a word that starts a phrase starts one, any other joins the
+ * phrase before. An entry inside a word, a word with no Japanese morae, the one after it and the words of a section with
+ * no ` | ` are left to OpenJTalk. null when no section has one (the phrases are OpenJTalk's). */
 function ownPhrases(u: Utterance, W: Word[], S: Sentence): JoinRule | null {
-  const ja = u.sections.filter((sec) => isJa(sec.lang));
-  if (!ja.some((sec) => sec.toks.some((t) => t.kind === "bound" && t.sym === "#"))) return null;
-  const starts = new Set<number>();
+  const ja = u.sections.filter((sec) => isJa(sec.lang) && sec.toks.some((t) => t.kind === "bound" && t.sym === "#"));
+  if (!ja.length) return null;
+  const starts = new Set<number>(),
+    own = new Set<number>();
   for (const sec of ja) {
     let ph = -1;
     for (const t of sec.toks)
       if (t.kind === "unit" && t.span !== undefined) {
+        own.add(t.span);
         if (t.ph !== ph && W[t.span].units[0] === t) starts.add(t.span);
         ph = t.ph ?? ph;
       }
@@ -197,7 +199,7 @@ function ownPhrases(u: Utterance, W: Word[], S: Sentence): JoinRule | null {
   return (prev, cur) => {
     const i = word.get(cur.s),
       p = word.get(prev.s);
-    if (i === undefined || !W[i].units.length || (p !== undefined && !W[p].units.length)) return undefined;
+    if (i === undefined || !own.has(i) || !W[i].units.length || (p !== undefined && !W[p].units.length)) return undefined;
     return !starts.has(i);
   };
 }

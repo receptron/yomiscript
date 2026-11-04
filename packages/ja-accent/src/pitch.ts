@@ -2,7 +2,7 @@
 // (eval/qwen_prosody/pitch.py), reads the morae of a section with the dictionary's nuclei and predicts, for each mora,
 // what to add to the three values the marks give (jaContour with the model fitted to Qwen). It runs here in plain
 // TypeScript, from the model's weights; the marks stay in the YomiScript, the values are what the Katarite speaks.
-import { applyEdits, f0Mark, isJa, jaContour, parse, type Edit, type JaContourModel, type LoadBytes, type Section } from "@yomiscript/core";
+import { applyEdits, f0Mark, isJa, jaContour, parse, type Edit, type JaContourModel, type LoadBytes, type Section, type Utterance } from "@yomiscript/core";
 import { gunzip, type Analyzer } from "./frontend.ts";
 import { accentMarks, type AccentOptions } from "./index.ts";
 import { phraseEdits, phraseUnits, startPhrases } from "./nuclei.ts";
@@ -84,6 +84,8 @@ export function pitchRows(
   return { morae, phrases };
 }
 
+/** a vocabulary's id, 0 for what it does not have (its own entries only: a word can be called "constructor") */
+const idOf = (V: Record<string, number>, key: string): number => (Object.hasOwn(V, key) ? V[key] : 0);
 /** one mora as the LSTM's input: its embeddings, one after the other */
 function embed(M: PitchModel, m: PitchRow): Float64Array {
   const { vocab: V, clip, tensors: T } = M,
@@ -91,16 +93,16 @@ function embed(M: PitchModel, m: PitchRow): Float64Array {
     here = m.d31nuc > 0 && m.ppos === m.d31nuc - 1,
     flatEnd = m.d31nuc === 0 && m.ppos === m.plen - 1,
     picks: [string, number][] = [
-      ["emb.0", V.ipa[m.ipa] ?? 0],
-      ["emb.1", V.word[m.word] ?? 0],
-      ["emb.2", V.bound[m.bound] ?? 0],
+      ["emb.0", idOf(V.ipa, m.ipa)],
+      ["emb.1", idOf(V.word, m.word)],
+      ["emb.2", idOf(V.bound, m.bound)],
       ["pos.0", Math.min(m.ppos, clip)],
       ["pos.1", Math.min(m.plen, clip)],
       ["pos.2", Math.min(m.wpos, clip)],
       ["pos.3", Math.min(m.wlen, clip)],
       ["d31", 1 + Number(here) + 2 * Number(flatEnd) + 3 * Number(m.d31nuc < 0)],
-      ["char", chars.length ? (V.char[chars[0]] ?? 0) : 0],
-      ["char", chars.length ? (V.char[chars[chars.length - 1]] ?? 0) : 0],
+      ["char", chars.length ? idOf(V.char, chars[0]) : 0],
+      ["char", chars.length ? idOf(V.char, chars[chars.length - 1]) : 0],
     ];
   const vectors = picks.map(([name, id]) => {
     const { shape, data } = T[`${name}.weight`];
@@ -168,25 +170,29 @@ export function pitchResidual(M: PitchModel, morae: PitchRow[]): number[][] {
 
 /** the YomiScript with the marks of the given dictionary-marked one and the values the model predicts for them */
 function withPitch(marked: string, M: PitchModel): string {
+  // the values come from every phrase marked with its nucleus, a flat one included, as the model was trained; they are
+  // written onto the dictionary's own marks, which say nothing on a phrase it left alone
   const { bare, sections } = startPhrases(marked),
-    ys = applyEdits(
-      bare,
-      sections.flatMap((s) => phraseEdits(s.G, s.start, s.kept)),
+    U = parse(
+      applyEdits(
+        bare,
+        sections.flatMap((s) => phraseEdits(s.G, s.start, s.kept)),
+      ),
     ),
-    U = parse(ys),
+    ja = (u: Utterance) => u.sections.filter((s) => isJa(s.lang)),
+    written = ja(parse(marked)),
     E: Edit[] = [];
-  U.sections
-    .filter((s) => isJa(s.lang))
-    .forEach((sec, s) => {
-      const contour = jaContour(sec, M.contour),
-        units = phraseUnits(sec).flat(),
-        R = pitchResidual(M, pitchRows(sec, U.texts, sections[s].start).morae);
-      units.forEach((t, i) => {
-        const base = contour.get(t) ?? [0, 0, 0];
-        E.push({ at: t.end ?? 0, ins: f0Mark(base.map((v, j) => v + R[i][j])) });
-      });
+  ja(U).forEach((sec, s) => {
+    const contour = jaContour(sec, M.contour),
+      units = phraseUnits(sec).flat(),
+      at = phraseUnits(written[s]).flat(),
+      R = pitchResidual(M, pitchRows(sec, U.texts, sections[s].start).morae);
+    units.forEach((t, i) => {
+      const base = contour.get(t) ?? [0, 0, 0];
+      E.push({ at: at[i].end ?? 0, ins: f0Mark(base.map((v, j) => v + R[i][j])) });
     });
-  return applyEdits(U.ys, E);
+  });
+  return applyEdits(marked, E);
 }
 /** the Yomite step before Kokoro with the model: the dictionary's marks, then the predicted values for every mora; a
  * YomiScript the dictionary does not mark is left as it is */

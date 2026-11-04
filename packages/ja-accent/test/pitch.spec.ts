@@ -88,6 +88,41 @@ describe("pitchYomite", () => {
   });
 });
 
+describe("pitchYomite on what the training texts did not have", () => {
+  const step = pitchYomite(fake, tiny),
+    noValues = (ys: string) => ys.replace(/<f0:[^>]*>/g, "");
+  it("takes a word named like a property of every object as unknown", () => {
+    const out = step("ja /kʲoː<t:今日> wa<t:は> | koɴsɯtoɾakɯta<t:constructor> | desɯ<t:です。> ↘/");
+    expect(out).not.toContain("NaN");
+    const row = (word: string): PitchRow => ({ ipa: "a", word, bound: "#", ppos: 0, plen: 2, wpos: 0, wlen: 2, d31nuc: 0 });
+    for (const word of ["constructor", "toString", "__proto__", "hasOwnProperty"]) {
+      expect(word in {}).toBe(true);
+      expect(pitchResidual(tiny, [row(word)])).toEqual(pitchResidual(tiny, [row("誰も知らない語")]));
+    }
+  });
+  it("writes no mark on a phrase the dictionary left alone", () => {
+    const ys = "ja /kʲoː<t:今日> wa<t:は> | mamima<t:晴れて> | imasɯ<t:います。> ↘/",
+      out = step(ys);
+    expect(noValues(out)).toBe(accentMarks(ys, fake));
+    expect(noValues(out)).toContain(" | mamima<t:晴れて> | ");
+    expect(units(out).every((t) => t.f0?.length === 3)).toBe(true);
+  });
+  it("keeps another language's marks, and writes values only in Japanese", () => {
+    const out = step("ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> {en həꜛloʊ<t:hello>} imasɯ<t:います。> ↘/");
+    expect(out).toContain("{en həꜛloʊ<t:hello>}");
+    expect(out.slice(out.indexOf("{"), out.indexOf("}"))).not.toContain("<f0:");
+  });
+});
+
+describe("startPhrases", () => {
+  it("takes out the marks of Japanese morae only", () => {
+    expect(startPhrases("ja /kʲoꜜː<t:今日ꜛ> wa<t:は> | haꜛɾe {en həꜛloʊ<t:aꜜb>} aꜜme ↘/").bare).toBe(
+      "ja /kʲoː<t:今日ꜛ> wa<t:は> | haɾe {en həꜛloʊ<t:aꜜb>} ame ↘/",
+    );
+    expect(startPhrases("en-US /həꜛloʊ {ja aꜜme} ðeɪꜛ ↘/").bare).toBe("en-US /həꜛloʊ {ja ame} ðeɪꜛ ↘/");
+  });
+});
+
 describe("pitchOrAccentYomite", () => {
   const ys = "ja /a<t:亜>/";
   it("uses the model when it loads", async () => {

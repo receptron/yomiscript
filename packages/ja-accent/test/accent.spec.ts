@@ -40,6 +40,15 @@ describe("accentMarks", () => {
   it("places the numbers the dictionary writes as kanji numerals", () => {
     expect(bare(accentMarks(shigatsu, fake))).toBe("ja /ɕiꜛɡatsɯ | tsɯꜛitatɕiꜜ wa | ɲɯꜛːɡakɯꜜɕiki da ↘/");
   });
+  it("leaves a section with no ` | ` to OpenJTalk, whatever the sections beside it write (D32)", () => {
+    const last = (ys: string) => {
+      const m = bare(accentMarks(ys, fake));
+      return m.slice(m.indexOf("}"));
+    };
+    const rest = "{en ˈhɛloʊ<t:hello>} aɕita<t:明日> wa<t:は> ame<t:雨> desɯ<t:です。> ↘/";
+    expect(last(`ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> ${rest}`)).toBe(last(`ja /kʲoː<t:今日> wa<t:は> haɾete<t:晴れて> ${rest}`));
+    expect(last(`ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> ${rest}`)).toContain(" | ");
+  });
   it("keeps the accent phrases the YomiScript writes itself, and puts the dictionary's accent in them (D32)", () => {
     const own = (ys: string) => bare(accentMarks(ys, fake));
     expect(own("ja /kʲoː<t:今日> wa<t:は> haɾete<t:晴れて> | imasɯ<t:います。> ↘/")).toBe("ja /kʲoꜜː wa haɾete | iꜛmaꜜsɯ ↘/");
