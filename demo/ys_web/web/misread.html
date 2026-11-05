@@ -219,7 +219,7 @@
   </head>
   <body>
     <main>
-      <h1>YomiScript：読み間違えない TTS を、ブラウザーで</h1>
+      <h1>YomiScript：LLM が読みを決める音声合成を、ブラウザーで</h1>
       <nav class="links">
         <a href="https://github.com/receptron/yomiscript">GitHub（仕様とコード）</a>
         <a href="https://huggingface.co/receptron/yomiscript-kokoro">Hugging Face（Kokoro のモデル）</a>
@@ -229,13 +229,14 @@
       <div class="intro">
         <p>
           Kokoro などのオープンソース TTS
-          は音質が大きく向上しましたが、日本語では「市場（いちば／しじょう）」のように文脈で読みが変わる語を読み間違えることが多く、難しい文での読みの正解率は約3割にとどまります。
+          は音質が大きく向上しましたが、日本語では「市場（いちば／しじょう）」のように文脈で読みが変わる語を読み間違えることがあります。読み分けの難しい語を集めた70文のテストでは、元の
+          Kokoro の読みの正解率は 32.9% でした。
         </p>
         <p>
           YomiScript は、この前処理（読み手、Yomite）を LLM に任せます。LLM
-          が発音記号ベースのスクリプトを書き、語り手（Katarite）がそれを音声にします。文章を書いた LLM
-          がそのまま読み方も書くため、読みの正解率は98%以上になります。Claude Code や Codex で YomiScript を生成すれば、追加のコストは一切かからず、API
-          キーも不要です。
+          が発音記号ベースのスクリプトを書き、語り手（Katarite）がそれを音声にします。文章を書いた LLM がそのまま読み方も書くため、同じテストで読みの正解率は
+          98.6%（Claude）と 100%（Codex）でした（各1回の評価で、正解の読みは暫定です）。読みのための追加の LLM
+          呼び出しは不要で（出力するトークンは増えます）、Claude Code や Codex で生成すれば API キーも要りません。
         </p>
         <p>
           読みの判断を LLM に任せたことで、語り手は軽量になりました。Kokoro ベースの語り手は約160 MB
