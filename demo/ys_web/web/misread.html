@@ -275,6 +275,7 @@
     <script type="module">
       import * as K from "@yomiscript/kokoro";
       import { painted } from "./paint.js";
+      import { modelFetcher } from "./model_cache.js";
       const LOCAL = new URLSearchParams(location.search).has("local");
       const ORT = LOCAL ? new URL("ort/", location.href).href : "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/";
       const MODELS = LOCAL ? "./" : K.KOKORO_MODELS_URL;
@@ -378,8 +379,9 @@
           $("st").textContent = `モデルを読み込んでいます… ${(g / 1e6).toFixed(0)} / ${(t / 1e6).toFixed(0)} MB`;
         }
       };
+      const fetchModel = modelFetcher(MODELS);
       async function load(p) {
-        const r = await fetch(MODELS + p);
+        const r = await (await fetchModel)(p);
         if (!r.ok) throw new Error(`${p}: ${r.status}`);
         total[p] = +r.headers.get("content-length") || 0;
         const reader = r.body.getReader(),
