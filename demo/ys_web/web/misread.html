@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>YomiScript 読み比べ</title>
+    <title>YomiScript：LLM と音声合成エンジンを分離する、新しい共通インターフェース</title>
     <style>
       :root {
         --bg: #f7f6f2;
@@ -215,50 +215,292 @@
       .err {
         color: var(--warn);
       }
+      .card[hidden] {
+        display: none;
+      }
+      h1 span {
+        display: block;
+        margin-top: 4px;
+        font-size: 22px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+      }
+      .lead {
+        margin: 8px 0 0;
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      section {
+        margin-top: 40px;
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+      }
+      h2 {
+        margin: 16px 0 8px;
+        font-size: 22px;
+      }
+      h3 {
+        margin: 20px 0 8px;
+        font-size: 15px;
+      }
+      section > p {
+        line-height: 1.8;
+      }
+      a {
+        color: var(--accent);
+      }
+      .more {
+        margin-top: 16px;
+      }
+      .more > summary {
+        min-height: 40px;
+        padding: 8px 0;
+        color: var(--accent);
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .bars {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .bars li {
+        display: grid;
+        grid-template-columns: minmax(150px, 190px) 1fr 52px;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+      }
+      .bars i {
+        display: block;
+        height: 14px;
+        width: var(--v);
+        border-radius: 0 4px 4px 0;
+        background: var(--accent);
+      }
+      .bars .base i {
+        background: var(--sub);
+        opacity: 0.55;
+      }
+      .bars b {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .note {
+        color: var(--sub);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+      .tiles,
+      .demos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .tiles div,
+      .demos a,
+      .flow li {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--card);
+      }
+      .tiles b {
+        font-size: 20px;
+      }
+      .tiles span,
+      .flow span,
+      .demos span {
+        color: var(--sub);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .demos a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .demos a b {
+        color: var(--accent);
+      }
+      .flow {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .flow code,
+      section pre {
+        font:
+          13px/1.7 ui-monospace,
+          Menlo,
+          monospace;
+        overflow-wrap: anywhere;
+      }
+      .flow code {
+        padding: 8px 10px;
+        border-radius: 6px;
+        background: var(--chip);
+      }
+      section pre {
+        margin: 0;
+        padding: 12px 14px;
+        overflow-x: auto;
+        border-radius: 8px;
+        background: var(--chip);
+      }
+      @media (max-width: 560px) {
+        .bars li {
+          grid-template-columns: 1fr 52px;
+        }
+        .bars span {
+          grid-column: 1 / -1;
+        }
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>YomiScript：LLM が読みを決める音声合成を、ブラウザーで</h1>
-      <nav class="links">
-        <a href="https://github.com/receptron/yomiscript">GitHub（仕様とコード）</a>
-        <a href="https://huggingface.co/receptron/yomiscript-kokoro">Hugging Face（Kokoro のモデル）</a>
-        <a href="announce.html">デモ：駅のアナウンス</a>
-        <a href="aozora.html">デモ：青空朗読文庫</a>
-      </nav>
-      <div class="intro">
+      <header class="hero">
+        <h1>
+          YomiScript
+          <span>LLM と音声合成エンジンを分離する、新しい共通インターフェース</span>
+        </h1>
+        <p class="lead">
+          文章を書いた LLM が読み方まで YomiScript で書き、軽量なエンジンがその通りに話します。エンジンは読みを推測しないので、ブラウザーの中だけでも動きます。
+        </p>
+        <nav class="links">
+          <a href="https://github.com/receptron/yomiscript">GitHub（仕様とコード）</a>
+          <a href="https://huggingface.co/receptron/yomiscript-kokoro">Hugging Face（Kokoro のモデル）</a>
+          <a href="aozora.html">デモ：青空朗読文庫</a>
+          <a href="announce.html">デモ：駅のアナウンス</a>
+        </nav>
+      </header>
+
+      <section aria-labelledby="listen">
+        <h2 id="listen">聞き比べる</h2>
+        <p>同じ文を、元の Kokoro と YomiScript で聞いてください。「生物」「市」の読みが変わります。</p>
+        <div class="live">
+          <b>YomiScript の音声は、録音ではありません。</b>ボタンを押すたびに、このブラウザーの中で生成しています（サーバーには送りません）。元の Kokoro
+          の音声は、比較のために事前に録音したものです。
+        </div>
+        <div class="status">
+          <span id="st">モデルを読み込んでいます…</span>
+          <div class="bar"><i id="bar"></i></div>
+        </div>
+        <div class="grid" id="featured"></div>
+        <details class="more">
+          <summary>ほかの文も聞き比べる</summary>
+          <div class="about" id="about"></div>
+          <div class="filters" id="filters"></div>
+          <div class="grid" id="grid"></div>
+        </details>
+      </section>
+
+      <section aria-labelledby="numbers">
+        <h2 id="numbers">数字で見る</h2>
+        <h3 class="chart-title">読みの正解率（読み分けの難しい62文、音声から自動判定）</h3>
+        <ul class="bars">
+          <li style="--v: 93.5%"><span>Claude + YomiScript</span><i></i><b>93.5%</b></li>
+          <li style="--v: 90.3%"><span>Codex + YomiScript</span><i></i><b>90.3%</b></li>
+          <li class="base" style="--v: 85.5%"><span>Gemini 3.8 Flash TTS</span><i></i><b>85.5%</b></li>
+          <li class="base" style="--v: 75.3%"><span>ElevenLabs v3</span><i></i><b>75.3%</b></li>
+          <li class="base" style="--v: 72.6%"><span>OpenAI gpt-4o-mini-tts</span><i></i><b>72.6%</b></li>
+          <li class="base" style="--v: 30.6%"><span>元の Kokoro</span><i></i><b>30.6%</b></li>
+        </ul>
+        <p class="note">
+          同形異音語、略語、数字、日付を集めたテストで、すべて同じ判定モデルが音声から読みを判定した結果です（2026年10月31日）。各社の TTS
+          は文字をそのまま渡して声を1種類で3回ずつ、YomiScript は Kokoro で1回です。 判定モデルの確認は Kokoro の音声でのみ行っていて（一致率
+          93.2%）、各社の音声の判定は人の耳では確認していません。正解の読みは暫定で、日本語一般の正解率でも、声の自然さの評価でもありません。 Gemini
+          との差は小さく、Codex との差は誤差の範囲を出ません。音声でなく LLM が書いた読みそのものを70文で採点すると、Claude は 98.6%、Codex は 100% でした（<a
+            href="https://github.com/receptron/yomiscript/tree/main/eval/tts_readings"
+            >eval/tts_readings</a
+          >、<a href="https://github.com/receptron/yomiscript/tree/main/eval/browser_tts">eval/browser_tts</a>）。
+        </p>
+        <div class="tiles">
+          <div><b>約160 MB</b><span>ブラウザーで動く Kokoro の語り手のモデル</span></div>
+          <div><b>サーバー不要</b><span>音声の生成はブラウザーの中だけで完結</span></div>
+          <div><b>API キー不要</b><span>外部 TTS を呼ぶための API キーも要りません</span></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="how">
+        <h2 id="how">仕組み</h2>
+        <ol class="flow">
+          <li>
+            <b>読み手（Yomite）</b>
+            <span>文章を書いた LLM が、その文脈で読みを決めます。</span>
+            <code>一日から三日まで休みです。</code>
+          </li>
+          <li>
+            <b>YomiScript</b>
+            <span>発音（IPA）と元の文字を書いた、エンジンに依存しない形式です。</span>
+            <code>ja /tsɯitatɕi&lt;t:一日&gt; kaɾa&lt;t:から&gt; mikka&lt;t:三日&gt; made&lt;t:まで&gt; jasɯmi&lt;t:休み&gt; desɯ&lt;t:です。&gt; ↘/</code>
+          </li>
+          <li>
+            <b>語り手（Katarite）</b>
+            <span>読みを推測せず、書かれた通りに音声にします。文章の解析が要らないので軽量です。</span>
+            <code>Kokoro-82M / Supertonic 3</code>
+          </li>
+        </ol>
         <p>
-          Kokoro などのオープンソース TTS
-          は音質が大きく向上しましたが、日本語では「市場（いちば／しじょう）」のように文脈で読みが変わる語を読み間違えることがあります。読み分けの難しい語を集めた70文のテストでは、元の
-          Kokoro の読みの正解率は 32.9% でした。
+          「一日」を「ついたち」と読むと決めたのは LLM
+          で、エンジンはそれに従うだけです。読み手と語り手は別々に置き換えられます。日本語では、話す直前に辞書とピッチモデルがアクセントを加えられます。
+        </p>
+        <h3>この仕組みで動くデモ</h3>
+        <div class="demos">
+          <a href="aozora.html">
+            <b>青空朗読文庫</b>
+            <span
+              >『注文の多い料理店』全234文を朗読します。あらかじめ用意するのは LLM が書いた 75 KB の YomiScript
+              だけで、アクセントと音声はブラウザーが文ごとに作ります。</span
+            >
+          </a>
+          <a href="announce.html">
+            <b>駅のアナウンス</b>
+            <span>列車と時刻から案内を作ります。ここでは LLM ではなく文型の規則が YomiScript を書いています。読み手は置き換えられるという例です。</span>
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="dev">
+        <h2 id="dev">使ってみる</h2>
+        <h3>コマンドライン</h3>
+        <pre><code>npm install -g yomiscript
+yomiscript speak "ja /ame&lt;t:雨&gt; desɯ&lt;t:です。&gt; ↘/"
+yomiscript instructions   # LLM に渡す、YomiScript の書き方</code></pre>
+        <h3>MCP サーバー（Claude Code など）</h3>
+        <pre><code>claude mcp add yomiscript -- npx -y @yomiscript/mcp</code></pre>
+        <p>
+          ブラウザーやアプリから使うパッケージは
+          <a href="https://www.npmjs.com/package/@yomiscript/kokoro">@yomiscript/kokoro</a> と
+          <a href="https://www.npmjs.com/package/@yomiscript/ja-accent">@yomiscript/ja-accent</a> です。モデルは初回の利用時にダウンロードします。詳しくは
+          <a href="https://github.com/receptron/yomiscript#packages">パッケージの一覧</a>をご覧ください。
+        </p>
+      </section>
+
+      <section aria-labelledby="vision">
+        <h2 id="vision">目指していること</h2>
+        <p>
+          音声合成エンジンごとに発音の指定方法が違う状態をやめて、LLM とエンジンの間に共通の形式を置くことを提案しています。YomiScript は IPA と BCP 47
+          の言語タグに基づく言語非依存の仕様で、アクセント、声調、強勢、言語の切り替えまで同じ形式で書けます。<a
+            href="https://github.com/receptron/yomiscript/tree/main/spec/yomiscript"
+            >仕様</a
+          >は公開していて、現在は v0.2 のドラフトです。
         </p>
         <p>
-          YomiScript は、この前処理（読み手、Yomite）を LLM に任せます。LLM
-          が発音記号ベースのスクリプトを書き、語り手（Katarite）がそれを音声にします。文章を書いた LLM がそのまま読み方も書くため、同じテストで読みの正解率は
-          98.6%（Claude）と 100%（Codex）でした（各1回の評価で、正解の読みは暫定です）。読みのための追加の LLM
-          呼び出しは不要で（出力するトークンは増えます）、Claude Code や Codex で生成すれば API キーも要りません。
+          SSML にも発音を指定する仕組みがありますが、文字が本体で、発音は省略できる補足です。YomiScript
+          では発音が本体なので、エンジンは文字を読む必要がありません。YomiScript の狙いは読みの精度だけでなく、言語に依存せず韻律まで書けることです。
         </p>
-        <p>
-          読みの判断を LLM に任せたことで、語り手は軽量になりました。Kokoro ベースの語り手は約160 MB
-          で、サーバーなしにブラウザーの中だけで動きます。このページの YomiScript の音声も、いまこのブラウザーの中で生成しています。
-        </p>
-        <p>
-          Kokoro ベースの語り手を提供しますが、Supertonic 用の語り手もあり、置き換えは自由です。言語に依存しない公開仕様として、オープン TTS
-          の共通の形式を業界に提案したいと考えています。
-        </p>
-      </div>
-      <div class="live">
-        <b>YomiScript の音声は、録音ではありません。</b>ボタンを押すたびに、このブラウザーの中で Kokoro
-        ベースの語り手が生成しています（サーバーには送りません）。生成にかかった時間と音声の長さを、それぞれの文の下に表示します。オリジナルの Kokoro
-        の音声は、比較のために事前に録音したものです。
-      </div>
-      <div class="about" id="about"></div>
-      <div class="status">
-        <span id="st">モデルを読み込んでいます…</span>
-        <div class="bar"><i id="bar"></i></div>
-      </div>
-      <div class="filters" id="filters"></div>
-      <div class="grid" id="grid"></div>
+        <p>他の言語についての研究はこれからですが、省略形などの読み方に有効だと考えています。</p>
+        <p>このように分離しておくことで、語り手（Katarite）の部分だけに集中した、オープンな形での研究・開発が進むことを期待しています。</p>
+      </section>
     </main>
     <script>
       // ?local: the packages, models and onnxruntime of this repository (serve.py); otherwise the published ones
@@ -287,8 +529,10 @@
       const sec = (ms) => (ms / 1000).toFixed(2);
 
       const data = await (await fetch("misread.json")).json();
+      const FEATURED = ["h016", "h001"];
+      const others = data.items.filter((x) => !FEATURED.includes(x.name));
       $("about").textContent =
-        `下の${data.items.length}文は、難しい文70文（同形異音語、略語、数字、日付）のうち、オリジナルの Kokoro が読み間違える文です。` +
+        `上の2文を含む${data.items.length}文は、難しい文70文（同形異音語、略語、数字、日付）のうち、オリジナルの Kokoro が読み間違える文です。` +
         `「オリジナル」は Kokoro 自身の読みを事前に録音した音声、「YomiScript」は LLM（${data.llm}）が書いた YomiScript から、` +
         `このブラウザーの中でいま生成する音声です（モデルは fp16 の重み、約160 MB）。`;
 
@@ -304,7 +548,7 @@
       let engine = null,
         busy = false;
       const cards = [];
-      for (const x of data.items) {
+      for (const x of [...FEATURED.map((n) => data.items.find((i) => i.name === n)), ...others]) {
         const c = el("div", "card");
         c.dataset.cat = x.category;
         c.append(el("div", "cat", CATS[x.category] ?? x.category), el("div", "text", x.text));
@@ -322,17 +566,18 @@
         const det = el("details");
         det.append(el("summary", null, "LLM が書いた YomiScript"), el("code", null, x.ys));
         c.append(gold, row, speed, det);
-        cards.push({ c, ys });
-        $("grid").append(c);
+        const featured = FEATURED.includes(x.name);
+        cards.push({ c, ys, featured });
+        $(featured ? "featured" : "grid").append(c);
       }
-      const counts = Object.fromEntries(Object.keys(CATS).map((k) => [k, data.items.filter((x) => x.category === k).length]));
-      const filters = [["all", `すべて（${data.items.length}）`], ...Object.entries(CATS).map(([k, v]) => [k, `${v}（${counts[k]}）`])];
+      const counts = Object.fromEntries(Object.keys(CATS).map((k) => [k, others.filter((x) => x.category === k).length]));
+      const filters = [["all", `すべて（${others.length}）`], ...Object.entries(CATS).map(([k, v]) => [k, `${v}（${counts[k]}）`])];
       for (const [k, label] of filters) {
         const b = el("button", null, label);
         b.setAttribute("aria-pressed", String(k === "all"));
         b.onclick = () => {
           for (const f of $("filters").children) f.setAttribute("aria-pressed", String(f === b));
-          for (const { c } of cards) c.hidden = k !== "all" && c.dataset.cat !== k;
+          for (const { c, featured } of cards) c.hidden = !featured && k !== "all" && c.dataset.cat !== k;
         };
         $("filters").append(b);
       }
