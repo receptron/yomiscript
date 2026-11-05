@@ -1,16 +1,23 @@
 // Hugging Face redirects each model file to a signed URL that changes on every request, with `no-store` on the redirect,
 // so the browser's HTTP cache never reuses a download. The files are kept in the Cache API instead, keyed by the URL
-// pinned to the repository's commit: a new commit gets new keys, and the entries of other commits are removed.
-export const MODEL_CACHE = "kokoro-models";
-const HF_BASE = /^(https:\/\/huggingface\.co)\/(.+)\/resolve\/([^/]+)\/$/;
+// pinned to the repository's commit: a new commit gets new keys, and the entries of the repository's other commits are removed.
+// All the demo pages of an origin share this one cache: the Kokoro models and voices, the accent dictionary, the pitch model.
+export const MODEL_CACHE = "yomiscript-models";
+// caches an earlier version of the public site made
+export const OLD_CACHES = ["yomiscript-models-1"];
+const HF = "https://huggingface.co/",
+  RESOLVE = "/resolve/";
 const COMMIT = /^[0-9a-f]{40}$/;
 
-/** the Hugging Face API URL giving the commit a `.../resolve/<revision>/` base points at; null for any other base */
+/** the Hugging Face API URL giving the commit a `.../resolve/<revision>/[folder/]` base points at; null for any other base */
 export const revisionApiUrl = (base) => {
-  const m = HF_BASE.exec(base);
-  return m ? `${m[1]}/api/models/${m[2]}/revision/${m[3]}` : null;
+  const at = base.indexOf(RESOLVE);
+  if (!base.startsWith(HF) || at <= HF.length || !base.endsWith("/")) return null;
+  const rest = base.slice(at + RESOLVE.length),
+    revision = rest.slice(0, rest.indexOf("/"));
+  return revision ? `${HF}api/models/${base.slice(HF.length, at)}/revision/${revision}` : null;
 };
-export const pinnedBase = (base, sha) => base.replace(/\/resolve\/[^/]+\/$/, `/resolve/${sha}/`);
+export const pinnedBase = (base, sha) => base.replace(/\/resolve\/[^/]+\//, `/resolve/${sha}/`);
 
 const resolveCommit = async (base) => {
   const api = revisionApiUrl(base);
@@ -30,9 +37,19 @@ const openCache = async () => {
     return null;
   }
 };
-const dropOtherCommits = async (cache, pinned) => {
+const dropOldCaches = async () => {
   try {
-    const stale = (await cache.keys()).filter((q) => !q.url.startsWith(pinned));
+    await Promise.all(OLD_CACHES.map((name) => caches.delete(name)));
+  } catch {
+    // a cache left behind costs space, not correctness
+  }
+};
+/** the entries of the base's repository at any other commit; those of the other repositories stay */
+const dropOtherCommits = async (cache, base, sha) => {
+  try {
+    const repository = base.slice(0, base.indexOf(RESOLVE) + RESOLVE.length),
+      current = `${repository}${sha}/`;
+    const stale = (await cache.keys()).filter((q) => q.url.startsWith(repository) && !q.url.startsWith(current));
     await Promise.all(stale.map((q) => cache.delete(q)));
   } catch {
     // an entry left behind costs space, not correctness: it is never matched again
@@ -41,11 +58,12 @@ const dropOtherCommits = async (cache, pinned) => {
 
 /** a fetch of `base + path` that reuses earlier downloads when `base` is on Hugging Face and the Cache API is there */
 export async function modelFetcher(base) {
+  await dropOldCaches();
   const sha = await resolveCommit(base);
   const cache = sha && (await openCache());
   if (!cache) return (path) => fetch(base + path);
   const pinned = pinnedBase(base, sha);
-  await dropOtherCommits(cache, pinned);
+  await dropOtherCommits(cache, base, sha);
   return async (path) => {
     const url = pinned + path;
     const hit = await cache.match(url).catch(() => undefined);
@@ -55,3 +73,10 @@ export async function modelFetcher(base) {
     return r;
   };
 }
+
+/** what the dictionary and pitch model loaders take: a file's bytes through a modelFetcher */
+export const modelBytes = (fetchModel) => async (path) => {
+  const r = await fetchModel(path);
+  if (!r.ok) throw new Error(`${path}: ${r.status}`);
+  return new Uint8Array(await r.arrayBuffer());
+};

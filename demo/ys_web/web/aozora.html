@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>青空朗読文庫</title>
+    <style>
+      :root {
+        --bg: #f7f3ea;
+        --fg: #26221c;
+        --muted: #746b5d;
+        --line: #dcd3c2;
+        --card: #fffdf8;
+        --accent: #1d4e79;
+        --mark: #fbe7a8;
+        --mark-fg: #26221c;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #15171a;
+          --fg: #e8e4da;
+          --muted: #9b9587;
+          --line: #33373c;
+          --card: #1d2024;
+          --accent: #8fc1ea;
+          --mark: #5a4a16;
+          --mark-fg: #fff6d8;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          18px/2.1 "Hiragino Mincho ProN",
+          "Yu Mincho",
+          "Noto Serif CJK JP",
+          serif;
+      }
+      header,
+      article,
+      footer {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      header {
+        padding-top: 28px;
+      }
+      .library {
+        margin: 0;
+        color: var(--accent);
+        font-size: 15px;
+        letter-spacing: 0.3em;
+      }
+      h1 {
+        margin: 12px 0 0;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .author {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+      .deck {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+      }
+      .controls {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        font:
+          14px/1.5 system-ui,
+          sans-serif;
+      }
+      button {
+        min-height: 40px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--card);
+        color: var(--fg);
+        font: inherit;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      #play {
+        min-width: 96px;
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--bg);
+        font-weight: 600;
+      }
+      #status {
+        flex: 1 1 220px;
+        color: var(--muted);
+      }
+      .err {
+        color: #c0392b;
+      }
+      progress {
+        display: block;
+        width: 100%;
+        height: 3px;
+        border: 0;
+        background: var(--line);
+        accent-color: var(--accent);
+      }
+      article {
+        padding-top: 24px;
+        padding-bottom: 48px;
+      }
+      p {
+        margin: 0;
+      }
+      p.first {
+        text-indent: 1em;
+      }
+      .s {
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.15s;
+      }
+      .s:hover {
+        background: color-mix(in srgb, var(--mark) 45%, transparent);
+      }
+      .s.now {
+        background: var(--mark);
+        color: var(--mark-fg);
+      }
+      rt {
+        font-size: 0.5em;
+      }
+      details {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 16px 10px;
+        font:
+          14px/1.6 system-ui,
+          sans-serif;
+      }
+      summary {
+        color: var(--muted);
+        cursor: pointer;
+      }
+      #ys {
+        margin: 6px 0 0;
+        max-height: 8em;
+        overflow: auto;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--card);
+        font:
+          13px/1.7 ui-monospace,
+          Menlo,
+          monospace;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+      footer {
+        padding-bottom: 40px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font:
+          13px/1.7 system-ui,
+          sans-serif;
+      }
+      footer a {
+        color: var(--accent);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .s {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="library">青空朗読文庫</p>
+      <h1 id="title"></h1>
+      <p class="author" id="author"></p>
+    </header>
+    <div class="deck">
+      <div class="controls">
+        <button id="prev" aria-label="前の文へ" disabled>前の文</button>
+        <button id="play" disabled>再生</button>
+        <button id="next" aria-label="次の文へ" disabled>次の文</button>
+        <span id="status" role="status">読み込んでいます…</span>
+      </div>
+      <details>
+        <summary>いま読んでいる文の YomiScript</summary>
+        <pre id="ys"></pre>
+      </details>
+      <progress id="progress" value="0" max="1"></progress>
+    </div>
+    <article id="story"></article>
+    <footer>
+      <p>
+        物語はあらかじめ
+        <a href="https://github.com/receptron/yomiscript">YomiScript</a>
+        に変換してあります。アクセントと音声は、必要になった文からこのブラウザの中で作ります（Kokoro-82M）。作った音声はブラウザに保存され、次の文は先に作っておきます。
+        初回はモデルのダウンロードに時間がかかります。
+      </p>
+      <p id="credit"></p>
+    </footer>
+    <script type="importmap">
+      {
+        "imports": {
+          "@yomiscript/core": "https://cdn.jsdelivr.net/npm/@yomiscript/core@0.1.5/dist/index.js",
+          "@yomiscript/ja-accent": "https://cdn.jsdelivr.net/npm/@yomiscript/ja-accent@0.1.4/dist/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="aozora.js"></script>
+  </body>
+</html>
