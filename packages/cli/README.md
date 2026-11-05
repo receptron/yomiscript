@@ -46,7 +46,7 @@ cache and read from there afterwards (the progress goes to stderr):
   loaded, Kokoro's own pitch is used and stderr says so.
 - The Japanese pitch model (Kokoro, D33, `@yomiscript/ja-accent`, CC BY-SA 4.0): from
   [receptron/yomiscript-ja-pitch](https://huggingface.co/receptron/yomiscript-ja-pitch) into
-  `~/.cache/yomiscript/ja-pitch/qwen-1` (7 MB) the first time Japanese is spoken; `$YOMISCRIPT_JA_PITCH` is used as it
+  `~/.cache/yomiscript/ja-pitch/qwen-2` (8 MB) the first time Japanese is spoken; `$YOMISCRIPT_JA_PITCH` is used as it
   is. It predicts the values of every mora from the dictionary's accent and the text. If it cannot be loaded, the
   dictionary accent is used and stderr says so.
 - Supertonic: `$YOMISCRIPT_SUPERTONIC` as it is; otherwise the Python SDK's cache `~/.cache/supertonic3` if it has the

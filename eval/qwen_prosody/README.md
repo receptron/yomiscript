@@ -376,3 +376,18 @@ six alone by 0.6 semitones (rms), in the same range. Whether that matters has no
 **The same 12 sentences through the TypeScript path, blind again** (`results/listening_direct_ts.json`, one listener, a second hearing of the same sentences): unnatural the dictionary's nuclei 5, the nuclei read from Qwen 3, the predicted values 2, Qwen 2; most natural Qwen 6, same 2, none 4.
 
 **Several sentences as one utterance** (`pitch_listen_long.mjs`, `results/pitch_long.json`). The model was trained on single sentences, but YomiScript keeps several sentences in one section. Six passages of four unseen sentences: the values read as one section differ from those of each sentence read alone by 0.21-0.44 semitones rms, and they stay within -7.2 to 6.6. Blind page: `blind.html?test=qwen_prosody&run=long` (the dictionary accent as it ships, the passage read whole, each sentence read alone). Not listened to yet.
+
+## More sentences (`more_train.py`, `codex_pitch.py`, `results/pitch_split.json`, `results/listening_more_data.json`; D35)
+
+5,000 more Wikipedia sentences, by the same steps with another seed and none already used: 4,961 written, 2,595 kept by Whisper's check. Added to 3,312 of the 3,680 sentences of the training half (5,907); the other 368 are fixed dev sentences (`results/pitch_split.json`). Distance on the test half through the TypeScript path, all seeds, no selection on it; `qwen-1` is 1.5918:
+
+| | seeds' dev | seeds' test | test against `qwen-1` (one seed, 95% CI) |
+|---|---|---|---|
+| 3,312, baseline | 1.572-1.591 | 1.606-1.616 | |
+| 3,312, EMA 0.8 | 1.557-1.578 | 1.582-1.587 | |
+| 5,907, baseline | 1.511-1.523 | 1.570-1.584 | -0.022 [-0.038, -0.007] |
+| 5,907, EMA 0.8 | 1.489-1.495 | 1.541-1.543 | -0.049 [-0.063, -0.035] (s0) |
+
+8.0 MB against 6.7, the same 30 ms a sentence. The frozen candidate is EMA seed 0, the best dev seed of the lowest dev configuration. Distance is not the ear, so it went to a blind test.
+
+Listening (`results/listening_more_data.json`), 12 fresh test-half sentences and 2 repeats, gate written before: 13 same, 1 candidate (BASIC5000_0675), none current; unnatural: current 1 (that sentence), candidate 0; both repeats same both times. The gate passes (more sentences for the candidate than for current, no more unnatural, repeats agree), but on one sentence that differed: the listener hears no harm and almost no difference, which one decisive answer cannot tell from chance. A 0.05 smaller distance is not an audible gain here. Adopted by the listener's decision as `qwen-2` (D35), retrained by `more_train.py` with `codex_pitch.py` and the fixed sentences of `results/pitch_split.json`. The speech of the added sentences is not in the Hugging Face dataset.

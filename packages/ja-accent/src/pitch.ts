@@ -8,7 +8,7 @@ import { accentMarks, type AccentOptions } from "./index.ts";
 import { phraseEdits, phraseUnits, startPhrases } from "./nuclei.ts";
 
 /** the model's name; its files live under it */
-export const PITCH_VERSION = "qwen-1";
+export const PITCH_VERSION = "qwen-2";
 /** the model on Hugging Face */
 export const PITCH_URL = `https://huggingface.co/receptron/yomiscript-ja-pitch/resolve/main/${PITCH_VERSION}/`;
 /** the model's files: the vocabularies, the tensors' names and shapes and the marks' pitch model; the weights, little-endian float32 */

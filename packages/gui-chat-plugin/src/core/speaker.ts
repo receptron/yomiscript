@@ -16,7 +16,7 @@ export interface SpeakerOptions {
   /** URL of the Japanese accent dictionary (<file>.gz; Hugging Face by default, about 28 MB the first time Japanese
    * is spoken); null: no dictionary accent, Kokoro's own pitch everywhere */
   accentBase?: string | null;
-  /** URL of the Japanese pitch model (D33, <file>.gz; Hugging Face by default, about 7 MB the first time Japanese is
+  /** URL of the Japanese pitch model (D33, <file>.gz; Hugging Face by default, about 8 MB the first time Japanese is
    * spoken); null: the dictionary accent's values. Needs accentBase; if it cannot be loaded, the dictionary accent is used */
   pitchBase?: string | null;
 }

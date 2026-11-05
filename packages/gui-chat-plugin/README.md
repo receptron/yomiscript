@@ -34,7 +34,7 @@ The models are downloaded on first use: about 163 MB, plus 0.5 MB per voice. The
 gets the dictionary accent of `@yomiscript/ja-accent` (D25): its dictionary (28 MB) is fetched from `accentBase` the
 first time Japanese is spoken, and its WebAssembly (1.4 MB) is resolved by the host's bundler next to the package's
 glue (`new URL(…, import.meta.url)`). If the dictionary cannot be loaded, Kokoro's own pitch is used (a console
-warning says so). The values then come from the pitch model (D33, 7 MB, CC BY-SA 4.0), fetched from `pitchBase` the
+warning says so). The values then come from the pitch model (D33, D35, 8 MB, CC BY-SA 4.0), fetched from `pitchBase` the
 first time Japanese is spoken; if it cannot be loaded, the dictionary accent is used (a console warning says so).
 `onnxruntime-web` is pinned to 1.22.0 through `@yomiscript/kokoro`.
 

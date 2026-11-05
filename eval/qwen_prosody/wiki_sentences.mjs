@@ -3,7 +3,7 @@
 // each, kept only when they are plain prose of 12 to 50 characters in kanji and kana (no digits, Latin letters,
 // brackets or other symbols, which a reader may read in more than one way), not starting with a particle (the dump
 // drops dates and numbers, leaving "には当時…"), and not already a JSUT sentence.
-// usage: node wiki_sentences.mjs [count]   -> work/wiki/sentences.json ([{ name, text, title, offset }])
+// usage: node wiki_sentences.mjs [count] [seed]   -> work/wiki/sentences.json ([{ name, text, title, offset }])
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -12,7 +12,9 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const COUNT = Number(process.argv[2] ?? 5000),
   PER_ARTICLE = 2,
   ROWS = 100,
-  SEED = 1;
+  // a later batch (seed > 1) leaves out the first batch's sentences and names its own
+  SEED = Number(process.argv[3] ?? 1),
+  PREFIX = SEED === 1 ? "WIKI" : `WIKI${SEED}`;
 const API = "https://datasets-server.huggingface.co/rows?dataset=wikimedia/wikipedia&config=20231101.ja&split=train";
 const FRAGMENT = /^(?:に|は|を|が|の|で|と|へ|や|も|から|まで|より)/;
 const PLAIN = /^[一-鿿々〆ぁ-ゖァ-ヺー、]{11,49}。$/;
@@ -53,7 +55,8 @@ async function get(offset, length) {
 }
 const rows = async (offset) => (await get(offset, ROWS)).rows.map((x) => ({ ...x.row, offset: x.row_idx }));
 
-const jsut = new Set(JSON.parse(fs.readFileSync(path.join(HERE, "../jsut_accent/data/items.json"), "utf8")).map((x) => x.text)),
+const texts = (f) => JSON.parse(fs.readFileSync(path.join(HERE, f), "utf8")).map((x) => x.text),
+  jsut = new Set([...texts("../jsut_accent/data/items.json"), ...(SEED === 1 ? [] : texts("work/wiki/sentences.json"))]),
   rand = rng(SEED),
   seen = new Set(),
   out = [];
@@ -65,7 +68,7 @@ while (out.length < COUNT) {
     for (let k = 0; k < PER_ARTICLE && S.length && out.length < COUNT; k++) {
       const s = S.splice(Math.floor(rand() * S.length), 1)[0];
       seen.add(s);
-      out.push({ name: `WIKI_${String(out.length + 1).padStart(5, "0")}`, text: s, title: a.title, offset: a.offset });
+      out.push({ name: `${PREFIX}_${String(out.length + 1).padStart(5, "0")}`, text: s, title: a.title, offset: a.offset });
     }
   }
   console.log(`${out.length} sentences`);
