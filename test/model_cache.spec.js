@@ -1,7 +1,7 @@
 // The demos' model loader (demo/ys_web/web/model_cache.js): Hugging Face files kept in the Cache API under the URL
 // pinned to the repository's commit, and the plain fetch whenever that cannot be done.
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { MODEL_CACHE, modelFetcher, pinnedBase, revisionApiUrl } from "../demo/ys_web/web/model_cache.js";
+import { MODEL_CACHE, modelBytes, modelFetcher, OLD_CACHES, pinnedBase, revisionApiUrl } from "../demo/ys_web/web/model_cache.js";
 
 const BASE = "https://huggingface.co/receptron/yomiscript-kokoro/resolve/main/";
 const REVISION_URL = "https://huggingface.co/api/models/receptron/yomiscript-kokoro/revision/main";
@@ -44,6 +44,11 @@ describe("revisionApiUrl / pinnedBase", () => {
   it("map a Hugging Face resolve base to its revision API and to a commit", () => {
     expect(revisionApiUrl(BASE)).toBe(REVISION_URL);
     expect(pinnedBase(BASE, SHA)).toBe(pinned(SHA, ""));
+  });
+  it("keep the folder of a base inside a repository", () => {
+    const base = "https://huggingface.co/receptron/yomiscript-ja-pitch/resolve/main/qwen-2/";
+    expect(revisionApiUrl(base)).toBe("https://huggingface.co/api/models/receptron/yomiscript-ja-pitch/revision/main");
+    expect(pinnedBase(base, SHA)).toBe(`https://huggingface.co/receptron/yomiscript-ja-pitch/resolve/${SHA}/qwen-2/`);
   });
   it("give no revision API for any other base", () => {
     ["./", "https://example.com/m/", "https://huggingface.co/a/b/resolve/main", ""].forEach((b) => expect(revisionApiUrl(b)).toBeNull());
@@ -97,5 +102,38 @@ describe("modelFetcher", () => {
     cache.put = () => Promise.reject(new Error("quota"));
     const get = await modelFetcher(BASE);
     expect(await text(await get("models/enc_w16.onnx"))).toBe("enc");
+  });
+});
+
+describe("the cache the pages share", () => {
+  it("keeps the files of other repositories in the shared cache", async () => {
+    const other = `https://huggingface.co/receptron/yomiscript-ja-pitch/resolve/${OLD}/qwen-2/pitch.bin.gz`;
+    cache.entries.set(other, new Response("pitch"));
+    await modelFetcher(BASE);
+    expect([...cache.entries.keys()]).toStrictEqual([other]);
+  });
+  it("removes the caches of an earlier version of the site", async () => {
+    const remove = vi.fn(async () => true);
+    vi.stubGlobal("caches", { open: async () => cache, delete: remove });
+    await modelFetcher(BASE);
+    expect(OLD_CACHES).toContain("yomiscript-models-1");
+    expect(remove.mock.calls.map(([name]) => name)).toStrictEqual(OLD_CACHES);
+    expect(OLD_CACHES).not.toContain(MODEL_CACHE);
+  });
+  it("loads when an old cache cannot be removed", async () => {
+    vi.stubGlobal("caches", { open: async () => cache, delete: () => Promise.reject(new Error("denied")) });
+    const get = await modelFetcher(BASE);
+    expect(await text(await get("models/enc_w16.onnx"))).toBe("enc");
+  });
+});
+
+describe("modelBytes", () => {
+  it("gives a file's bytes through a fetcher", async () => {
+    const bytes = modelBytes(await modelFetcher(BASE));
+    expect(new TextDecoder().decode(await bytes("models/enc_w16.onnx"))).toBe("enc");
+  });
+  it("throws on a failed download rather than give its body as the file", async () => {
+    const bytes = modelBytes(await modelFetcher(BASE));
+    await expect(bytes("models/missing.onnx")).rejects.toThrow("models/missing.onnx: 404");
   });
 });

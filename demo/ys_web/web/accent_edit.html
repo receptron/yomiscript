@@ -277,6 +277,7 @@
       import * as K from "@yomiscript/kokoro";
       import { accentMarks, ACCENT_SCALE, DICT_URL, DICT_VERSION, loadFrontend, loadPitchModel, PITCH_URL, pitchYomite } from "@yomiscript/ja-accent";
       import { marksOf, moraFrames, referenceVoice, startRecording, trim, voiceValues } from "./accent_voice.js";
+      import { modelBytes, modelFetcher } from "./model_cache.js";
       import { painted } from "./paint.js";
 
       const $ = (id) => document.getElementById(id);
@@ -582,7 +583,7 @@
       async function hearPitch() {
         $("ps").textContent = "ピッチのモデルを読み込んでいます…";
         try {
-          pitchStep ??= pitchYomite(A, await loadPitchModel(async (f) => new Uint8Array(await (await fetch(PITCH_URL + f)).arrayBuffer())));
+          pitchStep ??= pitchYomite(A, await loadPitchModel(modelBytes(await modelFetcher(PITCH_URL))));
         } catch (e) {
           $("ps").textContent = `読み込めませんでした：${e}`;
           return;
@@ -813,7 +814,7 @@
             await e.synth("ja /a ↘/");
             return e;
           })(),
-          loadFrontend(async (f) => new Uint8Array(await (await fetch(DICT_URL + f)).arrayBuffer())),
+          modelFetcher(DICT_URL).then((f) => loadFrontend(modelBytes(f))),
         ]);
         E = engine;
         A = analyzer;

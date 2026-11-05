@@ -1,6 +1,6 @@
 #!/bin/sh
 # The misread page as a static site (Cloudflare Pages and the like): the page as index.html, its data, the original
-# Kokoro's audio, the station announcement demo (announce.html), and the headers that let onnxruntime use several
+# Kokoro's audio, the station announcement demo (announce.html), 青空朗読文庫 (aozora.html), and the headers that let onnxruntime use several
 # threads. The packages and onnxruntime come from jsDelivr, the models from Hugging Face, so the site itself is about
 # 7 MB.
 # usage: sh misread_site.sh [dir]   (default out/misread; after node misread.mjs)
@@ -12,6 +12,8 @@ rm -rf "$OUT"
 mkdir -p "$OUT"
 cp web/misread.html "$OUT/index.html"
 cp web/announce.html web/announce.js web/paint.js web/model_cache.js "$OUT/"
+cp web/aozora.html web/aozora.js web/aozora_worker.js "$OUT/"
+cp -R web/aozora "$OUT/aozora"
 cp web/misread.json "$OUT/"
 cp -R web/misread "$OUT/misread"
 cat >"$OUT/_headers" <<'H'
