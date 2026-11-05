@@ -175,6 +175,7 @@
       import * as K from "@yomiscript/kokoro";
       import { announce, parseTime, PLACES, TRAINS } from "./announce.js";
       import { painted } from "./paint.js";
+      import { modelFetcher } from "./model_cache.js";
 
       const $ = (id) => document.getElementById(id);
       for (const t of Object.keys(TRAINS)) $("train").add(new Option(t, t));
@@ -258,8 +259,9 @@
         const ort = await import(ORT + "ort.min.mjs");
         ort.env.wasm.wasmPaths = ORT;
         ort.env.wasm.numThreads = crossOriginIsolated ? Math.min(4, navigator.hardwareConcurrency || 1) : 1;
+        const fetchModel = await modelFetcher(MODELS);
         const e = new K.Engine(ort, async (p) => {
-          const b = await (await fetch(MODELS + p)).arrayBuffer();
+          const b = await (await fetchModel(p)).arrayBuffer();
           return p.endsWith(".bin") ? b : new Uint8Array(b);
         });
         await e.init({ suffix: K.W16, executionProviders: ["wasm"] });
