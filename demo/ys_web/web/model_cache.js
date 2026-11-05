@@ -16,7 +16,7 @@ const resolveCommit = async (base) => {
   const api = revisionApiUrl(base);
   if (!api) return null;
   try {
-    const r = await fetch(api);
+    const r = await fetch(api, { cache: "no-cache" });
     const sha = r.ok ? (await r.json()).sha : null;
     return COMMIT.test(sha) ? sha : null;
   } catch {

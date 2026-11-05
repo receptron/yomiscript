@@ -66,6 +66,10 @@ describe("modelFetcher", () => {
     await settle();
     expect(cache.entries.size).toBe(0);
   });
+  it("revalidates the revision on every load, so a new model commit is seen", async () => {
+    await modelFetcher(BASE);
+    expect(fakeFetch).toHaveBeenCalledWith(REVISION_URL, { cache: "no-cache" });
+  });
   it("removes the files of other commits and keeps those of the current one", async () => {
     cache.entries.set(pinned(OLD, "models/enc_w16.onnx"), new Response("old"));
     cache.entries.set(pinned(SHA, "voices/jf_alpha.bin"), new Response("voice"));

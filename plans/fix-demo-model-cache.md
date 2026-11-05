@@ -9,7 +9,7 @@ visit downloads the models in full.
 ## Fix
 `demo/ys_web/web/model_cache.js` exports `modelFetcher(base)`, which returns the fetch the pages give the Engine:
 - for a Hugging Face `.../resolve/<revision>/` base, it asks the Hugging Face API for the commit that revision points
-  at, fetches from the base pinned to that commit, and keeps each successful response in the Cache API under that
+  at (revalidated on every load, `cache: "no-cache"`), fetches from the base pinned to that commit, and keeps each successful response in the Cache API under that
   pinned URL. A later visit with the same commit is served from the cache; a new model commit gets new keys, and the
   entries of other commits are removed when the fetcher is made;
 - for any other base (`?local`), when the commit cannot be resolved, or when the Cache API cannot be opened, it is the
@@ -22,7 +22,7 @@ and `accent_edit.html` load from the same origin through `serve.py`, where the H
 ## Verified
 - `test/model_cache.spec.js` with `fetch` and `caches` faked: one download then cache hits, failures not stored, other
   commits removed, each fallback, a non-Hugging Face base, a cache that cannot store. Each test goes red on its mutant
-  (no cache hit, storing failures, no removal, no commit check, an unpinned key, an unhandled `put` rejection, no
+  (no cache hit, storing failures, no removal, no commit check, a revision lookup without `no-cache`, an unpinned key, an unhandled `put` rejection, no
   check for a non-Hugging Face base).
 - The built site in Chromium against the real Hugging Face: the second load of the page fetches no model file from
   the network.
