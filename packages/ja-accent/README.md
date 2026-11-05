@@ -86,7 +86,7 @@ const step = pitchYomite(await nodeAnalyzer({ dir }), model);
 
 `pitchOrAccentYomite(a, loadModel, onError)` falls back to the dictionary accent when the model cannot be loaded; the CLI, the MCP server and the plugin use it by default (off with `--no-pitch`, `YOMISCRIPT_PITCH=0`, `pitchBase: null`).
 
-In the browser, `loadPitchModel(load)` takes any `LoadBytes`. The model (6.7 MB, CC BY-SA 4.0) is not part of this
+In the browser, `loadPitchModel(load)` takes any `LoadBytes`. The model (8 MB, CC BY-SA 4.0) is not part of this
 package; it is downloaded from Hugging Face ([receptron/yomiscript-ja-pitch](https://huggingface.co/receptron/yomiscript-ja-pitch), `PITCH_URL`).
 
 ## The WebAssembly
