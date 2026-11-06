@@ -15,9 +15,16 @@ const status = (text, error = false) => {
   $("status").classList.toggle("err", error);
 };
 
-/** the Cache Storage cache of the audio, or null where the browser refuses one (a private window, an insecure origin) */
-async function openCache(name) {
+/** The Cache Storage cache of the audio, or null where the browser refuses one (a private window, an insecure origin). Its name has
+ * the story's version and that of the accent code, whose URL holds it, so that audio made with other accents is not played; the
+ * caches of other versions are removed. */
+async function openAudio(storyVersion) {
+  const prefix = `aozora-audio-${BOOK}-`,
+    accentVersion = import.meta.resolve("@yomiscript/ja-accent").match(/@(\d[^/]*)\//)?.[1],
+    name = `${prefix}${storyVersion}-${accentVersion}`;
   try {
+    const stale = (await caches.keys()).filter((k) => k.startsWith(prefix) && k !== name);
+    await Promise.all(stale.map((k) => caches.delete(k)));
     return await caches.open(name);
   } catch {
     return null;
@@ -232,7 +239,7 @@ async function main() {
   status("音声モデルと辞書を読み込んでいます…（初回は約 200 MB）");
   const speaker = new Speaker(),
     [accent] = await Promise.all([startAccent(), speaker.speak()]),
-    audio = await openCache(`aozora-audio-${BOOK}-${story.version}`),
+    audio = await openAudio(story.version),
     voice = new Voice(speaker, accent, sentences, audio),
     reader = new Reader(sentences, voice);
   status("最初の文を準備しています…");
