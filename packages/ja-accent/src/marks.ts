@@ -106,10 +106,11 @@ function words(u: Utterance, ys: string): Word[] {
   return W;
 }
 const TRAILING = /^[\s、。，．,.!?！？「」『』()（）・…〜~]*$/;
-/** the words reading exactly the phrase's characters (trailing punctuation allowed), or null; a word of no text (a
- * pause written ‖<t:>) is never the first, as it has no place of its own to start the phrase at */
+const LEADING = /^[\p{Ps}\p{Pi}]*$/u;
+/** the words reading exactly the phrase's characters (opening quotes before them and trailing punctuation allowed), or
+ * null; a word of no text (a pause written ‖<t:>) is never the first, as it has no place of its own to start the phrase at */
 function cover(W: Word[], p: DictPhrase, text: string): Word[] | null {
-  const a = W.findIndex((w) => w.start === p.start && w.end > w.start);
+  const a = W.findIndex((w) => w.start <= p.start && w.end > p.start && LEADING.test(text.slice(w.start, p.start)));
   if (a < 0) return null;
   let z = a;
   while (z < W.length && W[z].end < p.end) z++;

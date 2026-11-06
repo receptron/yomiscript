@@ -391,3 +391,16 @@ six alone by 0.6 semitones (rms), in the same range. Whether that matters has no
 8.0 MB against 6.7, the same 30 ms a sentence. The frozen candidate is EMA seed 0, the best dev seed of the lowest dev configuration. Distance is not the ear, so it went to a blind test.
 
 Listening (`results/listening_more_data.json`), 12 fresh test-half sentences and 2 repeats, gate written before: 13 same, 1 candidate (BASIC5000_0675), none current; unnatural: current 1 (that sentence), candidate 0; both repeats same both times. The gate passes (more sentences for the candidate than for current, no more unnatural, repeats agree), but on one sentence that differed: the listener hears no harm and almost no difference, which one decisive answer cannot tell from chance. A 0.05 smaller distance is not an audible gain here. Adopted by the listener's decision as `qwen-2` (D35), retrained by `more_train.py` with `codex_pitch.py` and the fixed sentences of `results/pitch_split.json`. The speech of the added sentences is not in the Hugging Face dataset.
+
+## Words that start with an opening quote (`results/listening_quote.json`)
+
+A word written `<t:「ことに>` lost its accent in two ways: the analysis of 「ことに cut it as こと + に instead of the adverb
+ことに, and the dictionary's phrase, which starts after the quote, did not start where the word does, so the whole phrase was
+left unmarked and had no pitch values. 78 of the 234 sentences of the story on 青空朗読文庫 have such a word. The fix (`packages/ja-accent`)
+asks the dictionary about the quote and the word apart, analyses what follows a quote as what starts a sentence, and lets a phrase
+start after opening quotes. It changes 76 of those 78 sentences, and none of the 5,868 others compared (the rest of the story and
+two JSUT sets).
+
+Blind, published 0.1.4 against the fix, frozen before listening, on sentences of the story not heard before: fixed preferred on 3 of
+10 cases, current on none, the same on 7; unnatural 4 (current) and 1 (fixed); the 2 controls, the same recording on both sides,
+heard as the same. The two repeats could not be checked: they had one name on the page, which keeps one answer per name.

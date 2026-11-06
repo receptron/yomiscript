@@ -40,6 +40,7 @@ interface Search {
   X: Lattice;
   from: Map<number, number[]>;
   fb: Map<number, { word: number; path: number[] }[]>;
+  chars: string[];
 }
 
 /** each <t:…> of the utterance: its text and its Japanese morae */
@@ -47,6 +48,21 @@ export function wordsOf(u: Utterance): Word[] {
   const W: Word[] = u.texts.map((t) => ({ text: t, units: [] }));
   for (const sec of u.sections) for (const t of sec.toks) if (t.kind === "unit" && isJa(sec.lang) && t.span !== undefined) W[t.span].units.push(t);
   return W;
+}
+// opening quotes and brackets at the start of a word's text
+const OPENING = /^[\p{Ps}\p{Pi}]+/u;
+/** The words as the dictionary is asked about them: opening quotes a word's text starts with are a word of no morae of their
+ * own, because the analysis of 「ことに is not the analysis of ことに. at: each word's place among them. */
+function apart(W: Word[]): { W: Word[]; at: number[] } {
+  const out: Word[] = [],
+    at: number[] = [];
+  for (const w of W) {
+    const quote = w.units.length ? w.text.match(OPENING)?.[0] : undefined;
+    if (quote && quote !== w.text) out.push({ text: quote, units: [] });
+    at.push(out.length);
+    out.push(quote && quote !== w.text ? { ...w, text: w.text.slice(quote.length) } : w);
+  }
+  return { W: out, at };
 }
 /** an entry's morae as the labels write them (a long vowel as its vowel again) */
 function asMorae(ph: string[][], prev: string | undefined): LabelMora[] {
@@ -122,11 +138,13 @@ class Lattice {
   }
 }
 /** the nodes reached from one node: each fitting entry, and the fallback of a word starting here */
-function step({ S, Y, X, from, fb }: Search, c: number, node: Node): void {
+function step({ S, Y, X, from, fb, chars }: Search, c: number, node: Node): void {
   for (const i of from.get(c) ?? []) {
     const k = fits(S, Y, i, node.m),
-      x = S.cands[i];
-    if (k >= 0) X.put(x.e, { m: node.m + k, r: x.r, cost: node.cost + X.cost(node.r, x.l) + x.cost, prev: node, path: [i], fell: -1 });
+      x = S.cands[i],
+      // what follows an opening quote is analysed as what starts a sentence, so that the quote does not change how it is cut
+      r = OPENING.test(chars[x.s]) ? 0 : x.r;
+    if (k >= 0) X.put(x.e, { m: node.m + k, r, cost: node.cost + X.cost(node.r, x.l) + x.cost, prev: node, path: [i], fell: -1 });
   }
   for (const f of fb.get(c) ?? []) {
     if (node.m !== Y.M[f.word] || Y.free[f.word]) continue;
@@ -162,7 +180,7 @@ export function bestPath(S: Sentence, W: Word[], a: Analyzer): { path: number[];
     chars = [...S.norm];
   S.cands.forEach((c, i) => from.set(c.s, [...(from.get(c.s) ?? []), i]));
   X.put(0, { m: 0, r: 0, cost: 0, prev: null, path: [], fell: -1 });
-  const G: Search = { S, Y, X, from, fb: fallbacks(S, W) };
+  const G: Search = { S, Y, X, from, fb: fallbacks(S, W), chars };
   for (let c = 0; c < n; c++)
     for (const node of X.at[c].values()) {
       // a space or line break is in no entry, and OpenJTalk's analysis skips it too
@@ -181,7 +199,7 @@ export type JoinRule = (prev: Cand & { surface: string }, cur: Cand & { surface:
  * at the start), as a rule for the entries starting a word: a word that starts a phrase starts one, any other joins the
  * phrase before. An entry inside a word, a word with no Japanese morae, the one after it and the words of a section with
  * no ` | ` are left to OpenJTalk. null when no section has one (the phrases are OpenJTalk's). */
-function ownPhrases(u: Utterance, W: Word[], S: Sentence): JoinRule | null {
+function ownPhrases(u: Utterance, W: Word[], at: number[], S: Sentence): JoinRule | null {
   const ja = u.sections.filter((sec) => isJa(sec.lang) && sec.toks.some((t) => t.kind === "bound" && t.sym === "#"));
   if (!ja.length) return null;
   const starts = new Set<number>(),
@@ -190,8 +208,8 @@ function ownPhrases(u: Utterance, W: Word[], S: Sentence): JoinRule | null {
     let ph = -1;
     for (const t of sec.toks)
       if (t.kind === "unit" && t.span !== undefined) {
-        own.add(t.span);
-        if (t.ph !== ph && W[t.span].units[0] === t) starts.add(t.span);
+        own.add(at[t.span]);
+        if (t.ph !== ph && W[at[t.span]].units[0] === t) starts.add(at[t.span]);
         ph = t.ph ?? ph;
       }
   }
@@ -207,7 +225,7 @@ function ownPhrases(u: Utterance, W: Word[], S: Sentence): JoinRule | null {
  * them, and whether there was one (when not, OpenJTalk's own analysis of the text). The YomiScript's own phrases,
  * when it writes them (ownPhrases), come before the join rule. */
 export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource, join?: JoinRule): Analysis & { fell: string[]; found: boolean } {
-  const W = wordsOf(u),
+  const { W, at } = apart(wordsOf(u)),
     words = W.map((w) => w.text),
     S = a.candidates(words),
     best = bestPath(S, W, a),
@@ -215,7 +233,7 @@ export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource,
     chars = [...S.norm],
     E = path.map((i) => ({ ...S.cands[i], surface: chars.slice(S.cands[i].s, S.cands[i].e).join("") })),
     accents = source && E.map((e) => source(e) ?? null),
-    own = ownPhrases(u, W, S),
+    own = ownPhrases(u, W, at, S),
     rule = (p: (typeof E)[number], e: (typeof E)[number]) => own?.(p, e) ?? join?.(p, e) ?? null,
     chain = (own || join) && E.map((e, k) => (k ? rule(E[k - 1], e) : null));
   return { ...a.label(words, path, accents, chain), fell: best ? best.fell.map((i) => W[i].text) : [], found: !!best };
