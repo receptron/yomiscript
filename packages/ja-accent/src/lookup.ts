@@ -232,7 +232,8 @@ type Entry = Cand & { surface: string };
 const isTe = (e: Entry | undefined): boolean => !!e && /^(?:て|で|てる|でる)$/.test(e.surface) && /^(?:助詞,接続助詞|動詞,非自立)/.test(e.pos);
 // the endings of a verb's base form after its stem before て: 持っ 持つ, 呼ん 呼ぶ, 書い 書く, 話し 話す, and 寝 寝る
 const BASE_ENDINGS: Record<string, string[]> = { っ: ["う", "つ", "る"], ん: ["ぬ", "ぶ", "む"], い: ["く", "ぐ"], し: ["す"] };
-/** the fall of a verb's base form in the dictionary, from its stem before て: 0 none, 1 on its first mora; undefined for any other */
+/** the fall a verb's stem has before て, from its base form in the dictionary: its fall when that is none or on the first mora, or one
+ * mora earlier in an ichidan verb; undefined for any other */
 function baseFall(stem: Entry, a: Analyzer): number | undefined {
   const kana = stem.pron.replaceAll("’", ""),
     root = stem.surface.slice(0, -1),
@@ -248,14 +249,37 @@ function baseFall(stem: Entry, a: Analyzer): number | undefined {
       });
   });
   const fall = found[0]?.acc;
-  return fall !== undefined && fall <= 1 && found.every((c) => c.acc === fall) ? fall : undefined;
+  if (fall === undefined || !found.every((c) => c.acc === fall)) return undefined;
+  if (fall <= 1) return fall;
+  return ichidanFall(stem, kana, bases[0], found);
 }
-/** Before て a verb keeps the fall of its base form when that is none or on the first mora (寝る, so 寝て and 寝てる have no fall; 出る,
- * so 出て and 出てる fall on 出), whatever the entry of its stem says. */
+/** 食べる タベ\\ル: an ichidan verb that falls just before its る falls one mora earlier before て (タ\\ベテ), and not on ん, っ or a long
+ * vowel's second part (信じる, シ\\ンジテ); undefined for any other verb */
+function ichidanFall(stem: Entry, kana: string, base: string, found: Cand[]): number | undefined {
+  const n = [...base].length,
+    c = found[0],
+    isIchidan = found.every((x) => x.e === n && x.pron.replaceAll("’", "") === `${kana}ル`) && base === `${stem.surface}る`;
+  if (!isIchidan || c.acc !== c.ph.length - 1) return undefined;
+  let fall = c.acc - 1;
+  while (fall > 1 && ["N", "cl", "-"].includes(c.ph[fall - 1][0])) fall--;
+  return fall;
+}
+/** Before て a verb's fall follows its base form (baseFall), whatever the entry of its stem says: 寝る, so 寝てる has no fall; 出る, so
+ * 出てる falls on 出; 食べる, so 食べてる falls on 食. */
 function beforeTe(e: Entry, next: Entry | undefined, a: Analyzer): EntryAccent | undefined {
   if (!e.pos.startsWith("動詞,自立") || !isTe(next)) return undefined;
   const fall = baseFall(e, a);
   return fall !== undefined && fall !== e.acc ? { a: fall } : undefined;
+}
+
+const isOneKanjiNoun = (e: Entry | undefined): boolean => !!e && e.pos.startsWith("名詞") && /^\p{Script=Han}$/u.test(e.surface);
+const isThisOrOur = (e: Entry | undefined): boolean => !!e && /^[当弊]$/.test(e.surface) && /^(?:トー|トウ|ヘー|ヘイ)$/.test(e.pron.replaceAll("’", ""));
+/** 当 or 弊 before one kanji that the dictionary does not have as one word falls on its first mora, as 当店 and 弊社 do (当軒 ト\\ーケン); the
+ * kanji keeps that accent (C5). Words the dictionary has, such as 当然, are one entry and are not touched. */
+function thisOrOur(E: Entry[], k: number): EntryAccent | undefined {
+  if (isThisOrOur(E[k]) && isOneKanjiNoun(E[k + 1])) return { a: 1 };
+  if (isThisOrOur(E[k - 1]) && isOneKanjiNoun(E[k])) return { a: 0, chain: "C5" };
+  return undefined;
 }
 
 /** OpenJTalk's rules on the cheapest path that reads as the YomiScript does, the words on it taken as OpenJTalk reads
@@ -269,7 +293,7 @@ export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource,
     path = best ? best.path : S.alone,
     chars = [...S.norm],
     E = path.map((i) => ({ ...S.cands[i], surface: chars.slice(S.cands[i].s, S.cands[i].e).join("") })),
-    accents = E.map((e, k) => source?.(e) ?? auxiliaryTeru(e) ?? beforeTe(e, E[k + 1], a) ?? null),
+    accents = E.map((e, k) => source?.(e) ?? auxiliaryTeru(e) ?? beforeTe(e, E[k + 1], a) ?? thisOrOur(E, k) ?? null),
     own = ownPhrases(u, W, at, S),
     rule = (p: (typeof E)[number], e: (typeof E)[number]) => own?.(p, e) ?? join?.(p, e) ?? null,
     chain = (own || join) && E.map((e, k) => (k ? rule(E[k - 1], e) : null));

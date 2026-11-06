@@ -69,7 +69,7 @@ describe("pitchYomite", () => {
     out = step(kyou);
   it("keeps the reading and the dictionary's marks, and writes values for every mora", () => {
     expect(parse(out).texts).toEqual(parse(kyou).texts);
-    expect(out.replace(/<f0:[^>]*>/g, "").replace(/<t:[^>]*>/g, "")).toBe("ja /kʲoꜜː wa | haꜛɾeꜜte | iꜛmaꜜsɯ ↘/");
+    expect(out.replace(/<f0:[^>]*>/g, "").replace(/<t:[^>]*>/g, "")).toBe("ja /kʲoꜜː wa | haꜜɾete | iꜛmaꜜsɯ ↘/");
     expect(units(out).every((t) => t.f0?.length === 3)).toBe(true);
   });
   it("adds the prediction to the values the marks give", () => {

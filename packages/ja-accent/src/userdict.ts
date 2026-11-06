@@ -13,4 +13,8 @@ export const USER_DICT = `
 # ぴかぴか: NAIST-JDIC has no fall (5055, 5052), where くるくる and the like fall on the first mora (D38)
 ぴかぴか,1341,1341,5000,副詞,一般,*,*,*,*,ぴかぴか,ピカピカ,ピカピカ,1/4,*
 ピカピカ,1341,1341,5000,副詞,一般,*,*,*,*,ピカピカ,ピカピカ,ピカピカ,1/4,*
+# 室 read へや and 扉 read と, as in the books' ruby: NAIST-JDIC has neither, and the phrase was left with no accent, with the words before
+# it. Each has 部屋's or 戸's accent, and a high cost: it is taken only where the YomiScript reads it so.
+室,1345,1345,9000,名詞,一般,*,*,*,*,室,ヘヤ,ヘヤ,2/2,C2
+扉,1345,1345,9000,名詞,一般,*,*,*,*,扉,ト,ト,0/1,C3
 `;

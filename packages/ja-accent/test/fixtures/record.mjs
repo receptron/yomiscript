@@ -58,6 +58,20 @@ export const OWN = [
   // an accent the user dictionary corrects
   "ja /pikapika<t:ぴかぴか> ↘/",
   "ja /pikapika<t:ピカピカ> ↘/",
+  // an ichidan verb before て; one whose fall is not just before its る; ん; a godan verb
+  "ja /kaneteɾɯ<t:兼ねてる> ↘/",
+  "ja /tabete<t:食べて> ↘/",
+  "ja /ɕiɾabete<t:調べて> ↘/",
+  "ja /kaŋɡaete<t:考えて> ↘/",
+  "ja /ɕindʑite<t:信じて> ↘/",
+  // words of the user dictionary
+  "ja /toːkeɴ<t:当軒> wa<t:は。> ↘/",
+  // 当 or 弊 before one kanji the dictionary does not have as one word, one that it has, and another word
+  "ja /toːçiɴ<t:当品> wa<t:は> ↘/",
+  "ja /heːkoː<t:弊校> wa<t:は> ↘/",
+  "ja /toːten<t:当店> wa<t:は> ↘/",
+  "ja /toːdzeɴ<t:当然> da<t:だ> ↘/",
+  "ja /heja<t:室> e<t:へ> ↘/",
 ];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {
