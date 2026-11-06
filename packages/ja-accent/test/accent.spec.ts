@@ -57,6 +57,20 @@ describe("accentMarks", () => {
   it("starts no phrase at a pause of no text (‖<t:>)", () => {
     expect(bare(accentMarks("ja /kʲoː<t:今日> wa<t:は> ‖<t:> haɾete<t:晴れて> imasɯ<t:います。> ↘/", fake))).toBe("ja /kʲoꜜː wa ‖ haꜛɾeꜜte | iꜛmaꜜsɯ ↘/");
   });
+  it("reads a word the same with an opening quote: the quote changes neither the entry nor whether it is marked", () => {
+    expect(bare(accentMarks("ja /kotoɲi<t:「ことに> | ɸɯtta<t:肥った> ↘/", fake))).toBe(bare(accentMarks("ja /kotoɲi<t:ことに> | ɸɯtta<t:肥った> ↘/", fake)));
+    expect(bare(accentMarks("ja /kotoɲi<t:「ことに> | ɸɯtta<t:肥った> ↘/", fake))).toContain("koꜜtoɲi");
+    expect(bare(accentMarks("ja /kaɾe<t:彼> wa<t:は> | kotoɲi<t:「ことに> | jasɯi<t:安い」> to<t:と> | iɯ<t:言う。> ↘/", fake))).toContain("koꜜtoɲi");
+  });
+  it("marks a phrase that starts after an opening quote, keeping the text", () => {
+    const ys = "ja /soː<t:「そう> daɾoː<t:だろう。> ↘/",
+      marked = accentMarks(ys, fake);
+    expect(marked).not.toBe(ys);
+    expect(parse(marked).texts.join("")).toBe("「そうだろう。");
+  });
+  it("leaves a quote written as its own <t:…> as it was", () => {
+    expect(bare(accentMarks("ja /a<t:「> kotoɲi<t:ことに> ↘/", fake))).toContain("koꜜtoɲi");
+  });
   it("never changes the reading or the original text", () => {
     for (const ys of [shiatoru, kyou, eeto, shigatsu]) {
       const out = accentMarks(ys, fake);

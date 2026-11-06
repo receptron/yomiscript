@@ -32,6 +32,12 @@ export const OWN = [
   // a Japanese section with no phrases of its own, beside one with them and alone
   "ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> {en ˈhɛloʊ<t:hello>} aɕita<t:明日> wa<t:は> ame<t:雨> desɯ<t:です。> ↘/",
   "ja /kʲoː<t:今日> wa<t:は> haɾete<t:晴れて> {en ˈhɛloʊ<t:hello>} aɕita<t:明日> wa<t:は> ame<t:雨> desɯ<t:です。> ↘/",
+  // words that start with an opening quote, with no quote, and in the middle of a sentence
+  "ja /kotoɲi<t:「ことに> | ɸɯtta<t:肥った> ↘/",
+  "ja /kotoɲi<t:ことに> | ɸɯtta<t:肥った> ↘/",
+  "ja /soː<t:「そう> daɾoː<t:だろう。> ↘/",
+  "ja /kaɾe<t:彼> wa<t:は> | kotoɲi<t:「ことに> | jasɯi<t:安い」> to<t:と> | iɯ<t:言う。> ↘/",
+  "ja /a<t:「> kotoɲi<t:ことに> ↘/",
 ];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {
