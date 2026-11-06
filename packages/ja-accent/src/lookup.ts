@@ -273,7 +273,7 @@ function beforeTe(e: Entry, next: Entry | undefined, a: Analyzer): EntryAccent |
 }
 
 const isOneKanjiNoun = (e: Entry | undefined): boolean => !!e && e.pos.startsWith("名詞") && /^\p{Script=Han}$/u.test(e.surface);
-const isThisOrOur = (e: Entry | undefined): boolean => !!e && /^(?:当|弊)$/.test(e.surface) && /^(?:トー|トウ|ヘー|ヘイ)$/.test(e.pron.replaceAll("’", ""));
+const isThisOrOur = (e: Entry | undefined): boolean => !!e && /^[当弊]$/.test(e.surface) && /^(?:トー|トウ|ヘー|ヘイ)$/.test(e.pron.replaceAll("’", ""));
 /** 当 or 弊 before one kanji that the dictionary does not have as one word falls on its first mora, as 当店 and 弊社 do (当軒 ト\\ーケン); the
  * kanji keeps that accent (C5). Words the dictionary has, such as 当然, are one entry and are not touched. */
 function thisOrOur(E: Entry[], k: number): EntryAccent | undefined {
