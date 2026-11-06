@@ -221,6 +221,13 @@ function ownPhrases(u: Utterance, W: Word[], at: number[], S: Sentence): JoinRul
     return !starts.has(i);
   };
 }
+// the rule of て itself: the verb before keeps its accent (持っ + て: モ\ッテ, 呼ん + で: no fall)
+const KEEPS_ACCENT: EntryAccent = { a: 0, chain: "動詞%F1/形容詞%F1" };
+/** Spoken ている, the auxiliary てる / でる: NAIST-JDIC's rule moves the fall to before its る (持ってる モッテ\ル), where the
+ * verb's own accent stays (モ\ッテル, and 呼んでる has no fall). */
+const auxiliaryTeru = (e: Cand): EntryAccent | undefined =>
+  e.pos.startsWith("動詞,非自立") && (e.pron === "テル" || e.pron === "デル") ? KEEPS_ACCENT : undefined;
+
 /** OpenJTalk's rules on the cheapest path that reads as the YomiScript does, the words on it taken as OpenJTalk reads
  * them, and whether there was one (when not, OpenJTalk's own analysis of the text). The YomiScript's own phrases,
  * when it writes them (ownPhrases), come before the join rule. */
@@ -232,7 +239,7 @@ export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource,
     path = best ? best.path : S.alone,
     chars = [...S.norm],
     E = path.map((i) => ({ ...S.cands[i], surface: chars.slice(S.cands[i].s, S.cands[i].e).join("") })),
-    accents = source && E.map((e) => source(e) ?? null),
+    accents = E.map((e) => source?.(e) ?? auxiliaryTeru(e) ?? null),
     own = ownPhrases(u, W, at, S),
     rule = (p: (typeof E)[number], e: (typeof E)[number]) => own?.(p, e) ?? join?.(p, e) ?? null,
     chain = (own || join) && E.map((e, k) => (k ? rule(E[k - 1], e) : null));
