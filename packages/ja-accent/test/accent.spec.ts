@@ -23,7 +23,7 @@ describe("labelMorae", () => {
 
 describe("accentMarks", () => {
   it("marks the phrases the dictionary reads the same way", () => {
-    expect(bare(accentMarks(kyou, fake))).toBe("ja /kʲoꜜː wa | haꜛɾeꜜte | iꜛmaꜜsɯ ↘/");
+    expect(bare(accentMarks(kyou, fake))).toBe("ja /kʲoꜜː wa | haꜜɾete | iꜛmaꜜsɯ ↘/");
   });
   it("looks up the YomiScript's own reading (市: the YomiScript いち, OpenJTalk's analysis し)", () => {
     expect(bare(accentMarks(shiatoru, fake))).toBe("ja /ɕiꜜatoɾɯ no | iꜜtɕi de wa ‖ saꜛkana ɡa | ɯꜛɾaɾete | iꜛɾɯ ↘/");
@@ -55,7 +55,7 @@ describe("accentMarks", () => {
     expect(own("ja /kʲoː<t:今日> wa<t:は> | haɾete<t:晴れて> imasɯ<t:います。> ↘/")).toBe("ja /kʲoꜜː wa | haꜛɾete imaꜜsɯ ↘/");
   });
   it("starts no phrase at a pause of no text (‖<t:>)", () => {
-    expect(bare(accentMarks("ja /kʲoː<t:今日> wa<t:は> ‖<t:> haɾete<t:晴れて> imasɯ<t:います。> ↘/", fake))).toBe("ja /kʲoꜜː wa ‖ haꜛɾeꜜte | iꜛmaꜜsɯ ↘/");
+    expect(bare(accentMarks("ja /kʲoː<t:今日> wa<t:は> ‖<t:> haɾete<t:晴れて> imasɯ<t:います。> ↘/", fake))).toBe("ja /kʲoꜜː wa ‖ haꜜɾete | iꜛmaꜜsɯ ↘/");
   });
   it("reads a word the same with an opening quote: the quote changes neither the entry nor whether it is marked", () => {
     expect(bare(accentMarks("ja /kotoɲi<t:「ことに> | ɸɯtta<t:肥った> ↘/", fake))).toBe(bare(accentMarks("ja /kotoɲi<t:ことに> | ɸɯtta<t:肥った> ↘/", fake)));
@@ -107,6 +107,16 @@ describe("a verb before て keeps the fall of its base form, when that is none o
     expect(marks("totteɾɯ", "取ってる")).toBe("ja /toꜜtteɾɯ ↘/");
     expect(marks("miteɾɯ", "見てる")).toBe("ja /miꜜteɾɯ ↘/");
   });
+  it("an ichidan verb that falls just before its る falls one mora earlier (食べる), and not on ん (信じる)", () => {
+    expect(marks("kaneteɾɯ", "兼ねてる")).toBe("ja /kaꜜneteɾɯ ↘/");
+    expect(marks("tabete", "食べて")).toBe("ja /taꜜbete ↘/");
+    expect(marks("ɕiɾabete", "調べて")).toBe("ja /ɕiꜛɾaꜜbete ↘/");
+    expect(marks("ɕindʑite", "信じて")).toBe("ja /ɕiꜜndʑite ↘/");
+  });
+  it("leaves an ichidan verb whose fall is elsewhere, and a godan verb (考える, 話す)", () => {
+    expect(marks("kaŋɡaete", "考えて")).toBe("ja /kaꜛŋɡaꜜete ↘/");
+    expect(marks("hanaɕiteɾɯ", "話してる")).toBe("ja /haꜛnaꜜɕiteɾɯ ↘/");
+  });
   it("leaves the same stems not before て", () => {
     expect(marks("neta", "寝た")).toBe("ja /neꜜta ↘/");
   });
@@ -149,7 +159,7 @@ describe("needsAccent", () => {
 describe("accentYomite", () => {
   it("writes the values for the marked phrases (ACCENT_SCALE)", () => {
     expect(bare(accentYomite(fake)(kyou))).toBe(
-      "ja /kʲo<f0:2.63,3.72,4.93>ꜜː<f0:5.46,5.24,2.94> wa<f0:2,-0.5,-1.99> | ha<f0:-0.61,-0.9,-0.25>ꜛɾe<f0:1.97,3.25,2.68>ꜜte<f0:3.5,0.79,-0.81> | i<f0:-1.7,-1.83,-1.89>ꜛma<f0:-0.44,0,-0.94>ꜜsɯ<f0:0.09,-0.9,-1.3> ↘/",
+      "ja /kʲo<f0:1.48,2.58,3.79>ꜜː<f0:4.64,4.65,2.36> wa<f0:1.01,-1.57,-2.78> | ha<f0:0,0.94,1.95>ꜜɾe<f0:2.76,2.24,0.39>te<f0:0.5,-2.48,-3.8> | i<f0:-4.1,-3.93,-3.62>ꜛma<f0:-1.58,-1.04,-1.88>ꜜsɯ<f0:-1.05,-2.04,-2.44> ↘/",
     );
   });
   it("leaves a YomiScript it does not mark as it is", () => {
@@ -173,7 +183,7 @@ describe("withAccent", () => {
     await w.speak(kyou);
     await w.speak(kyou);
     expect(load).toHaveBeenCalledTimes(1);
-    expect(k.got[1]).toContain("<f0:2.63,3.72,4.93>");
+    expect(k.got[1]).toContain("<f0:1.48,2.58,3.79>");
   });
   it("speaks the YomiScript as it is when the step cannot be loaded, and says so once", async () => {
     const k = inner(),
@@ -187,6 +197,10 @@ describe("withAccent", () => {
 });
 
 describe("USER_DICT", () => {
+  it("has 当軒 falling after ト, and 室 read へや with the accent of 部屋 (D39)", () => {
+    expect(bare(accentMarks("ja /toːkeɴ<t:当軒> wa<t:は。> ↘/", fake))).toBe("ja /toꜜːkeɴ wa ↘/");
+    expect(bare(accentMarks("ja /heja<t:室> e<t:へ> ↘/", fake))).toBe("ja /heꜛjaꜜ e ↘/");
+  });
   it("corrects the accent of ぴかぴか, which falls on its first mora like くるくる (D38)", () => {
     expect(bare(accentMarks("ja /pikapika<t:ぴかぴか> ↘/", fake))).toBe("ja /piꜜkapika ↘/");
     expect(bare(accentMarks("ja /pikapika<t:ピカピカ> ↘/", fake))).toBe("ja /piꜜkapika ↘/");
