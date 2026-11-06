@@ -210,6 +210,11 @@ describe("withAccent", () => {
 });
 
 describe("USER_DICT", () => {
+  it("has the adverb そう falling after ソ, and leaves the そう of 降りそう (D40)", () => {
+    expect(bare(accentMarks("ja /soː<t:そう> da<t:だ。> ↘/", fake))).toBe("ja /soꜜː da ↘/");
+    expect(bare(accentMarks("ja /soː<t:「そう> daɾoː<t:だろう。> ↘/", fake))).toBe("ja /soꜜː daɾoː ↘/");
+    expect(bare(accentMarks("ja /oɾisoː<t:降りそう> da<t:だ。> ↘/", fake))).not.toContain("soꜜː");
+  });
   it("has 室 read へや with the accent of 部屋 (D39)", () => {
     expect(bare(accentMarks("ja /heja<t:室> e<t:へ> ↘/", fake))).toBe("ja /heꜛjaꜜ e ↘/");
   });

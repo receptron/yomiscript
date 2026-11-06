@@ -72,6 +72,9 @@ export const OWN = [
   "ja /toːten<t:当店> wa<t:は> ↘/",
   "ja /toːdzeɴ<t:当然> da<t:だ> ↘/",
   "ja /heja<t:室> e<t:へ> ↘/",
+  "ja /soː<t:そう> da<t:だ。> ↘/",
+  "ja /soː<t:「そう> daɾoː<t:だろう。> ↘/",
+  "ja /oɾisoː<t:降りそう> da<t:だ。> ↘/",
 ];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {
