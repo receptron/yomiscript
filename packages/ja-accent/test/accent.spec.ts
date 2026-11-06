@@ -93,6 +93,25 @@ describe("the auxiliary てる / でる", () => {
   });
 });
 
+describe("a verb before て keeps the fall of its base form, when that is none or on the first mora", () => {
+  const marks = (reading: string, text: string) => bare(accentMarks(`ja /${reading}<t:${text}> ↘/`, fake));
+  it("no fall in the base form: none before て, whatever the entry of its stem says (寝る, 着る)", () => {
+    expect(marks("neteɾɯ", "寝てる")).toBe("ja /neꜛteɾɯ ↘/");
+    expect(marks("nete", "寝て")).toBe("ja /neꜛte ↘/");
+    expect(marks("kiteɾɯ", "着てる")).toBe("ja /kiꜛteɾɯ ↘/");
+    expect(marks("hetteɾɯ", "減ってる")).toBe("ja /heꜛtteɾɯ ↘/");
+  });
+  it("a fall on the first mora of the base form: there before て, whatever the entry of its stem says (出る)", () => {
+    expect(marks("deteɾɯ", "出てる")).toBe("ja /deꜜteɾɯ ↘/");
+    expect(marks("dete", "出て")).toBe("ja /deꜜte ↘/");
+    expect(marks("totteɾɯ", "取ってる")).toBe("ja /toꜜtteɾɯ ↘/");
+    expect(marks("miteɾɯ", "見てる")).toBe("ja /miꜜteɾɯ ↘/");
+  });
+  it("leaves the same stems not before て", () => {
+    expect(marks("neta", "寝た")).toBe("ja /neꜜta ↘/");
+  });
+});
+
 describe("bestPath", () => {
   // 市で as two words; the dictionary has 市 as シ (cheaper) and イチ, and で; every connection costs 0
   const S: Sentence = {

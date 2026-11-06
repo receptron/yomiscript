@@ -228,6 +228,36 @@ const KEEPS_ACCENT: EntryAccent = { a: 0, chain: "動詞%F1/形容詞%F1" };
 const auxiliaryTeru = (e: Cand): EntryAccent | undefined =>
   e.pos.startsWith("動詞,非自立") && (e.pron === "テル" || e.pron === "デル") ? KEEPS_ACCENT : undefined;
 
+type Entry = Cand & { surface: string };
+const isTe = (e: Entry | undefined): boolean => !!e && /^(?:て|で|てる|でる)$/.test(e.surface) && /^(?:助詞,接続助詞|動詞,非自立)/.test(e.pos);
+// the endings of a verb's base form after its stem before て: 持っ 持つ, 呼ん 呼ぶ, 書い 書く, 話し 話す, and 寝 寝る
+const BASE_ENDINGS: Record<string, string[]> = { っ: ["う", "つ", "る"], ん: ["ぬ", "ぶ", "む"], い: ["く", "ぐ"], し: ["す"] };
+/** the fall of a verb's base form in the dictionary, from its stem before て: 0 none, 1 on its first mora; undefined for any other */
+function baseFall(stem: Entry, a: Analyzer): number | undefined {
+  const kana = stem.pron.replaceAll("’", ""),
+    root = stem.surface.slice(0, -1),
+    bases = [`${stem.surface}る`, ...(BASE_ENDINGS[stem.surface.slice(-1)] ?? []).map((end) => root + end)];
+  const found = bases.flatMap((b) => {
+    const n = [...b].length;
+    return a
+      .candidates([b])
+      .cands.filter((c) => c.s === 0 && c.e === n && c.pos.startsWith("動詞,自立"))
+      .filter((c) => {
+        const base = c.pron.replaceAll("’", "");
+        return kana.length > 1 ? base.startsWith(kana.slice(0, -1)) : base === `${kana}ル`;
+      });
+  });
+  const fall = found[0]?.acc;
+  return fall !== undefined && fall <= 1 && found.every((c) => c.acc === fall) ? fall : undefined;
+}
+/** Before て a verb keeps the fall of its base form when that is none or on the first mora (寝る, so 寝て and 寝てる have no fall; 出る,
+ * so 出て and 出てる fall on 出), whatever the entry of its stem says. */
+function beforeTe(e: Entry, next: Entry | undefined, a: Analyzer): EntryAccent | undefined {
+  if (!e.pos.startsWith("動詞,自立") || !isTe(next)) return undefined;
+  const fall = baseFall(e, a);
+  return fall !== undefined && fall !== e.acc ? { a: fall } : undefined;
+}
+
 /** OpenJTalk's rules on the cheapest path that reads as the YomiScript does, the words on it taken as OpenJTalk reads
  * them, and whether there was one (when not, OpenJTalk's own analysis of the text). The YomiScript's own phrases,
  * when it writes them (ownPhrases), come before the join rule. */
@@ -239,7 +269,7 @@ export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource,
     path = best ? best.path : S.alone,
     chars = [...S.norm],
     E = path.map((i) => ({ ...S.cands[i], surface: chars.slice(S.cands[i].s, S.cands[i].e).join("") })),
-    accents = E.map((e) => source?.(e) ?? auxiliaryTeru(e) ?? null),
+    accents = E.map((e, k) => source?.(e) ?? auxiliaryTeru(e) ?? beforeTe(e, E[k + 1], a) ?? null),
     own = ownPhrases(u, W, at, S),
     rule = (p: (typeof E)[number], e: (typeof E)[number]) => own?.(p, e) ?? join?.(p, e) ?? null,
     chain = (own || join) && E.map((e, k) => (k ? rule(E[k - 1], e) : null));
