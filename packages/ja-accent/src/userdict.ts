@@ -4,10 +4,13 @@
 // agree with the reading LLMs write where NAIST-JDIC prefers another, so that the phrase gets its accent.
 // Each row is NAIST-JDIC's own entry for that reading (its accent and context ids), with a cost below the entry it
 // competes with. A new row is a decision about the dictionary (D27 in docs/decisions.md); measure it with
-// eval/prosody_ref before adding it.
+// eval/prosody_ref before adding it. A row may also correct an entry's accent, as heard (D38).
 export const USER_DICT = `
 # 日本: ニッポン (3606) wins over ニホン (10787); 日本経済, 日本の are read ニホン by LLMs
 日本,1354,1354,3000,名詞,固有名詞,地域,国,*,*,日本,ニホン,ニホン,2/3,C1
 # 日本人: ニッポンジン (-641) wins over ニホンジン (5840)
 日本人,1345,1345,-1000,名詞,一般,*,*,*,*,日本人,ニホンジン,ニホンジン,4/5,C2
+# ぴかぴか: NAIST-JDIC has no fall (5055, 5052), where くるくる and the like fall on the first mora (D38)
+ぴかぴか,1341,1341,5000,副詞,一般,*,*,*,*,ぴかぴか,ピカピカ,ピカピカ,1/4,*
+ピカピカ,1341,1341,5000,副詞,一般,*,*,*,*,ピカピカ,ピカピカ,ピカピカ,1/4,*
 `;

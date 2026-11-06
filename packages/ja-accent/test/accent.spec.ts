@@ -187,6 +187,10 @@ describe("withAccent", () => {
 });
 
 describe("USER_DICT", () => {
+  it("corrects the accent of ぴかぴか, which falls on its first mora like くるくる (D38)", () => {
+    expect(bare(accentMarks("ja /pikapika<t:ぴかぴか> ↘/", fake))).toBe("ja /piꜜkapika ↘/");
+    expect(bare(accentMarks("ja /pikapika<t:ピカピカ> ↘/", fake))).toBe("ja /piꜜkapika ↘/");
+  });
   const rows = USER_DICT.split("\n").filter((l) => l.trim() && !l.startsWith("#"));
   it("has rows in NAIST-JDIC's format: 15 fields, numeric ids and cost, katakana readings, accent/morae", () => {
     expect(rows.length).toBeGreaterThan(0);
