@@ -44,6 +44,17 @@ export const OWN = [
   "ja /jondeɾɯ<t:呼んでる> ↘/",
   "ja /motteɾɯ<t:盛ってる> ↘/",
   "ja /hanaɕiteɾɯ<t:話してる> ↘/",
+  // a verb with no fall in its base form whose stem's entry has one, before て and elsewhere; and a verb with a fall
+  "ja /neteɾɯ<t:寝てる> ↘/",
+  "ja /nete<t:寝て> ↘/",
+  "ja /kiteɾɯ<t:着てる> ↘/",
+  "ja /neta<t:寝た> ↘/",
+  "ja /miteɾɯ<t:見てる> ↘/",
+  "ja /deteɾɯ<t:出てる> ↘/",
+  "ja /dete<t:出て> ↘/",
+  "ja /deta<t:出た> ↘/",
+  "ja /totteɾɯ<t:取ってる> ↘/",
+  "ja /hetteɾɯ<t:減ってる> ↘/",
 ];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {
