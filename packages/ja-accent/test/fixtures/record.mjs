@@ -38,6 +38,12 @@ export const OWN = [
   "ja /soː<t:「そう> daɾoː<t:だろう。> ↘/",
   "ja /kaɾe<t:彼> wa<t:は> | kotoɲi<t:「ことに> | jasɯi<t:安い」> to<t:と> | iɯ<t:言う。> ↘/",
   "ja /a<t:「> kotoɲi<t:ことに> ↘/",
+  // the auxiliary てる / でる after a verb with a fall and after one without
+  "ja /motteɾɯ<t:持ってる> ↘/",
+  "ja /jondeɾɯ<t:読んでる> ↘/",
+  "ja /jondeɾɯ<t:呼んでる> ↘/",
+  "ja /motteɾɯ<t:盛ってる> ↘/",
+  "ja /hanaɕiteɾɯ<t:話してる> ↘/",
 ];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {

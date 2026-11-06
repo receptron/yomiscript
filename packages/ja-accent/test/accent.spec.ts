@@ -80,6 +80,19 @@ describe("accentMarks", () => {
   });
 });
 
+describe("the auxiliary てる / でる", () => {
+  it("keeps the verb's own accent before the auxiliary てる / でる (D36)", () => {
+    const fall = (reading: string, text: string) => bare(accentMarks(`ja /${reading}<t:${text}> ↘/`, fake));
+    expect(fall("motteɾɯ", "持ってる")).toBe("ja /moꜜtteɾɯ ↘/");
+    expect(fall("jondeɾɯ", "読んでる")).toBe("ja /joꜜndeɾɯ ↘/");
+    expect(fall("hanaɕiteɾɯ", "話してる")).toBe("ja /haꜛnaꜜɕiteɾɯ ↘/");
+  });
+  it("leaves a verb with no fall without one before the auxiliary (呼んでる, 盛ってる: D36)", () => {
+    expect(bare(accentMarks("ja /jondeɾɯ<t:呼んでる> ↘/", fake))).toBe("ja /joꜛndeɾɯ ↘/");
+    expect(bare(accentMarks("ja /motteɾɯ<t:盛ってる> ↘/", fake))).toBe("ja /moꜛtteɾɯ ↘/");
+  });
+});
+
 describe("bestPath", () => {
   // 市で as two words; the dictionary has 市 as シ (cheaper) and イチ, and で; every connection costs 0
   const S: Sentence = {
