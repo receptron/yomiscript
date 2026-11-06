@@ -55,6 +55,9 @@ export const OWN = [
   "ja /deta<t:出た> ↘/",
   "ja /totteɾɯ<t:取ってる> ↘/",
   "ja /hetteɾɯ<t:減ってる> ↘/",
+  // an accent the user dictionary corrects
+  "ja /pikapika<t:ぴかぴか> ↘/",
+  "ja /pikapika<t:ピカピカ> ↘/",
 ];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));
 for (const { ys } of REC) {

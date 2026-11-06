@@ -6,10 +6,9 @@ import { createHash } from "crypto";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { parse } from "@yomiscript/core";
+import { parse, YOMISCRIPT_INSTRUCTIONS } from "@yomiscript/core";
 import { originalText } from "yomiscript";
 import { askBatch } from "../../eval/koriyama_g2p/ask.mjs";
-import { instructions } from "../../eval/llm_phrasing/run.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const WORK = path.join(HERE, "out/aozora"),
@@ -91,7 +90,7 @@ const prompt = (items, words) =>
     "These are consecutive sentences of a Japanese story written in 1924, about to be read aloud by a speech synthesizer. Write each as YomiScript. Do not use any tools.",
     `The ruby given after a sentence is the book's own reading of those words: follow it. The book gives a ruby only where a word first appears, so read the word the same way everywhere, unless the sense clearly differs: ${words}. Read the old spellings as the story means them. Words in Latin letters on a sign are read as Japanese katakana words. The text of each <t:…> must give back the sentence exactly, with every quote and punctuation mark. Use exactly the symbols of the rows below: ɲi for に everywhere, also inside a word (何か is naɲika, とにかく is toɲikakɯ), never ni; çi for ひ, never hi.`,
     items.map((x) => `${x.name}: ${x.text}${rubyNote(x)}`).join("\n"),
-    instructions("phrase"),
+    YOMISCRIPT_INSTRUCTIONS,
     'Return only a JSON object: {"<name>": "<the sentence as YomiScript>", ...}, one entry for each sentence.',
   ].join("\n\n");
 
@@ -151,7 +150,7 @@ async function main() {
     missing = all.filter((s) => !got.has(s.name));
   if (missing.length) throw new Error(`no YomiScript for: ${missing.map((s) => s.name).join(" ")}`);
   for (const s of all) {
-    s.ys = got.get(s.name);
+    s.ys = got.get(s.name).replaceAll(" | ", " "); // the accent phrases are the dictionary's (D38), in answers kept from before too
     delete s.name;
   }
   const story = { title: "注文の多い料理店", author: "宮沢賢治", source: BOOK.url, credit: creditOf(html), paragraphs },
