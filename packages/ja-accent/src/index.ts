@@ -30,6 +30,17 @@ export function needsAccent(ys: string): boolean {
   const ja = u.sections.filter((s) => isJa(s.lang));
   return !!u.texts.length && ja.length > 0 && !ja.some((s) => s.toks.some((t) => t.rise || t.fall || t.f0));
 }
+/** Japanese with accent marks of its own and no values: the writer has chosen the accent, and a Katarite uses only values (D18) */
+export function needsValues(ys: string): boolean {
+  let u;
+  try {
+    u = parse(ys);
+  } catch {
+    return false;
+  }
+  const ja = u.sections.filter((s) => isJa(s.lang));
+  return ja.some((s) => s.toks.some((t) => t.rise || t.fall)) && !ja.some((s) => s.toks.some((t) => t.f0));
+}
 export interface AccentOptions {
   /** let OpenJTalk analyse the text again and mark only the phrases it reads the same way (D25, D27), instead of
    * looking the YomiScript's own words and readings up (D31) */
@@ -51,11 +62,14 @@ export function accentMarks(ys: string, a: Analyzer, opts: AccentOptions = {}): 
 /** how strongly the rules render the dictionary's marks: full strength, the values of the whole sentence (D28; D25
  * had half and D27 three quarters of the earlier phrase rule) */
 export const ACCENT_SCALE = 1;
+/** pitch values from the marks, by the linear model of core (D28, D29), for the phrases a YomiScript marks itself (D36);
+ * needs neither the dictionary nor the pitch model */
+export const writtenAccent = (ys: string): string => realize(ys, { markedOnly: true, jaScale: ACCENT_SCALE });
 /** the Yomite step before Kokoro: the dictionary's marks, then pitch values for the marked phrases only */
 export function accentYomite(a: Analyzer, opts: AccentOptions = {}): (ys: string) => string {
   return (ys) => {
     const marked = accentMarks(ys, a, opts);
-    return marked === ys ? ys : realize(marked, { markedOnly: true, jaScale: ACCENT_SCALE });
+    return marked === ys ? ys : writtenAccent(marked);
   };
 }
 
@@ -71,7 +85,8 @@ export async function pitchOrAccentYomite(a: Analyzer, loadModel: () => Promise<
 }
 
 /** a Katarite that runs the accent step before speaking a YomiScript that needs it. The step (the dictionary) is
- * loaded the first time one does; when it cannot be loaded, onError is told once and everything is spoken as it is. */
+ * loaded the first time one does; when it cannot be loaded, onError is told once and everything is spoken as it is.
+ * A YomiScript with accent marks of its own and no values gets values for those marks (D36), without the step. */
 export function withAccent(k: Katarite, loadStep: () => Promise<(ys: string) => string>, onError?: (e: unknown) => void): Katarite {
   let step: Promise<((ys: string) => string) | null> | null = null;
   const get = () =>
@@ -83,6 +98,7 @@ export function withAccent(k: Katarite, loadStep: () => Promise<(ys: string) => 
     name: k.name,
     languages: k.languages,
     speak: async (ys) => {
+      if (needsValues(ys)) return k.speak(writtenAccent(ys));
       const f = needsAccent(ys) ? await get() : null;
       return k.speak(f ? f(ys) : ys);
     },

@@ -58,6 +58,7 @@ As in IPA, `ˈ` primary stress and `ˌ` secondary stress at the start of the syl
 
 - YomiScript can carry **both** the phonological marks of §2.2–2.4 (`ꜛ` `ꜜ`, `ˈ` `ˌ`, tones) and these values (D18). Example: `ja /kʲo<f0:2.5>ꜜː<f0:-2.8>wa<f0:-2.8> ↘/`.
 - **Katarite uses only the values.** It never turns marks into pitch, because that needs language rules (Tokyo vs Osaka, declination, stress patterns). A Yomite writes the values: an LLM can write them directly together with the IPA and marks (`eval/llm_yomite`), or a Yomite can fill them from rules or a prosody predictor (e.g. Kokoro's, run on the Yomite side), or by hand. The Yomite is one module, not split into stages (D20).
+- A YomiScript with Japanese marks and no values, as a person or an LLM writes it, gets its values before the Katarite: the tools' accent step fills them from a linear model of the marks for the phrases it marks (D36).
 - A unit without a value has no pitch target; the Katarite fills it from its engine's own F0 (interpolated between targets). Devoiced units (`◌̥`) normally have no value.
 - Values are relative: the Katarite anchors each phrase (` | `, ` ‖ `) to the voice's natural level, so the same YomiScript works with any voice.
 

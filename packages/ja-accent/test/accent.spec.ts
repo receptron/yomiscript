@@ -4,7 +4,7 @@
 import { parse } from "@yomiscript/core";
 import { describe, expect, it, vi } from "vitest";
 import type { Katarite, Speech } from "@yomiscript/core";
-import { accentMarks, accentYomite, bestPath, labelMorae, needsAccent, USER_DICT, withAccent, wordsOf } from "../src/index.ts";
+import { accentMarks, accentYomite, bestPath, labelMorae, needsAccent, needsValues, USER_DICT, withAccent, wordsOf, writtenAccent } from "../src/index.ts";
 import { fake, REC } from "./fake_analyzer.ts";
 
 const [shiatoru, kyou, eeto, shigatsu] = REC.map((r) => r.ys);
@@ -114,6 +114,16 @@ describe("needsAccent", () => {
   });
 });
 
+describe("needsValues", () => {
+  it("is for Japanese with marks of its own and no values", () => {
+    expect(needsValues("ja /kaꜜne<t:兼ね> ↘/")).toBe(true);
+    expect(needsValues("ja /kane<t:兼ね> ↘/")).toBe(false);
+    expect(needsValues("ja /ka<f0:1>ꜜne<t:兼ね> ↘/")).toBe(false);
+    expect(needsValues("en-US /ˈhɛ.loʊ<t:Hello> ↘/")).toBe(false);
+    expect(needsValues("not a YomiScript")).toBe(false);
+  });
+});
+
 describe("accentYomite", () => {
   it("writes the values for the marked phrases (ACCENT_SCALE)", () => {
     expect(bare(accentYomite(fake)(kyou))).toBe(
@@ -142,6 +152,32 @@ describe("withAccent", () => {
     await w.speak(kyou);
     expect(load).toHaveBeenCalledTimes(1);
     expect(k.got[1]).toContain("<f0:2.63,3.72,4.93>");
+  });
+  it("gives a YomiScript's own accent marks values, without loading the step (D36)", async () => {
+    const k = inner(),
+      load = vi.fn(async () => accentYomite(fake)),
+      first = "ja /kaꜜneteɾɯ<t:兼ねてる> ↘/",
+      second = "ja /kaꜛneꜜteɾɯ<t:兼ねてる> ↘/";
+    const w = withAccent(k, load);
+    await w.speak(first);
+    await w.speak(second);
+    expect(load).not.toHaveBeenCalled();
+    expect(k.got[0]).toBe(writtenAccent(first));
+    expect(k.got[0]).toContain("<f0:");
+    expect(k.got[0].replace(/<f0:[^>]*>/g, "")).toBe(first);
+    expect(k.got[1].replace(/<f0:[^>]*>/g, "")).toBe(second);
+    expect(k.got[0]).not.toBe(k.got[1].replace("ꜛ", "").replace("ꜜte", "te"));
+  });
+  it("leaves values a YomiScript writes itself as they are, and the phrases it does not mark without values", async () => {
+    const k = inner(),
+      valued = "ja /ka<f0:1>ꜜne<f0:-1><t:兼ねて> ↘/",
+      partly = "ja /kaꜜne<t:兼ね> | moːɕita<t:申した> ↘/";
+    const w = withAccent(k, async () => accentYomite(fake));
+    await w.speak(valued);
+    await w.speak(partly);
+    expect(k.got[0]).toBe(valued);
+    expect(k.got[1]).toContain("<f0:");
+    expect(k.got[1].slice(k.got[1].indexOf("<t:兼ね>"))).not.toContain("<f0:");
   });
   it("speaks the YomiScript as it is when the step cannot be loaded, and says so once", async () => {
     const k = inner(),

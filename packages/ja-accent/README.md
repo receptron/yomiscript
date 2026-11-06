@@ -33,8 +33,9 @@ YomiScript (reading, <t:…>) ─► every NAIST-JDIC entry of the sentence (jpr
 - The marks are rendered by the rule Yomite at full strength (`ACCENT_SCALE`): three values per mora from the marks
   of the whole sentence (D28, D29, `jaContour` in `@yomiscript/core`). D25 had half and D27 three quarters of the earlier
   phrase rule, whose values were heard as too strong above 1.
-- A YomiScript that is not Japanese, has no `<t:…>`, or carries its own `ꜛ ꜜ` or `<f0:…>` is left as it is
-  (`needsAccent`).
+- A YomiScript that is not Japanese, has no `<t:…>`, or carries its own `ꜛ ꜜ` or `<f0:…>` does not go to the dictionary
+  (`needsAccent`). `withAccent` gives one with Japanese accent marks of its own and no values the values of the linear model
+  for those marks, without the dictionary (`needsValues`, `writtenAccent`, D36); it leaves the others as they are.
 
 ```ts
 import { accentYomite, DICT_URL, withAccent } from "@yomiscript/ja-accent";
