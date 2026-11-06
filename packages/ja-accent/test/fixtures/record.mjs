@@ -66,6 +66,11 @@ export const OWN = [
   "ja /ɕindʑite<t:信じて> ↘/",
   // words of the user dictionary
   "ja /toːkeɴ<t:当軒> wa<t:は。> ↘/",
+  // 当 or 弊 before one kanji the dictionary does not have as one word, one that it has, and another word
+  "ja /toːçiɴ<t:当品> wa<t:は> ↘/",
+  "ja /heːkoː<t:弊校> wa<t:は> ↘/",
+  "ja /toːten<t:当店> wa<t:は> ↘/",
+  "ja /toːdzeɴ<t:当然> da<t:だ> ↘/",
   "ja /heja<t:室> e<t:へ> ↘/",
 ];
 const REC = JSON.parse(fs.readFileSync(path.join(HERE, "analysis.json"), "utf8"));

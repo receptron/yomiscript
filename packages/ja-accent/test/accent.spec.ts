@@ -122,6 +122,19 @@ describe("a verb before て keeps the fall of its base form, when that is none o
   });
 });
 
+describe("当 or 弊 before one kanji", () => {
+  const marks = (ys: string) => bare(accentMarks(ys, fake));
+  it("falls on the first mora where the dictionary does not have the word (D39)", () => {
+    expect(marks("ja /toːkeɴ<t:当軒> wa<t:は。> ↘/")).toBe("ja /toꜜːkeɴ wa ↘/");
+    expect(marks("ja /toːçiɴ<t:当品> wa<t:は> ↘/")).toBe("ja /toꜜːçiɴ wa ↘/");
+    expect(marks("ja /heːkoː<t:弊校> wa<t:は> ↘/")).toBe("ja /heꜜːkoː wa ↘/");
+  });
+  it("leaves words the dictionary has", () => {
+    expect(marks("ja /toːten<t:当店> wa<t:は> ↘/")).toBe("ja /toꜜːten wa ↘/");
+    expect(marks("ja /toːdzeɴ<t:当然> da<t:だ> ↘/")).toBe("ja /toꜛːdzeɴ da ↘/");
+  });
+});
+
 describe("bestPath", () => {
   // 市で as two words; the dictionary has 市 as シ (cheaper) and イチ, and で; every connection costs 0
   const S: Sentence = {
@@ -197,8 +210,7 @@ describe("withAccent", () => {
 });
 
 describe("USER_DICT", () => {
-  it("has 当軒 falling after ト, and 室 read へや with the accent of 部屋 (D39)", () => {
-    expect(bare(accentMarks("ja /toːkeɴ<t:当軒> wa<t:は。> ↘/", fake))).toBe("ja /toꜜːkeɴ wa ↘/");
+  it("has 室 read へや with the accent of 部屋 (D39)", () => {
     expect(bare(accentMarks("ja /heja<t:室> e<t:へ> ↘/", fake))).toBe("ja /heꜛjaꜜ e ↘/");
   });
   it("corrects the accent of ぴかぴか, which falls on its first mora like くるくる (D38)", () => {

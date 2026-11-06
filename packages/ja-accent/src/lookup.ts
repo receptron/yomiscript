@@ -272,6 +272,16 @@ function beforeTe(e: Entry, next: Entry | undefined, a: Analyzer): EntryAccent |
   return fall !== undefined && fall !== e.acc ? { a: fall } : undefined;
 }
 
+const isOneKanjiNoun = (e: Entry | undefined): boolean => !!e && e.pos.startsWith("名詞") && /^\p{Script=Han}$/u.test(e.surface);
+const isThisOrOur = (e: Entry | undefined): boolean => !!e && /^(?:当|弊)$/.test(e.surface) && /^(?:トー|トウ|ヘー|ヘイ)$/.test(e.pron.replaceAll("’", ""));
+/** 当 or 弊 before one kanji that the dictionary does not have as one word falls on its first mora, as 当店 and 弊社 do (当軒 ト\\ーケン); the
+ * kanji keeps that accent (C5). Words the dictionary has, such as 当然, are one entry and are not touched. */
+function thisOrOur(E: Entry[], k: number): EntryAccent | undefined {
+  if (isThisOrOur(E[k]) && isOneKanjiNoun(E[k + 1])) return { a: 1 };
+  if (isThisOrOur(E[k - 1]) && isOneKanjiNoun(E[k])) return { a: 0, chain: "C5" };
+  return undefined;
+}
+
 /** OpenJTalk's rules on the cheapest path that reads as the YomiScript does, the words on it taken as OpenJTalk reads
  * them, and whether there was one (when not, OpenJTalk's own analysis of the text). The YomiScript's own phrases,
  * when it writes them (ownPhrases), come before the join rule. */
@@ -283,7 +293,7 @@ export function lookupAnalysis(u: Utterance, a: Analyzer, source?: AccentSource,
     path = best ? best.path : S.alone,
     chars = [...S.norm],
     E = path.map((i) => ({ ...S.cands[i], surface: chars.slice(S.cands[i].s, S.cands[i].e).join("") })),
-    accents = E.map((e, k) => source?.(e) ?? auxiliaryTeru(e) ?? beforeTe(e, E[k + 1], a) ?? null),
+    accents = E.map((e, k) => source?.(e) ?? auxiliaryTeru(e) ?? beforeTe(e, E[k + 1], a) ?? thisOrOur(E, k) ?? null),
     own = ownPhrases(u, W, at, S),
     rule = (p: (typeof E)[number], e: (typeof E)[number]) => own?.(p, e) ?? join?.(p, e) ?? null,
     chain = (own || join) && E.map((e, k) => (k ? rule(E[k - 1], e) : null));
