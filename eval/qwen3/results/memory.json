@@ -1,0 +1,108 @@
+{
+ "entries_in_memory": 375497,
+ "memory_on_entries_held": 0.9878,
+ "memory_off_on_entries_held": 0.874,
+ "unseen_surfaces": 0.7793,
+ "parameters": 12437202,
+ "memory_mb_float32": 48.1,
+ "memory_mb_float16": 24.0,
+ "rest_mb_float32": 1.7,
+ "checked_by_ear": [
+  {
+   "word": "そう",
+   "heard": 1,
+   "model": 0,
+   "in_memory": true
+  },
+  {
+   "word": "寝る",
+   "heard": 0,
+   "model": 0,
+   "in_memory": true
+  },
+  {
+   "word": "着る",
+   "heard": 0,
+   "model": 0,
+   "in_memory": true
+  },
+  {
+   "word": "出る",
+   "heard": 1,
+   "model": 1,
+   "in_memory": true
+  },
+  {
+   "word": "見る",
+   "heard": 1,
+   "model": 1,
+   "in_memory": true
+  },
+  {
+   "word": "来る",
+   "heard": 1,
+   "model": 1,
+   "in_memory": true
+  },
+  {
+   "word": "持つ",
+   "heard": 1,
+   "model": 1,
+   "in_memory": true
+  },
+  {
+   "word": "読む",
+   "heard": 1,
+   "model": 1,
+   "in_memory": true
+  },
+  {
+   "word": "呼ぶ",
+   "heard": 0,
+   "model": 0,
+   "in_memory": true
+  },
+  {
+   "word": "盛る",
+   "heard": 0,
+   "model": 0,
+   "in_memory": false
+  },
+  {
+   "word": "やめる",
+   "heard": 0,
+   "model": 0,
+   "in_memory": true
+  },
+  {
+   "word": "ぴかぴか",
+   "heard": 1,
+   "model": 0,
+   "in_memory": true
+  },
+  {
+   "word": "くるくる",
+   "heard": 1,
+   "model": 1,
+   "in_memory": true
+  },
+  {
+   "word": "当店",
+   "heard": 1,
+   "model": 1,
+   "in_memory": true
+  },
+  {
+   "word": "弊社",
+   "heard": 1,
+   "model": 1,
+   "in_memory": false
+  },
+  {
+   "word": "当然",
+   "heard": 0,
+   "model": 0,
+   "in_memory": false
+  }
+ ]
+}

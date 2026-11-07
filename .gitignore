@@ -50,3 +50,9 @@ eval/ipa_value/audio/
 eval/announce_minutes/audio/
 # eval/ja_geminate blind test audio (listen.mjs)
 eval/ja_geminate/audio/
+
+# eval/jkyb: the benchmark text, the LLM answers and the audio (write.mjs, speak.mjs)
+eval/jkyb/work/
+# eval/qwen3: the dictionary source and the trained weights (prep.py, train.py)
+eval/qwen3/work/
+eval/qwen3/audio/
