@@ -1,6 +1,6 @@
 """The word memory of qwen-3: every NAIST-JDIC entry (surface and reading) has a learned vector, read with the network that predicts a word's fall.
 The memory is switched off at random in training, so the same network still answers for a word it has no entry for.
-Shared by train_word.py and train_sentence.py.
+Shared by the scripts here.
 """
 
 import csv

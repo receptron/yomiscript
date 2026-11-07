@@ -57,7 +57,7 @@ def export(saved, name):
     path.write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")))
     code = sum(
         (HERE / f).stat().st_size
-        for f in ["experiment_models.py", "values_model.py", "infer_continuation.py", "value_metrics.py", "values_data.py", "train_sentence.py", "memory.py"]
+        for f in ["experiment_models.py", "values_model.py", "infer_continuation.py", "value_metrics.py", "values_data.py", "rows.py", "memory.py"]
     )
     code += (HERE.parent.parent / "tools/yomiscript/kana2ipa.py").stat().st_size
     size = ((HERE / f"work/{name}.bin").stat().st_size + path.stat().st_size + code) / 1e6
