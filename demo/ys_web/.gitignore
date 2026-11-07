@@ -8,3 +8,4 @@ web/voices
 web/ort
 *.wav
 web/llm_presets.json
+web/lib
