@@ -15,9 +15,7 @@ def candidate_table(result):
     ]
     for row in result["candidates"]:
         r = dict(row, **row["test"])
-        lines.append(
-            f"| {r['name']} | {r['annotation']:.4f} | {r['measured_qwen']:.4f} | {r['S']:.4f} | " f"{r['mean_check_distance']:.4f} | {r['size_mb']:.3f} |"
-        )
+        lines.append(f"| {r['name']} | {r['annotation']:.4f} | {r['measured_qwen']:.4f} | {r['S']:.4f} | {r['mean_check_distance']:.4f} | {r['size_mb']:.3f} |")
     return lines
 
 
@@ -44,7 +42,7 @@ def test_table(result):
             "",
             f"The winner {verdict} the stated test benchmark S = 0.914. "
             f"Eight candidate test looks in one final batch bring the shared counter to **{result['cumulative_movement_test_looks']}**. "
-            'All candidates and the winner were frozen before checks or test; test scores did not change selection.',
+            "All candidates and the winner were frozen before checks or test; test scores did not change selection.",
         ]
     )
     return lines
