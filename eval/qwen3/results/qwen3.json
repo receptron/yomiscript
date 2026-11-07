@@ -1,0 +1,247 @@
+{
+  "test_looks": 1,
+  "test_look_scope": "This movement experiment; pre-existing fall/RMSE attempts were not used for selection.",
+  "distance": {
+    "gold": {
+      "qwen3": {
+        "movement_distance": 0.44354325352062557,
+        "sentences": 1214,
+        "values": 106773
+      },
+      "dictionary": {
+        "movement_distance": 0.4710365063769447,
+        "sentences": 1214,
+        "values": 106773
+      },
+      "qwen2": {
+        "movement_distance": 0.9199192741934682,
+        "sentences": 1214,
+        "values": 106773
+      }
+    },
+    "qwen_measured": {
+      "qwen3": {
+        "movement_distance": 1.8845298452454087,
+        "sentences": 1214,
+        "values": 100710
+      },
+      "dictionary": {
+        "movement_distance": 1.9371621418854064,
+        "sentences": 1214,
+        "values": 100710
+      },
+      "qwen2": {
+        "movement_distance": 1.6270394666974353,
+        "sentences": 1214,
+        "values": 100710
+      }
+    }
+  },
+  "checks": [
+    {
+      "word": "そうだ",
+      "check_index": 0,
+      "model": 0.9589842587395021,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "そうだ",
+      "check_index": 1,
+      "model": 0.351414794656008,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        3
+      ]
+    },
+    {
+      "word": "寝てる",
+      "check_index": 2,
+      "model": 1.116815656267683,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": []
+    },
+    {
+      "word": "着てる",
+      "check_index": 3,
+      "model": 1.064223374620779,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": []
+    },
+    {
+      "word": "出てる",
+      "check_index": 4,
+      "model": 1.2237743151148006,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "見てる",
+      "check_index": 5,
+      "model": 1.1871680691048077,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "呼んでる",
+      "check_index": 6,
+      "model": 0.7667679827946527,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": []
+    },
+    {
+      "word": "読んでる",
+      "check_index": 7,
+      "model": 0.6348863628441768,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "持ってる",
+      "check_index": 8,
+      "model": 1.341060400415311,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "盛ってる",
+      "check_index": 9,
+      "model": 0.801009836632278,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": []
+    },
+    {
+      "word": "兼ねてる",
+      "check_index": 10,
+      "model": 0.6640675061478859,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "食べて",
+      "check_index": 11,
+      "model": 0.536091752380166,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "やめて",
+      "check_index": 12,
+      "model": 0.4125683236976442,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": []
+    },
+    {
+      "word": "ぴかぴか",
+      "check_index": 13,
+      "model": 1.169814618038477,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "当軒",
+      "check_index": 14,
+      "model": 0.3386130358676386,
+      "dictionary": 0.0,
+      "confirmed_falls_zero_based": [
+        0
+      ]
+    },
+    {
+      "word": "見たいもんだなあ",
+      "check_index": 15,
+      "model": 1.0199959621814447,
+      "dictionary": 1.006540313328251,
+      "confirmed_falls_zero_based": [
+        1
+      ]
+    }
+  ],
+  "checks_scope": "Full supplied check sentences; context retained. No checks used for selection.",
+  "size": {
+    "memory_float32_mb": 53.895808,
+    "networks_float32_mb": 2.972728,
+    "keys_utf8_mb": 14.164064,
+    "other_metadata_mb": 0.063955,
+    "runtime_code_mb": 0.007169,
+    "shipped_total_mb": 71.103724,
+    "entries": 421060
+  },
+  "architecture": "direct values",
+  "selection": {
+    "phase": 2,
+    "epoch": 20,
+    "loss": 0.14045960589724923,
+    "dev": {
+      "movement_distance": 0.4352957350104106,
+      "sentences": 166,
+      "values": 14235
+    },
+    "fine_tune_seconds": 94.06041216850281
+  },
+  "trials": {
+    "direct_epochs": 24,
+    "word_residual_epochs": 12,
+    "annotation_only_epochs": 20,
+    "development_candidates": 56
+  },
+  "teacher_weights": {
+    "gold": 1.0,
+    "dict": 0.0,
+    "qwen": 0.0
+  },
+  "training_loss": "Exact movement distance; no value regularizer, no mora weighting, no fall labels or outputs.",
+  "device": "cpu; torch.backends.mps.is_available() returned false in sandbox",
+  "runtime_verification": {
+    "maximum_value_difference": 4.112767583386301e-06,
+    "encoding_matches": true,
+    "output_contract": true,
+    "development_sentences": 5,
+    "memory_vectors_updated_in_sentence_training": 20169
+  },
+  "checks_tuned": false,
+  "data_audit": {
+    "fit_sentences": 17307,
+    "annotated_dev_sentences": 166,
+    "fit_corpora": {
+      "BASIC5000": 1121,
+      "WIKI": 2081,
+      "WIKI2": 2269,
+      "JKYB": 11836
+    },
+    "fit_teachers": {
+      "gold": 1121,
+      "dict": 17307,
+      "qwen": 5471
+    },
+    "word_keys": 421060,
+    "word_teachers": 421060,
+    "word_surrogates": 20482,
+    "memory_lookup_coverage_fit": 0.9452453140673782,
+    "dictionary_dev": {
+      "movement_distance": 0.4593241585683641,
+      "sentences": 166,
+      "values": 14235
+    },
+    "odd_jsut_in_fit_or_dev": 0,
+    "checks_in_fit_or_dev": 0
+  },
+  "teacher_mora_weighting": "None; unmodified linear-contour values carry accent movement.",
+  "word_surrogate_targets": 20482
+}
