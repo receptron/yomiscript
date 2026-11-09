@@ -31,7 +31,7 @@ Commands:
 | ------------------- | ------------------------------------------------------------------ |
 | `yarn format`       | Prettier on TS / JS / HTML, then `ruff format` on Python           |
 | `yarn format:check` | the same, checking only                                            |
-| `yarn lint`         | ESLint (`eslint.config.js`), then `ruff check`                     |
+| `yarn lint`         | the packages' types, ESLint (`eslint.config.js`), `ruff check`     |
 | `yarn build`        | `tsc -b` on the packages, then the gui-chat-plugin build           |
 | `yarn typecheck`    | `tsc -b` on the packages, their tests and the plugin               |
 | `yarn test`         | Vitest (`test/`, `packages/*/test/`)                               |
