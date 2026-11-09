@@ -3,7 +3,7 @@
 // module and a byte loader, so the same code runs on onnxruntime-web (browser) and onnxruntime-node (CLI, MCP).
 import type { InferenceSession, Tensor } from "onnxruntime-common";
 import { chunkText, preprocess, textIds, unsupported, type Indexer } from "./preprocess.ts";
-import type { LoadBytes } from "@yomiscript/core";
+import { defined, type LoadBytes } from "@yomiscript/core";
 export type { LoadBytes };
 
 /** the parts of onnxruntime this engine uses (onnxruntime-web and onnxruntime-node both have them) */
@@ -58,14 +58,20 @@ function uniforms(n: number): Float64Array {
   const u = crypto.getRandomValues(new Uint32Array(n));
   return Float64Array.from(u, (x) => (x + 0.5) / 2 ** 32);
 }
+/** a session's first output in its result */
+function output(session: InferenceSession, result: InferenceSession.ReturnType): Tensor {
+  return defined(result[defined(session.outputNames[0], "an output name")], "the session's output");
+}
 /** standard-normal values, Box–Muller */
 export function gaussian(n: number): Float32Array {
   const out = new Float32Array(n),
     u = uniforms(n + (n % 2));
   for (let i = 0; i < n; i += 2) {
-    const r = Math.sqrt(-2 * Math.log(u[i]));
-    out[i] = r * Math.cos(2 * Math.PI * u[i + 1]);
-    if (i + 1 < n) out[i + 1] = r * Math.sin(2 * Math.PI * u[i + 1]);
+    const u1 = defined(u[i], "a uniform"),
+      u2 = defined(u[i + 1], "a uniform");
+    const r = Math.sqrt(-2 * Math.log(u1));
+    out[i] = r * Math.cos(2 * Math.PI * u2);
+    if (i + 1 < n) out[i + 1] = r * Math.sin(2 * Math.PI * u2);
   }
   return out;
 }
@@ -150,13 +156,13 @@ export class SupertonicEngine {
     const text_ids = new T("int64", BigInt64Array.from(ids, BigInt), [1, ids.length]),
       text_mask = new T("float32", new Float32Array(ids.length).fill(1), [1, 1, ids.length]);
     const dp = await S.dp.run({ text_ids, style_dp: style.dp, text_mask });
-    const dur = f32((dp[S.dp.outputNames[0]].data as Float32Array)[0] / f32(o.speed));
+    const dur = f32(defined((output(S.dp, dp).data as Float32Array)[0], "the duration") / f32(o.speed));
     const enc = await S.enc.run({ text_ids, style_ttl: style.ttl, text_mask });
-    const text_emb = enc[S.enc.outputNames[0]];
+    const text_emb = output(S.enc, enc);
     const { latentLength, maskLength } = latentSize(dur, this.cfg),
       dim = this.cfg.latentDim * this.cfg.chunkCompressFactor;
     const mask = Float32Array.from({ length: latentLength }, (_, t) => (t < maskLength ? 1 : 0));
-    let x = noise(dim * latentLength).map((v, i) => v * mask[i % latentLength]);
+    let x = noise(dim * latentLength).map((v, i) => v * (i % latentLength < maskLength ? 1 : 0));
     const latent_mask = new T("float32", mask, [1, 1, latentLength]),
       total_step = new T("float32", Float32Array.of(o.steps), [1]);
     for (let step = 0; step < o.steps; step++) {
@@ -169,10 +175,10 @@ export class SupertonicEngine {
         current_step: new T("float32", Float32Array.of(step), [1]),
         total_step,
       });
-      x = Float32Array.from(r[S.vec.outputNames[0]].data as Float32Array);
+      x = Float32Array.from(output(S.vec, r).data as Float32Array);
     }
     const voc = await S.voc.run({ latent: new T("float32", x, [1, dim, latentLength]) });
-    return { wav: Float32Array.from(voc[S.voc.outputNames[0]].data as Float32Array), dur };
+    return { wav: Float32Array.from(output(S.voc, voc).data as Float32Array), dur };
   }
 }
 

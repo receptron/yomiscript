@@ -2,12 +2,13 @@
 import { createApp, defineComponent, h, ref, shallowRef } from "vue";
 import type { ToolResultComplete } from "gui-chat-protocol";
 import { configureSpeaker, executeSpeak, plugin, SAMPLES, TOOL_DEFINITION, type SpeakData } from "../src/index.ts";
+import { defined } from "@yomiscript/core";
 
 configureSpeaker({ modelBase: "/kokoro/", ortWasmBase: "/ort/", accentBase: "/ja-dict/" }); // served by vite.config.ts
 
 const App = defineComponent({
   setup() {
-    const input = ref(String(SAMPLES[0].args.yomiscript)),
+    const input = ref(String(defined(SAMPLES[0], "a sample").args.yomiscript)),
       result = shallowRef<ToolResultComplete<SpeakData> | null>(null),
       n = ref(0);
     const call = async (ys: string) => {
