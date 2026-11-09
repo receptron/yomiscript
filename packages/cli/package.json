@@ -35,6 +35,6 @@
     "@yomiscript/ja-accent": "^0.1.7",
     "@yomiscript/kokoro": "^0.1.0",
     "@yomiscript/supertonic": "^0.1.0",
-    "onnxruntime-node": "1.22.0"
+    "onnxruntime-node": "1.31.1"
   }
 }

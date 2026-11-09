@@ -16,23 +16,23 @@
     "typecheck": "tsc -b packages/core packages/kokoro packages/supertonic packages/ja-accent packages/cli packages/mcp"
   },
   "dependencies": {
-    "onnxruntime-web": "1.22.0"
+    "onnxruntime-web": "1.31.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "eslint": "^10.13.0",
+    "@types/node": "^24.0.0",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",
-    "eslint-plugin-security": "^4.2.0",
+    "eslint-plugin-security": "^4.2.1",
     "eslint-plugin-sonarjs": "^4.2.2",
-    "globals": "^17.13.0",
-    "playwright": "1.48",
+    "globals": "^17.14.0",
+    "playwright": "1.65.0",
     "prettier": "^3.9.10",
-    "vite": "^8.3.5",
-    "vitest": "^5.0.5",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.72.1",
-    "@types/node": "^24.0.0"
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
   },
   "workspaces": [
     "packages/*"

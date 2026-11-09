@@ -44,7 +44,7 @@
     "@yomiscript/core": "^0.1.5",
     "@yomiscript/ja-accent": "^0.1.7",
     "@yomiscript/kokoro": "^0.1.0",
-    "onnxruntime-web": "1.22.0"
+    "onnxruntime-web": "1.31.1"
   },
   "peerDependencies": {
     "gui-chat-protocol": "^2.3.0",
@@ -53,7 +53,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.10",
     "gui-chat-protocol": "^2.3.0",
-    "vue": "^3.5.43",
+    "vue": "^3.5.45",
     "vue-tsc": "^3.3.14"
   }
 }
