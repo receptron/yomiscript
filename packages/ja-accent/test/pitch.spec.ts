@@ -22,17 +22,21 @@ import {
 } from "../src/index.ts";
 import { fake, REC } from "./fake_analyzer.ts";
 
-const T = JSON.parse(fs.readFileSync(new URL("./fixtures/pitch_tiny.json", import.meta.url), "utf8"));
-const tensors = Object.fromEntries(
-  Object.entries(T.tensors as Record<string, { shape: number[]; data: number[] }>).map(([k, v]) => [k, { shape: v.shape, data: Float32Array.from(v.data) }]),
-);
+interface TinyModel extends Pick<PitchModel, "vocab" | "clip"> {
+  tensors: Record<string, { shape: number[]; data: number[] }>;
+  /** an input and PyTorch's output for it */
+  morae: PitchRow[];
+  out: number[][];
+}
+const T = JSON.parse(fs.readFileSync(new URL("./fixtures/pitch_tiny.json", import.meta.url), "utf8")) as TinyModel;
+const tensors = Object.fromEntries(Object.entries(T.tensors).map(([k, v]) => [k, { shape: v.shape, data: Float32Array.from(v.data) }]));
 const tiny: PitchModel = { vocab: T.vocab, clip: T.clip, contour: JA_CONTOUR, tensors };
 const kyou = REC[1].ys;
 const units = (ys: string) => parse(ys).sections[0].toks.filter((t) => t.kind === "unit");
 
 describe("pitchResidual", () => {
   it("is what PyTorch's two-layer bidirectional LSTM gives", () => {
-    const R = pitchResidual(tiny, T.morae as PitchRow[]);
+    const R = pitchResidual(tiny, T.morae);
     R.forEach((row, i) => row.forEach((v, j) => expect(v).toBeCloseTo(T.out[i][j], 5)));
   });
 });
@@ -126,16 +130,14 @@ describe("startPhrases", () => {
 describe("pitchOrAccentYomite", () => {
   const ys = "ja /a<t:亜>/";
   it("uses the model when it loads", async () => {
-    const step = await pitchOrAccentYomite(fake, async () => tiny);
+    const step = await pitchOrAccentYomite(fake, () => Promise.resolve(tiny));
     expect(step(ys)).toBe(pitchYomite(fake, tiny)(ys));
   });
   it("tells why and uses the dictionary accent when it does not", async () => {
     const seen: unknown[] = [],
       step = await pitchOrAccentYomite(
         fake,
-        async () => {
-          throw new Error("offline");
-        },
+        () => Promise.reject(new Error("offline")),
         (e) => seen.push(e),
       );
     expect(step(ys)).toBe(accentYomite(fake)(ys));
@@ -146,7 +148,7 @@ describe("pitchOrAccentYomite", () => {
 describe("loadPitchModel", () => {
   const head = { vocab: T.vocab, clip: T.clip, contour: JA_CONTOUR, tensors: Object.entries(tensors).map(([k, v]) => [k, v.shape]) };
   const bin = Buffer.concat(Object.values(tensors).map((v) => Buffer.from(v.data.buffer)));
-  const files = (b: Buffer) => async (f: string) => gzipSync(f === PITCH_FILES[0] ? JSON.stringify(head) : b);
+  const files = (b: Buffer) => (f: string) => Promise.resolve(gzipSync(f === PITCH_FILES[0] ? JSON.stringify(head) : b));
   it("reads the tensors back from the two files", async () => {
     const M = await loadPitchModel(files(bin));
     expect(M.tensors["rnn.weight_ih_l1_reverse"].shape).toEqual(tensors["rnn.weight_ih_l1_reverse"].shape);

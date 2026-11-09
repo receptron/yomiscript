@@ -53,7 +53,7 @@ export class Engine {
   }
   async voice(name: string): Promise<Float32Array> {
     if (this.V[name]) return this.V[name];
-    const m = name.match(/^([^+]+)\+([^@]+)@([\d.]+)$/); // a blend: a+b@weight
+    const m = /^([^+]+)\+([^@]+)@([\d.]+)$/.exec(name); // a blend: a+b@weight
     let v: Float32Array;
     if (m) {
       const a = await this.voice(m[1]),

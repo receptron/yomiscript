@@ -2,7 +2,6 @@
 // downloads it once from a base URL (Hugging Face) into that directory.
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { LoadBytes } from "./katarite.ts";
 
 export interface CachedLoaderOptions {
   /** the directory the files are read from and downloaded into */
@@ -16,7 +15,7 @@ export interface CachedLoaderOptions {
 
 const missing = (e: unknown) => (e as NodeJS.ErrnoException).code === "ENOENT";
 
-export function cachedLoader({ dir, baseUrl, onDownload, fetch = globalThis.fetch }: CachedLoaderOptions): LoadBytes {
+export function cachedLoader({ dir, baseUrl, onDownload, fetch = globalThis.fetch }: CachedLoaderOptions): (file: string) => Promise<Uint8Array> {
   return async (file) => {
     const local = path.join(dir, file);
     try {

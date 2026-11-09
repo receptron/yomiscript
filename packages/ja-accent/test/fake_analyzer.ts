@@ -8,10 +8,13 @@ interface Recorded {
   njd: string[];
   labels: string[];
 }
-export const REC: Recorded[] = JSON.parse(fs.readFileSync(new URL("./fixtures/analysis.json", import.meta.url), "utf8"));
-export const LOOKUP: { candidates: Record<string, Sentence>; conn: Record<string, number>; label: Record<string, Analysis> } = JSON.parse(
-  fs.readFileSync(new URL("./fixtures/lookup.json", import.meta.url), "utf8"),
-);
+interface Lookup {
+  candidates: Record<string, Sentence>;
+  conn: Record<string, number>;
+  label: Record<string, Analysis>;
+}
+export const REC = JSON.parse(fs.readFileSync(new URL("./fixtures/analysis.json", import.meta.url), "utf8")) as Recorded[];
+export const LOOKUP = JSON.parse(fs.readFileSync(new URL("./fixtures/lookup.json", import.meta.url), "utf8")) as Lookup;
 function recorded<T>(table: Record<string, T>, key: string): T {
   if (!(key in table)) throw new Error(`not recorded: ${key}`);
   return table[key];

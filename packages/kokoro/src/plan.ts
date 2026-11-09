@@ -97,7 +97,7 @@ const FIN: Record<string, string> = {
 };
 const TONE: Record<string, string> = { 1: "→", 2: "↗", 3: "↓", 4: "↘", 5: "" };
 function zsyl(syl: string): string {
-  const m = syl.match(/^([a-zü]+)(\d)(?:>(\d))?/);
+  const m = /^([a-zü]+)(\d)(?:>(\d))?/.exec(syl);
   if (!m) throw new Error(`bad pinyin syllable ${JSON.stringify(syl)}`);
   const py = m[1],
     t = m[3] || m[2];

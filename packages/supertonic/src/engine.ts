@@ -113,8 +113,7 @@ export class SupertonicEngine {
   async style(name: string): Promise<Style> {
     if (this.styles[name]) return this.styles[name];
     const j = decode(await this.load(`voice_styles/${name}.json`)) as Record<"style_ttl" | "style_dp", { dims: number[]; data: unknown }>;
-    const t = (x: { dims: number[]; data: unknown }) =>
-      new this.ort.Tensor("float32", Float32Array.from((x.data as number[]).flat(Infinity) as number[]), x.dims);
+    const t = (x: { dims: number[]; data: unknown }) => new this.ort.Tensor("float32", Float32Array.from((x.data as number[]).flat(Infinity)), x.dims);
     this.styles[name] = { ttl: t(j.style_ttl), dp: t(j.style_dp) };
     return this.styles[name];
   }

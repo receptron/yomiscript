@@ -167,7 +167,7 @@ export function parse(written: string): Utterance {
   written = written.trim();
   const T = takeTexts(written),
     ys = T.out;
-  const m = ys.match(UTT);
+  const m = UTT.exec(ys);
   if (!m) throw new Error(`${whyNot(ys)} — got ${JSON.stringify(ys.length > 60 ? ys.slice(0, 60) + "…" : ys)}. YomiScript looks like  ja /kʲoꜜːwa | aꜜmeɡa ↘/`);
   const top = m[1],
     end = m[3] === "↗" ? "?" : "$";
@@ -479,7 +479,7 @@ function zhSeg(t: string, base: number): Token[] {
   return words(t, base, (w, o, ph) =>
     sylls(w, o).map((s): Token => {
       if ("punct" in s) return { kind: "punct", sym: s.punct, ph };
-      const m = s.raw.match(/^[a-zü]+(\d)(?:>(\d))?/);
+      const m = /^[a-zü]+(\d)(?:>(\d))?/.exec(s.raw);
       if (!m) throw new Error(`bad pinyin syllable ${JSON.stringify(s.raw)}`);
       return { kind: "unit", ph, tone: m[2] || m[1], ...s };
     }),

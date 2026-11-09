@@ -12,7 +12,7 @@ const JA = "ja /kʲoː<t:今日> wa<t:は> ‖<t:、> ame<t:雨> desɯ<t:です�
 const fake = (seconds = 0.5): Katarite => ({
   name: "fake",
   languages: ["ja"],
-  speak: async () => ({ samples: new Float32Array(Math.round(24000 * seconds)), sampleRate: 24000, texts: [], times: [] }),
+  speak: () => Promise.resolve({ samples: new Float32Array(Math.round(24000 * seconds)), sampleRate: 24000, texts: [], times: [] }),
 });
 function io(stdin?: string, played = true) {
   const out: string[] = [],
@@ -21,9 +21,12 @@ function io(stdin?: string, played = true) {
   const x: Io = {
     out: (s) => out.push(s),
     err: (s) => err.push(s),
-    stdin: async () => stdin,
-    factories: { kokoro: async () => fake() },
-    play: async (f) => (plays.push(f), played),
+    stdin: () => Promise.resolve(stdin),
+    factories: { kokoro: () => Promise.resolve(fake()) },
+    play: (f) => {
+      plays.push(f);
+      return Promise.resolve(played);
+    },
   };
   return { x, out, err, plays };
 }
@@ -80,9 +83,7 @@ describe("main", () => {
   it("prints the parser's message for a bad YomiScript, before loading anything", async () => {
     const { x, err } = io();
     x.factories = {
-      kokoro: async () => {
-        throw new Error("must not load");
-      },
+      kokoro: () => Promise.reject(new Error("must not load")),
     };
     expect(await main(["speak", "ja /koɾe wa ↘"], x)).toBe(EXIT.failed);
     expect(err[0]).toMatch(/^YomiScript error: missing closing "\/"/);
@@ -132,16 +133,18 @@ describe("runtime", () => {
   });
   it("opens a Katarite once per settings, and again after a failed load", async () => {
     let n = 0;
-    const f = { k: async () => (n++, fake()) };
+    const f = {
+      k: () => {
+        n++;
+        return Promise.resolve(fake());
+      },
+    };
     await openKatarite("k", { models: "/m1" }, f);
     await openKatarite("k", { models: "/m1" }, f);
     expect(n).toBe(1);
     let fails = 0;
     const g = {
-      g: async () => {
-        if (fails++ === 0) throw new Error("first fails");
-        return fake();
-      },
+      g: () => (fails++ === 0 ? Promise.reject(new Error("first fails")) : Promise.resolve(fake())),
     };
     await expect(openKatarite("g", { models: "/m2" }, g)).rejects.toThrow("first fails");
     await expect(openKatarite("g", { models: "/m2" }, g)).resolves.toBeTruthy();

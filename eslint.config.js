@@ -36,8 +36,11 @@ export default [
   enforced(js.configs.recommended),
   enforced(sonarjs.configs.recommended),
   enforced(security.configs.recommended),
-  // TypeScript (packages/): the typescript-eslint recommended rules, at error like the rest
-  ...tseslint.configs.recommended.map((c) => enforced({ ...c, files: ["**/*.ts", "**/*.tsx", "**/*.vue"] })),
+  // TypeScript (packages/): the typescript-eslint rules, at error like the rest. The .ts files get the type-aware set
+  // (each package's tsconfig.json, and test/tsconfig.json for its tests); the .vue files the recommended set.
+  ...tseslint.configs.recommended.map((c) => enforced({ ...c, files: ["**/*.tsx", "**/*.vue"] })),
+  ...tseslint.configs.recommendedTypeChecked.map((c) => enforced({ ...c, files: ["**/*.ts"] })),
+  { files: ["**/*.ts"], languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } } },
   {
     languageOptions: { ecmaVersion: "latest", sourceType: "module", globals: { ...globals.node } },
     rules: {
@@ -52,6 +55,12 @@ export default [
       // Indexing arrays and lookup tables by computed keys is how phoneme tables work; this rule flags every one.
       "security/detect-object-injection": "off",
     },
+  },
+  {
+    // the tool protocol takes an async execute; this one awaits nothing, and being async is what makes a throw while
+    // reading the arguments a rejection (packages/gui-chat-plugin/test/plugin.spec.ts)
+    files: ["packages/gui-chat-plugin/src/core/plugin.ts"],
+    rules: { "@typescript-eslint/require-await": "off" },
   },
   {
     // the demo's browser modules (also imported by the Node scripts)

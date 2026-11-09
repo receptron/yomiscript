@@ -4,7 +4,7 @@
 import { parse } from "@yomiscript/core";
 import { describe, expect, it, vi } from "vitest";
 import type { Katarite, Speech } from "@yomiscript/core";
-import { accentMarks, accentYomite, bestPath, labelMorae, needsAccent, USER_DICT, withAccent, wordsOf } from "../src/index.ts";
+import { accentMarks, accentYomite, bestPath, labelMorae, needsAccent, USER_DICT, withAccent, wordsOf, type Analyzer, type Sentence } from "../src/index.ts";
 import { fake, REC } from "./fake_analyzer.ts";
 
 const [shiatoru, kyou, eeto, shigatsu] = REC.map((r) => r.ys);
@@ -141,9 +141,9 @@ describe("bestPath", () => {
     norm: "市で",
     starts: [0, 1, 2],
     cands: [
-      { s: 0, e: 1, ph: [["sh", "i"]], cost: 100, l: 1, r: 1 },
-      { s: 0, e: 1, ph: [["i"], ["ch", "i"]], cost: 500, l: 1, r: 1 },
-      { s: 1, e: 2, ph: [["d", "e"]], cost: 100, l: 2, r: 2 },
+      { s: 0, e: 1, ph: [["sh", "i"]], cost: 100, l: 1, r: 1, pron: "シ", pos: "名詞,接尾", acc: 1 },
+      { s: 0, e: 1, ph: [["i"], ["ch", "i"]], cost: 500, l: 1, r: 1, pron: "イチ", pos: "名詞,一般", acc: 2 },
+      { s: 1, e: 2, ph: [["d", "e"]], cost: 100, l: 2, r: 2, pron: "デ", pos: "助詞,格助詞", acc: 0 },
     ],
     alone: [0, 2],
   };
@@ -185,11 +185,19 @@ describe("withAccent", () => {
   const speech: Speech = { samples: new Float32Array(1), sampleRate: 24000, texts: [], times: [] };
   const inner = (): Katarite & { got: string[] } => {
     const got: string[] = [];
-    return { name: "kokoro", languages: ["ja", "en"], got, speak: async (ys) => (got.push(ys), speech) };
+    return {
+      name: "kokoro",
+      languages: ["ja", "en"],
+      got,
+      speak: (ys) => {
+        got.push(ys);
+        return Promise.resolve(speech);
+      },
+    };
   };
   it("loads the step once, on the first YomiScript that needs it", async () => {
     const k = inner(),
-      load = vi.fn(async () => accentYomite(fake));
+      load = vi.fn(() => Promise.resolve(accentYomite(fake)));
     const w = withAccent(k, load);
     await w.speak("en-US /ˈhɛ.loʊ<t:Hello> ↘/");
     expect(load).not.toHaveBeenCalled();
