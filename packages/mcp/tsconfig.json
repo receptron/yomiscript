@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": { "rootDir": "src", "outDir": "dist" },
+  "compilerOptions": { "noUncheckedIndexedAccess": true, "rootDir": "src", "outDir": "dist" },
   "include": ["src"],
   "references": [{ "path": "../core" }, { "path": "../kokoro" }, { "path": "../supertonic" }, { "path": "../cli" }]
 }

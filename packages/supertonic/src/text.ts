@@ -3,7 +3,7 @@
 // The kana is written by pronunciation, as the YomiScript says it: は → わ, へ → え, を → お, ー for every long vowel
 // (spelling it by the vowel would make カレー into かれい, a different word), っ for a geminate, ん for the moraic nasal.
 // Pitch values and accent marks are dropped: the engine makes its own prosody.
-import { parse, type Token, type Utterance } from "@yomiscript/core";
+import { defined, parse, type Token, type Utterance } from "@yomiscript/core";
 
 const VOWEL: Record<string, string> = { a: "あ", i: "い", ɯ: "う", e: "え", o: "お" };
 const ROWS: Record<string, string> = {
@@ -87,10 +87,14 @@ const SPECIAL: Record<string, string> = {
 };
 
 function mora(on: string, v: string): string {
-  const key = on + v;
-  if (SPECIAL[key]) return SPECIAL[key];
-  if (!on) return VOWEL[v];
-  if (PALATAL[on]) return v === "i" ? PALATAL[on] : PALATAL[on] + (SMALL[v] ?? VOWEL[v]);
+  const key = on + v,
+    special = SPECIAL[key],
+    vowel = VOWEL[v],
+    palatal = PALATAL[on];
+  if (special) return special;
+  if (!on && vowel) return vowel;
+  if (palatal && v === "i") return palatal;
+  if (palatal && (SMALL[v] ?? vowel)) return palatal + (SMALL[v] ?? vowel);
   const row = ROWS[on];
   const k = row?.["aiɯeo".indexOf(v)];
   if (!k || k === "_") throw new Error(`no kana for the mora "${key}"`);
@@ -129,7 +133,8 @@ function spans(r: Utterance): { S: { text: string; units: SpanUnit[] }[]; rest: 
   const S = r.texts.map((text) => ({ text, units: [] as SpanUnit[] })),
     rest: SpanUnit[] = [];
   for (const s of r.sections)
-    for (const t of s.toks) if (t.kind === "unit") (t.span === undefined ? rest : S[t.span].units).push({ ...t, ja: /^ja\b/.test(s.lang) });
+    for (const t of s.toks)
+      if (t.kind === "unit") (t.span === undefined ? rest : defined(S[t.span], "the span of a unit").units).push({ ...t, ja: /^ja\b/.test(s.lang) });
   return { S, rest };
 }
 // -> the text to give a text engine: each span as written, or its reading in kana where the rule says so (Japanese).
@@ -147,6 +152,6 @@ export function toText(ys: string, ambiguous: ReadonlySet<string> = new Set(), r
 const CLOSING = new Set("、。，．？！?!」』）)…");
 function trailing(text: string): string {
   let i = text.length;
-  while (i > 0 && CLOSING.has(text[i - 1])) i--;
+  while (i > 0 && CLOSING.has(text.charAt(i - 1))) i--;
   return text.slice(i);
 }
