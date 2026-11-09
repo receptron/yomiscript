@@ -3,8 +3,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { painted, PAINT_WAIT_MAX_MS } from "../demo/ys_web/web/paint.js";
 
-let frames, page, cancelled;
-const settled = (p) => {
+/** @type {{ id: number, run: FrameRequestCallback }[]} */
+let frames;
+/** @type {EventTarget & { hidden: boolean }} */
+let page;
+/** @type {Set<number>} */
+let cancelled;
+const settled = (/** @type {Promise<void>} */ p) => {
   let done = false;
   p.then(() => (done = true));
   return () => done;
@@ -26,11 +31,11 @@ beforeEach(() => {
   cancelled = new Set();
   let id = 0;
   page = Object.assign(new EventTarget(), { hidden: false });
-  vi.stubGlobal("requestAnimationFrame", (run) => {
+  vi.stubGlobal("requestAnimationFrame", (/** @type {FrameRequestCallback} */ run) => {
     frames.push({ id: ++id, run });
     return id;
   });
-  vi.stubGlobal("cancelAnimationFrame", (i) => cancelled.add(i));
+  vi.stubGlobal("cancelAnimationFrame", (/** @type {number} */ i) => cancelled.add(i));
   vi.stubGlobal("document", page);
 });
 afterEach(() => {

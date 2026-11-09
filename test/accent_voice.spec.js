@@ -3,13 +3,14 @@
 import { describe, expect, it } from "vitest";
 import { SR, dtw, marksOf, mfcc, pitch, referenceVoice, trim } from "../demo/ys_web/web/accent_voice.js";
 
-const tone = (hz, sec) => Float32Array.from({ length: Math.round(SR * sec) }, (_, i) => 0.5 * Math.sin((2 * Math.PI * hz * i) / SR));
-const join = (...parts) => Float32Array.from(parts.flatMap((p) => [...p]));
+const tone = (/** @type {number} */ hz, /** @type {number} */ sec) =>
+  Float32Array.from({ length: Math.round(SR * sec) }, (_, i) => 0.5 * Math.sin((2 * Math.PI * hz * i) / SR));
+const join = (/** @type {Float32Array[]} */ ...parts) => Float32Array.from(parts.flatMap((p) => [...p]));
 
 describe("pitch", () => {
   it("hears the pitch of a tone, and nothing in silence", () => {
     const f0 = pitch(join(new Float32Array(SR * 0.2), tone(150, 0.4), tone(200, 0.4)));
-    const at = (sec) => f0[Math.round((sec * SR) / 300)];
+    const at = (/** @type {number} */ sec) => f0[Math.round((sec * SR) / 300)];
     expect(at(0.05)).toBe(0);
     expect(at(0.4)).toBeCloseTo(150, 0);
     expect(at(0.8)).toBeCloseTo(200, 0);
@@ -40,7 +41,7 @@ describe("dtw", () => {
     const a = join(tone(200, 0.2), tone(400, 0.2), tone(800, 0.2)),
       b = join(tone(200, 0.4), tone(400, 0.4), tone(800, 0.4));
     const path = dtw(mfcc(a), mfcc(b)),
-      mid = (sec) => path[Math.round((sec * SR) / 300)];
+      mid = (/** @type {number} */ sec) => path[Math.round((sec * SR) / 300)];
     // the middle of each part of a falls in the same part of b
     expect(mid(0.1)[1] * 300).toBeLessThan(SR * 0.4);
     expect(mid(0.3)[0] * 300).toBeGreaterThan(SR * 0.4);
@@ -50,7 +51,7 @@ describe("dtw", () => {
 });
 
 describe("marksOf", () => {
-  const v = (...m) => m.map((x) => (x === null ? null : [x, x, x]));
+  const v = (/** @type {(number | null)[]} */ ...m) => m.map((x) => (x === null ? null : [x, x, x]));
   it("puts the nucleus where the pitch falls most, and the rise after a low first mora", () => {
     expect(marksOf(v(-2, 1, 1, -2), ["mora", "mora", "mora", "mora"])).toEqual({ nucleus: 2, rise: 0 });
     expect(marksOf(v(1, -2), ["mora", "mora"])).toEqual({ nucleus: 0, rise: -1 });

@@ -5,11 +5,14 @@ import { describe, expect, it } from "vitest";
 import { parse, realize } from "@yomiscript/core";
 import { plan } from "@yomiscript/kokoro";
 
-const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url)));
+/** @template T @param {string} p @returns {T} */
+const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url), "utf8"));
+/** @typedef {{ name: string, ys: string, ps: string, ids: number[] }} OriginalCase */
+/** @type {OriginalCase[]} */
 const ORIGINAL = read("./fixtures/kokoro_original.json");
-const annotate = (ys) => ys.replace(/(\S)(?= |\s*[↘↗]\/$)/g, "$1<t:w>"); // a <t:…> after every word
-const strip = (ys) => ys.replace(/<t:[^>]*>/g, "");
-const kokoroInput = (ys) => plan(ys).map((s) => [s.ps, s.ids]);
+const annotate = (/** @type {string} */ ys) => ys.replace(/(\S)(?= |\s*[↘↗]\/$)/g, "$1<t:w>"); // a <t:…> after every word
+const strip = (/** @type {string} */ ys) => ys.replace(/<t:[^>]*>/g, "");
+const kokoroInput = (/** @type {string} */ ys) => plan(ys).map((s) => [s.ps, s.ids]);
 
 describe("text annotations do not change the pronunciation", () => {
   it.each(ORIGINAL.map((c) => [c.name, c.ys]))("%s", (_, ys) => {

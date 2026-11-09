@@ -11,13 +11,18 @@ export const SR = 24000;
 const HOP = 300, // one F0 frame of Kokoro (2 per duration step of 600 samples)
   FMIN = 70,
   FMAX = 500;
+/** @typedef {[first: number, last: number]} Span */
+/** @typedef {{ f: number, s: number }} Candidate an F0 (0: unvoiced) and its strength */
 
-/** records from the microphone until stop() is called; resolves to mono samples at SR */
+/** records from the microphone until stop() is called; resolves to mono samples at SR
+ * @returns {Promise<{ stop: () => Promise<Float32Array> }>} */
 export async function startRecording() {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: true, autoGainControl: true } });
   const rec = new MediaRecorder(stream),
+    /** @type {Blob[]} */
     parts = [];
   rec.ondataavailable = (e) => parts.push(e.data);
+  /** @type {Promise<Float32Array>} */
   const done = new Promise((resolve, reject) => {
     rec.onstop = async () => {
       stream.getTracks().forEach((t) => t.stop());
@@ -35,8 +40,10 @@ export async function startRecording() {
   return { stop: () => (rec.stop(), done) };
 }
 
-/** the samples without the silence before and after the speech (frame energy under 1/30 of the loudest frame's) */
+/** the samples without the silence before and after the speech (frame energy under 1/30 of the loudest frame's)
+ * @param {Float32Array} x */
 export function trim(x) {
+  /** @type {number[]} */
   const E = [];
   for (let i = 0; i + HOP <= x.length; i += HOP) {
     let e = 0;
@@ -50,7 +57,8 @@ export function trim(x) {
   return a < b ? x.slice(a * HOP, b * HOP) : x;
 }
 
-/** in-place radix-2 FFT of re / im (length a power of two) */
+/** in-place radix-2 FFT of re / im (length a power of two)
+ * @param {Float64Array} re @param {Float64Array} im */
 function fft(re, im) {
   const n = re.length;
   for (let i = 1, j = 0; i < n; i++) {
@@ -78,8 +86,8 @@ const NFFT = 512,
   CEPS = 13;
 /** triangular mel filters over the bins of NFFT, 80 Hz to 7.6 kHz */
 function melBank() {
-  const mel = (f) => 2595 * Math.log10(1 + f / 700),
-    hz = (m) => 700 * (10 ** (m / 2595) - 1);
+  const mel = (/** @type {number} */ f) => 2595 * Math.log10(1 + f / 700),
+    hz = (/** @type {number} */ m) => 700 * (10 ** (m / 2595) - 1);
   const lo = mel(80),
     hi = mel(7600),
     edges = Array.from({ length: MELS + 2 }, (_, i) => (hz(lo + ((hi - lo) * i) / (MELS + 1)) * NFFT) / SR);
@@ -91,8 +99,11 @@ function melBank() {
 }
 const BANK = melBank();
 
-/** MFCCs 1..12 of each HOP frame, mean-normalised over the utterance */
+/** MFCCs 1..12 of each HOP frame, mean-normalised over the utterance
+ * @param {Float32Array} x
+ * @returns {number[][]} */
 export function mfcc(x) {
+  /** @type {number[][]} */
   const out = [],
     hann = Array.from({ length: NFFT }, (_, i) => 0.5 - 0.5 * Math.cos((2 * Math.PI * i) / NFFT));
   for (let t = 0; t * HOP < x.length; t++) {
@@ -108,6 +119,7 @@ export function mfcc(x) {
   return out.map((r) => r.map((v, c) => v - mean[c]));
 }
 
+/** @param {number[]} a @param {number[]} b */
 function cosDist(a, b) {
   let ab = 0,
     aa = 0,
@@ -115,16 +127,18 @@ function cosDist(a, b) {
   for (let i = 0; i < a.length; i++) [ab, aa, bb] = [ab + a[i] * b[i], aa + a[i] * a[i], bb + b[i] * b[i]];
   return 1 - ab / Math.sqrt(aa * bb + 1e-12);
 }
-/** the DTW path from A to B: for each frame of A, the first and last frame of B it is matched with */
+/** the DTW path from A to B: for each frame of A, the first and last frame of B it is matched with
+ * @param {number[][]} A @param {number[][]} B
+ * @returns {Span[]} */
 export function dtw(A, B) {
   const n = A.length,
     m = B.length,
     D = new Float64Array((n + 1) * (m + 1)).fill(Infinity),
-    at = (i, j) => i * (m + 1) + j;
+    at = (/** @type {number} */ i, /** @type {number} */ j) => i * (m + 1) + j;
   D[0] = 0;
   for (let i = 1; i <= n; i++)
     for (let j = 1; j <= m; j++) D[at(i, j)] = cosDist(A[i - 1], B[j - 1]) + Math.min(D[at(i - 1, j - 1)], D[at(i - 1, j)], D[at(i, j - 1)]);
-  const span = Array.from({ length: n }, () => [Infinity, -1]);
+  const span = Array.from({ length: n }, /** @returns {Span} */ () => [Infinity, -1]);
   for (let i = n, j = m; i > 0 && j > 0;) {
     const s = span[i - 1];
     [s[0], s[1]] = [Math.min(s[0], j - 1), Math.max(s[1], j - 1)];
@@ -136,10 +150,11 @@ export function dtw(A, B) {
   return span;
 }
 
-const median = (a) => [...a].sort((p, q) => p - q)[a.length >> 1];
-const semi = (hz) => 12 * Math.log2(hz);
+const median = (/** @type {number[]} */ a) => [...a].sort((p, q) => p - q)[a.length >> 1];
+const semi = (/** @type {number} */ hz) => 12 * Math.log2(hz);
 
-/** the autocorrelation of seg, zero-padded to n (a power of two) */
+/** the autocorrelation of seg, zero-padded to n (a power of two)
+ * @param {Float64Array} seg @param {number} n */
 function autocorr(seg, n) {
   const re = new Float64Array(n),
     im = new Float64Array(n);
@@ -155,7 +170,9 @@ const WINDOW = Math.round((3 * SR) / FMIN), // three periods of the lowest pitch
   NAC = 1 << Math.ceil(Math.log2(WINDOW * 1.5)),
   HANN = Float64Array.from({ length: WINDOW }, (_, i) => 0.5 - 0.5 * Math.cos((2 * Math.PI * (i + 0.5)) / WINDOW)),
   RW = autocorr(HANN, NAC);
-/** the frame's pitch candidates: unvoiced (f 0) and the autocorrelation peaks, each with its strength */
+/** the frame's pitch candidates: unvoiced (f 0) and the autocorrelation peaks, each with its strength
+ * @param {Float32Array} x @param {number} t @param {number} peakAll
+ * @returns {Candidate[]} */
 function candidates(x, t, peakAll) {
   const c = t * HOP + HOP / 2 - (WINDOW >> 1),
     seg = new Float64Array(WINDOW);
@@ -172,7 +189,7 @@ function candidates(x, t, peakAll) {
     r = autocorr(seg, NAC);
   if (r[0] <= 0) return out;
   // the signal's normalised autocorrelation, divided by the window's
-  const R = (k) => r[k] / r[0] / (RW[k] / RW[0]);
+  const R = (/** @type {number} */ k) => r[k] / r[0] / (RW[k] / RW[0]);
   for (let k = Math.max(2, Math.floor(SR / FMAX)); k <= Math.ceil(SR / FMIN); k++) {
     const [a, b, e] = [R(k - 1), R(k), R(k + 1)];
     if (!(b > a && b >= e) || b < 0.5 * voicing) continue;
@@ -182,26 +199,32 @@ function candidates(x, t, peakAll) {
   }
   return [out[0], ...out.slice(1).sort((p, q) => q.s - p.s)].slice(0, max);
 }
-/** the path through the candidates with the most strength less the costs of octave jumps and voicing changes */
+/** the path through the candidates with the most strength less the costs of octave jumps and voicing changes
+ * @param {Candidate[][]} F
+ * @returns {number[]} */
 function viterbi(F) {
   const scale = 0.01 / (HOP / SR),
-    cost = (a, b) => {
+    cost = (/** @type {Candidate} */ a, /** @type {Candidate} */ b) => {
       if (!a.f && !b.f) return 0;
       if (!a.f || !b.f) return PITCH.voicedUnvoiced * scale;
       return PITCH.jump * scale * Math.abs(Math.log2(a.f / b.f));
     };
   let D = F[0].map((c) => c.s);
+  /** @type {number[][]} */
   const back = [];
   for (let t = 1; t < F.length; t++) {
     const prev = D,
-      from = F[t].map((c) => {
-        const v = F[t - 1].map((p, i) => prev[i] - cost(p, c)),
-          i = v.indexOf(Math.max(...v));
-        return [i, v[i] + c.s];
-      });
+      from = F[t].map(
+        /** @returns {[number, number]} */ (c) => {
+          const v = F[t - 1].map((p, i) => prev[i] - cost(p, c)),
+            i = v.indexOf(Math.max(...v));
+          return [i, v[i] + c.s];
+        },
+      );
     back.push(from.map(([i]) => i));
     D = from.map(([, v]) => v);
   }
+  /** @type {number[]} */
   const out = new Array(F.length);
   for (let t = F.length - 1, i = D.indexOf(Math.max(...D)); t >= 0; t--) {
     out[t] = F[t][i].f;
@@ -210,23 +233,31 @@ function viterbi(F) {
   return out;
 }
 /** the F0 (Hz, 0 unvoiced) of each HOP frame, as Praat's autocorrelation method finds it (within 0.1 semitone of
- * Praat's on most frames of a test set of read sentences) */
+ * Praat's on most frames of a test set of read sentences)
+ * @param {Float32Array} x
+ * @returns {number[]} */
 export function pitch(x) {
   let peakAll = 1e-9;
   for (const v of x) peakAll = Math.max(peakAll, Math.abs(v));
+  /** @type {Candidate[][]} */
   const F = [];
   for (let t = 0; t * HOP < x.length; t++) F.push(candidates(x, t, peakAll));
   return F.length ? viterbi(F) : [];
 }
 
-/** the frames (of HOP) each mora of Kokoro's plan spans: [first, end) per unit that is a mora, in order */
+/** the frames (of HOP) each mora of Kokoro's plan spans: [first, end) per unit that is a mora, in order
+ * @param {import("@yomiscript/kokoro").PlannedSection} sec
+ * @param {number[]} dur
+ * @returns {(Span | null)[]} */
 export function moraFrames(sec, dur) {
+  /** @type {Span[]} */
   const ends = [];
   let t = 0;
   for (const d of dur) {
     ends.push([t, t + d * 2]);
     t += d * 2;
   }
+  /** @type {(Span | null)[]} */
   const out = [];
   sec.toks.forEach((tok, k) => {
     if (tok.kind !== "unit") return;
@@ -236,7 +267,8 @@ export function moraFrames(sec, dur) {
   return out;
 }
 
-/** the Kokoro voice to align a reading with: the one nearer its pitch (a low voice with jm_kumo, else jf_alpha) */
+/** the Kokoro voice to align a reading with: the one nearer its pitch (a low voice with jm_kumo, else jf_alpha)
+ * @param {Float32Array} reading */
 export function referenceVoice(reading) {
   const f = pitch(reading).filter((v) => v > 0);
   return f.length && median(f) < 165 ? "jm_kumo" : "jf_alpha";
@@ -244,28 +276,38 @@ export function referenceVoice(reading) {
 
 /** fewer voiced frames than this in a mora, and its values come from its neighbours */
 const MIN_FRAMES = 3;
-/** a mora's three values: the median of each third of its voiced frames (semitones from ref), or null */
+/** a mora's three values: the median of each third of its voiced frames (semitones from ref), or null
+ * @param {number[]} f0 @param {number} ua @param {number} ub @param {number} ref
+ * @returns {number[] | null} */
 function thirds(f0, ua, ub, ref) {
+  /** @type {number[]} */
   const S = [];
   for (let j = ua; j <= ub; j++) if (f0[j] > 0) S.push(semi(f0[j]) - semi(ref));
   if (S.length < MIN_FRAMES) return null;
   return [0, 1, 2].map((t) => Math.round(median(S.slice(Math.floor((t * S.length) / 3), Math.floor(((t + 1) * S.length) / 3))) * 10) / 10);
 }
-/** the morae not heard, filled in on straight lines between the heard ones (the end ones held) */
+/** the morae not heard, filled in on straight lines between the heard ones (the end ones held)
+ * @param {(number[] | null)[]} V
+ * @returns {number[][]} */
 function fill(V) {
-  const heard = V.flatMap((v, k) => (v ? [k] : []));
+  const heard = V.flatMap((v, k) => (v ? [{ k, v }] : []));
   return V.map((v, k) => {
     if (v) return v;
-    const a = heard.findLast((h) => h < k),
-      b = heard.find((h) => h > k);
-    if (a === undefined || b === undefined) return [...V[a ?? b]];
-    const w = (k - a) / (b - a);
-    return V[a].map((x, i) => Math.round((x + (V[b][i] - x) * w) * 10) / 10);
+    const a = heard.findLast((h) => h.k < k),
+      b = heard.find((h) => h.k > k);
+    if (!a || !b) {
+      const near = a ?? b;
+      if (!near) throw new Error("no mora was heard");
+      return [...near.v];
+    }
+    const w = (k - a.k) / (b.k - a.k);
+    return a.v.map((x, i) => Math.round((x + (b.v[i] - x) * w) * 10) / 10);
   });
 }
 /** three values per mora (semitones from the reading's median) and which morae the reading was heard in; the others
  * are filled in from their neighbours, so every value is the reading's. f0: the reading's pitch from elsewhere (a
- * check against another tracker) */
+ * check against another tracker)
+ * @param {{ kokoro: Float32Array, frames: (Span | null)[], reading: Float32Array, f0?: number[] | null }} input */
 export function voiceValues({ kokoro, frames, reading, f0: track = null }) {
   const path = dtw(mfcc(kokoro), mfcc(reading)),
     f0 = track ?? pitch(reading),
@@ -289,16 +331,19 @@ export function voiceValues({ kokoro, frames, reading, f0: track = null }) {
  * first) */
 const FALL = 1.5,
   RISE = 1;
+/** @param {(number[] | null)[]} values @param {string[]} kinds */
 export function marksOf(values, kinds) {
   const mean = values.map((v) => (v ? v.reduce((s, x) => s + x, 0) / v.length : null));
   let nucleus = -1,
     drop = FALL;
   for (let k = 0; k + 1 < mean.length; k++) {
-    if (mean[k] === null || mean[k + 1] === null || mean[k] - mean[k + 1] < drop) continue;
+    const [here, next] = [mean[k], mean[k + 1]];
+    if (here === null || next === null || here - next < drop) continue;
     let c = k;
     while (c >= 0 && kinds[c] !== "mora") c--;
-    if (c >= 0) [nucleus, drop] = [c, mean[k] - mean[k + 1]];
+    if (c >= 0) [nucleus, drop] = [c, here - next];
   }
-  const rise = nucleus !== 0 && mean.length > 1 && mean[0] !== null && mean[1] !== null && mean[1] - mean[0] >= RISE ? 0 : -1;
+  const [first, second] = mean;
+  const rise = nucleus !== 0 && mean.length > 1 && first !== null && second !== null && second - first >= RISE ? 0 : -1;
   return { nucleus, rise };
 }

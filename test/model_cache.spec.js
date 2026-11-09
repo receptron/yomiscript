@@ -7,25 +7,31 @@ const BASE = "https://huggingface.co/receptron/yomiscript-kokoro/resolve/main/";
 const REVISION_URL = "https://huggingface.co/api/models/receptron/yomiscript-kokoro/revision/main";
 const SHA = "2ea067091fbb0082d71ebcec73cd73269c26318b";
 const OLD = "0".repeat(40);
-const pinned = (sha, path) => `https://huggingface.co/receptron/yomiscript-kokoro/resolve/${sha}/${path}`;
+const pinned = (/** @type {string} */ sha, /** @type {string} */ path) => `https://huggingface.co/receptron/yomiscript-kokoro/resolve/${sha}/${path}`;
 
 const fakeCache = () => {
+  /** @type {Map<string, Response>} */
   const entries = new Map();
   return {
     entries,
-    match: async (url) => entries.get(url)?.clone(),
-    put: async (url, r) => void entries.set(url, new Response(await r.arrayBuffer(), { status: r.status })),
+    match: async (/** @type {string} */ url) => entries.get(url)?.clone(),
+    put: async (/** @type {string} */ url, /** @type {Response} */ r) => void entries.set(url, new Response(await r.arrayBuffer(), { status: r.status })),
     keys: async () => [...entries.keys()].map((url) => ({ url })),
-    delete: async (q) => entries.delete(q.url),
+    delete: async (/** @type {{ url: string }} */ q) => entries.delete(q.url),
   };
 };
-let cache, served, sha;
-const fakeFetch = vi.fn(async (url) => {
+/** @type {ReturnType<typeof fakeCache>} */
+let cache;
+/** @type {Map<string, string>} */
+let served;
+/** @type {string | Error} */
+let sha;
+const fakeFetch = vi.fn(async (/** @type {string} */ url) => {
   if (url.startsWith(REVISION_URL)) return sha instanceof Error ? Promise.reject(sha) : Response.json({ sha });
   return served.has(url) ? new Response(served.get(url)) : new Response("", { status: 404 });
 });
 const settle = () => new Promise((r) => setTimeout(r, 0));
-const text = async (r) => r.text();
+const text = async (/** @type {Response} */ r) => r.text();
 
 beforeEach(() => {
   cache = fakeCache();
@@ -36,7 +42,7 @@ beforeEach(() => {
   ]);
   fakeFetch.mockClear();
   vi.stubGlobal("fetch", fakeFetch);
-  vi.stubGlobal("caches", { open: async (name) => (name === MODEL_CACHE ? cache : null) });
+  vi.stubGlobal("caches", { open: async (/** @type {string} */ name) => (name === MODEL_CACHE ? cache : null) });
 });
 afterEach(() => vi.unstubAllGlobals());
 
@@ -113,7 +119,7 @@ describe("the cache the pages share", () => {
     expect([...cache.entries.keys()]).toStrictEqual([other]);
   });
   it("removes the caches of an earlier version of the site", async () => {
-    const remove = vi.fn(async () => true);
+    const remove = vi.fn(async (/** @type {string} */ name) => name.length > 0); // what caches.delete takes and gives
     vi.stubGlobal("caches", { open: async () => cache, delete: remove });
     await modelFetcher(BASE);
     expect(OLD_CACHES).toContain("yomiscript-models-1");
