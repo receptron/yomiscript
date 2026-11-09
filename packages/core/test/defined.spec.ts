@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { defined } from "../src/defined.ts";
+import { defined } from "../src/index.ts";
 
 describe("defined", () => {
   it.each([0, "", false, null, Number.NaN])("returns a value that is there, falsy ones included (%s)", (v) => {

@@ -23,8 +23,8 @@ No non-null assertion (`!`): it keeps the unchecked read and hides it.
 - cli: `player()` returns a non-empty command (`[string, ...string[]]`), so `run()` reads `cmd[0]` as a string.
 - supertonic's `tools/build-ambiguous.ts`, the plugin's `vite.config.ts` and demo, the MCP tests: reads checked.
 
-Verified by running the old and new code side by side: `toText` over every onset and vowel combination the parser
-knows (and some it rejects), each with and without a following ん / accent mark / っ: the same output or the same error
+Verified by running the old and new code side by side: `toText` over every onset key of `text.ts`'s tables (and none)
+and every vowel the parser knows (and some it rejects), each with and without a following ん / accent mark / っ: the same output or the same error
 everywhere except the `ɨ` cases above; the IPAdic row filter of `build-ambiguous.ts` over generated CSV rows: the same
 on every row.
 
