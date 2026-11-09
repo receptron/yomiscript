@@ -4,7 +4,7 @@
 import fs from "node:fs/promises";
 import * as ort from "onnxruntime-node";
 import { cachedLoader } from "@yomiscript/core/node";
-import { SupertonicEngine, type Ort } from "./engine.ts";
+import { SupertonicEngine } from "./engine.ts";
 import { SupertonicKatarite, type KatariteOptions } from "./katarite.ts";
 import { AMBIGUOUS_URL, ambiguousSet } from "./index.ts";
 
@@ -16,7 +16,7 @@ export interface NodeSupertonicOptions extends KatariteOptions {
   onDownload?: (url: string) => void;
 }
 export async function nodeSupertonicEngine(dir: string, download?: string, onDownload?: (url: string) => void): Promise<SupertonicEngine> {
-  return new SupertonicEngine(ort as unknown as Ort, cachedLoader({ dir, baseUrl: download, onDownload })).init({ executionProviders: ["cpu"] });
+  return new SupertonicEngine(ort, cachedLoader({ dir, baseUrl: download, onDownload })).init({ executionProviders: ["cpu"] });
 }
 /** the Katarite, with the list of ambiguous written forms from this package's data/ */
 export async function nodeSupertonic({ dir, download, onDownload, ...opts }: NodeSupertonicOptions): Promise<SupertonicKatarite> {

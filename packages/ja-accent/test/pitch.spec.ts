@@ -22,17 +22,21 @@ import {
 } from "../src/index.ts";
 import { fake, REC } from "./fake_analyzer.ts";
 
-const T = JSON.parse(fs.readFileSync(new URL("./fixtures/pitch_tiny.json", import.meta.url), "utf8"));
-const tensors = Object.fromEntries(
-  Object.entries(T.tensors as Record<string, { shape: number[]; data: number[] }>).map(([k, v]) => [k, { shape: v.shape, data: Float32Array.from(v.data) }]),
-);
+interface TinyModel extends Pick<PitchModel, "vocab" | "clip"> {
+  tensors: Record<string, { shape: number[]; data: number[] }>;
+  /** an input and PyTorch's output for it */
+  morae: PitchRow[];
+  out: number[][];
+}
+const T = JSON.parse(fs.readFileSync(new URL("./fixtures/pitch_tiny.json", import.meta.url), "utf8")) as TinyModel;
+const tensors = Object.fromEntries(Object.entries(T.tensors).map(([k, v]) => [k, { shape: v.shape, data: Float32Array.from(v.data) }]));
 const tiny: PitchModel = { vocab: T.vocab, clip: T.clip, contour: JA_CONTOUR, tensors };
 const kyou = REC[1].ys;
 const units = (ys: string) => parse(ys).sections[0].toks.filter((t) => t.kind === "unit");
 
 describe("pitchResidual", () => {
   it("is what PyTorch's two-layer bidirectional LSTM gives", () => {
-    const R = pitchResidual(tiny, T.morae as PitchRow[]);
+    const R = pitchResidual(tiny, T.morae);
     R.forEach((row, i) => row.forEach((v, j) => expect(v).toBeCloseTo(T.out[i][j], 5)));
   });
 });

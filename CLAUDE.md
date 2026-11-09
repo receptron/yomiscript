@@ -28,7 +28,8 @@ silent edit.
   are not formatted (`.prettierignore`).
 - `yarn lint` runs ESLint (`eslint.config.js`, with typescript-eslint for `.ts`), then `ruff check` (`pyproject.toml`).
   ruff is not an npm dependency; it has to be on `PATH` (setup in `CONTRIBUTING.md`).
-- `yarn typecheck` runs `tsc -b` on the packages.
+- `yarn typecheck` runs `tsc -b` on the packages, then on their tests (`packages/*/test/tsconfig.json`; Vitest strips
+  types without checking them), and the plugin's own `typecheck`.
 - `yarn test` runs Vitest (`test/**/*.spec.js`, `packages/*/test/**/*.spec.ts`). Tests run without models, Python, network or API keys. Mock
   external services; never call them.
 - Yomi-0: `cd models/yomi/mlx && .venv/bin/python -m pytest -q tests`.

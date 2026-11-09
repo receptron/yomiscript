@@ -4,7 +4,7 @@
 import * as ort from "onnxruntime-web";
 import type { Katarite, Speech } from "@yomiscript/core";
 import { accentYomite, DICT_URL, loadFrontend, loadPitchModel, PITCH_URL, pitchOrAccentYomite, withAccent } from "@yomiscript/ja-accent";
-import { Engine, KokoroKatarite, W16, type Ort } from "@yomiscript/kokoro";
+import { Engine, KokoroKatarite, W16 } from "@yomiscript/kokoro";
 
 export interface SpeakerOptions {
   /** URL of the directory with models/<part>_w16.onnx and voices/<voice>.bin */
@@ -47,7 +47,7 @@ export function loadKatarite(): Promise<Katarite> {
     if (options.ortWasmBase) ort.env.wasm.wasmPaths = absolute(options.ortWasmBase).href;
     ort.env.wasm.numThreads = 1; // no cross-origin isolation needed
     const load = fetcher(absolute(options.modelBase));
-    const engine = await new Engine(ort as unknown as Ort, load).init({ suffix: W16, executionProviders: options.executionProviders ?? ["wasm"] });
+    const engine = await new Engine(ort, load).init({ suffix: W16, executionProviders: options.executionProviders ?? ["wasm"] });
     const k = new KokoroKatarite(engine),
       dict = options.accentBase;
     if (!dict) return k;

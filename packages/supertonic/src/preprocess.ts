@@ -1,6 +1,7 @@
 // Supertonic 3's text side, as its Python SDK does it (supertonic 1.3.1, core.py UnicodeProcessor and utils.py
 // chunk_text): normalize the text, wrap it in language tags, and turn each character into the model's input id.
 // Lengths count code points, as Python's len() does.
+import { byCodeUnit } from "./order.ts";
 
 /** the languages Supertonic 3 speaks, and "na" for text in an unknown language */
 export const SUPERTONIC_LANGUAGES = [
@@ -122,13 +123,13 @@ export function unsupported(text: string, indexer: Indexer): string[] {
       const cp = c.codePointAt(0) ?? 0;
       if (cp >= indexer.length || indexer[cp] === -1) bad.add(ch);
     }
-  return [...bad].sort();
+  return [...bad].sort(byCodeUnit);
 }
 
 /** the input ids of one preprocessed text */
 export function textIds(preprocessed: string, indexer: Indexer): number[] {
   return Array.from(preprocessed, (c) => {
-    const id = indexer[c.codePointAt(0) ?? 0];
+    const id = indexer.at(c.codePointAt(0) ?? 0);
     if (id === undefined || id < 0) throw new Error(`Supertonic has no input for ${JSON.stringify(c)}`);
     return id;
   });

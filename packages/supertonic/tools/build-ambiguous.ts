@@ -4,6 +4,7 @@
 // usage: node tools/build-ambiguous.ts <dir with the IPAdic CSV files (EUC-JP), from github.com/taku910/mecab/mecab-ipadic>
 import fs from "node:fs";
 import path from "node:path";
+import { byCodeUnit } from "../src/order.ts";
 
 const KANJI = /[㐀-鿿々]/;
 const O_ROW = "オコソトノホモヨロゴゾドボポョォ",
@@ -25,7 +26,7 @@ const decoder = new TextDecoder("euc-jp");
 for (const f of fs
   .readdirSync(dir)
   .filter((f) => f.endsWith(".csv"))
-  .sort()) {
+  .sort(byCodeUnit)) {
   for (const line of decoder.decode(fs.readFileSync(path.join(dir, f))).split("\n")) {
     const row = line.split(","); // IPAdic fields have no quoted commas
     if (row.length < 13 || !KANJI.test(row[0]) || row[12].trim() === "*") continue;
@@ -34,7 +35,7 @@ for (const f of fs
   }
 }
 const out: Record<string, number> = {};
-for (const w of [...readings.keys()].sort()) {
+for (const w of [...readings.keys()].sort(byCodeUnit)) {
   const n = readings.get(w)?.size ?? 0;
   if (n > 1) out[w] = n;
 }

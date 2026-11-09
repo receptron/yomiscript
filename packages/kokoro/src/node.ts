@@ -2,7 +2,7 @@
 // Files missing from the directory are downloaded once from Hugging Face when a download URL is given.
 import * as ort from "onnxruntime-node";
 import { cachedLoader } from "@yomiscript/core/node";
-import { Engine, FP32, W16, type Ort } from "./engine.ts";
+import { Engine, FP32, W16 } from "./engine.ts";
 
 export interface NodeEngineOptions {
   /** directory with models/<part>[_w16].onnx and voices/<voice>.bin */
@@ -14,5 +14,5 @@ export interface NodeEngineOptions {
 }
 export async function nodeEngine({ dir, model = "fp32", download, onDownload }: NodeEngineOptions): Promise<Engine> {
   const load = cachedLoader({ dir, baseUrl: download, onDownload });
-  return new Engine(ort as unknown as Ort, load).init({ suffix: model === "fp32" ? FP32 : W16, executionProviders: ["cpu"] });
+  return new Engine(ort, load).init({ suffix: model === "fp32" ? FP32 : W16, executionProviders: ["cpu"] });
 }

@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import { cachedLoader } from "../src/node.ts";
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "yomiscript-loader-"));
-const fakeFetch = (body: Uint8Array, status = 200) => {
+const fakeFetch = (body: Uint8Array<ArrayBuffer>, status = 200) => {
   const urls: string[] = [];
   const f = (async (url: string) => {
     urls.push(String(url));

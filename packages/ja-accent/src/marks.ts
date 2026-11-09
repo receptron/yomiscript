@@ -56,7 +56,8 @@ function moraKey(onset: string, vowel: string): string {
   return o + v;
 }
 function dictKey(m: LabelMora, prevVowel: string): string {
-  const [a, b] = m.ph;
+  const [a] = m.ph,
+    b = m.ph.at(1);
   if (a === "N") return "N";
   if (a === "cl") return "Q";
   if (b === undefined) return a.toLowerCase() === prevVowel ? "R" : moraKey("", a); // a long vowel repeats the vowel

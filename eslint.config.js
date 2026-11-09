@@ -36,8 +36,11 @@ export default [
   enforced(js.configs.recommended),
   enforced(sonarjs.configs.recommended),
   enforced(security.configs.recommended),
-  // TypeScript (packages/): the typescript-eslint recommended rules, at error like the rest
-  ...tseslint.configs.recommended.map((c) => enforced({ ...c, files: ["**/*.ts", "**/*.tsx", "**/*.vue"] })),
+  // TypeScript (packages/): the typescript-eslint rules, at error like the rest. The .ts files get the type-aware set
+  // (each package's tsconfig.json, and test/tsconfig.json for its tests); the .vue files the recommended set.
+  ...tseslint.configs.recommended.map((c) => enforced({ ...c, files: ["**/*.tsx", "**/*.vue"] })),
+  ...tseslint.configs.recommendedTypeChecked.map((c) => enforced({ ...c, files: ["**/*.ts"] })),
+  { files: ["**/*.ts"], languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } } },
   {
     languageOptions: { ecmaVersion: "latest", sourceType: "module", globals: { ...globals.node } },
     rules: {
@@ -52,6 +55,11 @@ export default [
       // Indexing arrays and lookup tables by computed keys is how phoneme tables work; this rule flags every one.
       "security/detect-object-injection": "off",
     },
+  },
+  {
+    // a fake stands in for an async interface (a Katarite, a loader, a player), so it is async without awaiting anything
+    files: ["packages/*/test/**/*.ts"],
+    rules: { "@typescript-eslint/require-await": "off" },
   },
   {
     // the demo's browser modules (also imported by the Node scripts)

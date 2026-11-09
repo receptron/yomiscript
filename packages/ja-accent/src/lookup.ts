@@ -57,7 +57,7 @@ function apart(W: Word[]): { W: Word[]; at: number[] } {
   const out: Word[] = [],
     at: number[] = [];
   for (const w of W) {
-    const quote = w.units.length ? w.text.match(OPENING)?.[0] : undefined;
+    const quote = w.units.length ? OPENING.exec(w.text)?.[0] : undefined;
     if (quote && quote !== w.text) out.push({ text: quote, units: [] });
     at.push(out.length);
     out.push(quote && quote !== w.text ? { ...w, text: w.text.slice(quote.length) } : w);
@@ -248,7 +248,7 @@ function baseFall(stem: Entry, a: Analyzer): number | undefined {
         return kana.length > 1 ? base.startsWith(kana.slice(0, -1)) : base === `${kana}ル`;
       });
   });
-  const fall = found[0]?.acc;
+  const fall = found.at(0)?.acc;
   if (fall === undefined || !found.every((c) => c.acc === fall)) return undefined;
   if (fall <= 1) return fall;
   return ichidanFall(stem, kana, bases[0], found);
