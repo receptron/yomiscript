@@ -6,9 +6,14 @@ import { describe, expect, it } from "vitest";
 import { realize } from "@yomiscript/core";
 import { plan, spokenSteps, VOCAB } from "@yomiscript/kokoro";
 
-const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url)));
+/** @template T @param {string} p @returns {T} */
+const read = (p) => JSON.parse(fs.readFileSync(new URL(p, import.meta.url), "utf8"));
+/** @typedef {{ name: string, ys: string, ps: string, ids: number[] }} OriginalCase */
+/** @type {OriginalCase[]} */
 const ORIGINAL = read("./fixtures/kokoro_original.json");
+/** @type {{ name: string, ys: string }[]} */
 const PRESETS = read("../demo/ys_web/web/presets.json");
+/** @type {{ name: string, ys: string, tokyo: string, osaka: string }[]} */
 const REALIZED = read("./fixtures/presets_realized.json"); // the rule Yomite's output, recorded before the 2026-10-29 refactor (Tokyo: D29)
 
 describe("YomiScript -> Kokoro input, as the original Kokoro gets it", () => {
@@ -36,7 +41,7 @@ describe("a moraic ɴ before a mora without an onset, spoken longer (D30)", () =
   const ys = "ja /ɡoseɴeɴaɾeba ‖ hoɴ o ↘/";
   it("lengthens the ɴ and the vowel after it", () => {
     const S = plan(ys)[0],
-      name = (t) => (t.mk === "N" ? "ɴ" : t.v);
+      name = (/** @type {import("@yomiscript/core").Token} */ t) => (t.mk === "N" ? "ɴ" : t.v);
     expect(S.toks.map((t, k) => S.lengthen[k] !== 1 && `${name(t)}${S.lengthen[k]}`).filter(Boolean)).toEqual(["ɴ1.5", "e1.25", "ɴ1.5", "a1.25"]);
   });
   it("leaves the durations as predicted with original, and outside Japanese", () => {
@@ -47,8 +52,9 @@ describe("a moraic ɴ before a mora without an onset, spoken longer (D30)", () =
 
 describe("a geminate and the vowel before it, at least three steps (D34)", () => {
   const ys = "ja /ɲidʑɯppɯɴ ‖ kitte ↘/";
-  const chars = (S) => S.ids.map((id) => Object.keys(VOCAB).find((c) => VOCAB[c] === id) ?? "");
-  const minimumOf = (S) => chars(S).filter((_, i) => S.minSteps[i]);
+  /** @typedef {import("@yomiscript/kokoro").PlannedSection} PlannedSection */
+  const chars = (/** @type {PlannedSection} */ S) => S.ids.map((id) => Object.keys(VOCAB).find((c) => VOCAB[c] === id) ?? "");
+  const minimumOf = (/** @type {PlannedSection} */ S) => chars(S).filter((_, i) => S.minSteps[i]);
   it("sets a minimum on っ and the vowel before it, and on nothing else", () => {
     const S = plan(ys)[0];
     expect(S.ps).toContain("ʔ");

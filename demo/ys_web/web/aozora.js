@@ -8,16 +8,38 @@ const BOOK = new URLSearchParams(location.search).get("book") ?? "chumon",
   GAP_MS = 250,
   PARAGRAPH_GAP_MS = 550;
 
-const $ = (id) => document.getElementById(id);
+/** @typedef {[start: number, length: number, reading: string]} Ruby */
+/** @typedef {{ text: string, ys: string, ruby: Ruby[] }} StorySentence */
+/** @typedef {{ first?: boolean, indent?: number, sentences: StorySentence[] }} Paragraph */
+/** @typedef {{ title: string, author: string, source: string, credit: string[], version: string, paragraphs: Paragraph[] }} Story */
+/** @typedef {StorySentence & { node: HTMLElement, last: boolean }} Sentence */
+/** @typedef {{ blob: Blob, kept: boolean, ms?: number, seconds?: number }} Made */
+
+/** the page's element with this id, of this kind
+ * @template {HTMLElement} T
+ * @param {string} id
+ * @param {new () => T} kind
+ * @returns {T} */
+function $as(id, kind) {
+  const e = document.getElementById(id);
+  if (!(e instanceof kind)) throw new Error(`the page has no #${id} of the expected kind`);
+  return e;
+}
+const $ = (/** @type {string} */ id) => $as(id, HTMLElement);
+/**
+ * @template {keyof HTMLElementTagNameMap} K
+ * @param {K} tag @param {string | null} cls @param {string | null} [text]
+ * @returns {HTMLElementTagNameMap[K]} */
 const el = (tag, cls, text) => Object.assign(document.createElement(tag), cls ? { className: cls } : {}, text != null ? { textContent: text } : {});
-const status = (text, error = false) => {
+const status = (/** @type {string} */ text, error = false) => {
   $("status").textContent = text;
   $("status").classList.toggle("err", error);
 };
 
 /** The Cache Storage cache of the audio, or null where the browser refuses one (a private window, an insecure origin). Its name has
  * the story's version and that of the accent code, whose URL holds it, so that audio made with other accents is not played; the
- * caches of other versions are removed. */
+ * caches of other versions are removed.
+ * @param {string} storyVersion */
 async function openAudio(storyVersion) {
   const prefix = `aozora-audio-${BOOK}-`,
     accentVersion = import.meta.resolve("@yomiscript/ja-accent").match(/@(\d[^/]*)\//)?.[1],
@@ -44,9 +66,14 @@ async function startAccent() {
 /** The Katarite in its worker: a YomiScript in, its audio out. */
 class Speaker {
   constructor() {
-    Object.assign(this, { worker: new Worker("aozora_worker.js", { type: "module" }), waiting: new Map(), next: 0 });
+    this.worker = new Worker("aozora_worker.js", { type: "module" });
+    /** @type {Map<number, { resolve: (made: { blob: Blob, seconds: number, ms: number }) => void, reject: (e: Error) => void }>} */
+    this.waiting = new Map();
+    this.next = 0;
     this.worker.onmessage = ({ data }) => {
-      const { resolve, reject } = this.waiting.get(data.id);
+      const waiter = this.waiting.get(data.id);
+      if (!waiter) throw new Error(`the worker answered ${data.id}, which nothing asked for`);
+      const { resolve, reject } = waiter;
       this.waiting.delete(data.id);
       if (data.error) reject(new Error(data.error));
       else resolve(data);
@@ -57,7 +84,9 @@ class Speaker {
     };
   }
 
-  /** the audio of a YomiScript; with none, resolves when the Katarite is ready */
+  /** the audio of a YomiScript; with none, resolves when the Katarite is ready
+   * @param {string} [ys]
+   * @returns {Promise<{ blob: Blob, seconds: number, ms: number }>} */
   speak(ys) {
     const id = this.next++;
     return new Promise((resolve, reject) => {
@@ -69,24 +98,37 @@ class Speaker {
 
 /** The audio of the sentences: at most one made at a time, kept in memory and in the browser. */
 class Voice {
+  /** @param {Speaker} speaker @param {(ys: string) => string} accent @param {Sentence[]} sentences @param {Cache | null} cache */
   constructor(speaker, accent, sentences, cache) {
-    Object.assign(this, { speaker, accent, sentences, cache, made: new Map(), running: Promise.resolve() });
+    this.speaker = speaker;
+    this.accent = accent;
+    this.sentences = sentences;
+    this.cache = cache;
+    /** @type {Map<number, Promise<Made>>} */
+    this.made = new Map();
+    /** @type {Promise<unknown>} */
+    this.running = Promise.resolve();
   }
 
+  /** @param {number} i */
   key(i) {
     return `/aozora-audio/${i}.wav`;
   }
 
-  /** the sentence's audio as a Blob; asking again waits for the same work */
+  /** the sentence's audio as a Blob; asking again waits for the same work
+   * @param {number} i
+   * @returns {Promise<Made>} */
   get(i) {
-    if (!this.made.has(i)) {
-      const work = (this.running = this.running.catch(() => {}).then(() => this.produce(i)));
-      this.made.set(i, work);
-      work.catch(() => this.made.delete(i)); // a failure can be asked again
-    }
-    return this.made.get(i);
+    const asked = this.made.get(i);
+    if (asked) return asked;
+    const work = this.running.catch(() => {}).then(() => this.produce(i));
+    this.running = work;
+    this.made.set(i, work);
+    work.catch(() => this.made.delete(i)); // a failure can be asked again
+    return work;
   }
 
+  /** @param {number} i @returns {Promise<Made>} */
   async produce(i) {
     const kept = await this.cache?.match(this.key(i));
     if (kept) return { blob: await kept.blob(), kept: true };
@@ -98,10 +140,11 @@ class Voice {
   }
 }
 
-/** the sentence's text with the book's ruby */
+/** the sentence's text with the book's ruby
+ * @param {StorySentence} s @param {number} i */
 function sentenceNode(s, i) {
   const span = el("span", "s");
-  span.dataset.i = i;
+  span.dataset.i = String(i);
   let at = 0;
   for (const [start, n, reading] of s.ruby) {
     span.append(s.text.slice(at, start));
@@ -114,8 +157,10 @@ function sentenceNode(s, i) {
   return span;
 }
 
-/** the story on the page; returns the sentences in order, each with its node and whether it ends a paragraph */
+/** the story on the page; returns the sentences in order, each with its node and whether it ends a paragraph
+ * @param {Story} story */
 function render(story) {
+  /** @type {Sentence[]} */
   const list = [];
   for (const p of story.paragraphs) {
     const node = el("p", p.first ? "first" : null);
@@ -130,6 +175,7 @@ function render(story) {
   return list;
 }
 
+/** @param {Story} story */
 function showBook(story) {
   document.title = `${story.title}｜青空朗読文庫`;
   $("title").textContent = story.title;
@@ -141,13 +187,24 @@ function showBook(story) {
 
 /** The reader: which sentence is current, and whether it is playing. */
 class Reader {
+  /** @param {Sentence[]} sentences @param {Voice} voice */
   constructor(sentences, voice) {
-    Object.assign(this, { sentences, voice, at: 0, playing: false, turn: 0, player: new Audio(), url: null, gap: 0 });
+    this.sentences = sentences;
+    this.voice = voice;
+    this.at = 0;
+    this.playing = false;
+    this.turn = 0;
+    this.player = new Audio();
+    /** @type {string | null} */
+    this.url = null;
+    /** @type {ReturnType<typeof setTimeout> | 0} */
+    this.gap = 0;
     this.player.onended = () => this.finished();
     this.player.onerror = () => this.fail(this.player.error?.message ?? "audio");
   }
 
-  /** highlights the sentence, in view */
+  /** highlights the sentence, in view
+   * @param {number} i */
   show(i) {
     this.sentences[this.at].node.classList.remove("now");
     this.at = i;
@@ -155,12 +212,13 @@ class Reader {
     node.classList.add("now");
     node.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     $("ys").textContent = ys;
-    $("progress").value = (i + 1) / this.sentences.length;
-    $("prev").disabled = i === 0;
-    $("next").disabled = i === this.sentences.length - 1;
+    $as("progress", HTMLProgressElement).value = (i + 1) / this.sentences.length;
+    $as("prev", HTMLButtonElement).disabled = i === 0;
+    $as("next", HTMLButtonElement).disabled = i === this.sentences.length - 1;
   }
 
-  /** plays sentence i, making it first if it is not ready; a later call makes this one give up */
+  /** plays sentence i, making it first if it is not ready; a later call makes this one give up
+   * @param {number} i */
   async play(i) {
     const turn = ++this.turn;
     clearTimeout(this.gap);
@@ -186,7 +244,7 @@ class Reader {
       if (turn === this.turn) this.fail(e);
       return;
     }
-    const how = got.kept ? "保存済みの音声" : `生成 ${(got.ms / 1000).toFixed(1)} 秒 ／ 音声 ${got.seconds.toFixed(1)} 秒`;
+    const how = got.kept ? "保存済みの音声" : `生成 ${((got.ms ?? 0) / 1000).toFixed(1)} 秒 ／ 音声 ${(got.seconds ?? 0).toFixed(1)} 秒`;
     status(`${i + 1} / ${this.sentences.length} 文目（${how}）`);
     if (i + 1 < this.sentences.length) this.voice.get(i + 1).catch(() => {}); // a failure shows when its turn comes
   }
@@ -210,6 +268,7 @@ class Reader {
     $("play").textContent = "再生";
   }
 
+  /** @param {unknown} e */
   fail(e) {
     this.stop();
     status(`音声を作れませんでした：${e}`, true);
@@ -233,6 +292,7 @@ class Reader {
 async function main() {
   const r = await fetch(`aozora/${BOOK}.json`);
   if (!r.ok) throw new Error(`${BOOK}: ${r.status}`);
+  /** @type {Story} */
   const story = await r.json();
   showBook(story);
   const sentences = render(story);
@@ -245,15 +305,15 @@ async function main() {
   status("最初の文を準備しています…");
   await voice.get(0); // so that the first press of play is heard at once
   $("story").onclick = (e) => {
-    const node = e.target.closest(".s");
-    if (node) reader.play(Number(node.dataset.i));
+    const node = e.target instanceof Element ? e.target.closest(".s") : null;
+    if (node instanceof HTMLElement) reader.play(Number(node.dataset.i));
   };
   $("play").onclick = () => reader.toggle();
   $("prev").onclick = () => reader.play(reader.at - 1);
   $("next").onclick = () => reader.play(reader.at + 1);
   reader.show(0);
   scrollTo(0, 0);
-  $("play").disabled = false;
+  $as("play", HTMLButtonElement).disabled = false;
   status("準備ができました");
 }
 main().catch((e) => status(`読み込めませんでした：${e}`, true));

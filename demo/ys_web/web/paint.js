@@ -3,13 +3,15 @@
 // frames come later than this starts synthesis without the busy state drawn, which is better than never starting it.
 export const PAINT_WAIT_MAX_MS = 1000;
 /** resolves once the changes made so far are on screen (the second animation frame comes after the first is
- * painted), at once while the page is hidden (no frames, nothing to paint), and after PAINT_WAIT_MAX_MS at most */
+ * painted), at once while the page is hidden (no frames, nothing to paint), and after PAINT_WAIT_MAX_MS at most
+ * @returns {Promise<void>} */
 export const painted = () =>
   new Promise((resolve) => {
+    /** @type {number | undefined} */
     let frame;
     const done = () => {
       clearTimeout(timer);
-      cancelAnimationFrame(frame);
+      if (frame !== undefined) cancelAnimationFrame(frame);
       document.removeEventListener("visibilitychange", whenHidden);
       resolve();
     };
