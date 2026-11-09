@@ -7,9 +7,9 @@ import { cachedLoader } from "../src/node.ts";
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "yomiscript-loader-"));
 const fakeFetch = (body: Uint8Array<ArrayBuffer>, status = 200) => {
   const urls: string[] = [];
-  const f = (async (url: string) => {
+  const f = ((url: string) => {
     urls.push(String(url));
-    return new Response(status === 200 ? body : null, { status });
+    return Promise.resolve(new Response(status === 200 ? body : null, { status }));
   }) as unknown as typeof fetch;
   return { f, urls };
 };

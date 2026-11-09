@@ -57,11 +57,6 @@ export default [
     },
   },
   {
-    // a fake stands in for an async interface (a Katarite, a loader, a player), so it is async without awaiting anything
-    files: ["packages/*/test/**/*.ts"],
-    rules: { "@typescript-eslint/require-await": "off" },
-  },
-  {
     // the tool protocol takes an async execute; this one awaits nothing, and being async is what makes a throw while
     // reading the arguments a rejection (packages/gui-chat-plugin/test/plugin.spec.ts)
     files: ["packages/gui-chat-plugin/src/core/plugin.ts"],

@@ -185,11 +185,19 @@ describe("withAccent", () => {
   const speech: Speech = { samples: new Float32Array(1), sampleRate: 24000, texts: [], times: [] };
   const inner = (): Katarite & { got: string[] } => {
     const got: string[] = [];
-    return { name: "kokoro", languages: ["ja", "en"], got, speak: async (ys) => (got.push(ys), speech) };
+    return {
+      name: "kokoro",
+      languages: ["ja", "en"],
+      got,
+      speak: (ys) => {
+        got.push(ys);
+        return Promise.resolve(speech);
+      },
+    };
   };
   it("loads the step once, on the first YomiScript that needs it", async () => {
     const k = inner(),
-      load = vi.fn(async () => accentYomite(fake));
+      load = vi.fn(() => Promise.resolve(accentYomite(fake)));
     const w = withAccent(k, load);
     await w.speak("en-US /ˈhɛ.loʊ<t:Hello> ↘/");
     expect(load).not.toHaveBeenCalled();

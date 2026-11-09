@@ -16,15 +16,17 @@
   - test types: the missing `Sentence` / `Analyzer` imports and the fields of `Cand` the sample lacked; the fake fetch's body type.
     `cachedLoader` (Node) is typed as returning `Uint8Array`, which it always did.
   - three checks the types called always false (`=== undefined` on an array index): the index can be out of range at
-    run time, so the reads use `.at()`, whose type says so, and the checks stay.
+    run time, so the reads use `.at()`, whose type says so, and the checks stay. The indices there are never negative,
+    where `.at()` would count from the end.
   - `match` on a non-global regex as `exec`; casts the types no longer need (`ort as unknown as Ort`).
   - a bare `sort()`: the rule proposes `localeCompare`, which orders differently; `byCodeUnit` states the default order.
   - `JSON.parse` results in tests typed with `as`, as the sources already do.
 - `yarn lint` builds the packages' types first (the type-aware rules read `@yomiscript/*` from `dist/`) and runs ESLint
   without `--cache`: the cache does not re-lint a file when only a type it imports changes.
-- `@typescript-eslint/require-await` is off for package tests, by name with the reason: fakes stand in for async interfaces.
-  It is also off for the plugin's `plugin.ts`: `executeSpeak` stays `async` with nothing to await, because being async
-  is what makes a throw while reading the arguments a rejection; a test pins that.
+- the test fakes for async interfaces return `Promise.resolve(...)` / `Promise.reject(...)` instead of being `async`
+  with nothing to await, so `@typescript-eslint/require-await` applies to the tests too. It is off for the plugin's
+  `plugin.ts` only, by name with the reason: `executeSpeak` stays `async` with nothing to await, because being async is
+  what makes a throw while reading the arguments a rejection; a test pins that.
 
 ## Verified
 - `yarn format`, `yarn lint`, `yarn typecheck`, `yarn build`, `yarn test`.

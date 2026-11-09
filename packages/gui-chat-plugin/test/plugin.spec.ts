@@ -25,9 +25,11 @@ describe("execute", () => {
         throw new Error("unreadable");
       },
     };
-    const call = () => executeSpeak({}, args);
-    expect(call).not.toThrow();
-    await expect(call()).rejects.toThrow("unreadable");
+    let result: Promise<unknown> = Promise.resolve();
+    expect(() => {
+      result = executeSpeak({}, args);
+    }).not.toThrow();
+    await expect(result).rejects.toThrow("unreadable");
   });
   it("hands a valid YomiScript and its text to the view", async () => {
     const r = await executeSpeak({}, { yomiscript: "ja /kʲoː<t:今日> wa<t:は> ‖<t:、> haɾe<t:晴れ> desɯ<t:です。> ↘/" });
