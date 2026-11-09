@@ -62,6 +62,12 @@ export default [
     rules: { "@typescript-eslint/require-await": "off" },
   },
   {
+    // the tool protocol takes an async execute; this one awaits nothing, and being async is what makes a throw while
+    // reading the arguments a rejection (packages/gui-chat-plugin/test/plugin.spec.ts)
+    files: ["packages/gui-chat-plugin/src/core/plugin.ts"],
+    rules: { "@typescript-eslint/require-await": "off" },
+  },
+  {
     // the demo's browser modules (also imported by the Node scripts)
     files: ["demo/ys_web/web/**/*.js"],
     languageOptions: { globals: { ...globals.browser, ...globals.node } },

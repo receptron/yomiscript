@@ -9,7 +9,7 @@
   "scripts": {
     "format": "prettier --write . && ruff format",
     "format:check": "prettier --check . && ruff format --check",
-    "lint": "yarn -s build:packages && eslint . --cache && ruff check",
+    "lint": "yarn -s build:packages && eslint . && ruff check",
     "release": "sh tools/publish.sh",
     "test": "vitest run",
     "build:packages": "tsc -b packages/core packages/kokoro packages/supertonic packages/ja-accent packages/cli packages/mcp",

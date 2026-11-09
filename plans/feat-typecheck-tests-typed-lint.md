@@ -17,11 +17,14 @@
     `cachedLoader` (Node) is typed as returning `Uint8Array`, which it always did.
   - three checks the types called always false (`=== undefined` on an array index): the index can be out of range at
     run time, so the reads use `.at()`, whose type says so, and the checks stay.
-  - `match` on a non-global regex as `exec`; casts the types no longer need (`ort as unknown as Ort`); an `async`
-    function without `await` in the plugin returns `Promise.resolve` of a synchronous one.
+  - `match` on a non-global regex as `exec`; casts the types no longer need (`ort as unknown as Ort`).
   - a bare `sort()`: the rule proposes `localeCompare`, which orders differently; `byCodeUnit` states the default order.
   - `JSON.parse` results in tests typed with `as`, as the sources already do.
+- `yarn lint` builds the packages' types first (the type-aware rules read `@yomiscript/*` from `dist/`) and runs ESLint
+  without `--cache`: the cache does not re-lint a file when only a type it imports changes.
 - `@typescript-eslint/require-await` is off for package tests, by name with the reason: fakes stand in for async interfaces.
+  It is also off for the plugin's `plugin.ts`: `executeSpeak` stays `async` with nothing to await, because being async
+  is what makes a throw while reading the arguments a rejection; a test pins that.
 
 ## Verified
 - `yarn format`, `yarn lint`, `yarn typecheck`, `yarn build`, `yarn test`.

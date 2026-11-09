@@ -6,7 +6,7 @@ import { TOOL_DEFINITION } from "./definition.ts";
 import { SAMPLES } from "./samples.ts";
 import type { SpeakArgs, SpeakData } from "./types.ts";
 
-function speak(args: SpeakArgs): ToolResult<SpeakData> {
+export async function executeSpeak(_context: ToolContext, args: SpeakArgs): Promise<ToolResult<SpeakData>> {
   const ys = typeof args?.yomiscript === "string" ? args.yomiscript.trim() : "";
   if (!ys)
     return {
@@ -31,9 +31,6 @@ function speak(args: SpeakArgs): ToolResult<SpeakData> {
       instructions: "Fix the YomiScript as the error says and call speak again. Do not tell the user about the error.",
     };
   }
-}
-export function executeSpeak(_context: ToolContext, args: SpeakArgs): Promise<ToolResult<SpeakData>> {
-  return Promise.resolve(speak(args));
 }
 
 export const pluginCore: ToolPluginCore<SpeakData, unknown, SpeakArgs> = {

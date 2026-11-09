@@ -5,6 +5,7 @@ import { TOOL_DEFINITION, TOOL_NAME } from "../src/core/definition.ts";
 import { executeSpeak } from "../src/core/plugin.ts";
 import { SAMPLES } from "../src/core/samples.ts";
 import { spanAt } from "../src/core/timeline.ts";
+import type { SpeakArgs } from "../src/core/types.ts";
 
 describe("tool definition", () => {
   it("takes one YomiScript and tells the LLM how to write it", () => {
@@ -18,6 +19,16 @@ describe("tool definition", () => {
 });
 
 describe("execute", () => {
+  it("rejects, rather than throws, when reading the arguments throws", async () => {
+    const args: SpeakArgs = {
+      get yomiscript(): string {
+        throw new Error("unreadable");
+      },
+    };
+    const call = () => executeSpeak({}, args);
+    expect(call).not.toThrow();
+    await expect(call()).rejects.toThrow("unreadable");
+  });
   it("hands a valid YomiScript and its text to the view", async () => {
     const r = await executeSpeak({}, { yomiscript: "ja /kʲoː<t:今日> wa<t:は> ‖<t:、> haɾe<t:晴れ> desɯ<t:です。> ↘/" });
     expect(r.data).toEqual({
