@@ -105,7 +105,8 @@ function unit(t: Token): string {
   if (t.mk === "N") return "ん";
   if (t.mk === "Q") return "っ";
   if (t.mk === "R") return "ー";
-  const v = t.v === "u" ? "ɯ" : (t.v ?? "");
+  // u and ɨ (the ɯ after s, ts, z, dz that misaki and LLMs write) are the same vowel here
+  const v = t.v === "u" || t.v === "ɨ" ? "ɯ" : (t.v ?? "");
   return mora(t.on ?? "", v);
 }
 
