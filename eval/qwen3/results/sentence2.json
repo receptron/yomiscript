@@ -1,0 +1,105 @@
+{
+ "sentences_test": 1214,
+ "sentences_train": 17054,
+ "annotated_train": 1127,
+ "words_found_in_memory": 0.9127,
+ "parameters_sentence_model": 2459333,
+ "qwen3_after_dictionary_only": {
+  "fall_f1": 0.7119,
+  "fall_precision": 0.7714,
+  "fall_recall": 0.6609,
+  "phrase_start_f1": 0.8566,
+  "phrases_all_right": 0.5324,
+  "phrases": 7406
+ },
+ "qwen3": {
+  "fall_f1": 0.7316,
+  "fall_precision": 0.8081,
+  "fall_recall": 0.6682,
+  "phrase_start_f1": 0.8668,
+  "phrases_all_right": 0.5487,
+  "phrases": 7406
+ },
+ "dictionary_with_llm_phrases": {
+  "fall_f1": 0.7447,
+  "fall_precision": 0.7609,
+  "fall_recall": 0.7292,
+  "phrase_start_f1": 0.9312,
+  "phrases_all_right": 0.6659,
+  "phrases": 7406
+ },
+ "dictionary_with_its_phrases": {
+  "fall_f1": 0.759,
+  "fall_precision": 0.7708,
+  "fall_recall": 0.7476,
+  "phrase_start_f1": 0.8972,
+  "phrases_all_right": 0.631,
+  "phrases": 7406
+ },
+ "checked": [
+  {
+   "want": "soꜜː da",
+   "model": "soꜜːda"
+  },
+  {
+   "want": "soꜜː da",
+   "model": "boꜜkɯmo | soːda"
+  },
+  {
+   "want": "neꜛteɾɯ",
+   "model": "neteɾɯ"
+  },
+  {
+   "want": "kiꜛteɾɯ",
+   "model": "kiteɾɯ"
+  },
+  {
+   "want": "deꜜteɾɯ",
+   "model": "deteɾɯ"
+  },
+  {
+   "want": "miꜜteɾɯ",
+   "model": "miteɾɯ"
+  },
+  {
+   "want": "joꜛndeɾɯ",
+   "model": "jondeɾɯ"
+  },
+  {
+   "want": "joꜜndeɾɯ",
+   "model": "jondeꜜɾɯ"
+  },
+  {
+   "want": "moꜜtteɾɯ",
+   "model": "motteɾɯ"
+  },
+  {
+   "want": "moꜛtteɾɯ",
+   "model": "motteɾɯ"
+  },
+  {
+   "want": "kaꜜneteɾɯ",
+   "model": "kaneteꜜɾɯ"
+  },
+  {
+   "want": "taꜜbete",
+   "model": "taꜜbete | neɾɯ"
+  },
+  {
+   "want": "jaꜛmete",
+   "model": "jamete | neɾɯ"
+  },
+  {
+   "want": "piꜜkapika",
+   "model": "pikapika | sɯɾɯ"
+  },
+  {
+   "want": "toꜜːkeɴ",
+   "model": "toꜜːkeɴwa"
+  },
+  {
+   "want": "miꜛtaꜜi",
+   "model": "mitaimonda | naꜜː"
+  }
+ ]
+}

@@ -1,0 +1,1002 @@
+{
+  "selection_metric": "annotation + measured_qwen / 4",
+  "selection_split": "166 fixed annotated development sentences with measured targets",
+  "candidates": [
+    {
+      "name": "qwen4",
+      "annotation": 0.46560843048211276,
+      "measured_qwen": 1.8672068229470768,
+      "S": 0.9324101362188819,
+      "sentences": 166,
+      "epoch": 11,
+      "mean_check_distance": 1.0120148866817262,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 0.9197741600515206
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.2897467185969342
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 1.150463791859492
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 1.1376234381037318
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 1.126031016307604
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 1.2132241298583666
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.6642940480757714
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 1.310972002034126
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 1.1410779270915379
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 1.0453793563289904
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 1.3049301344335118
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 1.2265470214370746
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 0.7795474440611422
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.2313499681047995
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.5226682711929017
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 1.1286087593701142
+        }
+      ],
+      "size_mb": 71.134345,
+      "attention": false,
+      "structured": false,
+      "gain": 1.0,
+      "bounded_shape": false,
+      "source": "qwen4",
+      "checkpoint_mb": 79.552326,
+      "test": {
+        "annotation": 0.47536892712036233,
+        "measured_qwen": 1.8738081415274401,
+        "S": 0.9438209625022224,
+        "sentences": 1214
+      }
+    },
+    {
+      "name": "qwen5",
+      "annotation": 0.4670880941857141,
+      "measured_qwen": 1.8765913269970087,
+      "S": 0.9362359259349663,
+      "sentences": 166,
+      "epoch": 11,
+      "mean_check_distance": 0.5721102500626863,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 0.14751933413605273
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.3047591410606913
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 0.15317355739168645
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 0.29585652058714496
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 0.7626700722862675
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 0.975906004825514
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.10665499366040015
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 0.8676622628621604
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 0.07250251277750772
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 1.3655807006155392
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 0.1042680555082308
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 0.8099688926972669
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 0.5011745596455115
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.2148925928112426
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.23004361991055386
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 1.2411311802272114
+        }
+      ],
+      "size_mb": 71.134345,
+      "attention": false,
+      "structured": false,
+      "gain": 1.0,
+      "bounded_shape": false,
+      "source": "qwen5",
+      "checkpoint_mb": 79.552326,
+      "test": {
+        "annotation": 0.47562654467639004,
+        "measured_qwen": 1.8861767166025147,
+        "S": 0.9471707238270187,
+        "sentences": 1214
+      }
+    },
+    {
+      "name": "qwen6",
+      "annotation": 0.4826972458239644,
+      "measured_qwen": 1.8850319493162147,
+      "S": 0.9539552331530181,
+      "sentences": 166,
+      "epoch": 15,
+      "mean_check_distance": 0.5326905537805666,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 0.2241661800231285
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.2194996616599274
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 1.0262620060140621
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 1.15741495150497
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 0.1905324173210859
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 0.1446833969690751
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.07534167858627341
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 0.14511572943984732
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 0.05425200028541154
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 1.2912274825424606
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 0.06944043622243487
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 1.1777691981219498
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 0.5095383801647454
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.2387682724489646
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.18148612568320743
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 0.8175509435015232
+        }
+      ],
+      "size_mb": 71.142732,
+      "attention": true,
+      "structured": false,
+      "gain": 1.0,
+      "bounded_shape": false,
+      "source": "qwen6",
+      "checkpoint_mb": 79.561335,
+      "test": {
+        "annotation": 0.4866043327348671,
+        "measured_qwen": 1.881478378131228,
+        "S": 0.956973927267674,
+        "sentences": 1214
+      }
+    },
+    {
+      "name": "qwen7",
+      "annotation": 0.7539540635464328,
+      "measured_qwen": 1.8968709719892225,
+      "S": 1.2281718065437384,
+      "sentences": 166,
+      "epoch": 1,
+      "mean_check_distance": 0.8784512765331595,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 1.3563792882713614
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.6960352562902522
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 0.3909379826817517
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 0.4082850943532333
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 0.9781881892065554
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 0.994375258990502
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.32264379076870536
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 1.1587691871130124
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 1.031373107072643
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 0.7105064209111828
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 1.1881125957550147
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 0.9894189140302866
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 1.0469897990084265
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.2174649567565878
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.6652999357525763
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 0.9004406475684597
+        }
+      ],
+      "size_mb": 71.200692,
+      "attention": true,
+      "structured": true,
+      "gain": 1.0,
+      "bounded_shape": false,
+      "source": "qwen7",
+      "checkpoint_mb": 79.621317,
+      "test": {
+        "annotation": 0.7357392431921478,
+        "measured_qwen": 1.865337756785877,
+        "S": 1.2020736823886171,
+        "sentences": 1214
+      }
+    },
+    {
+      "name": "qwen8",
+      "annotation": 0.4620052018430245,
+      "measured_qwen": 1.8658320241415258,
+      "S": 0.928463207878406,
+      "sentences": 166,
+      "epoch": 0,
+      "mean_check_distance": 1.0254757892339819,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 0.9311735410406143
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.3274569483837
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 1.2156248975813488
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 1.1995854414743132
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 1.1426662563879324
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 1.2237644776640864
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.6944836743726032
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 1.3026056353297117
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 1.1233385923810772
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 1.0726308703662137
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 1.2834180453724546
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 1.2250671082095372
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 0.8042484950599437
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.2190175233850322
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.5410290818906554
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 1.1015020388444874
+        }
+      ],
+      "size_mb": 71.134346,
+      "attention": false,
+      "structured": false,
+      "gain": 0.95,
+      "bounded_shape": false,
+      "source": "qwen4",
+      "checkpoint_mb": 79.55239,
+      "test": {
+        "annotation": 0.47217002785539663,
+        "measured_qwen": 1.8688829009968602,
+        "S": 0.9393907531046117,
+        "sentences": 1214
+      }
+    },
+    {
+      "name": "qwen9",
+      "annotation": 0.467448651147714,
+      "measured_qwen": 1.862763907888632,
+      "S": 0.933139628119872,
+      "sentences": 166,
+      "epoch": 2,
+      "mean_check_distance": 1.0133175630387536,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 0.9081426554410955
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.2509253962927223
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 1.1362665043833842
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 1.1216504164982848
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 1.1661430679783173
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 1.2603684717919088
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.6477504232263205
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 1.3177185667474982
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 1.1421373990444146
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 1.053276710771822
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 1.3216596110608965
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 1.2381199428561158
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 0.7451558422437198
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.246046904535477
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.5070237310138918
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 1.1506953647341873
+        }
+      ],
+      "size_mb": 71.134345,
+      "attention": false,
+      "structured": false,
+      "gain": 1.0,
+      "bounded_shape": false,
+      "source": "qwen4",
+      "checkpoint_mb": 79.55239,
+      "test": {
+        "annotation": 0.4788504726100363,
+        "measured_qwen": 1.8687243621934846,
+        "S": 0.9460315631584075,
+        "sentences": 1214
+      }
+    },
+    {
+      "name": "qwen10",
+      "annotation": 0.4647655554925332,
+      "measured_qwen": 1.866331252969449,
+      "S": 0.9313483687348953,
+      "sentences": 166,
+      "epoch": 18,
+      "mean_check_distance": 1.014945106600576,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 0.9287935539240468
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.29584572217059363
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 1.1654939109494094
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 1.140987009443169
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 1.1303059487000575
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 1.2269244144461957
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.6710982283344384
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 1.3100089823021492
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 1.1345038794824078
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 1.0580727029812702
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 1.3017801220467995
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 1.2240825511845825
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 0.7758218273252996
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.2296372993368383
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.5274142367238056
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 1.11835131625815
+        }
+      ],
+      "size_mb": 71.192304,
+      "attention": false,
+      "structured": true,
+      "gain": 1.0,
+      "bounded_shape": true,
+      "source": "qwen4",
+      "checkpoint_mb": 79.612417,
+      "test": {
+        "annotation": 0.47576186500747497,
+        "measured_qwen": 1.8704088431079244,
+        "S": 0.9433640757844561,
+        "sentences": 1214
+      }
+    },
+    {
+      "name": "qwen11",
+      "annotation": 0.46451741397836643,
+      "measured_qwen": 1.886244268739009,
+      "S": 0.9360784811631186,
+      "sentences": 166,
+      "epoch": 7,
+      "mean_check_distance": 1.0210756973566009,
+      "checks": [
+        {
+          "word": "そうだ",
+          "check_index": 0,
+          "distance": 0.9216365144411922
+        },
+        {
+          "word": "そうだ",
+          "check_index": 1,
+          "distance": 0.2857537954148239
+        },
+        {
+          "word": "寝てる",
+          "check_index": 2,
+          "distance": 1.1625598732345859
+        },
+        {
+          "word": "着てる",
+          "check_index": 3,
+          "distance": 1.1554235891648288
+        },
+        {
+          "word": "出てる",
+          "check_index": 4,
+          "distance": 1.1297993090413492
+        },
+        {
+          "word": "見てる",
+          "check_index": 5,
+          "distance": 1.2483513729878701
+        },
+        {
+          "word": "呼んでる",
+          "check_index": 6,
+          "distance": 0.6384358499105932
+        },
+        {
+          "word": "読んでる",
+          "check_index": 7,
+          "distance": 1.3213552266230255
+        },
+        {
+          "word": "持ってる",
+          "check_index": 8,
+          "distance": 1.1563230177961739
+        },
+        {
+          "word": "盛ってる",
+          "check_index": 9,
+          "distance": 1.0282694925703686
+        },
+        {
+          "word": "兼ねてる",
+          "check_index": 10,
+          "distance": 1.3235632735434772
+        },
+        {
+          "word": "食べて",
+          "check_index": 11,
+          "distance": 1.260420843035225
+        },
+        {
+          "word": "やめて",
+          "check_index": 12,
+          "distance": 0.7296465763134392
+        },
+        {
+          "word": "ぴかぴか",
+          "check_index": 13,
+          "distance": 1.2287668289080547
+        },
+        {
+          "word": "当軒",
+          "check_index": 14,
+          "distance": 0.5308027857698476
+        },
+        {
+          "word": "見たいもんだなあ",
+          "check_index": 15,
+          "distance": 1.216102808950759
+        }
+      ],
+      "size_mb": 71.134345,
+      "attention": false,
+      "structured": false,
+      "gain": 1.0,
+      "bounded_shape": false,
+      "source": "qwen4",
+      "checkpoint_mb": 79.552425,
+      "test": {
+        "annotation": 0.47508591670719286,
+        "measured_qwen": 1.889974573291242,
+        "S": 0.9475795600300034,
+        "sentences": 1214
+      }
+    }
+  ],
+  "best": "qwen8",
+  "previous_qwen3_dev": {
+    "annotation": 0.4352957328074426,
+    "measured_qwen": 1.89150468731947,
+    "S": 0.9081719046373101,
+    "sentences": 166
+  },
+  "test": {
+    "qwen4": {
+      "annotation": 0.47536892712036233,
+      "measured_qwen": 1.8738081415274401,
+      "S": 0.9438209625022224,
+      "sentences": 1214
+    },
+    "qwen5": {
+      "annotation": 0.47562654467639004,
+      "measured_qwen": 1.8861767166025147,
+      "S": 0.9471707238270187,
+      "sentences": 1214
+    },
+    "qwen6": {
+      "annotation": 0.4866043327348671,
+      "measured_qwen": 1.881478378131228,
+      "S": 0.956973927267674,
+      "sentences": 1214
+    },
+    "qwen7": {
+      "annotation": 0.7357392431921478,
+      "measured_qwen": 1.865337756785877,
+      "S": 1.2020736823886171,
+      "sentences": 1214
+    },
+    "qwen8": {
+      "annotation": 0.47217002785539663,
+      "measured_qwen": 1.8688829009968602,
+      "S": 0.9393907531046117,
+      "sentences": 1214
+    },
+    "qwen9": {
+      "annotation": 0.4788504726100363,
+      "measured_qwen": 1.8687243621934846,
+      "S": 0.9460315631584075,
+      "sentences": 1214
+    },
+    "qwen10": {
+      "annotation": 0.47576186500747497,
+      "measured_qwen": 1.8704088431079244,
+      "S": 0.9433640757844561,
+      "sentences": 1214
+    },
+    "qwen11": {
+      "annotation": 0.47508591670719286,
+      "measured_qwen": 1.889974573291242,
+      "S": 0.9475795600300034,
+      "sentences": 1214
+    },
+    "dictionary": {
+      "annotation": 0.471036507937593,
+      "measured_qwen": 1.937162141421008,
+      "S": 0.955327043292845,
+      "sentences": 1214
+    },
+    "qwen2": {
+      "annotation": 0.9199192722511655,
+      "measured_qwen": 1.6270394671144033,
+      "S": 1.3266791390297663,
+      "sentences": 1214
+    }
+  },
+  "additional_test_looks": 8,
+  "additional_test_batches": 1,
+  "test_look_definition": "One full test-half evaluation per frozen candidate; eight in one final batch.",
+  "cumulative_movement_test_looks": 9,
+  "checks_used_for_selection": false,
+  "test_used_for_selection": false,
+  "audit": {
+    "fit": 15220,
+    "dev": 166,
+    "word_teachers": 409349,
+    "baselines": {
+      "dict": {
+        "annotation": 0.45932415811159366,
+        "measured_qwen": 1.9308511171907783,
+        "S": 0.9420369374092883,
+        "sentences": 166
+      }
+    },
+    "max_retrieval_entries": 19,
+    "odd_ids_used": 0
+  },
+  "inflections": {
+    "basic_entries": 21251,
+    "generated_forms_with_frames": 543834,
+    "removed": 29697,
+    "removed_fraction": 0.05460673661448163,
+    "remaining": 514137,
+    "excluded_stems": [
+      "持",
+      "盛",
+      "寝",
+      "着",
+      "出",
+      "見",
+      "呼",
+      "読",
+      "兼ね",
+      "食べ",
+      "やめ"
+    ]
+  },
+  "generation": {
+    "made": 513705,
+    "skipped": 432
+  },
+  "generation_classes": {
+    "supported_basic_entries": 21078,
+    "unsupported_basic_entries": 173,
+    "unsupported_classes": {
+      "四段・ハ行": 16,
+      "四段・サ行": 3,
+      "サ変・−ズル": 127,
+      "下二・マ行": 2,
+      "ラ変": 1,
+      "下二・ダ行": 3,
+      "カ変・クル": 2,
+      "下二・ガ行": 6,
+      "下二・カ行": 2,
+      "四段・バ行": 1,
+      "四段・タ行": 4,
+      "カ変・来ル": 3,
+      "上二・ダ行": 1,
+      "下二・得": 1,
+      "下二・ハ行": 1
+    }
+  },
+  "compute": {
+    "seconds": 8463.392252922058
+  },
+  "anchored_shape_seconds": 52.269298791885376,
+  "annotation_only_seconds": 75.0266740322113,
+  "refinement_seconds": 138.84090781211853,
+  "best_float32_sha256": "47135272ba164fdd30ee5dfaaf5c161192b0e205781b3d9f60dc3dd194bf3018",
+  "best_metadata_sha256": "2db32e30b35e7b1688132076613a00792233c193716c0db8110eb6792d8f807e",
+  "development_trials": 149,
+  "device": "cpu",
+  "dtype": "float32 weights and model computations",
+  "verification_before_test": {
+    "exports_verified": 8,
+    "heldout_memory_vectors_unchanged": 11711,
+    "exact_float32_export_parity": true,
+    "selection_metrics_reproduced": true
+  },
+  "verification": {
+    "exports_verified": 8,
+    "heldout_memory_vectors_unchanged": 11711,
+    "exact_float32_export_parity": true,
+    "selection_metrics_reproduced": true,
+    "splits": true,
+    "exclusion": true,
+    "substring_retrieval": true,
+    "function_lengths": true
+  },
+  "candidate_score_split": "development; final test distances are in each candidate test field and the top-level test table",
+  "best_scope": "Eligible fresh continuation candidates, selected solely on development S before checks and test"
+}

@@ -1,0 +1,132 @@
+{
+ "entries": 427240,
+ "test": 43425,
+ "parameters": 405186,
+ "accuracy_unseen_surfaces": 0.7828,
+ "baseline_commonest": 0.2976,
+ "baseline_length_and_pos": 0.5994,
+ "by_part_of_speech": {
+  "名詞": {
+   "n": 25065,
+   "accuracy": 0.7382
+  },
+  "動詞": {
+   "n": 14841,
+   "accuracy": 0.8526
+  },
+  "形容詞": {
+   "n": 3042,
+   "accuracy": 0.8527
+  },
+  "副詞": {
+   "n": 335,
+   "accuracy": 0.4985
+  },
+  "フィラー": {
+   "n": 46,
+   "accuracy": 0.7174
+  },
+  "感動詞": {
+   "n": 26,
+   "accuracy": 0.5
+  }
+ },
+ "checked_by_ear": [
+  {
+   "word": "そう",
+   "heard": 1,
+   "model": 1,
+   "seen": true
+  },
+  {
+   "word": "寝る",
+   "heard": 0,
+   "model": 0,
+   "seen": true
+  },
+  {
+   "word": "着る",
+   "heard": 0,
+   "model": 0,
+   "seen": true
+  },
+  {
+   "word": "出る",
+   "heard": 1,
+   "model": 1,
+   "seen": true
+  },
+  {
+   "word": "見る",
+   "heard": 1,
+   "model": 0,
+   "seen": true
+  },
+  {
+   "word": "来る",
+   "heard": 1,
+   "model": 1,
+   "seen": true
+  },
+  {
+   "word": "持つ",
+   "heard": 1,
+   "model": 1,
+   "seen": true
+  },
+  {
+   "word": "読む",
+   "heard": 1,
+   "model": 1,
+   "seen": true
+  },
+  {
+   "word": "呼ぶ",
+   "heard": 0,
+   "model": 0,
+   "seen": true
+  },
+  {
+   "word": "盛る",
+   "heard": 0,
+   "model": 0,
+   "seen": false
+  },
+  {
+   "word": "やめる",
+   "heard": 0,
+   "model": 2,
+   "seen": true
+  },
+  {
+   "word": "ぴかぴか",
+   "heard": 1,
+   "model": 2,
+   "seen": true
+  },
+  {
+   "word": "くるくる",
+   "heard": 1,
+   "model": 2,
+   "seen": true
+  },
+  {
+   "word": "当店",
+   "heard": 1,
+   "model": 1,
+   "seen": true
+  },
+  {
+   "word": "弊社",
+   "heard": 1,
+   "model": 1,
+   "seen": false
+  },
+  {
+   "word": "当然",
+   "heard": 0,
+   "model": 0,
+   "seen": false
+  }
+ ]
+}

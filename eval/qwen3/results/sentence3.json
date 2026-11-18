@@ -1,0 +1,129 @@
+{
+ "sentences_test": 1214,
+ "sentences_train": 17054,
+ "annotated_train": 1127,
+ "runs": [
+  {
+   "config": "small",
+   "dev_phrases_all_right": 0.526,
+   "test": {
+    "fall_f1": 0.6836,
+    "fall_precision": 0.7277,
+    "fall_recall": 0.6445,
+    "phrase_start_f1": 0.8652,
+    "phrases_all_right": 0.5235,
+    "phrases": 7406
+   },
+   "parameters": 613861
+  },
+  {
+   "config": "small+skip",
+   "dev_phrases_all_right": 0.517,
+   "test": {
+    "fall_f1": 0.6783,
+    "fall_precision": 0.7628,
+    "fall_recall": 0.6107,
+    "phrase_start_f1": 0.8622,
+    "phrases_all_right": 0.5072,
+    "phrases": 7406
+   },
+   "parameters": 613861
+  },
+  {
+   "config": "large+skip",
+   "dev_phrases_all_right": 0.485,
+   "test": {
+    "fall_f1": 0.6823,
+    "fall_precision": 0.7665,
+    "fall_recall": 0.6148,
+    "phrase_start_f1": 0.8527,
+    "phrases_all_right": 0.5016,
+    "phrases": 7406
+   },
+   "parameters": 2266853
+  }
+ ],
+ "chosen_by_dev": "small",
+ "dictionary_with_llm_phrases": {
+  "fall_f1": 0.7447,
+  "fall_precision": 0.7609,
+  "fall_recall": 0.7292,
+  "phrase_start_f1": 0.9312,
+  "phrases_all_right": 0.6659,
+  "phrases": 7406
+ },
+ "dictionary_with_its_phrases": {
+  "fall_f1": 0.759,
+  "fall_precision": 0.7708,
+  "fall_recall": 0.7476,
+  "phrase_start_f1": 0.8972,
+  "phrases_all_right": 0.631,
+  "phrases": 7406
+ },
+ "checked": [
+  {
+   "want": "soꜜː da",
+   "model": "soːda"
+  },
+  {
+   "want": "soꜜː da",
+   "model": "boꜜkɯmo | soːda"
+  },
+  {
+   "want": "neꜛteɾɯ",
+   "model": "neteɾɯ"
+  },
+  {
+   "want": "kiꜛteɾɯ",
+   "model": "kiteɾɯ"
+  },
+  {
+   "want": "deꜜteɾɯ",
+   "model": "deteɾɯ"
+  },
+  {
+   "want": "miꜜteɾɯ",
+   "model": "miteɾɯ"
+  },
+  {
+   "want": "joꜛndeɾɯ",
+   "model": "joꜜndeɾɯ"
+  },
+  {
+   "want": "joꜜndeɾɯ",
+   "model": "jondeꜜɾɯ"
+  },
+  {
+   "want": "moꜜtteɾɯ",
+   "model": "motteɾɯ"
+  },
+  {
+   "want": "moꜛtteɾɯ",
+   "model": "motteɾɯ"
+  },
+  {
+   "want": "kaꜜneteɾɯ",
+   "model": "kaneteɾɯ"
+  },
+  {
+   "want": "taꜜbete",
+   "model": "taꜜbete | neɾɯ"
+  },
+  {
+   "want": "jaꜛmete",
+   "model": "jamete | neɾɯ"
+  },
+  {
+   "want": "piꜜkapika",
+   "model": "pikapika | sɯɾɯ"
+  },
+  {
+   "want": "toꜜːkeɴ",
+   "model": "toꜜːkeɴwa"
+  },
+  {
+   "want": "miꜛtaꜜi",
+   "model": "mitai | moꜜnda | naꜜː"
+  }
+ ]
+}

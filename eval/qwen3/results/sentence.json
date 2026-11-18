@@ -1,0 +1,30 @@
+{
+ "sentences_test": 1214,
+ "sentences_train": 3312,
+ "words_found_in_memory": 0.9205,
+ "parameters_sentence_model": 2459053,
+ "qwen3": {
+  "fall_f1": 0.755,
+  "fall_precision": 0.825,
+  "fall_recall": 0.6959,
+  "phrase_start_f1": 0.9316,
+  "phrases_all_right": 0.6396,
+  "phrases": 7406
+ },
+ "dictionary_with_llm_phrases": {
+  "fall_f1": 0.7447,
+  "fall_precision": 0.7609,
+  "fall_recall": 0.7292,
+  "phrase_start_f1": 0.9312,
+  "phrases_all_right": 0.6659,
+  "phrases": 7406
+ },
+ "dictionary_with_its_phrases": {
+  "fall_f1": 0.759,
+  "fall_precision": 0.7708,
+  "fall_recall": 0.7476,
+  "phrase_start_f1": 0.8972,
+  "phrases_all_right": 0.631,
+  "phrases": 7406
+ }
+}
