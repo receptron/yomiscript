@@ -135,12 +135,12 @@ export async function writeWav(s: Speech, file?: string): Promise<string> {
 }
 
 /** a command that plays a WAV file here, or null (macOS afplay; Linux paplay or aplay) */
-export function player(platform: NodeJS.Platform = process.platform): string[] | null {
+export function player(platform: NodeJS.Platform = process.platform): [string, ...string[]] | null {
   if (platform === "darwin") return ["afplay"];
   if (platform === "linux") return ["paplay"];
   return null;
 }
-function run(cmd: string[], file: string): Promise<boolean> {
+function run(cmd: [string, ...string[]], file: string): Promise<boolean> {
   return new Promise((resolve) => {
     const p = spawn(cmd[0], [...cmd.slice(1), file], { stdio: "ignore" });
     p.on("error", () => resolve(false));

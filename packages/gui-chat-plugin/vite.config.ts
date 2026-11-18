@@ -28,11 +28,12 @@ function serveModels(): Plugin {
     name: "yomiscript-serve-models",
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        const url = decodeURIComponent((req.url ?? "").split("?")[0]);
-        const prefix = Object.keys(SERVED).find((p) => url.startsWith(p));
-        if (!prefix) return next();
-        const root = SERVED[prefix],
-          file = path.resolve(root, url.slice(prefix.length));
+        const [pathname = ""] = (req.url ?? "").split("?"),
+          url = decodeURIComponent(pathname);
+        const prefix = Object.keys(SERVED).find((p) => url.startsWith(p)),
+          root = prefix === undefined ? undefined : SERVED[prefix];
+        if (prefix === undefined || root === undefined) return next();
+        const file = path.resolve(root, url.slice(prefix.length));
         if (!file.startsWith(root) || !fs.existsSync(file) || !fs.statSync(file).isFile()) return next();
         res.setHeader("Content-Type", TYPES[path.extname(file)] ?? "application/octet-stream");
         fs.createReadStream(file).pipe(res);

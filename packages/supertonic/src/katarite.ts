@@ -30,7 +30,7 @@ export class SupertonicKatarite implements Katarite {
   }
   async speak(ys: string): Promise<Speech> {
     const u = parse(ys),
-      primary = u.top.split("-")[0];
+      [primary = u.top] = u.top.split("-");
     const r = await this.E.synthesize(this.text(ys), {
       lang: SUPPORTED.has(primary) ? primary : UNKNOWN_LANGUAGE,
       voice: this.opts.voice ?? DEFAULTS.voice,

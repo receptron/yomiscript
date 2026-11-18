@@ -29,9 +29,9 @@ describe("speak tool", () => {
     const c = await connect({ katarite: () => Promise.resolve(fake([])), wav });
     const { tools } = await c.listTools();
     expect(tools.map((t) => t.name)).toEqual(["speak"]);
-    expect(tools[0].description).toBe(TOOL_DESCRIPTION);
-    expect(tools[0].description).toMatch(/<t:…>/);
-    expect(tools[0].inputSchema).toMatchObject({ type: "object", properties: { yomiscript: { type: "string" } }, required: ["yomiscript"] });
+    expect(tools[0]?.description).toBe(TOOL_DESCRIPTION);
+    expect(tools[0]?.description).toMatch(/<t:…>/);
+    expect(tools[0]?.inputSchema).toMatchObject({ type: "object", properties: { yomiscript: { type: "string" } }, required: ["yomiscript"] });
   });
   it("speaks, plays and returns the original text and the duration", async () => {
     const spoken: string[] = [],
@@ -53,20 +53,20 @@ describe("speak tool", () => {
   it("returns the audio when asked to", async () => {
     const c = await connect({ katarite: () => Promise.resolve(fake([])), wav, returnAudio: true });
     const content = (await c.callTool({ name: "speak", arguments: { yomiscript: JA } })).content as Content;
-    expect(content[0].text).toBe('Synthesized "今日は、雨です。" (1.50 s).');
+    expect(content[0]?.text).toBe('Synthesized "今日は、雨です。" (1.50 s).');
     expect(content[1]).toEqual({ type: "audio", mimeType: "audio/wav", data: Buffer.from("WAV36000").toString("base64") });
   });
   it("says so when it could not play", async () => {
     const c = await connect({ katarite: () => Promise.resolve(fake([])), wav, play: () => Promise.resolve(false) });
     const content = (await c.callTool({ name: "speak", arguments: { yomiscript: JA } })).content as Content;
-    expect(content[0].text).toMatch(/^Synthesized \(could not play it here\)/);
+    expect(content[0]?.text).toMatch(/^Synthesized \(could not play it here\)/);
   });
   it("gives a YomiScript error back so the LLM can fix it, without speaking", async () => {
     const spoken: string[] = [];
     const c = await connect({ katarite: () => Promise.resolve(fake(spoken)), wav });
     const r = await c.callTool({ name: "speak", arguments: { yomiscript: "ja /こんにちは ↘/" } });
     expect(r.isError).toBe(true);
-    expect((r.content as Content)[0].text).toMatch(/^YomiScript error: not Japanese YomiScript IPA: "こ".*call speak again\.$/);
+    expect((r.content as Content)[0]?.text).toMatch(/^YomiScript error: not Japanese YomiScript IPA: "こ".*call speak again\.$/);
     expect(spoken).toEqual([]);
   });
   it("reports a Katarite that fails", async () => {
@@ -76,7 +76,7 @@ describe("speak tool", () => {
     });
     const r = await c.callTool({ name: "speak", arguments: { yomiscript: JA } });
     expect(r.isError).toBe(true);
-    expect((r.content as Content)[0].text).toBe("could not speak: no models");
+    expect((r.content as Content)[0]?.text).toBe("could not speak: no models");
   });
 });
 

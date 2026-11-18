@@ -29,9 +29,11 @@ for (const f of fs
   .sort(byCodeUnit)) {
   for (const line of decoder.decode(fs.readFileSync(path.join(dir, f))).split("\n")) {
     const row = line.split(","); // IPAdic fields have no quoted commas
-    if (row.length < 13 || !KANJI.test(row[0]) || row[12].trim() === "*") continue;
-    if (!readings.has(row[0])) readings.set(row[0], new Set());
-    readings.get(row[0])?.add(pron(row[12].trim()));
+    const [surface] = row,
+      reading = row[12]?.trim(); // undefined: fewer than 13 fields
+    if (surface === undefined || reading === undefined || !KANJI.test(surface) || reading === "*") continue;
+    if (!readings.has(surface)) readings.set(surface, new Set());
+    readings.get(surface)?.add(pron(reading));
   }
 }
 const out: Record<string, number> = {};
