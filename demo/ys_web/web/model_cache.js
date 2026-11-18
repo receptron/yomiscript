@@ -9,7 +9,9 @@ const HF = "https://huggingface.co/",
   RESOLVE = "/resolve/";
 const COMMIT = /^[0-9a-f]{40}$/;
 
-/** the Hugging Face API URL giving the commit a `.../resolve/<revision>/[folder/]` base points at; null for any other base */
+/** the Hugging Face API URL giving the commit a `.../resolve/<revision>/[folder/]` base points at; null for any other base
+ * @param {string} base
+ * @returns {string | null} */
 export const revisionApiUrl = (base) => {
   const at = base.indexOf(RESOLVE);
   if (!base.startsWith(HF) || at <= HF.length || !base.endsWith("/")) return null;
@@ -17,8 +19,10 @@ export const revisionApiUrl = (base) => {
     revision = rest.slice(0, rest.indexOf("/"));
   return revision ? `${HF}api/models/${base.slice(HF.length, at)}/revision/${revision}` : null;
 };
+/** @param {string} base @param {string} sha */
 export const pinnedBase = (base, sha) => base.replace(/\/resolve\/[^/]+\//, `/resolve/${sha}/`);
 
+/** @param {string} base @returns {Promise<string | null>} */
 const resolveCommit = async (base) => {
   const api = revisionApiUrl(base);
   if (!api) return null;
@@ -45,6 +49,7 @@ const dropOldCaches = async () => {
   }
 };
 /** the entries of the base's repository at any other commit; those of the other repositories stay */
+/** @param {Cache} cache @param {string} base @param {string} sha */
 const dropOtherCommits = async (cache, base, sha) => {
   try {
     const repository = base.slice(0, base.indexOf(RESOLVE) + RESOLVE.length),
@@ -56,7 +61,10 @@ const dropOtherCommits = async (cache, base, sha) => {
   }
 };
 
-/** a fetch of `base + path` that reuses earlier downloads when `base` is on Hugging Face and the Cache API is there */
+/** @typedef {(path: string) => Promise<Response>} ModelFetch */
+/** a fetch of `base + path` that reuses earlier downloads when `base` is on Hugging Face and the Cache API is there
+ * @param {string} base
+ * @returns {Promise<ModelFetch>} */
 export async function modelFetcher(base) {
   await dropOldCaches();
   const sha = await resolveCommit(base);
@@ -74,7 +82,9 @@ export async function modelFetcher(base) {
   };
 }
 
-/** what the dictionary and pitch model loaders take: a file's bytes through a modelFetcher */
+/** what the dictionary and pitch model loaders take: a file's bytes through a modelFetcher
+ * @param {ModelFetch} fetchModel
+ * @returns {(path: string) => Promise<Uint8Array<ArrayBuffer>>} */
 export const modelBytes = (fetchModel) => async (path) => {
   const r = await fetchModel(path);
   if (!r.ok) throw new Error(`${path}: ${r.status}`);

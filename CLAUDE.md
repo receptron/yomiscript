@@ -30,7 +30,8 @@ silent edit.
   ESLint (`eslint.config.js`, with typescript-eslint for `.ts`), then `ruff check` (`pyproject.toml`).
   ruff is not an npm dependency; it has to be on `PATH` (setup in `CONTRIBUTING.md`).
 - `yarn typecheck` runs `tsc -b` on the packages, then on their tests (`packages/*/test/tsconfig.json`; Vitest strips
-  types without checking them), and the plugin's own `typecheck`.
+  types without checking them), the plugin's own `typecheck`, and the demo's JavaScript and the root tests under
+  `checkJs` (`demo/ys_web/web/tsconfig.json`, `test/tsconfig.json`; their types are JSDoc).
 - `yarn test` runs Vitest (`test/**/*.spec.js`, `packages/*/test/**/*.spec.ts`). Tests run without models, Python, network or API keys. Mock
   external services; never call them.
 - Yomi-0: `cd models/yomi/mlx && .venv/bin/python -m pytest -q tests`.

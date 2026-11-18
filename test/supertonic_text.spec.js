@@ -3,7 +3,7 @@ import { toText } from "@yomiscript/supertonic";
 
 describe("Supertonic Katarite: the reading as kana, by pronunciation", () => {
   // one span with kanji over the whole utterance: the rule "kanji" gives all of it as kana
-  const kana = (ys, text) => toText(ys.replace(/ ([↘↗])\/$/, `<t:${text}> $1/`), new Set(), "kanji");
+  const kana = (/** @type {string} */ ys, /** @type {string} */ text) => toText(ys.replace(/ ([↘↗])\/$/, `<t:${text}> $1/`), new Set(), "kanji");
   it.each([
     ["ja /kʲoː wa iː teŋki desɯ ne ↘/", "今日はいい天気ですね。", "きょーわいーてんきですね。"],
     ["ja /ɕɯːmatsɯ wa tomodatɕi to kʲoːto e ikɯ ↘/", "週末は友達と京都へ行く", "しゅーまつわともだちときょーとえいく"],

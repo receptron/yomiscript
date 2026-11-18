@@ -33,7 +33,7 @@ Commands:
 | `yarn format:check` | the same, checking only                                            |
 | `yarn lint`         | the packages' types, ESLint (`eslint.config.js`), `ruff check`     |
 | `yarn build`        | `tsc -b` on the packages, then the gui-chat-plugin build           |
-| `yarn typecheck`    | `tsc -b` on the packages, their tests and the plugin               |
+| `yarn typecheck`    | tsc: the packages, their tests, the plugin, the demo JS (checkJs)  |
 | `yarn test`         | Vitest (`test/`, `packages/*/test/`)                               |
 
 Every lint rule is an error; the size limits and the policy are in [`CLAUDE.md`](CLAUDE.md).
