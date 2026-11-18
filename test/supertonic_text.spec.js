@@ -11,6 +11,15 @@ describe("Supertonic Katarite: the reading as kana, by pronunciation", () => {
     ["ja /paːtʲiː de ɸaɴ ɡa vaioɾiɴ o çiki ↘/", "パーティーでファンがヴァイオリンを弾き", "ぱーてぃーでふぁんがゔぁいおりんおひき"],
     ["ja /kʲo<f0:2>ꜜː<f0:-2> wa ↘/", "今日は", "きょーわ"],
   ])("%s", (ys, text, want) => expect(kana(ys, text)).toBe(want));
+  it.each([
+    ["ja /desɨ ↘/", "です"],
+    ["ja /tsɨkɯe ↘/", "つくえ"],
+    ["ja /mizɨ ↘/", "みず"],
+    ["ja /kʲɨː ↘/", "きゅー"],
+  ])("reads ɨ as ɯ: %s", (ys, want) => {
+    expect(kana(ys, "x")).toBe(want);
+    expect(kana(ys, "x")).toBe(kana(ys.replaceAll("ɨ", "ɯ"), "x"));
+  });
 });
 
 describe("Supertonic Katarite: original text with reading hints (D23)", () => {
